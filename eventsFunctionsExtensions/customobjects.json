@@ -1,0 +1,1094 @@
+{
+  "author": "",
+  "category": "",
+  "extensionNamespace": "",
+  "fullName": "",
+  "gdevelopVersion": "",
+  "helpPath": "",
+  "iconUrl": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyMy4wLjMsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iSWNvbnMiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgMzIgMzIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDMyIDMyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDpub25lO3N0cm9rZTojMDAwMDAwO3N0cm9rZS13aWR0aDoyO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDt9DQo8L3N0eWxlPg0KPHBhdGggY2xhc3M9InN0MCIgZD0iTTI1LjIsMjAuOWwtMC43LTAuN2wzLjUtMy41bC00LjItNC4ybC0wLjcsMC43Yy0xLjIsMS4yLTMuMSwxLjItNC4yLDBjLTEuMi0xLjItMS4yLTMuMSwwLTQuMmwwLjctMC43TDE1LjMsNA0KCWwtMy41LDMuNWwtMC43LTAuN0M5LjksNS42LDgsNS42LDYuOCw2LjhjLTEuMiwxLjItMS4yLDMuMSwwLDQuMmwwLjcsMC43TDQsMTUuM2w0LjIsNC4ybDAuNy0wLjdjMS4yLTEuMiwzLjEtMS4yLDQuMiwwDQoJYzEuMiwxLjIsMS4yLDMuMSwwLDQuMmwtMC43LDAuN2w0LjIsNC4ybDMuNS0zLjVsMC43LDAuN2MxLjIsMS4yLDMuMSwxLjIsNC4yLDBDMjYuNCwyNCwyNi40LDIyLjEsMjUuMiwyMC45eiIvPg0KPC9zdmc+DQo=",
+  "name": "CustomObjects",
+  "previewIconUrl": "https://asset-resources.gdevelop.io/public-resources/Icons/Line Hero Pack/Master/SVG/UI Essentials/f006352903706da8ddf1c68d2536f3440624c6ed749926dff543605be503394a_UI Essentials_puzzle_component.svg",
+  "shortDescription": "",
+  "version": "",
+  "description": "",
+  "tags": [],
+  "authorIds": [],
+  "dependencies": [],
+  "globalVariables": [],
+  "sceneVariables": [],
+  "eventsFunctions": [
+    {
+      "description": "Make the object bounce whent collide with obstacle",
+      "fullName": "Bounce object",
+      "functionType": "Action",
+      "name": "Bounce",
+      "sentence": "Bounce _PARAM1_ off _PARAM2_",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "OldX",
+                "=",
+                "Object.X()"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "OldY",
+                "=",
+                "Object.Y()"
+              ]
+            },
+            {
+              "type": {
+                "value": "SeparateFromObjects"
+              },
+              "parameters": [
+                "Object",
+                "Obstacle",
+                "yes"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "PosX"
+                      },
+                      "parameters": [
+                        "Object",
+                        "!=",
+                        "OldX"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "PosY"
+                      },
+                      "parameters": [
+                        "Object",
+                        "!=",
+                        "OldY"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "OldForceAngle",
+                    "=",
+                    "Object.ForceAngle()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "OldForceLength",
+                    "=",
+                    "Object.ForceLength()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "NormalAngle",
+                    "=",
+                    "ToDeg(atan2(Object.Y() - OldY, Object.X() - OldX))"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Arreter"
+                  },
+                  "parameters": [
+                    "Object"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AddForceAL"
+                  },
+                  "parameters": [
+                    "Object",
+                    "NormalAngle + AngleDifference(NormalAngle, OldForceAngle + 180)",
+                    "OldForceLength",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "RotateTowardAngle"
+                  },
+                  "parameters": [
+                    "Object",
+                    "NormalAngle + AngleDifference(NormalAngle, OldForceAngle + 180)",
+                    "0",
+                    ""
+                  ]
+                }
+              ],
+              "variables": [
+                {
+                  "name": "OldForceAngle",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "OldForceLength",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "NormalAngle",
+                  "type": "number",
+                  "value": 0
+                }
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "OldX",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "OldY",
+              "type": "number",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "description": "Object to bounce",
+          "name": "Object",
+          "type": "objectList"
+        },
+        {
+          "description": "Obstacle where it bounce",
+          "name": "Obstacle",
+          "type": "objectList"
+        }
+      ],
+      "objectGroups": []
+    }
+  ],
+  "eventsBasedBehaviors": [],
+  "eventsBasedObjects": [
+    {
+      "areaMaxX": 32,
+      "areaMaxY": 32,
+      "areaMaxZ": 0,
+      "areaMinX": 0,
+      "areaMinY": 0,
+      "areaMinZ": 0,
+      "defaultName": "Player",
+      "description": "",
+      "fullName": "",
+      "isUsingLegacyInstancesRenderer": false,
+      "name": "Player",
+      "objects": [
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "Collision",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "Collision",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "metadata": "{\"pskl\":{}}",
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": false,
+                      "image": "Collision",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 16,
+                        "y": 16
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "adaptCollisionMaskAutomatically": false,
+          "assetStoreId": "",
+          "name": "Cannon",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\Player\\player_cannon.png",
+                      "points": [
+                        {
+                          "name": "Muzzle",
+                          "x": 32,
+                          "y": 16
+                        }
+                      ],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 16,
+                        "y": 16
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 6,
+                            "y": 6
+                          },
+                          {
+                            "x": 26,
+                            "y": 6
+                          },
+                          {
+                            "x": 26,
+                            "y": 26
+                          },
+                          {
+                            "x": 6,
+                            "y": 26
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "adaptCollisionMaskAutomatically": false,
+          "assetStoreId": "",
+          "name": "Body",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\Player\\player_body.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 16,
+                        "y": 16
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 32,
+                            "y": 0
+                          },
+                          {
+                            "x": 32,
+                            "y": 32
+                          },
+                          {
+                            "x": 0,
+                            "y": 32
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "objectsFolderStructure": {
+        "folderName": "__ROOT",
+        "children": [
+          {
+            "objectName": "Body"
+          },
+          {
+            "objectName": "Cannon"
+          },
+          {
+            "objectName": "Collision"
+          }
+        ]
+      },
+      "objectsGroups": [],
+      "layers": [
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [
+            {
+              "defaultSize": true,
+              "defaultViewport": true,
+              "height": 0,
+              "viewportBottom": 1,
+              "viewportLeft": 0,
+              "viewportRight": 1,
+              "viewportTop": 0,
+              "width": 0
+            }
+          ],
+          "effects": []
+        }
+      ],
+      "instances": [
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Body",
+          "persistentUuid": "be00e591-2c0f-4a31-9325-a211b42737ac",
+          "width": 0,
+          "x": 16,
+          "y": 16,
+          "zOrder": 1,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Cannon",
+          "persistentUuid": "39ff359a-494d-44c5-a0a1-82cf61339656",
+          "width": 0,
+          "x": 16,
+          "y": 16,
+          "zOrder": 2,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 0,
+          "height": 32,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Collision",
+          "persistentUuid": "fbc804ba-4b3b-4886-8472-73e8f5451d19",
+          "width": 32,
+          "x": 0,
+          "y": 0,
+          "zOrder": 0,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        }
+      ],
+      "eventsFunctions": [
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "onCreated",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetCenter"
+                  },
+                  "parameters": [
+                    "Collision",
+                    "=",
+                    "Object.CenterX()",
+                    "=",
+                    "Object.CenterY()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetCenter"
+                  },
+                  "parameters": [
+                    "Body",
+                    "=",
+                    "Object.CenterX()",
+                    "=",
+                    "Object.CenterY()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetIncludedInParentCollisionMask"
+                  },
+                  "parameters": [
+                    "Collision",
+                    "yes"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetIncludedInParentCollisionMask"
+                  },
+                  "parameters": [
+                    "Cannon",
+                    "no"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetIncludedInParentCollisionMask"
+                  },
+                  "parameters": [
+                    "Body",
+                    "no"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Player",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "doStepPostEvents",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 109,
+                "g": 230,
+                "r": 255,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "Calculate the distance is to prevent wiggling on walls"
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "PreviousX",
+                        "!=",
+                        "Object.CenterX()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "PreviousY",
+                        "!=",
+                        "Object.CenterY()"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "DistanceBetweenPositions(PreviousX, PreviousY, Object.CenterX(), Object.CenterY())",
+                    ">=",
+                    "0.2"
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 109,
+                    "g": 230,
+                    "r": 255,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "Save movement direction as a property so the user can use it"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "MovementDirection",
+                        "=",
+                        "AngleBetweenPositions(PreviousX, PreviousY, Object.CenterX(), Object.CenterY())"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 109,
+                    "g": 230,
+                    "r": 255,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "Rotate the object to face the direction it is moving towards"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "RotateTowardAngle"
+                      },
+                      "parameters": [
+                        "Body",
+                        "MovementDirection + BodyOffsetAngle",
+                        "abs(BodyRotationSpeed)",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 109,
+                "g": 230,
+                "r": 255,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "Save the current position to be used in the next frame"
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "PreviousX",
+                    "=",
+                    "Object.CenterX()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "PreviousY",
+                    "=",
+                    "Object.CenterY()"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Player",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Make the player look at given direction by a vector",
+          "fullName": "Change look at direction by given vector",
+          "functionType": "Action",
+          "name": "LookToByVector",
+          "sentence": "Make _PARAM0_ look to vector (X: _PARAM1_; Y: _PARAM2_)",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "RotateTowardPosition"
+                  },
+                  "parameters": [
+                    "Cannon",
+                    "Cannon.PointX(\"center\") + PointX",
+                    "Cannon.PointY(\"center\") + PointY",
+                    "CannonRotationSpeed",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Player",
+              "type": "object"
+            },
+            {
+              "description": "Point X",
+              "name": "PointX",
+              "supplementaryInformation": "[\"Down\",\"Left\",\"Right\",\"Up\"]",
+              "type": "expression"
+            },
+            {
+              "description": "Point Y",
+              "name": "PointY",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Make the player look at given direction by a point on screen",
+          "fullName": "Change look at direction by given point",
+          "functionType": "Action",
+          "name": "LookToByPoint",
+          "sentence": "Make _PARAM0_ look to point (X: _PARAM1_; Y: _PARAM2_)",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "RotateTowardPosition"
+                  },
+                  "parameters": [
+                    "Cannon",
+                    "PointX - Object.X()",
+                    "PointY - Object.Y()",
+                    "CannonRotationSpeed",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Player",
+              "type": "object"
+            },
+            {
+              "description": "Point X",
+              "name": "PointX",
+              "supplementaryInformation": "[\"Down\",\"Left\",\"Right\",\"Up\"]",
+              "type": "expression"
+            },
+            {
+              "description": "Point Y",
+              "name": "PointY",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Set the cannon rotation speed",
+          "fullName": "Set cannon rotation speed",
+          "functionType": "Action",
+          "name": "SetCannonRotationSpeed",
+          "sentence": "Set _PARAM0_ cannon rotation speed to _PARAM1_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "CannonRotationSpeed",
+                    "=",
+                    "Speed"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Player",
+              "type": "object"
+            },
+            {
+              "description": "",
+              "name": "Speed",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Set the cannon rotation speed",
+          "fullName": "Set cannon rotation speed",
+          "functionType": "Action",
+          "name": "SetBodyRotationSpeed",
+          "sentence": "Set _PARAM0_ cannon rotation speed to _PARAM1_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "BodyRotationSpeed",
+                    "=",
+                    "Speed"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Player",
+              "type": "object"
+            },
+            {
+              "description": "",
+              "name": "Speed",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Set the cannon rotation speed",
+          "fullName": "Set cannon rotation speed",
+          "functionType": "Action",
+          "name": "SetBodyAngleOffset",
+          "sentence": "Set _PARAM0_ cannon rotation speed to _PARAM1_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "BodyOffsetAngle",
+                    "=",
+                    "Angle"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Player",
+              "type": "object"
+            },
+            {
+              "description": "",
+              "name": "Angle",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Expression",
+          "name": "GetMuzzlePointX",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "Object.X() + Cannon.PointX(\"Muzzle\")"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Player",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Expression",
+          "name": "GetMuzzlePointY",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "Object.Y() + Cannon.PointY(\"Muzzle\")"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Player",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Expression",
+          "name": "GetCannonAngle",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "Cannon.Angle()"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Player",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "600",
+          "type": "Number",
+          "unit": "PixelSpeed",
+          "label": "",
+          "name": "CannonRotationSpeed"
+        },
+        {
+          "value": "600",
+          "type": "Number",
+          "unit": "PixelSpeed",
+          "label": "",
+          "name": "BodyRotationSpeed"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "unit": "DegreeAngle",
+          "label": "",
+          "name": "BodyOffsetAngle"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "unit": "Pixel",
+          "label": "",
+          "hidden": true,
+          "name": "PreviousX"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "unit": "Pixel",
+          "label": "",
+          "hidden": true,
+          "name": "PreviousY"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "unit": "DegreeAngle",
+          "label": "",
+          "hidden": true,
+          "name": "MovementDirection"
+        }
+      ],
+      "variants": []
+    }
+  ]
+}

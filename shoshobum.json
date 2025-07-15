@@ -1,0 +1,577 @@
+{
+  "firstLayout": "",
+  "gdVersion": {
+    "build": 236,
+    "major": 5,
+    "minor": 5,
+    "revision": 0
+  },
+  "properties": {
+    "adaptGameResolutionAtRuntime": true,
+    "antialiasingMode": "MSAA",
+    "antialisingEnabledOnMobile": false,
+    "folderProject": true,
+    "orientation": "default",
+    "packageName": "com.example.gamename",
+    "pixelsRounding": true,
+    "projectUuid": "31d5d947-4085-4f85-9e99-668744669214",
+    "scaleMode": "nearest",
+    "sizeOnStartupMode": "",
+    "templateSlug": "starting-top-down-pixel",
+    "version": "1.0.0",
+    "name": "shoshobum",
+    "description": "",
+    "author": "",
+    "windowWidth": 1280,
+    "windowHeight": 720,
+    "latestCompilationDirectory": "",
+    "maxFPS": 60,
+    "minFPS": 20,
+    "verticalSync": false,
+    "platformSpecificAssets": {
+      "android-icon-144": "",
+      "android-icon-192": "",
+      "android-icon-36": "",
+      "android-icon-48": "",
+      "android-icon-72": "",
+      "android-icon-96": "",
+      "android-windowSplashScreenAnimatedIcon": "",
+      "desktop-icon-512": "",
+      "ios-icon-100": "",
+      "ios-icon-1024": "",
+      "ios-icon-114": "",
+      "ios-icon-120": "",
+      "ios-icon-144": "",
+      "ios-icon-152": "",
+      "ios-icon-167": "",
+      "ios-icon-180": "",
+      "ios-icon-20": "",
+      "ios-icon-29": "",
+      "ios-icon-40": "",
+      "ios-icon-50": "",
+      "ios-icon-57": "",
+      "ios-icon-58": "",
+      "ios-icon-60": "",
+      "ios-icon-72": "",
+      "ios-icon-76": "",
+      "ios-icon-80": "",
+      "ios-icon-87": ""
+    },
+    "loadingScreen": {
+      "backgroundColor": 0,
+      "backgroundFadeInDuration": 0.2,
+      "backgroundImageResourceName": "",
+      "gdevelopLogoStyle": "dark",
+      "logoAndProgressFadeInDuration": 0.2,
+      "logoAndProgressLogoFadeInDelay": 0,
+      "minDuration": 1.5,
+      "progressBarColor": 16777215,
+      "progressBarHeight": 20,
+      "progressBarMaxWidth": 200,
+      "progressBarMinWidth": 40,
+      "progressBarWidthPercent": 30,
+      "showGDevelopSplash": true,
+      "showProgressBar": true
+    },
+    "watermark": {
+      "placement": "bottom-left",
+      "showWatermark": true
+    },
+    "authorIds": [
+      "Ufb6L4y6qRNYzwIFuAo1kKUsR8b2"
+    ],
+    "authorUsernames": [
+      "vgonzalez"
+    ],
+    "categories": [],
+    "playableDevices": [],
+    "extensionProperties": [],
+    "platforms": [
+      {
+        "name": "GDevelop JS platform"
+      }
+    ],
+    "currentPlatform": "GDevelop JS platform"
+  },
+  "resources": {
+    "resources": [
+      {
+        "file": "assets/Player/player_cannon.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Player\\player_cannon.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Player/player_body.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Player\\player_body.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/icon_keyboard_on.png",
+        "kind": "image",
+        "metadata": "{\"extension\":\".png\"}",
+        "name": "icon_keyboard_on",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/gamepad.png",
+        "kind": "image",
+        "metadata": "{\"extension\":\".png\"}",
+        "name": "gamepad",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/NotoSansJP-Thin.ttf",
+        "kind": "font",
+        "metadata": "",
+        "name": "f40e19b338c5e8a66a3b1b572f135d9477ab53fcb34ec5ec3f989304d8f12dde_NotoSansJP-Thin.ttf",
+        "userAdded": false,
+        "origin": {
+          "identifier": "https://asset-resources.gdevelop.io/public-resources/Open Font License/Japanese/f40e19b338c5e8a66a3b1b572f135d9477ab53fcb34ec5ec3f989304d8f12dde_NotoSansJP-Thin.ttf",
+          "name": "gdevelop-asset-store"
+        }
+      },
+      {
+        "file": "assets/Walls/wall_white.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Walls\\wall_white.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Collision.png",
+        "kind": "image",
+        "metadata": "{\"extension\":\".png\"}",
+        "name": "Collision",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Walls/hole_white.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Walls\\hole_white.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Bullets/bullet_yellow_small.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Bullets\\bullet_yellow_small.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Bullets/bullet_purple_small.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Bullets\\bullet_purple_small.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Walls/wall_white_breakable_000.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Walls\\wall_white_breakable_000.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Walls/wall_white_breakable_50.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Walls\\wall_white_breakable_50.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Walls/wall_white_breakable_100.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Walls\\wall_white_breakable_100.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Enemies/purple_enemy_cannon.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Enemies\\purple_enemy_cannon.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Enemies/purple_enemy_body.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Enemies\\purple_enemy_body.png",
+        "smoothed": false,
+        "userAdded": false
+      }
+    ],
+    "resourceFolders": []
+  },
+  "objects": [],
+  "objectsFolderStructure": {
+    "folderName": "__ROOT"
+  },
+  "objectsGroups": [],
+  "variables": [
+    {
+      "folded": true,
+      "name": "_CONTROLS_",
+      "type": "structure",
+      "children": [
+        {
+          "folded": true,
+          "name": "Players",
+          "type": "array",
+          "children": [
+            {
+              "type": "structure",
+              "children": [
+                {
+                  "name": "Gamepad",
+                  "type": "structure",
+                  "children": [
+                    {
+                      "name": "LookDown",
+                      "type": "string",
+                      "value": "Right,Down"
+                    },
+                    {
+                      "name": "LookLeft",
+                      "type": "string",
+                      "value": "Right,Left"
+                    },
+                    {
+                      "name": "LookRight",
+                      "type": "string",
+                      "value": "Right,Right"
+                    },
+                    {
+                      "name": "LookUp",
+                      "type": "string",
+                      "value": "Right,Up"
+                    },
+                    {
+                      "name": "MoveDown",
+                      "type": "string",
+                      "value": "Left,Down"
+                    },
+                    {
+                      "name": "MoveLeft",
+                      "type": "string",
+                      "value": "Left,Left"
+                    },
+                    {
+                      "name": "MoveRight",
+                      "type": "string",
+                      "value": "Left,Right"
+                    },
+                    {
+                      "name": "MoveUp",
+                      "type": "string",
+                      "value": "Left,Up"
+                    },
+                    {
+                      "name": "Shoot",
+                      "type": "string",
+                      "value": "RT"
+                    }
+                  ]
+                },
+                {
+                  "name": "InputType",
+                  "type": "string",
+                  "value": "keyboard"
+                },
+                {
+                  "name": "Keyboard",
+                  "type": "structure",
+                  "children": [
+                    {
+                      "name": "LookDown",
+                      "type": "string",
+                      "value": "Down"
+                    },
+                    {
+                      "name": "LookLeft",
+                      "type": "string",
+                      "value": "Left"
+                    },
+                    {
+                      "name": "LookRight",
+                      "type": "string",
+                      "value": "Right"
+                    },
+                    {
+                      "name": "LookUp",
+                      "type": "string",
+                      "value": "Up"
+                    },
+                    {
+                      "name": "MoveDown",
+                      "type": "string",
+                      "value": "s"
+                    },
+                    {
+                      "name": "MoveLeft",
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "name": "MoveRight",
+                      "type": "string",
+                      "value": "d"
+                    },
+                    {
+                      "name": "MoveUp",
+                      "type": "string",
+                      "value": "w"
+                    },
+                    {
+                      "name": "Shoot",
+                      "type": "string",
+                      "value": "Space"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "structure",
+              "children": [
+                {
+                  "folded": true,
+                  "name": "Gamepad",
+                  "type": "structure",
+                  "children": [
+                    {
+                      "name": "LookDown",
+                      "type": "string",
+                      "value": "Right,Down"
+                    },
+                    {
+                      "name": "LookLeft",
+                      "type": "string",
+                      "value": "Right,Left"
+                    },
+                    {
+                      "name": "LookRight",
+                      "type": "string",
+                      "value": "Right,Right"
+                    },
+                    {
+                      "name": "LookUp",
+                      "type": "string",
+                      "value": "Right,Up"
+                    },
+                    {
+                      "name": "MoveDown",
+                      "type": "string",
+                      "value": "Left,Down"
+                    },
+                    {
+                      "name": "MoveLeft",
+                      "type": "string",
+                      "value": "Left,Left"
+                    },
+                    {
+                      "name": "MoveRight",
+                      "type": "string",
+                      "value": "Left,Right"
+                    },
+                    {
+                      "name": "MoveUp",
+                      "type": "string",
+                      "value": "Left,Up"
+                    },
+                    {
+                      "name": "Shoot",
+                      "type": "string",
+                      "value": "RT"
+                    }
+                  ]
+                },
+                {
+                  "name": "InputType",
+                  "type": "string",
+                  "value": "keyboard"
+                },
+                {
+                  "folded": true,
+                  "name": "Keyboard",
+                  "type": "structure",
+                  "children": [
+                    {
+                      "name": "LookDown",
+                      "type": "string",
+                      "value": "Down"
+                    },
+                    {
+                      "name": "LookLeft",
+                      "type": "string",
+                      "value": "Left"
+                    },
+                    {
+                      "name": "LookRight",
+                      "type": "string",
+                      "value": "Right"
+                    },
+                    {
+                      "name": "LookUp",
+                      "type": "string",
+                      "value": "Up"
+                    },
+                    {
+                      "name": "MoveDown",
+                      "type": "string",
+                      "value": "s"
+                    },
+                    {
+                      "name": "MoveLeft",
+                      "type": "string",
+                      "value": "a"
+                    },
+                    {
+                      "name": "MoveRight",
+                      "type": "string",
+                      "value": "d"
+                    },
+                    {
+                      "name": "MoveUp",
+                      "type": "string",
+                      "value": "w"
+                    },
+                    {
+                      "name": "Shoot",
+                      "type": "string",
+                      "value": "Space"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "folded": true,
+      "name": "_CONSTANTS_",
+      "type": "structure",
+      "children": [
+        {
+          "name": "InputType",
+          "type": "structure",
+          "children": [
+            {
+              "name": "Gamepad",
+              "type": "string",
+              "value": "gamepad"
+            },
+            {
+              "name": "Keyboard",
+              "type": "string",
+              "value": "keyboard"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "_DEBUG_",
+      "type": "boolean",
+      "value": true
+    },
+    {
+      "name": "_DATA_",
+      "type": "structure",
+      "children": [
+        {
+          "name": "Bullets",
+          "type": "structure",
+          "children": [
+            {
+              "name": "YellowSmall",
+              "type": "structure",
+              "children": [
+                {
+                  "name": "Speed",
+                  "type": "number",
+                  "value": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Damageable",
+          "type": "structure",
+          "children": [
+            {
+              "name": "BreakableWallWhite",
+              "type": "structure",
+              "children": [
+                {
+                  "name": "MaxHealth",
+                  "type": "number",
+                  "value": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "layouts": [
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/layouts/game-scene"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/layouts/new-scene"
+    }
+  ],
+  "externalEvents": [],
+  "eventsFunctionsExtensions": [
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/customobjects"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/log_manager"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/gamepads"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/arraytools"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/firebullet"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/extendedvariables"
+    }
+  ],
+  "externalLayouts": []
+}
