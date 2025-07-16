@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.1343715797161102,
+    "zoomFactor": 2.201995813710131,
     "windowMask": false
   },
   "objectsGroups": [
@@ -44,9 +44,6 @@
       "objects": [
         {
           "name": "WhiteWall"
-        },
-        {
-          "name": "BreakableWallWhite"
         }
       ]
     },
@@ -67,10 +64,13 @@
       ]
     },
     {
-      "name": "Enemies",
+      "name": "Tanks",
       "objects": [
         {
           "name": "PurpleEnemy"
+        },
+        {
+          "name": "PlayerOne"
         }
       ]
     },
@@ -88,6 +88,17 @@
         },
         {
           "name": "PurpleEnemy"
+        }
+      ]
+    },
+    {
+      "name": "Bullets",
+      "objects": [
+        {
+          "name": "YellowBullet"
+        },
+        {
+          "name": "PurpleBullet"
         }
       ]
     }
@@ -368,7 +379,7 @@
       "name": "BreakableWallWhite",
       "persistentUuid": "fa577d6c-109c-4bac-81a2-5aa469b74388",
       "width": 0,
-      "x": 416,
+      "x": 384,
       "y": 320,
       "zOrder": 0,
       "numberProperties": [],
@@ -416,7 +427,7 @@
       "name": "BreakableWallWhite",
       "persistentUuid": "47fc106c-5ddf-437b-ac10-b2c97e9ac879",
       "width": 0,
-      "x": 416,
+      "x": 384,
       "y": 384,
       "zOrder": 0,
       "numberProperties": [],
@@ -432,7 +443,7 @@
       "name": "BreakableWallWhite",
       "persistentUuid": "d04dda8d-1f4c-4c86-b169-1037a51625be",
       "width": 0,
-      "x": 416,
+      "x": 384,
       "y": 256,
       "zOrder": 0,
       "numberProperties": [],
@@ -480,7 +491,7 @@
       "name": "BreakableWallWhite",
       "persistentUuid": "805f2335-5b95-46f5-9dfd-bc7318db5064",
       "width": 0,
-      "x": 416,
+      "x": 384,
       "y": 448,
       "zOrder": 0,
       "numberProperties": [],
@@ -559,6 +570,22 @@
       "x": 32,
       "y": 9,
       "zOrder": 6,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "BreakableWallWhite",
+      "persistentUuid": "3d8543aa-1bc8-4cfb-9a38-d469dd586cf5",
+      "width": 0,
+      "x": 192,
+      "y": 192,
+      "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -911,12 +938,42 @@
         {
           "name": "Health",
           "type": "number",
-          "value": 1
+          "value": 100
         },
         {
           "name": "Type",
           "type": "string",
           "value": "Player"
+        },
+        {
+          "name": "CurrentLookAngle",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "AngleRotationCount",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "AngleRotationCountOperationSign",
+          "type": "number",
+          "value": 1
+        },
+        {
+          "name": "FireAngleSpread",
+          "type": "number",
+          "value": 2
+        },
+        {
+          "name": "AngleRotationFieldOfvision",
+          "type": "number",
+          "value": 135
+        },
+        {
+          "name": "FireCooldownVariance",
+          "type": "number",
+          "value": 0.5
         }
       ],
       "effects": [],
@@ -1221,7 +1278,7 @@
         {
           "name": "Health",
           "type": "number",
-          "value": 2
+          "value": 1
         },
         {
           "name": "Type",
@@ -1244,7 +1301,7 @@
           "value": 1
         },
         {
-          "name": "FireAngleVariance",
+          "name": "FireAngleSpread",
           "type": "number",
           "value": 2
         },
@@ -1252,6 +1309,11 @@
           "name": "AngleRotationFieldOfvision",
           "type": "number",
           "value": 135
+        },
+        {
+          "name": "FireCooldownVariance",
+          "type": "number",
+          "value": 0.5
         }
       ],
       "effects": [],
@@ -1492,7 +1554,7 @@
               "timeBetweenFrames": 0.08,
               "sprites": [
                 {
-                  "hasCustomCollisionMask": false,
+                  "hasCustomCollisionMask": true,
                   "image": "assets\\Walls\\wall_white_breakable_000.png",
                   "points": [],
                   "originPoint": {
@@ -1506,7 +1568,26 @@
                     "x": 0,
                     "y": 0
                   },
-                  "customCollisionMask": []
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 1,
+                        "y": 1
+                      },
+                      {
+                        "x": 31,
+                        "y": 1
+                      },
+                      {
+                        "x": 31,
+                        "y": 31
+                      },
+                      {
+                        "x": 1,
+                        "y": 31
+                      }
+                    ]
+                  ]
                 }
               ]
             }
@@ -1703,6 +1784,7 @@
       "colorG": 128,
       "colorR": 29,
       "creationTime": 0,
+      "folded": true,
       "name": "Start event",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -1734,7 +1816,6 @@
           "actions": [],
           "events": [
             {
-              "disabled": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -2436,8 +2517,8 @@
                   "parameters": [
                     "PlayerOne",
                     "FireBullet",
-                    "PlayerOne.GetMuzzlePointX()",
-                    "PlayerOne.GetMuzzlePointY()",
+                    "PlayerOne.GetLookPointX()",
+                    "PlayerOne.GetLookPointY()",
                     "YellowBullet",
                     "PlayerOne.GetCannonAngle()",
                     "_DATA_.Bullets.YellowSmall.Speed",
@@ -2647,8 +2728,8 @@
                   "parameters": [
                     "PlayerOne",
                     "FireBullet",
-                    "PlayerOne.GetMuzzlePointX()",
-                    "PlayerOne.GetMuzzlePointY()",
+                    "PlayerOne.GetLookPointX()",
+                    "PlayerOne.GetLookPointY()",
                     "YellowBullet",
                     "PlayerOne.GetCannonAngle()",
                     "_DATA_.Bullets.YellowSmall.Speed",
@@ -2733,97 +2814,11 @@
       "colorG": 128,
       "colorR": 29,
       "creationTime": 0,
+      "folded": true,
       "name": "Bullets",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
       "events": [
-        {
-          "type": "BuiltinCommonInstructions::Comment",
-          "color": {
-            "b": 209,
-            "g": 199,
-            "r": 85,
-            "textB": 0,
-            "textG": 0,
-            "textR": 0
-          },
-          "comment": "Bounce of walls"
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "CollisionNP"
-              },
-              "parameters": [
-                "YellowBullet",
-                "BulletWalls",
-                "",
-                "",
-                ""
-              ]
-            }
-          ],
-          "actions": [],
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "NumberObjectVariable"
-                  },
-                  "parameters": [
-                    "YellowBullet",
-                    "Bounces",
-                    "<=",
-                    "0"
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "Delete"
-                  },
-                  "parameters": [
-                    "YellowBullet",
-                    ""
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "CustomObjects::Bounce"
-                  },
-                  "parameters": [
-                    "",
-                    "YellowBullet",
-                    "BulletWalls",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberObjectVariable"
-                  },
-                  "parameters": [
-                    "YellowBullet",
-                    "Bounces",
-                    "-",
-                    "1"
-                  ]
-                }
-              ]
-            }
-          ]
-        },
         {
           "type": "BuiltinCommonInstructions::Comment",
           "color": {
@@ -2844,7 +2839,7 @@
                 "value": "CollisionNP"
               },
               "parameters": [
-                "YellowBullet",
+                "Bullets",
                 "Damageable",
                 "",
                 "",
@@ -2871,7 +2866,7 @@
                 "Damageable",
                 "Health",
                 "-",
-                "YellowBullet.Damage"
+                "Bullets.Damage"
               ]
             },
             {
@@ -2879,7 +2874,7 @@
                 "value": "Delete"
               },
               "parameters": [
-                "YellowBullet",
+                "Bullets",
                 ""
               ]
             }
@@ -3045,10 +3040,9 @@
             "textG": 0,
             "textR": 0
           },
-          "comment": "Damage enemy tanks"
+          "comment": "Damage tanks"
         },
         {
-          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -3056,8 +3050,8 @@
                 "value": "CollisionNP"
               },
               "parameters": [
-                "YellowBullet",
-                "Enemies",
+                "Bullets",
+                "Tanks",
                 "",
                 "",
                 ""
@@ -3072,7 +3066,7 @@
               "parameters": [
                 "ObjectDamaged",
                 "=",
-                "Enemies.ObjectName()"
+                "Tanks.ObjectName()"
               ]
             },
             {
@@ -3080,10 +3074,10 @@
                 "value": "SetNumberObjectVariable"
               },
               "parameters": [
-                "Enemies",
+                "Tanks",
                 "Health",
                 "-",
-                "YellowBullet.Damage"
+                "Bullets.Damage"
               ]
             },
             {
@@ -3091,111 +3085,52 @@
                 "value": "Delete"
               },
               "parameters": [
-                "YellowBullet",
+                "Bullets",
                 ""
               ]
             }
           ],
           "events": [
             {
-              "type": "BuiltinCommonInstructions::Comment",
-              "color": {
-                "b": 52,
-                "g": 44,
-                "r": 40,
-                "textB": 0,
-                "textG": 255,
-                "textR": 0
-              },
-              "comment": "//Revisar que la información del objeto existe"
-            },
-            {
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
                   "type": {
-                    "value": "VariableChildExists2"
+                    "value": "NumberObjectVariable"
                   },
                   "parameters": [
-                    "_DATA_.Enemies",
-                    "ObjectDamaged"
+                    "Tanks",
+                    "Health",
+                    "<=",
+                    "0"
                   ]
                 }
               ],
-              "actions": [],
-              "events": [
+              "actions": [
                 {
-                  "type": "BuiltinCommonInstructions::Comment",
-                  "color": {
-                    "b": 209,
-                    "g": 199,
-                    "r": 85,
-                    "textB": 0,
-                    "textG": 0,
-                    "textR": 0
+                  "type": {
+                    "value": "Delete"
                   },
-                  "comment": "Enemy"
-                },
+                  "parameters": [
+                    "Tanks",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
                 {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "BuiltinCommonInstructions::CompareStrings"
-                      },
-                      "parameters": [
-                        "Enemies.Type",
-                        "=",
-                        "_CONSTANTS_.Damageable.Enemy"
-                      ]
-                    }
-                  ],
-                  "actions": [],
-                  "events": [
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "NumberObjectVariable"
-                          },
-                          "parameters": [
-                            "Enemies",
-                            "Health",
-                            "<=",
-                            "0"
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "Delete"
-                          },
-                          "parameters": [
-                            "Enemies",
-                            ""
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "Flash::Flash::Flash"
-                          },
-                          "parameters": [
-                            "Enemies",
-                            "Flash",
-                            "0.2",
-                            ""
-                          ]
-                        }
-                      ]
-                    }
+                  "type": {
+                    "value": "Flash::Flash::Flash"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    "Flash",
+                    "0.2",
+                    ""
                   ]
                 }
               ]
@@ -3206,6 +3141,93 @@
               "name": "ObjectDamaged",
               "type": "string",
               "value": ""
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 209,
+            "g": 199,
+            "r": 85,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "Bounce of walls"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CollisionNP"
+              },
+              "parameters": [
+                "Bullets",
+                "BulletWalls",
+                "",
+                "",
+                ""
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberObjectVariable"
+                  },
+                  "parameters": [
+                    "Bullets",
+                    "Bounces",
+                    "<=",
+                    "0"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Bullets",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Bounce"
+                  },
+                  "parameters": [
+                    "",
+                    "Bullets",
+                    "BulletWalls",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberObjectVariable"
+                  },
+                  "parameters": [
+                    "Bullets",
+                    "Bounces",
+                    "-",
+                    "1"
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -3229,6 +3251,7 @@
       "colorG": 128,
       "colorR": 29,
       "creationTime": 0,
+      "folded": true,
       "name": "Purple enemy logic",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -3676,7 +3699,7 @@
                             "PurpleEnemy.GetMuzzlePointX()",
                             "PurpleEnemy.GetMuzzlePointY()",
                             "PurpleBullet",
-                            "Angle + RandomFloatInRange(-PurpleEnemy.FireAngleVariance, PurpleEnemy.FireAngleVariance)",
+                            "Angle + RandomFloatInRange(-PurpleEnemy.FireAngleSpread, PurpleEnemy.FireAngleSpread)",
                             "_DATA_.Bullets.PurpleSmall.Speed",
                             ""
                           ]
@@ -3689,7 +3712,7 @@
                             "PurpleEnemy",
                             "FireBullet",
                             "=",
-                            "_DATA_.Enemies.PurpleEnemy.ReloadTime + RandomFloatInRange(-0.5, 0.5)",
+                            "_DATA_.Enemies.PurpleEnemy.ReloadTime + RandomFloatInRange(-PurpleEnemy.FireCooldownVariance, PurpleEnemy.FireCooldownVariance)",
                             ""
                           ]
                         }

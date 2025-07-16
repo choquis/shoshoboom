@@ -218,7 +218,7 @@
       "name": "Player",
       "objects": [
         {
-          "adaptCollisionMaskAutomatically": true,
+          "adaptCollisionMaskAutomatically": false,
           "assetStoreId": "",
           "name": "Collision",
           "type": "Sprite",
@@ -237,7 +237,7 @@
                   "timeBetweenFrames": 0.08,
                   "sprites": [
                     {
-                      "hasCustomCollisionMask": false,
+                      "hasCustomCollisionMask": true,
                       "image": "Collision",
                       "points": [],
                       "originPoint": {
@@ -251,7 +251,26 @@
                         "x": 0,
                         "y": 0
                       },
-                      "customCollisionMask": []
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 4,
+                            "y": 4
+                          },
+                          {
+                            "x": 28,
+                            "y": 4
+                          },
+                          {
+                            "x": 28,
+                            "y": 28
+                          },
+                          {
+                            "x": 4,
+                            "y": 28
+                          }
+                        ]
+                      ]
                     }
                   ]
                 }
