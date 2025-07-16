@@ -468,11 +468,27 @@
       ]
     },
     {
-      "folded": true,
       "name": "_CONSTANTS_",
       "type": "structure",
       "children": [
         {
+          "name": "Damageable",
+          "type": "structure",
+          "children": [
+            {
+              "name": "BreakableWall",
+              "type": "string",
+              "value": "BreakableWall"
+            },
+            {
+              "name": "Enemy",
+              "type": "string",
+              "value": "Enemy"
+            }
+          ]
+        },
+        {
+          "folded": true,
           "name": "InputType",
           "type": "structure",
           "children": [
@@ -485,6 +501,32 @@
               "name": "Keyboard",
               "type": "string",
               "value": "keyboard"
+            }
+          ]
+        },
+        {
+          "name": "VisibleToEnemy",
+          "type": "structure",
+          "children": [
+            {
+              "name": "BreakableWall",
+              "type": "string",
+              "value": "BreakableWall"
+            },
+            {
+              "name": "Enemy",
+              "type": "string",
+              "value": "Enemy"
+            },
+            {
+              "name": "Player",
+              "type": "string",
+              "value": "Player"
+            },
+            {
+              "name": "Wall",
+              "type": "string",
+              "value": "Wall"
             }
           ]
         }
@@ -503,6 +545,17 @@
           "name": "Bullets",
           "type": "structure",
           "children": [
+            {
+              "name": "PurpleSmall",
+              "type": "structure",
+              "children": [
+                {
+                  "name": "Speed",
+                  "type": "number",
+                  "value": 600
+                }
+              ]
+            },
             {
               "name": "YellowSmall",
               "type": "structure",
@@ -526,6 +579,38 @@
               "children": [
                 {
                   "name": "MaxHealth",
+                  "type": "number",
+                  "value": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Enemies",
+          "type": "structure",
+          "children": [
+            {
+              "name": "PurpleEnemy",
+              "type": "structure",
+              "children": [
+                {
+                  "name": "LookDistance",
+                  "type": "number",
+                  "value": 600
+                },
+                {
+                  "name": "LookSpeed",
+                  "type": "number",
+                  "value": 50
+                },
+                {
+                  "name": "MaxHealth",
+                  "type": "number",
+                  "value": 2
+                },
+                {
+                  "name": "ReloadTime",
                   "type": "number",
                   "value": 2
                 }
@@ -567,6 +652,14 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/eventsFunctionsExtensions/extendedvariables"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/flash"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/fps"
     }
   ],
   "externalLayouts": []

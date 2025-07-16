@@ -283,7 +283,12 @@
                       "points": [
                         {
                           "name": "Muzzle",
-                          "x": 32,
+                          "x": 33,
+                          "y": 16
+                        },
+                        {
+                          "name": "LookPoint",
+                          "x": 42,
                           "y": 16
                         }
                       ],
@@ -822,6 +827,47 @@
           "objectGroups": []
         },
         {
+          "description": "Make the player look at given direction by a point on screen",
+          "fullName": "Change look at direction by given angle",
+          "functionType": "Action",
+          "name": "LookToByAngle",
+          "sentence": "Make _PARAM0_ look to angle: _PARAM1_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "RotateTowardAngle"
+                  },
+                  "parameters": [
+                    "Cannon",
+                    "Angle",
+                    "1000",
+                    "CannonRotationSpeed"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Player",
+              "type": "object"
+            },
+            {
+              "description": "Angle",
+              "name": "Angle",
+              "supplementaryInformation": "[\"Down\",\"Left\",\"Right\",\"Up\"]",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
           "description": "Set the cannon rotation speed",
           "fullName": "Set cannon rotation speed",
           "functionType": "Action",
@@ -862,10 +908,10 @@
         },
         {
           "description": "Set the cannon rotation speed",
-          "fullName": "Set cannon rotation speed",
+          "fullName": "Set body rotation speed",
           "functionType": "Action",
           "name": "SetBodyRotationSpeed",
-          "sentence": "Set _PARAM0_ cannon rotation speed to _PARAM1_",
+          "sentence": "Set _PARAM0_ body rotation speed to _PARAM1_",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
@@ -901,10 +947,10 @@
         },
         {
           "description": "Set the cannon rotation speed",
-          "fullName": "Set cannon rotation speed",
+          "fullName": "Set body angle offset",
           "functionType": "Action",
           "name": "SetBodyAngleOffset",
-          "sentence": "Set _PARAM0_ cannon rotation speed to _PARAM1_",
+          "sentence": "Set _PARAM0_ body angle offset to _PARAM1_",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
@@ -975,6 +1021,40 @@
         {
           "fullName": "",
           "functionType": "Expression",
+          "name": "GetLookPointX",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "Object.X() + Cannon.PointX(\"LookPoint\")"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Player",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Expression",
           "name": "GetMuzzlePointY",
           "sentence": "",
           "events": [
@@ -988,6 +1068,40 @@
                   },
                   "parameters": [
                     "Object.Y() + Cannon.PointY(\"Muzzle\")"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Player",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Expression",
+          "name": "GetLookPointY",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "Object.Y() + Cannon.PointY(\"LookPoint\")"
                   ]
                 }
               ]

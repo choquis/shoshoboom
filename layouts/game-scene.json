@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.0269425874981204,
+    "zoomFactor": 1.1343715797161102,
     "windowMask": false
   },
   "objectsGroups": [
@@ -33,6 +33,9 @@
         },
         {
           "name": "WhiteHole"
+        },
+        {
+          "name": "PurpleEnemy"
         }
       ]
     },
@@ -52,9 +55,6 @@
       "objects": [
         {
           "name": "BreakableWallWhite"
-        },
-        {
-          "name": "PurpleEnemy"
         }
       ]
     },
@@ -63,6 +63,31 @@
       "objects": [
         {
           "name": "BreakableWallWhite"
+        }
+      ]
+    },
+    {
+      "name": "Enemies",
+      "objects": [
+        {
+          "name": "PurpleEnemy"
+        }
+      ]
+    },
+    {
+      "name": "VisibleToEnemy",
+      "objects": [
+        {
+          "name": "WhiteWall"
+        },
+        {
+          "name": "BreakableWallWhite"
+        },
+        {
+          "name": "PlayerOne"
+        },
+        {
+          "name": "PurpleEnemy"
         }
       ]
     }
@@ -136,6 +161,16 @@
           ]
         }
       ]
+    },
+    {
+      "name": "intersectX",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "intersectY",
+      "type": "number",
+      "value": 0
     }
   ],
   "instances": [
@@ -459,11 +494,33 @@
       "keepRatio": true,
       "layer": "",
       "name": "PurpleEnemy",
-      "persistentUuid": "c2d08201-adda-47ca-a8e3-bf62104fc196",
+      "persistentUuid": "e847bda9-3064-4a79-be88-c65d96fc27ce",
       "width": 0,
-      "x": 1056,
-      "y": 256,
+      "x": 1088,
+      "y": 128,
       "zOrder": 3,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "CurrentLookAngle",
+          "type": "number",
+          "value": 90
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "NewShapePainter",
+      "persistentUuid": "632f53ec-da72-4c7d-aeac-0e0d51ffece9",
+      "width": 0,
+      "x": 1152,
+      "y": -96,
+      "zOrder": 5,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -475,11 +532,33 @@
       "keepRatio": true,
       "layer": "",
       "name": "PurpleEnemy",
-      "persistentUuid": "e847bda9-3064-4a79-be88-c65d96fc27ce",
+      "persistentUuid": "08feb2a6-3407-43d3-9a45-b1e939258082",
       "width": 0,
-      "x": 1056,
-      "y": 416,
+      "x": 1088,
+      "y": 544,
       "zOrder": 3,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "CurrentLookAngle",
+          "type": "number",
+          "value": 135
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "fps",
+      "persistentUuid": "066a85d6-3470-41d7-bb61-0b42c1bb6d86",
+      "width": 0,
+      "x": 32,
+      "y": 9,
+      "zOrder": 6,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -650,7 +729,18 @@
       "topMargin": 32,
       "type": "PanelSpriteObject::PanelSprite",
       "width": 96,
-      "variables": [],
+      "variables": [
+        {
+          "name": "Type",
+          "type": "string",
+          "value": "Wall"
+        },
+        {
+          "name": "Health",
+          "type": "number",
+          "value": 10000
+        }
+      ],
       "effects": [],
       "behaviors": []
     },
@@ -747,7 +837,18 @@
       "name": "PurpleBullet",
       "type": "Sprite",
       "updateIfNotVisible": false,
-      "variables": [],
+      "variables": [
+        {
+          "name": "Bounces",
+          "type": "number",
+          "value": 1
+        },
+        {
+          "name": "Damage",
+          "type": "number",
+          "value": 1
+        }
+      ],
       "effects": [],
       "behaviors": [],
       "animations": [
@@ -765,8 +866,8 @@
                   "points": [],
                   "originPoint": {
                     "name": "origine",
-                    "x": 0,
-                    "y": 0
+                    "x": 8,
+                    "y": 8
                   },
                   "centerPoint": {
                     "automatic": true,
@@ -806,7 +907,18 @@
       "name": "PlayerOne",
       "type": "CustomObjects::Player",
       "variant": "",
-      "variables": [],
+      "variables": [
+        {
+          "name": "Health",
+          "type": "number",
+          "value": 1
+        },
+        {
+          "name": "Type",
+          "type": "string",
+          "value": "Player"
+        }
+      ],
       "effects": [],
       "behaviors": [
         {
@@ -840,6 +952,14 @@
           "RandomizedAngle": 0
         },
         {
+          "name": "Flash",
+          "type": "Flash::Flash",
+          "HalfPeriodTime": 0.1,
+          "IsFlashing": false,
+          "FlashDuration": 0
+        },
+        {
+          "isFolded": true,
           "name": "TopDownMovement",
           "type": "TopDownMovementBehavior::TopDownMovementBehavior",
           "acceleration": 450,
@@ -871,10 +991,25 @@
           "name": "Health",
           "type": "number",
           "value": 2
+        },
+        {
+          "name": "Type",
+          "type": "string",
+          "value": "BreakableWall"
         }
       ],
       "effects": [],
-      "behaviors": [],
+      "behaviors": [
+        {
+          "name": "FlashEffect",
+          "type": "Flash::FlashEffect",
+          "Effect": "Effect",
+          "HalfPeriodTime": 0.1,
+          "IsFlashing": false,
+          "FlashDuration": 0,
+          "EffectName": ""
+        }
+      ],
       "animations": [
         {
           "name": "Idle",
@@ -1087,14 +1222,45 @@
           "name": "Health",
           "type": "number",
           "value": 2
+        },
+        {
+          "name": "Type",
+          "type": "string",
+          "value": "Enemy"
+        },
+        {
+          "name": "CurrentLookAngle",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "AngleRotationCount",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "AngleRotationCountOperationSign",
+          "type": "number",
+          "value": 1
+        },
+        {
+          "name": "FireAngleVariance",
+          "type": "number",
+          "value": 2
+        },
+        {
+          "name": "AngleRotationFieldOfvision",
+          "type": "number",
+          "value": 135
         }
       ],
       "effects": [],
       "behaviors": [
         {
+          "isFolded": true,
           "name": "FireBullet",
           "type": "FireBullet::FireBullet",
-          "FireCooldown": 0.5,
+          "FireCooldown": 2,
           "HasJustFired": false,
           "RotateBullet": true,
           "FiringArc": 45,
@@ -1122,6 +1288,14 @@
           "RandomizedAngle": 0
         },
         {
+          "name": "Flash",
+          "type": "Flash::Flash",
+          "HalfPeriodTime": 0.1,
+          "IsFlashing": false,
+          "FlashDuration": 0
+        },
+        {
+          "isFolded": true,
           "name": "TopDownMovement",
           "type": "TopDownMovementBehavior::TopDownMovementBehavior",
           "acceleration": 450,
@@ -1155,7 +1329,7 @@
                   "timeBetweenFrames": 0.08,
                   "sprites": [
                     {
-                      "hasCustomCollisionMask": true,
+                      "hasCustomCollisionMask": false,
                       "image": "assets\\Enemies\\purple_enemy_body.png",
                       "points": [],
                       "originPoint": {
@@ -1169,26 +1343,7 @@
                         "x": 0,
                         "y": 0
                       },
-                      "customCollisionMask": [
-                        [
-                          {
-                            "x": 0,
-                            "y": 0
-                          },
-                          {
-                            "x": 32,
-                            "y": 0
-                          },
-                          {
-                            "x": 32,
-                            "y": 32
-                          },
-                          {
-                            "x": 0,
-                            "y": 32
-                          }
-                        ]
-                      ]
+                      "customCollisionMask": []
                     }
                   ]
                 }
@@ -1214,7 +1369,12 @@
                       "points": [
                         {
                           "name": "Muzzle",
-                          "x": 32,
+                          "x": 33,
+                          "y": 16
+                        },
+                        {
+                          "name": "LookPoint",
+                          "x": 42,
                           "y": 16
                         }
                       ],
@@ -1257,7 +1417,7 @@
           ]
         },
         "Collision": {
-          "adaptCollisionMaskAutomatically": true,
+          "adaptCollisionMaskAutomatically": false,
           "updateIfNotVisible": false,
           "animations": [
             {
@@ -1270,7 +1430,7 @@
                   "timeBetweenFrames": 0.08,
                   "sprites": [
                     {
-                      "hasCustomCollisionMask": false,
+                      "hasCustomCollisionMask": true,
                       "image": "Collision",
                       "points": [],
                       "originPoint": {
@@ -1284,7 +1444,26 @@
                         "x": 0,
                         "y": 0
                       },
-                      "customCollisionMask": []
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 3,
+                            "y": 3
+                          },
+                          {
+                            "x": 29,
+                            "y": 3
+                          },
+                          {
+                            "x": 29,
+                            "y": 29
+                          },
+                          {
+                            "x": 3,
+                            "y": 29
+                          }
+                        ]
+                      ]
                     }
                   ]
                 }
@@ -1300,13 +1479,7 @@
       "name": "BreakableWallWhiteRemains",
       "type": "Sprite",
       "updateIfNotVisible": false,
-      "variables": [
-        {
-          "name": "Health",
-          "type": "number",
-          "value": 2
-        }
-      ],
+      "variables": [],
       "effects": [],
       "behaviors": [],
       "animations": [
@@ -1340,6 +1513,80 @@
           ]
         }
       ]
+    },
+    {
+      "assetStoreId": "",
+      "name": "NewShapePainter",
+      "type": "PrimitiveDrawing::Drawer",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "fillOpacity": 255,
+      "outlineSize": 1,
+      "outlineOpacity": 255,
+      "absoluteCoordinates": true,
+      "clearBetweenFrames": true,
+      "antialiasing": "none",
+      "fillColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "outlineColor": {
+        "r": 230,
+        "g": 39,
+        "b": 39
+      }
+    },
+    {
+      "assetStoreId": "",
+      "bold": false,
+      "italic": false,
+      "name": "fps",
+      "smoothed": true,
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "FPSDisplayer",
+          "type": "FPS::FPSDisplayer",
+          "Text": "Text",
+          "prefix": "FPS: ",
+          "DecimalDigits": 0
+        }
+      ],
+      "string": "00",
+      "font": "",
+      "textAlignment": "left",
+      "characterSize": 20,
+      "color": {
+        "b": 68,
+        "g": 255,
+        "r": 0
+      },
+      "content": {
+        "bold": false,
+        "isOutlineEnabled": false,
+        "isShadowEnabled": false,
+        "italic": false,
+        "outlineColor": "255;255;255",
+        "outlineThickness": 2,
+        "shadowAngle": 90,
+        "shadowBlurRadius": 2,
+        "shadowColor": "0;0;0",
+        "shadowDistance": 4,
+        "shadowOpacity": 127,
+        "smoothed": true,
+        "underlined": false,
+        "text": "00",
+        "font": "",
+        "textAlignment": "left",
+        "verticalTextAlignment": "top",
+        "characterSize": 20,
+        "color": "0;255;68"
+      }
     }
   ],
   "objectsFolderStructure": {
@@ -1369,6 +1616,9 @@
             "objectName": "Logger"
           },
           {
+            "objectName": "fps"
+          },
+          {
             "objectName": "InputIcon"
           }
         ]
@@ -1394,6 +1644,9 @@
             "objectName": "PurpleEnemy"
           }
         ]
+      },
+      {
+        "objectName": "NewShapePainter"
       }
     ]
   },
@@ -1680,7 +1933,7 @@
                 "textG": 255,
                 "textR": 0
               },
-              "comment": "// Las animaciones de los bloques destructibles se manejan por frames.\n// La animacion tiene 11 frames representando visualmente en que estado de daño se encuentra.\n// Siendo frame 10 con toda la vida y frame 0 destruido.\n// Hay que pausar las animaciones de todos los objetos de este tipo."
+              "comment": "// Las animaciones de los bloques destructibles se manejan por frames.\n// La animacion tiene 11 frames representando visualmente en que estado de daño se encuentra.\n// Siendo frame 10 con toda la vida y frame 0 dañado.\n// Hay que pausar las animaciones de todos los objetos de este tipo."
             },
             {
               "type": "BuiltinCommonInstructions::Standard",
@@ -1713,35 +1966,6 @@
                   "parameters": [
                     "StopAnimationOnStart",
                     "Animation"
-                  ]
-                }
-              ],
-              "events": [
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "VariableChildExists2"
-                      },
-                      "parameters": [
-                        "_DATA_.Damageable",
-                        "StopAnimationOnStart.ObjectName()"
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "Log_Manager::WriteLog"
-                      },
-                      "parameters": [
-                        "Logger",
-                        "Logger",
-                        "_DATA_.Damageable[StopAnimationOnStart.ObjectName()].MaxHealth",
-                        ""
-                      ]
-                    }
                   ]
                 }
               ]
@@ -2664,110 +2888,313 @@
             {
               "type": "BuiltinCommonInstructions::Comment",
               "color": {
-                "b": 209,
-                "g": 199,
-                "r": 85,
+                "b": 52,
+                "g": 44,
+                "r": 40,
                 "textB": 0,
-                "textG": 0,
+                "textG": 255,
                 "textR": 0
               },
-              "comment": "Breakable Wall"
+              "comment": "//Revisar que la información del objeto existe"
             },
             {
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
                   "type": {
-                    "value": "BuiltinCommonInstructions::CompareStrings"
+                    "value": "VariableChildExists2"
                   },
                   "parameters": [
-                    "ObjectDamaged",
-                    "=",
-                    "BreakableWallWhite.ObjectName()"
+                    "_DATA_.Damageable",
+                    "ObjectDamaged"
                   ]
                 }
               ],
               "actions": [],
               "events": [
                 {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "Breakable Wall"
+                },
+                {
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
                     {
                       "type": {
-                        "value": "NumberObjectVariable"
+                        "value": "BuiltinCommonInstructions::CompareStrings"
                       },
                       "parameters": [
-                        "Damageable",
-                        "Health",
-                        "<=",
-                        "0"
+                        "Damageable.Type",
+                        "=",
+                        "_CONSTANTS_.Damageable.BreakableWall"
                       ]
                     }
                   ],
-                  "actions": [
+                  "actions": [],
+                  "events": [
                     {
-                      "type": {
-                        "value": "Create"
-                      },
-                      "parameters": [
-                        "",
-                        "BreakableWallWhiteRemains",
-                        "Damageable.X()",
-                        "Damageable.Y()",
-                        ""
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberObjectVariable"
+                          },
+                          "parameters": [
+                            "Damageable",
+                            "Health",
+                            "<=",
+                            "0"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Create"
+                          },
+                          "parameters": [
+                            "",
+                            "BreakableWallWhiteRemains",
+                            "Damageable.X()",
+                            "Damageable.Y()",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "ChangePlan"
+                          },
+                          "parameters": [
+                            "BreakableWallWhiteRemains",
+                            "=",
+                            "0"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Delete"
+                          },
+                          "parameters": [
+                            "Damageable",
+                            ""
+                          ]
+                        }
                       ]
                     },
                     {
-                      "type": {
-                        "value": "ChangePlan"
-                      },
-                      "parameters": [
-                        "BreakableWallWhiteRemains",
-                        "=",
-                        "0"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "Delete"
-                      },
-                      "parameters": [
-                        "Damageable",
-                        ""
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "CurrentFrame",
+                            "=",
+                            "clamp(trunc((Damageable.Health / _DATA_.Damageable[ObjectDamaged].MaxHealth) * 10), 0, 10)"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "ChangeSprite"
+                          },
+                          "parameters": [
+                            "BreakableWallWhite",
+                            "=",
+                            "CurrentFrame"
+                          ]
+                        }
+                      ],
+                      "variables": [
+                        {
+                          "name": "CurrentFrame",
+                          "type": "number",
+                          "value": 0
+                        }
                       ]
                     }
                   ]
+                }
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "ObjectDamaged",
+              "type": "string",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 209,
+            "g": 199,
+            "r": 85,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "Damage enemy tanks"
+        },
+        {
+          "folded": true,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CollisionNP"
+              },
+              "parameters": [
+                "YellowBullet",
+                "Enemies",
+                "",
+                "",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetStringVariable"
+              },
+              "parameters": [
+                "ObjectDamaged",
+                "=",
+                "Enemies.ObjectName()"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberObjectVariable"
+              },
+              "parameters": [
+                "Enemies",
+                "Health",
+                "-",
+                "YellowBullet.Damage"
+              ]
+            },
+            {
+              "type": {
+                "value": "Delete"
+              },
+              "parameters": [
+                "YellowBullet",
+                ""
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 0,
+                "textG": 255,
+                "textR": 0
+              },
+              "comment": "//Revisar que la información del objeto existe"
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "VariableChildExists2"
+                  },
+                  "parameters": [
+                    "_DATA_.Enemies",
+                    "ObjectDamaged"
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "Enemy"
                 },
                 {
                   "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
+                  "conditions": [
                     {
                       "type": {
-                        "value": "SetNumberVariable"
+                        "value": "BuiltinCommonInstructions::CompareStrings"
                       },
                       "parameters": [
-                        "CurrentFrame",
+                        "Enemies.Type",
                         "=",
-                        "clamp(trunc((Damageable.Health / _DATA_.Damageable[ObjectDamaged].MaxHealth) * 10), 0, 10)"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ChangeSprite"
-                      },
-                      "parameters": [
-                        "BreakableWallWhite",
-                        "=",
-                        "CurrentFrame"
+                        "_CONSTANTS_.Damageable.Enemy"
                       ]
                     }
                   ],
-                  "variables": [
+                  "actions": [],
+                  "events": [
                     {
-                      "name": "CurrentFrame",
-                      "type": "number",
-                      "value": 0
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberObjectVariable"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "Health",
+                            "<=",
+                            "0"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Delete"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Flash::Flash::Flash"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "Flash",
+                            "0.2",
+                            ""
+                          ]
+                        }
+                      ]
                     }
                   ]
                 }
@@ -2784,6 +3211,541 @@
         }
       ],
       "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 177,
+      "colorG": 128,
+      "colorR": 29,
+      "creationTime": 0,
+      "name": "Purple enemy logic",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 209,
+            "g": 199,
+            "r": 85,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": ""
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "VariableChildExists2"
+              },
+              "parameters": [
+                "_DATA_.Enemies",
+                "PurpleEnemy.ObjectName()"
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "PurpleEnemy",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "SeeSomething",
+                    "False",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "SeePlayer",
+                    "False",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "LookY",
+                    "=",
+                    "PurpleEnemy.GetLookPointY()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "LookX",
+                    "=",
+                    "PurpleEnemy.GetLookPointX()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "PositionX",
+                    "=",
+                    "PurpleEnemy.X()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "PositionY",
+                    "=",
+                    "PurpleEnemy.Y()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "Angle",
+                    "=",
+                    "PurpleEnemy.GetCannonAngle()"
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "colorB": 228,
+                  "colorG": 176,
+                  "colorR": 74,
+                  "creationTime": 0,
+                  "name": "On guard, if player is not near",
+                  "source": "",
+                  "type": "BuiltinCommonInstructions::Group",
+                  "events": [
+                    {
+                      "folded": true,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "Raycast"
+                          },
+                          "parameters": [
+                            "VisibleToEnemy",
+                            "LookX",
+                            "LookY",
+                            "Angle",
+                            "_DATA_.Enemies.PurpleEnemy.LookDistance",
+                            "intersectX",
+                            "intersectY",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetBooleanVariable"
+                          },
+                          "parameters": [
+                            "SeeSomething",
+                            "True",
+                            ""
+                          ]
+                        }
+                      ],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "BuiltinCommonInstructions::CompareStrings"
+                              },
+                              "parameters": [
+                                "VisibleToEnemy.Type",
+                                "=",
+                                "_CONSTANTS_.VisibleToEnemy.Player"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetBooleanVariable"
+                              },
+                              "parameters": [
+                                "SeePlayer",
+                                "True",
+                                ""
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "PrimitiveDrawing::OutlineColor"
+                              },
+                              "parameters": [
+                                "NewShapePainter",
+                                "\"123;223;122\""
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "PrimitiveDrawing::LineV2"
+                              },
+                              "parameters": [
+                                "NewShapePainter",
+                                "LookX",
+                                "LookY",
+                                "intersectX",
+                                "intersectY",
+                                "1"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "BooleanVariable"
+                              },
+                              "parameters": [
+                                "SeePlayer",
+                                "=",
+                                ""
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "PrimitiveDrawing::OutlineColor"
+                              },
+                              "parameters": [
+                                "NewShapePainter",
+                                "\"223;122;122\""
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "PrimitiveDrawing::LineV2"
+                              },
+                              "parameters": [
+                                "NewShapePainter",
+                                "LookX",
+                                "LookY",
+                                "intersectX",
+                                "intersectY",
+                                "1"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "SeeSomething",
+                            "False",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "PrimitiveDrawing::OutlineColor"
+                          },
+                          "parameters": [
+                            "NewShapePainter",
+                            "\"223;122;122\""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "PrimitiveDrawing::LineV2"
+                          },
+                          "parameters": [
+                            "NewShapePainter",
+                            "LookX",
+                            "LookY",
+                            "XFromAngleAndDistance(Angle, _DATA_.Enemies.PurpleEnemy.LookDistance) + PositionX",
+                            "YFromAngleAndDistance(Angle, _DATA_.Enemies.PurpleEnemy.LookDistance) + PositionY",
+                            "1"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "SeePlayer",
+                            "=",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "AngleOffset",
+                            "=",
+                            "_DATA_.Enemies.PurpleEnemy.LookSpeed * TimeDelta()"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "PurpleEnemy",
+                            "AngleRotationCount",
+                            "+",
+                            "AngleOffset"
+                          ]
+                        }
+                      ],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "NumberObjectVariable"
+                              },
+                              "parameters": [
+                                "PurpleEnemy",
+                                "AngleRotationCount",
+                                ">=",
+                                "PurpleEnemy.AngleRotationFieldOfvision"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetNumberObjectVariable"
+                              },
+                              "parameters": [
+                                "PurpleEnemy",
+                                "AngleRotationCount",
+                                "=",
+                                "0"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetNumberObjectVariable"
+                              },
+                              "parameters": [
+                                "PurpleEnemy",
+                                "AngleRotationCountOperationSign",
+                                "=",
+                                "-PurpleEnemy.AngleRotationCountOperationSign"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetNumberObjectVariable"
+                              },
+                              "parameters": [
+                                "PurpleEnemy",
+                                "CurrentLookAngle",
+                                "+",
+                                "AngleOffset * PurpleEnemy.AngleRotationCountOperationSign"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "CustomObjects::Player::LookToByAngle"
+                              },
+                              "parameters": [
+                                "PurpleEnemy",
+                                "PurpleEnemy.CurrentLookAngle",
+                                ""
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "NumberObjectVariable"
+                              },
+                              "parameters": [
+                                "PurpleEnemy",
+                                "CurrentLookAngle",
+                                ">=",
+                                "360"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetNumberObjectVariable"
+                              },
+                              "parameters": [
+                                "PurpleEnemy",
+                                "CurrentLookAngle",
+                                "-",
+                                "360"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "variables": [
+                        {
+                          "name": "AngleOffset",
+                          "type": "number",
+                          "value": 0
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "SeePlayer",
+                            "True",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "FireBullet::FireBullet::Fire"
+                          },
+                          "parameters": [
+                            "PurpleEnemy",
+                            "FireBullet",
+                            "PurpleEnemy.GetMuzzlePointX()",
+                            "PurpleEnemy.GetMuzzlePointY()",
+                            "PurpleBullet",
+                            "Angle + RandomFloatInRange(-PurpleEnemy.FireAngleVariance, PurpleEnemy.FireAngleVariance)",
+                            "_DATA_.Bullets.PurpleSmall.Speed",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "FireBullet::FireBullet::SetCooldownOp"
+                          },
+                          "parameters": [
+                            "PurpleEnemy",
+                            "FireBullet",
+                            "=",
+                            "_DATA_.Enemies.PurpleEnemy.ReloadTime + RandomFloatInRange(-0.5, 0.5)",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "parameters": []
+                }
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "SeePlayer",
+              "type": "boolean",
+              "value": false
+            },
+            {
+              "name": "SeeSomething",
+              "type": "boolean",
+              "value": false
+            },
+            {
+              "name": "LookX",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "LookY",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "PositionX",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "PositionY",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "Angle",
+              "type": "number",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": []
     }
   ],
   "layers": [
@@ -2859,8 +3821,20 @@
       "type": "EffectCapability::EffectBehavior"
     },
     {
+      "name": "FPSDisplayer",
+      "type": "FPS::FPSDisplayer"
+    },
+    {
       "name": "FireBullet",
       "type": "FireBullet::FireBullet"
+    },
+    {
+      "name": "Flash",
+      "type": "Flash::Flash"
+    },
+    {
+      "name": "FlashEffect",
+      "type": "Flash::FlashEffect"
     },
     {
       "name": "Flippable",
