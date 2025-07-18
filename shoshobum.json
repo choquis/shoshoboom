@@ -217,6 +217,53 @@
         "name": "assets\\Enemies\\purple_enemy_body.png",
         "smoothed": false,
         "userAdded": false
+      },
+      {
+        "file": "assets/advance-wars-2-gba.ttf",
+        "kind": "font",
+        "metadata": "",
+        "name": "assets\\advance-wars-2-gba.ttf",
+        "userAdded": false
+      },
+      {
+        "file": "E:/Dibujos/dibujosAseprite/shoshobum/exports/fondo_patron_tanque/fondo_patron tanques1.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "E:\\Dibujos\\dibujosAseprite\\shoshobum\\exports\\fondo_patron_tanque\\fondo_patron tanques1.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Backgrounds/GrayTanks/fondo_patron tanques1.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Backgrounds\\GrayTanks\\fondo_patron tanques1.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Backgrounds/fondo_titulo.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Backgrounds\\fondo_titulo.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Backgrounds/fondo_patron tanques1.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Backgrounds\\fondo_patron tanques1.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Black.png",
+        "kind": "image",
+        "metadata": "{\"extension\":\".png\"}",
+        "name": "Black",
+        "smoothed": false,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -468,10 +515,12 @@
       ]
     },
     {
+      "folded": true,
       "name": "_CONSTANTS_",
       "type": "structure",
       "children": [
         {
+          "folded": true,
           "name": "Damageable",
           "type": "structure",
           "children": [
@@ -493,6 +542,32 @@
           ]
         },
         {
+          "name": "GameState",
+          "type": "structure",
+          "children": [
+            {
+              "name": "Game",
+              "type": "string",
+              "value": "Game"
+            },
+            {
+              "name": "GameOver",
+              "type": "string",
+              "value": "GameOver"
+            },
+            {
+              "name": "Pause",
+              "type": "string",
+              "value": "Pause"
+            },
+            {
+              "name": "Start",
+              "type": "string",
+              "value": "Start"
+            }
+          ]
+        },
+        {
           "folded": true,
           "name": "InputType",
           "type": "structure",
@@ -510,6 +585,7 @@
           ]
         },
         {
+          "folded": true,
           "name": "VisibleToEnemy",
           "type": "structure",
           "children": [
@@ -538,11 +614,28 @@
       ]
     },
     {
+      "name": "_INGAMEDATA_",
+      "type": "structure",
+      "children": [
+        {
+          "name": "GameState",
+          "type": "string",
+          "value": "Start"
+        },
+        {
+          "name": "Mission",
+          "type": "number",
+          "value": 1
+        }
+      ]
+    },
+    {
       "name": "_DEBUG_",
       "type": "boolean",
       "value": true
     },
     {
+      "folded": true,
       "name": "_DATA_",
       "type": "structure",
       "children": [
@@ -630,6 +723,10 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/layouts/game-scene"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/layouts/before-game-start"
     }
   ],
   "externalEvents": [],
@@ -665,6 +762,10 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/eventsFunctionsExtensions/fps"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/linearmovement"
     }
   ],
   "externalLayouts": []
