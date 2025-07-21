@@ -24,7 +24,7 @@
     "author": "",
     "windowWidth": 1280,
     "windowHeight": 720,
-    "latestCompilationDirectory": "",
+    "latestCompilationDirectory": "C:\\Users\\victor\\Documents\\GDevelop projects\\builds",
     "maxFPS": 60,
     "minFPS": 20,
     "verticalSync": false,
@@ -264,6 +264,14 @@
         "name": "Black",
         "smoothed": false,
         "userAdded": false
+      },
+      {
+        "file": "assets/White.png",
+        "kind": "image",
+        "metadata": "{\"extension\":\".png\"}",
+        "name": "White",
+        "smoothed": false,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -275,12 +283,10 @@
   "objectsGroups": [],
   "variables": [
     {
-      "folded": true,
       "name": "_CONTROLS_",
       "type": "structure",
       "children": [
         {
-          "folded": true,
           "name": "Players",
           "type": "array",
           "children": [
@@ -288,9 +294,20 @@
               "type": "structure",
               "children": [
                 {
+                  "folded": true,
                   "name": "Gamepad",
                   "type": "structure",
                   "children": [
+                    {
+                      "name": "Accept",
+                      "type": "string",
+                      "value": "A"
+                    },
+                    {
+                      "name": "Cancel",
+                      "type": "string",
+                      "value": "B"
+                    },
                     {
                       "name": "LookDown",
                       "type": "string",
@@ -344,9 +361,20 @@
                   "value": "keyboard"
                 },
                 {
+                  "folded": true,
                   "name": "Keyboard",
                   "type": "structure",
                   "children": [
+                    {
+                      "name": "Accept",
+                      "type": "string",
+                      "value": "Return"
+                    },
+                    {
+                      "name": "Cancel",
+                      "type": "string",
+                      "value": "Escape"
+                    },
                     {
                       "name": "LookDown",
                       "type": "string",
@@ -405,6 +433,16 @@
                   "type": "structure",
                   "children": [
                     {
+                      "name": "Accept",
+                      "type": "string",
+                      "value": "A"
+                    },
+                    {
+                      "name": "Cancel",
+                      "type": "string",
+                      "value": "B"
+                    },
+                    {
                       "name": "LookDown",
                       "type": "string",
                       "value": "Right,Down"
@@ -461,6 +499,16 @@
                   "name": "Keyboard",
                   "type": "structure",
                   "children": [
+                    {
+                      "name": "Accept",
+                      "type": "string",
+                      "value": "Return"
+                    },
+                    {
+                      "name": "Cancel",
+                      "type": "string",
+                      "value": "Escape"
+                    },
                     {
                       "name": "LookDown",
                       "type": "string",
@@ -515,7 +563,6 @@
       ]
     },
     {
-      "folded": true,
       "name": "_CONSTANTS_",
       "type": "structure",
       "children": [
@@ -542,6 +589,7 @@
           ]
         },
         {
+          "folded": true,
           "name": "GameState",
           "type": "structure",
           "children": [
@@ -581,6 +629,17 @@
               "name": "Keyboard",
               "type": "string",
               "value": "keyboard"
+            }
+          ]
+        },
+        {
+          "name": "Layers",
+          "type": "structure",
+          "children": [
+            {
+              "name": "Base",
+              "type": "string",
+              "value": "Base"
             }
           ]
         },
