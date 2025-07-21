@@ -175,6 +175,7 @@
       ]
     },
     {
+      "folded": true,
       "name": "Timers",
       "type": "structure",
       "children": [
@@ -204,6 +205,11 @@
           "value": "StartLabelScale"
         }
       ]
+    },
+    {
+      "name": "BulletList",
+      "type": "structure",
+      "children": []
     },
     {
       "name": "intersectX",
@@ -400,7 +406,14 @@
       "zOrder": 3,
       "numberProperties": [],
       "stringProperties": [],
-      "initialVariables": []
+      "initialVariables": [
+        {
+          "name": "ID",
+          "persistentUuid": "fd7ed176-61c5-4420-959a-994d71f6447b",
+          "type": "string",
+          "value": "player"
+        }
+      ]
     },
     {
       "angle": 0,
@@ -546,6 +559,12 @@
       "stringProperties": [],
       "initialVariables": [
         {
+          "name": "ID",
+          "persistentUuid": "fd7ed176-61c5-4420-959a-994d71f6447b",
+          "type": "string",
+          "value": "enemy1"
+        },
+        {
           "name": "CurrentLookAngle",
           "type": "number",
           "value": 90
@@ -583,6 +602,12 @@
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": [
+        {
+          "name": "ID",
+          "persistentUuid": "fd7ed176-61c5-4420-959a-994d71f6447b",
+          "type": "string",
+          "value": "enemy2"
+        },
         {
           "name": "CurrentLookAngle",
           "type": "number",
@@ -853,6 +878,11 @@
           "name": "Damage",
           "type": "number",
           "value": 1
+        },
+        {
+          "name": "TankID",
+          "type": "string",
+          "value": ""
         }
       ],
       "effects": [],
@@ -924,6 +954,11 @@
           "name": "Damage",
           "type": "number",
           "value": 1
+        },
+        {
+          "name": "TankID",
+          "type": "string",
+          "value": ""
         }
       ],
       "effects": [],
@@ -1024,11 +1059,18 @@
           "name": "FireCooldownVariance",
           "type": "number",
           "value": 0.5
+        },
+        {
+          "name": "ID",
+          "persistentUuid": "fd7ed176-61c5-4420-959a-994d71f6447b",
+          "type": "string",
+          "value": ""
         }
       ],
       "effects": [],
       "behaviors": [
         {
+          "isFolded": true,
           "name": "FireBullet",
           "type": "FireBullet::FireBullet",
           "FireCooldown": 0.5,
@@ -1059,11 +1101,20 @@
           "RandomizedAngle": 0
         },
         {
+          "isFolded": true,
           "name": "Flash",
           "type": "Flash::Flash",
           "HalfPeriodTime": 0.1,
           "IsFlashing": false,
           "FlashDuration": 0
+        },
+        {
+          "name": "ShootBullet",
+          "type": "CustomObjects::ShootBullet",
+          "MaxBulletsOnScreen": 5,
+          "AngleSpread": 5.00000000000364,
+          "Cooldown": 0.1,
+          "CurrentBulletsOnScreen": 0
         },
         {
           "isFolded": true,
@@ -1364,6 +1415,12 @@
           "name": "FireCooldownVariance",
           "type": "number",
           "value": 0.5
+        },
+        {
+          "name": "ID",
+          "persistentUuid": "fd7ed176-61c5-4420-959a-994d71f6447b",
+          "type": "string",
+          "value": ""
         }
       ],
       "effects": [],
@@ -1400,11 +1457,21 @@
           "RandomizedAngle": 0
         },
         {
+          "isFolded": true,
           "name": "Flash",
           "type": "Flash::Flash",
           "HalfPeriodTime": 0.1,
           "IsFlashing": false,
           "FlashDuration": 0
+        },
+        {
+          "isFolded": true,
+          "name": "ShootBullet",
+          "type": "CustomObjects::ShootBullet",
+          "MaxBulletsOnScreen": 5,
+          "AngleSpread": 5.00000000000364,
+          "Cooldown": 1,
+          "CurrentBulletsOnScreen": 0
         },
         {
           "isFolded": true,
@@ -2308,6 +2375,49 @@
                   ]
                 }
               ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 0,
+                "textG": 255,
+                "textR": 0
+              },
+              "comment": "// Preparar lista de balas, es para relacionar las balas con sus tanques"
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ClearVariableChildren"
+                  },
+                  "parameters": [
+                    "BulletList"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Tanks",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "BulletList[Tanks.ID]",
+                    "=",
+                    "0"
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -2871,7 +2981,6 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
-                  "folded": true,
                   "name": "Player one actions",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -3035,6 +3144,16 @@
                             },
                             {
                               "type": {
+                                "value": "NumberVariable"
+                              },
+                              "parameters": [
+                                "BulletList[PlayerOne.ID]",
+                                "<",
+                                "_DATA_.Player.MaxBullets"
+                              ]
+                            },
+                            {
+                              "type": {
                                 "value": "BuiltinCommonInstructions::Once"
                               },
                               "parameters": []
@@ -3043,11 +3162,11 @@
                           "actions": [
                             {
                               "type": {
-                                "value": "FireBullet::FireBullet::Fire"
+                                "value": "CustomObjects::ShootBullet::Shoot"
                               },
                               "parameters": [
                                 "PlayerOne",
-                                "FireBullet",
+                                "ShootBullet",
                                 "PlayerOne.GetLookPointX()",
                                 "PlayerOne.GetLookPointY()",
                                 "YellowBullet",
@@ -3058,11 +3177,32 @@
                             },
                             {
                               "type": {
+                                "value": "SetStringObjectVariable"
+                              },
+                              "parameters": [
+                                "YellowBullet",
+                                "TankID",
+                                "=",
+                                "PlayerOne.ID"
+                              ]
+                            },
+                            {
+                              "type": {
                                 "value": "ChangeLayer"
                               },
                               "parameters": [
                                 "YellowBullet",
                                 "_CONSTANTS_.Layers.Base"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "BulletList[PlayerOne.ID]",
+                                "+",
+                                "1"
                               ]
                             }
                           ]
@@ -3255,6 +3395,16 @@
                             },
                             {
                               "type": {
+                                "value": "NumberVariable"
+                              },
+                              "parameters": [
+                                "BulletList[PlayerOne.ID]",
+                                "<",
+                                "_DATA_.Player.MaxBullets"
+                              ]
+                            },
+                            {
+                              "type": {
                                 "value": "BuiltinCommonInstructions::Once"
                               },
                               "parameters": []
@@ -3263,11 +3413,11 @@
                           "actions": [
                             {
                               "type": {
-                                "value": "FireBullet::FireBullet::Fire"
+                                "value": "CustomObjects::ShootBullet::Shoot"
                               },
                               "parameters": [
                                 "PlayerOne",
-                                "FireBullet",
+                                "ShootBullet",
                                 "PlayerOne.GetLookPointX()",
                                 "PlayerOne.GetLookPointY()",
                                 "YellowBullet",
@@ -3278,11 +3428,32 @@
                             },
                             {
                               "type": {
+                                "value": "SetStringObjectVariable"
+                              },
+                              "parameters": [
+                                "YellowBullet",
+                                "TankID",
+                                "=",
+                                "PlayerOne.ID"
+                              ]
+                            },
+                            {
+                              "type": {
                                 "value": "ChangeLayer"
                               },
                               "parameters": [
                                 "YellowBullet",
                                 "_CONSTANTS_.Layers.Base"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "BulletList[PlayerOne.ID]",
+                                "+",
+                                "1"
                               ]
                             }
                           ]
@@ -3392,7 +3563,6 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
-                  "folded": true,
                   "name": "Bullets",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -3410,7 +3580,6 @@
                       "comment": "Damage objects"
                     },
                     {
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -3447,18 +3616,51 @@
                             "-",
                             "Bullets.Damage"
                           ]
-                        },
-                        {
-                          "type": {
-                            "value": "Delete"
-                          },
-                          "parameters": [
-                            "Bullets",
-                            ""
-                          ]
                         }
                       ],
                       "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "BuiltinCommonInstructions::CompareNumbers"
+                              },
+                              "parameters": [
+                                "BulletList[Bullets.TankID]",
+                                ">=",
+                                "1"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "BulletList[Bullets.TankID]",
+                                "-",
+                                "1"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "Delete"
+                              },
+                              "parameters": [
+                                "Bullets",
+                                ""
+                              ]
+                            }
+                          ]
+                        },
                         {
                           "type": "BuiltinCommonInstructions::Comment",
                           "color": {
@@ -3622,7 +3824,6 @@
                       "comment": "Damage tanks"
                     },
                     {
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -3659,18 +3860,51 @@
                             "-",
                             "Bullets.Damage"
                           ]
-                        },
-                        {
-                          "type": {
-                            "value": "Delete"
-                          },
-                          "parameters": [
-                            "Bullets",
-                            ""
-                          ]
                         }
                       ],
                       "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "BuiltinCommonInstructions::CompareNumbers"
+                              },
+                              "parameters": [
+                                "BulletList[Bullets.TankID]",
+                                ">=",
+                                "1"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "BulletList[Bullets.TankID]",
+                                "-",
+                                "1"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "Delete"
+                              },
+                              "parameters": [
+                                "Bullets",
+                                ""
+                              ]
+                            }
+                          ]
+                        },
                         {
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
@@ -3737,7 +3971,6 @@
                       "comment": "Bounce of walls"
                     },
                     {
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -3770,14 +4003,48 @@
                               ]
                             }
                           ],
-                          "actions": [
+                          "actions": [],
+                          "events": [
                             {
-                              "type": {
-                                "value": "Delete"
-                              },
-                              "parameters": [
-                                "Bullets",
-                                ""
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                                  },
+                                  "parameters": [
+                                    "BulletList[Bullets.TankID]",
+                                    ">=",
+                                    "1"
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "BulletList[Bullets.TankID]",
+                                    "-",
+                                    "1"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "Delete"
+                                  },
+                                  "parameters": [
+                                    "Bullets",
+                                    ""
+                                  ]
+                                }
                               ]
                             }
                           ]
@@ -3832,7 +4099,6 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
-                  "folded": true,
                   "name": "Purple enemy logic",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -4267,6 +4533,7 @@
                                   ]
                                 },
                                 {
+                                  "disabled": true,
                                   "type": "BuiltinCommonInstructions::Standard",
                                   "conditions": [
                                     {
@@ -4315,6 +4582,78 @@
                                         "=",
                                         "_DATA_.Enemies.PurpleEnemy.ReloadTime + RandomFloatInRange(-PurpleEnemy.FireCooldownVariance, PurpleEnemy.FireCooldownVariance)",
                                         ""
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "BooleanVariable"
+                                      },
+                                      "parameters": [
+                                        "SeePlayer",
+                                        "True",
+                                        ""
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "NumberVariable"
+                                      },
+                                      "parameters": [
+                                        "BulletList[PurpleEnemy.ID]",
+                                        "<",
+                                        "_DATA_.Enemies.PurpleEnemy.MaxBullets"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "CustomObjects::ShootBullet::Shoot"
+                                      },
+                                      "parameters": [
+                                        "PurpleEnemy",
+                                        "ShootBullet",
+                                        "PurpleEnemy.GetMuzzlePointX()",
+                                        "PurpleEnemy.GetMuzzlePointY()",
+                                        "PurpleBullet",
+                                        "Angle + RandomFloatInRange(-PurpleEnemy.FireAngleSpread, PurpleEnemy.FireAngleSpread)",
+                                        "_DATA_.Bullets.PurpleSmall.Speed",
+                                        ""
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "SetStringObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "PurpleBullet",
+                                        "TankID",
+                                        "=",
+                                        "PurpleEnemy.ID"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "ChangeLayer"
+                                      },
+                                      "parameters": [
+                                        "PurpleBullet",
+                                        "_CONSTANTS_.Layers.Base"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "SetNumberVariable"
+                                      },
+                                      "parameters": [
+                                        "BulletList[PurpleEnemy.ID]",
+                                        "+",
+                                        "1"
                                       ]
                                     }
                                   ]
@@ -4657,6 +4996,10 @@
     {
       "name": "Scale",
       "type": "ScalableCapability::ScalableBehavior"
+    },
+    {
+      "name": "ShootBullet",
+      "type": "CustomObjects::ShootBullet"
     },
     {
       "name": "Text",

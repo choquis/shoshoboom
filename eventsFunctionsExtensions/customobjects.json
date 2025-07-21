@@ -202,7 +202,298 @@
       "objectGroups": []
     }
   ],
-  "eventsBasedBehaviors": [],
+  "eventsBasedBehaviors": [
+    {
+      "description": "",
+      "fullName": "Shoot bullets",
+      "name": "ShootBullet",
+      "objectType": "",
+      "eventsFunctions": [
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "onCreated",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ResetObjectTimer"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"Cooldown\""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomObjects::ShootBullet",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "Shoot",
+          "sentence": "Shoot _PARAM4_ from _PARAM0_, from position (X: _PARAM2_; Y: _PARAM3_) at angle _PARAM5_ and speed _PARAM6_ px/s",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BehaviorActivated"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Behavior"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CompareObjectTimer"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"Cooldown\"",
+                    ">=",
+                    "Cooldown"
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "Create"
+                      },
+                      "parameters": [
+                        "",
+                        "Bullet",
+                        "PositionX",
+                        "PositionY",
+                        ""
+                      ]
+                    }
+                  ],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "RandomizedAngle",
+                            "=",
+                            "Angle + RandomInRange(-AngleSpread, AngleSpread)"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "AddForceAL"
+                          },
+                          "parameters": [
+                            "Bullet",
+                            "RandomizedAngle",
+                            "Speed",
+                            "1"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetAngle"
+                          },
+                          "parameters": [
+                            "Bullet",
+                            "=",
+                            "RandomizedAngle"
+                          ]
+                        }
+                      ],
+                      "variables": [
+                        {
+                          "name": "RandomizedAngle",
+                          "type": "number",
+                          "value": 0
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "CurrentBulletsOnScreen",
+                        "+",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ResetObjectTimer"
+                      },
+                      "parameters": [
+                        "Object",
+                        "\"Cooldown\""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomObjects::ShootBullet",
+              "type": "behavior"
+            },
+            {
+              "description": "Position X",
+              "name": "PositionX",
+              "type": "expression"
+            },
+            {
+              "description": "Position Y",
+              "name": "PositionY",
+              "type": "expression"
+            },
+            {
+              "description": "Bullet",
+              "name": "Bullet",
+              "type": "objectListOrEmptyIfJustDeclared"
+            },
+            {
+              "description": "Angle",
+              "name": "Angle",
+              "type": "expression"
+            },
+            {
+              "description": "Speed",
+              "name": "Speed",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "ReduceBulletCount",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "CurrentBulletsOnScreen",
+                    ">=",
+                    "0"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "CurrentBulletsOnScreen",
+                    "-",
+                    "1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomObjects::ShootBullet",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "5",
+          "type": "Number",
+          "label": "Max total of bullets",
+          "description": "Max number of bullets on screen at time by the object",
+          "name": "MaxBulletsOnScreen"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "unit": "DegreeAngle",
+          "label": "",
+          "name": "AngleSpread"
+        },
+        {
+          "value": "1",
+          "type": "Number",
+          "unit": "Second",
+          "label": "Shooting cooldown",
+          "description": "Time to wait before it can shoot again",
+          "name": "Cooldown"
+        },
+        {
+          "value": "0",
+          "type": "Number",
+          "label": "Total of current bullets",
+          "hidden": true,
+          "name": "CurrentBulletsOnScreen"
+        }
+      ],
+      "sharedPropertyDescriptors": []
+    }
+  ],
   "eventsBasedObjects": [
     {
       "areaMaxX": 32,
