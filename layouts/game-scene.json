@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 0.6672773998330088,
+    "zoomFactor": 0.8993607583666772,
     "windowMask": false
   },
   "objectsGroups": [
@@ -1107,6 +1107,21 @@
           "name": "ID",
           "type": "string",
           "value": ""
+        },
+        {
+          "name": "DistanceMoved",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "OldY",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "OldX",
+          "type": "number",
+          "value": 0
         }
       ],
       "effects": [],
@@ -1460,6 +1475,21 @@
           "name": "ID",
           "type": "string",
           "value": ""
+        },
+        {
+          "name": "DistanceMoved",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "OldY",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "OldX",
+          "type": "number",
+          "value": 0
         }
       ],
       "effects": [],
@@ -1946,11 +1976,80 @@
       "effects": [],
       "behaviors": [],
       "animations": []
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "TrailDecal",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "TiresDecal",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "TiresDecal2",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 11,
+                    "y": 1.5
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 0,
+                        "y": 0
+                      },
+                      {
+                        "x": 22,
+                        "y": 0
+                      },
+                      {
+                        "x": 22,
+                        "y": 3
+                      },
+                      {
+                        "x": 0,
+                        "y": 3
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "objectsFolderStructure": {
     "folderName": "__ROOT",
     "children": [
+      {
+        "folderName": "FX",
+        "children": [
+          {
+            "objectName": "TrailDecal"
+          }
+        ]
+      },
       {
         "folderName": "Scene",
         "children": [
@@ -2509,6 +2608,7 @@
           "comment": "Switch to keyboard"
         },
         {
+          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -2628,6 +2728,7 @@
           "comment": "Switch to gamepad"
         },
         {
+          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -3112,6 +3213,7 @@
                       "comment": "Keyboard actions"
                     },
                     {
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -3336,6 +3438,7 @@
                       "comment": "Gamepad actions"
                     },
                     {
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -3573,6 +3676,153 @@
                           ]
                         }
                       ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::Or"
+                          },
+                          "parameters": [],
+                          "subInstructions": [
+                            {
+                              "type": {
+                                "value": "BuiltinCommonInstructions::CompareNumbers"
+                              },
+                              "parameters": [
+                                "PlayerOne.CenterX()",
+                                "!=",
+                                "PlayerOne.OldX"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "BuiltinCommonInstructions::CompareNumbers"
+                              },
+                              "parameters": [
+                                "PlayerOne.CenterY()",
+                                "!=",
+                                "PlayerOne.OldY"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "NewDistance",
+                            "=",
+                            "abs(DistanceBetweenPositions(PlayerOne.CenterX(), PlayerOne.CenterY(), PlayerOne.OldX, PlayerOne.OldY))"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "PlayerOne",
+                            "DistanceMoved",
+                            "+",
+                            "NewDistance"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "PlayerOne",
+                            "OldX",
+                            "=",
+                            "PlayerOne.CenterX()"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "PlayerOne",
+                            "OldY",
+                            "=",
+                            "PlayerOne.CenterY()"
+                          ]
+                        }
+                      ],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "BuiltinCommonInstructions::CompareNumbers"
+                              },
+                              "parameters": [
+                                "PlayerOne.DistanceMoved",
+                                ">=",
+                                "20"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "Create"
+                              },
+                              "parameters": [
+                                "",
+                                "TrailDecal",
+                                "PlayerOne.CenterX()",
+                                "PlayerOne.CenterY()",
+                                "_CONSTANTS_.Layers.Base"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetAngle"
+                              },
+                              "parameters": [
+                                "TrailDecal",
+                                "=",
+                                "PlayerOne.GetBodyAngle() + 90"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "ChangePlan"
+                              },
+                              "parameters": [
+                                "TrailDecal",
+                                "=",
+                                "0"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetNumberObjectVariable"
+                              },
+                              "parameters": [
+                                "PlayerOne",
+                                "DistanceMoved",
+                                "=",
+                                "0"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "variables": [
+                        {
+                          "name": "NewDistance",
+                          "type": "number",
+                          "value": 0
+                        }
+                      ]
                     }
                   ],
                   "parameters": []
@@ -3594,6 +3844,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Player one logic",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -3659,6 +3910,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Purple enemy logic",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -4247,6 +4499,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Bullets",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
