@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 0.8416428125373243,
+    "zoomFactor": 0.6672773998330088,
     "windowMask": false
   },
   "objectsGroups": [
@@ -36,22 +36,6 @@
         },
         {
           "name": "PurpleEnemy"
-        }
-      ]
-    },
-    {
-      "name": "BulletWalls",
-      "objects": [
-        {
-          "name": "WhiteWall"
-        }
-      ]
-    },
-    {
-      "name": "Damageable",
-      "objects": [
-        {
-          "name": "BreakableWallWhite"
         }
       ]
     },
@@ -114,6 +98,14 @@
         {
           "name": "PlayerOne"
         },
+        {
+          "name": "PurpleEnemy"
+        }
+      ]
+    },
+    {
+      "name": "Enemies",
+      "objects": [
         {
           "name": "PurpleEnemy"
         }
@@ -415,29 +407,6 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Base",
-      "name": "PlayerOne",
-      "persistentUuid": "c94d23ba-c767-47bd-9bef-4eb676d72d02",
-      "width": 0,
-      "x": 192,
-      "y": 320,
-      "zOrder": 3,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": [
-        {
-          "name": "ID",
-          "persistentUuid": "fd7ed176-61c5-4420-959a-994d71f6447b",
-          "type": "string",
-          "value": "player"
-        }
-      ]
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
       "name": "BreakableWallWhite",
       "persistentUuid": "fa577d6c-109c-4bac-81a2-5aa469b74388",
       "width": 0,
@@ -570,7 +539,7 @@
       "persistentUuid": "e847bda9-3064-4a79-be88-c65d96fc27ce",
       "width": 0,
       "x": 1088,
-      "y": 128,
+      "y": 224,
       "zOrder": 3,
       "numberProperties": [],
       "stringProperties": [],
@@ -584,7 +553,7 @@
         {
           "name": "CurrentLookAngle",
           "type": "number",
-          "value": 90
+          "value": 135
         }
       ]
     },
@@ -614,7 +583,7 @@
       "persistentUuid": "08feb2a6-3407-43d3-9a45-b1e939258082",
       "width": 0,
       "x": 1088,
-      "y": 544,
+      "y": 448,
       "zOrder": 3,
       "numberProperties": [],
       "stringProperties": [],
@@ -628,7 +597,7 @@
         {
           "name": "CurrentLookAngle",
           "type": "number",
-          "value": 135
+          "value": 90
         }
       ]
     },
@@ -678,6 +647,55 @@
       "x": -64,
       "y": -1088,
       "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 0,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "",
+      "name": "StartPosition",
+      "persistentUuid": "aa9f5a22-fb6e-436b-b57a-5344129ebc4c",
+      "width": 32,
+      "x": 160,
+      "y": 320,
+      "zOrder": 9,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "BreakableWallWhite",
+      "persistentUuid": "8b84699b-e40d-42cb-9ccc-af2685e0ffce",
+      "width": 0,
+      "x": 800,
+      "y": 192,
+      "zOrder": 0,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "BreakableWallWhite",
+      "persistentUuid": "fc3d0005-7ad7-467c-ae7d-0f4df3b0720d",
+      "width": 0,
+      "x": 800,
+      "y": 480,
+      "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1048,7 +1066,7 @@
         {
           "name": "Health",
           "type": "number",
-          "value": 100
+          "value": 1
         },
         {
           "name": "Type",
@@ -1917,6 +1935,17 @@
         "characterSize": 120,
         "color": "235;235;235"
       }
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "StartPosition",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": []
     }
   ],
   "objectsFolderStructure": {
@@ -1983,6 +2012,9 @@
       },
       {
         "objectName": "NewShapePainter"
+      },
+      {
+        "objectName": "StartPosition"
       }
     ]
   },
@@ -2460,7 +2492,6 @@
       "colorG": 128,
       "colorR": 29,
       "creationTime": 0,
-      "folded": true,
       "name": "Switch inputs",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -2478,7 +2509,6 @@
           "comment": "Switch to keyboard"
         },
         {
-          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -2598,7 +2628,6 @@
           "comment": "Switch to gamepad"
         },
         {
-          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -2797,11 +2826,63 @@
                   "actions": [
                     {
                       "type": {
+                        "value": "ChangeLayerTimeScale"
+                      },
+                      "parameters": [
+                        "",
+                        "\"Base\"",
+                        "0"
+                      ]
+                    },
+                    {
+                      "type": {
                         "value": "PushScene"
                       },
                       "parameters": [
                         "",
                         "\"Before Game Start\""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "Create player"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "SceneInstancesCount"
+                      },
+                      "parameters": [
+                        "",
+                        "PlayerOne",
+                        "=",
+                        "0"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "Create"
+                      },
+                      "parameters": [
+                        "",
+                        "PlayerOne",
+                        "StartPosition.X()",
+                        "StartPosition.Y()",
+                        "_CONSTANTS_.Layers.Base"
                       ]
                     }
                   ]
@@ -2822,16 +2903,6 @@
                         "\"linear\"",
                         "1",
                         ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ChangeLayerTimeScale"
-                      },
-                      "parameters": [
-                        "",
-                        "\"Base\"",
-                        "0"
                       ]
                     },
                     {
@@ -3544,23 +3615,6 @@
                       "conditions": [
                         {
                           "type": {
-                            "value": "NumberObjectVariable"
-                          },
-                          "parameters": [
-                            "PlayerOne",
-                            "Health",
-                            "<=",
-                            "0"
-                          ]
-                        }
-                      ],
-                      "actions": []
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
                             "value": "CollisionNP"
                           },
                           "parameters": [
@@ -4240,7 +4294,6 @@
                           "comment": "Bounce of walls"
                         },
                         {
-                          "folded": true,
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
                             {
@@ -4327,7 +4380,6 @@
                           "comment": "Damage Wall"
                         },
                         {
-                          "folded": true,
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
                             {
@@ -4388,8 +4440,8 @@
                                   "parameters": [
                                     "",
                                     "BreakableWallWhiteRemains",
-                                    "Damageable.X()",
-                                    "Damageable.Y()",
+                                    "BulletCollide.X()",
+                                    "BulletCollide.Y()",
                                     "_CONSTANTS_.Layers.Base"
                                   ]
                                 },
@@ -4425,7 +4477,7 @@
                                   "parameters": [
                                     "CurrentFrame",
                                     "=",
-                                    "clamp(trunc((BulletCollide.Health / _DATA_.Damageable[BulletCollide.ObjectName()].MaxHealth) * 10), 0, 10)"
+                                    "clamp(trunc((BulletCollide.Health / _DATA_.Walls[BulletCollide.ObjectName()].MaxHealth) * 10), 0, 10)"
                                   ]
                                 },
                                 {
@@ -4462,7 +4514,6 @@
                           "comment": "Damage tanks"
                         },
                         {
-                          "folded": true,
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
                             {
@@ -4526,7 +4577,7 @@
                                     "value": "NumberObjectVariable"
                                   },
                                   "parameters": [
-                                    "Tanks",
+                                    "BulletCollide",
                                     "Health",
                                     "<=",
                                     "0"
@@ -4539,7 +4590,7 @@
                                     "value": "Delete"
                                   },
                                   "parameters": [
-                                    "Tanks",
+                                    "BulletCollide",
                                     ""
                                   ]
                                 }
@@ -4554,7 +4605,7 @@
                                     "value": "Flash::Flash::Flash"
                                   },
                                   "parameters": [
-                                    "Tanks",
+                                    "BulletCollide",
                                     "Flash",
                                     "0.2",
                                     ""
@@ -4635,6 +4686,84 @@
                     "textR": 0
                   },
                   "comment": "\n\n"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "SceneInstancesCount"
+                      },
+                      "parameters": [
+                        "",
+                        "PlayerOne",
+                        "=",
+                        "0"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetStringVariable"
+                      },
+                      "parameters": [
+                        "_INGAMEDATA_.GameState",
+                        "=",
+                        "_CONSTANTS_.GameState.GameOver"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Log_Manager::WriteLog"
+                      },
+                      "parameters": [
+                        "",
+                        "Logger",
+                        "\"Change to GAME OVER\"",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "SceneInstancesCount"
+                      },
+                      "parameters": [
+                        "",
+                        "Enemies",
+                        "=",
+                        "0"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetStringVariable"
+                      },
+                      "parameters": [
+                        "_INGAMEDATA_.GameState",
+                        "=",
+                        "_CONSTANTS_.GameState.GameWon"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Log_Manager::WriteLog"
+                      },
+                      "parameters": [
+                        "",
+                        "Logger",
+                        "\"Change to GAME WON!\"",
+                        ""
+                      ]
+                    }
+                  ]
                 }
               ]
             }
@@ -4711,7 +4840,156 @@
           "colorG": 128,
           "colorR": 29,
           "creationTime": 0,
-          "folded": true,
+          "name": "GAME WON",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 209,
+                "g": 199,
+                "r": 85,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": ""
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "StringVariable"
+                  },
+                  "parameters": [
+                    "_INGAMEDATA_.GameState",
+                    "=",
+                    "_CONSTANTS_.GameState.GameWon"
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::Once"
+                      },
+                      "parameters": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
+                      },
+                      "parameters": [
+                        "FadeForeground",
+                        "Tween",
+                        "Timers.FadeForegroundOpacity",
+                        "255",
+                        "\"linear\"",
+                        "1",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "_INGAMEDATA_.Mission",
+                        "+",
+                        "1"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "Tween::HasFinished"
+                      },
+                      "parameters": [
+                        "FadeForeground",
+                        "Tween",
+                        "Timers.FadeForegroundOpacity"
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Delete"
+                          },
+                          "parameters": [
+                            "Bullets",
+                            ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 209,
+                        "g": 199,
+                        "r": 85,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "Go to title screen"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetStringVariable"
+                          },
+                          "parameters": [
+                            "_INGAMEDATA_.GameState",
+                            "=",
+                            "_CONSTANTS_.GameState.Start"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Scene"
+                          },
+                          "parameters": [
+                            "",
+                            "\"Game Scene\"",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": []
+        },
+        {
+          "colorB": 177,
+          "colorG": 128,
+          "colorR": 29,
+          "creationTime": 0,
           "name": "GAME OVER",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -4742,7 +5020,157 @@
                   ]
                 }
               ],
-              "actions": []
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::Once"
+                      },
+                      "parameters": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
+                      },
+                      "parameters": [
+                        "FadeForeground",
+                        "Tween",
+                        "Timers.FadeForegroundOpacity",
+                        "255",
+                        "\"linear\"",
+                        "1",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "_INGAMEDATA_.PlayerLives",
+                        "-",
+                        "1"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "Tween::HasFinished"
+                      },
+                      "parameters": [
+                        "FadeForeground",
+                        "Tween",
+                        "Timers.FadeForegroundOpacity"
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Delete"
+                          },
+                          "parameters": [
+                            "Bullets",
+                            ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 209,
+                        "g": 199,
+                        "r": 85,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "Go to title screen"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberVariable"
+                          },
+                          "parameters": [
+                            "_INGAMEDATA_.PlayerLives",
+                            "<=",
+                            "0"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Scene"
+                          },
+                          "parameters": [
+                            "",
+                            "\"Title Scene\"",
+                            ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 209,
+                        "g": 199,
+                        "r": 85,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "Restart game"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberVariable"
+                          },
+                          "parameters": [
+                            "_INGAMEDATA_.PlayerLives",
+                            ">",
+                            "0"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetStringVariable"
+                          },
+                          "parameters": [
+                            "_INGAMEDATA_.GameState",
+                            "=",
+                            "_CONSTANTS_.GameState.Start"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
             }
           ],
           "parameters": []

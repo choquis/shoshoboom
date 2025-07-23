@@ -1,7 +1,7 @@
 {
   "firstLayout": "",
   "gdVersion": {
-    "build": 236,
+    "build": 237,
     "major": 5,
     "minor": 5,
     "revision": 0
@@ -299,6 +299,7 @@
   "objectsGroups": [],
   "variables": [
     {
+      "folded": true,
       "name": "_CONTROLS_",
       "type": "structure",
       "children": [
@@ -583,6 +584,7 @@
       "type": "structure",
       "children": [
         {
+          "folded": true,
           "name": "Entities",
           "type": "structure",
           "children": [
@@ -609,7 +611,6 @@
           ]
         },
         {
-          "folded": true,
           "name": "GameState",
           "type": "structure",
           "children": [
@@ -624,6 +625,11 @@
               "value": "GameOver"
             },
             {
+              "name": "GameWon",
+              "type": "string",
+              "value": "GameWon"
+            },
+            {
               "name": "Pause",
               "type": "string",
               "value": "Pause"
@@ -632,6 +638,33 @@
               "name": "Start",
               "type": "string",
               "value": "Start"
+            }
+          ]
+        },
+        {
+          "name": "InitilizeData",
+          "type": "structure",
+          "children": [
+            {
+              "name": "Game",
+              "type": "structure",
+              "children": [
+                {
+                  "name": "GameState",
+                  "type": "string",
+                  "value": "Start"
+                },
+                {
+                  "name": "Mission",
+                  "type": "number",
+                  "value": 1
+                },
+                {
+                  "name": "PlayerLives",
+                  "type": "number",
+                  "value": 3
+                }
+              ]
             }
           ]
         },
@@ -653,6 +686,7 @@
           ]
         },
         {
+          "folded": true,
           "name": "Layers",
           "type": "structure",
           "children": [
@@ -678,19 +712,25 @@
           "name": "Mission",
           "type": "number",
           "value": 1
+        },
+        {
+          "name": "PlayerLives",
+          "type": "number",
+          "value": 3
         }
       ]
     },
     {
       "name": "_DEBUG_",
       "type": "boolean",
-      "value": true
+      "value": false
     },
     {
       "name": "_DATA_",
       "type": "structure",
       "children": [
         {
+          "folded": true,
           "name": "Bullets",
           "type": "structure",
           "children": [
@@ -713,23 +753,6 @@
                   "name": "Speed",
                   "type": "number",
                   "value": 500
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "Damageable",
-          "type": "structure",
-          "children": [
-            {
-              "name": "BreakableWallWhite",
-              "type": "structure",
-              "children": [
-                {
-                  "name": "MaxHealth",
-                  "type": "number",
-                  "value": 2
                 }
               ]
             }
@@ -773,6 +796,7 @@
           ]
         },
         {
+          "folded": true,
           "name": "Player",
           "type": "structure",
           "children": [
@@ -787,6 +811,23 @@
               "value": 0
             }
           ]
+        },
+        {
+          "name": "Walls",
+          "type": "structure",
+          "children": [
+            {
+              "name": "BreakableWallWhite",
+              "type": "structure",
+              "children": [
+                {
+                  "name": "MaxHealth",
+                  "type": "number",
+                  "value": 2
+                }
+              ]
+            }
+          ]
         }
       ]
     }
@@ -799,6 +840,10 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/layouts/before-game-start"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/layouts/title-scene"
     }
   ],
   "externalEvents": [],
@@ -818,10 +863,6 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/eventsFunctionsExtensions/arraytools"
-    },
-    {
-      "__REFERENCE_TO_SPLIT_OBJECT": true,
-      "referenceTo": "/eventsFunctionsExtensions/firebullet"
     },
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
