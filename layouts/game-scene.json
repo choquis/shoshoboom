@@ -119,7 +119,6 @@
       "value": "0"
     },
     {
-      "folded": true,
       "name": "playerOne",
       "type": "structure",
       "children": [
@@ -184,7 +183,6 @@
       ]
     },
     {
-      "folded": true,
       "name": "Timers",
       "type": "structure",
       "children": [
@@ -229,6 +227,11 @@
       "name": "intersectY",
       "type": "number",
       "value": 0
+    },
+    {
+      "name": "PlayerShoot",
+      "type": "boolean",
+      "value": false
     }
   ],
   "instances": [
@@ -535,34 +538,6 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Base",
-      "name": "PurpleEnemy",
-      "persistentUuid": "e847bda9-3064-4a79-be88-c65d96fc27ce",
-      "width": 0,
-      "x": 1088,
-      "y": 224,
-      "zOrder": 3,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": [
-        {
-          "name": "ID",
-          "persistentUuid": "fd7ed176-61c5-4420-959a-994d71f6447b",
-          "type": "string",
-          "value": "enemy1"
-        },
-        {
-          "name": "CurrentLookAngle",
-          "type": "number",
-          "value": 135
-        }
-      ]
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
       "name": "NewShapePainter",
       "persistentUuid": "632f53ec-da72-4c7d-aeac-0e0d51ffece9",
       "width": 0,
@@ -699,6 +674,34 @@
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "PurpleEnemy",
+      "persistentUuid": "5274b7d3-a160-4405-85ec-0594da814457",
+      "width": 0,
+      "x": 1088,
+      "y": 224,
+      "zOrder": 3,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "ID",
+          "persistentUuid": "fd7ed176-61c5-4420-959a-994d71f6447b",
+          "type": "string",
+          "value": "enemy1"
+        },
+        {
+          "name": "CurrentLookAngle",
+          "type": "number",
+          "value": 135
+        }
+      ]
     }
   ],
   "objects": [
@@ -929,7 +932,13 @@
         }
       ],
       "effects": [],
-      "behaviors": [],
+      "behaviors": [
+        {
+          "extraBorder": 50,
+          "name": "DestroyOutside",
+          "type": "DestroyOutsideBehavior::DestroyOutside"
+        }
+      ],
       "animations": [
         {
           "name": "",
@@ -1005,7 +1014,13 @@
         }
       ],
       "effects": [],
-      "behaviors": [],
+      "behaviors": [
+        {
+          "extraBorder": 50,
+          "name": "DestroyOutside",
+          "type": "DestroyOutsideBehavior::DestroyOutside"
+        }
+      ],
       "animations": [
         {
           "name": "",
@@ -1998,12 +2013,12 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": true,
-                  "image": "TiresDecal2",
+                  "image": "TiresDecal",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
                     "x": 11,
-                    "y": 1.5
+                    "y": 6.5
                   },
                   "centerPoint": {
                     "automatic": true,
@@ -2023,11 +2038,11 @@
                       },
                       {
                         "x": 22,
-                        "y": 3
+                        "y": 13
                       },
                       {
                         "x": 0,
-                        "y": 3
+                        "y": 13
                       }
                     ]
                   ]
@@ -2037,6 +2052,107 @@
           ]
         }
       ]
+    },
+    {
+      "additive": false,
+      "assetStoreId": "f5b691e46e089910660407ccd48e875e21065603da6952d39d0a2c99481fac17",
+      "destroyWhenNoParticles": false,
+      "emitterAngleA": 0,
+      "emitterAngleB": 0,
+      "emitterForceMax": 0,
+      "emitterForceMin": 0,
+      "flow": 50,
+      "jumpForwardInTimeOnCreation": 0,
+      "maxParticleNb": 50,
+      "name": "BulletSmoke",
+      "particleAlpha1": 30,
+      "particleAlpha2": 0,
+      "particleAlphaRandomness1": 0,
+      "particleAlphaRandomness2": 0,
+      "particleAngle1": 50,
+      "particleAngle2": 50,
+      "particleAngleRandomness1": 0,
+      "particleAngleRandomness2": 0,
+      "particleBlue1": 255,
+      "particleBlue2": 0,
+      "particleColor1": "255;255;255",
+      "particleColor2": "0;0;0",
+      "particleGravityX": 0,
+      "particleGravityY": 0,
+      "particleGreen1": 255,
+      "particleGreen2": 0,
+      "particleLifeTimeMax": 0.5,
+      "particleLifeTimeMin": 0.25,
+      "particleRed1": 255,
+      "particleRed2": 0,
+      "particleSize1": 100,
+      "particleSize2": 150,
+      "particleSizeRandomness1": 0,
+      "particleSizeRandomness2": 0,
+      "rendererParam1": 32,
+      "rendererParam2": 32,
+      "rendererType": "Quad",
+      "tank": -1,
+      "textureParticleName": "BulletSmoke",
+      "type": "ParticleSystem::ParticleEmitter",
+      "zoneRadius": 0,
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Sticker",
+          "type": "Sticker::Sticker",
+          "OnlyFollowPosition": false,
+          "IsDestroyedWithParent": true
+        }
+      ]
+    },
+    {
+      "additive": false,
+      "assetStoreId": "6f92b69880fa0285fd436b12083e29adb2d45af5669106fcfbb3d745a72b053d",
+      "destroyWhenNoParticles": true,
+      "emitterAngleA": 0,
+      "emitterAngleB": 360,
+      "emitterForceMax": 200,
+      "emitterForceMin": 100,
+      "flow": 100,
+      "jumpForwardInTimeOnCreation": 0,
+      "maxParticleNb": 1000,
+      "name": "Explosion",
+      "particleAlpha1": 255,
+      "particleAlpha2": 0,
+      "particleAlphaRandomness1": 0,
+      "particleAlphaRandomness2": 0,
+      "particleAngle1": 0,
+      "particleAngle2": 0,
+      "particleAngleRandomness1": 0,
+      "particleAngleRandomness2": 0,
+      "particleBlue1": 16,
+      "particleBlue2": 48,
+      "particleColor1": "251;16;16",
+      "particleColor2": "245;184;48",
+      "particleGravityX": 0,
+      "particleGravityY": 0,
+      "particleGreen1": 16,
+      "particleGreen2": 184,
+      "particleLifeTimeMax": 0.5,
+      "particleLifeTimeMin": 0.5,
+      "particleRed1": 251,
+      "particleRed2": 245,
+      "particleSize1": 100,
+      "particleSize2": 0,
+      "particleSizeRandomness1": 0,
+      "particleSizeRandomness2": 0,
+      "rendererParam1": 1,
+      "rendererParam2": 1,
+      "rendererType": "Quad",
+      "tank": 30,
+      "textureParticleName": "Explosion1.png",
+      "type": "ParticleSystem::ParticleEmitter",
+      "zoneRadius": 10,
+      "variables": [],
+      "effects": [],
+      "behaviors": []
     }
   ],
   "objectsFolderStructure": {
@@ -2047,6 +2163,12 @@
         "children": [
           {
             "objectName": "TrailDecal"
+          },
+          {
+            "objectName": "BulletSmoke"
+          },
+          {
+            "objectName": "Explosion"
           }
         ]
       },
@@ -2178,6 +2300,7 @@
       "colorG": 128,
       "colorR": 29,
       "creationTime": 0,
+      "folded": true,
       "name": "Start event",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -2591,6 +2714,7 @@
       "colorG": 128,
       "colorR": 29,
       "creationTime": 0,
+      "folded": true,
       "name": "Switch inputs",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -2878,6 +3002,7 @@
           "colorG": 128,
           "colorR": 29,
           "creationTime": 0,
+          "folded": true,
           "name": "START",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -3213,7 +3338,6 @@
                       "comment": "Keyboard actions"
                     },
                     {
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -3378,47 +3502,12 @@
                           "actions": [
                             {
                               "type": {
-                                "value": "CustomObjects::ShootBullet::Shoot"
+                                "value": "SetBooleanVariable"
                               },
                               "parameters": [
-                                "PlayerOne",
-                                "ShootBullet",
-                                "PlayerOne.GetLookPointX()",
-                                "PlayerOne.GetLookPointY()",
-                                "YellowBullet",
-                                "PlayerOne.GetCannonAngle()",
-                                "_DATA_.Bullets.YellowSmall.Speed",
+                                "PlayerShoot",
+                                "True",
                                 ""
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "SetStringObjectVariable"
-                              },
-                              "parameters": [
-                                "YellowBullet",
-                                "TankID",
-                                "=",
-                                "PlayerOne.ID"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "ChangeLayer"
-                              },
-                              "parameters": [
-                                "YellowBullet",
-                                "_CONSTANTS_.Layers.Base"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "SetNumberVariable"
-                              },
-                              "parameters": [
-                                "BulletList[PlayerOne.ID]",
-                                "=",
-                                "SceneInstancesCount(YellowBullet)"
                               ]
                             }
                           ]
@@ -3438,7 +3527,6 @@
                       "comment": "Gamepad actions"
                     },
                     {
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -3630,52 +3718,136 @@
                           "actions": [
                             {
                               "type": {
-                                "value": "CustomObjects::ShootBullet::Shoot"
+                                "value": "SetBooleanVariable"
                               },
                               "parameters": [
-                                "PlayerOne",
-                                "ShootBullet",
-                                "PlayerOne.GetLookPointX()",
-                                "PlayerOne.GetLookPointY()",
-                                "YellowBullet",
-                                "PlayerOne.GetCannonAngle()",
-                                "_DATA_.Bullets.YellowSmall.Speed",
+                                "PlayerShoot",
+                                "True",
                                 ""
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "SetStringObjectVariable"
-                              },
-                              "parameters": [
-                                "YellowBullet",
-                                "TankID",
-                                "=",
-                                "PlayerOne.ID"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "ChangeLayer"
-                              },
-                              "parameters": [
-                                "YellowBullet",
-                                "_CONSTANTS_.Layers.Base"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "SetNumberVariable"
-                              },
-                              "parameters": [
-                                "BulletList[PlayerOne.ID]",
-                                "=",
-                                "SceneInstancesCount(YellowBullet)"
                               ]
                             }
                           ]
                         }
                       ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 209,
+                        "g": 199,
+                        "r": 85,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "Shoot"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "PlayerShoot",
+                            "True",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "CustomObjects::ShootBullet::Shoot"
+                          },
+                          "parameters": [
+                            "PlayerOne",
+                            "ShootBullet",
+                            "PlayerOne.GetLookPointX()",
+                            "PlayerOne.GetLookPointY()",
+                            "YellowBullet",
+                            "PlayerOne.GetCannonAngle()",
+                            "_DATA_.Bullets.YellowSmall.Speed",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetStringObjectVariable"
+                          },
+                          "parameters": [
+                            "YellowBullet",
+                            "TankID",
+                            "=",
+                            "PlayerOne.ID"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "ChangeLayer"
+                          },
+                          "parameters": [
+                            "YellowBullet",
+                            "_CONSTANTS_.Layers.Base"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "BulletList[PlayerOne.ID]",
+                            "=",
+                            "SceneInstancesCount(YellowBullet)"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetBooleanVariable"
+                          },
+                          "parameters": [
+                            "PlayerShoot",
+                            "False",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Create"
+                          },
+                          "parameters": [
+                            "",
+                            "BulletSmoke",
+                            "YellowBullet.CenterX()",
+                            "YellowBullet.CenterY()",
+                            "_CONSTANTS_.Layers.Base"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Sticker::Sticker::Stick"
+                          },
+                          "parameters": [
+                            "BulletSmoke",
+                            "Sticker",
+                            "YellowBullet",
+                            ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 209,
+                        "g": 199,
+                        "r": 85,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "Leave marks when move"
                     },
                     {
                       "type": "BuiltinCommonInstructions::Standard",
@@ -3844,7 +4016,6 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
-                  "folded": true,
                   "name": "Player one logic",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -4192,7 +4363,6 @@
                                   ]
                                 },
                                 {
-                                  "folded": true,
                                   "type": "BuiltinCommonInstructions::Standard",
                                   "conditions": [
                                     {
@@ -4422,6 +4592,29 @@
                                         "PurpleBullet",
                                         "_CONSTANTS_.Layers.Base"
                                       ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "Create"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "BulletSmoke",
+                                        "PurpleBullet.CenterX()",
+                                        "PurpleBullet.CenterY()",
+                                        "_CONSTANTS_.Layers.Base"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "Sticker::Sticker::Stick"
+                                      },
+                                      "parameters": [
+                                        "BulletSmoke",
+                                        "Sticker",
+                                        "PurpleBullet",
+                                        ""
+                                      ]
                                     }
                                   ]
                                 }
@@ -4499,7 +4692,6 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
-                  "folded": true,
                   "name": "Bullets",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -4532,7 +4724,19 @@
                           ]
                         }
                       ],
-                      "actions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Log_Manager::WriteLog"
+                          },
+                          "parameters": [
+                            "",
+                            "Logger",
+                            "ToString(PickedInstancesCount(BulletCollide))",
+                            ""
+                          ]
+                        }
+                      ],
                       "events": [
                         {
                           "type": "BuiltinCommonInstructions::Comment",
@@ -4685,36 +4889,44 @@
                                   ]
                                 }
                               ],
-                              "actions": [
+                              "actions": [],
+                              "events": [
                                 {
-                                  "type": {
-                                    "value": "Create"
-                                  },
-                                  "parameters": [
-                                    "",
-                                    "BreakableWallWhiteRemains",
-                                    "BulletCollide.X()",
-                                    "BulletCollide.Y()",
-                                    "_CONSTANTS_.Layers.Base"
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "ChangePlan"
-                                  },
-                                  "parameters": [
-                                    "BreakableWallWhiteRemains",
-                                    "=",
-                                    "0"
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "Delete"
-                                  },
-                                  "parameters": [
-                                    "BulletCollide",
-                                    ""
+                                  "type": "BuiltinCommonInstructions::ForEach",
+                                  "object": "BulletCollide",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "Create"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "BreakableWallWhiteRemains",
+                                        "BulletCollide.X()",
+                                        "BulletCollide.Y()",
+                                        "_CONSTANTS_.Layers.Base"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "ChangePlan"
+                                      },
+                                      "parameters": [
+                                        "BreakableWallWhiteRemains",
+                                        "=",
+                                        "0"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "Delete"
+                                      },
+                                      "parameters": [
+                                        "BulletCollide",
+                                        ""
+                                      ]
+                                    }
                                   ]
                                 }
                               ]
@@ -4837,14 +5049,22 @@
                                   ]
                                 }
                               ],
-                              "actions": [
+                              "actions": [],
+                              "events": [
                                 {
-                                  "type": {
-                                    "value": "Delete"
-                                  },
-                                  "parameters": [
-                                    "BulletCollide",
-                                    ""
+                                  "type": "BuiltinCommonInstructions::ForEach",
+                                  "object": "BulletCollide",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "Delete"
+                                      },
+                                      "parameters": [
+                                        "BulletCollide",
+                                        ""
+                                      ]
+                                    }
                                   ]
                                 }
                               ]
@@ -4913,6 +5133,18 @@
                                 "-",
                                 "1"
                               ]
+                            },
+                            {
+                              "type": {
+                                "value": "Create"
+                              },
+                              "parameters": [
+                                "",
+                                "Explosion",
+                                "Bullets.CenterX()",
+                                "Bullets.CenterY()",
+                                "_CONSTANTS_.Layers.Base"
+                              ]
                             }
                           ]
                         }
@@ -4941,82 +5173,95 @@
                   "comment": "\n\n"
                 },
                 {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
+                  "colorB": 177,
+                  "colorG": 128,
+                  "colorR": 29,
+                  "creationTime": 0,
+                  "folded": true,
+                  "name": "Check gamestate",
+                  "source": "",
+                  "type": "BuiltinCommonInstructions::Group",
+                  "events": [
                     {
-                      "type": {
-                        "value": "SceneInstancesCount"
-                      },
-                      "parameters": [
-                        "",
-                        "PlayerOne",
-                        "=",
-                        "0"
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetStringVariable"
-                      },
-                      "parameters": [
-                        "_INGAMEDATA_.GameState",
-                        "=",
-                        "_CONSTANTS_.GameState.GameOver"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "Log_Manager::WriteLog"
-                      },
-                      "parameters": [
-                        "",
-                        "Logger",
-                        "\"Change to GAME OVER\"",
-                        ""
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "SceneInstancesCount"
-                      },
-                      "parameters": [
-                        "",
-                        "Enemies",
-                        "=",
-                        "0"
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetStringVariable"
-                      },
-                      "parameters": [
-                        "_INGAMEDATA_.GameState",
-                        "=",
-                        "_CONSTANTS_.GameState.GameWon"
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "SceneInstancesCount"
+                          },
+                          "parameters": [
+                            "",
+                            "PlayerOne",
+                            "=",
+                            "0"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetStringVariable"
+                          },
+                          "parameters": [
+                            "_INGAMEDATA_.GameState",
+                            "=",
+                            "_CONSTANTS_.GameState.GameOver"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Log_Manager::WriteLog"
+                          },
+                          "parameters": [
+                            "",
+                            "Logger",
+                            "\"Change to GAME OVER\"",
+                            ""
+                          ]
+                        }
                       ]
                     },
                     {
-                      "type": {
-                        "value": "Log_Manager::WriteLog"
-                      },
-                      "parameters": [
-                        "",
-                        "Logger",
-                        "\"Change to GAME WON!\"",
-                        ""
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "SceneInstancesCount"
+                          },
+                          "parameters": [
+                            "",
+                            "Enemies",
+                            "=",
+                            "0"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetStringVariable"
+                          },
+                          "parameters": [
+                            "_INGAMEDATA_.GameState",
+                            "=",
+                            "_CONSTANTS_.GameState.GameWon"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Log_Manager::WriteLog"
+                          },
+                          "parameters": [
+                            "",
+                            "Logger",
+                            "\"Change to GAME WON!\"",
+                            ""
+                          ]
+                        }
                       ]
                     }
-                  ]
+                  ],
+                  "parameters": []
                 }
               ]
             }
@@ -5093,6 +5338,7 @@
           "colorG": 128,
           "colorR": 29,
           "creationTime": 0,
+          "folded": true,
           "name": "GAME WON",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -5239,10 +5485,23 @@
           "parameters": []
         },
         {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "\n\n"
+        },
+        {
           "colorB": 177,
           "colorG": 128,
           "colorR": 29,
           "creationTime": 0,
+          "folded": true,
           "name": "GAME OVER",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -5596,6 +5855,10 @@
     {
       "name": "ShootBullet",
       "type": "CustomObjects::ShootBullet"
+    },
+    {
+      "name": "Sticker",
+      "type": "Sticker::Sticker"
     },
     {
       "name": "Text",
