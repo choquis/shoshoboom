@@ -22,7 +22,7 @@
       "fullName": "Bounce object",
       "functionType": "Action",
       "name": "Bounce",
-      "sentence": "Bounce _PARAM1_ off _PARAM2_",
+      "sentence": "Bounce _PARAM1_ off _PARAM2_ (Rotate: _PARAM3_)",
       "events": [
         {
           "type": "BuiltinCommonInstructions::Standard",
@@ -141,16 +141,35 @@
                     "OldForceLength",
                     "1"
                   ]
-                },
+                }
+              ],
+              "events": [
                 {
-                  "type": {
-                    "value": "RotateTowardAngle"
-                  },
-                  "parameters": [
-                    "Object",
-                    "NormalAngle + AngleDifference(NormalAngle, OldForceAngle + 180)",
-                    "0",
-                    ""
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanVariable"
+                      },
+                      "parameters": [
+                        "Rotate",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "RotateTowardAngle"
+                      },
+                      "parameters": [
+                        "Object",
+                        "NormalAngle + AngleDifference(NormalAngle, OldForceAngle + 180)",
+                        "0",
+                        ""
+                      ]
+                    }
                   ]
                 }
               ],
@@ -197,6 +216,120 @@
           "description": "Obstacle where it bounce",
           "name": "Obstacle",
           "type": "objectList"
+        },
+        {
+          "defaultValue": "yes",
+          "description": "Rotate object",
+          "name": "Rotate",
+          "optional": true,
+          "type": "yesorno"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Custom function to obtain the current frame in animation by an angle",
+      "fullName": "Get frame by angle",
+      "functionType": "Expression",
+      "name": "GetFrameByAngle",
+      "sentence": "",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "NewAngle",
+                "=",
+                "Angle + 180"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "NewAngle",
+                    ">=",
+                    "360"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "NewAngle",
+                    "-",
+                    "360"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "NewFrame",
+                    "=",
+                    "trunc(round(NewAngle * (8 / 180)))"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "NewFrame"
+                  ]
+                }
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "NewAngle",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "NewFrame",
+              "type": "number",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "expressionType": {
+        "type": "expression"
+      },
+      "parameters": [
+        {
+          "description": "Angle",
+          "name": "Angle",
+          "type": "expression"
         }
       ],
       "objectGroups": []
@@ -323,10 +456,10 @@
                         },
                         {
                           "type": {
-                            "value": "SetAngle"
+                            "value": "SetNumberVariable"
                           },
                           "parameters": [
-                            "Bullet",
+                            "AngleDirection",
                             "=",
                             "RandomizedAngle"
                           ]
@@ -339,6 +472,33 @@
                           "value": 0
                         }
                       ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "RotateBullet",
+                            "True",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetAngle"
+                          },
+                          "parameters": [
+                            "Bullet",
+                            "=",
+                            "AngleDirection"
+                          ]
+                        }
+                      ]
                     }
                   ]
                 },
@@ -346,16 +506,6 @@
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [],
                   "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "CurrentBulletsOnScreen",
-                        "+",
-                        "1"
-                      ]
-                    },
                     {
                       "type": {
                         "value": "ResetObjectTimer"
@@ -412,38 +562,28 @@
         },
         {
           "fullName": "",
-          "functionType": "Action",
-          "name": "ReduceBulletCount",
+          "functionType": "Expression",
+          "name": "GetShootAngle",
           "sentence": "",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::CompareNumbers"
-                  },
-                  "parameters": [
-                    "CurrentBulletsOnScreen",
-                    ">=",
-                    "0"
-                  ]
-                }
-              ],
+              "conditions": [],
               "actions": [
                 {
                   "type": {
-                    "value": "SetNumberVariable"
+                    "value": "SetReturnNumber"
                   },
                   "parameters": [
-                    "CurrentBulletsOnScreen",
-                    "-",
-                    "1"
+                    "AngleDirection"
                   ]
                 }
               ]
             }
           ],
+          "expressionType": {
+            "type": "expression"
+          },
           "parameters": [
             {
               "description": "Object",
@@ -484,11 +624,20 @@
           "name": "Cooldown"
         },
         {
+          "value": "true",
+          "type": "Boolean",
+          "label": "Rotate on shoot",
+          "description": "Rotate de bullet in the direction is shoot",
+          "name": "RotateBullet"
+        },
+        {
           "value": "0",
           "type": "Number",
-          "label": "Total of current bullets",
+          "unit": "DegreeAngle",
+          "label": "Angle of bullet",
+          "description": "Angle where bullet was shoot",
           "hidden": true,
-          "name": "CurrentBulletsOnScreen"
+          "name": "AngleDirection"
         }
       ],
       "sharedPropertyDescriptors": []
@@ -2514,167 +2663,23 @@
               "actions": [
                 {
                   "type": {
-                    "value": "SetNumberVariable"
+                    "value": "ChangeSprite"
                   },
                   "parameters": [
-                    "NewBodyAngle",
+                    "CannonSprite",
                     "=",
-                    "Object.GetBodyAngle() + 180"
+                    "CustomObjects::GetFrameByAngle(Object.GetCannonAngle())"
                   ]
                 },
                 {
                   "type": {
-                    "value": "SetNumberVariable"
+                    "value": "ChangeSprite"
                   },
                   "parameters": [
-                    "NewCannonAngle",
+                    "BodySprite",
                     "=",
-                    "Object.GetCannonAngle() + 180"
+                    "CustomObjects::GetFrameByAngle(Object.GetBodyAngle())"
                   ]
-                }
-              ],
-              "events": [
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "BuiltinCommonInstructions::CompareNumbers"
-                      },
-                      "parameters": [
-                        "NewBodyAngle",
-                        ">=",
-                        "360"
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "NewBodyAngle",
-                        "-",
-                        "360"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "BuiltinCommonInstructions::CompareNumbers"
-                      },
-                      "parameters": [
-                        "NewCannonAngle",
-                        ">=",
-                        "360"
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "NewCannonAngle",
-                        "-",
-                        "360"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "auxFrame",
-                        "=",
-                        "trunc(round(NewCannonAngle* (8 / 180)))"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "NewFrame",
-                        "=",
-                        "trunc(round(NewBodyAngle * (8 / 180)))"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ChangeSprite"
-                      },
-                      "parameters": [
-                        "CannonSprite",
-                        "=",
-                        "auxFrame"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ChangeSprite"
-                      },
-                      "parameters": [
-                        "BodySprite",
-                        "=",
-                        "NewFrame"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "DebuggerTools::ConsoleLog"
-                      },
-                      "parameters": [
-                        "\"Angles: \" + NewBodyAngle + \" : \" + NewCannonAngle",
-                        "\"info\"",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "DebuggerTools::ConsoleLog"
-                      },
-                      "parameters": [
-                        "\"Frames: \" + NewFrame + \" : \" + auxFrame",
-                        "\"info\"",
-                        ""
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "variables": [
-                {
-                  "name": "NewBodyAngle",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "NewFrame",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "auxFrame",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "NewCannonAngle",
-                  "type": "number",
-                  "value": 0
                 }
               ]
             }
