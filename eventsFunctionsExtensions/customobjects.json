@@ -18,6 +18,141 @@
   "sceneVariables": [],
   "eventsFunctions": [
     {
+      "description": "Create the default white bullet with 12 frames of rotation",
+      "fullName": "Shoot white bullet",
+      "functionType": "Action",
+      "name": "ShootWhiteBullet",
+      "sentence": "Shoot _PARAM5_ (Req: _PARAM6_) from _PARAM3_ (Req: _PARAM4_) at speed _PARAM7_ (px/s) with trail _PARAM1_ (Req: _PARAM2_)",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomObjects::ShootBullet::Shoot"
+              },
+              "parameters": [
+                "Tank",
+                "ShootBullet",
+                "Tank.GetLookPointX()",
+                "Tank.GetLookPointY()",
+                "WhiteBullet",
+                "Tank.GetCannonAngle()",
+                "Speed",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Create"
+              },
+              "parameters": [
+                "",
+                "BulletSmoke",
+                "WhiteBullet.CenterX()",
+                "WhiteBullet.CenterY()",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Sticker::Sticker::Stick"
+              },
+              "parameters": [
+                "BulletSmoke",
+                "Sticker",
+                "WhiteBullet",
+                ""
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::PauseAnimation"
+                  },
+                  "parameters": [
+                    "WhiteBullet",
+                    "Animation"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetIndex"
+                  },
+                  "parameters": [
+                    "WhiteBullet",
+                    "Animation",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ChangeSprite"
+                  },
+                  "parameters": [
+                    "WhiteBullet",
+                    "=",
+                    "CustomObjects::GetFrameByAngle12frames(Tank.GetCannonAngle())"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "description": "",
+          "name": "BulletSmoke",
+          "supplementaryInformation": "ParticleSystem::ParticleEmitter",
+          "type": "objectList"
+        },
+        {
+          "description": "",
+          "name": "Sticker",
+          "supplementaryInformation": "Sticker::Sticker",
+          "type": "behavior"
+        },
+        {
+          "description": "",
+          "name": "Tank",
+          "supplementaryInformation": "CustomObjects::Player",
+          "type": "objectList"
+        },
+        {
+          "description": "",
+          "name": "ShootBullet",
+          "supplementaryInformation": "CustomObjects::ShootBullet",
+          "type": "behavior"
+        },
+        {
+          "description": "",
+          "name": "WhiteBullet",
+          "supplementaryInformation": "Sprite",
+          "type": "objectList"
+        },
+        {
+          "description": "",
+          "name": "Animation",
+          "supplementaryInformation": "AnimatableCapability::AnimatableBehavior",
+          "type": "behavior"
+        },
+        {
+          "description": "Speed",
+          "name": "Speed",
+          "type": "expression"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
       "description": "Make the object bounce whent collide with obstacle",
       "fullName": "Bounce object",
       "functionType": "Action",
@@ -289,6 +424,113 @@
                     "NewFrame",
                     "=",
                     "trunc(round(NewAngle * (8 / 180)))"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "NewFrame"
+                  ]
+                }
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "NewAngle",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "NewFrame",
+              "type": "number",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "expressionType": {
+        "type": "expression"
+      },
+      "parameters": [
+        {
+          "description": "Angle",
+          "name": "Angle",
+          "type": "expression"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Custom function to obtain the current frame in animation by an angle",
+      "fullName": "Get frame by angle",
+      "functionType": "Expression",
+      "name": "GetFrameByAngle12frames",
+      "sentence": "",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "NewAngle",
+                "=",
+                "Angle + 180"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "NewAngle",
+                    ">=",
+                    "360"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "NewAngle",
+                    "-",
+                    "360"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "NewFrame",
+                    "=",
+                    "trunc(round(NewAngle * (12 / 180)))"
                   ]
                 }
               ]
