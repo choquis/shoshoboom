@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.5804687500000325,
+    "zoomFactor": 1.2121641972173935,
     "windowMask": false
   },
   "objectsGroups": [
@@ -116,6 +116,17 @@
           "name": "PurpleEnemy"
         }
       ]
+    },
+    {
+      "name": "ParticleEmitters",
+      "objects": [
+        {
+          "name": "BulletSmoke"
+        },
+        {
+          "name": "Explosion"
+        }
+      ]
     }
   ],
   "variables": [
@@ -125,6 +136,7 @@
       "value": "0"
     },
     {
+      "folded": true,
       "name": "playerOne",
       "type": "structure",
       "children": [
@@ -189,6 +201,7 @@
       ]
     },
     {
+      "folded": true,
       "name": "Timers",
       "type": "structure",
       "children": [
@@ -220,9 +233,15 @@
       ]
     },
     {
+      "folded": true,
       "name": "BulletList",
       "type": "structure",
       "children": []
+    },
+    {
+      "name": "TotalParticles",
+      "type": "number",
+      "value": 0
     },
     {
       "name": "intersectX",
@@ -236,6 +255,16 @@
     },
     {
       "name": "PlayerShoot",
+      "type": "boolean",
+      "value": false
+    },
+    {
+      "name": "PauseGame",
+      "type": "boolean",
+      "value": false
+    },
+    {
+      "name": "ResumeGame",
       "type": "boolean",
       "value": false
     }
@@ -484,7 +513,7 @@
       "name": "PurpleEnemy",
       "persistentUuid": "08feb2a6-3407-43d3-9a45-b1e939258082",
       "width": 0,
-      "x": 512,
+      "x": 544,
       "y": 256,
       "zOrder": 3,
       "numberProperties": [],
@@ -595,7 +624,7 @@
       "name": "PurpleEnemy",
       "persistentUuid": "5274b7d3-a160-4405-85ec-0594da814457",
       "width": 0,
-      "x": 512,
+      "x": 544,
       "y": 96,
       "zOrder": 3,
       "numberProperties": [],
@@ -613,6 +642,38 @@
           "value": 135
         }
       ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "particlecount",
+      "persistentUuid": "08197b99-ee03-47e7-af52-b7caf39d3079",
+      "width": 0,
+      "x": 201,
+      "y": 41,
+      "zOrder": 10,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "PauseLabel",
+      "persistentUuid": "8792ade0-52bf-4394-8b99-b8ebcd3ae765",
+      "width": 0,
+      "x": 226,
+      "y": 193,
+      "zOrder": 11,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
     }
   ],
   "objects": [
@@ -845,9 +906,9 @@
       "effects": [],
       "behaviors": [
         {
-          "extraBorder": 50,
           "name": "DestroyOutside",
-          "type": "DestroyOutsideBehavior::DestroyOutside"
+          "type": "DestroyOutsideBehavior::DestroyOutside",
+          "extraBorder": 50
         }
       ],
       "animations": [
@@ -927,9 +988,9 @@
       "effects": [],
       "behaviors": [
         {
-          "extraBorder": 50,
           "name": "DestroyOutside",
-          "type": "DestroyOutsideBehavior::DestroyOutside"
+          "type": "DestroyOutsideBehavior::DestroyOutside",
+          "extraBorder": 50
         }
       ],
       "animations": [
@@ -1070,11 +1131,11 @@
           "RotateBullet": false
         },
         {
-          "acceleration": 450,
           "isFolded": true,
-          "maxSpeed": 70,
           "name": "TopDownMovement",
           "type": "TopDownMovementBehavior::TopDownMovementBehavior",
+          "acceleration": 450,
+          "maxSpeed": 70,
           "allowDiagonals": true,
           "angleOffset": 0,
           "angularMaxSpeed": 180,
@@ -1710,7 +1771,7 @@
                   "points": [],
                   "originPoint": {
                     "name": "origine",
-                    "x": 11,
+                    "x": 9,
                     "y": 6.5
                   },
                   "centerPoint": {
@@ -1873,636 +1934,12 @@
       "effects": [],
       "behaviors": [
         {
-          "extraBorder": 50,
           "name": "DestroyOutside",
-          "type": "DestroyOutsideBehavior::DestroyOutside"
+          "type": "DestroyOutsideBehavior::DestroyOutside",
+          "extraBorder": 50
         }
       ],
       "animations": [
-        {
-          "name": "",
-          "useMultipleDirections": false,
-          "directions": [
-            {
-              "looping": false,
-              "timeBetweenFrames": 0.08,
-              "sprites": [
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\Bullets\\bullet_3d\\bullet_3d_1.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 8,
-                    "y": 8
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 5,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 11
-                      },
-                      {
-                        "x": 5,
-                        "y": 11
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\Bullets\\bullet_3d\\bullet_3d_16.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 8,
-                    "y": 8
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 5,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 11
-                      },
-                      {
-                        "x": 5,
-                        "y": 11
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\Bullets\\bullet_3d\\bullet_3d_15.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 8,
-                    "y": 8
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 5,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 11
-                      },
-                      {
-                        "x": 5,
-                        "y": 11
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\Bullets\\bullet_3d\\bullet_3d_14.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 8,
-                    "y": 8
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 5,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 11
-                      },
-                      {
-                        "x": 5,
-                        "y": 11
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\Bullets\\bullet_3d\\bullet_3d_13.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 8,
-                    "y": 8
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 5,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 11
-                      },
-                      {
-                        "x": 5,
-                        "y": 11
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\Bullets\\bullet_3d\\bullet_3d_12.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 8,
-                    "y": 8
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 5,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 11
-                      },
-                      {
-                        "x": 5,
-                        "y": 11
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\Bullets\\bullet_3d\\bullet_3d_11.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 8,
-                    "y": 8
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 5,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 11
-                      },
-                      {
-                        "x": 5,
-                        "y": 11
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\Bullets\\bullet_3d\\bullet_3d_10.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 8,
-                    "y": 8
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 5,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 11
-                      },
-                      {
-                        "x": 5,
-                        "y": 11
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\Bullets\\bullet_3d\\bullet_3d_9.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 8,
-                    "y": 8
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 5,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 11
-                      },
-                      {
-                        "x": 5,
-                        "y": 11
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\Bullets\\bullet_3d\\bullet_3d_8.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 8,
-                    "y": 8
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 5,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 11
-                      },
-                      {
-                        "x": 5,
-                        "y": 11
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\Bullets\\bullet_3d\\bullet_3d_7.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 8,
-                    "y": 8
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 5,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 11
-                      },
-                      {
-                        "x": 5,
-                        "y": 11
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\Bullets\\bullet_3d\\bullet_3d_6.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 8,
-                    "y": 8
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 5,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 11
-                      },
-                      {
-                        "x": 5,
-                        "y": 11
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\Bullets\\bullet_3d\\bullet_3d_5.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 8,
-                    "y": 8
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 5,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 11
-                      },
-                      {
-                        "x": 5,
-                        "y": 11
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\Bullets\\bullet_3d\\bullet_3d_4.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 8,
-                    "y": 8
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 5,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 11
-                      },
-                      {
-                        "x": 5,
-                        "y": 11
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\Bullets\\bullet_3d\\bullet_3d_3.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 8,
-                    "y": 8
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 5,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 11
-                      },
-                      {
-                        "x": 5,
-                        "y": 11
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\Bullets\\bullet_3d\\bullet_3d_2.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 8,
-                    "y": 8
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 5,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 11
-                      },
-                      {
-                        "x": 5,
-                        "y": 11
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\Bullets\\bullet_3d\\bullet_3d_1.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 8,
-                    "y": 8
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 5,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 5
-                      },
-                      {
-                        "x": 11,
-                        "y": 11
-                      },
-                      {
-                        "x": 5,
-                        "y": 11
-                      }
-                    ]
-                  ]
-                }
-              ]
-            }
-          ]
-        },
         {
           "name": "",
           "useMultipleDirections": false,
@@ -3380,6 +2817,95 @@
           ]
         }
       ]
+    },
+    {
+      "assetStoreId": "",
+      "bold": false,
+      "italic": false,
+      "name": "particlecount",
+      "smoothed": true,
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "00",
+      "font": "",
+      "textAlignment": "left",
+      "characterSize": 20,
+      "color": {
+        "b": 0,
+        "g": 27,
+        "r": 255
+      },
+      "content": {
+        "bold": false,
+        "isOutlineEnabled": false,
+        "isShadowEnabled": false,
+        "italic": false,
+        "outlineColor": "255;255;255",
+        "outlineThickness": 2,
+        "shadowAngle": 90,
+        "shadowBlurRadius": 2,
+        "shadowColor": "0;0;0",
+        "shadowDistance": 4,
+        "shadowOpacity": 127,
+        "smoothed": true,
+        "underlined": false,
+        "text": "00",
+        "font": "",
+        "textAlignment": "left",
+        "verticalTextAlignment": "top",
+        "characterSize": 20,
+        "color": "255;27;0"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "bold": true,
+      "italic": true,
+      "name": "PauseLabel",
+      "smoothed": true,
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "string": "P A U S E",
+      "font": "assets\\advance-wars-2-gba.ttf",
+      "textAlignment": "center",
+      "characterSize": 60,
+      "color": {
+        "b": 235,
+        "g": 235,
+        "r": 235
+      },
+      "content": {
+        "bold": true,
+        "isOutlineEnabled": true,
+        "isShadowEnabled": true,
+        "italic": true,
+        "outlineColor": "255;74;74",
+        "outlineThickness": 4,
+        "shadowAngle": 90,
+        "shadowBlurRadius": 2,
+        "shadowColor": "56;56;56",
+        "shadowDistance": 4,
+        "shadowOpacity": 127,
+        "smoothed": true,
+        "underlined": false,
+        "text": "P A U S E",
+        "font": "assets\\advance-wars-2-gba.ttf",
+        "textAlignment": "center",
+        "verticalTextAlignment": "center",
+        "characterSize": 60,
+        "color": "235;235;235"
+      }
     }
   ],
   "objectsFolderStructure": {
@@ -3423,6 +2949,9 @@
             "objectName": "StartLabel"
           },
           {
+            "objectName": "PauseLabel"
+          },
+          {
             "objectName": "FadeForeground"
           },
           {
@@ -3430,6 +2959,9 @@
           },
           {
             "objectName": "fps"
+          },
+          {
+            "objectName": "particlecount"
           },
           {
             "objectName": "Logger"
@@ -3471,7 +3003,6 @@
   },
   "events": [
     {
-      "folded": true,
       "type": "BuiltinCommonInstructions::Standard",
       "conditions": [],
       "actions": [],
@@ -3510,20 +3041,20 @@
             "textR": 0
           },
           "comment": "// Comentario"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "\n\n"
         }
       ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Comment",
-      "color": {
-        "b": 52,
-        "g": 44,
-        "r": 40,
-        "textB": 0,
-        "textG": 0,
-        "textR": 0
-      },
-      "comment": "\n\n"
     },
     {
       "colorB": 177,
@@ -3547,6 +3078,7 @@
           "comment": ""
         },
         {
+          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -3879,6 +3411,30 @@
               ]
             },
             {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Cache"
+                  },
+                  "parameters": [
+                    "PauseLabel"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ChangePlan"
+                  },
+                  "parameters": [
+                    "StartLabel",
+                    "=",
+                    "1000"
+                  ]
+                }
+              ]
+            },
+            {
               "type": "BuiltinCommonInstructions::Comment",
               "color": {
                 "b": 52,
@@ -3976,7 +3532,6 @@
           "comment": "Switch to keyboard"
         },
         {
-          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -4096,7 +3651,6 @@
           "comment": "Switch to gamepad"
         },
         {
-          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -4358,7 +3912,14 @@
                 },
                 {
                   "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::Once"
+                      },
+                      "parameters": []
+                    }
+                  ],
                   "actions": [
                     {
                       "type": {
@@ -4373,73 +3934,9 @@
                         "1",
                         ""
                       ]
-                    },
-                    {
-                      "type": {
-                        "value": "SetStringVariable"
-                      },
-                      "parameters": [
-                        "_INGAMEDATA_.GameState",
-                        "=",
-                        "_CONSTANTS_.GameState.Game"
-                      ]
                     }
                   ]
-                }
-              ]
-            }
-          ],
-          "parameters": []
-        },
-        {
-          "type": "BuiltinCommonInstructions::Comment",
-          "color": {
-            "b": 52,
-            "g": 44,
-            "r": 40,
-            "textB": 0,
-            "textG": 0,
-            "textR": 0
-          },
-          "comment": "\n\n"
-        },
-        {
-          "colorB": 177,
-          "colorG": 128,
-          "colorR": 29,
-          "creationTime": 0,
-          "name": "GAME",
-          "source": "",
-          "type": "BuiltinCommonInstructions::Group",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Comment",
-              "color": {
-                "b": 209,
-                "g": 199,
-                "r": 85,
-                "textB": 0,
-                "textG": 0,
-                "textR": 0
-              },
-              "comment": ""
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "StringVariable"
-                  },
-                  "parameters": [
-                    "_INGAMEDATA_.GameState",
-                    "=",
-                    "_CONSTANTS_.GameState.Game"
-                  ]
-                }
-              ],
-              "actions": [],
-              "events": [
+                },
                 {
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
@@ -4544,8 +4041,278 @@
                         "0.5",
                         ""
                       ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetStringVariable"
+                      },
+                      "parameters": [
+                        "_INGAMEDATA_.GameState",
+                        "=",
+                        "_CONSTANTS_.GameState.Game"
+                      ]
                     }
                   ]
+                }
+              ]
+            }
+          ],
+          "parameters": []
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "\n\n"
+        },
+        {
+          "colorB": 177,
+          "colorG": 128,
+          "colorR": 29,
+          "creationTime": 0,
+          "name": "GAME",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 209,
+                "g": 199,
+                "r": 85,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": ""
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "StringVariable"
+                  },
+                  "parameters": [
+                    "_INGAMEDATA_.GameState",
+                    "=",
+                    "_CONSTANTS_.GameState.Game"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::HasFinished"
+                  },
+                  "parameters": [
+                    "StartLabel",
+                    "Tween",
+                    "Timers.StartLabelScale"
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "colorB": 177,
+                  "colorG": 128,
+                  "colorR": 29,
+                  "creationTime": 0,
+                  "name": "Check gamestate",
+                  "source": "",
+                  "type": "BuiltinCommonInstructions::Group",
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "SceneInstancesCount"
+                          },
+                          "parameters": [
+                            "",
+                            "PlayerOne",
+                            "=",
+                            "0"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetStringVariable"
+                          },
+                          "parameters": [
+                            "_INGAMEDATA_.GameState",
+                            "=",
+                            "_CONSTANTS_.GameState.GameOver"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Log_Manager::WriteLog"
+                          },
+                          "parameters": [
+                            "",
+                            "Logger",
+                            "\"Change to GAME OVER\"",
+                            ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "SceneInstancesCount"
+                          },
+                          "parameters": [
+                            "",
+                            "Enemies",
+                            "=",
+                            "0"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetStringVariable"
+                          },
+                          "parameters": [
+                            "_INGAMEDATA_.GameState",
+                            "=",
+                            "_CONSTANTS_.GameState.GameWon"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Log_Manager::WriteLog"
+                          },
+                          "parameters": [
+                            "",
+                            "Logger",
+                            "\"Change to GAME WON!\"",
+                            ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 209,
+                        "g": 199,
+                        "r": 85,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "Pause gameplay"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "PauseGame",
+                            "True",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::Or"
+                          },
+                          "parameters": [],
+                          "subInstructions": [
+                            {
+                              "type": {
+                                "value": "StringVariable"
+                              },
+                              "parameters": [
+                                "_INGAMEDATA_.GameState",
+                                "!=",
+                                "_CONSTANTS_.GameState.GameOver"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "StringVariable"
+                              },
+                              "parameters": [
+                                "_INGAMEDATA_.GameState",
+                                "!=",
+                                "_CONSTANTS_.GameState.GameWon"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetStringVariable"
+                          },
+                          "parameters": [
+                            "_INGAMEDATA_.GameState",
+                            "=",
+                            "_CONSTANTS_.GameState.Pause"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "ChangeTimeScale"
+                          },
+                          "parameters": [
+                            "",
+                            "0"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Montre"
+                          },
+                          "parameters": [
+                            "PauseLabel",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetBooleanVariable"
+                          },
+                          "parameters": [
+                            "PauseGame",
+                            "False",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Log_Manager::WriteLog"
+                          },
+                          "parameters": [
+                            "",
+                            "Logger",
+                            "\"pause\"",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "parameters": []
                 },
                 {
                   "type": "BuiltinCommonInstructions::Comment",
@@ -4749,6 +4516,48 @@
                               },
                               "parameters": [
                                 "PlayerShoot",
+                                "True",
+                                ""
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "KeyFromTextReleased"
+                              },
+                              "parameters": [
+                                "",
+                                "_CONTROLS_.Players[0].Keyboard.Pause"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "StringVariable"
+                              },
+                              "parameters": [
+                                "_INGAMEDATA_.GameState",
+                                "!=",
+                                "_CONSTANTS_.GameState.Pause"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "BuiltinCommonInstructions::Once"
+                              },
+                              "parameters": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetBooleanVariable"
+                              },
+                              "parameters": [
+                                "PauseGame",
                                 "True",
                                 ""
                               ]
@@ -4970,6 +4779,50 @@
                               ]
                             }
                           ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "Gamepads::C_Button_released"
+                              },
+                              "parameters": [
+                                "",
+                                "1",
+                                "_CONTROLS_.Players[0].Gamepad.Pause",
+                                ""
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "StringVariable"
+                              },
+                              "parameters": [
+                                "_INGAMEDATA_.GameState",
+                                "!=",
+                                "_CONSTANTS_.GameState.Pause"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "BuiltinCommonInstructions::Once"
+                              },
+                              "parameters": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetBooleanVariable"
+                              },
+                              "parameters": [
+                                "PauseGame",
+                                "True",
+                                ""
+                              ]
+                            }
+                          ]
                         }
                       ]
                     },
@@ -5083,6 +4936,7 @@
                     },
                     {
                       "disabled": true,
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -5339,6 +5193,7 @@
                       "comment": "Leave marks when move"
                     },
                     {
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -5505,6 +5360,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Player one logic",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -5570,6 +5426,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Purple enemy logic",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -5587,6 +5444,7 @@
                       "comment": ""
                     },
                     {
+                      "disabled": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -5673,6 +5531,7 @@
                               "colorG": 128,
                               "colorR": 29,
                               "creationTime": 0,
+                              "folded": true,
                               "name": "On guard, if player is not near",
                               "source": "",
                               "type": "BuiltinCommonInstructions::Group",
@@ -6261,6 +6120,559 @@
                           "value": 0
                         }
                       ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "AjoutObjConcern"
+                          },
+                          "parameters": [
+                            "",
+                            "PurpleEnemy"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "LookY",
+                            "=",
+                            "PurpleEnemy.GetLookPointY()"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "LookX",
+                            "=",
+                            "PurpleEnemy.GetLookPointX()"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "PositionX",
+                            "=",
+                            "PurpleEnemy.X()"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "PositionY",
+                            "=",
+                            "PurpleEnemy.Y()"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "Angle",
+                            "=",
+                            "PurpleEnemy.GetCannonAngle()"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetStringVariable"
+                          },
+                          "parameters": [
+                            "Id",
+                            "=",
+                            "PurpleEnemy.ID"
+                          ]
+                        }
+                      ],
+                      "events": [
+                        {
+                          "colorB": 177,
+                          "colorG": 128,
+                          "colorR": 29,
+                          "creationTime": 0,
+                          "name": "On guard, if player is not near",
+                          "source": "",
+                          "type": "BuiltinCommonInstructions::Group",
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Comment",
+                              "color": {
+                                "b": 209,
+                                "g": 199,
+                                "r": 85,
+                                "textB": 0,
+                                "textG": 0,
+                                "textR": 0
+                              },
+                              "comment": ""
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "Raycast"
+                                  },
+                                  "parameters": [
+                                    "VisibleToEnemy",
+                                    "LookX",
+                                    "LookY",
+                                    "Angle",
+                                    "_DATA_.Enemies.PurpleEnemy.LookDistance",
+                                    "intersectX",
+                                    "intersectY",
+                                    ""
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetBooleanVariable"
+                                  },
+                                  "parameters": [
+                                    "SeeSomething",
+                                    "True",
+                                    ""
+                                  ]
+                                }
+                              ],
+                              "events": [
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "BuiltinCommonInstructions::CompareStrings"
+                                      },
+                                      "parameters": [
+                                        "VisibleToEnemy.Type",
+                                        "=",
+                                        "_CONSTANTS_.Entities.Player"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetBooleanVariable"
+                                      },
+                                      "parameters": [
+                                        "SeePlayer",
+                                        "True",
+                                        ""
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "PrimitiveDrawing::OutlineColor"
+                                      },
+                                      "parameters": [
+                                        "NewShapePainter",
+                                        "\"123;223;122\""
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "PrimitiveDrawing::LineV2"
+                                      },
+                                      "parameters": [
+                                        "NewShapePainter",
+                                        "LookX",
+                                        "LookY",
+                                        "intersectX",
+                                        "intersectY",
+                                        "1"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "BooleanVariable"
+                                      },
+                                      "parameters": [
+                                        "SeePlayer",
+                                        "=",
+                                        ""
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "PrimitiveDrawing::OutlineColor"
+                                      },
+                                      "parameters": [
+                                        "NewShapePainter",
+                                        "\"223;122;122\""
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "PrimitiveDrawing::LineV2"
+                                      },
+                                      "parameters": [
+                                        "NewShapePainter",
+                                        "LookX",
+                                        "LookY",
+                                        "intersectX",
+                                        "intersectY",
+                                        "1"
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "BooleanVariable"
+                                  },
+                                  "parameters": [
+                                    "SeeSomething",
+                                    "False",
+                                    ""
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "PrimitiveDrawing::OutlineColor"
+                                  },
+                                  "parameters": [
+                                    "NewShapePainter",
+                                    "\"223;122;122\""
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "PrimitiveDrawing::LineV2"
+                                  },
+                                  "parameters": [
+                                    "NewShapePainter",
+                                    "LookX",
+                                    "LookY",
+                                    "XFromAngleAndDistance(Angle, _DATA_.Enemies.PurpleEnemy.LookDistance) + PositionX",
+                                    "YFromAngleAndDistance(Angle, _DATA_.Enemies.PurpleEnemy.LookDistance) + PositionY",
+                                    "1"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "BooleanVariable"
+                                  },
+                                  "parameters": [
+                                    "SeePlayer",
+                                    "=",
+                                    ""
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "AngleOffset",
+                                    "=",
+                                    "_DATA_.Enemies.PurpleEnemy.LookSpeed * TimeDelta() * LayerTimeScale(_CONSTANTS_.Layers.Base)"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "SetNumberObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "PurpleEnemy",
+                                    "AngleRotationCount",
+                                    "+",
+                                    "AngleOffset"
+                                  ]
+                                }
+                              ],
+                              "events": [
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "NumberObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "PurpleEnemy",
+                                        "AngleRotationCount",
+                                        ">=",
+                                        "PurpleEnemy.AngleRotationFieldOfvision"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetNumberObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "PurpleEnemy",
+                                        "AngleRotationCount",
+                                        "=",
+                                        "0"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "SetNumberObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "PurpleEnemy",
+                                        "AngleRotationCountOperationSign",
+                                        "=",
+                                        "-PurpleEnemy.AngleRotationCountOperationSign"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetNumberObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "PurpleEnemy",
+                                        "CurrentLookAngle",
+                                        "+",
+                                        "AngleOffset * PurpleEnemy.AngleRotationCountOperationSign"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "CustomObjects::Player::LookToByAngle"
+                                      },
+                                      "parameters": [
+                                        "PurpleEnemy",
+                                        "PurpleEnemy.CurrentLookAngle",
+                                        ""
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "NumberObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "PurpleEnemy",
+                                        "CurrentLookAngle",
+                                        ">=",
+                                        "360"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetNumberObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "PurpleEnemy",
+                                        "CurrentLookAngle",
+                                        "-",
+                                        "360"
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "variables": [
+                                {
+                                  "name": "AngleOffset",
+                                  "type": "number",
+                                  "value": 0
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "StringObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "WhiteBullet",
+                                    "TankID",
+                                    "=",
+                                    "Id"
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "BulletList[Id]",
+                                    "=",
+                                    "PickedInstancesCount(WhiteBullet)"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "BooleanVariable"
+                                  },
+                                  "parameters": [
+                                    "SeePlayer",
+                                    "True",
+                                    ""
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "NumberVariable"
+                                  },
+                                  "parameters": [
+                                    "BulletList[Id]",
+                                    "<",
+                                    "_DATA_.Enemies.PurpleEnemy.MaxBullets"
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "CustomObjects::ShootWhiteBullet"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "BulletSmoke",
+                                    "Sticker",
+                                    "PurpleEnemy",
+                                    "ShootBullet",
+                                    "WhiteBullet",
+                                    "Animation",
+                                    "_DATA_.Bullets.YellowSmall.Speed",
+                                    ""
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "ChangeLayer"
+                                  },
+                                  "parameters": [
+                                    "WhiteBullet",
+                                    "_CONSTANTS_.Layers.Base"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "ChangeLayer"
+                                  },
+                                  "parameters": [
+                                    "BulletSmoke",
+                                    "_CONSTANTS_.Layers.Base"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "SetStringObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "WhiteBullet",
+                                    "TankID",
+                                    "=",
+                                    "Id"
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "parameters": []
+                        }
+                      ],
+                      "variables": [
+                        {
+                          "name": "SeePlayer",
+                          "type": "boolean",
+                          "value": false
+                        },
+                        {
+                          "name": "SeeSomething",
+                          "type": "boolean",
+                          "value": false
+                        },
+                        {
+                          "name": "LookX",
+                          "type": "number",
+                          "value": 0
+                        },
+                        {
+                          "name": "LookY",
+                          "type": "number",
+                          "value": 0
+                        },
+                        {
+                          "name": "PositionX",
+                          "type": "number",
+                          "value": 0
+                        },
+                        {
+                          "name": "PositionY",
+                          "type": "number",
+                          "value": 0
+                        },
+                        {
+                          "name": "Angle",
+                          "type": "number",
+                          "value": 0
+                        },
+                        {
+                          "name": "Id",
+                          "type": "string",
+                          "value": "0"
+                        },
+                        {
+                          "name": "BulletsCount",
+                          "type": "number",
+                          "value": 0
+                        }
+                      ]
                     }
                   ],
                   "parameters": []
@@ -6282,6 +6694,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Bullets",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -6314,19 +6727,7 @@
                           ]
                         }
                       ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "Log_Manager::WriteLog"
-                          },
-                          "parameters": [
-                            "",
-                            "Logger",
-                            "ToString(PickedInstancesCount(BulletCollide))",
-                            ""
-                          ]
-                        }
-                      ],
+                      "actions": [],
                       "events": [
                         {
                           "type": "BuiltinCommonInstructions::Comment",
@@ -6354,9 +6755,21 @@
                               ]
                             }
                           ],
-                          "actions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetBooleanVariable"
+                              },
+                              "parameters": [
+                                "DestroyBullet",
+                                "True",
+                                ""
+                              ]
+                            }
+                          ],
                           "events": [
                             {
+                              "disabled": true,
                               "type": "BuiltinCommonInstructions::Standard",
                               "conditions": [
                                 {
@@ -6385,6 +6798,7 @@
                               ]
                             },
                             {
+                              "disabled": true,
                               "type": "BuiltinCommonInstructions::Standard",
                               "conditions": [],
                               "actions": [
@@ -6802,17 +7216,26 @@
                                 "-",
                                 "1"
                               ]
-                            },
+                            }
+                          ],
+                          "events": [
                             {
-                              "type": {
-                                "value": "Create"
-                              },
-                              "parameters": [
-                                "",
-                                "Explosion",
-                                "Bullets.CenterX()",
-                                "Bullets.CenterY()",
-                                "_CONSTANTS_.Layers.Base"
+                              "disabled": true,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "Create"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "Explosion",
+                                    "Bullets.CenterX()",
+                                    "Bullets.CenterY()",
+                                    "_CONSTANTS_.Layers.Base"
+                                  ]
+                                }
                               ]
                             }
                           ]
@@ -6840,96 +7263,6 @@
                     "textR": 0
                   },
                   "comment": "\n\n"
-                },
-                {
-                  "colorB": 177,
-                  "colorG": 128,
-                  "colorR": 29,
-                  "creationTime": 0,
-                  "name": "Check gamestate",
-                  "source": "",
-                  "type": "BuiltinCommonInstructions::Group",
-                  "events": [
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "SceneInstancesCount"
-                          },
-                          "parameters": [
-                            "",
-                            "PlayerOne",
-                            "=",
-                            "0"
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "SetStringVariable"
-                          },
-                          "parameters": [
-                            "_INGAMEDATA_.GameState",
-                            "=",
-                            "_CONSTANTS_.GameState.GameOver"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "Log_Manager::WriteLog"
-                          },
-                          "parameters": [
-                            "",
-                            "Logger",
-                            "\"Change to GAME OVER\"",
-                            ""
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "SceneInstancesCount"
-                          },
-                          "parameters": [
-                            "",
-                            "Enemies",
-                            "=",
-                            "0"
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "SetStringVariable"
-                          },
-                          "parameters": [
-                            "_INGAMEDATA_.GameState",
-                            "=",
-                            "_CONSTANTS_.GameState.GameWon"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "Log_Manager::WriteLog"
-                          },
-                          "parameters": [
-                            "",
-                            "Logger",
-                            "\"Change to GAME WON!\"",
-                            ""
-                          ]
-                        }
-                      ]
-                    }
-                  ],
-                  "parameters": []
                 }
               ]
             }
@@ -6983,7 +7316,244 @@
                   ]
                 }
               ],
-              "actions": []
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "Resume Gameplay"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanVariable"
+                      },
+                      "parameters": [
+                        "ResumeGame",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetStringVariable"
+                      },
+                      "parameters": [
+                        "_INGAMEDATA_.GameState",
+                        "=",
+                        "_CONSTANTS_.GameState.Game"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Cache"
+                      },
+                      "parameters": [
+                        "PauseLabel"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ChangeTimeScale"
+                      },
+                      "parameters": [
+                        "",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Log_Manager::WriteLog"
+                      },
+                      "parameters": [
+                        "",
+                        "Logger",
+                        "\"resume\"",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetBooleanVariable"
+                      },
+                      "parameters": [
+                        "ResumeGame",
+                        "False",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "colorB": 177,
+                  "colorG": 128,
+                  "colorR": 29,
+                  "creationTime": 0,
+                  "name": "Player one actions",
+                  "source": "",
+                  "type": "BuiltinCommonInstructions::Group",
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 209,
+                        "g": 199,
+                        "r": 85,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "Keyboard actions"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "StringVariable"
+                          },
+                          "parameters": [
+                            "_CONTROLS_.Players[0].InputType",
+                            "=",
+                            "_CONSTANTS_.InputType.Keyboard"
+                          ]
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "KeyFromTextReleased"
+                              },
+                              "parameters": [
+                                "",
+                                "_CONTROLS_.Players[0].Keyboard.Pause"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "StringVariable"
+                              },
+                              "parameters": [
+                                "_INGAMEDATA_.GameState",
+                                "!=",
+                                "_CONSTANTS_.GameState.Game"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "BuiltinCommonInstructions::Once"
+                              },
+                              "parameters": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetBooleanVariable"
+                              },
+                              "parameters": [
+                                "ResumeGame",
+                                "True",
+                                ""
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 209,
+                        "g": 199,
+                        "r": 85,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "Gamepad actions"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "StringVariable"
+                          },
+                          "parameters": [
+                            "_CONTROLS_.Players[0].InputType",
+                            "=",
+                            "_CONSTANTS_.InputType.Gamepad"
+                          ]
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "Gamepads::C_Button_released"
+                              },
+                              "parameters": [
+                                "",
+                                "1",
+                                "_CONTROLS_.Players[0].Gamepad.Pause",
+                                ""
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "StringVariable"
+                              },
+                              "parameters": [
+                                "_INGAMEDATA_.GameState",
+                                "!=",
+                                "_CONSTANTS_.GameState.Game"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "BuiltinCommonInstructions::Once"
+                              },
+                              "parameters": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetBooleanVariable"
+                              },
+                              "parameters": [
+                                "ResumeGame",
+                                "True",
+                                ""
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "parameters": []
+                }
+              ]
             }
           ],
           "parameters": []
@@ -7005,6 +7575,7 @@
           "colorG": 128,
           "colorR": 29,
           "creationTime": 0,
+          "folded": true,
           "name": "GAME WON",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -7167,6 +7738,7 @@
           "colorG": 128,
           "colorR": 29,
           "creationTime": 0,
+          "folded": true,
           "name": "GAME OVER",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -7366,6 +7938,96 @@
         }
       ],
       "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 177,
+      "colorG": 128,
+      "colorR": 29,
+      "creationTime": 0,
+      "name": "Global events",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 209,
+        "g": 199,
+        "r": 85,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "Count particles"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "TotalParticles",
+            "=",
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::ForEach",
+      "object": "ParticleEmitters",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "TotalParticles",
+            "+",
+            "ParticleEmitters.CurrentParticleCount()"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+          },
+          "parameters": [
+            "particlecount",
+            "Text",
+            "=",
+            "ToString(TotalParticles)"
+          ]
+        }
+      ]
     }
   ],
   "layers": [
