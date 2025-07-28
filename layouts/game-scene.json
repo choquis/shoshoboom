@@ -3078,7 +3078,6 @@
           "comment": ""
         },
         {
-          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -3101,7 +3100,7 @@
                     "value": "BooleanVariable"
                   },
                   "parameters": [
-                    "_DEBUG_",
+                    "_CONFIG_.debug",
                     "True",
                     ""
                   ]
@@ -3139,7 +3138,7 @@
                     "value": "BooleanVariable"
                   },
                   "parameters": [
-                    "_DEBUG_",
+                    "_CONFIG_.debug",
                     "False",
                     ""
                   ]
@@ -3190,7 +3189,7 @@
                   },
                   "parameters": [
                     "",
-                    "_CONTROLS_.Players[0].Gamepad.LookDown",
+                    "_CONFIG_.Players[0].Gamepad.LookDown",
                     "\",\"",
                     "playerOne.gamepad.look.down",
                     ""
@@ -3202,7 +3201,7 @@
                   },
                   "parameters": [
                     "",
-                    "_CONTROLS_.Players[0].Gamepad.LookLeft",
+                    "_CONFIG_.Players[0].Gamepad.LookLeft",
                     "\",\"",
                     "playerOne.gamepad.look.left",
                     ""
@@ -3214,7 +3213,7 @@
                   },
                   "parameters": [
                     "",
-                    "_CONTROLS_.Players[0].Gamepad.LookRight",
+                    "_CONFIG_.Players[0].Gamepad.LookRight",
                     "\",\"",
                     "playerOne.gamepad.look.right",
                     ""
@@ -3226,7 +3225,7 @@
                   },
                   "parameters": [
                     "",
-                    "_CONTROLS_.Players[0].Gamepad.LookUp",
+                    "_CONFIG_.Players[0].Gamepad.LookUp",
                     "\",\"",
                     "playerOne.gamepad.look.up",
                     ""
@@ -3238,7 +3237,7 @@
                   },
                   "parameters": [
                     "",
-                    "_CONTROLS_.Players[0].Gamepad.MoveDown",
+                    "_CONFIG_.Players[0].Gamepad.MoveDown",
                     "\",\"",
                     "playerOne.gamepad.move.down",
                     ""
@@ -3250,7 +3249,7 @@
                   },
                   "parameters": [
                     "",
-                    "_CONTROLS_.Players[0].Gamepad.MoveLeft",
+                    "_CONFIG_.Players[0].Gamepad.MoveLeft",
                     "\",\"",
                     "playerOne.gamepad.move.left",
                     ""
@@ -3262,7 +3261,7 @@
                   },
                   "parameters": [
                     "",
-                    "_CONTROLS_.Players[0].Gamepad.MoveRight",
+                    "_CONFIG_.Players[0].Gamepad.MoveRight",
                     "\",\"",
                     "playerOne.gamepad.move.right",
                     ""
@@ -3274,7 +3273,7 @@
                   },
                   "parameters": [
                     "",
-                    "_CONTROLS_.Players[0].Gamepad.MoveUp",
+                    "_CONFIG_.Players[0].Gamepad.MoveUp",
                     "\",\"",
                     "playerOne.gamepad.move.up",
                     ""
@@ -3547,7 +3546,7 @@
                 "value": "StringVariable"
               },
               "parameters": [
-                "_CONTROLS_.Players[0].InputType",
+                "_CONFIG_.Players[0].InputType",
                 "=",
                 "_CONSTANTS_.InputType.Gamepad"
               ]
@@ -3576,7 +3575,7 @@
                 "value": "SetStringVariable"
               },
               "parameters": [
-                "_CONTROLS_.Players[0].InputType",
+                "_CONFIG_.Players[0].InputType",
                 "=",
                 "_CONSTANTS_.InputType.Keyboard"
               ]
@@ -3597,7 +3596,7 @@
             {
               "disabled": true,
               "type": "BuiltinCommonInstructions::ForEachChildVariable",
-              "iterableVariableName": "_CONTROLS_.player_one.keyboard",
+              "iterableVariableName": "_CONFIG_.player_one.keyboard",
               "valueIteratorVariableName": "loopChildText",
               "keyIteratorVariableName": "",
               "conditions": [
@@ -3618,7 +3617,7 @@
                     "value": "SetStringVariable"
                   },
                   "parameters": [
-                    "_CONTROLS_.player_one.inputType",
+                    "_CONFIG_.player_one.inputType",
                     "=",
                     "_CONSTANTS_.InputType.Keyboard"
                   ]
@@ -3668,7 +3667,7 @@
                 "value": "StringVariable"
               },
               "parameters": [
-                "_CONTROLS_.Players[0].InputType",
+                "_CONFIG_.Players[0].InputType",
                 "=",
                 "_CONSTANTS_.InputType.Keyboard"
               ]
@@ -3697,7 +3696,7 @@
                 "value": "SetStringVariable"
               },
               "parameters": [
-                "_CONTROLS_.Players[0].InputType",
+                "_CONFIG_.Players[0].InputType",
                 "=",
                 "_CONSTANTS_.InputType.Gamepad"
               ]
@@ -3718,7 +3717,7 @@
             {
               "disabled": true,
               "type": "BuiltinCommonInstructions::ForEachChildVariable",
-              "iterableVariableName": "_CONTROLS_.player_one.gamepad",
+              "iterableVariableName": "_CONFIG_.player_one.gamepad",
               "valueIteratorVariableName": "loopChildText",
               "keyIteratorVariableName": "",
               "conditions": [
@@ -3739,7 +3738,7 @@
                     "value": "SetStringVariable"
                   },
                   "parameters": [
-                    "_CONTROLS_.player_one.inputType",
+                    "_CONFIG_.player_one.inputType",
                     "=",
                     "_CONSTANTS_.InputType.Gamepad"
                   ]
@@ -3753,6 +3752,759 @@
                     "Animation",
                     "=",
                     "_CONSTANTS_.InputType.Gamepad"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 177,
+      "colorG": 128,
+      "colorR": 29,
+      "creationTime": 0,
+      "name": "Player one inputs",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 209,
+            "g": 199,
+            "r": 85,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "Keyboard actions"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "StringVariable"
+              },
+              "parameters": [
+                "_CONFIG_.Players[0].InputType",
+                "=",
+                "_CONSTANTS_.InputType.Keyboard"
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "KeyFromTextPressed"
+                  },
+                  "parameters": [
+                    "",
+                    "_CONFIG_.Players[0].Keyboard.MoveDown"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "TopDownMovementBehavior::SimulateDownKey"
+                  },
+                  "parameters": [
+                    "PlayerOne",
+                    "TopDownMovement"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "KeyFromTextPressed"
+                  },
+                  "parameters": [
+                    "",
+                    "_CONFIG_.Players[0].Keyboard.MoveLeft"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "TopDownMovementBehavior::SimulateLeftKey"
+                  },
+                  "parameters": [
+                    "PlayerOne",
+                    "TopDownMovement"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "KeyFromTextPressed"
+                  },
+                  "parameters": [
+                    "",
+                    "_CONFIG_.Players[0].Keyboard.MoveRight"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "TopDownMovementBehavior::SimulateRightKey"
+                  },
+                  "parameters": [
+                    "PlayerOne",
+                    "TopDownMovement"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "KeyFromTextPressed"
+                  },
+                  "parameters": [
+                    "",
+                    "_CONFIG_.Players[0].Keyboard.MoveUp"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "TopDownMovementBehavior::SimulateUpKey"
+                  },
+                  "parameters": [
+                    "PlayerOne",
+                    "TopDownMovement"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Player::LookToByPoint"
+                  },
+                  "parameters": [
+                    "PlayerOne",
+                    "CursorX()",
+                    "CursorY()",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "KeyFromTextPressed"
+                  },
+                  "parameters": [
+                    "",
+                    "_CONFIG_.Players[0].Keyboard.Shoot"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "BulletList[PlayerOne.ID]",
+                    "<",
+                    "_DATA_.Player.MaxBullets"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "PlayerShoot",
+                    "True",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "KeyFromTextPressed"
+                  },
+                  "parameters": [
+                    "",
+                    "_CONFIG_.Players[0].Keyboard.Pause"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "StringVariable"
+                      },
+                      "parameters": [
+                        "_INGAMEDATA_.GameState",
+                        "=",
+                        "_CONSTANTS_.GameState.Game"
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "PauseGame",
+                            "False",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::Or"
+                          },
+                          "parameters": [],
+                          "subInstructions": [
+                            {
+                              "type": {
+                                "value": "StringVariable"
+                              },
+                              "parameters": [
+                                "_INGAMEDATA_.GameState",
+                                "!=",
+                                "_CONSTANTS_.GameState.GameOver"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "StringVariable"
+                              },
+                              "parameters": [
+                                "_INGAMEDATA_.GameState",
+                                "!=",
+                                "_CONSTANTS_.GameState.GameWon"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetBooleanVariable"
+                          },
+                          "parameters": [
+                            "PauseGame",
+                            "True",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetStringVariable"
+                          },
+                          "parameters": [
+                            "_INGAMEDATA_.GameState",
+                            "=",
+                            "_CONSTANTS_.GameState.Pause"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "StringVariable"
+                      },
+                      "parameters": [
+                        "_INGAMEDATA_.GameState",
+                        "=",
+                        "_CONSTANTS_.GameState.Pause"
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "PauseGame",
+                            "False",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetBooleanVariable"
+                          },
+                          "parameters": [
+                            "PauseGame",
+                            "True",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetStringVariable"
+                          },
+                          "parameters": [
+                            "_INGAMEDATA_.GameState",
+                            "=",
+                            "_CONSTANTS_.GameState.Game"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 209,
+            "g": 199,
+            "r": 85,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "Gamepad actions"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "StringVariable"
+              },
+              "parameters": [
+                "_CONFIG_.Players[0].InputType",
+                "=",
+                "_CONSTANTS_.InputType.Gamepad"
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Gamepads::C_Axis_pushed"
+                  },
+                  "parameters": [
+                    "",
+                    "1",
+                    "playerOne.gamepad.move.down[0]",
+                    "playerOne.gamepad.move.down[1]",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "TopDownMovementBehavior::SimulateDownKey"
+                  },
+                  "parameters": [
+                    "PlayerOne",
+                    "TopDownMovement"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Gamepads::C_Axis_pushed"
+                  },
+                  "parameters": [
+                    "",
+                    "1",
+                    "playerOne.gamepad.move.left[0]",
+                    "playerOne.gamepad.move.left[1]",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "TopDownMovementBehavior::SimulateLeftKey"
+                  },
+                  "parameters": [
+                    "PlayerOne",
+                    "TopDownMovement"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Gamepads::C_Axis_pushed"
+                  },
+                  "parameters": [
+                    "",
+                    "1",
+                    "playerOne.gamepad.move.right[0]",
+                    "playerOne.gamepad.move.right[1]",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "TopDownMovementBehavior::SimulateRightKey"
+                  },
+                  "parameters": [
+                    "PlayerOne",
+                    "TopDownMovement"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Gamepads::C_Axis_pushed"
+                  },
+                  "parameters": [
+                    "",
+                    "1",
+                    "playerOne.gamepad.move.up[0]",
+                    "playerOne.gamepad.move.up[1]",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "TopDownMovementBehavior::SimulateUpKey"
+                  },
+                  "parameters": [
+                    "PlayerOne",
+                    "TopDownMovement"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Gamepads::C_Axis_pushed"
+                  },
+                  "parameters": [
+                    "",
+                    "1",
+                    "\"Right\"",
+                    "\"Any\"",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Player::LookToByVector"
+                  },
+                  "parameters": [
+                    "PlayerOne",
+                    "Gamepads::StickForceX(1, \"Right\")",
+                    "Gamepads::StickForceY(1, \"Right\")",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Gamepads::C_Button_pressed"
+                  },
+                  "parameters": [
+                    "",
+                    "1",
+                    "_CONFIG_.Players[0].Gamepad.Shoot",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "BulletList[PlayerOne.ID]",
+                    "<",
+                    "_DATA_.Player.MaxBullets"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "PlayerShoot",
+                    "True",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Gamepads::C_Button_released"
+                  },
+                  "parameters": [
+                    "",
+                    "1",
+                    "_CONFIG_.Players[0].Gamepad.Pause",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "StringVariable"
+                      },
+                      "parameters": [
+                        "_INGAMEDATA_.GameState",
+                        "=",
+                        "_CONSTANTS_.GameState.Game"
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "PauseGame",
+                            "False",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::Or"
+                          },
+                          "parameters": [],
+                          "subInstructions": [
+                            {
+                              "type": {
+                                "value": "StringVariable"
+                              },
+                              "parameters": [
+                                "_INGAMEDATA_.GameState",
+                                "!=",
+                                "_CONSTANTS_.GameState.GameOver"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "StringVariable"
+                              },
+                              "parameters": [
+                                "_INGAMEDATA_.GameState",
+                                "!=",
+                                "_CONSTANTS_.GameState.GameWon"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetBooleanVariable"
+                          },
+                          "parameters": [
+                            "PauseGame",
+                            "True",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetStringVariable"
+                          },
+                          "parameters": [
+                            "_INGAMEDATA_.GameState",
+                            "=",
+                            "_CONSTANTS_.GameState.Pause"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "StringVariable"
+                      },
+                      "parameters": [
+                        "_INGAMEDATA_.GameState",
+                        "=",
+                        "_CONSTANTS_.GameState.Pause"
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "PauseGame",
+                            "False",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetBooleanVariable"
+                          },
+                          "parameters": [
+                            "PauseGame",
+                            "True",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetStringVariable"
+                          },
+                          "parameters": [
+                            "_INGAMEDATA_.GameState",
+                            "=",
+                            "_CONSTANTS_.GameState.Game"
+                          ]
+                        }
+                      ]
+                    }
                   ]
                 }
               ]
@@ -3840,10 +4592,16 @@
                         "value": "BooleanVariable"
                       },
                       "parameters": [
-                        "_DEBUG_",
+                        "_CONFIG_.debug",
                         "False",
                         ""
                       ]
+                    },
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::Once"
+                      },
+                      "parameters": []
                     }
                   ],
                   "actions": [
@@ -3906,6 +4664,16 @@
                         "StartPosition.X()",
                         "StartPosition.Y()",
                         "_CONSTANTS_.Layers.Base"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ChangePlan"
+                      },
+                      "parameters": [
+                        "PlayerOne",
+                        "=",
+                        "3"
                       ]
                     }
                   ]
@@ -4215,7 +4983,7 @@
                         "textG": 0,
                         "textR": 0
                       },
-                      "comment": "Pause gameplay"
+                      "comment": "Resume gameplay"
                     },
                     {
                       "type": "BuiltinCommonInstructions::Standard",
@@ -4229,62 +4997,34 @@
                             "True",
                             ""
                           ]
-                        },
-                        {
-                          "type": {
-                            "value": "BuiltinCommonInstructions::Or"
-                          },
-                          "parameters": [],
-                          "subInstructions": [
-                            {
-                              "type": {
-                                "value": "StringVariable"
-                              },
-                              "parameters": [
-                                "_INGAMEDATA_.GameState",
-                                "!=",
-                                "_CONSTANTS_.GameState.GameOver"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "StringVariable"
-                              },
-                              "parameters": [
-                                "_INGAMEDATA_.GameState",
-                                "!=",
-                                "_CONSTANTS_.GameState.GameWon"
-                              ]
-                            }
-                          ]
                         }
                       ],
                       "actions": [
-                        {
-                          "type": {
-                            "value": "SetStringVariable"
-                          },
-                          "parameters": [
-                            "_INGAMEDATA_.GameState",
-                            "=",
-                            "_CONSTANTS_.GameState.Pause"
-                          ]
-                        },
                         {
                           "type": {
                             "value": "ChangeTimeScale"
                           },
                           "parameters": [
                             "",
-                            "0"
+                            "1"
                           ]
                         },
                         {
                           "type": {
-                            "value": "Montre"
+                            "value": "Cache"
                           },
                           "parameters": [
-                            "PauseLabel",
+                            "PauseLabel"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Log_Manager::WriteLog"
+                          },
+                          "parameters": [
+                            "",
+                            "Logger",
+                            "\"resume\"",
                             ""
                           ]
                         },
@@ -4295,17 +5035,6 @@
                           "parameters": [
                             "PauseGame",
                             "False",
-                            ""
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "Log_Manager::WriteLog"
-                          },
-                          "parameters": [
-                            "",
-                            "Logger",
-                            "\"pause\"",
                             ""
                           ]
                         }
@@ -4331,6 +5060,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Player one actions",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -4348,6 +5078,8 @@
                       "comment": "Keyboard actions"
                     },
                     {
+                      "disabled": true,
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -4355,7 +5087,7 @@
                             "value": "StringVariable"
                           },
                           "parameters": [
-                            "_CONTROLS_.Players[0].InputType",
+                            "_CONFIG_.Players[0].InputType",
                             "=",
                             "_CONSTANTS_.InputType.Keyboard"
                           ]
@@ -4372,7 +5104,7 @@
                               },
                               "parameters": [
                                 "",
-                                "_CONTROLS_.Players[0].Keyboard.MoveDown"
+                                "_CONFIG_.Players[0].Keyboard.MoveDown"
                               ]
                             }
                           ],
@@ -4397,7 +5129,7 @@
                               },
                               "parameters": [
                                 "",
-                                "_CONTROLS_.Players[0].Keyboard.MoveLeft"
+                                "_CONFIG_.Players[0].Keyboard.MoveLeft"
                               ]
                             }
                           ],
@@ -4422,7 +5154,7 @@
                               },
                               "parameters": [
                                 "",
-                                "_CONTROLS_.Players[0].Keyboard.MoveRight"
+                                "_CONFIG_.Players[0].Keyboard.MoveRight"
                               ]
                             }
                           ],
@@ -4447,7 +5179,7 @@
                               },
                               "parameters": [
                                 "",
-                                "_CONTROLS_.Players[0].Keyboard.MoveUp"
+                                "_CONFIG_.Players[0].Keyboard.MoveUp"
                               ]
                             }
                           ],
@@ -4489,7 +5221,7 @@
                               },
                               "parameters": [
                                 "",
-                                "_CONTROLS_.Players[0].Keyboard.Shoot"
+                                "_CONFIG_.Players[0].Keyboard.Shoot"
                               ]
                             },
                             {
@@ -4531,7 +5263,7 @@
                               },
                               "parameters": [
                                 "",
-                                "_CONTROLS_.Players[0].Keyboard.Pause"
+                                "_CONFIG_.Players[0].Keyboard.Pause"
                               ]
                             },
                             {
@@ -4579,6 +5311,8 @@
                       "comment": "Gamepad actions"
                     },
                     {
+                      "disabled": true,
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -4586,7 +5320,7 @@
                             "value": "StringVariable"
                           },
                           "parameters": [
-                            "_CONTROLS_.Players[0].InputType",
+                            "_CONFIG_.Players[0].InputType",
                             "=",
                             "_CONSTANTS_.InputType.Gamepad"
                           ]
@@ -4746,7 +5480,7 @@
                               "parameters": [
                                 "",
                                 "1",
-                                "_CONTROLS_.Players[0].Gamepad.Shoot",
+                                "_CONFIG_.Players[0].Gamepad.Shoot",
                                 ""
                               ]
                             },
@@ -4790,7 +5524,7 @@
                               "parameters": [
                                 "",
                                 "1",
-                                "_CONTROLS_.Players[0].Gamepad.Pause",
+                                "_CONFIG_.Players[0].Gamepad.Pause",
                                 ""
                               ]
                             },
@@ -4837,248 +5571,6 @@
                         "textR": 0
                       },
                       "comment": "Shoot"
-                    },
-                    {
-                      "disabled": true,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "BooleanVariable"
-                          },
-                          "parameters": [
-                            "PlayerShoot",
-                            "True",
-                            ""
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "CustomObjects::ShootBullet::Shoot"
-                          },
-                          "parameters": [
-                            "PlayerOne",
-                            "ShootBullet",
-                            "PlayerOne.GetLookPointX()",
-                            "PlayerOne.GetLookPointY()",
-                            "YellowBullet",
-                            "PlayerOne.GetCannonAngle()",
-                            "_DATA_.Bullets.YellowSmall.Speed",
-                            ""
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetStringObjectVariable"
-                          },
-                          "parameters": [
-                            "YellowBullet",
-                            "TankID",
-                            "=",
-                            "PlayerOne.ID"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "ChangeLayer"
-                          },
-                          "parameters": [
-                            "YellowBullet",
-                            "_CONSTANTS_.Layers.Base"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetNumberVariable"
-                          },
-                          "parameters": [
-                            "BulletList[PlayerOne.ID]",
-                            "=",
-                            "SceneInstancesCount(YellowBullet)"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetBooleanVariable"
-                          },
-                          "parameters": [
-                            "PlayerShoot",
-                            "False",
-                            ""
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "Create"
-                          },
-                          "parameters": [
-                            "",
-                            "BulletSmoke",
-                            "YellowBullet.CenterX()",
-                            "YellowBullet.CenterY()",
-                            "_CONSTANTS_.Layers.Base"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "Sticker::Sticker::Stick"
-                          },
-                          "parameters": [
-                            "BulletSmoke",
-                            "Sticker",
-                            "YellowBullet",
-                            ""
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "disabled": true,
-                      "folded": true,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "BooleanVariable"
-                          },
-                          "parameters": [
-                            "PlayerShoot",
-                            "True",
-                            ""
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "CustomObjects::ShootBullet::Shoot"
-                          },
-                          "parameters": [
-                            "PlayerOne",
-                            "ShootBullet",
-                            "PlayerOne.GetLookPointX()",
-                            "PlayerOne.GetLookPointY()",
-                            "WhiteBullet",
-                            "PlayerOne.GetCannonAngle()",
-                            "_DATA_.Bullets.YellowSmall.Speed",
-                            ""
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetStringObjectVariable"
-                          },
-                          "parameters": [
-                            "WhiteBullet",
-                            "TankID",
-                            "=",
-                            "PlayerOne.ID"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "ChangeLayer"
-                          },
-                          "parameters": [
-                            "WhiteBullet",
-                            "_CONSTANTS_.Layers.Base"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetNumberVariable"
-                          },
-                          "parameters": [
-                            "BulletList[PlayerOne.ID]",
-                            "=",
-                            "SceneInstancesCount(WhiteBullet)"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetBooleanVariable"
-                          },
-                          "parameters": [
-                            "PlayerShoot",
-                            "False",
-                            ""
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "Create"
-                          },
-                          "parameters": [
-                            "",
-                            "BulletSmoke",
-                            "WhiteBullet.CenterX()",
-                            "WhiteBullet.CenterY()",
-                            "_CONSTANTS_.Layers.Base"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "Sticker::Sticker::Stick"
-                          },
-                          "parameters": [
-                            "BulletSmoke",
-                            "Sticker",
-                            "WhiteBullet",
-                            ""
-                          ]
-                        }
-                      ],
-                      "events": [
-                        {
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [],
-                          "actions": [
-                            {
-                              "type": {
-                                "value": "AnimatableCapability::AnimatableBehavior::PauseAnimation"
-                              },
-                              "parameters": [
-                                "WhiteBullet",
-                                "Animation"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "AnimatableCapability::AnimatableBehavior::SetIndex"
-                              },
-                              "parameters": [
-                                "WhiteBullet",
-                                "Animation",
-                                "=",
-                                "1"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "ChangeSprite"
-                              },
-                              "parameters": [
-                                "WhiteBullet",
-                                "=",
-                                "CustomObjects::GetFrameByAngle12frames(PlayerOne.GetCannonAngle())"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "Log_Manager::WriteLog"
-                              },
-                              "parameters": [
-                                "",
-                                "Logger",
-                                "ToString(CustomObjects::GetFrameByAngle12frames(PlayerOne.GetCannonAngle()))",
-                                ""
-                              ]
-                            }
-                          ]
-                        }
-                      ]
                     },
                     {
                       "type": "BuiltinCommonInstructions::Standard",
@@ -7328,7 +7820,7 @@
                     "textG": 0,
                     "textR": 0
                   },
-                  "comment": "Resume Gameplay"
+                  "comment": "Pause gameplay"
                 },
                 {
                   "type": "BuiltinCommonInstructions::Standard",
@@ -7338,29 +7830,26 @@
                         "value": "BooleanVariable"
                       },
                       "parameters": [
-                        "ResumeGame",
+                        "PauseGame",
                         "True",
                         ""
                       ]
+                    },
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::Once"
+                      },
+                      "parameters": []
                     }
                   ],
                   "actions": [
                     {
                       "type": {
-                        "value": "SetStringVariable"
+                        "value": "Montre"
                       },
                       "parameters": [
-                        "_INGAMEDATA_.GameState",
-                        "=",
-                        "_CONSTANTS_.GameState.Game"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "Cache"
-                      },
-                      "parameters": [
-                        "PauseLabel"
+                        "PauseLabel",
+                        ""
                       ]
                     },
                     {
@@ -7369,7 +7858,7 @@
                       },
                       "parameters": [
                         "",
-                        "1"
+                        "0"
                       ]
                     },
                     {
@@ -7379,7 +7868,7 @@
                       "parameters": [
                         "",
                         "Logger",
-                        "\"resume\"",
+                        "\"pause\"",
                         ""
                       ]
                     },
@@ -7388,170 +7877,12 @@
                         "value": "SetBooleanVariable"
                       },
                       "parameters": [
-                        "ResumeGame",
+                        "PauseGame",
                         "False",
                         ""
                       ]
                     }
                   ]
-                },
-                {
-                  "colorB": 177,
-                  "colorG": 128,
-                  "colorR": 29,
-                  "creationTime": 0,
-                  "name": "Player one actions",
-                  "source": "",
-                  "type": "BuiltinCommonInstructions::Group",
-                  "events": [
-                    {
-                      "type": "BuiltinCommonInstructions::Comment",
-                      "color": {
-                        "b": 209,
-                        "g": 199,
-                        "r": 85,
-                        "textB": 0,
-                        "textG": 0,
-                        "textR": 0
-                      },
-                      "comment": "Keyboard actions"
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "StringVariable"
-                          },
-                          "parameters": [
-                            "_CONTROLS_.Players[0].InputType",
-                            "=",
-                            "_CONSTANTS_.InputType.Keyboard"
-                          ]
-                        }
-                      ],
-                      "actions": [],
-                      "events": [
-                        {
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [
-                            {
-                              "type": {
-                                "value": "KeyFromTextReleased"
-                              },
-                              "parameters": [
-                                "",
-                                "_CONTROLS_.Players[0].Keyboard.Pause"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "StringVariable"
-                              },
-                              "parameters": [
-                                "_INGAMEDATA_.GameState",
-                                "!=",
-                                "_CONSTANTS_.GameState.Game"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "BuiltinCommonInstructions::Once"
-                              },
-                              "parameters": []
-                            }
-                          ],
-                          "actions": [
-                            {
-                              "type": {
-                                "value": "SetBooleanVariable"
-                              },
-                              "parameters": [
-                                "ResumeGame",
-                                "True",
-                                ""
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Comment",
-                      "color": {
-                        "b": 209,
-                        "g": 199,
-                        "r": 85,
-                        "textB": 0,
-                        "textG": 0,
-                        "textR": 0
-                      },
-                      "comment": "Gamepad actions"
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "StringVariable"
-                          },
-                          "parameters": [
-                            "_CONTROLS_.Players[0].InputType",
-                            "=",
-                            "_CONSTANTS_.InputType.Gamepad"
-                          ]
-                        }
-                      ],
-                      "actions": [],
-                      "events": [
-                        {
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [
-                            {
-                              "type": {
-                                "value": "Gamepads::C_Button_released"
-                              },
-                              "parameters": [
-                                "",
-                                "1",
-                                "_CONTROLS_.Players[0].Gamepad.Pause",
-                                ""
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "StringVariable"
-                              },
-                              "parameters": [
-                                "_INGAMEDATA_.GameState",
-                                "!=",
-                                "_CONSTANTS_.GameState.Game"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "BuiltinCommonInstructions::Once"
-                              },
-                              "parameters": []
-                            }
-                          ],
-                          "actions": [
-                            {
-                              "type": {
-                                "value": "SetBooleanVariable"
-                              },
-                              "parameters": [
-                                "ResumeGame",
-                                "True",
-                                ""
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ],
-                  "parameters": []
                 }
               ]
             }
