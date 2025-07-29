@@ -57,7 +57,7 @@
           "name": "PurpleEnemy"
         },
         {
-          "name": "PlayerOne"
+          "name": "Player"
         }
       ]
     },
@@ -71,7 +71,7 @@
           "name": "BreakableWallWhite"
         },
         {
-          "name": "PlayerOne"
+          "name": "Player"
         },
         {
           "name": "PurpleEnemy"
@@ -528,20 +528,10 @@
           "value": 100000
         },
         {
-          "name": "AngleRotationFieldOfvision",
-          "type": "number",
-          "value": 360000
-        },
-        {
           "name": "ID",
           "persistentUuid": "fd7ed176-61c5-4420-959a-994d71f6447b",
           "type": "string",
-          "value": "enemy2"
-        },
-        {
-          "name": "CurrentLookAngle",
-          "type": "number",
-          "value": 0
+          "value": "enemy3"
         }
       ]
     },
@@ -605,8 +595,8 @@
       "name": "StartPosition",
       "persistentUuid": "aa9f5a22-fb6e-436b-b57a-5344129ebc4c",
       "width": 32,
-      "x": 64,
-      "y": 256,
+      "x": 384,
+      "y": 192,
       "zOrder": 9,
       "numberProperties": [],
       "stringProperties": [],
@@ -670,7 +660,7 @@
       "persistentUuid": "0a6ba37d-1384-454a-9506-61036731cc6b",
       "width": 0,
       "x": 480,
-      "y": 288,
+      "y": 160,
       "zOrder": 3,
       "numberProperties": [],
       "stringProperties": [],
@@ -681,20 +671,38 @@
           "value": 110000
         },
         {
-          "name": "AngleRotationFieldOfvision",
+          "name": "ID",
+          "persistentUuid": "fd7ed176-61c5-4420-959a-994d71f6447b",
+          "type": "string",
+          "value": "enemy2"
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "PurpleEnemy",
+      "persistentUuid": "5be94b9b-9138-410b-afa7-3ef613794482",
+      "width": 0,
+      "x": 480,
+      "y": 288,
+      "zOrder": 3,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Health",
           "type": "number",
-          "value": 0
+          "value": 100000
         },
         {
           "name": "ID",
           "persistentUuid": "fd7ed176-61c5-4420-959a-994d71f6447b",
           "type": "string",
           "value": "enemy1"
-        },
-        {
-          "name": "CurrentLookAngle",
-          "type": "number",
-          "value": 180
         }
       ]
     }
@@ -1069,7 +1077,7 @@
     },
     {
       "assetStoreId": "",
-      "name": "PlayerOne",
+      "name": "Player",
       "type": "CustomObjects::Player",
       "variant": "",
       "variables": [
@@ -1082,36 +1090,6 @@
           "name": "Type",
           "type": "string",
           "value": "Player"
-        },
-        {
-          "name": "CurrentLookAngle",
-          "type": "number",
-          "value": 0
-        },
-        {
-          "name": "AngleRotationCount",
-          "type": "number",
-          "value": 0
-        },
-        {
-          "name": "AngleRotationCountOperationSign",
-          "type": "number",
-          "value": 1
-        },
-        {
-          "name": "FireAngleSpread",
-          "type": "number",
-          "value": 2
-        },
-        {
-          "name": "AngleRotationFieldOfvision",
-          "type": "number",
-          "value": 135
-        },
-        {
-          "name": "FireCooldownVariance",
-          "type": "number",
-          "value": 0.5
         },
         {
           "name": "ID",
@@ -1431,36 +1409,6 @@
           "value": "Enemy"
         },
         {
-          "name": "CurrentLookAngle",
-          "type": "number",
-          "value": 0
-        },
-        {
-          "name": "AngleRotationCount",
-          "type": "number",
-          "value": 0
-        },
-        {
-          "name": "AngleRotationCountOperationSign",
-          "type": "number",
-          "value": 1
-        },
-        {
-          "name": "FireAngleSpread",
-          "type": "number",
-          "value": 2
-        },
-        {
-          "name": "AngleRotationFieldOfvision",
-          "type": "number",
-          "value": 135
-        },
-        {
-          "name": "FireCooldownVariance",
-          "type": "number",
-          "value": 0.5
-        },
-        {
           "name": "ID",
           "type": "string",
           "value": ""
@@ -1489,6 +1437,36 @@
           "name": "IA",
           "type": "structure",
           "children": [
+            {
+              "name": "AngleRotationCount",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "AngleRotationCountOperationSign",
+              "type": "number",
+              "value": 1
+            },
+            {
+              "name": "AngleRotationFieldOfvision",
+              "type": "number",
+              "value": 135
+            },
+            {
+              "name": "CurrentLookAngle",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "FireAngleSpread",
+              "type": "number",
+              "value": 2
+            },
+            {
+              "name": "FireCooldownVariance",
+              "type": "number",
+              "value": 0.5
+            },
             {
               "name": "SeePlayer",
               "type": "boolean",
@@ -3207,7 +3185,7 @@
         "folderName": "Players",
         "children": [
           {
-            "objectName": "PlayerOne"
+            "objectName": "Player"
           },
           {
             "objectName": "PurpleEnemy"
@@ -3723,7 +3701,6 @@
       "colorG": 128,
       "colorR": 29,
       "creationTime": 0,
-      "folded": true,
       "name": "Switch inputs",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -4039,7 +4016,7 @@
                     "value": "TopDownMovementBehavior::SimulateDownKey"
                   },
                   "parameters": [
-                    "PlayerOne",
+                    "Player",
                     "TopDownMovement"
                   ]
                 }
@@ -4064,7 +4041,7 @@
                     "value": "TopDownMovementBehavior::SimulateLeftKey"
                   },
                   "parameters": [
-                    "PlayerOne",
+                    "Player",
                     "TopDownMovement"
                   ]
                 }
@@ -4089,7 +4066,7 @@
                     "value": "TopDownMovementBehavior::SimulateRightKey"
                   },
                   "parameters": [
-                    "PlayerOne",
+                    "Player",
                     "TopDownMovement"
                   ]
                 }
@@ -4114,7 +4091,7 @@
                     "value": "TopDownMovementBehavior::SimulateUpKey"
                   },
                   "parameters": [
-                    "PlayerOne",
+                    "Player",
                     "TopDownMovement"
                   ]
                 }
@@ -4129,7 +4106,7 @@
                     "value": "CustomObjects::Player::LookToByPoint"
                   },
                   "parameters": [
-                    "PlayerOne",
+                    "Player",
                     "CursorX()",
                     "CursorY()",
                     ""
@@ -4382,7 +4359,7 @@
                     "value": "TopDownMovementBehavior::SimulateDownKey"
                   },
                   "parameters": [
-                    "PlayerOne",
+                    "Player",
                     "TopDownMovement"
                   ]
                 }
@@ -4410,7 +4387,7 @@
                     "value": "TopDownMovementBehavior::SimulateLeftKey"
                   },
                   "parameters": [
-                    "PlayerOne",
+                    "Player",
                     "TopDownMovement"
                   ]
                 }
@@ -4438,7 +4415,7 @@
                     "value": "TopDownMovementBehavior::SimulateRightKey"
                   },
                   "parameters": [
-                    "PlayerOne",
+                    "Player",
                     "TopDownMovement"
                   ]
                 }
@@ -4466,7 +4443,7 @@
                     "value": "TopDownMovementBehavior::SimulateUpKey"
                   },
                   "parameters": [
-                    "PlayerOne",
+                    "Player",
                     "TopDownMovement"
                   ]
                 }
@@ -4494,7 +4471,7 @@
                     "value": "CustomObjects::Player::LookToByVector"
                   },
                   "parameters": [
-                    "PlayerOne",
+                    "Player",
                     "Gamepads::StickForceX(1, \"Right\")",
                     "Gamepads::StickForceY(1, \"Right\")",
                     ""
@@ -4795,7 +4772,7 @@
                       },
                       "parameters": [
                         "",
-                        "PlayerOne",
+                        "Player",
                         "=",
                         "0"
                       ]
@@ -4808,7 +4785,7 @@
                       },
                       "parameters": [
                         "",
-                        "PlayerOne",
+                        "Player",
                         "StartPosition.X()",
                         "StartPosition.Y()",
                         "_CONSTANTS_.Layers.Base"
@@ -4819,7 +4796,7 @@
                         "value": "ChangePlan"
                       },
                       "parameters": [
-                        "PlayerOne",
+                        "Player",
                         "=",
                         "3"
                       ]
@@ -4829,7 +4806,7 @@
                         "value": "SetStringObjectVariable"
                       },
                       "parameters": [
-                        "PlayerOne",
+                        "Player",
                         "ID",
                         "=",
                         "\"player1\""
@@ -5105,7 +5082,7 @@
                           },
                           "parameters": [
                             "",
-                            "PlayerOne",
+                            "Player",
                             "=",
                             "0"
                           ]
@@ -5287,7 +5264,7 @@
                             "value": "SetNumberObjectVariable"
                           },
                           "parameters": [
-                            "PlayerOne",
+                            "Player",
                             "BulletCount",
                             "=",
                             "0"
@@ -5305,7 +5282,7 @@
                           "parameters": [
                             "",
                             "WhiteBullet",
-                            "PlayerOne",
+                            "Player",
                             ""
                           ]
                         }
@@ -5316,7 +5293,7 @@
                             "value": "SetNumberObjectVariable"
                           },
                           "parameters": [
-                            "PlayerOne",
+                            "Player",
                             "BulletCount",
                             "=",
                             "PickedInstancesCount(WhiteBullet)"
@@ -5342,7 +5319,7 @@
                             "value": "NumberObjectVariable"
                           },
                           "parameters": [
-                            "PlayerOne",
+                            "Player",
                             "BulletCount",
                             "<",
                             "_DATA_.Player.MaxBullets"
@@ -5355,12 +5332,12 @@
                             "value": "CustomObjects::ShootBullet::Shoot"
                           },
                           "parameters": [
-                            "PlayerOne",
+                            "Player",
                             "ShootBullet",
-                            "PlayerOne.GetMuzzlePointX()",
-                            "PlayerOne.GetMuzzlePointY()",
+                            "Player.GetMuzzlePointX()",
+                            "Player.GetMuzzlePointY()",
                             "WhiteBullet",
-                            "PlayerOne.GetCannonAngle()",
+                            "Player.GetCannonAngle()",
                             "_DATA_.Bullets.YellowSmall.Speed",
                             ""
                           ]
@@ -5409,7 +5386,7 @@
                               "parameters": [
                                 "",
                                 "WhiteBullet",
-                                "PlayerOne"
+                                "Player"
                               ]
                             },
                             {
@@ -5437,7 +5414,7 @@
                               "parameters": [
                                 "WhiteBullet",
                                 "=",
-                                "CustomObjects::GetFrameByAngle12frames(PlayerOne.GetCannonAngle())"
+                                "CustomObjects::GetFrameByAngle12frames(Player.GetCannonAngle())"
                               ]
                             },
                             {
@@ -5448,7 +5425,7 @@
                                 "WhiteBullet",
                                 "TankID",
                                 "=",
-                                "PlayerOne.ID"
+                                "Player.ID"
                               ]
                             },
                             {
@@ -5504,9 +5481,9 @@
                                 "value": "BuiltinCommonInstructions::CompareNumbers"
                               },
                               "parameters": [
-                                "PlayerOne.CenterX()",
+                                "Player.CenterX()",
                                 "!=",
-                                "PlayerOne.OldX"
+                                "Player.OldX"
                               ]
                             },
                             {
@@ -5514,9 +5491,9 @@
                                 "value": "BuiltinCommonInstructions::CompareNumbers"
                               },
                               "parameters": [
-                                "PlayerOne.CenterY()",
+                                "Player.CenterY()",
                                 "!=",
-                                "PlayerOne.OldY"
+                                "Player.OldY"
                               ]
                             }
                           ]
@@ -5530,7 +5507,7 @@
                           "parameters": [
                             "NewDistance",
                             "=",
-                            "abs(DistanceBetweenPositions(PlayerOne.CenterX(), PlayerOne.CenterY(), PlayerOne.OldX, PlayerOne.OldY))"
+                            "abs(DistanceBetweenPositions(Player.CenterX(), Player.CenterY(), Player.OldX, Player.OldY))"
                           ]
                         },
                         {
@@ -5538,7 +5515,7 @@
                             "value": "SetNumberObjectVariable"
                           },
                           "parameters": [
-                            "PlayerOne",
+                            "Player",
                             "DistanceMoved",
                             "+",
                             "NewDistance"
@@ -5549,10 +5526,10 @@
                             "value": "SetNumberObjectVariable"
                           },
                           "parameters": [
-                            "PlayerOne",
+                            "Player",
                             "OldX",
                             "=",
-                            "PlayerOne.CenterX()"
+                            "Player.CenterX()"
                           ]
                         },
                         {
@@ -5560,10 +5537,10 @@
                             "value": "SetNumberObjectVariable"
                           },
                           "parameters": [
-                            "PlayerOne",
+                            "Player",
                             "OldY",
                             "=",
-                            "PlayerOne.CenterY()"
+                            "Player.CenterY()"
                           ]
                         }
                       ],
@@ -5576,7 +5553,7 @@
                                 "value": "BuiltinCommonInstructions::CompareNumbers"
                               },
                               "parameters": [
-                                "PlayerOne.DistanceMoved",
+                                "Player.DistanceMoved",
                                 ">=",
                                 "20"
                               ]
@@ -5590,8 +5567,8 @@
                               "parameters": [
                                 "",
                                 "TrailDecal",
-                                "PlayerOne.CenterX()",
-                                "PlayerOne.CenterY()",
+                                "Player.CenterX()",
+                                "Player.CenterY()",
                                 "_CONSTANTS_.Layers.Base"
                               ]
                             },
@@ -5602,7 +5579,7 @@
                               "parameters": [
                                 "TrailDecal",
                                 "=",
-                                "PlayerOne.GetBodyAngle() + 90"
+                                "Player.GetBodyAngle() + 90"
                               ]
                             },
                             {
@@ -5620,7 +5597,7 @@
                                 "value": "SetNumberObjectVariable"
                               },
                               "parameters": [
-                                "PlayerOne",
+                                "Player",
                                 "DistanceMoved",
                                 "=",
                                 "0"
@@ -5671,21 +5648,11 @@
                         "textG": 0,
                         "textR": 0
                       },
-                      "comment": ""
+                      "comment": "Update flags"
                     },
                     {
                       "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "VariableChildExists2"
-                          },
-                          "parameters": [
-                            "_DATA_.Enemies",
-                            "PurpleEnemy.ObjectName()"
-                          ]
-                        }
-                      ],
+                      "conditions": [],
                       "actions": [],
                       "events": [
                         {
@@ -5774,6 +5741,26 @@
                                 "False",
                                 ""
                               ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetBooleanVariable"
+                              },
+                              "parameters": [
+                                "SeePlayer",
+                                "False",
+                                ""
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetBooleanVariable"
+                              },
+                              "parameters": [
+                                "SeeSomething",
+                                "False",
+                                ""
+                              ]
                             }
                           ],
                           "events": [
@@ -5794,7 +5781,6 @@
                               ]
                             },
                             {
-                              "folded": true,
                               "type": "BuiltinCommonInstructions::Repeat",
                               "repeatExpression": "3",
                               "conditions": [],
@@ -5837,12 +5823,12 @@
                                       "conditions": [
                                         {
                                           "type": {
-                                            "value": "BuiltinCommonInstructions::CompareStrings"
+                                            "value": "PickedInstancesCount"
                                           },
                                           "parameters": [
-                                            "VisibleToEnemy.Type",
-                                            "=",
-                                            "_CONSTANTS_.Entities.Player"
+                                            "Player",
+                                            ">",
+                                            "0"
                                           ]
                                         }
                                       ],
@@ -5984,6 +5970,17 @@
                               "conditions": [
                                 {
                                   "type": {
+                                    "value": "StringObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "PurpleEnemy",
+                                    "ID",
+                                    "=",
+                                    "Id"
+                                  ]
+                                },
+                                {
+                                  "type": {
                                     "value": "BooleanVariable"
                                   },
                                   "parameters": [
@@ -6012,6 +6009,17 @@
                               "conditions": [
                                 {
                                   "type": {
+                                    "value": "StringObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "PurpleEnemy",
+                                    "ID",
+                                    "=",
+                                    "Id"
+                                  ]
+                                },
+                                {
+                                  "type": {
                                     "value": "BooleanVariable"
                                   },
                                   "parameters": [
@@ -6038,19 +6046,7 @@
                             {
                               "type": "BuiltinCommonInstructions::Standard",
                               "conditions": [],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "value": "Log_Manager::WriteLog"
-                                  },
-                                  "parameters": [
-                                    "",
-                                    "Logger",
-                                    "PurpleEnemy.ID + \" : \" + PurpleEnemy.IA.SeeSomething + \" \" + PurpleEnemy.IA.SeePlayer",
-                                    ""
-                                  ]
-                                }
-                              ]
+                              "actions": []
                             }
                           ]
                         }
@@ -6102,6 +6098,30 @@
                           "value": false
                         }
                       ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 52,
+                        "g": 44,
+                        "r": 40,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "\n\n"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 209,
+                        "g": 199,
+                        "r": 85,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "Execute actions"
                     },
                     {
                       "type": "BuiltinCommonInstructions::ForEach",
@@ -6162,7 +6182,7 @@
                                   },
                                   "parameters": [
                                     "PurpleEnemy",
-                                    "AngleRotationCount",
+                                    "IA.AngleRotationCount",
                                     "+",
                                     "AngleOffset"
                                   ]
@@ -6178,9 +6198,9 @@
                                       },
                                       "parameters": [
                                         "PurpleEnemy",
-                                        "AngleRotationCount",
+                                        "IA.AngleRotationCount",
                                         ">=",
-                                        "PurpleEnemy.AngleRotationFieldOfvision"
+                                        "PurpleEnemy.IA.AngleRotationFieldOfvision"
                                       ]
                                     }
                                   ],
@@ -6191,7 +6211,7 @@
                                       },
                                       "parameters": [
                                         "PurpleEnemy",
-                                        "AngleRotationCount",
+                                        "IA.AngleRotationCount",
                                         "=",
                                         "0"
                                       ]
@@ -6202,9 +6222,9 @@
                                       },
                                       "parameters": [
                                         "PurpleEnemy",
-                                        "AngleRotationCountOperationSign",
+                                        "IA.AngleRotationCountOperationSign",
                                         "=",
-                                        "-PurpleEnemy.AngleRotationCountOperationSign"
+                                        "-PurpleEnemy.IA.AngleRotationCountOperationSign"
                                       ]
                                     }
                                   ]
@@ -6219,9 +6239,9 @@
                                       },
                                       "parameters": [
                                         "PurpleEnemy",
-                                        "CurrentLookAngle",
+                                        "IA.CurrentLookAngle",
                                         "+",
-                                        "AngleOffset * PurpleEnemy.AngleRotationCountOperationSign"
+                                        "AngleOffset * PurpleEnemy.IA.AngleRotationCountOperationSign"
                                       ]
                                     },
                                     {
@@ -6230,7 +6250,7 @@
                                       },
                                       "parameters": [
                                         "PurpleEnemy",
-                                        "PurpleEnemy.CurrentLookAngle",
+                                        "PurpleEnemy.IA.CurrentLookAngle",
                                         ""
                                       ]
                                     }
@@ -6245,7 +6265,7 @@
                                       },
                                       "parameters": [
                                         "PurpleEnemy",
-                                        "CurrentLookAngle",
+                                        "IA.CurrentLookAngle",
                                         ">=",
                                         "360"
                                       ]
@@ -6258,7 +6278,7 @@
                                       },
                                       "parameters": [
                                         "PurpleEnemy",
-                                        "CurrentLookAngle",
+                                        "IA.CurrentLookAngle",
                                         "-",
                                         "360"
                                       ]
@@ -6328,17 +6348,6 @@
                                     "BulletCount",
                                     "=",
                                     "PickedInstancesCount(WhiteBullet)"
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "Log_Manager::WriteLog"
-                                  },
-                                  "parameters": [
-                                    "",
-                                    "Logger",
-                                    "PurpleEnemy.ID + \" : \" + PurpleEnemy.IA.SeeSomething + \" \" + PurpleEnemy.IA.SeePlayer",
-                                    ""
                                   ]
                                 }
                               ]
@@ -7212,7 +7221,6 @@
           "colorG": 128,
           "colorR": 29,
           "creationTime": 0,
-          "folded": true,
           "name": "GAME WON",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -7375,7 +7383,6 @@
           "colorG": 128,
           "colorR": 29,
           "creationTime": 0,
-          "folded": true,
           "name": "GAME OVER",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -7619,7 +7626,7 @@
             "value": "CollisionNP"
           },
           "parameters": [
-            "PlayerOne",
+            "Player",
             "Player_Walls",
             "",
             "",
@@ -7633,7 +7640,7 @@
             "value": "SeparateFromObjects"
           },
           "parameters": [
-            "PlayerOne",
+            "Player",
             "Player_Walls",
             ""
           ]
@@ -7688,7 +7695,7 @@
           "parameters": [
             "",
             "WhiteBullet",
-            "PlayerOne",
+            "Player",
             ""
           ]
         }

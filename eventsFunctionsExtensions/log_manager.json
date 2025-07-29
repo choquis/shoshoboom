@@ -35,7 +35,7 @@
       "fullName": "Write log",
       "functionType": "Action",
       "name": "WriteLog",
-      "sentence": "Print _PARAM2_ on text label _PARAM1_",
+      "sentence": "Print _PARAM2_ on _PARAM1_",
       "events": [
         {
           "type": "BuiltinCommonInstructions::Standard",
@@ -152,6 +152,48 @@
           "name": "Text",
           "supplementaryInformation": "TextContainerCapability::TextContainerBehavior",
           "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "fullName": "Clear log",
+      "functionType": "Action",
+      "name": "Clear",
+      "sentence": "Clear the log of _PARAM1_",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "ClearVariableChildren"
+              },
+              "parameters": [
+                "log_lines"
+              ]
+            },
+            {
+              "type": {
+                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+              },
+              "parameters": [
+                "TextLabel",
+                "Text",
+                "=",
+                "\"\""
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "description": "",
+          "name": "TextLabel",
+          "supplementaryInformation": "TextObject::Text",
+          "type": "objectList"
         }
       ],
       "objectGroups": []
