@@ -18,12 +18,12 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 2.2019958137101514,
+    "zoomFactor": 1.6337626779315368,
     "windowMask": false
   },
   "objectsGroups": [
     {
-      "name": "PlayerWalls",
+      "name": "Player_Walls",
       "objects": [
         {
           "name": "WhiteWall"
@@ -93,23 +93,6 @@
       ]
     },
     {
-      "name": "BulletCollide",
-      "objects": [
-        {
-          "name": "WhiteWall"
-        },
-        {
-          "name": "BreakableWallWhite"
-        },
-        {
-          "name": "PlayerOne"
-        },
-        {
-          "name": "PurpleEnemy"
-        }
-      ]
-    },
-    {
       "name": "Enemies",
       "objects": [
         {
@@ -125,6 +108,17 @@
         },
         {
           "name": "Explosion"
+        }
+      ]
+    },
+    {
+      "name": "Walls",
+      "objects": [
+        {
+          "name": "BreakableWallWhite"
+        },
+        {
+          "name": "WhiteWall"
         }
       ]
     }
@@ -1991,6 +1985,10 @@
           "name": "DestroyOutside",
           "type": "DestroyOutsideBehavior::DestroyOutside",
           "extraBorder": 50
+        },
+        {
+          "name": "YSort",
+          "type": "YSort::YSort"
         }
       ],
       "animations": [
@@ -3266,7 +3264,6 @@
           "actions": [],
           "events": [
             {
-              "disabled": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -5246,18 +5243,17 @@
                       ]
                     },
                     {
-                      "type": "BuiltinCommonInstructions::ForEach",
-                      "object": "WhiteBullet",
+                      "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
                           "type": {
-                            "value": "StringObjectVariable"
+                            "value": "LinkedObjects::PickObjectsLinkedTo"
                           },
                           "parameters": [
+                            "",
                             "WhiteBullet",
-                            "TankID",
-                            "=",
-                            "PlayerOne.ID"
+                            "PlayerOne",
+                            ""
                           ]
                         }
                       ],
@@ -5269,8 +5265,8 @@
                           "parameters": [
                             "PlayerOne",
                             "BulletCount",
-                            "+",
-                            "1"
+                            "=",
+                            "PickedInstancesCount(WhiteBullet)"
                           ]
                         }
                       ]
@@ -5308,8 +5304,8 @@
                           "parameters": [
                             "PlayerOne",
                             "ShootBullet",
-                            "PlayerOne.GetLookPointX()",
-                            "PlayerOne.GetLookPointY()",
+                            "PlayerOne.GetMuzzlePointX()",
+                            "PlayerOne.GetMuzzlePointY()",
                             "WhiteBullet",
                             "PlayerOne.GetCannonAngle()",
                             "_DATA_.Bullets.YellowSmall.Speed",
@@ -5353,6 +5349,16 @@
                             }
                           ],
                           "actions": [
+                            {
+                              "type": {
+                                "value": "LinkedObjects::LinkObjects"
+                              },
+                              "parameters": [
+                                "",
+                                "WhiteBullet",
+                                "PlayerOne"
+                              ]
+                            },
                             {
                               "type": {
                                 "value": "ChangeLayer"
@@ -5969,7 +5975,6 @@
                           ]
                         },
                         {
-                          "folded": true,
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
                             {
@@ -6119,7 +6124,6 @@
                     },
                     {
                       "disabled": true,
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -6135,7 +6139,6 @@
                       "actions": [],
                       "events": [
                         {
-                          "folded": true,
                           "type": "BuiltinCommonInstructions::ForEach",
                           "object": "PurpleEnemy",
                           "conditions": [],
@@ -6842,7 +6845,7 @@
                           },
                           "parameters": [
                             "Bullets",
-                            "BulletCollide",
+                            "Walls",
                             "",
                             "",
                             ""
@@ -6851,6 +6854,136 @@
                       ],
                       "actions": [],
                       "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "BuiltinCommonInstructions::CompareStrings"
+                              },
+                              "parameters": [
+                                "Walls.Type",
+                                "=",
+                                "_CONSTANTS_.Entities.BreakableWall"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetNumberObjectVariable"
+                              },
+                              "parameters": [
+                                "Walls",
+                                "Health",
+                                "-",
+                                "Bullets.Damage"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetBooleanVariable"
+                              },
+                              "parameters": [
+                                "DestroyBullet",
+                                "True",
+                                ""
+                              ]
+                            }
+                          ],
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "NumberObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "Walls",
+                                    "Health",
+                                    "<=",
+                                    "0"
+                                  ]
+                                }
+                              ],
+                              "actions": [],
+                              "events": [
+                                {
+                                  "type": "BuiltinCommonInstructions::ForEach",
+                                  "object": "Walls",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "Create"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "BreakableWallWhiteRemains",
+                                        "Walls.X()",
+                                        "Walls.Y()",
+                                        "_CONSTANTS_.Layers.Base"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "ChangePlan"
+                                      },
+                                      "parameters": [
+                                        "BreakableWallWhiteRemains",
+                                        "=",
+                                        "0"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "Delete"
+                                      },
+                                      "parameters": [
+                                        "Walls",
+                                        ""
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "CurrentFrame",
+                                    "=",
+                                    "clamp(trunc((Walls.Health / _DATA_.Walls[Walls.ObjectName()].MaxHealth) * 10), 0, 10)"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "ChangeSprite"
+                                  },
+                                  "parameters": [
+                                    "BreakableWallWhite",
+                                    "=",
+                                    "CurrentFrame"
+                                  ]
+                                }
+                              ],
+                              "variables": [
+                                {
+                                  "name": "CurrentFrame",
+                                  "type": "number",
+                                  "value": 0
+                                }
+                              ]
+                            }
+                          ]
+                        },
                         {
                           "type": "BuiltinCommonInstructions::Comment",
                           "color": {
@@ -6864,7 +6997,6 @@
                           "comment": "Bounce of walls"
                         },
                         {
-                          "folded": true,
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
                             {
@@ -6872,7 +7004,7 @@
                                 "value": "BuiltinCommonInstructions::CompareStrings"
                               },
                               "parameters": [
-                                "BulletCollide.Type",
+                                "Walls.Type",
                                 "=",
                                 "_CONSTANTS_.Entities.Wall"
                               ]
@@ -6919,7 +7051,7 @@
                                   "parameters": [
                                     "",
                                     "Bullets",
-                                    "BulletCollide",
+                                    "Walls",
                                     "yes",
                                     ""
                                   ]
@@ -6986,38 +7118,14 @@
                             "textG": 0,
                             "textR": 0
                           },
-                          "comment": "Damage Wall"
+                          "comment": "Destroy bullet"
                         },
                         {
-                          "folded": true,
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
                             {
                               "type": {
-                                "value": "BuiltinCommonInstructions::CompareStrings"
-                              },
-                              "parameters": [
-                                "BulletCollide.Type",
-                                "=",
-                                "_CONSTANTS_.Entities.BreakableWall"
-                              ]
-                            }
-                          ],
-                          "actions": [
-                            {
-                              "type": {
-                                "value": "SetNumberObjectVariable"
-                              },
-                              "parameters": [
-                                "BulletCollide",
-                                "Health",
-                                "-",
-                                "Bullets.Damage"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "SetBooleanVariable"
+                                "value": "BooleanVariable"
                               },
                               "parameters": [
                                 "DestroyBullet",
@@ -7026,111 +7134,69 @@
                               ]
                             }
                           ],
-                          "events": [
+                          "actions": [
                             {
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [
-                                {
-                                  "type": {
-                                    "value": "NumberObjectVariable"
-                                  },
-                                  "parameters": [
-                                    "BulletCollide",
-                                    "Health",
-                                    "<=",
-                                    "0"
-                                  ]
-                                }
-                              ],
-                              "actions": [],
-                              "events": [
-                                {
-                                  "type": "BuiltinCommonInstructions::ForEach",
-                                  "object": "BulletCollide",
-                                  "conditions": [],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "Create"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "BreakableWallWhiteRemains",
-                                        "BulletCollide.X()",
-                                        "BulletCollide.Y()",
-                                        "_CONSTANTS_.Layers.Base"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "ChangePlan"
-                                      },
-                                      "parameters": [
-                                        "BreakableWallWhiteRemains",
-                                        "=",
-                                        "0"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "Delete"
-                                      },
-                                      "parameters": [
-                                        "BulletCollide",
-                                        ""
-                                      ]
-                                    }
-                                  ]
-                                }
+                              "type": {
+                                "value": "Create"
+                              },
+                              "parameters": [
+                                "",
+                                "Explosion",
+                                "Bullets.CenterX()",
+                                "Bullets.CenterY()",
+                                "_CONSTANTS_.Layers.Base"
                               ]
                             },
                             {
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "value": "SetNumberVariable"
-                                  },
-                                  "parameters": [
-                                    "CurrentFrame",
-                                    "=",
-                                    "clamp(trunc((BulletCollide.Health / _DATA_.Walls[BulletCollide.ObjectName()].MaxHealth) * 10), 0, 10)"
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "ChangeSprite"
-                                  },
-                                  "parameters": [
-                                    "BreakableWallWhite",
-                                    "=",
-                                    "CurrentFrame"
-                                  ]
-                                }
-                              ],
-                              "variables": [
-                                {
-                                  "name": "CurrentFrame",
-                                  "type": "number",
-                                  "value": 0
-                                }
+                              "type": {
+                                "value": "Delete"
+                              },
+                              "parameters": [
+                                "Bullets",
+                                ""
                               ]
                             }
                           ]
-                        },
+                        }
+                      ],
+                      "variables": [
                         {
-                          "type": "BuiltinCommonInstructions::Comment",
-                          "color": {
-                            "b": 209,
-                            "g": 199,
-                            "r": 85,
-                            "textB": 0,
-                            "textG": 0,
-                            "textR": 0
+                          "name": "DestroyBullet",
+                          "type": "boolean",
+                          "value": false
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "CollisionNP"
                           },
-                          "comment": "Damage tanks"
-                        },
+                          "parameters": [
+                            "Bullets",
+                            "Tanks",
+                            "",
+                            "",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Log_Manager::WriteLog"
+                          },
+                          "parameters": [
+                            "",
+                            "Logger",
+                            "\"BulletID:\" + WhiteBullet.TankID + \" TankID:\" + Tanks.ID",
+                            ""
+                          ]
+                        }
+                      ],
+                      "events": [
                         {
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
@@ -7145,19 +7211,38 @@
                                     "value": "BuiltinCommonInstructions::CompareStrings"
                                   },
                                   "parameters": [
-                                    "BulletCollide.Type",
-                                    "=",
-                                    "_CONSTANTS_.Entities.Player"
+                                    "Bullets.TankID",
+                                    "!=",
+                                    "Tanks.ID"
                                   ]
                                 },
                                 {
                                   "type": {
-                                    "value": "BuiltinCommonInstructions::CompareStrings"
+                                    "value": "BuiltinCommonInstructions::And"
                                   },
-                                  "parameters": [
-                                    "BulletCollide.Type",
-                                    "=",
-                                    "_CONSTANTS_.Entities.Enemy"
+                                  "parameters": [],
+                                  "subInstructions": [
+                                    {
+                                      "type": {
+                                        "value": "BuiltinCommonInstructions::CompareStrings"
+                                      },
+                                      "parameters": [
+                                        "Bullets.TankID",
+                                        "=",
+                                        "Tanks.ID"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "NumberObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "Bullets",
+                                        "Bounces",
+                                        "<=",
+                                        "0"
+                                      ]
+                                    }
                                   ]
                                 }
                               ]
@@ -7169,7 +7254,7 @@
                                 "value": "SetNumberObjectVariable"
                               },
                               "parameters": [
-                                "BulletCollide",
+                                "Tanks",
                                 "Health",
                                 "-",
                                 "Bullets.Damage"
@@ -7184,6 +7269,17 @@
                                 "True",
                                 ""
                               ]
+                            },
+                            {
+                              "type": {
+                                "value": "Log_Manager::WriteLog"
+                              },
+                              "parameters": [
+                                "",
+                                "Logger",
+                                "\"2: \" + ToString(Tanks.Health) + \" dmg: \" +  ToString(Bullets.Damage) + \" \" + Bullets.TankID",
+                                ""
+                              ]
                             }
                           ],
                           "events": [
@@ -7195,29 +7291,21 @@
                                     "value": "NumberObjectVariable"
                                   },
                                   "parameters": [
-                                    "BulletCollide",
+                                    "Tanks",
                                     "Health",
                                     "<=",
                                     "0"
                                   ]
                                 }
                               ],
-                              "actions": [],
-                              "events": [
+                              "actions": [
                                 {
-                                  "type": "BuiltinCommonInstructions::ForEach",
-                                  "object": "BulletCollide",
-                                  "conditions": [],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "Delete"
-                                      },
-                                      "parameters": [
-                                        "BulletCollide",
-                                        ""
-                                      ]
-                                    }
+                                  "type": {
+                                    "value": "Delete"
+                                  },
+                                  "parameters": [
+                                    "Tanks",
+                                    ""
                                   ]
                                 }
                               ]
@@ -7231,7 +7319,7 @@
                                     "value": "Flash::Flash::Flash"
                                   },
                                   "parameters": [
-                                    "BulletCollide",
+                                    "Tanks",
                                     "Flash",
                                     "0.2",
                                     ""
@@ -7270,31 +7358,23 @@
                           "actions": [
                             {
                               "type": {
+                                "value": "Create"
+                              },
+                              "parameters": [
+                                "",
+                                "Explosion",
+                                "Bullets.CenterX()",
+                                "Bullets.CenterY()",
+                                "_CONSTANTS_.Layers.Base"
+                              ]
+                            },
+                            {
+                              "type": {
                                 "value": "Delete"
                               },
                               "parameters": [
                                 "Bullets",
                                 ""
-                              ]
-                            }
-                          ],
-                          "events": [
-                            {
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "value": "Create"
-                                  },
-                                  "parameters": [
-                                    "",
-                                    "Explosion",
-                                    "Bullets.CenterX()",
-                                    "Bullets.CenterY()",
-                                    "_CONSTANTS_.Layers.Base"
-                                  ]
-                                }
                               ]
                             }
                           ]
@@ -7870,7 +7950,7 @@
           },
           "parameters": [
             "PlayerOne",
-            "PlayerWalls",
+            "Player_Walls",
             "",
             "",
             ""
@@ -7884,7 +7964,7 @@
           },
           "parameters": [
             "PlayerOne",
-            "PlayerWalls",
+            "Player_Walls",
             ""
           ]
         }
@@ -7933,11 +8013,13 @@
       "conditions": [
         {
           "type": {
-            "value": "AjoutObjConcern"
+            "value": "LinkedObjects::PickObjectsLinkedTo"
           },
           "parameters": [
             "",
-            "WhiteBullet"
+            "WhiteBullet",
+            "PlayerOne",
+            ""
           ]
         }
       ],
