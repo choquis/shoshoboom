@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.3389693172845671,
+    "zoomFactor": 1.5804687500000334,
     "windowMask": false
   },
   "objectsGroups": [
@@ -74,7 +74,7 @@
           "name": "Player"
         },
         {
-          "name": "PurpleEnemy"
+          "name": "EnemySquare"
         }
       ]
     },
@@ -267,7 +267,7 @@
       "value": false
     },
     {
-      "name": "Variable",
+      "name": "BulletID",
       "type": "number",
       "value": 0
     }
@@ -978,6 +978,11 @@
           "name": "TankID",
           "type": "string",
           "value": ""
+        },
+        {
+          "name": "ID",
+          "type": "number",
+          "value": 0
         }
       ],
       "effects": [],
@@ -1060,6 +1065,11 @@
           "name": "TankID",
           "type": "string",
           "value": ""
+        },
+        {
+          "name": "ID",
+          "type": "number",
+          "value": 0
         }
       ],
       "effects": [],
@@ -1497,6 +1507,11 @@
               "name": "AngleRotationFieldOfvision",
               "type": "number",
               "value": 135
+            },
+            {
+              "name": "BlockTarget",
+              "type": "string",
+              "value": ""
             },
             {
               "name": "CurrentLookAngle",
@@ -2011,6 +2026,11 @@
           "name": "TankID",
           "type": "string",
           "value": ""
+        },
+        {
+          "name": "ID",
+          "type": "number",
+          "value": 0
         }
       ],
       "effects": [],
@@ -3151,6 +3171,86 @@
           ]
         }
       ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": false,
+      "assetStoreId": "",
+      "name": "EnemySquare",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Type",
+          "type": "string",
+          "value": "Enemy"
+        },
+        {
+          "hasMixedValues": true,
+          "name": "Health",
+          "type": "number",
+          "value": 10000
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Sticker",
+          "type": "Sticker::Sticker",
+          "OnlyFollowPosition": true,
+          "IsDestroyedWithParent": true
+        }
+      ],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "NewSprite3",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 4,
+                        "y": 10
+                      },
+                      {
+                        "x": 28,
+                        "y": 10
+                      },
+                      {
+                        "x": 28,
+                        "y": 24
+                      },
+                      {
+                        "x": 4,
+                        "y": 24
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "objectsFolderStructure": {
@@ -3246,6 +3346,9 @@
       },
       {
         "objectName": "IAAlerts"
+      },
+      {
+        "objectName": "EnemySquare"
       }
     ]
   },
@@ -3686,6 +3789,29 @@
               "object": "Enemies",
               "conditions": [],
               "actions": [
+                {
+                  "type": {
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "EnemySquare",
+                    "Enemies.X()",
+                    "Enemies.Y()",
+                    "_CONSTANTS_.Layers.UI"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Sticker::Sticker::Stick"
+                  },
+                  "parameters": [
+                    "EnemySquare",
+                    "Sticker",
+                    "Enemies",
+                    ""
+                  ]
+                },
                 {
                   "type": {
                     "value": "Create"
@@ -5724,22 +5850,9 @@
                       "actions": [],
                       "events": [
                         {
-                          "folded": true,
                           "type": "BuiltinCommonInstructions::ForEach",
                           "object": "PurpleEnemy",
-                          "conditions": [
-                            {
-                              "type": {
-                                "value": "StringObjectVariable"
-                              },
-                              "parameters": [
-                                "PurpleEnemy",
-                                "IA.State",
-                                "=",
-                                "_CONSTANTS_.IAStates.Searching"
-                              ]
-                            }
-                          ],
+                          "conditions": [],
                           "actions": [
                             {
                               "type": {
@@ -5820,32 +5933,362 @@
                                 "False",
                                 ""
                               ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetStringObjectVariable"
+                              },
+                              "parameters": [
+                                "PurpleEnemy",
+                                "IA.BlockTarget",
+                                "=",
+                                "\"\""
+                              ]
                             }
                           ],
                           "events": [
                             {
+                              "type": "BuiltinCommonInstructions::Comment",
+                              "color": {
+                                "b": 52,
+                                "g": 44,
+                                "r": 40,
+                                "textB": 0,
+                                "textG": 255,
+                                "textR": 0
+                              },
+                              "comment": "// Primero revisar si no esta cerca el jugador"
+                            },
+                            {
                               "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "Distance"
+                                  },
+                                  "parameters": [
+                                    "Player",
+                                    "PurpleEnemy",
+                                    "_DATA_.Enemies.PurpleEnemy.DetectionDistance",
+                                    ""
+                                  ]
+                                }
+                              ],
                               "actions": [
                                 {
                                   "type": {
-                                    "value": "SetNumberVariable"
+                                    "value": "SetBooleanVariable"
                                   },
                                   "parameters": [
-                                    "Angle",
-                                    "-",
-                                    "5"
+                                    "SeePlayer",
+                                    "True",
+                                    "PurpleEnemy.ID"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "SetStringObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "PurpleEnemy",
+                                    "IA.State",
+                                    "=",
+                                    "_CONSTANTS_.IAStates.Alert"
                                   ]
                                 }
                               ]
                             },
                             {
-                              "type": "BuiltinCommonInstructions::Repeat",
-                              "repeatExpression": "3",
-                              "conditions": [],
+                              "type": "BuiltinCommonInstructions::Comment",
+                              "color": {
+                                "b": 52,
+                                "g": 44,
+                                "r": 40,
+                                "textB": 0,
+                                "textG": 255,
+                                "textR": 0
+                              },
+                              "comment": "// Si esta en busqueda, usa 3 rayos para revisar si se ve el jugador"
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "StringObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "PurpleEnemy",
+                                    "IA.State",
+                                    "=",
+                                    "_CONSTANTS_.IAStates.Searching"
+                                  ]
+                                }
+                              ],
                               "actions": [],
                               "events": [
                                 {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetNumberVariable"
+                                      },
+                                      "parameters": [
+                                        "Angle",
+                                        "-",
+                                        "5"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Repeat",
+                                  "repeatExpression": "3",
+                                  "conditions": [],
+                                  "actions": [],
+                                  "events": [
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [
+                                        {
+                                          "type": {
+                                            "value": "Raycast"
+                                          },
+                                          "parameters": [
+                                            "VisibleToEnemy",
+                                            "LookX",
+                                            "LookY",
+                                            "Angle",
+                                            "_DATA_.Enemies.PurpleEnemy.LookDistance",
+                                            "intersectX",
+                                            "intersectY",
+                                            ""
+                                          ]
+                                        }
+                                      ],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "SetBooleanVariable"
+                                          },
+                                          "parameters": [
+                                            "SeeSomething",
+                                            "True",
+                                            "PurpleEnemy.ID"
+                                          ]
+                                        }
+                                      ],
+                                      "events": [
+                                        {
+                                          "type": "BuiltinCommonInstructions::Standard",
+                                          "conditions": [
+                                            {
+                                              "type": {
+                                                "value": "PickedInstancesCount"
+                                              },
+                                              "parameters": [
+                                                "Player",
+                                                ">",
+                                                "0"
+                                              ]
+                                            }
+                                          ],
+                                          "actions": [
+                                            {
+                                              "type": {
+                                                "value": "SetBooleanVariable"
+                                              },
+                                              "parameters": [
+                                                "SeePlayer",
+                                                "True",
+                                                "PurpleEnemy.ID"
+                                              ]
+                                            },
+                                            {
+                                              "type": {
+                                                "value": "PrimitiveDrawing::OutlineColor"
+                                              },
+                                              "parameters": [
+                                                "NewShapePainter",
+                                                "\"123;223;122\""
+                                              ]
+                                            },
+                                            {
+                                              "type": {
+                                                "value": "PrimitiveDrawing::LineV2"
+                                              },
+                                              "parameters": [
+                                                "NewShapePainter",
+                                                "LookX",
+                                                "LookY",
+                                                "intersectX",
+                                                "intersectY",
+                                                "1"
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "BuiltinCommonInstructions::Standard",
+                                          "conditions": [
+                                            {
+                                              "type": {
+                                                "value": "BooleanVariable"
+                                              },
+                                              "parameters": [
+                                                "SeePlayer",
+                                                "",
+                                                ""
+                                              ]
+                                            }
+                                          ],
+                                          "actions": [
+                                            {
+                                              "type": {
+                                                "value": "PrimitiveDrawing::OutlineColor"
+                                              },
+                                              "parameters": [
+                                                "NewShapePainter",
+                                                "\"223;122;122\""
+                                              ]
+                                            },
+                                            {
+                                              "type": {
+                                                "value": "PrimitiveDrawing::LineV2"
+                                              },
+                                              "parameters": [
+                                                "NewShapePainter",
+                                                "LookX",
+                                                "LookY",
+                                                "intersectX",
+                                                "intersectY",
+                                                "1"
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [
+                                        {
+                                          "type": {
+                                            "value": "BooleanVariable"
+                                          },
+                                          "parameters": [
+                                            "SeeSomething",
+                                            "",
+                                            ""
+                                          ]
+                                        }
+                                      ],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "PrimitiveDrawing::OutlineColor"
+                                          },
+                                          "parameters": [
+                                            "NewShapePainter",
+                                            "\"223;122;122\""
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "PrimitiveDrawing::LineV2"
+                                          },
+                                          "parameters": [
+                                            "NewShapePainter",
+                                            "LookX",
+                                            "LookY",
+                                            "XFromAngleAndDistance(Angle, _DATA_.Enemies.PurpleEnemy.LookDistance) + PositionX",
+                                            "YFromAngleAndDistance(Angle, _DATA_.Enemies.PurpleEnemy.LookDistance) + PositionY",
+                                            "1"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "SetNumberVariable"
+                                          },
+                                          "parameters": [
+                                            "Angle",
+                                            "+",
+                                            "5"
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "BooleanVariable"
+                                      },
+                                      "parameters": [
+                                        "SeePlayer",
+                                        "True",
+                                        ""
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetStringObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "PurpleEnemy",
+                                        "IA.State",
+                                        "=",
+                                        "_CONSTANTS_.IAStates.Alert"
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Comment",
+                              "color": {
+                                "b": 52,
+                                "g": 44,
+                                "r": 40,
+                                "textB": 0,
+                                "textG": 255,
+                                "textR": 0
+                              },
+                              "comment": "// Si esta en alerta, revisar que no este nada bloqueando al jugador. Principalmente otro enemigo"
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "StringObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "PurpleEnemy",
+                                    "IA.State",
+                                    "=",
+                                    "_CONSTANTS_.IAStates.Alert"
+                                  ]
+                                }
+                              ],
+                              "actions": [],
+                              "events": [
+                                {
+                                  "folded": true,
                                   "type": "BuiltinCommonInstructions::Standard",
                                   "conditions": [
                                     {
@@ -6008,74 +6451,51 @@
                                 },
                                 {
                                   "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [],
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "BooleanVariable"
+                                      },
+                                      "parameters": [
+                                        "SeeSomething",
+                                        "True",
+                                        ""
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "BooleanVariable"
+                                      },
+                                      "parameters": [
+                                        "SeePlayer",
+                                        "False",
+                                        ""
+                                      ]
+                                    }
+                                  ],
                                   "actions": [
                                     {
                                       "type": {
-                                        "value": "SetNumberVariable"
+                                        "value": "SetBooleanObjectVariable"
                                       },
                                       "parameters": [
-                                        "Angle",
-                                        "+",
-                                        "5"
+                                        "PurpleEnemy",
+                                        "IA.SeeSomething",
+                                        "True",
+                                        "_CONSTANTS_.IAStates.Alert"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "SetStringObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "PurpleEnemy",
+                                        "IA.BlockTarget",
+                                        "=",
+                                        "VisibleToEnemy.Type"
                                       ]
                                     }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [
-                                {
-                                  "type": {
-                                    "value": "BooleanVariable"
-                                  },
-                                  "parameters": [
-                                    "SeeSomething",
-                                    "True",
-                                    ""
-                                  ]
-                                }
-                              ],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "value": "SetBooleanObjectVariable"
-                                  },
-                                  "parameters": [
-                                    "PurpleEnemy",
-                                    "IA.SeeSomething",
-                                    "True",
-                                    "_CONSTANTS_.IAStates.Alert"
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [
-                                {
-                                  "type": {
-                                    "value": "BooleanVariable"
-                                  },
-                                  "parameters": [
-                                    "SeePlayer",
-                                    "True",
-                                    ""
-                                  ]
-                                }
-                              ],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "value": "SetStringObjectVariable"
-                                  },
-                                  "parameters": [
-                                    "PurpleEnemy",
-                                    "IA.State",
-                                    "=",
-                                    "_CONSTANTS_.IAStates.Alert"
                                   ]
                                 }
                               ]
@@ -6379,42 +6799,6 @@
                               "actions": [],
                               "events": [
                                 {
-                                  "disabled": true,
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "BuiltinCommonInstructions::Once"
-                                      },
-                                      "parameters": []
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "LinkedObjects::PickObjectsLinkedTo"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "IAAlerts",
-                                        "PurpleEnemy",
-                                        ""
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "AnimatableCapability::AnimatableBehavior::SetName"
-                                      },
-                                      "parameters": [
-                                        "IAAlerts",
-                                        "Animation",
-                                        "=",
-                                        "_CONSTANTS_.IAStates.Alert"
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
                                   "type": "BuiltinCommonInstructions::Standard",
                                   "conditions": [],
                                   "actions": [
@@ -6436,7 +6820,6 @@
                                   "colorG": 128,
                                   "colorR": 29,
                                   "creationTime": 0,
-                                  "folded": true,
                                   "name": "Shoot",
                                   "source": "",
                                   "type": "BuiltinCommonInstructions::Group",
@@ -6511,6 +6894,28 @@
                                             "BulletCount",
                                             "<",
                                             "_DATA_.Enemies.PurpleEnemy.MaxBullets"
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "StringObjectVariable"
+                                          },
+                                          "parameters": [
+                                            "PurpleEnemy",
+                                            "IA.BlockTarget",
+                                            "!=",
+                                            "_CONSTANTS_.Entities.Enemy"
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "StringObjectVariable"
+                                          },
+                                          "parameters": [
+                                            "PurpleEnemy",
+                                            "IA.BlockTarget",
+                                            "!=",
+                                            "_CONSTANTS_.Entities.Wall"
                                           ]
                                         }
                                       ],
@@ -6822,7 +7227,6 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
-                  "folded": true,
                   "name": "Bullets",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -6840,6 +7244,7 @@
                       "comment": "Check collisions"
                     },
                     {
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -7336,6 +7741,71 @@
                               ]
                             }
                           ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "Create"
+                              },
+                              "parameters": [
+                                "",
+                                "Explosion",
+                                "Bullets.CenterX()",
+                                "Bullets.CenterY()",
+                                "_CONSTANTS_.Layers.Base"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "Delete"
+                              },
+                              "parameters": [
+                                "Bullets",
+                                ""
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "variables": [
+                        {
+                          "name": "DestroyBullet",
+                          "type": "boolean",
+                          "value": false
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "Distance"
+                          },
+                          "parameters": [
+                            "WhiteBullet",
+                            "WhiteBullet",
+                            "WhiteBullet.Width() / 2",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 209,
+                            "g": 199,
+                            "r": 85,
+                            "textB": 0,
+                            "textG": 0,
+                            "textR": 0
+                          },
+                          "comment": "Destroy bullet"
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
                           "actions": [
                             {
                               "type": {
@@ -7869,18 +8339,6 @@
             }
           ],
           "parameters": []
-        },
-        {
-          "type": "BuiltinCommonInstructions::Comment",
-          "color": {
-            "b": 52,
-            "g": 44,
-            "r": 40,
-            "textB": 0,
-            "textG": 0,
-            "textR": 0
-          },
-          "comment": "\n\n"
         }
       ],
       "parameters": []
