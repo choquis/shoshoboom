@@ -591,6 +591,16 @@
                     "Object",
                     "\"Cooldown\""
                   ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "CooldownAuxiliar",
+                    "=",
+                    "Cooldown"
+                  ]
                 }
               ]
             }
@@ -636,7 +646,7 @@
                     "Object",
                     "\"Cooldown\"",
                     ">=",
-                    "Cooldown"
+                    "CooldownAuxiliar"
                   ]
                 }
               ],
@@ -792,6 +802,50 @@
           "objectGroups": []
         },
         {
+          "description": "Set the cannon rotation speed",
+          "fullName": "Set body angle offset",
+          "functionType": "Action",
+          "name": "SetCooldownOffset",
+          "sentence": "Set offset cooldown _PARAM2_ in _PARAM1_ of _PARAM0_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "CooldownAuxiliar",
+                    "=",
+                    "Cooldown + OffsetTime"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomObjects::ShootBullet",
+              "type": "behavior"
+            },
+            {
+              "description": "Time",
+              "name": "OffsetTime",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
           "fullName": "",
           "functionType": "Expression",
           "name": "GetShootAngle",
@@ -833,13 +887,6 @@
       ],
       "propertyDescriptors": [
         {
-          "value": "5",
-          "type": "Number",
-          "label": "Max total of bullets",
-          "description": "Max number of bullets on screen at time by the object",
-          "name": "MaxBulletsOnScreen"
-        },
-        {
           "value": "",
           "type": "Number",
           "unit": "DegreeAngle",
@@ -869,6 +916,15 @@
           "description": "Angle where bullet was shoot",
           "hidden": true,
           "name": "AngleDirection"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "unit": "Second",
+          "label": "",
+          "description": "This is used to update the cooldown without alter the original",
+          "hidden": true,
+          "name": "CooldownAuxiliar"
         }
       ],
       "sharedPropertyDescriptors": []

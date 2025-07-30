@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.479039586175771,
+    "zoomFactor": 1.3389693172845671,
     "windowMask": false
   },
   "objectsGroups": [
@@ -703,6 +703,52 @@
           "persistentUuid": "fd7ed176-61c5-4420-959a-994d71f6447b",
           "type": "string",
           "value": "enemy1"
+        },
+        {
+          "name": "IA",
+          "type": "structure",
+          "children": [
+            {
+              "name": "AngleRotationCount",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "AngleRotationCountOperationSign",
+              "type": "number",
+              "value": 1
+            },
+            {
+              "name": "AngleRotationFieldOfvision",
+              "type": "number",
+              "value": 135
+            },
+            {
+              "name": "CurrentLookAngle",
+              "type": "number",
+              "value": 135
+            },
+            {
+              "name": "FireAngleSpread",
+              "type": "number",
+              "value": 2
+            },
+            {
+              "name": "FireCooldownVariance",
+              "type": "number",
+              "value": 0.5
+            },
+            {
+              "name": "SeePlayer",
+              "type": "boolean",
+              "value": false
+            },
+            {
+              "name": "SeeSomething",
+              "type": "boolean",
+              "value": false
+            }
+          ]
         }
       ]
     }
@@ -1458,11 +1504,6 @@
               "value": 0
             },
             {
-              "name": "FireAngleSpread",
-              "type": "number",
-              "value": 2
-            },
-            {
               "name": "FireCooldownVariance",
               "type": "number",
               "value": 0.5
@@ -1476,6 +1517,11 @@
               "name": "SeeSomething",
               "type": "boolean",
               "value": false
+            },
+            {
+              "name": "State",
+              "type": "string",
+              "value": ""
             }
           ]
         }
@@ -1494,7 +1540,7 @@
           "type": "CustomObjects::ShootBullet",
           "MaxBulletsOnScreen": 5,
           "AngleSpread": 5,
-          "Cooldown": 0.1,
+          "Cooldown": 1,
           "CurrentBulletsOnScreen": 0,
           "RotateBullet": false
         },
@@ -2958,7 +3004,7 @@
       "behaviors": [],
       "animations": [
         {
-          "name": "Looking",
+          "name": "Searching",
           "useMultipleDirections": false,
           "directions": [
             {
@@ -3056,7 +3102,7 @@
           ]
         },
         {
-          "name": "Lost",
+          "name": "LostTarget",
           "useMultipleDirections": false,
           "directions": [
             {
@@ -3647,7 +3693,7 @@
                   "parameters": [
                     "",
                     "IAAlerts",
-                    "Enemies.X()",
+                    "Enemies.X()+32 ",
                     "Enemies.Y()",
                     "_CONSTANTS_.Layers.UI"
                   ]
@@ -3660,6 +3706,28 @@
                     "",
                     "IAAlerts",
                     "Enemies"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetStringObjectVariable"
+                  },
+                  "parameters": [
+                    "Enemies",
+                    "IA.State",
+                    "=",
+                    "_CONSTANTS_.IAStates.Searching"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "IAAlerts",
+                    "Animation",
+                    "=",
+                    "_CONSTANTS_.IAStates.Searching"
                   ]
                 }
               ]
@@ -5656,9 +5724,22 @@
                       "actions": [],
                       "events": [
                         {
+                          "folded": true,
                           "type": "BuiltinCommonInstructions::ForEach",
                           "object": "PurpleEnemy",
-                          "conditions": [],
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "StringObjectVariable"
+                              },
+                              "parameters": [
+                                "PurpleEnemy",
+                                "IA.State",
+                                "=",
+                                "_CONSTANTS_.IAStates.Searching"
+                              ]
+                            }
+                          ],
                           "actions": [
                             {
                               "type": {
@@ -5718,28 +5799,6 @@
                                 "Id",
                                 "=",
                                 "PurpleEnemy.ID"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "SetBooleanObjectVariable"
-                              },
-                              "parameters": [
-                                "PurpleEnemy",
-                                "IA.SeeSomething",
-                                "False",
-                                ""
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "SetBooleanObjectVariable"
-                              },
-                              "parameters": [
-                                "PurpleEnemy",
-                                "IA.SeePlayer",
-                                "False",
-                                ""
                               ]
                             },
                             {
@@ -5970,17 +6029,6 @@
                               "conditions": [
                                 {
                                   "type": {
-                                    "value": "StringObjectVariable"
-                                  },
-                                  "parameters": [
-                                    "PurpleEnemy",
-                                    "ID",
-                                    "=",
-                                    "Id"
-                                  ]
-                                },
-                                {
-                                  "type": {
                                     "value": "BooleanVariable"
                                   },
                                   "parameters": [
@@ -5999,7 +6047,7 @@
                                     "PurpleEnemy",
                                     "IA.SeeSomething",
                                     "True",
-                                    ""
+                                    "_CONSTANTS_.IAStates.Alert"
                                   ]
                                 }
                               ]
@@ -6007,17 +6055,6 @@
                             {
                               "type": "BuiltinCommonInstructions::Standard",
                               "conditions": [
-                                {
-                                  "type": {
-                                    "value": "StringObjectVariable"
-                                  },
-                                  "parameters": [
-                                    "PurpleEnemy",
-                                    "ID",
-                                    "=",
-                                    "Id"
-                                  ]
-                                },
                                 {
                                   "type": {
                                     "value": "BooleanVariable"
@@ -6032,21 +6069,16 @@
                               "actions": [
                                 {
                                   "type": {
-                                    "value": "SetBooleanObjectVariable"
+                                    "value": "SetStringObjectVariable"
                                   },
                                   "parameters": [
                                     "PurpleEnemy",
-                                    "IA.SeePlayer",
-                                    "True",
-                                    ""
+                                    "IA.State",
+                                    "=",
+                                    "_CONSTANTS_.IAStates.Alert"
                                   ]
                                 }
                               ]
-                            },
-                            {
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": []
                             }
                           ]
                         }
@@ -6134,7 +6166,7 @@
                           "colorG": 128,
                           "colorR": 29,
                           "creationTime": 0,
-                          "name": "On guard, if player is not near",
+                          "name": "On guard, if player not seen or not near",
                           "source": "",
                           "type": "BuiltinCommonInstructions::Group",
                           "events": [
@@ -6155,13 +6187,13 @@
                               "conditions": [
                                 {
                                   "type": {
-                                    "value": "BooleanObjectVariable"
+                                    "value": "StringObjectVariable"
                                   },
                                   "parameters": [
                                     "PurpleEnemy",
-                                    "IA.SeePlayer",
+                                    "IA.State",
                                     "=",
-                                    "false"
+                                    "_CONSTANTS_.IAStates.Searching"
                                   ]
                                 }
                               ],
@@ -6302,161 +6334,404 @@
                           "colorG": 128,
                           "colorR": 29,
                           "creationTime": 0,
-                          "name": "Shoot if visible player",
+                          "name": "Follow player if seen",
                           "source": "",
                           "type": "BuiltinCommonInstructions::Group",
                           "events": [
                             {
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "value": "SetNumberObjectVariable"
-                                  },
-                                  "parameters": [
-                                    "PurpleEnemy",
-                                    "BulletCount",
-                                    "=",
-                                    "0"
-                                  ]
-                                }
-                              ]
+                              "type": "BuiltinCommonInstructions::Comment",
+                              "color": {
+                                "b": 209,
+                                "g": 199,
+                                "r": 85,
+                                "textB": 0,
+                                "textG": 0,
+                                "textR": 0
+                              },
+                              "comment": ""
                             },
                             {
                               "type": "BuiltinCommonInstructions::Standard",
                               "conditions": [
                                 {
                                   "type": {
-                                    "value": "LinkedObjects::PickObjectsLinkedTo"
-                                  },
-                                  "parameters": [
-                                    "",
-                                    "WhiteBullet",
-                                    "PurpleEnemy",
-                                    ""
-                                  ]
-                                }
-                              ],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "value": "SetNumberObjectVariable"
+                                    "value": "StringObjectVariable"
                                   },
                                   "parameters": [
                                     "PurpleEnemy",
-                                    "BulletCount",
+                                    "IA.State",
                                     "=",
-                                    "PickedInstancesCount(WhiteBullet)"
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [
-                                {
-                                  "type": {
-                                    "value": "BooleanObjectVariable"
-                                  },
-                                  "parameters": [
-                                    "PurpleEnemy",
-                                    "IA.SeePlayer",
-                                    "True",
-                                    "false"
+                                    "_CONSTANTS_.IAStates.Alert"
                                   ]
                                 },
                                 {
                                   "type": {
-                                    "value": "NumberObjectVariable"
+                                    "value": "Distance"
                                   },
                                   "parameters": [
                                     "PurpleEnemy",
-                                    "BulletCount",
-                                    "<",
-                                    "_DATA_.Enemies.PurpleEnemy.MaxBullets"
-                                  ]
-                                }
-                              ],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "value": "CustomObjects::ShootBullet::Shoot"
-                                  },
-                                  "parameters": [
-                                    "PurpleEnemy",
-                                    "ShootBullet",
-                                    "PurpleEnemy.GetMuzzlePointX()",
-                                    "PurpleEnemy.GetMuzzlePointY()",
-                                    "WhiteBullet",
-                                    "PurpleEnemy.GetCannonAngle()",
-                                    "_DATA_.Bullets.YellowSmall.Speed",
+                                    "Player",
+                                    "_DATA_.Enemies.PurpleEnemy.LookDistance + 50",
                                     ""
                                   ]
                                 }
                               ],
+                              "actions": [],
                               "events": [
                                 {
+                                  "disabled": true,
                                   "type": "BuiltinCommonInstructions::Standard",
                                   "conditions": [
                                     {
                                       "type": {
-                                        "value": "AjoutObjConcern"
+                                        "value": "BuiltinCommonInstructions::Once"
                                       },
-                                      "parameters": [
-                                        "",
-                                        "WhiteBullet"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "StringObjectVariable"
-                                      },
-                                      "parameters": [
-                                        "WhiteBullet",
-                                        "TankID",
-                                        "=",
-                                        "\"0\""
-                                      ]
+                                      "parameters": []
                                     }
                                   ],
                                   "actions": [
                                     {
                                       "type": {
-                                        "value": "LinkedObjects::LinkObjects"
+                                        "value": "LinkedObjects::PickObjectsLinkedTo"
                                       },
                                       "parameters": [
                                         "",
-                                        "WhiteBullet",
-                                        "PurpleEnemy"
+                                        "IAAlerts",
+                                        "PurpleEnemy",
+                                        ""
                                       ]
                                     },
                                     {
                                       "type": {
-                                        "value": "ChangeLayer"
+                                        "value": "AnimatableCapability::AnimatableBehavior::SetName"
                                       },
                                       "parameters": [
-                                        "WhiteBullet",
-                                        "_CONSTANTS_.Layers.Base"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "AnimatableCapability::AnimatableBehavior::PauseAnimation"
-                                      },
-                                      "parameters": [
-                                        "WhiteBullet",
-                                        "Animation"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "ChangeSprite"
-                                      },
-                                      "parameters": [
-                                        "WhiteBullet",
+                                        "IAAlerts",
+                                        "Animation",
                                         "=",
-                                        "CustomObjects::GetFrameByAngle12frames(PurpleEnemy.GetCannonAngle())"
+                                        "_CONSTANTS_.IAStates.Alert"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "CustomObjects::Player::LookToByPoint"
+                                      },
+                                      "parameters": [
+                                        "PurpleEnemy",
+                                        "Player.CenterX()",
+                                        "Player.CenterY()",
+                                        ""
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "colorB": 177,
+                                  "colorG": 128,
+                                  "colorR": 29,
+                                  "creationTime": 0,
+                                  "folded": true,
+                                  "name": "Shoot",
+                                  "source": "",
+                                  "type": "BuiltinCommonInstructions::Group",
+                                  "events": [
+                                    {
+                                      "type": "BuiltinCommonInstructions::Comment",
+                                      "color": {
+                                        "b": 209,
+                                        "g": 199,
+                                        "r": 85,
+                                        "textB": 0,
+                                        "textG": 0,
+                                        "textR": 0
+                                      },
+                                      "comment": ""
+                                    },
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "SetNumberObjectVariable"
+                                          },
+                                          "parameters": [
+                                            "PurpleEnemy",
+                                            "BulletCount",
+                                            "=",
+                                            "0"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [
+                                        {
+                                          "type": {
+                                            "value": "LinkedObjects::PickObjectsLinkedTo"
+                                          },
+                                          "parameters": [
+                                            "",
+                                            "WhiteBullet",
+                                            "PurpleEnemy",
+                                            ""
+                                          ]
+                                        }
+                                      ],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "SetNumberObjectVariable"
+                                          },
+                                          "parameters": [
+                                            "PurpleEnemy",
+                                            "BulletCount",
+                                            "=",
+                                            "PickedInstancesCount(WhiteBullet)"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [
+                                        {
+                                          "type": {
+                                            "value": "NumberObjectVariable"
+                                          },
+                                          "parameters": [
+                                            "PurpleEnemy",
+                                            "BulletCount",
+                                            "<",
+                                            "_DATA_.Enemies.PurpleEnemy.MaxBullets"
+                                          ]
+                                        }
+                                      ],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "CustomObjects::ShootBullet::Shoot"
+                                          },
+                                          "parameters": [
+                                            "PurpleEnemy",
+                                            "ShootBullet",
+                                            "PurpleEnemy.GetMuzzlePointX()",
+                                            "PurpleEnemy.GetMuzzlePointY()",
+                                            "WhiteBullet",
+                                            "PurpleEnemy.GetCannonAngle()",
+                                            "_DATA_.Bullets.YellowSmall.Speed",
+                                            ""
+                                          ]
+                                        }
+                                      ],
+                                      "events": [
+                                        {
+                                          "type": "BuiltinCommonInstructions::Standard",
+                                          "conditions": [
+                                            {
+                                              "type": {
+                                                "value": "AjoutObjConcern"
+                                              },
+                                              "parameters": [
+                                                "",
+                                                "WhiteBullet"
+                                              ]
+                                            },
+                                            {
+                                              "type": {
+                                                "value": "StringObjectVariable"
+                                              },
+                                              "parameters": [
+                                                "WhiteBullet",
+                                                "TankID",
+                                                "=",
+                                                "\"0\""
+                                              ]
+                                            }
+                                          ],
+                                          "actions": [
+                                            {
+                                              "type": {
+                                                "value": "LinkedObjects::LinkObjects"
+                                              },
+                                              "parameters": [
+                                                "",
+                                                "WhiteBullet",
+                                                "PurpleEnemy"
+                                              ]
+                                            },
+                                            {
+                                              "type": {
+                                                "value": "ChangeLayer"
+                                              },
+                                              "parameters": [
+                                                "WhiteBullet",
+                                                "_CONSTANTS_.Layers.Base"
+                                              ]
+                                            },
+                                            {
+                                              "type": {
+                                                "value": "AnimatableCapability::AnimatableBehavior::PauseAnimation"
+                                              },
+                                              "parameters": [
+                                                "WhiteBullet",
+                                                "Animation"
+                                              ]
+                                            },
+                                            {
+                                              "type": {
+                                                "value": "ChangeSprite"
+                                              },
+                                              "parameters": [
+                                                "WhiteBullet",
+                                                "=",
+                                                "CustomObjects::GetFrameByAngle12frames(PurpleEnemy.GetCannonAngle())"
+                                              ]
+                                            },
+                                            {
+                                              "type": {
+                                                "value": "SetStringObjectVariable"
+                                              },
+                                              "parameters": [
+                                                "WhiteBullet",
+                                                "TankID",
+                                                "=",
+                                                "PurpleEnemy.ID"
+                                              ]
+                                            },
+                                            {
+                                              "type": {
+                                                "value": "Create"
+                                              },
+                                              "parameters": [
+                                                "",
+                                                "BulletSmoke",
+                                                "WhiteBullet.CenterX()",
+                                                "WhiteBullet.CenterY()",
+                                                "_CONSTANTS_.Layers.Base"
+                                              ]
+                                            },
+                                            {
+                                              "type": {
+                                                "value": "Sticker::Sticker::Stick"
+                                              },
+                                              "parameters": [
+                                                "BulletSmoke",
+                                                "Sticker",
+                                                "WhiteBullet",
+                                                ""
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "parameters": []
+                                }
+                              ],
+                              "variables": [
+                                {
+                                  "name": "AngleOffset",
+                                  "type": "number",
+                                  "value": 0
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "StringObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "PurpleEnemy",
+                                    "IA.State",
+                                    "=",
+                                    "_CONSTANTS_.IAStates.Alert"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "inverted": true,
+                                    "value": "Distance"
+                                  },
+                                  "parameters": [
+                                    "PurpleEnemy",
+                                    "Player",
+                                    "_DATA_.Enemies.PurpleEnemy.LookDistance + 50",
+                                    ""
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetStringObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "PurpleEnemy",
+                                    "IA.State",
+                                    "=",
+                                    "_CONSTANTS_.IAStates.LostTarget"
+                                  ]
+                                }
+                              ],
+                              "variables": [
+                                {
+                                  "name": "AngleOffset",
+                                  "type": "number",
+                                  "value": 0
+                                }
+                              ]
+                            }
+                          ],
+                          "parameters": []
+                        },
+                        {
+                          "colorB": 177,
+                          "colorG": 128,
+                          "colorR": 29,
+                          "creationTime": 0,
+                          "name": "Lost player",
+                          "source": "",
+                          "type": "BuiltinCommonInstructions::Group",
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "StringObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "PurpleEnemy",
+                                    "IA.State",
+                                    "=",
+                                    "_CONSTANTS_.IAStates.LostTarget"
+                                  ]
+                                }
+                              ],
+                              "actions": [],
+                              "events": [
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "Wait"
+                                      },
+                                      "parameters": [
+                                        "1"
                                       ]
                                     },
                                     {
@@ -6464,41 +6739,66 @@
                                         "value": "SetStringObjectVariable"
                                       },
                                       "parameters": [
-                                        "WhiteBullet",
-                                        "TankID",
+                                        "PurpleEnemy",
+                                        "IA.State",
                                         "=",
-                                        "PurpleEnemy.ID"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "Create"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "BulletSmoke",
-                                        "WhiteBullet.CenterX()",
-                                        "WhiteBullet.CenterY()",
-                                        "_CONSTANTS_.Layers.Base"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "Sticker::Sticker::Stick"
-                                      },
-                                      "parameters": [
-                                        "BulletSmoke",
-                                        "Sticker",
-                                        "WhiteBullet",
-                                        ""
+                                        "_CONSTANTS_.IAStates.Searching"
                                       ]
                                     }
                                   ]
+                                }
+                              ],
+                              "variables": [
+                                {
+                                  "name": "AngleOffset",
+                                  "type": "number",
+                                  "value": 0
                                 }
                               ]
                             }
                           ],
                           "parameters": []
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 209,
+                            "g": 199,
+                            "r": 85,
+                            "textB": 0,
+                            "textG": 0,
+                            "textR": 0
+                          },
+                          "comment": "Update IA alerts"
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "LinkedObjects::PickObjectsLinkedTo"
+                              },
+                              "parameters": [
+                                "",
+                                "IAAlerts",
+                                "PurpleEnemy",
+                                ""
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                              },
+                              "parameters": [
+                                "IAAlerts",
+                                "Animation",
+                                "=",
+                                "PurpleEnemy.IA.State"
+                              ]
+                            }
+                          ]
                         }
                       ]
                     }
@@ -6522,6 +6822,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Bullets",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -6557,6 +6858,7 @@
                       "actions": [],
                       "events": [
                         {
+                          "folded": true,
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
                             {
