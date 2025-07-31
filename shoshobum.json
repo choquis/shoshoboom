@@ -18,7 +18,7 @@
     "scaleMode": "nearest",
     "sizeOnStartupMode": "",
     "templateSlug": "starting-top-down-pixel",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "name": "shoshobum",
     "description": "",
     "author": "Wizzarn",
@@ -750,34 +750,98 @@
         "userAdded": false
       },
       {
-        "file": "assets/FX/Explosions/explosion_body.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\FX\\Explosions\\explosion_body.png",
-        "smoothed": false,
-        "userAdded": false
-      },
-      {
-        "file": "assets/FX/Explosions/explosion_ring.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\FX\\Explosions\\explosion_ring.png",
-        "smoothed": false,
-        "userAdded": false
-      },
-      {
-        "file": "assets/FX/Explosions/spark.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\FX\\Explosions\\spark.png",
-        "smoothed": false,
-        "userAdded": false
-      },
-      {
         "file": "assets/FX/Explosions/Glow.png",
         "kind": "image",
         "metadata": "",
         "name": "assets\\FX\\Explosions\\Glow.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/FX/Explosions/body_ani/explosion_body_yellow1.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow1.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/FX/Explosions/body_ani/explosion_body_yellow2.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow2.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/FX/Explosions/body_ani/explosion_body_yellow3.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow3.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/FX/Explosions/body_ani/explosion_body_yellow4.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow4.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/FX/Explosions/body_ani/explosion_body_yellow5.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow5.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/FX/Explosions/body_ani/explosion_body_yellow6.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow6.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/FX/Explosions/body_ani/explosion_body_yellow7.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow7.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/FX/Explosions/explosion_ring_yellow.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\FX\\Explosions\\explosion_ring_yellow.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Collision64.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Collision64.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Collision.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Collision.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/FX/Particles/death_cross.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\FX\\Particles\\death_cross.png",
         "smoothed": false,
         "userAdded": false
       }
@@ -791,11 +855,11 @@
   "objectsGroups": [],
   "variables": [
     {
-      "folded": true,
       "name": "_CONFIG_",
       "type": "structure",
       "children": [
         {
+          "folded": true,
           "name": "Players",
           "type": "array",
           "children": [
@@ -819,7 +883,7 @@
                     {
                       "name": "LandMine",
                       "type": "string",
-                      "value": "RL"
+                      "value": "LT"
                     },
                     {
                       "name": "LookDown",
@@ -879,6 +943,7 @@
                   "value": "keyboard"
                 },
                 {
+                  "folded": true,
                   "name": "Keyboard",
                   "type": "structure",
                   "children": [
@@ -895,7 +960,7 @@
                     {
                       "name": "LandMine",
                       "type": "string",
-                      "value": "z"
+                      "value": "q"
                     },
                     {
                       "name": "LookDown",
@@ -971,7 +1036,7 @@
                     {
                       "name": "LandMine",
                       "type": "string",
-                      "value": "RL"
+                      "value": "LT"
                     },
                     {
                       "name": "LookDown",
@@ -1047,7 +1112,7 @@
                     {
                       "name": "LandMine",
                       "type": "string",
-                      "value": "z"
+                      "value": "q"
                     },
                     {
                       "name": "LookDown",
@@ -1327,11 +1392,6 @@
                   "value": 64
                 },
                 {
-                  "name": "ExplosionRadius",
-                  "type": "number",
-                  "value": 64
-                },
-                {
                   "name": "ExplosionTime",
                   "type": "number",
                   "value": 2
@@ -1501,10 +1561,6 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/eventsFunctionsExtensions/ysort"
-    },
-    {
-      "__REFERENCE_TO_SPLIT_OBJECT": true,
-      "referenceTo": "/eventsFunctionsExtensions/particleemitter3d"
     }
   ],
   "externalLayouts": []

@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 2.201995813710152,
+    "zoomFactor": 1.8046714318874362,
     "windowMask": false
   },
   "objectsGroups": [
@@ -119,6 +119,34 @@
         },
         {
           "name": "WhiteWall"
+        }
+      ]
+    },
+    {
+      "name": "Damageable",
+      "objects": [
+        {
+          "name": "Player"
+        },
+        {
+          "name": "PurpleEnemy"
+        },
+        {
+          "name": "BreakableWallWhite"
+        }
+      ]
+    },
+    {
+      "name": "Cleaning",
+      "objects": [
+        {
+          "name": "WhiteBullet"
+        },
+        {
+          "name": "LandMine"
+        },
+        {
+          "name": "LandMineExplosion"
         }
       ]
     }
@@ -528,11 +556,6 @@
       "stringProperties": [],
       "initialVariables": [
         {
-          "name": "Health",
-          "type": "number",
-          "value": 100000
-        },
-        {
           "name": "ID",
           "persistentUuid": "fd7ed176-61c5-4420-959a-994d71f6447b",
           "type": "string",
@@ -648,8 +671,8 @@
       "name": "PauseLabel",
       "persistentUuid": "8792ade0-52bf-4394-8b99-b8ebcd3ae765",
       "width": 0,
-      "x": 256,
-      "y": 481,
+      "x": 226,
+      "y": 513,
       "zOrder": 11,
       "numberProperties": [],
       "stringProperties": [],
@@ -670,11 +693,6 @@
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": [
-        {
-          "name": "Health",
-          "type": "number",
-          "value": 110000
-        },
         {
           "name": "ID",
           "persistentUuid": "fd7ed176-61c5-4420-959a-994d71f6447b",
@@ -698,11 +716,6 @@
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": [
-        {
-          "name": "Health",
-          "type": "number",
-          "value": 100000
-        },
         {
           "name": "ID",
           "persistentUuid": "fd7ed176-61c5-4420-959a-994d71f6447b",
@@ -1145,7 +1158,7 @@
         {
           "name": "Health",
           "type": "number",
-          "value": 1000
+          "value": 100
         },
         {
           "name": "Type",
@@ -3227,7 +3240,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": true,
-                  "image": "NewSprite3",
+                  "image": "assets\\Collision.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -3288,6 +3301,11 @@
           "name": "Damage",
           "type": "number",
           "value": 2
+        },
+        {
+          "name": "Explode",
+          "type": "boolean",
+          "value": false
         }
       ],
       "effects": [],
@@ -3432,10 +3450,581 @@
       "name": "LandMineExplosion",
       "type": "CustomObjects::BigExplosionFX",
       "variant": "",
+      "variables": [
+        {
+          "name": "Damage",
+          "type": "number",
+          "value": 2
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "YSort",
+          "type": "YSort::YSort"
+        }
+      ],
+      "content": {},
+      "childrenContent": {
+        "BodyAni": {
+          "adaptCollisionMaskAutomatically": false,
+          "updateIfNotVisible": false,
+          "animations": [
+            {
+              "name": "idle",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow1.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 64
+                          },
+                          {
+                            "x": 0,
+                            "y": 64
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "explode",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow1.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 64
+                          },
+                          {
+                            "x": 0,
+                            "y": 64
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow2.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 64
+                          },
+                          {
+                            "x": 0,
+                            "y": 64
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow3.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 64
+                          },
+                          {
+                            "x": 0,
+                            "y": 64
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow4.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 64
+                          },
+                          {
+                            "x": 0,
+                            "y": 64
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow5.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 64
+                          },
+                          {
+                            "x": 0,
+                            "y": 64
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow6.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 64
+                          },
+                          {
+                            "x": 0,
+                            "y": 64
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow7.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 64
+                          },
+                          {
+                            "x": 0,
+                            "y": 64
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow7.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 64
+                          },
+                          {
+                            "x": 0,
+                            "y": 64
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\Collision64.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 64
+                          },
+                          {
+                            "x": 0,
+                            "y": 64
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "Glow": {
+          "adaptCollisionMaskAutomatically": true,
+          "updateIfNotVisible": false,
+          "animations": [
+            {
+              "name": "default",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\Glow.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 64,
+                        "y": 64
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 34,
+                            "y": 31
+                          },
+                          {
+                            "x": 96,
+                            "y": 31
+                          },
+                          {
+                            "x": 96,
+                            "y": 93
+                          },
+                          {
+                            "x": 34,
+                            "y": 93
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "RingAni": {
+          "adaptCollisionMaskAutomatically": true,
+          "updateIfNotVisible": false,
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\explosion_ring_yellow.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 20
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 64,
+                            "y": 0
+                          },
+                          {
+                            "x": 64,
+                            "y": 40
+                          },
+                          {
+                            "x": 0,
+                            "y": 40
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "DeathMark",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
       "variables": [],
       "effects": [],
       "behaviors": [],
-      "content": {}
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Particles\\death_cross.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 0,
+                        "y": 3
+                      },
+                      {
+                        "x": 16,
+                        "y": 3
+                      },
+                      {
+                        "x": 16,
+                        "y": 16
+                      },
+                      {
+                        "x": 0,
+                        "y": 16
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "objectsFolderStructure": {
@@ -3455,6 +4044,9 @@
           },
           {
             "objectName": "LandMineExplosion"
+          },
+          {
+            "objectName": "DeathMark"
           }
         ]
       },
@@ -3669,6 +4261,24 @@
                     "Logger",
                     ""
                   ]
+                },
+                {
+                  "type": {
+                    "value": "Montre"
+                  },
+                  "parameters": [
+                    "fps",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Montre"
+                  },
+                  "parameters": [
+                    "particlecount",
+                    ""
+                  ]
                 }
               ]
             },
@@ -3697,6 +4307,22 @@
                     "",
                     "",
                     ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Cache"
+                  },
+                  "parameters": [
+                    "fps"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Cache"
+                  },
+                  "parameters": [
+                    "particlecount"
                   ]
                 },
                 {
@@ -3961,6 +4587,18 @@
                   },
                   "parameters": [
                     "PauseLabel"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "MettreXY"
+                  },
+                  "parameters": [
+                    "PauseLabel",
+                    "=",
+                    "(ScreenWidth() / 2) - (PauseLabel.Width() / 2)",
+                    "=",
+                    "(ScreenHeight() / 2) + (PauseLabel.Height() / 2)"
                   ]
                 },
                 {
@@ -4623,11 +5261,28 @@
               "conditions": [
                 {
                   "type": {
-                    "value": "KeyFromTextPressed"
+                    "value": "BuiltinCommonInstructions::Or"
                   },
-                  "parameters": [
-                    "",
-                    "_CONFIG_.Players[0].Keyboard.Shoot"
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "KeyFromTextPressed"
+                      },
+                      "parameters": [
+                        "",
+                        "_CONFIG_.Players[0].Keyboard.Shoot"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "MouseButtonFromTextPressed"
+                      },
+                      "parameters": [
+                        "",
+                        "\"Left\""
+                      ]
+                    }
                   ]
                 },
                 {
@@ -4666,11 +5321,28 @@
               "conditions": [
                 {
                   "type": {
-                    "value": "KeyFromTextPressed"
+                    "value": "BuiltinCommonInstructions::Or"
                   },
-                  "parameters": [
-                    "",
-                    "_CONFIG_.Players[0].Keyboard.LandMine"
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "KeyFromTextPressed"
+                      },
+                      "parameters": [
+                        "",
+                        "_CONFIG_.Players[0].Keyboard.LandMine"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "MouseButtonFromTextPressed"
+                      },
+                      "parameters": [
+                        "",
+                        "\"Right\""
+                      ]
+                    }
                   ]
                 },
                 {
@@ -5407,16 +6079,6 @@
                     },
                     {
                       "type": {
-                        "value": "ChangePlan"
-                      },
-                      "parameters": [
-                        "Player",
-                        "=",
-                        "3"
-                      ]
-                    },
-                    {
-                      "type": {
                         "value": "SetStringObjectVariable"
                       },
                       "parameters": [
@@ -5683,7 +6345,6 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
-                  "folded": true,
                   "name": "Check gamestate",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -5871,7 +6532,6 @@
                       "comment": "Shoot"
                     },
                     {
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -6080,7 +6740,7 @@
                           "parameters": [
                             "LandMine",
                             "=",
-                            "3000"
+                            "3"
                           ]
                         },
                         {
@@ -6116,7 +6776,6 @@
                       "comment": "Leave marks when move"
                     },
                     {
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -6204,7 +6863,7 @@
                               "parameters": [
                                 "Player.DistanceMoved",
                                 ">=",
-                                "20"
+                                "15"
                               ]
                             }
                           ],
@@ -6283,7 +6942,6 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
-                  "folded": true,
                   "name": "Purple enemy logic",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -6301,7 +6959,6 @@
                       "comment": "Update flags"
                     },
                     {
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [],
                       "actions": [],
@@ -6562,7 +7219,34 @@
                                                 "True",
                                                 "PurpleEnemy.ID"
                                               ]
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "type": "BuiltinCommonInstructions::Standard",
+                                          "conditions": [
+                                            {
+                                              "type": {
+                                                "value": "BooleanVariable"
+                                              },
+                                              "parameters": [
+                                                "SeePlayer",
+                                                "True",
+                                                ""
+                                              ]
                                             },
+                                            {
+                                              "type": {
+                                                "value": "BooleanVariable"
+                                              },
+                                              "parameters": [
+                                                "_CONFIG_.debug",
+                                                "True",
+                                                ""
+                                              ]
+                                            }
+                                          ],
+                                          "actions": [
                                             {
                                               "type": {
                                                 "value": "PrimitiveDrawing::OutlineColor"
@@ -6597,6 +7281,16 @@
                                               "parameters": [
                                                 "SeePlayer",
                                                 "",
+                                                ""
+                                              ]
+                                            },
+                                            {
+                                              "type": {
+                                                "value": "BooleanVariable"
+                                              },
+                                              "parameters": [
+                                                "_CONFIG_.debug",
+                                                "True",
                                                 ""
                                               ]
                                             }
@@ -6638,6 +7332,16 @@
                                           "parameters": [
                                             "SeeSomething",
                                             "",
+                                            ""
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "BooleanVariable"
+                                          },
+                                          "parameters": [
+                                            "_CONFIG_.debug",
+                                            "True",
                                             ""
                                           ]
                                         }
@@ -6745,7 +7449,6 @@
                               "actions": [],
                               "events": [
                                 {
-                                  "folded": true,
                                   "type": "BuiltinCommonInstructions::Standard",
                                   "conditions": [
                                     {
@@ -6801,7 +7504,34 @@
                                             "True",
                                             "PurpleEnemy.ID"
                                           ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [
+                                        {
+                                          "type": {
+                                            "value": "BooleanVariable"
+                                          },
+                                          "parameters": [
+                                            "SeePlayer",
+                                            "True",
+                                            ""
+                                          ]
                                         },
+                                        {
+                                          "type": {
+                                            "value": "BooleanVariable"
+                                          },
+                                          "parameters": [
+                                            "_CONFIG_.debug",
+                                            "True",
+                                            ""
+                                          ]
+                                        }
+                                      ],
+                                      "actions": [
                                         {
                                           "type": {
                                             "value": "PrimitiveDrawing::OutlineColor"
@@ -6836,6 +7566,16 @@
                                           "parameters": [
                                             "SeePlayer",
                                             "",
+                                            ""
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "BooleanVariable"
+                                          },
+                                          "parameters": [
+                                            "_CONFIG_.debug",
+                                            "True",
                                             ""
                                           ]
                                         }
@@ -6877,6 +7617,16 @@
                                       "parameters": [
                                         "SeeSomething",
                                         "",
+                                        ""
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "BooleanVariable"
+                                      },
+                                      "parameters": [
+                                        "_CONFIG_.debug",
+                                        "True",
                                         ""
                                       ]
                                     }
@@ -7033,7 +7783,6 @@
                       "comment": "Execute actions"
                     },
                     {
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::ForEach",
                       "object": "PurpleEnemy",
                       "conditions": [],
@@ -7721,7 +8470,6 @@
                       "actions": [],
                       "events": [
                         {
-                          "folded": true,
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
                             {
@@ -7755,98 +8503,6 @@
                                 "DestroyBullet",
                                 "True",
                                 ""
-                              ]
-                            }
-                          ],
-                          "events": [
-                            {
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [
-                                {
-                                  "type": {
-                                    "value": "NumberObjectVariable"
-                                  },
-                                  "parameters": [
-                                    "Walls",
-                                    "Health",
-                                    "<=",
-                                    "0"
-                                  ]
-                                }
-                              ],
-                              "actions": [],
-                              "events": [
-                                {
-                                  "type": "BuiltinCommonInstructions::ForEach",
-                                  "object": "Walls",
-                                  "conditions": [],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "Create"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "BreakableWallWhiteRemains",
-                                        "Walls.X()",
-                                        "Walls.Y()",
-                                        "_CONSTANTS_.Layers.Base"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "ChangePlan"
-                                      },
-                                      "parameters": [
-                                        "BreakableWallWhiteRemains",
-                                        "=",
-                                        "0"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "Delete"
-                                      },
-                                      "parameters": [
-                                        "Walls",
-                                        ""
-                                      ]
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "value": "SetNumberVariable"
-                                  },
-                                  "parameters": [
-                                    "CurrentFrame",
-                                    "=",
-                                    "clamp(trunc((Walls.Health / _DATA_.Walls[Walls.ObjectName()].MaxHealth) * 10), 0, 10)"
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "ChangeSprite"
-                                  },
-                                  "parameters": [
-                                    "BreakableWallWhite",
-                                    "=",
-                                    "CurrentFrame"
-                                  ]
-                                }
-                              ],
-                              "variables": [
-                                {
-                                  "name": "CurrentFrame",
-                                  "type": "number",
-                                  "value": 0
-                                }
                               ]
                             }
                           ]
@@ -8130,33 +8786,6 @@
                           "events": [
                             {
                               "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [
-                                {
-                                  "type": {
-                                    "value": "NumberObjectVariable"
-                                  },
-                                  "parameters": [
-                                    "Tanks",
-                                    "Health",
-                                    "<=",
-                                    "0"
-                                  ]
-                                }
-                              ],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "value": "Delete"
-                                  },
-                                  "parameters": [
-                                    "Tanks",
-                                    ""
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "type": "BuiltinCommonInstructions::Standard",
                               "conditions": [],
                               "actions": [
                                 {
@@ -8234,6 +8863,45 @@
                       ]
                     },
                     {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "CollisionNP"
+                          },
+                          "parameters": [
+                            "Bullets",
+                            "LandMine",
+                            "",
+                            "",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetBooleanObjectVariable"
+                          },
+                          "parameters": [
+                            "LandMine",
+                            "Explode",
+                            "True",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Delete"
+                          },
+                          "parameters": [
+                            "Bullets",
+                            ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
                       "type": "BuiltinCommonInstructions::Comment",
                       "color": {
                         "b": 52,
@@ -8246,7 +8914,6 @@
                       "comment": "// Se usa distancia entre balas, porque colisiones con la misma instancia es mas complicado de implementar."
                     },
                     {
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -8315,22 +8982,6 @@
                   "parameters": []
                 },
                 {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "Log_Manager::Clear"
-                      },
-                      "parameters": [
-                        "",
-                        "Logger",
-                        ""
-                      ]
-                    }
-                  ]
-                },
-                {
                   "colorB": 177,
                   "colorG": 128,
                   "colorR": 29,
@@ -8344,27 +8995,43 @@
                       "conditions": [
                         {
                           "type": {
-                            "value": "CompareObjectTimer"
+                            "value": "Distance"
                           },
                           "parameters": [
                             "LandMine",
-                            "_CONSTANTS_.Timers.LandMine.ActivationCooldown",
-                            "<",
-                            "_DATA_.Bullets.LandMine.ActivationTime"
+                            "Enemies",
+                            "_DATA_.Bullets.LandMine.DetectionDistance",
+                            ""
                           ]
                         }
                       ],
                       "actions": [
                         {
                           "type": {
-                            "value": "Log_Manager::WriteLog"
+                            "value": "AnimatableCapability::AnimatableBehavior::SetName"
                           },
                           "parameters": [
-                            "",
-                            "Logger",
-                            "\"Active: \" + ToString(LandMine.ObjectTimerElapsedTime(_CONSTANTS_.Timers.LandMine.ActivationCooldown))",
-                            ""
+                            "LandMine",
+                            "Animation",
+                            "=",
+                            "\"alert\""
                           ]
+                        },
+                        {
+                          "type": {
+                            "value": "UnPauseObjectTimer"
+                          },
+                          "parameters": [
+                            "LandMine",
+                            "_CONSTANTS_.Timers.LandMine.ExplosionCooldown"
+                          ]
+                        }
+                      ],
+                      "variables": [
+                        {
+                          "name": "DestroyBullet",
+                          "type": "boolean",
+                          "value": false
                         }
                       ]
                     },
@@ -8389,6 +9056,17 @@
                           "parameters": [
                             "LandMine",
                             "_CONSTANTS_.Timers.LandMine.ExplosionCooldown"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "BooleanObjectVariable"
+                          },
+                          "parameters": [
+                            "LandMine",
+                            "Explode",
+                            "False",
+                            ""
                           ]
                         }
                       ],
@@ -8427,42 +9105,32 @@
                       "conditions": [
                         {
                           "type": {
-                            "value": "CompareObjectTimer"
+                            "value": "BuiltinCommonInstructions::Or"
                           },
-                          "parameters": [
-                            "LandMine",
-                            "_CONSTANTS_.Timers.LandMine.ExplosionCooldown",
-                            "<",
-                            "_DATA_.Bullets.LandMine.ExplosionTime"
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "Log_Manager::WriteLog"
-                          },
-                          "parameters": [
-                            "",
-                            "Logger",
-                            "\"Explosion: \" + ToString(LandMine.ObjectTimerElapsedTime(_CONSTANTS_.Timers.LandMine.ExplosionCooldown))",
-                            ""
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "CompareObjectTimer"
-                          },
-                          "parameters": [
-                            "LandMine",
-                            "_CONSTANTS_.Timers.LandMine.ExplosionCooldown",
-                            ">=",
-                            "_DATA_.Bullets.LandMine.ExplosionTime"
+                          "parameters": [],
+                          "subInstructions": [
+                            {
+                              "type": {
+                                "value": "CompareObjectTimer"
+                              },
+                              "parameters": [
+                                "LandMine",
+                                "_CONSTANTS_.Timers.LandMine.ExplosionCooldown",
+                                ">=",
+                                "_DATA_.Bullets.LandMine.ExplosionTime"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "BooleanObjectVariable"
+                              },
+                              "parameters": [
+                                "LandMine",
+                                "Explode",
+                                "True",
+                                ""
+                              ]
+                            }
                           ]
                         }
                       ],
@@ -8486,6 +9154,36 @@
                           "parameters": [
                             "LandMine",
                             ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "CollisionNP"
+                          },
+                          "parameters": [
+                            "LandMineExplosion",
+                            "Damageable",
+                            "",
+                            "",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "Damageable",
+                            "Health",
+                            "-",
+                            "LandMineExplosion.Damage"
                           ]
                         }
                       ]
@@ -8738,7 +9436,7 @@
                             "value": "Delete"
                           },
                           "parameters": [
-                            "Bullets",
+                            "Cleaning",
                             ""
                           ]
                         }
@@ -8900,7 +9598,7 @@
                             "value": "Delete"
                           },
                           "parameters": [
-                            "Bullets",
+                            "Cleaning",
                             ""
                           ]
                         }
@@ -9016,6 +9714,235 @@
       "type": "BuiltinCommonInstructions::Group",
       "events": [],
       "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 209,
+        "g": 199,
+        "r": 85,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "Destroy damageables"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "NumberObjectVariable"
+          },
+          "parameters": [
+            "Damageable",
+            "Health",
+            "<=",
+            "0"
+          ]
+        }
+      ],
+      "actions": [],
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Or"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "value": "StringObjectVariable"
+                  },
+                  "parameters": [
+                    "Damageable",
+                    "Type",
+                    "=",
+                    "_CONSTANTS_.Entities.Player"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "StringObjectVariable"
+                  },
+                  "parameters": [
+                    "Damageable",
+                    "Type",
+                    "=",
+                    "_CONSTANTS_.Entities.Enemy"
+                  ]
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Create"
+              },
+              "parameters": [
+                "",
+                "DeathMark",
+                "Damageable.CenterX()",
+                "Damageable.BoundingBoxCenterY()",
+                "_CONSTANTS_.Layers.Base"
+              ]
+            },
+            {
+              "type": {
+                "value": "ChangePlan"
+              },
+              "parameters": [
+                "DeathMark",
+                "=",
+                "1"
+              ]
+            },
+            {
+              "type": {
+                "value": "LinkedObjects::PickObjectsLinkedTo"
+              },
+              "parameters": [
+                "",
+                "IAAlerts",
+                "Damageable",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Delete"
+              },
+              "parameters": [
+                "IAAlerts",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Delete"
+              },
+              "parameters": [
+                "Damageable",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "StringObjectVariable"
+              },
+              "parameters": [
+                "Damageable",
+                "Type",
+                "=",
+                "_CONSTANTS_.Entities.BreakableWall"
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Walls",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "BreakableWallWhiteRemains",
+                    "Walls.X()",
+                    "Walls.Y()",
+                    "_CONSTANTS_.Layers.Base"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ChangePlan"
+                  },
+                  "parameters": [
+                    "BreakableWallWhiteRemains",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Damageable",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 209,
+        "g": 199,
+        "r": 85,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "Update animation for BreakableWalls"
+    },
+    {
+      "type": "BuiltinCommonInstructions::ForEach",
+      "object": "BreakableWallWhite",
+      "conditions": [],
+      "actions": [],
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "CurrentFrame",
+                "=",
+                "clamp(trunc((BreakableWallWhite.Health / _DATA_.Walls.BreakableWallWhite.MaxHealth) * 10), 0, 10)"
+              ]
+            },
+            {
+              "type": {
+                "value": "ChangeSprite"
+              },
+              "parameters": [
+                "BreakableWallWhite",
+                "=",
+                "CurrentFrame"
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "CurrentFrame",
+              "type": "number",
+              "value": 0
+            }
+          ]
+        }
+      ]
     },
     {
       "type": "BuiltinCommonInstructions::Comment",
