@@ -1,7 +1,7 @@
 {
   "firstLayout": "",
   "gdVersion": {
-    "build": 237,
+    "build": 238,
     "major": 5,
     "minor": 5,
     "revision": 0
@@ -734,10 +734,50 @@
         "userAdded": false
       },
       {
-        "file": "assets/NewSprite4.png",
+        "file": "assets/Bullets/mine1.png",
         "kind": "image",
-        "metadata": "{\"extension\":\".png\",\"localFilePath\":\"assets/NewSprite4.png\"}",
-        "name": "NewSprite",
+        "metadata": "",
+        "name": "assets\\Bullets\\mine1.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Bullets/mine2.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Bullets\\mine2.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/FX/Explosions/explosion_body.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\FX\\Explosions\\explosion_body.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/FX/Explosions/explosion_ring.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\FX\\Explosions\\explosion_ring.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/FX/Explosions/spark.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\FX\\Explosions\\spark.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/FX/Explosions/Glow.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\FX\\Explosions\\Glow.png",
         "smoothed": false,
         "userAdded": false
       }
@@ -751,11 +791,11 @@
   "objectsGroups": [],
   "variables": [
     {
+      "folded": true,
       "name": "_CONFIG_",
       "type": "structure",
       "children": [
         {
-          "folded": true,
           "name": "Players",
           "type": "array",
           "children": [
@@ -775,6 +815,11 @@
                       "name": "Cancel",
                       "type": "string",
                       "value": "B"
+                    },
+                    {
+                      "name": "LandMine",
+                      "type": "string",
+                      "value": "RL"
                     },
                     {
                       "name": "LookDown",
@@ -846,6 +891,11 @@
                       "name": "Cancel",
                       "type": "string",
                       "value": "Escape"
+                    },
+                    {
+                      "name": "LandMine",
+                      "type": "string",
+                      "value": "z"
                     },
                     {
                       "name": "LookDown",
@@ -919,6 +969,11 @@
                       "value": "B"
                     },
                     {
+                      "name": "LandMine",
+                      "type": "string",
+                      "value": "RL"
+                    },
+                    {
                       "name": "LookDown",
                       "type": "string",
                       "value": "Right,Down"
@@ -988,6 +1043,11 @@
                       "name": "Cancel",
                       "type": "string",
                       "value": "Escape"
+                    },
+                    {
+                      "name": "LandMine",
+                      "type": "string",
+                      "value": "z"
                     },
                     {
                       "name": "LookDown",
@@ -1116,6 +1176,7 @@
           ]
         },
         {
+          "folded": true,
           "name": "IAStates",
           "type": "structure",
           "children": [
@@ -1197,6 +1258,28 @@
               "value": "UI"
             }
           ]
+        },
+        {
+          "name": "Timers",
+          "type": "structure",
+          "children": [
+            {
+              "name": "LandMine",
+              "type": "structure",
+              "children": [
+                {
+                  "name": "ActivationCooldown",
+                  "type": "string",
+                  "value": "ActivationCooldown"
+                },
+                {
+                  "name": "ExplosionCooldown",
+                  "type": "string",
+                  "value": "ExplosionCooldown"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -1226,10 +1309,35 @@
       "type": "structure",
       "children": [
         {
-          "folded": true,
           "name": "Bullets",
           "type": "structure",
           "children": [
+            {
+              "name": "LandMine",
+              "type": "structure",
+              "children": [
+                {
+                  "name": "ActivationTime",
+                  "type": "number",
+                  "value": 2
+                },
+                {
+                  "name": "DetectionDistance",
+                  "type": "number",
+                  "value": 64
+                },
+                {
+                  "name": "ExplosionRadius",
+                  "type": "number",
+                  "value": 64
+                },
+                {
+                  "name": "ExplosionTime",
+                  "type": "number",
+                  "value": 2
+                }
+              ]
+            },
             {
               "name": "PurpleSmall",
               "type": "structure",
@@ -1297,7 +1405,6 @@
           ]
         },
         {
-          "folded": true,
           "name": "Player",
           "type": "structure",
           "children": [
@@ -1305,6 +1412,11 @@
               "name": "MaxBullets",
               "type": "number",
               "value": 5
+            },
+            {
+              "name": "MaxLandMines",
+              "type": "number",
+              "value": 2
             },
             {
               "name": "ReloadTime",
@@ -1389,6 +1501,10 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/eventsFunctionsExtensions/ysort"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/particleemitter3d"
     }
   ],
   "externalLayouts": []

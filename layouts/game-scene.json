@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.5804687500000334,
+    "zoomFactor": 2.201995813710152,
     "windowMask": false
   },
   "objectsGroups": [
@@ -253,6 +253,11 @@
     },
     {
       "name": "PlayerShoot",
+      "type": "boolean",
+      "value": false
+    },
+    {
+      "name": "PlayerLandMine",
       "type": "boolean",
       "value": false
     },
@@ -623,7 +628,7 @@
       "customSize": false,
       "height": 0,
       "keepRatio": true,
-      "layer": "",
+      "layer": "UI",
       "name": "particlecount",
       "persistentUuid": "08197b99-ee03-47e7-af52-b7caf39d3079",
       "width": 0,
@@ -1171,6 +1176,11 @@
           "name": "BulletCount",
           "type": "number",
           "value": 0
+        },
+        {
+          "name": "LandMineCount",
+          "type": "number",
+          "value": 0
         }
       ],
       "effects": [],
@@ -1539,6 +1549,11 @@
               "value": ""
             }
           ]
+        },
+        {
+          "name": "LandMineCount",
+          "type": "number",
+          "value": 0
         }
       ],
       "effects": [],
@@ -3251,6 +3266,176 @@
           ]
         }
       ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "LandMine",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Type",
+          "type": "string",
+          "value": "LandMine"
+        },
+        {
+          "name": "ExplosionTime",
+          "type": "number",
+          "value": 2
+        },
+        {
+          "name": "Damage",
+          "type": "number",
+          "value": 2
+        }
+      ],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "idle",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.25,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\mine1.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 0,
+                        "y": 3
+                      },
+                      {
+                        "x": 16,
+                        "y": 3
+                      },
+                      {
+                        "x": 16,
+                        "y": 14
+                      },
+                      {
+                        "x": 0,
+                        "y": 14
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "alert",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": true,
+              "timeBetweenFrames": 0.25,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\mine1.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 0,
+                        "y": 3
+                      },
+                      {
+                        "x": 16,
+                        "y": 3
+                      },
+                      {
+                        "x": 16,
+                        "y": 14
+                      },
+                      {
+                        "x": 0,
+                        "y": 14
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\mine2.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 0,
+                        "y": 3
+                      },
+                      {
+                        "x": 16,
+                        "y": 3
+                      },
+                      {
+                        "x": 16,
+                        "y": 14
+                      },
+                      {
+                        "x": 0,
+                        "y": 14
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetStoreId": "",
+      "name": "LandMineExplosion",
+      "type": "CustomObjects::BigExplosionFX",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {}
     }
   ],
   "objectsFolderStructure": {
@@ -3267,6 +3452,9 @@
           },
           {
             "objectName": "Explosion"
+          },
+          {
+            "objectName": "LandMineExplosion"
           }
         ]
       },
@@ -3324,6 +3512,9 @@
           },
           {
             "objectName": "WhiteBullet"
+          },
+          {
+            "objectName": "LandMine"
           }
         ]
       },
@@ -3864,6 +4055,21 @@
               "actions": [
                 {
                   "type": {
+                    "value": "ResetObjectTimer"
+                  },
+                  "parameters": [
+                    "LandMine",
+                    "_CONSTANTS_.Timers.LandMine.ActivationCooldown"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
                     "value": "AdvancedWindow::Maximize"
                   },
                   "parameters": [
@@ -4173,6 +4379,110 @@
             "textG": 0,
             "textR": 0
           },
+          "comment": "Count player ammo"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberObjectVariable"
+              },
+              "parameters": [
+                "Player",
+                "BulletCount",
+                "=",
+                "0"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "LinkedObjects::PickObjectsLinkedTo"
+              },
+              "parameters": [
+                "",
+                "WhiteBullet",
+                "Player",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberObjectVariable"
+              },
+              "parameters": [
+                "Player",
+                "BulletCount",
+                "=",
+                "PickedInstancesCount(WhiteBullet)"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberObjectVariable"
+              },
+              "parameters": [
+                "Player",
+                "LandMineCount",
+                "=",
+                "0"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "LinkedObjects::PickObjectsLinkedTo"
+              },
+              "parameters": [
+                "",
+                "LandMine",
+                "Player",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberObjectVariable"
+              },
+              "parameters": [
+                "Player",
+                "LandMineCount",
+                "=",
+                "PickedInstancesCount(LandMine)"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 209,
+            "g": 199,
+            "r": 85,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
           "comment": "Keyboard actions"
         },
         {
@@ -4322,6 +4632,17 @@
                 },
                 {
                   "type": {
+                    "value": "NumberObjectVariable"
+                  },
+                  "parameters": [
+                    "Player",
+                    "BulletCount",
+                    "<",
+                    "_DATA_.Player.MaxBullets"
+                  ]
+                },
+                {
+                  "type": {
                     "value": "BuiltinCommonInstructions::Once"
                   },
                   "parameters": []
@@ -4334,6 +4655,49 @@
                   },
                   "parameters": [
                     "PlayerShoot",
+                    "True",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "KeyFromTextPressed"
+                  },
+                  "parameters": [
+                    "",
+                    "_CONFIG_.Players[0].Keyboard.LandMine"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "NumberObjectVariable"
+                  },
+                  "parameters": [
+                    "Player",
+                    "LandMineCount",
+                    "<",
+                    "_DATA_.Player.MaxLandMines"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "PlayerLandMine",
                     "True",
                     ""
                   ]
@@ -4689,6 +5053,17 @@
                 },
                 {
                   "type": {
+                    "value": "NumberObjectVariable"
+                  },
+                  "parameters": [
+                    "Player",
+                    "BulletCount",
+                    "<",
+                    "_DATA_.Player.MaxBullets"
+                  ]
+                },
+                {
+                  "type": {
                     "value": "BuiltinCommonInstructions::Once"
                   },
                   "parameters": []
@@ -4701,6 +5076,51 @@
                   },
                   "parameters": [
                     "PlayerShoot",
+                    "True",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Gamepads::C_Button_pressed"
+                  },
+                  "parameters": [
+                    "",
+                    "1",
+                    "_CONFIG_.Players[0].Gamepad.LandMine",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "NumberObjectVariable"
+                  },
+                  "parameters": [
+                    "Player",
+                    "LandMineCount",
+                    "<",
+                    "_DATA_.Player.MaxLandMines"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "PlayerLandMine",
                     "True",
                     ""
                   ]
@@ -5263,6 +5683,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Check gamestate",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -5450,52 +5871,7 @@
                       "comment": "Shoot"
                     },
                     {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "SetNumberObjectVariable"
-                          },
-                          "parameters": [
-                            "Player",
-                            "BulletCount",
-                            "=",
-                            "0"
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "LinkedObjects::PickObjectsLinkedTo"
-                          },
-                          "parameters": [
-                            "",
-                            "WhiteBullet",
-                            "Player",
-                            ""
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "SetNumberObjectVariable"
-                          },
-                          "parameters": [
-                            "Player",
-                            "BulletCount",
-                            "=",
-                            "PickedInstancesCount(WhiteBullet)"
-                          ]
-                        }
-                      ]
-                    },
-                    {
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -5506,17 +5882,6 @@
                             "PlayerShoot",
                             "True",
                             ""
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "NumberObjectVariable"
-                          },
-                          "parameters": [
-                            "Player",
-                            "BulletCount",
-                            "<",
-                            "_DATA_.Player.MaxBullets"
                           ]
                         }
                       ],
@@ -5659,9 +6024,99 @@
                         "textG": 0,
                         "textR": 0
                       },
+                      "comment": "Land mine"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "PlayerLandMine",
+                            "True",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetBooleanVariable"
+                          },
+                          "parameters": [
+                            "PlayerLandMine",
+                            "False",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Create"
+                          },
+                          "parameters": [
+                            "",
+                            "LandMine",
+                            "Player.CenterX()",
+                            "Player.CenterY()",
+                            "_CONSTANTS_.Layers.Base"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "LinkedObjects::LinkObjects"
+                          },
+                          "parameters": [
+                            "",
+                            "LandMine",
+                            "Player"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "ChangePlan"
+                          },
+                          "parameters": [
+                            "LandMine",
+                            "=",
+                            "3000"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "ResetObjectTimer"
+                          },
+                          "parameters": [
+                            "LandMine",
+                            "_CONSTANTS_.Timers.LandMine.ActivationCooldown"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "PauseObjectTimer"
+                          },
+                          "parameters": [
+                            "LandMine",
+                            "_CONSTANTS_.Timers.LandMine.ExplosionCooldown"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 209,
+                        "g": 199,
+                        "r": 85,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
                       "comment": "Leave marks when move"
                     },
                     {
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -5828,6 +6283,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Purple enemy logic",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -5845,6 +6301,7 @@
                       "comment": "Update flags"
                     },
                     {
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [],
                       "actions": [],
@@ -6576,6 +7033,7 @@
                       "comment": "Execute actions"
                     },
                     {
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::ForEach",
                       "object": "PurpleEnemy",
                       "conditions": [],
@@ -7577,6 +8035,7 @@
                       ]
                     },
                     {
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -7775,6 +8234,19 @@
                       ]
                     },
                     {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 52,
+                        "g": 44,
+                        "r": 40,
+                        "textB": 0,
+                        "textG": 255,
+                        "textR": 0
+                      },
+                      "comment": "// Se usa distancia entre balas, porque colisiones con la misma instancia es mas complicado de implementar."
+                    },
+                    {
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -7836,6 +8308,185 @@
                           "name": "DestroyBullet",
                           "type": "boolean",
                           "value": false
+                        }
+                      ]
+                    }
+                  ],
+                  "parameters": []
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "Log_Manager::Clear"
+                      },
+                      "parameters": [
+                        "",
+                        "Logger",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "colorB": 177,
+                  "colorG": 128,
+                  "colorR": 29,
+                  "creationTime": 0,
+                  "name": "Land mines",
+                  "source": "",
+                  "type": "BuiltinCommonInstructions::Group",
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "CompareObjectTimer"
+                          },
+                          "parameters": [
+                            "LandMine",
+                            "_CONSTANTS_.Timers.LandMine.ActivationCooldown",
+                            "<",
+                            "_DATA_.Bullets.LandMine.ActivationTime"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Log_Manager::WriteLog"
+                          },
+                          "parameters": [
+                            "",
+                            "Logger",
+                            "\"Active: \" + ToString(LandMine.ObjectTimerElapsedTime(_CONSTANTS_.Timers.LandMine.ActivationCooldown))",
+                            ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "CompareObjectTimer"
+                          },
+                          "parameters": [
+                            "LandMine",
+                            "_CONSTANTS_.Timers.LandMine.ActivationCooldown",
+                            ">=",
+                            "_DATA_.Bullets.LandMine.ActivationTime"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "ObjectTimerPaused"
+                          },
+                          "parameters": [
+                            "LandMine",
+                            "_CONSTANTS_.Timers.LandMine.ExplosionCooldown"
+                          ]
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                              },
+                              "parameters": [
+                                "LandMine",
+                                "Animation",
+                                "=",
+                                "\"alert\""
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "UnPauseObjectTimer"
+                              },
+                              "parameters": [
+                                "LandMine",
+                                "_CONSTANTS_.Timers.LandMine.ExplosionCooldown"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "CompareObjectTimer"
+                          },
+                          "parameters": [
+                            "LandMine",
+                            "_CONSTANTS_.Timers.LandMine.ExplosionCooldown",
+                            "<",
+                            "_DATA_.Bullets.LandMine.ExplosionTime"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Log_Manager::WriteLog"
+                          },
+                          "parameters": [
+                            "",
+                            "Logger",
+                            "\"Explosion: \" + ToString(LandMine.ObjectTimerElapsedTime(_CONSTANTS_.Timers.LandMine.ExplosionCooldown))",
+                            ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "CompareObjectTimer"
+                          },
+                          "parameters": [
+                            "LandMine",
+                            "_CONSTANTS_.Timers.LandMine.ExplosionCooldown",
+                            ">=",
+                            "_DATA_.Bullets.LandMine.ExplosionTime"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Create"
+                          },
+                          "parameters": [
+                            "",
+                            "LandMineExplosion",
+                            "LandMine.CenterX() - (LandMineExplosion.Width() * 2)",
+                            "LandMine.CenterY() - LandMineExplosion.Height() / 2",
+                            "_CONSTANTS_.Layers.Base"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Delete"
+                          },
+                          "parameters": [
+                            "LandMine",
+                            ""
+                          ]
                         }
                       ]
                     }
