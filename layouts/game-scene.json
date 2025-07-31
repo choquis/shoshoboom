@@ -623,8 +623,8 @@
       "name": "StartPosition",
       "persistentUuid": "aa9f5a22-fb6e-436b-b57a-5344129ebc4c",
       "width": 32,
-      "x": 384,
-      "y": 192,
+      "x": 64,
+      "y": 64,
       "zOrder": 9,
       "numberProperties": [],
       "stringProperties": [],
@@ -639,8 +639,8 @@
       "name": "BreakableWallWhite",
       "persistentUuid": "8b84699b-e40d-42cb-9ccc-af2685e0ffce",
       "width": 0,
-      "x": 416,
-      "y": 128,
+      "x": 32,
+      "y": 96,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -1267,6 +1267,10 @@
           "HalfPeriodTime": 0.1,
           "IsFlashing": false,
           "FlashDuration": 0
+        },
+        {
+          "name": "YSort",
+          "type": "YSort::YSort"
         }
       ],
       "animations": [
@@ -4689,6 +4693,33 @@
             },
             {
               "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "AjoutObjConcern"
+                  },
+                  "parameters": [
+                    "",
+                    "BreakableWallWhite"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberObjectVariable"
+                  },
+                  "parameters": [
+                    "BreakableWallWhite",
+                    "Health",
+                    "=",
+                    "_DATA_.Walls.BreakableWallWhite.MaxHealth"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
               "actions": [
                 {
@@ -6719,7 +6750,7 @@
                             "",
                             "LandMine",
                             "Player.CenterX()",
-                            "Player.CenterY()",
+                            "Player.CenterY() + 4",
                             "_CONSTANTS_.Layers.Base"
                           ]
                         },
@@ -8451,7 +8482,6 @@
                       "comment": "Check collisions"
                     },
                     {
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -8691,7 +8721,6 @@
                       ]
                     },
                     {
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -9174,16 +9203,30 @@
                           ]
                         }
                       ],
-                      "actions": [
+                      "actions": [],
+                      "events": [
                         {
-                          "type": {
-                            "value": "SetNumberObjectVariable"
-                          },
-                          "parameters": [
-                            "Damageable",
-                            "Health",
-                            "-",
-                            "LandMineExplosion.Damage"
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "BuiltinCommonInstructions::Once"
+                              },
+                              "parameters": []
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetNumberObjectVariable"
+                              },
+                              "parameters": [
+                                "Damageable",
+                                "Health",
+                                "-",
+                                "LandMineExplosion.Damage"
+                              ]
+                            }
                           ]
                         }
                       ]
@@ -9902,6 +9945,22 @@
         "textR": 0
       },
       "comment": "Update animation for BreakableWalls"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "Log_Manager::Clear"
+          },
+          "parameters": [
+            "",
+            "Logger",
+            ""
+          ]
+        }
+      ]
     },
     {
       "type": "BuiltinCommonInstructions::ForEach",
