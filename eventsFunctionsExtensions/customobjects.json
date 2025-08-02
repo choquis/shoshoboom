@@ -624,7 +624,7 @@
           "fullName": "",
           "functionType": "Action",
           "name": "Shoot",
-          "sentence": "Shoot _PARAM4_ from _PARAM0_, from position (X: _PARAM2_; Y: _PARAM3_) at angle _PARAM5_ and speed _PARAM6_ px/s",
+          "sentence": "Shoot _PARAM4_ from _PARAM0_ at angle _PARAM2_ and speed _PARAM3_ px/s",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
@@ -655,20 +655,7 @@
                 {
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "Create"
-                      },
-                      "parameters": [
-                        "",
-                        "Bullet",
-                        "PositionX",
-                        "PositionY",
-                        ""
-                      ]
-                    }
-                  ],
+                  "actions": [],
                   "events": [
                     {
                       "type": "BuiltinCommonInstructions::Standard",
@@ -774,21 +761,6 @@
               "type": "behavior"
             },
             {
-              "description": "Position X",
-              "name": "PositionX",
-              "type": "expression"
-            },
-            {
-              "description": "Position Y",
-              "name": "PositionY",
-              "type": "expression"
-            },
-            {
-              "description": "Bullet",
-              "name": "Bullet",
-              "type": "objectListOrEmptyIfJustDeclared"
-            },
-            {
               "description": "Angle",
               "name": "Angle",
               "type": "expression"
@@ -797,6 +769,11 @@
               "description": "Speed",
               "name": "Speed",
               "type": "expression"
+            },
+            {
+              "description": "Bullet",
+              "name": "Bullet",
+              "type": "objectList"
             }
           ],
           "objectGroups": []
@@ -941,6 +918,7 @@
       "defaultName": "Player",
       "description": "",
       "fullName": "",
+      "isAnimatable": true,
       "isUsingLegacyInstancesRenderer": false,
       "name": "Player",
       "objects": [
@@ -1016,7 +994,7 @@
           "behaviors": [],
           "animations": [
             {
-              "name": "default",
+              "name": "",
               "useMultipleDirections": false,
               "directions": [
                 {
@@ -1068,7 +1046,7 @@
           "behaviors": [],
           "animations": [
             {
-              "name": "default",
+              "name": "",
               "useMultipleDirections": false,
               "directions": [
                 {
@@ -1109,7 +1087,7 @@
           "behaviors": [],
           "animations": [
             {
-              "name": "",
+              "name": "body",
               "useMultipleDirections": false,
               "directions": [
                 {
@@ -1745,7 +1723,7 @@
           "behaviors": [],
           "animations": [
             {
-              "name": "",
+              "name": "cannon",
               "useMultipleDirections": false,
               "directions": [
                 {
@@ -2562,16 +2540,16 @@
         "folderName": "__ROOT",
         "children": [
           {
-            "objectName": "BodyContainer"
-          },
-          {
             "objectName": "BodySprite"
           },
           {
-            "objectName": "CannonContainer"
+            "objectName": "CannonSprite"
           },
           {
-            "objectName": "CannonSprite"
+            "objectName": "BodyContainer"
+          },
+          {
+            "objectName": "CannonContainer"
           },
           {
             "objectName": "Collision"
