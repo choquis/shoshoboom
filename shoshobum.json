@@ -1875,6 +1875,11 @@
       "type": "structure",
       "children": [
         {
+          "name": "GreenLine",
+          "type": "string",
+          "value": "123;223;122"
+        },
+        {
           "folded": true,
           "name": "Players",
           "type": "array",
@@ -2187,6 +2192,11 @@
           ]
         },
         {
+          "name": "RedLine",
+          "type": "string",
+          "value": "223;122;122"
+        },
+        {
           "name": "debug",
           "type": "boolean",
           "value": true
@@ -2432,6 +2442,47 @@
           "type": "structure",
           "children": [
             {
+              "name": "RegularEnemy",
+              "type": "structure",
+              "children": [
+                {
+                  "name": "DetectionDistance",
+                  "type": "number",
+                  "value": 50
+                },
+                {
+                  "name": "DetectionExtension",
+                  "type": "number",
+                  "value": 75
+                },
+                {
+                  "name": "LookDistance",
+                  "type": "number",
+                  "value": 200
+                },
+                {
+                  "name": "LookSpeed",
+                  "type": "number",
+                  "value": 80
+                },
+                {
+                  "name": "MaxBullets",
+                  "type": "number",
+                  "value": 2
+                },
+                {
+                  "name": "MaxHealth",
+                  "type": "number",
+                  "value": 1
+                },
+                {
+                  "name": "ReloadTime",
+                  "type": "number",
+                  "value": 1.5
+                }
+              ]
+            },
+            {
               "name": "StationaryEnemy",
               "type": "structure",
               "children": [
@@ -2439,6 +2490,11 @@
                   "name": "DetectionDistance",
                   "type": "number",
                   "value": 100
+                },
+                {
+                  "name": "DetectionExtension",
+                  "type": "number",
+                  "value": 50
                 },
                 {
                   "name": "LookDistance",
