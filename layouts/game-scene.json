@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.4790395861757784,
+    "zoomFactor": 2.130165915900329,
     "windowMask": false
   },
   "objectsGroups": [
@@ -58,6 +58,9 @@
         },
         {
           "name": "Player"
+        },
+        {
+          "name": "RegularEnemy"
         }
       ]
     },
@@ -91,6 +94,9 @@
       "objects": [
         {
           "name": "StationaryEnemy"
+        },
+        {
+          "name": "RegularEnemy"
         }
       ]
     },
@@ -127,6 +133,9 @@
         },
         {
           "name": "BreakableWallWhite"
+        },
+        {
+          "name": "RegularEnemy"
         }
       ]
     },
@@ -225,11 +234,6 @@
       "name": "Timers",
       "type": "structure",
       "children": [
-        {
-          "name": "BulletIgnoreCollisions",
-          "type": "string",
-          "value": "BulletIgnoreCollisions"
-        },
         {
           "name": "FadeForegroundOpacity",
           "type": "string",
@@ -605,92 +609,12 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Base",
-      "name": "StationaryEnemy",
-      "persistentUuid": "1a2d3960-3144-4d7c-bd9c-599e4cd80280",
+      "name": "RegularEnemy",
+      "persistentUuid": "80f6bc30-9b0b-46c2-b05f-ce9ccef906b6",
       "width": 0,
-      "x": 288,
-      "y": 32,
-      "zOrder": 102,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "StationaryEnemy",
-      "persistentUuid": "d8828eda-558d-45c7-8a8c-9efbe478d7ca",
-      "width": 0,
-      "x": 96,
-      "y": 288,
-      "zOrder": 102,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "StationaryEnemy",
-      "persistentUuid": "ae7b55bf-eb85-4284-93ff-72c47d1949cd",
-      "width": 0,
-      "x": 96,
-      "y": 64,
-      "zOrder": 102,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "StationaryEnemy",
-      "persistentUuid": "d05852c6-efb6-4c41-8bd9-76c244f51845",
-      "width": 0,
-      "x": 448,
-      "y": 320,
-      "zOrder": 102,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "StationaryEnemy",
-      "persistentUuid": "7b247a2d-7491-4896-be46-71b76f929553",
-      "width": 0,
-      "x": 480,
-      "y": 64,
-      "zOrder": 102,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "StationaryEnemy",
-      "persistentUuid": "de0c8274-22d3-4358-a11d-85c43a6cba34",
-      "width": 0,
-      "x": 512,
-      "y": 160,
-      "zOrder": 102,
+      "x": 320,
+      "y": 192,
+      "zOrder": 103,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -881,6 +805,12 @@
           "HalfPeriodTime": 0.1,
           "IsFlashing": false,
           "FlashDuration": 0
+        },
+        {
+          "cost": 2,
+          "impassable": true,
+          "name": "PathfindingObstacle",
+          "type": "PathfindingBehavior::PathfindingObstacleBehavior"
         }
       ]
     },
@@ -898,7 +828,14 @@
       "width": 96,
       "variables": [],
       "effects": [],
-      "behaviors": []
+      "behaviors": [
+        {
+          "cost": 2,
+          "impassable": true,
+          "name": "PathfindingObstacle",
+          "type": "PathfindingBehavior::PathfindingObstacleBehavior"
+        }
+      ]
     },
     {
       "assetStoreId": "",
@@ -1103,6 +1040,12 @@
           "HalfPeriodTime": 0.1,
           "IsFlashing": false,
           "FlashDuration": 0
+        },
+        {
+          "cost": 2,
+          "impassable": true,
+          "name": "PathfindingObstacle",
+          "type": "PathfindingBehavior::PathfindingObstacleBehavior"
         },
         {
           "name": "YSort",
@@ -1315,7 +1258,7 @@
       "assetStoreId": "",
       "name": "StationaryEnemy",
       "type": "CustomObjects::Player",
-      "variant": "",
+      "variant": "Blue",
       "variables": [
         {
           "name": "Health",
@@ -1424,7 +1367,26 @@
           "value": 1
         }
       ],
-      "effects": [],
+      "effects": [
+        {
+          "effectType": "DropShadow",
+          "name": "Effect",
+          "doubleParameters": {
+            "alpha": 1,
+            "blur": 0.2,
+            "distance": 2,
+            "padding": 0,
+            "quality": 3,
+            "rotation": 90
+          },
+          "stringParameters": {
+            "color": "114;114;114"
+          },
+          "booleanParameters": {
+            "shadowOnly": false
+          }
+        }
+      ],
       "behaviors": [
         {
           "name": "Flash",
@@ -4193,6 +4155,193 @@
           ]
         }
       ]
+    },
+    {
+      "assetStoreId": "",
+      "name": "RegularEnemy",
+      "type": "CustomObjects::Player",
+      "variant": "Green",
+      "variables": [
+        {
+          "name": "Health",
+          "type": "number",
+          "value": 1
+        },
+        {
+          "name": "Type",
+          "type": "string",
+          "value": "Enemy"
+        },
+        {
+          "name": "ID",
+          "type": "string",
+          "value": ""
+        },
+        {
+          "name": "DistanceMoved",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "OldY",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "OldX",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "BulletCount",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "IA",
+          "type": "structure",
+          "children": [
+            {
+              "name": "AngleRotationCount",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "AngleRotationCountOperationSign",
+              "type": "number",
+              "value": 1
+            },
+            {
+              "name": "AngleRotationFieldOfvision",
+              "type": "number",
+              "value": 135
+            },
+            {
+              "name": "BlockTarget",
+              "type": "string",
+              "value": ""
+            },
+            {
+              "name": "ChildVariable",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "CurrentLookAngle",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "FireCooldownVariance",
+              "type": "number",
+              "value": 0.5
+            },
+            {
+              "name": "SeePlayer",
+              "type": "boolean",
+              "value": false
+            },
+            {
+              "name": "SeeSomething",
+              "type": "boolean",
+              "value": false
+            },
+            {
+              "name": "Shoot",
+              "type": "boolean",
+              "value": false
+            },
+            {
+              "name": "State",
+              "type": "string",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "name": "LandMineCount",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "ShootCooldown",
+          "type": "number",
+          "value": 1
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "DropShadow",
+          "name": "Effect",
+          "doubleParameters": {
+            "alpha": 1,
+            "blur": 0.2,
+            "distance": 2,
+            "padding": 0,
+            "quality": 3,
+            "rotation": 90
+          },
+          "stringParameters": {
+            "color": "114;114;114"
+          },
+          "booleanParameters": {
+            "shadowOnly": false
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Flash",
+          "type": "Flash::Flash",
+          "HalfPeriodTime": 0.1,
+          "IsFlashing": false,
+          "FlashDuration": 0
+        },
+        {
+          "acceleration": 400,
+          "allowDiagonals": true,
+          "angleOffset": 0,
+          "angularMaxSpeed": 180,
+          "cellHeight": 20,
+          "cellWidth": 20,
+          "extraBorder": 0,
+          "gridOffsetX": 0,
+          "gridOffsetY": 0,
+          "maxSpeed": 200,
+          "name": "Pathfinding",
+          "rotateObject": false,
+          "smoothingMaxCellGap": 1,
+          "type": "PathfindingBehavior::PathfindingBehavior"
+        },
+        {
+          "isFolded": true,
+          "name": "TopDownMovement",
+          "type": "TopDownMovementBehavior::TopDownMovementBehavior",
+          "acceleration": 450,
+          "allowDiagonals": true,
+          "angleOffset": 0,
+          "angularMaxSpeed": 180,
+          "customIsometryAngle": 30,
+          "deceleration": 900,
+          "ignoreDefaultControls": true,
+          "maxSpeed": 150,
+          "movementAngleOffset": 0,
+          "rotateObject": false,
+          "useLegacyTurnBack": false,
+          "viewpoint": "TopDown"
+        },
+        {
+          "name": "YSort",
+          "type": "YSort::YSort"
+        }
+      ],
+      "content": {
+        "CannonRotationSpeed": 1200
+      },
+      "animatable": {
+        "adaptCollisionMaskAutomatically": true,
+        "animations": []
+      }
     }
   ],
   "objectsFolderStructure": {
@@ -4232,6 +4381,9 @@
           },
           {
             "objectName": "BreakableWallWhiteRemains"
+          },
+          {
+            "objectName": "StartPosition"
           }
         ]
       },
@@ -4258,6 +4410,9 @@
           },
           {
             "objectName": "Logger"
+          },
+          {
+            "objectName": "IAAlerts"
           }
         ]
       },
@@ -4280,17 +4435,14 @@
           },
           {
             "objectName": "StationaryEnemy"
+          },
+          {
+            "objectName": "RegularEnemy"
           }
         ]
       },
       {
         "objectName": "NewShapePainter"
-      },
-      {
-        "objectName": "StartPosition"
-      },
-      {
-        "objectName": "IAAlerts"
       },
       {
         "objectName": "EnemySquare"
@@ -5070,50 +5222,6 @@
                 "_CONSTANTS_.InputType.Keyboard"
               ]
             }
-          ],
-          "events": [
-            {
-              "disabled": true,
-              "type": "BuiltinCommonInstructions::ForEachChildVariable",
-              "iterableVariableName": "_CONFIG_.player_one.keyboard",
-              "valueIteratorVariableName": "loopChildText",
-              "keyIteratorVariableName": "",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::CompareStrings"
-                  },
-                  "parameters": [
-                    "loopChildText",
-                    "=",
-                    "LastPressedKey()"
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetStringVariable"
-                  },
-                  "parameters": [
-                    "_CONFIG_.player_one.inputType",
-                    "=",
-                    "_CONSTANTS_.InputType.Keyboard"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
-                  },
-                  "parameters": [
-                    "InputIcon",
-                    "Animation",
-                    "=",
-                    "_CONSTANTS_.InputType.Keyboard"
-                  ]
-                }
-              ]
-            }
           ]
         },
         {
@@ -5189,50 +5297,6 @@
                 "Animation",
                 "=",
                 "_CONSTANTS_.InputType.Gamepad"
-              ]
-            }
-          ],
-          "events": [
-            {
-              "disabled": true,
-              "type": "BuiltinCommonInstructions::ForEachChildVariable",
-              "iterableVariableName": "_CONFIG_.player_one.gamepad",
-              "valueIteratorVariableName": "loopChildText",
-              "keyIteratorVariableName": "",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::CompareStrings"
-                  },
-                  "parameters": [
-                    "loopChildText",
-                    "=",
-                    "Gamepads::LastButtonString(1, \"XBOX\")"
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetStringVariable"
-                  },
-                  "parameters": [
-                    "_CONFIG_.player_one.inputType",
-                    "=",
-                    "_CONSTANTS_.InputType.Gamepad"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
-                  },
-                  "parameters": [
-                    "InputIcon",
-                    "Animation",
-                    "=",
-                    "_CONSTANTS_.InputType.Gamepad"
-                  ]
-                }
               ]
             }
           ]
@@ -6804,164 +6868,6 @@
                         "textG": 0,
                         "textR": 0
                       },
-                      "comment": "Shoot"
-                    },
-                    {
-                      "disabled": true,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "BooleanVariable"
-                          },
-                          "parameters": [
-                            "PlayerShoot",
-                            "True",
-                            ""
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "Create"
-                          },
-                          "parameters": [
-                            "",
-                            "WhiteBullet",
-                            "Player.GetMuzzlePointX()",
-                            "Player.GetMuzzlePointY()",
-                            "_CONSTANTS_.Layers.Base"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "CustomObjects::ShootBullet::Shoot"
-                          },
-                          "parameters": [
-                            "Player",
-                            "ShootBullet",
-                            "Player.GetCannonAngle()",
-                            "_DATA_.Bullets.WhiteSmall.Speed",
-                            "WhiteBullet",
-                            "Player.GetCannonAngle()"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetBooleanVariable"
-                          },
-                          "parameters": [
-                            "PlayerShoot",
-                            "False",
-                            ""
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "LinkedObjects::LinkObjects"
-                          },
-                          "parameters": [
-                            "",
-                            "WhiteBullet",
-                            "Player"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "AnimatableCapability::AnimatableBehavior::PauseAnimation"
-                          },
-                          "parameters": [
-                            "WhiteBullet",
-                            "Animation"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "ChangeSprite"
-                          },
-                          "parameters": [
-                            "WhiteBullet",
-                            "=",
-                            "CustomObjects::GetFrameByAngle12frames(Player.GetCannonAngle())"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetStringObjectVariable"
-                          },
-                          "parameters": [
-                            "WhiteBullet",
-                            "TankID",
-                            "=",
-                            "Player.ID"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetNumberObjectVariable"
-                          },
-                          "parameters": [
-                            "WhiteBullet",
-                            "ID",
-                            "=",
-                            "BulletID"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetNumberVariable"
-                          },
-                          "parameters": [
-                            "BulletID",
-                            "+",
-                            "1"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "Create"
-                          },
-                          "parameters": [
-                            "",
-                            "BulletSmoke",
-                            "WhiteBullet.CenterX()",
-                            "WhiteBullet.CenterY()",
-                            "_CONSTANTS_.Layers.Base"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "Sticker::Sticker::Stick"
-                          },
-                          "parameters": [
-                            "BulletSmoke",
-                            "Sticker",
-                            "WhiteBullet",
-                            ""
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "ResetObjectTimer"
-                          },
-                          "parameters": [
-                            "WhiteBullet",
-                            "Timers.BulletIgnoreCollisions"
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Comment",
-                      "color": {
-                        "b": 209,
-                        "g": 199,
-                        "r": 85,
-                        "textB": 0,
-                        "textG": 0,
-                        "textR": 0
-                      },
                       "comment": "Land mine"
                     },
                     {
@@ -8058,7 +7964,7 @@
                         "textG": 0,
                         "textR": 0
                       },
-                      "comment": "Execute actions"
+                      "comment": "Update states"
                     },
                     {
                       "type": "BuiltinCommonInstructions::ForEach",
@@ -8368,165 +8274,6 @@
                                       ]
                                     },
                                     {
-                                      "disabled": true,
-                                      "type": "BuiltinCommonInstructions::Standard",
-                                      "conditions": [
-                                        {
-                                          "type": {
-                                            "value": "NumberObjectVariable"
-                                          },
-                                          "parameters": [
-                                            "StationaryEnemy",
-                                            "BulletCount",
-                                            "<",
-                                            "_DATA_.Enemies.StationaryEnemy.MaxBullets"
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "StringObjectVariable"
-                                          },
-                                          "parameters": [
-                                            "StationaryEnemy",
-                                            "IA.BlockTarget",
-                                            "!=",
-                                            "_CONSTANTS_.Entities.Enemy"
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "StringObjectVariable"
-                                          },
-                                          "parameters": [
-                                            "StationaryEnemy",
-                                            "IA.BlockTarget",
-                                            "!=",
-                                            "_CONSTANTS_.Entities.Wall"
-                                          ]
-                                        }
-                                      ],
-                                      "actions": [
-                                        {
-                                          "type": {
-                                            "value": "Create"
-                                          },
-                                          "parameters": [
-                                            "",
-                                            "WhiteBullet",
-                                            "StationaryEnemy.GetMuzzlePointX()",
-                                            "StationaryEnemy.GetMuzzlePointY()",
-                                            "_CONSTANTS_.Layers.Base"
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "CustomObjects::ShootBullet::Shoot"
-                                          },
-                                          "parameters": [
-                                            "StationaryEnemy",
-                                            "ShootBullet",
-                                            "StationaryEnemy.GetCannonAngle()",
-                                            "_DATA_.Bullets.WhiteSmall",
-                                            "WhiteBullet",
-                                            "StationaryEnemy.GetCannonAngle()"
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "LinkedObjects::LinkObjects"
-                                          },
-                                          "parameters": [
-                                            "",
-                                            "WhiteBullet",
-                                            "StationaryEnemy"
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "AnimatableCapability::AnimatableBehavior::PauseAnimation"
-                                          },
-                                          "parameters": [
-                                            "WhiteBullet",
-                                            "Animation"
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "ChangeSprite"
-                                          },
-                                          "parameters": [
-                                            "WhiteBullet",
-                                            "=",
-                                            "CustomObjects::GetFrameByAngle12frames(StationaryEnemy.GetCannonAngle())"
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "SetStringObjectVariable"
-                                          },
-                                          "parameters": [
-                                            "WhiteBullet",
-                                            "TankID",
-                                            "=",
-                                            "StationaryEnemy.ID"
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "SetNumberObjectVariable"
-                                          },
-                                          "parameters": [
-                                            "WhiteBullet",
-                                            "ID",
-                                            "=",
-                                            "BulletID"
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "SetNumberVariable"
-                                          },
-                                          "parameters": [
-                                            "BulletID",
-                                            "+",
-                                            "1"
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "Create"
-                                          },
-                                          "parameters": [
-                                            "",
-                                            "BulletSmoke",
-                                            "WhiteBullet.CenterX()",
-                                            "WhiteBullet.CenterY()",
-                                            "_CONSTANTS_.Layers.Base"
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "Sticker::Sticker::Stick"
-                                          },
-                                          "parameters": [
-                                            "BulletSmoke",
-                                            "Sticker",
-                                            "WhiteBullet",
-                                            ""
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "ResetObjectTimer"
-                                          },
-                                          "parameters": [
-                                            "WhiteBullet",
-                                            "Timers.BulletIgnoreCollisions"
-                                          ]
-                                        }
-                                      ]
-                                    },
-                                    {
                                       "type": "BuiltinCommonInstructions::Standard",
                                       "conditions": [
                                         {
@@ -8762,241 +8509,244 @@
                   "comment": "\n\n"
                 },
                 {
-                  "type": "BuiltinCommonInstructions::Comment",
-                  "color": {
-                    "b": 209,
-                    "g": 199,
-                    "r": 85,
-                    "textB": 0,
-                    "textG": 0,
-                    "textR": 0
-                  },
-                  "comment": "CREATE BULLETS"
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Comment",
-                  "color": {
-                    "b": 209,
-                    "g": 199,
-                    "r": 85,
-                    "textB": 0,
-                    "textG": 0,
-                    "textR": 0
-                  },
-                  "comment": "All tanks have the same actions"
-                },
-                {
-                  "type": "BuiltinCommonInstructions::ForEach",
-                  "object": "Tanks",
-                  "conditions": [],
-                  "actions": [],
+                  "colorB": 177,
+                  "colorG": 128,
+                  "colorR": 29,
+                  "creationTime": 0,
+                  "name": "Tank actions",
+                  "source": "",
+                  "type": "BuiltinCommonInstructions::Group",
                   "events": [
                     {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "CompareObjectTimer"
-                          },
-                          "parameters": [
-                            "Tanks",
-                            "Timers.ShootCooldown",
-                            ">=",
-                            "Tanks.ShootCooldown"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "BooleanObjectVariable"
-                          },
-                          "parameters": [
-                            "Tanks",
-                            "IA.Shoot",
-                            "True",
-                            ""
-                          ]
-                        }
-                      ],
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 209,
+                        "g": 199,
+                        "r": 85,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "All tanks have the same actions"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::ForEach",
+                      "object": "Tanks",
+                      "conditions": [],
                       "actions": [],
                       "events": [
                         {
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 209,
+                            "g": 199,
+                            "r": 85,
+                            "textB": 0,
+                            "textG": 0,
+                            "textR": 0
+                          },
+                          "comment": "Shoot"
+                        },
+                        {
                           "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [],
-                          "actions": [
+                          "conditions": [
                             {
                               "type": {
-                                "value": "SetBooleanObjectVariable"
+                                "value": "CompareObjectTimer"
+                              },
+                              "parameters": [
+                                "Tanks",
+                                "Timers.ShootCooldown",
+                                ">=",
+                                "Tanks.ShootCooldown"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "BooleanObjectVariable"
                               },
                               "parameters": [
                                 "Tanks",
                                 "IA.Shoot",
-                                "False",
+                                "True",
                                 ""
                               ]
-                            },
+                            }
+                          ],
+                          "actions": [],
+                          "events": [
                             {
-                              "type": {
-                                "value": "Create"
-                              },
-                              "parameters": [
-                                "",
-                                "WhiteBullet",
-                                "Tanks.GetMuzzlePointX()",
-                                "Tanks.GetMuzzlePointY()",
-                                "_CONSTANTS_.Layers.Base"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "AddForceAL"
-                              },
-                              "parameters": [
-                                "WhiteBullet",
-                                "Tanks.GetCannonAngle()",
-                                "_DATA_.Bullets.WhiteSmall.Speed",
-                                "1"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "AnimatableCapability::AnimatableBehavior::PauseAnimation"
-                              },
-                              "parameters": [
-                                "WhiteBullet",
-                                "Animation"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "ChangeSprite"
-                              },
-                              "parameters": [
-                                "WhiteBullet",
-                                "=",
-                                "CustomObjects::GetFrameByAngle12frames(Tanks.GetCannonAngle())"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "SetStringObjectVariable"
-                              },
-                              "parameters": [
-                                "WhiteBullet",
-                                "TankID",
-                                "=",
-                                "Tanks.ID"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "SetNumberObjectVariable"
-                              },
-                              "parameters": [
-                                "WhiteBullet",
-                                "ID",
-                                "=",
-                                "BulletID"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "SetNumberVariable"
-                              },
-                              "parameters": [
-                                "BulletID",
-                                "+",
-                                "1"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "LinkedObjects::LinkObjects"
-                              },
-                              "parameters": [
-                                "",
-                                "WhiteBullet",
-                                "Tanks"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "Create"
-                              },
-                              "parameters": [
-                                "",
-                                "BulletSmoke",
-                                "WhiteBullet.CenterX()",
-                                "WhiteBullet.CenterY()",
-                                "_CONSTANTS_.Layers.Base"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "Sticker::Sticker::Stick"
-                              },
-                              "parameters": [
-                                "BulletSmoke",
-                                "Sticker",
-                                "WhiteBullet",
-                                ""
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "Create"
-                              },
-                              "parameters": [
-                                "",
-                                "BulletAuxCollider",
-                                "WhiteBullet.PointX(\"Point\")",
-                                "WhiteBullet.PointY(\"Point\")",
-                                "_CONSTANTS_.Layers.Base"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "Sticker::Sticker::Stick"
-                              },
-                              "parameters": [
-                                "BulletAuxCollider",
-                                "Sticker",
-                                "WhiteBullet",
-                                ""
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "LinkedObjects::LinkObjects"
-                              },
-                              "parameters": [
-                                "",
-                                "BulletAuxCollider",
-                                "WhiteBullet"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "ResetObjectTimer"
-                              },
-                              "parameters": [
-                                "WhiteBullet",
-                                "Timers.BulletIgnoreCollisions"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "ResetObjectTimer"
-                              },
-                              "parameters": [
-                                "Tanks",
-                                "Timers.ShootCooldown"
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetBooleanObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "Tanks",
+                                    "IA.Shoot",
+                                    "False",
+                                    ""
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "Create"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "WhiteBullet",
+                                    "Tanks.GetMuzzlePointX()",
+                                    "Tanks.GetMuzzlePointY()",
+                                    "_CONSTANTS_.Layers.Base"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "AddForceAL"
+                                  },
+                                  "parameters": [
+                                    "WhiteBullet",
+                                    "Tanks.GetCannonAngle()",
+                                    "_DATA_.Bullets.WhiteSmall.Speed",
+                                    "1"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "AnimatableCapability::AnimatableBehavior::PauseAnimation"
+                                  },
+                                  "parameters": [
+                                    "WhiteBullet",
+                                    "Animation"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "ChangeSprite"
+                                  },
+                                  "parameters": [
+                                    "WhiteBullet",
+                                    "=",
+                                    "CustomObjects::GetFrameByAngle12frames(Tanks.GetCannonAngle())"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "SetStringObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "WhiteBullet",
+                                    "TankID",
+                                    "=",
+                                    "Tanks.ID"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "SetNumberObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "WhiteBullet",
+                                    "ID",
+                                    "=",
+                                    "BulletID"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "BulletID",
+                                    "+",
+                                    "1"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "LinkedObjects::LinkObjects"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "WhiteBullet",
+                                    "Tanks"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "Create"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "BulletSmoke",
+                                    "WhiteBullet.CenterX()",
+                                    "WhiteBullet.CenterY()",
+                                    "_CONSTANTS_.Layers.Base"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "Sticker::Sticker::Stick"
+                                  },
+                                  "parameters": [
+                                    "BulletSmoke",
+                                    "Sticker",
+                                    "WhiteBullet",
+                                    ""
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "Create"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "BulletAuxCollider",
+                                    "WhiteBullet.PointX(\"Point\")",
+                                    "WhiteBullet.PointY(\"Point\")",
+                                    "_CONSTANTS_.Layers.Base"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "Sticker::Sticker::Stick"
+                                  },
+                                  "parameters": [
+                                    "BulletAuxCollider",
+                                    "Sticker",
+                                    "WhiteBullet",
+                                    ""
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "LinkedObjects::LinkObjects"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "BulletAuxCollider",
+                                    "WhiteBullet"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "ResetObjectTimer"
+                                  },
+                                  "parameters": [
+                                    "Tanks",
+                                    "Timers.ShootCooldown"
+                                  ]
+                                }
                               ]
                             }
                           ]
                         }
                       ]
                     }
-                  ]
+                  ],
+                  "parameters": []
                 },
                 {
                   "type": "BuiltinCommonInstructions::Comment",
@@ -9032,7 +8782,6 @@
                       "comment": "Check collisions"
                     },
                     {
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -9247,18 +8996,6 @@
                           ]
                         },
                         {
-                          "type": "BuiltinCommonInstructions::Comment",
-                          "color": {
-                            "b": 209,
-                            "g": 199,
-                            "r": 85,
-                            "textB": 0,
-                            "textG": 0,
-                            "textR": 0
-                          },
-                          "comment": "Destroy bullet"
-                        },
-                        {
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
                             {
@@ -9304,6 +9041,18 @@
                           "value": false
                         }
                       ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 209,
+                        "g": 199,
+                        "r": 85,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "Hit tanks"
                     },
                     {
                       "type": "BuiltinCommonInstructions::Standard",
@@ -9422,525 +9171,16 @@
                       ]
                     },
                     {
-                      "disabled": true,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "CollisionNP"
-                          },
-                          "parameters": [
-                            "Bullets",
-                            "Tanks",
-                            "",
-                            "",
-                            ""
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "Log_Manager::WriteLog"
-                          },
-                          "parameters": [
-                            "",
-                            "Logger",
-                            "\"==========\"",
-                            ""
-                          ]
-                        }
-                      ],
-                      "events": [
-                        {
-                          "type": "BuiltinCommonInstructions::ForEach",
-                          "object": "Bullets",
-                          "conditions": [],
-                          "actions": [
-                            {
-                              "type": {
-                                "value": "Log_Manager::WriteLog"
-                              },
-                              "parameters": [
-                                "",
-                                "Logger",
-                                "\"Bullets.ID \" + Bullets.ID + \" of tank \" + Bullets.TankID",
-                                ""
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "Log_Manager::WriteLog"
-                              },
-                              "parameters": [
-                                "",
-                                "Logger",
-                                "\"--Pos (\" + ToString(Bullets.X()) + \", \" + ToString(Bullets.Y()) + \")\"",
-                                ""
-                              ]
-                            }
-                          ],
-                          "events": [
-                            {
-                              "type": "BuiltinCommonInstructions::ForEach",
-                              "object": "Tanks",
-                              "conditions": [
-                                {
-                                  "type": {
-                                    "value": "BuiltinCommonInstructions::Or"
-                                  },
-                                  "parameters": [],
-                                  "subInstructions": [
-                                    {
-                                      "type": {
-                                        "value": "BuiltinCommonInstructions::CompareStrings"
-                                      },
-                                      "parameters": [
-                                        "Bullets.TankID",
-                                        "!=",
-                                        "Tanks.ID"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "BuiltinCommonInstructions::And"
-                                      },
-                                      "parameters": [],
-                                      "subInstructions": [
-                                        {
-                                          "type": {
-                                            "value": "BuiltinCommonInstructions::CompareStrings"
-                                          },
-                                          "parameters": [
-                                            "Bullets.TankID",
-                                            "=",
-                                            "Tanks.ID"
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "NumberObjectVariable"
-                                          },
-                                          "parameters": [
-                                            "Bullets",
-                                            "Bounces",
-                                            "<=",
-                                            "0"
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                }
-                              ],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "value": "Log_Manager::WriteLog"
-                                  },
-                                  "parameters": [
-                                    "",
-                                    "Logger",
-                                    "\"     Bullets.TankID (\" + Bullets.TankID + \") hit Tanks.ID (\" + Tanks.ID + \")\"",
-                                    ""
-                                  ]
-                                }
-                              ],
-                              "events": [
-                                {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "StringObjectVariable"
-                                      },
-                                      "parameters": [
-                                        "Tanks",
-                                        "Type",
-                                        "=",
-                                        "_CONSTANTS_.Entities.Player"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "BooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "DestroyBullet",
-                                        "",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "SetNumberObjectVariable"
-                                      },
-                                      "parameters": [
-                                        "Tanks",
-                                        "Health",
-                                        "-",
-                                        "Bullets.Damage"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "SetBooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "DestroyBullet",
-                                        "True",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "events": [
-                                    {
-                                      "type": "BuiltinCommonInstructions::Standard",
-                                      "conditions": [
-                                        {
-                                          "type": {
-                                            "value": "NumberObjectVariable"
-                                          },
-                                          "parameters": [
-                                            "Tanks",
-                                            "Health",
-                                            "<=",
-                                            "0"
-                                          ]
-                                        }
-                                      ],
-                                      "actions": [
-                                        {
-                                          "type": {
-                                            "value": "Create"
-                                          },
-                                          "parameters": [
-                                            "",
-                                            "DeathMark",
-                                            "Tanks.CenterX()",
-                                            "Tanks.CenterY()",
-                                            "_CONSTANTS_.Layers.Base"
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "ChangePlan"
-                                          },
-                                          "parameters": [
-                                            "DeathMark",
-                                            "=",
-                                            "1"
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "Delete"
-                                          },
-                                          "parameters": [
-                                            "Tanks",
-                                            ""
-                                          ]
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "type": "BuiltinCommonInstructions::Standard",
-                                      "conditions": [],
-                                      "actions": [
-                                        {
-                                          "type": {
-                                            "value": "Flash::Flash::Flash"
-                                          },
-                                          "parameters": [
-                                            "Tanks",
-                                            "Flash",
-                                            "0.2",
-                                            ""
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "StringObjectVariable"
-                                      },
-                                      "parameters": [
-                                        "Tanks",
-                                        "Type",
-                                        "=",
-                                        "_CONSTANTS_.Entities.Enemy"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "BooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "DestroyBullet",
-                                        "",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "SetNumberObjectVariable"
-                                      },
-                                      "parameters": [
-                                        "Tanks",
-                                        "Health",
-                                        "-",
-                                        "Bullets.Damage"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "SetBooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "DestroyBullet",
-                                        "True",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "events": [
-                                    {
-                                      "type": "BuiltinCommonInstructions::Standard",
-                                      "conditions": [
-                                        {
-                                          "type": {
-                                            "value": "NumberObjectVariable"
-                                          },
-                                          "parameters": [
-                                            "Tanks",
-                                            "Health",
-                                            "<=",
-                                            "0"
-                                          ]
-                                        }
-                                      ],
-                                      "actions": [
-                                        {
-                                          "type": {
-                                            "value": "Create"
-                                          },
-                                          "parameters": [
-                                            "",
-                                            "DeathMark",
-                                            "Tanks.CenterX()",
-                                            "Tanks.CenterY()",
-                                            "_CONSTANTS_.Layers.Base"
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "ChangePlan"
-                                          },
-                                          "parameters": [
-                                            "DeathMark",
-                                            "=",
-                                            "1"
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "Delete"
-                                          },
-                                          "parameters": [
-                                            "Tanks",
-                                            ""
-                                          ]
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "disabled": true,
-                                      "type": "BuiltinCommonInstructions::Standard",
-                                      "conditions": [],
-                                      "actions": [
-                                        {
-                                          "type": {
-                                            "value": "LinkedObjects::PickObjectsLinkedTo"
-                                          },
-                                          "parameters": [
-                                            "",
-                                            "IAAlerts",
-                                            "Tanks",
-                                            ""
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "Delete"
-                                          },
-                                          "parameters": [
-                                            "IAAlerts",
-                                            ""
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "Flash::Flash::Flash"
-                                      },
-                                      "parameters": [
-                                        "Tanks",
-                                        "Flash",
-                                        "0.2",
-                                        ""
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "disabled": true,
-                                  "folded": true,
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "CompareObjectTimer"
-                                      },
-                                      "parameters": [
-                                        "WhiteBullet",
-                                        "Timers.BulletIgnoreCollisions",
-                                        ">",
-                                        "0.1"
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "SetNumberObjectVariable"
-                                      },
-                                      "parameters": [
-                                        "Tanks",
-                                        "Health",
-                                        "-",
-                                        "Bullets.Damage"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "SetBooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "DestroyBullet",
-                                        "True",
-                                        ""
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "Log_Manager::WriteLog"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "Logger",
-                                        "Tanks.ID + \" hit\"",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "events": [
-                                    {
-                                      "type": "BuiltinCommonInstructions::Standard",
-                                      "conditions": [],
-                                      "actions": [
-                                        {
-                                          "type": {
-                                            "value": "Flash::Flash::Flash"
-                                          },
-                                          "parameters": [
-                                            "Tanks",
-                                            "Flash",
-                                            "0.2",
-                                            ""
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "type": "BuiltinCommonInstructions::Comment",
-                          "color": {
-                            "b": 209,
-                            "g": 199,
-                            "r": 85,
-                            "textB": 0,
-                            "textG": 0,
-                            "textR": 0
-                          },
-                          "comment": "Destroy bullet"
-                        },
-                        {
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [
-                            {
-                              "type": {
-                                "value": "BooleanVariable"
-                              },
-                              "parameters": [
-                                "DestroyBullet",
-                                "True",
-                                ""
-                              ]
-                            }
-                          ],
-                          "actions": [
-                            {
-                              "type": {
-                                "value": "Create"
-                              },
-                              "parameters": [
-                                "",
-                                "Explosion",
-                                "Bullets.CenterX()",
-                                "Bullets.CenterY()",
-                                "_CONSTANTS_.Layers.Base"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "Delete"
-                              },
-                              "parameters": [
-                                "Bullets",
-                                ""
-                              ]
-                            }
-                          ]
-                        }
-                      ],
-                      "variables": [
-                        {
-                          "name": "DestroyBullet",
-                          "type": "boolean",
-                          "value": false
-                        }
-                      ]
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 209,
+                        "g": 199,
+                        "r": 85,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "Hit landmines"
                     },
                     {
                       "type": "BuiltinCommonInstructions::Standard",
@@ -9984,6 +9224,18 @@
                     {
                       "type": "BuiltinCommonInstructions::Comment",
                       "color": {
+                        "b": 209,
+                        "g": 199,
+                        "r": 85,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "Hit other bullets"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
                         "b": 52,
                         "g": 44,
                         "r": 40,
@@ -9994,7 +9246,6 @@
                       "comment": "// Se usa distancia entre balas, porque colisiones con la misma instancia es mas complicado de implementar."
                     },
                     {
-                      "disabled": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -10011,18 +9262,6 @@
                       ],
                       "actions": [],
                       "events": [
-                        {
-                          "type": "BuiltinCommonInstructions::Comment",
-                          "color": {
-                            "b": 209,
-                            "g": 199,
-                            "r": 85,
-                            "textB": 0,
-                            "textG": 0,
-                            "textR": 0
-                          },
-                          "comment": "Destroy bullet"
-                        },
                         {
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [],
@@ -10083,6 +9322,18 @@
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
                   "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 209,
+                        "g": 199,
+                        "r": 85,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": ""
+                    },
                     {
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
@@ -10320,7 +9571,6 @@
           "colorG": 128,
           "colorR": 29,
           "creationTime": 0,
-          "folded": true,
           "name": "PAUSE",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -10450,7 +9700,6 @@
           "colorG": 128,
           "colorR": 29,
           "creationTime": 0,
-          "folded": true,
           "name": "GAME WON",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -10613,7 +9862,6 @@
           "colorG": 128,
           "colorR": 29,
           "creationTime": 0,
-          "folded": true,
           "name": "GAME OVER",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -10872,17 +10120,6 @@
           "actions": [
             {
               "type": {
-                "value": "Log_Manager::WriteLog"
-              },
-              "parameters": [
-                "",
-                "Logger",
-                "\"Delete \" + Damageable.ID + \" : \" + Damageable.Type + \" \" + Damageable.Health",
-                ""
-              ]
-            },
-            {
-              "type": {
                 "value": "Create"
               },
               "parameters": [
@@ -10950,17 +10187,6 @@
             }
           ],
           "actions": [
-            {
-              "type": {
-                "value": "Log_Manager::WriteLog"
-              },
-              "parameters": [
-                "",
-                "Logger",
-                "\"Delete \" + Damageable.ID + \" : \" + Damageable.Type ",
-                ""
-              ]
-            },
             {
               "type": {
                 "value": "Create"
@@ -11395,6 +10621,14 @@
     {
       "name": "Opacity",
       "type": "OpacityCapability::OpacityBehavior"
+    },
+    {
+      "name": "Pathfinding",
+      "type": "PathfindingBehavior::PathfindingBehavior"
+    },
+    {
+      "name": "PathfindingObstacle",
+      "type": "PathfindingBehavior::PathfindingObstacleBehavior"
     },
     {
       "name": "Resizable",
