@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.7458023987468305,
+    "zoomFactor": 2.1301659159003346,
     "windowMask": false
   },
   "objectsGroups": [
@@ -234,6 +234,11 @@
       "name": "Timers",
       "type": "structure",
       "children": [
+        {
+          "name": "DelayFirstBullet",
+          "type": "string",
+          "value": "DelayFirstBullet"
+        },
         {
           "name": "FadeForegroundOpacity",
           "type": "string",
@@ -589,38 +594,6 @@
     },
     {
       "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "StationaryEnemy",
-      "persistentUuid": "4e317394-22f2-4b52-a1e6-e86be9466c59",
-      "width": 0,
-      "x": 576,
-      "y": 320,
-      "zOrder": 104,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "StationaryEnemy",
-      "persistentUuid": "978800ac-6b3d-40fa-96ce-82ce6afc178f",
-      "width": 0,
-      "x": 32,
-      "y": 320,
-      "zOrder": 104,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
       "customSize": true,
       "depth": 1,
       "height": 32,
@@ -662,8 +635,8 @@
       "name": "StartPosition",
       "persistentUuid": "e77b29b5-008a-4893-acb1-f30aa1d4f84d",
       "width": 0,
-      "x": 288,
-      "y": 192,
+      "x": 576,
+      "y": 320,
       "zOrder": 106,
       "numberProperties": [],
       "stringProperties": [],
@@ -696,7 +669,7 @@
       "name": "PatrolPoint",
       "persistentUuid": "e14eb4e3-2c04-439d-a74e-5a17c12a1266",
       "width": 32,
-      "x": 96,
+      "x": 64,
       "y": 288,
       "zOrder": 105,
       "numberProperties": [],
@@ -713,7 +686,7 @@
       "name": "PatrolPoint",
       "persistentUuid": "536faad5-471f-473e-b0be-71bfd228649c",
       "width": 32,
-      "x": 480,
+      "x": 544,
       "y": 288,
       "zOrder": 105,
       "numberProperties": [],
@@ -730,9 +703,270 @@
       "name": "PatrolPoint",
       "persistentUuid": "1774dd07-b68d-4d25-9615-05cfa573de47",
       "width": 32,
-      "x": 320,
+      "x": 288,
       "y": 160,
       "zOrder": 105,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "PathfindingObstacles",
+      "persistentUuid": "3c03ce4c-d446-478d-8d47-12b8da3f5b78",
+      "width": 0,
+      "x": 208,
+      "y": 176,
+      "zOrder": 107,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "PathfindingObstacles",
+      "persistentUuid": "147730e8-9a7e-4199-91fe-41d4487c8b98",
+      "width": 0,
+      "x": 624,
+      "y": 176,
+      "zOrder": 107,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "PathfindingObstacles",
+      "persistentUuid": "f7e7a169-0bfd-4e4a-9a49-aa3e6abdf559",
+      "width": 0,
+      "x": 432,
+      "y": 272,
+      "zOrder": 107,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "PathfindingObstacles",
+      "persistentUuid": "cead9ad2-9212-4a65-9318-031df155cd85",
+      "width": 0,
+      "x": 432,
+      "y": 112,
+      "zOrder": 107,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "RegularEnemy",
+      "persistentUuid": "82659540-46f1-4238-90db-7040e884c4ac",
+      "width": 0,
+      "x": 32,
+      "y": 256,
+      "zOrder": 103,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "RegularEnemy",
+      "persistentUuid": "46589fc0-d471-43fb-81f1-0734ac00c510",
+      "width": 0,
+      "x": 32,
+      "y": 192,
+      "zOrder": 103,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "RegularEnemy",
+      "persistentUuid": "645ce0a3-06f8-40c7-a3cc-a4c0cbba9b0e",
+      "width": 0,
+      "x": 544,
+      "y": 160,
+      "zOrder": 103,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "",
+      "name": "PatrolPoint",
+      "persistentUuid": "6afa3108-5169-40f4-b7bf-5bfb82c7393a",
+      "width": 32,
+      "x": 320,
+      "y": 192,
+      "zOrder": 105,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "",
+      "name": "PatrolPoint",
+      "persistentUuid": "3f7e32f1-4e3d-4dbb-918e-c039758e119f",
+      "width": 32,
+      "x": 512,
+      "y": 256,
+      "zOrder": 105,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "",
+      "name": "PatrolPoint",
+      "persistentUuid": "f6564999-1c64-4dc4-b0ce-c70570741e6b",
+      "width": 32,
+      "x": 512,
+      "y": 96,
+      "zOrder": 105,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "",
+      "name": "PatrolPoint",
+      "persistentUuid": "a1b14a15-5207-4017-a727-f27c3fd3a786",
+      "width": 32,
+      "x": 96,
+      "y": 96,
+      "zOrder": 105,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "",
+      "name": "PatrolPoint",
+      "persistentUuid": "35ec5bf1-5a4e-4150-964a-19e457c9a451",
+      "width": 32,
+      "x": 96,
+      "y": 256,
+      "zOrder": 105,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "RegularEnemy",
+      "persistentUuid": "31c66413-b993-4861-9b91-1a6ae1bc0211",
+      "width": 0,
+      "x": 288,
+      "y": 320,
+      "zOrder": 103,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "RegularEnemy",
+      "persistentUuid": "16c912e3-53a4-45bb-a479-c06eb823b230",
+      "width": 0,
+      "x": 352,
+      "y": 320,
+      "zOrder": 103,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "RegularEnemy",
+      "persistentUuid": "cc3abe76-2194-4881-bb06-369faf17c11b",
+      "width": 0,
+      "x": 224,
+      "y": 64,
+      "zOrder": 103,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "RegularEnemy",
+      "persistentUuid": "a502bfbe-8670-41e3-8fb6-de15baa19427",
+      "width": 0,
+      "x": 544,
+      "y": 128,
+      "zOrder": 103,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1093,6 +1327,12 @@
           "FlashDuration": 0
         },
         {
+          "cost": 4,
+          "impassable": false,
+          "name": "PathfindingObstacle",
+          "type": "PathfindingBehavior::PathfindingObstacleBehavior"
+        },
+        {
           "isFolded": true,
           "name": "TopDownMovement",
           "type": "TopDownMovementBehavior::TopDownMovementBehavior",
@@ -1423,19 +1663,24 @@
               "value": ""
             },
             {
-              "name": "ChildVariable",
-              "type": "number",
-              "value": 0
-            },
-            {
               "name": "CurrentLookAngle",
               "type": "number",
               "value": 0
             },
             {
+              "name": "DelayFirstBullet",
+              "type": "number",
+              "value": 0.5
+            },
+            {
               "name": "FireCooldownVariance",
               "type": "number",
               "value": 0.5
+            },
+            {
+              "name": "RestartPath",
+              "type": "boolean",
+              "value": false
             },
             {
               "name": "SeePlayer",
@@ -1497,23 +1742,6 @@
           "HalfPeriodTime": 0.1,
           "IsFlashing": false,
           "FlashDuration": 0
-        },
-        {
-          "isFolded": true,
-          "name": "TopDownMovement",
-          "type": "TopDownMovementBehavior::TopDownMovementBehavior",
-          "acceleration": 450,
-          "allowDiagonals": true,
-          "angleOffset": 0,
-          "angularMaxSpeed": 180,
-          "customIsometryAngle": 30,
-          "deceleration": 900,
-          "ignoreDefaultControls": true,
-          "maxSpeed": 150,
-          "movementAngleOffset": 0,
-          "rotateObject": false,
-          "useLegacyTurnBack": false,
-          "viewpoint": "TopDown"
         },
         {
           "name": "YSort",
@@ -2041,6 +2269,12 @@
           "name": "DestroyOutside",
           "type": "DestroyOutsideBehavior::DestroyOutside",
           "extraBorder": 50
+        },
+        {
+          "cost": 5,
+          "impassable": false,
+          "name": "PathfindingObstacle",
+          "type": "PathfindingBehavior::PathfindingObstacleBehavior"
         },
         {
           "name": "YSort",
@@ -4360,19 +4594,24 @@
               "value": ""
             },
             {
-              "name": "ChildVariable",
-              "type": "number",
-              "value": 0
-            },
-            {
               "name": "CurrentLookAngle",
               "type": "number",
               "value": 0
             },
             {
+              "name": "DelayFirstBullet",
+              "type": "number",
+              "value": 1.1
+            },
+            {
               "name": "FireCooldownVariance",
               "type": "number",
               "value": 0.5
+            },
+            {
+              "name": "RestartPath",
+              "type": "boolean",
+              "value": true
             },
             {
               "name": "SeePlayer",
@@ -4436,37 +4675,26 @@
           "FlashDuration": 0
         },
         {
-          "acceleration": 400,
-          "allowDiagonals": false,
+          "acceleration": 350,
+          "allowDiagonals": true,
           "angleOffset": 0,
           "angularMaxSpeed": 180,
-          "cellHeight": 20,
-          "cellWidth": 20,
-          "extraBorder": 0,
+          "cellHeight": 10,
+          "cellWidth": 18,
+          "extraBorder": 8,
           "gridOffsetX": 0,
           "gridOffsetY": 0,
-          "maxSpeed": 50,
+          "maxSpeed": 45,
           "name": "Pathfinding",
           "rotateObject": false,
           "smoothingMaxCellGap": 1,
           "type": "PathfindingBehavior::PathfindingBehavior"
         },
         {
-          "isFolded": true,
-          "name": "TopDownMovement",
-          "type": "TopDownMovementBehavior::TopDownMovementBehavior",
-          "acceleration": 450,
-          "allowDiagonals": true,
-          "angleOffset": 0,
-          "angularMaxSpeed": 180,
-          "customIsometryAngle": 30,
-          "deceleration": 900,
-          "ignoreDefaultControls": true,
-          "maxSpeed": 150,
-          "movementAngleOffset": 0,
-          "rotateObject": false,
-          "useLegacyTurnBack": false,
-          "viewpoint": "TopDown"
+          "cost": 5,
+          "impassable": false,
+          "name": "PathfindingObstacle",
+          "type": "PathfindingBehavior::PathfindingObstacleBehavior"
         },
         {
           "name": "YSort",
@@ -4532,6 +4760,91 @@
                       {
                         "x": 13,
                         "y": 32
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "PathfindingObstacles",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "cost": 4,
+          "impassable": true,
+          "name": "PathfindingObstacle",
+          "type": "PathfindingBehavior::PathfindingObstacleBehavior"
+        },
+        {
+          "name": "RectangleMovement",
+          "type": "RectangleMovement::RectangleMovement",
+          "Width": 256,
+          "Height": 32,
+          "Clockwise": false,
+          "HorizontalEdgeDuration": 4,
+          "VerticalEdgeDuration": 1,
+          "Left": 1.00000000000091,
+          "Top": 1.00000000000091,
+          "Progress": 1.00000000000091,
+          "OldX": 1.00000000000091,
+          "OldY": 1.00000000000091,
+          "Easing": "linear",
+          "InitialPosition": "Top-right corner",
+          "ToogleClockwise": false
+        }
+      ],
+      "animations": [
+        {
+          "name": "x",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "x",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 0,
+                        "y": 0
+                      },
+                      {
+                        "x": 16,
+                        "y": 0
+                      },
+                      {
+                        "x": 16,
+                        "y": 16
+                      },
+                      {
+                        "x": 0,
+                        "y": 16
                       }
                     ]
                   ]
@@ -4654,6 +4967,9 @@
       },
       {
         "objectName": "TankAuxCollider"
+      },
+      {
+        "objectName": "PathfindingObstacles"
       }
     ]
   },
@@ -7116,167 +7432,6 @@
                           ]
                         }
                       ]
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Comment",
-                      "color": {
-                        "b": 209,
-                        "g": 199,
-                        "r": 85,
-                        "textB": 0,
-                        "textG": 0,
-                        "textR": 0
-                      },
-                      "comment": "Leave marks when move"
-                    },
-                    {
-                      "disabled": true,
-                      "folded": true,
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "BuiltinCommonInstructions::Or"
-                          },
-                          "parameters": [],
-                          "subInstructions": [
-                            {
-                              "type": {
-                                "value": "BuiltinCommonInstructions::CompareNumbers"
-                              },
-                              "parameters": [
-                                "Player.CenterX()",
-                                "!=",
-                                "Player.OldX"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "BuiltinCommonInstructions::CompareNumbers"
-                              },
-                              "parameters": [
-                                "Player.CenterY()",
-                                "!=",
-                                "Player.OldY"
-                              ]
-                            }
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "SetNumberVariable"
-                          },
-                          "parameters": [
-                            "NewDistance",
-                            "=",
-                            "abs(DistanceBetweenPositions(Player.CenterX(), Player.CenterY(), Player.OldX, Player.OldY))"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetNumberObjectVariable"
-                          },
-                          "parameters": [
-                            "Player",
-                            "DistanceMoved",
-                            "+",
-                            "NewDistance"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetNumberObjectVariable"
-                          },
-                          "parameters": [
-                            "Player",
-                            "OldX",
-                            "=",
-                            "Player.CenterX()"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetNumberObjectVariable"
-                          },
-                          "parameters": [
-                            "Player",
-                            "OldY",
-                            "=",
-                            "Player.CenterY()"
-                          ]
-                        }
-                      ],
-                      "events": [
-                        {
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [
-                            {
-                              "type": {
-                                "value": "BuiltinCommonInstructions::CompareNumbers"
-                              },
-                              "parameters": [
-                                "Player.DistanceMoved",
-                                ">=",
-                                "15"
-                              ]
-                            }
-                          ],
-                          "actions": [
-                            {
-                              "type": {
-                                "value": "Create"
-                              },
-                              "parameters": [
-                                "",
-                                "TrailDecal",
-                                "Player.CenterX()",
-                                "Player.CenterY()",
-                                ""
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "SetAngle"
-                              },
-                              "parameters": [
-                                "TrailDecal",
-                                "=",
-                                "Player.GetBodyAngle() + 90"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "ChangePlan"
-                              },
-                              "parameters": [
-                                "TrailDecal",
-                                "=",
-                                "0"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "SetNumberObjectVariable"
-                              },
-                              "parameters": [
-                                "Player",
-                                "DistanceMoved",
-                                "=",
-                                "0"
-                              ]
-                            }
-                          ]
-                        }
-                      ],
-                      "variables": [
-                        {
-                          "name": "NewDistance",
-                          "type": "number",
-                          "value": 0
-                        }
-                      ]
                     }
                   ],
                   "parameters": []
@@ -7481,6 +7636,7 @@
                               "comment": "// Si esta en busqueda, usa 3 rayos para revisar si se ve el jugador"
                             },
                             {
+                              "folded": true,
                               "type": "BuiltinCommonInstructions::Standard",
                               "conditions": [
                                 {
@@ -8221,7 +8377,7 @@
                                         "NewShapePainter",
                                         "Enemies.CenterX()",
                                         "Enemies.CenterY()",
-                                        "_DATA_.Enemies[Name].DetectionDistance + _DATA_.Enemies[Name].DetectionExtension"
+                                        "_DATA_.Enemies[Name].LookDistance + _DATA_.Enemies[Name].DetectionExtension"
                                       ]
                                     }
                                   ]
@@ -8268,7 +8424,7 @@
                                         "NewShapePainter",
                                         "Enemies.CenterX()",
                                         "Enemies.CenterY()",
-                                        "_DATA_.Enemies[Name].DetectionDistance + _DATA_.Enemies[Name].DetectionExtension"
+                                        "_DATA_.Enemies[Name].LookDistance + _DATA_.Enemies[Name].DetectionExtension"
                                       ]
                                     }
                                   ]
@@ -8351,6 +8507,7 @@
                       "comment": "Update states"
                     },
                     {
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::ForEach",
                       "object": "StationaryEnemy",
                       "conditions": [],
@@ -8575,6 +8732,28 @@
                               "events": [
                                 {
                                   "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "BuiltinCommonInstructions::Once"
+                                      },
+                                      "parameters": []
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "ResetObjectTimer"
+                                      },
+                                      "parameters": [
+                                        "StationaryEnemy",
+                                        "Timers.DelayFirstBullet"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
                                   "conditions": [],
                                   "actions": [
                                     {
@@ -8660,6 +8839,17 @@
                                         "BulletCount",
                                         "<",
                                         "_DATA_.Enemies.StationaryEnemy.MaxBullets"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "CompareObjectTimer"
+                                      },
+                                      "parameters": [
+                                        "StationaryEnemy",
+                                        "Timers.DelayFirstBullet",
+                                        ">=",
+                                        "StationaryEnemy.IA.DelayFirstBullet"
                                       ]
                                     },
                                     {
@@ -8837,11 +9027,159 @@
                       "comment": "\n\n"
                     },
                     {
+                      "disabled": true,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Log_Manager::Clear"
+                          },
+                          "parameters": [
+                            "",
+                            "Logger",
+                            ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
                       "type": "BuiltinCommonInstructions::ForEach",
                       "object": "RegularEnemy",
                       "conditions": [],
                       "actions": [],
                       "events": [
+                        {
+                          "folded": true,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "PrimitiveDrawing::UseRelativeCoordinates"
+                              },
+                              "parameters": [
+                                "NewShapePainter",
+                                ""
+                              ]
+                            }
+                          ],
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Repeat",
+                              "repeatExpression": "RegularEnemy.Pathfinding::NodeCount()",
+                              "conditions": [],
+                              "actions": [],
+                              "events": [
+                                {
+                                  "type": "BuiltinCommonInstructions::Comment",
+                                  "color": {
+                                    "b": 109,
+                                    "g": 230,
+                                    "r": 255,
+                                    "textB": 0,
+                                    "textG": 0,
+                                    "textR": 0
+                                  },
+                                  "comment": "Draw circles on each node"
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "NumberVariable"
+                                      },
+                                      "parameters": [
+                                        "LoopIndex",
+                                        "<=",
+                                        "RegularEnemy.Pathfinding::NodeCount()-1"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "PrimitiveDrawing::Circle"
+                                      },
+                                      "parameters": [
+                                        "NewShapePainter",
+                                        "RegularEnemy.Pathfinding::GetNodeX(LoopIndex)",
+                                        "RegularEnemy.Pathfinding::GetNodeY(LoopIndex)",
+                                        "3"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Comment",
+                                  "color": {
+                                    "b": 109,
+                                    "g": 230,
+                                    "r": 255,
+                                    "textB": 0,
+                                    "textG": 0,
+                                    "textR": 0
+                                  },
+                                  "comment": "Draw lines between nodes"
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "NumberVariable"
+                                      },
+                                      "parameters": [
+                                        "LoopIndex",
+                                        "<",
+                                        "RegularEnemy.Pathfinding::NodeCount()-1"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "PrimitiveDrawing::LineV2"
+                                      },
+                                      "parameters": [
+                                        "NewShapePainter",
+                                        "RegularEnemy.Pathfinding::GetNodeX(LoopIndex)",
+                                        "RegularEnemy.Pathfinding::GetNodeY(LoopIndex)",
+                                        "RegularEnemy.Pathfinding::GetNodeX(LoopIndex +1)",
+                                        "RegularEnemy.Pathfinding::GetNodeY(LoopIndex+1)",
+                                        "3"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetNumberVariable"
+                                      },
+                                      "parameters": [
+                                        "LoopIndex",
+                                        "+",
+                                        "1"
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "variables": [
+                            {
+                              "name": "LoopIndex",
+                              "type": "number",
+                              "value": 0
+                            }
+                          ]
+                        },
                         {
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
@@ -8910,23 +9248,25 @@
                                     "PatrolPoint",
                                     "RegularEnemy"
                                   ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "Log_Manager::WriteLog"
-                                  },
-                                  "parameters": [
-                                    "",
-                                    "Logger",
-                                    "\"link \" + PatrolPoint.ObjectName()",
-                                    ""
-                                  ]
                                 }
                               ]
                             },
                             {
                               "type": "BuiltinCommonInstructions::Standard",
                               "conditions": [
+                                {
+                                  "type": {
+                                    "value": "BooleanObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "RegularEnemy",
+                                    "IA.RestartPath",
+                                    "True",
+                                    ""
+                                  ]
+                                }
+                              ],
+                              "actions": [
                                 {
                                   "type": {
                                     "value": "LinkedObjects::PickObjectsLinkedTo"
@@ -8937,9 +9277,7 @@
                                     "RegularEnemy",
                                     ""
                                   ]
-                                }
-                              ],
-                              "actions": [
+                                },
                                 {
                                   "type": {
                                     "value": "PathfindingBehavior::SetDestination"
@@ -8948,46 +9286,127 @@
                                     "RegularEnemy",
                                     "Pathfinding",
                                     "",
-                                    "PatrolPoint.X()",
-                                    "PatrolPoint.Y()"
+                                    "PatrolPoint.X() + RandomInRange(-8, 8)",
+                                    "PatrolPoint.Y() - RandomInRange(-8, 8)"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "SetBooleanObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "RegularEnemy",
+                                    "IA.RestartPath",
+                                    "False",
+                                    ""
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "BooleanObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "RegularEnemy",
+                                    "IA.RestartPath",
+                                    "False",
+                                    ""
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "LinkedObjects::PickObjectsLinkedTo"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "PatrolPoint",
+                                    "RegularEnemy",
+                                    ""
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "Distance"
+                                  },
+                                  "parameters": [
+                                    "PatrolPoint",
+                                    "RegularEnemy",
+                                    "16",
+                                    ""
                                   ]
                                 }
                               ],
-                              "events": [
+                              "actions": [
                                 {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "Distance"
-                                      },
-                                      "parameters": [
-                                        "RegularEnemy",
-                                        "PatrolPoint",
-                                        "1",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "Wait"
-                                      },
-                                      "parameters": [
-                                        "1"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "LinkedObjects::RemoveLinkBetween"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "PatrolPoint",
-                                        "RegularEnemy"
-                                      ]
-                                    }
+                                  "type": {
+                                    "value": "Wait"
+                                  },
+                                  "parameters": [
+                                    "0.2"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "LinkedObjects::PickObjectsLinkedTo"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "PatrolPoint",
+                                    "RegularEnemy",
+                                    ""
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "LinkedObjects::RemoveLinkBetween"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "PatrolPoint",
+                                    "RegularEnemy"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "SetBooleanObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "RegularEnemy",
+                                    "IA.RestartPath",
+                                    "True",
+                                    ""
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": true,
+                                    "value": "PathfindingBehavior::PathFound"
+                                  },
+                                  "parameters": [
+                                    "RegularEnemy",
+                                    "Pathfinding"
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetBooleanObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "RegularEnemy",
+                                    "IA.RestartPath",
+                                    "True",
+                                    ""
                                   ]
                                 }
                               ]
@@ -9002,6 +9421,7 @@
                           ]
                         },
                         {
+                          "folded": true,
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
                             {
@@ -9031,6 +9451,28 @@
                           "events": [
                             {
                               "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "BuiltinCommonInstructions::Once"
+                                  },
+                                  "parameters": []
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "ResetObjectTimer"
+                                  },
+                                  "parameters": [
+                                    "RegularEnemy",
+                                    "Timers.DelayFirstBullet"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
                               "conditions": [],
                               "actions": [
                                 {
@@ -9043,7 +9485,27 @@
                                     "Player.CenterY()",
                                     ""
                                   ]
-                                },
+                                }
+                              ]
+                            },
+                            {
+                              "disabled": true,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": true,
+                                    "value": "Distance"
+                                  },
+                                  "parameters": [
+                                    "Player",
+                                    "RegularEnemy",
+                                    "_DATA_.Enemies.RegularEnemy.SeparationDistance + 32",
+                                    ""
+                                  ]
+                                }
+                              ],
+                              "actions": [
                                 {
                                   "type": {
                                     "value": "PathfindingBehavior::SetDestination"
@@ -9054,6 +9516,140 @@
                                     "",
                                     "Player.CenterX()",
                                     "Player.CenterY()"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "disabled": true,
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "Distance"
+                                  },
+                                  "parameters": [
+                                    "Player",
+                                    "RegularEnemy",
+                                    "_DATA_.Enemies.RegularEnemy.SeparationDistance - 32",
+                                    ""
+                                  ]
+                                }
+                              ],
+                              "actions": [],
+                              "events": [
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "BuiltinCommonInstructions::Not"
+                                      },
+                                      "parameters": [],
+                                      "subInstructions": [
+                                        {
+                                          "type": {
+                                            "value": "LinkedObjects::PickObjectsLinkedTo"
+                                          },
+                                          "parameters": [
+                                            "",
+                                            "PatrolPoint",
+                                            "RegularEnemy",
+                                            ""
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "AjoutObjConcern"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "PatrolPoint"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "AjoutHasard"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "PatrolPoint"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "LinkedObjects::LinkObjects"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "PatrolPoint",
+                                        "RegularEnemy"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "LinkedObjects::PickObjectsLinkedTo"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "PatrolPoint",
+                                        "RegularEnemy",
+                                        ""
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "PathfindingBehavior::SetDestination"
+                                      },
+                                      "parameters": [
+                                        "RegularEnemy",
+                                        "Pathfinding",
+                                        "",
+                                        "PatrolPoint.X()",
+                                        "PatrolPoint.Y()"
+                                      ]
+                                    }
+                                  ],
+                                  "events": [
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [
+                                        {
+                                          "type": {
+                                            "value": "Distance"
+                                          },
+                                          "parameters": [
+                                            "RegularEnemy",
+                                            "PatrolPoint",
+                                            "1",
+                                            ""
+                                          ]
+                                        }
+                                      ],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "LinkedObjects::RemoveLinkBetween"
+                                          },
+                                          "parameters": [
+                                            "",
+                                            "PatrolPoint",
+                                            "RegularEnemy"
+                                          ]
+                                        }
+                                      ]
+                                    }
                                   ]
                                 }
                               ]
@@ -9132,6 +9728,17 @@
                                 },
                                 {
                                   "type": {
+                                    "value": "CompareObjectTimer"
+                                  },
+                                  "parameters": [
+                                    "RegularEnemy",
+                                    "Timers.DelayFirstBullet",
+                                    ">=",
+                                    "StationaryEnemy.IA.DelayFirstBullet"
+                                  ]
+                                },
+                                {
+                                  "type": {
                                     "value": "StringObjectVariable"
                                   },
                                   "parameters": [
@@ -9175,44 +9782,164 @@
                               "value": 0
                             }
                           ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "StringObjectVariable"
+                              },
+                              "parameters": [
+                                "RegularEnemy",
+                                "IA.State",
+                                "=",
+                                "_CONSTANTS_.IAStates.Alert"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "inverted": true,
+                                "value": "Distance"
+                              },
+                              "parameters": [
+                                "RegularEnemy",
+                                "Player",
+                                "_DATA_.Enemies.RegularEnemy.LookDistance + _DATA_.Enemies.RegularEnemy.DetectionExtension",
+                                ""
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetStringObjectVariable"
+                              },
+                              "parameters": [
+                                "RegularEnemy",
+                                "IA.State",
+                                "=",
+                                "_CONSTANTS_.IAStates.LostTarget"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "StringObjectVariable"
+                              },
+                              "parameters": [
+                                "RegularEnemy",
+                                "IA.State",
+                                "=",
+                                "_CONSTANTS_.IAStates.LostTarget"
+                              ]
+                            }
+                          ],
+                          "actions": [],
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "Wait"
+                                  },
+                                  "parameters": [
+                                    "1"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "SetStringObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "RegularEnemy",
+                                    "IA.State",
+                                    "=",
+                                    "_CONSTANTS_.IAStates.Searching"
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "variables": [
+                            {
+                              "name": "AngleOffset",
+                              "type": "number",
+                              "value": 0
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "LinkedObjects::PickObjectsLinkedTo"
+                              },
+                              "parameters": [
+                                "",
+                                "IAAlerts",
+                                "RegularEnemy",
+                                ""
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "MettreXY"
+                              },
+                              "parameters": [
+                                "IAAlerts",
+                                "=",
+                                "RegularEnemy.X()",
+                                "=",
+                                "RegularEnemy.Y()"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                              },
+                              "parameters": [
+                                "IAAlerts",
+                                "Animation",
+                                "=",
+                                "RegularEnemy.IA.State"
+                              ]
+                            }
+                          ]
                         }
                       ]
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Comment",
-                      "color": {
-                        "b": 52,
-                        "g": 44,
-                        "r": 40,
-                        "textB": 0,
-                        "textG": 0,
-                        "textR": 0
-                      },
-                      "comment": "\n\n"
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Comment",
-                      "color": {
-                        "b": 209,
-                        "g": 199,
-                        "r": 85,
-                        "textB": 0,
-                        "textG": 0,
-                        "textR": 0
-                      },
-                      "comment": "Update IA alerts"
                     },
                     {
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
                           "type": {
-                            "value": "LinkedObjects::PickObjectsLinkedTo"
+                            "value": "Distance"
                           },
                           "parameters": [
-                            "",
-                            "IAAlerts",
-                            "Enemies",
+                            "RegularEnemy",
+                            "RegularEnemy",
+                            "RegularEnemy.Width()",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "BooleanObjectVariable"
+                          },
+                          "parameters": [
+                            "RegularEnemy",
+                            "IA.RestartPath",
+                            "False",
                             ""
                           ]
                         }
@@ -9220,13 +9947,23 @@
                       "actions": [
                         {
                           "type": {
-                            "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                            "value": "SetBooleanObjectVariable"
                           },
                           "parameters": [
-                            "IAAlerts",
-                            "Animation",
-                            "=",
-                            "StationaryEnemy.IA.State"
+                            "RegularEnemy",
+                            "IA.RestartPath",
+                            "True",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SeparateFromObjects"
+                          },
+                          "parameters": [
+                            "RegularEnemy",
+                            "RegularEnemy",
+                            ""
                           ]
                         }
                       ]
@@ -11229,6 +11966,24 @@
       ]
     },
     {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "CollisionNP"
+          },
+          "parameters": [
+            "RegularEnemy",
+            "RegularEnemy",
+            "",
+            "",
+            ""
+          ]
+        }
+      ],
+      "actions": []
+    },
+    {
       "type": "BuiltinCommonInstructions::Comment",
       "color": {
         "b": 209,
@@ -11484,6 +12239,10 @@
     {
       "name": "PathfindingObstacle",
       "type": "PathfindingBehavior::PathfindingObstacleBehavior"
+    },
+    {
+      "name": "RectangleMovement",
+      "type": "RectangleMovement::RectangleMovement"
     },
     {
       "name": "Resizable",
