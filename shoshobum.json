@@ -1924,6 +1924,14 @@
         "name": "LookPoint",
         "smoothed": false,
         "userAdded": false
+      },
+      {
+        "file": "assets/yellowsquare.png",
+        "kind": "image",
+        "metadata": "{\"extension\":\".png\"}",
+        "name": "yellowsquare",
+        "smoothed": false,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -2353,7 +2361,6 @@
           ]
         },
         {
-          "folded": true,
           "name": "InitilizeData",
           "type": "structure",
           "children": [
@@ -2365,6 +2372,11 @@
                   "name": "GameState",
                   "type": "string",
                   "value": "Start"
+                },
+                {
+                  "name": "MaxAggresiveEnemies",
+                  "type": "number",
+                  "value": 0
                 },
                 {
                   "name": "Mission",
@@ -2446,6 +2458,11 @@
           "name": "GameState",
           "type": "string",
           "value": "Start"
+        },
+        {
+          "name": "MaxAggresiveEnemies",
+          "type": "number",
+          "value": 0
         },
         {
           "name": "Mission",
@@ -2654,7 +2671,12 @@
       "referenceTo": "/layouts/game-scene"
     }
   ],
-  "externalEvents": [],
+  "externalEvents": [
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/externalEvents/regularenemybak"
+    }
+  ],
   "eventsFunctionsExtensions": [
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
