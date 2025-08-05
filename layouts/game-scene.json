@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 5.215500438154729,
+    "zoomFactor": 2.5143672964988335,
     "windowMask": false
   },
   "objectsGroups": [
@@ -320,11 +320,6 @@
       "value": 0
     },
     {
-      "name": "intersectX",
-      "type": "number",
-      "value": 0
-    },
-    {
       "name": "IntersectsX",
       "type": "array",
       "children": []
@@ -333,21 +328,6 @@
       "name": "IntersectsY",
       "type": "array",
       "children": []
-    },
-    {
-      "name": "intersectX2",
-      "type": "number",
-      "value": 0
-    },
-    {
-      "name": "IntersectY",
-      "type": "number",
-      "value": 0
-    },
-    {
-      "name": "IntersectY2",
-      "type": "number",
-      "value": 0
     },
     {
       "name": "PlayerLandMine",
@@ -1168,6 +1148,22 @@
       "x": 160,
       "y": 96,
       "zOrder": 112,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "RegularEnemy",
+      "persistentUuid": "94b7339d-e0be-480d-886d-92710c0a495c",
+      "width": 0,
+      "x": 384,
+      "y": 64,
+      "zOrder": 103,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -2464,7 +2460,7 @@
         {
           "name": "Bounces",
           "type": "number",
-          "value": 2
+          "value": 1
         },
         {
           "name": "Damage",
@@ -8005,27 +8001,7 @@
                                 "value": "SetBooleanVariable"
                               },
                               "parameters": [
-                                "SeePlayer2",
-                                "False",
-                                ""
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "SetBooleanVariable"
-                              },
-                              "parameters": [
                                 "SeeSomething",
-                                "False",
-                                ""
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "SetBooleanVariable"
-                              },
-                              "parameters": [
-                                "SeeSomething2",
                                 "False",
                                 ""
                               ]
@@ -8049,6 +8025,26 @@
                                 "Name",
                                 "=",
                                 "Enemies.ObjectName()"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "RepeatCount",
+                                "=",
+                                "0"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "BulletBounces",
+                                "=",
+                                "_DATA_.Bullets.WhiteSmall.MaxBounces"
                               ]
                             }
                           ],
@@ -8118,7 +8114,6 @@
                               "comment": "// Enemigo a la defensiva"
                             },
                             {
-                              "disabled": true,
                               "type": "BuiltinCommonInstructions::Standard",
                               "conditions": [
                                 {
@@ -8133,690 +8128,15 @@
                                   ]
                                 }
                               ],
-                              "actions": [],
-                              "events": [
+                              "actions": [
                                 {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "Raycast"
-                                      },
-                                      "parameters": [
-                                        "VisibleToEnemy",
-                                        "LookX",
-                                        "LookY",
-                                        "Angle",
-                                        "FullRange",
-                                        "intersectX",
-                                        "IntersectY",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "SetBooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "SeeSomething",
-                                        "True",
-                                        "PurpleEnemy.ID"
-                                      ]
-                                    }
-                                  ],
-                                  "events": [
-                                    {
-                                      "type": "BuiltinCommonInstructions::Standard",
-                                      "conditions": [
-                                        {
-                                          "type": {
-                                            "value": "PickedInstancesCount"
-                                          },
-                                          "parameters": [
-                                            "Player",
-                                            ">",
-                                            "0"
-                                          ]
-                                        }
-                                      ],
-                                      "actions": [
-                                        {
-                                          "type": {
-                                            "value": "SetBooleanVariable"
-                                          },
-                                          "parameters": [
-                                            "SeePlayer",
-                                            "True",
-                                            "PurpleEnemy.ID"
-                                          ]
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "folded": true,
-                                      "type": "BuiltinCommonInstructions::Standard",
-                                      "conditions": [
-                                        {
-                                          "type": {
-                                            "value": "PickedInstancesCount"
-                                          },
-                                          "parameters": [
-                                            "Walls",
-                                            ">",
-                                            "0"
-                                          ]
-                                        }
-                                      ],
-                                      "actions": [],
-                                      "events": [
-                                        {
-                                          "type": "BuiltinCommonInstructions::Comment",
-                                          "color": {
-                                            "b": 52,
-                                            "g": 44,
-                                            "r": 40,
-                                            "textB": 0,
-                                            "textG": 255,
-                                            "textR": 0
-                                          },
-                                          "comment": "// Obtener la normal en base al bounding box. Si no tienen sentido los resultados, es porque las coordenadas estan invertidas"
-                                        },
-                                        {
-                                          "type": "BuiltinCommonInstructions::Standard",
-                                          "conditions": [
-                                            {
-                                              "type": {
-                                                "value": "BuiltinCommonInstructions::CompareNumbers"
-                                              },
-                                              "parameters": [
-                                                "intersectX",
-                                                ">",
-                                                "Walls.BoundingBoxLeft()"
-                                              ]
-                                            },
-                                            {
-                                              "type": {
-                                                "value": "BuiltinCommonInstructions::CompareNumbers"
-                                              },
-                                              "parameters": [
-                                                "intersectX",
-                                                "<",
-                                                "Walls.BoundingBoxRight()"
-                                              ]
-                                            }
-                                          ],
-                                          "actions": [
-                                            {
-                                              "type": {
-                                                "value": "SetNumberVariable"
-                                              },
-                                              "parameters": [
-                                                "NormalY",
-                                                "=",
-                                                "0"
-                                              ]
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "BuiltinCommonInstructions::Standard",
-                                          "conditions": [
-                                            {
-                                              "type": {
-                                                "value": "BuiltinCommonInstructions::CompareNumbers"
-                                              },
-                                              "parameters": [
-                                                "trunc(round(intersectX))",
-                                                ">=",
-                                                "Walls.BoundingBoxRight()"
-                                              ]
-                                            }
-                                          ],
-                                          "actions": [
-                                            {
-                                              "type": {
-                                                "value": "SetNumberVariable"
-                                              },
-                                              "parameters": [
-                                                "NormalY",
-                                                "=",
-                                                "1"
-                                              ]
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "BuiltinCommonInstructions::Standard",
-                                          "conditions": [
-                                            {
-                                              "type": {
-                                                "value": "BuiltinCommonInstructions::CompareNumbers"
-                                              },
-                                              "parameters": [
-                                                "trunc(round(intersectX))",
-                                                "<=",
-                                                "Walls.BoundingBoxLeft()"
-                                              ]
-                                            }
-                                          ],
-                                          "actions": [
-                                            {
-                                              "type": {
-                                                "value": "SetNumberVariable"
-                                              },
-                                              "parameters": [
-                                                "NormalY",
-                                                "=",
-                                                "-1"
-                                              ]
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "BuiltinCommonInstructions::Standard",
-                                          "conditions": [
-                                            {
-                                              "type": {
-                                                "value": "BuiltinCommonInstructions::CompareNumbers"
-                                              },
-                                              "parameters": [
-                                                "IntersectY",
-                                                ">",
-                                                "Walls.BoundingBoxTop()"
-                                              ]
-                                            },
-                                            {
-                                              "type": {
-                                                "value": "BuiltinCommonInstructions::CompareNumbers"
-                                              },
-                                              "parameters": [
-                                                "IntersectY",
-                                                "<",
-                                                "Walls.BoundingBoxBottom()"
-                                              ]
-                                            }
-                                          ],
-                                          "actions": [
-                                            {
-                                              "type": {
-                                                "value": "SetNumberVariable"
-                                              },
-                                              "parameters": [
-                                                "NormalX",
-                                                "=",
-                                                "0"
-                                              ]
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "BuiltinCommonInstructions::Standard",
-                                          "conditions": [
-                                            {
-                                              "type": {
-                                                "value": "BuiltinCommonInstructions::CompareNumbers"
-                                              },
-                                              "parameters": [
-                                                "trunc(round(IntersectY))",
-                                                "<=",
-                                                "Walls.BoundingBoxTop()"
-                                              ]
-                                            }
-                                          ],
-                                          "actions": [
-                                            {
-                                              "type": {
-                                                "value": "SetNumberVariable"
-                                              },
-                                              "parameters": [
-                                                "NormalX",
-                                                "=",
-                                                "-1"
-                                              ]
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "type": "BuiltinCommonInstructions::Standard",
-                                          "conditions": [
-                                            {
-                                              "type": {
-                                                "value": "BuiltinCommonInstructions::CompareNumbers"
-                                              },
-                                              "parameters": [
-                                                "trunc(round(IntersectY))",
-                                                ">=",
-                                                "Walls.BoundingBoxBottom()"
-                                              ]
-                                            }
-                                          ],
-                                          "actions": [
-                                            {
-                                              "type": {
-                                                "value": "SetNumberVariable"
-                                              },
-                                              "parameters": [
-                                                "NormalX",
-                                                "=",
-                                                "1"
-                                              ]
-                                            }
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "BooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "_CONFIG_.debug",
-                                        "True",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "CustomObjects::DrawDebugLines"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "NewShapePainter",
-                                        "_CONFIG_.GreenLine",
-                                        "_CONFIG_.RedLine",
-                                        "LookX",
-                                        "LookY",
-                                        "intersectX",
-                                        "IntersectY",
-                                        "Angle",
-                                        "SeePlayer",
-                                        "SeeSomething",
-                                        "PositionX",
-                                        "PositionY",
-                                        ""
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "BooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "SeePlayer",
-                                        "False",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "SetBooleanObjectVariable"
-                                      },
-                                      "parameters": [
-                                        "Enemies",
-                                        "IA.SeePlayer",
-                                        "False",
-                                        "_CONSTANTS_.IAStates.Alert"
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "BooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "SeePlayer",
-                                        "True",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "SetBooleanObjectVariable"
-                                      },
-                                      "parameters": [
-                                        "Enemies",
-                                        "IA.SeePlayer",
-                                        "True",
-                                        "_CONSTANTS_.IAStates.Alert"
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "BooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "SeePlayer",
-                                        "False",
-                                        ""
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "BooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "SeeSomething",
-                                        "True",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "SetBooleanObjectVariable"
-                                      },
-                                      "parameters": [
-                                        "Enemies",
-                                        "IA.SeeSomething",
-                                        "True",
-                                        "_CONSTANTS_.IAStates.Alert"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "SetStringObjectVariable"
-                                      },
-                                      "parameters": [
-                                        "Enemies",
-                                        "IA.BlockTarget",
-                                        "=",
-                                        "VisibleToEnemy.Type"
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "BuiltinCommonInstructions::Comment",
-                                  "color": {
-                                    "b": 52,
-                                    "g": 44,
-                                    "r": 40,
-                                    "textB": 0,
-                                    "textG": 0,
-                                    "textR": 0
+                                  "type": {
+                                    "value": "SetNumberVariable"
                                   },
-                                  "comment": "\n\n"
-                                },
-                                {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "SetNumberVariable"
-                                      },
-                                      "parameters": [
-                                        "NormalAngle",
-                                        "=",
-                                        "ToDeg(atan2(NormalX, NormalY))"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "SetNumberVariable"
-                                      },
-                                      "parameters": [
-                                        "NormalAngle",
-                                        "=",
-                                        "NormalAngle"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "SetNumberVariable"
-                                      },
-                                      "parameters": [
-                                        "SecondAngle",
-                                        "=",
-                                        "NormalAngle + AngleDifference(NormalAngle, Angle + 180)"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "Log_Manager::WriteLog"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "Logger",
-                                        "\"Angle:\" + ToString(Angle) + \" \" + ToString(Enemies.GetCannonAngle())",
-                                        ""
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "Log_Manager::WriteLog"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "Logger",
-                                        "\"normal: \" + ToString(NormalX) + \", \" + ToString(NormalY)",
-                                        ""
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "Log_Manager::WriteLog"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "Logger",
-                                        "\"NormalAngle:\" + ToString(NormalAngle)",
-                                        ""
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "Log_Manager::WriteLog"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "Logger",
-                                        "\"NewAngle:\" + ToString(SecondAngle)",
-                                        ""
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "SetNumberVariable"
-                                      },
-                                      "parameters": [
-                                        "AuxX",
-                                        "=",
-                                        "XFromAngleAndDistance(SecondAngle, 2) + intersectX"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "SetNumberVariable"
-                                      },
-                                      "parameters": [
-                                        "AuxY",
-                                        "=",
-                                        "YFromAngleAndDistance(SecondAngle, 2) + IntersectY"
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "Raycast"
-                                      },
-                                      "parameters": [
-                                        "VisibleToEnemy",
-                                        "AuxX",
-                                        "AuxY",
-                                        "SecondAngle",
-                                        "FullRange",
-                                        "intersectX2",
-                                        "IntersectY2",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "SetBooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "SeeSomething2",
-                                        "True",
-                                        "PurpleEnemy.ID"
-                                      ]
-                                    }
-                                  ],
-                                  "events": [
-                                    {
-                                      "type": "BuiltinCommonInstructions::Standard",
-                                      "conditions": [
-                                        {
-                                          "type": {
-                                            "value": "PickedInstancesCount"
-                                          },
-                                          "parameters": [
-                                            "Player",
-                                            ">",
-                                            "0"
-                                          ]
-                                        }
-                                      ],
-                                      "actions": [
-                                        {
-                                          "type": {
-                                            "value": "SetBooleanVariable"
-                                          },
-                                          "parameters": [
-                                            "SeePlayer2",
-                                            "True",
-                                            "PurpleEnemy.ID"
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "BooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "_CONFIG_.debug",
-                                        "True",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "CustomObjects::DrawDebugLines"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "NewShapePainter",
-                                        "_CONFIG_.GreenLine",
-                                        "_CONFIG_.RedLine",
-                                        "AuxX",
-                                        "AuxY",
-                                        "intersectX2",
-                                        "IntersectY2",
-                                        "SecondAngle",
-                                        "SeePlayer2",
-                                        "SeeSomething2",
-                                        "PositionX",
-                                        "PositionY",
-                                        ""
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "BooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "SeePlayer2",
-                                        "False",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "SetBooleanObjectVariable"
-                                      },
-                                      "parameters": [
-                                        "Enemies",
-                                        "IA.SeePlayer2",
-                                        "False",
-                                        "_CONSTANTS_.IAStates.Alert"
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "BooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "SeePlayer2",
-                                        "True",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "SetBooleanObjectVariable"
-                                      },
-                                      "parameters": [
-                                        "Enemies",
-                                        "IA.SeePlayer2",
-                                        "True",
-                                        "_CONSTANTS_.IAStates.Alert"
-                                      ]
-                                    }
+                                  "parameters": [
+                                    "BulletBounces",
+                                    "=",
+                                    "_DATA_.Bullets.WhiteSmall.MaxBounces"
                                   ]
                                 }
                               ]
@@ -8834,8 +8154,6 @@
                               "comment": "// Enemigo agresivo"
                             },
                             {
-                              "disabled": true,
-                              "folded": true,
                               "type": "BuiltinCommonInstructions::Standard",
                               "conditions": [
                                 {
@@ -8850,210 +8168,15 @@
                                   ]
                                 }
                               ],
-                              "actions": [],
-                              "events": [
+                              "actions": [
                                 {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "Raycast"
-                                      },
-                                      "parameters": [
-                                        "VisibleToEnemy",
-                                        "LookX",
-                                        "LookY",
-                                        "Angle",
-                                        "FullRange",
-                                        "intersectX",
-                                        "IntersectY",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "SetBooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "SeeSomething",
-                                        "True",
-                                        "PurpleEnemy.ID"
-                                      ]
-                                    }
-                                  ],
-                                  "events": [
-                                    {
-                                      "type": "BuiltinCommonInstructions::Standard",
-                                      "conditions": [
-                                        {
-                                          "type": {
-                                            "value": "PickedInstancesCount"
-                                          },
-                                          "parameters": [
-                                            "Player",
-                                            ">",
-                                            "0"
-                                          ]
-                                        }
-                                      ],
-                                      "actions": [
-                                        {
-                                          "type": {
-                                            "value": "SetBooleanVariable"
-                                          },
-                                          "parameters": [
-                                            "SeePlayer",
-                                            "True",
-                                            "PurpleEnemy.ID"
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "BooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "_CONFIG_.debug",
-                                        "True",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "CustomObjects::DrawDebugLines"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "NewShapePainter",
-                                        "_CONFIG_.GreenLine",
-                                        "_CONFIG_.RedLine",
-                                        "LookX",
-                                        "LookY",
-                                        "intersectX",
-                                        "IntersectY",
-                                        "Angle",
-                                        "SeePlayer",
-                                        "SeeSomething",
-                                        "PositionX",
-                                        "PositionY",
-                                        ""
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "BooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "SeePlayer",
-                                        "False",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "SetBooleanObjectVariable"
-                                      },
-                                      "parameters": [
-                                        "Enemies",
-                                        "IA.SeePlayer",
-                                        "False",
-                                        "_CONSTANTS_.IAStates.Alert"
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "BooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "SeePlayer",
-                                        "True",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "SetBooleanObjectVariable"
-                                      },
-                                      "parameters": [
-                                        "Enemies",
-                                        "IA.SeePlayer",
-                                        "True",
-                                        "_CONSTANTS_.IAStates.Alert"
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "BooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "SeePlayer",
-                                        "False",
-                                        ""
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "BooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "SeeSomething",
-                                        "True",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "SetBooleanObjectVariable"
-                                      },
-                                      "parameters": [
-                                        "Enemies",
-                                        "IA.SeeSomething",
-                                        "True",
-                                        "_CONSTANTS_.IAStates.Alert"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "SetStringObjectVariable"
-                                      },
-                                      "parameters": [
-                                        "Enemies",
-                                        "IA.BlockTarget",
-                                        "=",
-                                        "VisibleToEnemy.Type"
-                                      ]
-                                    }
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "BulletBounces",
+                                    "=",
+                                    "0"
                                   ]
                                 }
                               ]
@@ -9221,6 +8344,7 @@
                                   ]
                                 },
                                 {
+                                  "folded": true,
                                   "type": "BuiltinCommonInstructions::Standard",
                                   "conditions": [
                                     {
@@ -9584,6 +8708,16 @@
                                         "True",
                                         "_CONSTANTS_.IAStates.Alert"
                                       ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "SetNumberVariable"
+                                      },
+                                      "parameters": [
+                                        "RepeatCount",
+                                        "=",
+                                        "_DATA_.Bullets.WhiteSmall.MaxBounces"
+                                      ]
                                     }
                                   ]
                                 },
@@ -9694,29 +8828,9 @@
                           "value": false
                         },
                         {
-                          "name": "SeeSomething2",
-                          "type": "boolean",
-                          "value": false
-                        },
-                        {
                           "name": "SeePlayer",
                           "type": "boolean",
                           "value": false
-                        },
-                        {
-                          "name": "SeePlayer2",
-                          "type": "boolean",
-                          "value": false
-                        },
-                        {
-                          "name": "Name",
-                          "type": "string",
-                          "value": "0"
-                        },
-                        {
-                          "name": "SecondAngle",
-                          "type": "number",
-                          "value": 0
                         },
                         {
                           "name": "NormalAngle",
@@ -9745,6 +8859,16 @@
                         },
                         {
                           "name": "RepeatCount",
+                          "type": "number",
+                          "value": 0
+                        },
+                        {
+                          "name": "Name",
+                          "type": "string",
+                          "value": "0"
+                        },
+                        {
+                          "name": "BulletBounces",
                           "type": "number",
                           "value": 0
                         }
