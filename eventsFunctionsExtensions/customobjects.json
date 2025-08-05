@@ -22,8 +22,44 @@
       "fullName": "Draw debug lines",
       "functionType": "Action",
       "name": "DrawDebugLines",
-      "sentence": "Draw line with color _PARAM2_ when _PARAM9_ found and color _PARAM3_ when _PARAM10_ found or not. Use(_PARAM1_) Origin(_PARAM4_, _PARAM5_) End(_PARAM6_, _PARAM7_) Angle(_PARAM8_) (_PARAM11_, _PARAM12_)",
+      "sentence": "Draw line with color _PARAM2_ when _PARAM9_ found; Draw with color _PARAM3_ when _PARAM10_ found or nothing found. Use(_PARAM1_) Origin(_PARAM4_, _PARAM5_) End(_PARAM6_, _PARAM7_) Angle(_PARAM8_) (_PARAM11_, _PARAM12_)",
       "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "DebuggerTools::ConsoleLog"
+              },
+              "parameters": [
+                "\"============================\"",
+                "",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "DebuggerTools::ConsoleLog"
+              },
+              "parameters": [
+                "\"objectiveSeen \" + ObjectiveSeen",
+                "",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "DebuggerTools::ConsoleLog"
+              },
+              "parameters": [
+                "\"other seen \" + OtherSeen",
+                "",
+                ""
+              ]
+            }
+          ]
+        },
         {
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
@@ -104,7 +140,7 @@
               "parameters": [
                 "ShapePainter",
                 "X1",
-                "X1",
+                "Y1",
                 "X2",
                 "Y2",
                 "1"
@@ -855,77 +891,70 @@
                 {
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [],
-                  "actions": [],
-                  "events": [
+                  "actions": [
                     {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "SetNumberVariable"
-                          },
-                          "parameters": [
-                            "RandomizedAngle",
-                            "=",
-                            "Angle + RandomInRange(-AngleSpread, AngleSpread)"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "AddForceAL"
-                          },
-                          "parameters": [
-                            "Bullet",
-                            "RandomizedAngle",
-                            "Speed",
-                            "1"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetNumberVariable"
-                          },
-                          "parameters": [
-                            "AngleDirection",
-                            "=",
-                            "RandomizedAngle"
-                          ]
-                        }
-                      ],
-                      "variables": [
-                        {
-                          "name": "RandomizedAngle",
-                          "type": "number",
-                          "value": 0
-                        }
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "RandomizedAngle",
+                        "=",
+                        "Angle + RandomInRange(-AngleSpread, AngleSpread)"
                       ]
                     },
                     {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "BooleanVariable"
-                          },
-                          "parameters": [
-                            "RotateBullet",
-                            "True",
-                            ""
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "SetAngle"
-                          },
-                          "parameters": [
-                            "Bullet",
-                            "=",
-                            "AngleDirection"
-                          ]
-                        }
+                      "type": {
+                        "value": "AddForceAL"
+                      },
+                      "parameters": [
+                        "Bullet",
+                        "RandomizedAngle",
+                        "Speed",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "AngleDirection",
+                        "=",
+                        "RandomizedAngle"
+                      ]
+                    }
+                  ],
+                  "variables": [
+                    {
+                      "name": "RandomizedAngle",
+                      "type": "number",
+                      "value": 0
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanVariable"
+                      },
+                      "parameters": [
+                        "RotateBullet",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetAngle"
+                      },
+                      "parameters": [
+                        "Bullet",
+                        "=",
+                        "AngleDirection"
                       ]
                     }
                   ]
