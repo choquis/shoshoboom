@@ -18,6 +18,206 @@
   "sceneVariables": [],
   "eventsFunctions": [
     {
+      "description": "Draw lines for enemy sight",
+      "fullName": "Draw debug lines",
+      "functionType": "Action",
+      "name": "DrawDebugLines",
+      "sentence": "Draw line with color _PARAM2_ when _PARAM9_ found and color _PARAM3_ when _PARAM10_ found or not. Use(_PARAM1_) Origin(_PARAM4_, _PARAM5_) End(_PARAM6_, _PARAM7_) Angle(_PARAM8_) (_PARAM11_, _PARAM12_)",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "ObjectiveSeen",
+                "=",
+                "1"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "PrimitiveDrawing::OutlineColor"
+              },
+              "parameters": [
+                "ShapePainter",
+                "PrimaryColor"
+              ]
+            },
+            {
+              "type": {
+                "value": "PrimitiveDrawing::LineV2"
+              },
+              "parameters": [
+                "ShapePainter",
+                "X1",
+                "Y1",
+                "X2",
+                "Y2",
+                "1"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "ObjectiveSeen",
+                "=",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "OtherSeen",
+                "=",
+                "1"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "PrimitiveDrawing::OutlineColor"
+              },
+              "parameters": [
+                "ShapePainter",
+                "SecondaryColor"
+              ]
+            },
+            {
+              "type": {
+                "value": "PrimitiveDrawing::LineV2"
+              },
+              "parameters": [
+                "ShapePainter",
+                "X1",
+                "X1",
+                "X2",
+                "Y2",
+                "1"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "OtherSeen",
+                "=",
+                "0"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "PrimitiveDrawing::OutlineColor"
+              },
+              "parameters": [
+                "ShapePainter",
+                "SecondaryColor"
+              ]
+            },
+            {
+              "type": {
+                "value": "PrimitiveDrawing::LineV2"
+              },
+              "parameters": [
+                "ShapePainter",
+                "X1",
+                "Y1",
+                "XFromAngleAndDistance(Angle, 1000) + PosX",
+                "YFromAngleAndDistance(Angle, 1000) + PosY",
+                "1"
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "description": "ShapePainter",
+          "name": "ShapePainter",
+          "supplementaryInformation": "PrimitiveDrawing::Drawer",
+          "type": "objectList"
+        },
+        {
+          "description": "Primary color",
+          "name": "PrimaryColor",
+          "type": "color"
+        },
+        {
+          "description": "Secondary color",
+          "name": "SecondaryColor",
+          "type": "color"
+        },
+        {
+          "description": "X1",
+          "name": "X1",
+          "type": "expression"
+        },
+        {
+          "description": "Y2",
+          "name": "Y1",
+          "type": "expression"
+        },
+        {
+          "description": "X2",
+          "name": "X2",
+          "type": "expression"
+        },
+        {
+          "description": "Y2",
+          "name": "Y2",
+          "type": "expression"
+        },
+        {
+          "description": "Angle",
+          "name": "Angle",
+          "type": "expression"
+        },
+        {
+          "description": "Objective seen",
+          "name": "ObjectiveSeen",
+          "type": "expression"
+        },
+        {
+          "description": "Other seen",
+          "name": "OtherSeen",
+          "type": "expression"
+        },
+        {
+          "description": "PosX",
+          "name": "PosX",
+          "type": "expression"
+        },
+        {
+          "description": "PosY",
+          "name": "PosY",
+          "type": "expression"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
       "description": "Create the default white bullet with 12 frames of rotation",
       "fullName": "Shoot white bullet",
       "functionType": "Action",
