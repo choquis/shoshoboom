@@ -1677,7 +1677,7 @@
             {
               "name": "AngleRotationFieldOfvision",
               "type": "number",
-              "value": 135
+              "value": 360
             },
             {
               "name": "BlockTarget",
@@ -7010,9 +7010,9 @@
           "comment": ""
         },
         {
-          "colorB": 177,
-          "colorG": 128,
-          "colorR": 29,
+          "colorB": 139,
+          "colorG": 33,
+          "colorR": 26,
           "creationTime": 0,
           "name": "START",
           "source": "",
@@ -7440,9 +7440,9 @@
           "comment": "\n\n"
         },
         {
-          "colorB": 177,
-          "colorG": 128,
-          "colorR": 29,
+          "colorB": 139,
+          "colorG": 33,
+          "colorR": 26,
           "creationTime": 0,
           "name": "GAME",
           "source": "",
@@ -7939,18 +7939,6 @@
                               ],
                               "events": [
                                 {
-                                  "type": "BuiltinCommonInstructions::Comment",
-                                  "color": {
-                                    "b": 52,
-                                    "g": 44,
-                                    "r": 40,
-                                    "textB": 0,
-                                    "textG": 255,
-                                    "textR": 0
-                                  },
-                                  "comment": "// Primero revisar si no esta cerca el jugador"
-                                },
-                                {
                                   "disabled": true,
                                   "type": "BuiltinCommonInstructions::Standard",
                                   "conditions": [
@@ -8000,7 +7988,7 @@
                                     "textG": 255,
                                     "textR": 0
                                   },
-                                  "comment": "// Enemigo a la defensiva"
+                                  "comment": "// Enemigo a la defensiva, toma en cuenta el rebote de las balas"
                                 },
                                 {
                                   "type": "BuiltinCommonInstructions::Standard",
@@ -8040,7 +8028,7 @@
                                     "textG": 255,
                                     "textR": 0
                                   },
-                                  "comment": "// Enemigo agresivo"
+                                  "comment": "// Enemigo agresivo no revisa si las balas rebotan"
                                 },
                                 {
                                   "type": "BuiltinCommonInstructions::Standard",
@@ -8260,6 +8248,7 @@
                                           ]
                                         },
                                         {
+                                          "folded": true,
                                           "type": "BuiltinCommonInstructions::Standard",
                                           "conditions": [
                                             {
@@ -8765,14 +8754,26 @@
                       "comment": "\n\n"
                     },
                     {
-                      "colorB": 177,
-                      "colorG": 128,
-                      "colorR": 29,
+                      "colorB": 139,
+                      "colorG": 33,
+                      "colorR": 26,
                       "creationTime": 0,
                       "name": "Stationary enemy logic",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
                       "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 209,
+                            "g": 199,
+                            "r": 85,
+                            "textB": 0,
+                            "textG": 0,
+                            "textR": 0
+                          },
+                          "comment": ""
+                        },
                         {
                           "type": "BuiltinCommonInstructions::ForEach",
                           "object": "StationaryEnemy",
@@ -8784,7 +8785,7 @@
                               "colorG": 128,
                               "colorR": 29,
                               "creationTime": 0,
-                              "name": "On guard, if player not seen or not near",
+                              "name": "Sight",
                               "source": "",
                               "type": "BuiltinCommonInstructions::Group",
                               "events": [
@@ -8805,40 +8806,45 @@
                                   "conditions": [
                                     {
                                       "type": {
-                                        "value": "StringObjectVariable"
+                                        "value": "BooleanObjectVariable"
                                       },
                                       "parameters": [
                                         "StationaryEnemy",
-                                        "IA.State",
-                                        "=",
-                                        "_CONSTANTS_.IAStates.Searching"
+                                        "IA.SeePlayer",
+                                        "False",
+                                        ""
                                       ]
                                     }
                                   ],
-                                  "actions": [
+                                  "actions": [],
+                                  "events": [
                                     {
-                                      "type": {
-                                        "value": "SetNumberObjectVariable"
-                                      },
-                                      "parameters": [
-                                        "StationaryEnemy",
-                                        "IA.AngleRotationCount",
-                                        "+",
-                                        "AngleOffset"
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "SetNumberVariable"
+                                          },
+                                          "parameters": [
+                                            "AngleOffset",
+                                            "=",
+                                            "_DATA_.Enemies.StationaryEnemy.LookSpeed * TimeDelta() * LayerTimeScale(_CONSTANTS_.Layers.Base)"
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "SetNumberObjectVariable"
+                                          },
+                                          "parameters": [
+                                            "StationaryEnemy",
+                                            "IA.AngleRotationCount",
+                                            "+",
+                                            "AngleOffset"
+                                          ]
+                                        }
                                       ]
                                     },
-                                    {
-                                      "type": {
-                                        "value": "SetNumberVariable"
-                                      },
-                                      "parameters": [
-                                        "AngleOffset",
-                                        "=",
-                                        "_DATA_.Enemies.StationaryEnemy.LookSpeed * TimeDelta() * LayerTimeScale(_CONSTANTS_.Layers.Base)"
-                                      ]
-                                    }
-                                  ],
-                                  "events": [
                                     {
                                       "type": "BuiltinCommonInstructions::Standard",
                                       "conditions": [
@@ -8851,6 +8857,17 @@
                                             "IA.AngleRotationCount",
                                             ">=",
                                             "StationaryEnemy.IA.AngleRotationFieldOfvision"
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "NumberObjectVariable"
+                                          },
+                                          "parameters": [
+                                            "StationaryEnemy",
+                                            "IA.AngleRotationFieldOfvision",
+                                            "<",
+                                            "360"
                                           ]
                                         }
                                       ],
@@ -8943,6 +8960,42 @@
                                       "value": 0
                                     }
                                   ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "BooleanObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "StationaryEnemy",
+                                        "IA.SeePlayer",
+                                        "True",
+                                        ""
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [],
+                                  "events": [
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "CustomObjects::Player::LookToByPoint"
+                                          },
+                                          "parameters": [
+                                            "StationaryEnemy",
+                                            "Player.CenterX()",
+                                            "Player.CenterY()",
+                                            ""
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
                                 }
                               ],
                               "parameters": []
@@ -8964,7 +9017,7 @@
                               "colorG": 128,
                               "colorR": 29,
                               "creationTime": 0,
-                              "name": "Follow player if seen",
+                              "name": "Shoot",
                               "source": "",
                               "type": "BuiltinCommonInstructions::Group",
                               "events": [
@@ -8982,198 +9035,18 @@
                                 },
                                 {
                                   "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
+                                  "conditions": [],
+                                  "actions": [
                                     {
                                       "type": {
-                                        "value": "StringObjectVariable"
+                                        "value": "SetNumberObjectVariable"
                                       },
                                       "parameters": [
                                         "StationaryEnemy",
-                                        "IA.State",
+                                        "BulletCount",
                                         "=",
-                                        "_CONSTANTS_.IAStates.Alert"
+                                        "0"
                                       ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "Distance"
-                                      },
-                                      "parameters": [
-                                        "StationaryEnemy",
-                                        "Player",
-                                        "_DATA_.Enemies.StationaryEnemy.LookDistance + _DATA_.Enemies.StationaryEnemy.DetectionExtension",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [],
-                                  "events": [
-                                    {
-                                      "disabled": true,
-                                      "type": "BuiltinCommonInstructions::Standard",
-                                      "conditions": [
-                                        {
-                                          "type": {
-                                            "value": "BuiltinCommonInstructions::Once"
-                                          },
-                                          "parameters": []
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "CompareObjectTimer"
-                                          },
-                                          "parameters": [
-                                            "StationaryEnemy",
-                                            "Timers.DelayFirstBullet",
-                                            ">=",
-                                            "StationaryEnemy.IA.DelayFirstBullet"
-                                          ]
-                                        }
-                                      ],
-                                      "actions": [
-                                        {
-                                          "type": {
-                                            "value": "ResetObjectTimer"
-                                          },
-                                          "parameters": [
-                                            "StationaryEnemy",
-                                            "Timers.DelayFirstBullet"
-                                          ]
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "type": "BuiltinCommonInstructions::Standard",
-                                      "conditions": [],
-                                      "actions": [
-                                        {
-                                          "type": {
-                                            "value": "CustomObjects::Player::LookToByPoint"
-                                          },
-                                          "parameters": [
-                                            "StationaryEnemy",
-                                            "Player.CenterX()",
-                                            "Player.CenterY()",
-                                            ""
-                                          ]
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "type": "BuiltinCommonInstructions::Comment",
-                                      "color": {
-                                        "b": 209,
-                                        "g": 199,
-                                        "r": 85,
-                                        "textB": 0,
-                                        "textG": 0,
-                                        "textR": 0
-                                      },
-                                      "comment": "Shoot"
-                                    },
-                                    {
-                                      "type": "BuiltinCommonInstructions::Standard",
-                                      "conditions": [],
-                                      "actions": [
-                                        {
-                                          "type": {
-                                            "value": "SetNumberObjectVariable"
-                                          },
-                                          "parameters": [
-                                            "StationaryEnemy",
-                                            "BulletCount",
-                                            "=",
-                                            "0"
-                                          ]
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "type": "BuiltinCommonInstructions::Standard",
-                                      "conditions": [
-                                        {
-                                          "type": {
-                                            "value": "LinkedObjects::PickObjectsLinkedTo"
-                                          },
-                                          "parameters": [
-                                            "",
-                                            "WhiteBullet",
-                                            "StationaryEnemy",
-                                            ""
-                                          ]
-                                        }
-                                      ],
-                                      "actions": [
-                                        {
-                                          "type": {
-                                            "value": "SetNumberObjectVariable"
-                                          },
-                                          "parameters": [
-                                            "StationaryEnemy",
-                                            "BulletCount",
-                                            "=",
-                                            "PickedInstancesCount(WhiteBullet)"
-                                          ]
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "type": "BuiltinCommonInstructions::Standard",
-                                      "conditions": [
-                                        {
-                                          "type": {
-                                            "value": "NumberObjectVariable"
-                                          },
-                                          "parameters": [
-                                            "StationaryEnemy",
-                                            "BulletCount",
-                                            "<",
-                                            "_DATA_.Enemies.StationaryEnemy.MaxBullets"
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "StringObjectVariable"
-                                          },
-                                          "parameters": [
-                                            "StationaryEnemy",
-                                            "IA.BlockTarget",
-                                            "!=",
-                                            "_CONSTANTS_.Entities.Enemy"
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "StringObjectVariable"
-                                          },
-                                          "parameters": [
-                                            "StationaryEnemy",
-                                            "IA.BlockTarget",
-                                            "!=",
-                                            "_CONSTANTS_.Entities.Wall"
-                                          ]
-                                        }
-                                      ],
-                                      "actions": [
-                                        {
-                                          "type": {
-                                            "value": "SetBooleanObjectVariable"
-                                          },
-                                          "parameters": [
-                                            "StationaryEnemy",
-                                            "IA.Shoot",
-                                            "True",
-                                            ""
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  ],
-                                  "variables": [
-                                    {
-                                      "name": "AngleOffset",
-                                      "type": "number",
-                                      "value": 0
                                     }
                                   ]
                                 },
@@ -9182,24 +9055,12 @@
                                   "conditions": [
                                     {
                                       "type": {
-                                        "value": "StringObjectVariable"
+                                        "value": "LinkedObjects::PickObjectsLinkedTo"
                                       },
                                       "parameters": [
+                                        "",
+                                        "WhiteBullet",
                                         "StationaryEnemy",
-                                        "IA.State",
-                                        "=",
-                                        "_CONSTANTS_.IAStates.Alert"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "inverted": true,
-                                        "value": "Distance"
-                                      },
-                                      "parameters": [
-                                        "StationaryEnemy",
-                                        "Player",
-                                        "_DATA_.Enemies.StationaryEnemy.LookDistance + _DATA_.Enemies.StationaryEnemy.DetectionExtension",
                                         ""
                                       ]
                                     }
@@ -9207,96 +9068,105 @@
                                   "actions": [
                                     {
                                       "type": {
-                                        "value": "SetStringObjectVariable"
+                                        "value": "SetNumberObjectVariable"
                                       },
                                       "parameters": [
                                         "StationaryEnemy",
-                                        "IA.State",
+                                        "BulletCount",
                                         "=",
-                                        "_CONSTANTS_.IAStates.LostTarget"
+                                        "PickedInstancesCount(WhiteBullet)"
                                       ]
                                     }
-                                  ],
-                                  "variables": [
-                                    {
-                                      "name": "AngleOffset",
-                                      "type": "number",
-                                      "value": 0
-                                    }
                                   ]
-                                }
-                              ],
-                              "parameters": []
-                            },
-                            {
-                              "type": "BuiltinCommonInstructions::Comment",
-                              "color": {
-                                "b": 52,
-                                "g": 44,
-                                "r": 40,
-                                "textB": 0,
-                                "textG": 0,
-                                "textR": 0
-                              },
-                              "comment": "\n\n"
-                            },
-                            {
-                              "colorB": 177,
-                              "colorG": 128,
-                              "colorR": 29,
-                              "creationTime": 0,
-                              "name": "Lost player",
-                              "source": "",
-                              "type": "BuiltinCommonInstructions::Group",
-                              "events": [
+                                },
                                 {
                                   "type": "BuiltinCommonInstructions::Standard",
                                   "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "BooleanObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "StationaryEnemy",
+                                        "IA.SeePlayer",
+                                        "True",
+                                        "_DATA_.Enemies.RegularEnemy.MaxBullets"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "NumberObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "StationaryEnemy",
+                                        "BulletCount",
+                                        "<",
+                                        "_DATA_.Enemies.RegularEnemy.MaxBullets"
+                                      ]
+                                    },
                                     {
                                       "type": {
                                         "value": "StringObjectVariable"
                                       },
                                       "parameters": [
                                         "StationaryEnemy",
-                                        "IA.State",
-                                        "=",
-                                        "_CONSTANTS_.IAStates.LostTarget"
+                                        "IA.BlockTarget",
+                                        "!=",
+                                        "_CONSTANTS_.Entities.Enemy"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "StringObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "StationaryEnemy",
+                                        "IA.BlockTarget",
+                                        "!=",
+                                        "_CONSTANTS_.Entities.BreakableWall"
                                       ]
                                     }
                                   ],
-                                  "actions": [],
-                                  "events": [
+                                  "actions": [
                                     {
-                                      "type": "BuiltinCommonInstructions::Standard",
-                                      "conditions": [],
-                                      "actions": [
-                                        {
-                                          "type": {
-                                            "value": "Wait"
-                                          },
-                                          "parameters": [
-                                            "1"
-                                          ]
-                                        },
-                                        {
-                                          "type": {
-                                            "value": "SetStringObjectVariable"
-                                          },
-                                          "parameters": [
-                                            "StationaryEnemy",
-                                            "IA.State",
-                                            "=",
-                                            "_CONSTANTS_.IAStates.Searching"
-                                          ]
-                                        }
+                                      "type": {
+                                        "value": "SetBooleanObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "StationaryEnemy",
+                                        "IA.Shoot",
+                                        "True",
+                                        ""
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "BooleanObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "StationaryEnemy",
+                                        "IA.SeePlayer",
+                                        "False",
+                                        "_DATA_.Enemies.RegularEnemy.MaxBullets"
                                       ]
                                     }
                                   ],
-                                  "variables": [
+                                  "actions": [
                                     {
-                                      "name": "AngleOffset",
-                                      "type": "number",
-                                      "value": 0
+                                      "type": {
+                                        "value": "SetBooleanObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "StationaryEnemy",
+                                        "IA.Shoot",
+                                        "False",
+                                        ""
+                                      ]
                                     }
                                   ]
                                 }
@@ -9321,14 +9191,26 @@
                       "comment": "\n\n"
                     },
                     {
-                      "colorB": 177,
-                      "colorG": 128,
-                      "colorR": 29,
+                      "colorB": 139,
+                      "colorG": 33,
+                      "colorR": 26,
                       "creationTime": 0,
                       "name": "Regular enemy logic",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
                       "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 209,
+                            "g": 199,
+                            "r": 85,
+                            "textB": 0,
+                            "textG": 0,
+                            "textR": 0
+                          },
+                          "comment": ""
+                        },
                         {
                           "type": "BuiltinCommonInstructions::ForEach",
                           "object": "RegularEnemy",
@@ -9340,6 +9222,7 @@
                               "colorG": 128,
                               "colorR": 29,
                               "creationTime": 0,
+                              "folded": true,
                               "name": "Debuggin lines",
                               "source": "",
                               "type": "BuiltinCommonInstructions::Group",
@@ -9391,14 +9274,14 @@
                                         {
                                           "type": "BuiltinCommonInstructions::Comment",
                                           "color": {
-                                            "b": 109,
-                                            "g": 230,
-                                            "r": 255,
+                                            "b": 52,
+                                            "g": 44,
+                                            "r": 40,
                                             "textB": 0,
-                                            "textG": 0,
+                                            "textG": 255,
                                             "textR": 0
                                           },
-                                          "comment": "Draw circles on each node"
+                                          "comment": "// Draw circles on each node"
                                         },
                                         {
                                           "type": "BuiltinCommonInstructions::Standard",
@@ -9431,14 +9314,14 @@
                                         {
                                           "type": "BuiltinCommonInstructions::Comment",
                                           "color": {
-                                            "b": 109,
-                                            "g": 230,
-                                            "r": 255,
+                                            "b": 52,
+                                            "g": 44,
+                                            "r": 40,
                                             "textB": 0,
-                                            "textG": 0,
+                                            "textG": 255,
                                             "textR": 0
                                           },
-                                          "comment": "Draw lines between nodes"
+                                          "comment": "// Draw lines between nodes"
                                         },
                                         {
                                           "type": "BuiltinCommonInstructions::Standard",
@@ -9517,6 +9400,7 @@
                               "colorG": 128,
                               "colorR": 29,
                               "creationTime": 0,
+                              "folded": true,
                               "name": "Movement",
                               "source": "",
                               "type": "BuiltinCommonInstructions::Group",
@@ -11692,9 +11576,9 @@
           "comment": "\n\n"
         },
         {
-          "colorB": 177,
-          "colorG": 128,
-          "colorR": 29,
+          "colorB": 139,
+          "colorG": 33,
+          "colorR": 26,
           "creationTime": 0,
           "name": "PAUSE",
           "source": "",
@@ -11821,9 +11705,9 @@
           "comment": "\n\n"
         },
         {
-          "colorB": 177,
-          "colorG": 128,
-          "colorR": 29,
+          "colorB": 139,
+          "colorG": 33,
+          "colorR": 26,
           "creationTime": 0,
           "name": "GAME WON",
           "source": "",
@@ -11983,9 +11867,9 @@
           "comment": "\n\n"
         },
         {
-          "colorB": 177,
-          "colorG": 128,
-          "colorR": 29,
+          "colorB": 139,
+          "colorG": 33,
+          "colorR": 26,
           "creationTime": 0,
           "name": "GAME OVER",
           "source": "",
@@ -12320,6 +12204,15 @@
                     "Damageable.CenterX()",
                     "Damageable.BoundingBoxCenterY()",
                     ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ChangeColor"
+                  },
+                  "parameters": [
+                    "DeathMark",
+                    "_CONFIG_.RedLine"
                   ]
                 },
                 {
