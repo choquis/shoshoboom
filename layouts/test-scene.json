@@ -1,8 +1,8 @@
 {
   "b": 255,
   "disableInputWhenNotFocused": true,
-  "mangledName": "Game_32Scene",
-  "name": "Game Scene",
+  "mangledName": "Test_32Scene",
+  "name": "Test Scene",
   "r": 255,
   "standardSortMethod": true,
   "stopSoundsOnStartup": true,
@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 2.2019958137101763,
+    "zoomFactor": 1.8655255482570763,
     "windowMask": false
   },
   "objectsGroups": [
@@ -36,9 +36,6 @@
         },
         {
           "name": "EnemySquare"
-        },
-        {
-          "name": "BreakableWallDurable"
         }
       ]
     },
@@ -50,9 +47,6 @@
         },
         {
           "name": "WhiteBullet"
-        },
-        {
-          "name": "BreakableWallDurable"
         }
       ]
     },
@@ -84,9 +78,6 @@
         },
         {
           "name": "EnemySquare"
-        },
-        {
-          "name": "BreakableWallDurable"
         }
       ]
     },
@@ -128,9 +119,6 @@
         },
         {
           "name": "WhiteWall"
-        },
-        {
-          "name": "BreakableWallDurable"
         }
       ]
     },
@@ -148,9 +136,6 @@
         },
         {
           "name": "RegularEnemy"
-        },
-        {
-          "name": "BreakableWallDurable"
         }
       ]
     },
@@ -394,14 +379,14 @@
       "angle": 0,
       "customSize": true,
       "depth": 1,
-      "height": 384,
+      "height": 320,
       "keepRatio": true,
       "layer": "Base",
       "name": "WhiteWall",
       "persistentUuid": "be2e7125-3cfc-49e6-89b0-f55cc1806254",
       "width": 32,
-      "x": -28,
-      "y": 0,
+      "x": 0,
+      "y": 32,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -418,7 +403,7 @@
       "persistentUuid": "8e445067-e386-4a50-827b-9bf04b1fd441",
       "width": 640,
       "x": 0,
-      "y": 356,
+      "y": 352,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -433,9 +418,9 @@
       "layer": "Base",
       "name": "WhiteWall",
       "persistentUuid": "0c2bf76c-b015-4b65-829a-d7b3d80a80f8",
-      "width": 704,
-      "x": -32,
-      "y": -28,
+      "width": 640,
+      "x": 0,
+      "y": 0,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -445,14 +430,31 @@
       "angle": 0,
       "customSize": true,
       "depth": 1,
-      "height": 384,
+      "height": 320,
       "keepRatio": true,
       "layer": "Base",
       "name": "WhiteWall",
       "persistentUuid": "71d70e29-281c-4f79-a146-d4fdf6e818a3",
       "width": 32,
-      "x": 636,
-      "y": 0,
+      "x": 608,
+      "y": 32,
+      "zOrder": 0,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1,
+      "height": 128,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "WhiteHole",
+      "persistentUuid": "ec9b979a-2af3-4ede-a7a8-953ff0dedbd7",
+      "width": 32,
+      "x": 160,
+      "y": 128,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -467,8 +469,8 @@
       "layer": "Base",
       "name": "WhiteHole",
       "persistentUuid": "4e53bf01-6c7b-414d-8b36-f6ec5cfcadc3",
-      "width": 96,
-      "x": 416,
+      "width": 128,
+      "x": 256,
       "y": 256,
       "zOrder": 0,
       "numberProperties": [],
@@ -484,9 +486,26 @@
       "layer": "Base",
       "name": "WhiteHole",
       "persistentUuid": "010d7436-7ced-4249-9a05-1eeaad4f4f48",
-      "width": 96,
-      "x": 128,
-      "y": 64,
+      "width": 128,
+      "x": 256,
+      "y": 96,
+      "zOrder": 0,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1,
+      "height": 128,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "WhiteHole",
+      "persistentUuid": "01ab3b6b-ac3f-484c-80cb-713c004dc9bb",
+      "width": 32,
+      "x": 448,
+      "y": 128,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -567,7 +586,7 @@
       "name": "particlecount",
       "persistentUuid": "08197b99-ee03-47e7-af52-b7caf39d3079",
       "width": 0,
-      "x": 169,
+      "x": 201,
       "y": 41,
       "zOrder": 10,
       "numberProperties": [],
@@ -599,8 +618,8 @@
       "name": "StartPosition",
       "persistentUuid": "e77b29b5-008a-4893-acb1-f30aa1d4f84d",
       "width": 0,
-      "x": 32,
-      "y": 192,
+      "x": 64,
+      "y": 160,
       "zOrder": 106,
       "numberProperties": [],
       "stringProperties": [],
@@ -608,16 +627,15 @@
     },
     {
       "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 64,
+      "customSize": false,
+      "height": 0,
       "keepRatio": true,
-      "layer": "Base",
-      "name": "WhiteWall",
-      "persistentUuid": "8c084b4c-8872-4c1f-96d7-ea3395b5f3a8",
-      "width": 32,
-      "x": 96,
-      "y": 64,
+      "layer": "",
+      "name": "PathfindingObstacles",
+      "persistentUuid": "3c03ce4c-d446-478d-8d47-12b8da3f5b78",
+      "width": 0,
+      "x": 208,
+      "y": 176,
       "zOrder": 107,
       "numberProperties": [],
       "stringProperties": [],
@@ -625,16 +643,15 @@
     },
     {
       "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 64,
+      "customSize": false,
+      "height": 0,
       "keepRatio": true,
       "layer": "Base",
-      "name": "WhiteWall",
-      "persistentUuid": "eebbbed7-7717-4814-aff5-22b1bb166fb4",
-      "width": 32,
-      "x": 512,
-      "y": 224,
+      "name": "PathfindingObstacles",
+      "persistentUuid": "147730e8-9a7e-4199-91fe-41d4487c8b98",
+      "width": 0,
+      "x": 624,
+      "y": 176,
       "zOrder": 107,
       "numberProperties": [],
       "stringProperties": [],
@@ -642,16 +659,31 @@
     },
     {
       "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 64,
+      "customSize": false,
+      "height": 0,
       "keepRatio": true,
       "layer": "Base",
-      "name": "WhiteWall",
-      "persistentUuid": "6ff8b4cc-56fc-4f8b-a1e7-67e1ee199b58",
-      "width": 32,
-      "x": 512,
-      "y": 64,
+      "name": "PathfindingObstacles",
+      "persistentUuid": "f7e7a169-0bfd-4e4a-9a49-aa3e6abdf559",
+      "width": 0,
+      "x": 432,
+      "y": 272,
+      "zOrder": 107,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "PathfindingObstacles",
+      "persistentUuid": "cead9ad2-9212-4a65-9318-031df155cd85",
+      "width": 0,
+      "x": 432,
+      "y": 112,
       "zOrder": 107,
       "numberProperties": [],
       "stringProperties": [],
@@ -664,270 +696,10 @@
       "keepRatio": true,
       "layer": "Base",
       "name": "BreakableWallWhite",
-      "persistentUuid": "a754e9a1-35f4-48a6-a2d3-7a8e8ccb9f30",
+      "persistentUuid": "4fac8553-61ae-4f8f-958a-abd464b07ed4",
       "width": 0,
-      "x": 96,
-      "y": 128,
-      "zOrder": 108,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "abb40814-475e-4251-a300-f7876f1f5ea1",
-      "width": 0,
-      "x": 512,
-      "y": 160,
-      "zOrder": 109,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "e807deeb-6e3b-452b-8727-8570df02ee0a",
-      "width": 0,
-      "x": 512,
-      "y": 128,
-      "zOrder": 110,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "394b4889-d301-45c0-85d4-4678982f67e7",
-      "width": 0,
-      "x": 96,
-      "y": 160,
-      "zOrder": 111,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 32,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "WhiteWall",
-      "persistentUuid": "20d2f7e4-83a5-4edf-ad77-c7d28a844044",
-      "width": 32,
-      "x": 224,
-      "y": 64,
-      "zOrder": 107,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 32,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "WhiteWall",
-      "persistentUuid": "fff4b2a4-9c48-4840-ab40-051114a7112c",
-      "width": 32,
-      "x": 384,
+      "x": 160,
       "y": 256,
-      "zOrder": 107,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "01fc8813-3448-4316-900b-f46ab85f6d93",
-      "width": 0,
-      "x": 352,
-      "y": 256,
-      "zOrder": 109,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "8cb34992-e7de-44e1-8e5d-9a9ce1858953",
-      "width": 0,
-      "x": 256,
-      "y": 64,
-      "zOrder": 109,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "b5544695-12bc-44c5-a6ab-668ccc1076e9",
-      "width": 0,
-      "x": 288,
-      "y": 64,
-      "zOrder": 109,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "00c67262-13d0-4524-84ab-9bcbb550cfb2",
-      "width": 0,
-      "x": 320,
-      "y": 256,
-      "zOrder": 109,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "df0164bb-cf79-4eaf-ad08-b035ffc04d7d",
-      "width": 0,
-      "x": 288,
-      "y": 256,
-      "zOrder": 109,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "48152a2c-a938-40fc-b14b-d6ca83c1806b",
-      "width": 0,
-      "x": 320,
-      "y": 64,
-      "zOrder": 109,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 32,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "WhiteWall",
-      "persistentUuid": "6203e4b2-f3ff-48ef-90cd-880e81129a37",
-      "width": 64,
-      "x": 224,
-      "y": 256,
-      "zOrder": 107,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 32,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "WhiteWall",
-      "persistentUuid": "7d0c54dd-10af-4ff0-ae00-7c4dbcae3863",
-      "width": 64,
-      "x": 352,
-      "y": 64,
-      "zOrder": 107,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "c32c979b-88f5-495d-a132-4daf6d059924",
-      "width": 0,
-      "x": 96,
-      "y": 192,
-      "zOrder": 111,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "c2a96cb0-f6c5-4bb2-b104-c700fd82f24c",
-      "width": 0,
-      "x": 512,
-      "y": 192,
-      "zOrder": 110,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "StationaryEnemy",
-      "persistentUuid": "231139d8-81d3-4957-9b60-2b4c222c1614",
-      "width": 0,
-      "x": 576,
-      "y": 64,
       "zOrder": 112,
       "numberProperties": [],
       "stringProperties": [],
@@ -940,111 +712,11 @@
       "keepRatio": true,
       "layer": "Base",
       "name": "RegularEnemy",
-      "persistentUuid": "e6244f8f-4bad-421f-bfb9-05fc0ab6d3b9",
+      "persistentUuid": "56a9e3ca-f59a-46c2-bd58-5aec749f9219",
       "width": 0,
-      "x": 448,
-      "y": 320,
-      "zOrder": 113,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "RegularEnemy",
-      "persistentUuid": "b977a9be-004b-4da9-aef8-467bc9da00d9",
-      "width": 0,
-      "x": 256,
-      "y": 128,
-      "zOrder": 113,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "RegularEnemy",
-      "persistentUuid": "fd939528-e4ce-40a3-9fa6-04a7a0d4e044",
-      "width": 0,
-      "x": 352,
-      "y": 192,
-      "zOrder": 113,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 96,
-      "keepRatio": true,
-      "layer": "",
-      "name": "GuardingArea",
-      "persistentUuid": "68c8235e-2c3c-40b9-b879-b7bd60907e3a",
-      "width": 192,
-      "x": 128,
-      "y": 96,
-      "zOrder": 114,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 96,
-      "keepRatio": true,
-      "layer": "",
-      "name": "GuardingArea",
-      "persistentUuid": "c60c51c5-9218-4fcc-942d-28d27e6a4107",
-      "width": 224,
       "x": 320,
-      "y": 64,
-      "zOrder": 114,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 96,
-      "keepRatio": true,
-      "layer": "",
-      "name": "GuardingArea",
-      "persistentUuid": "9401928c-57ab-4fac-a380-192c7ab3e6cd",
-      "width": 256,
-      "x": 96,
-      "y": 192,
-      "zOrder": 114,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 96,
-      "keepRatio": true,
-      "layer": "",
-      "name": "GuardingArea",
-      "persistentUuid": "64d277cd-1691-43e7-b585-7b4e51319ab8",
-      "width": 192,
-      "x": 352,
       "y": 160,
-      "zOrder": 114,
+      "zOrder": 103,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1053,32 +725,15 @@
       "angle": 0,
       "customSize": true,
       "depth": 1,
-      "height": 224,
+      "height": 96,
       "keepRatio": true,
       "layer": "",
       "name": "GuardingArea",
-      "persistentUuid": "79f9588a-6a43-4ab7-af7d-736289c70c6b",
-      "width": 96,
-      "x": 544,
-      "y": 64,
-      "zOrder": 114,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 64,
-      "keepRatio": true,
-      "layer": "",
-      "name": "GuardingArea",
-      "persistentUuid": "d5e2133a-af4d-46af-a83e-0ea65850da11",
+      "persistentUuid": "142a8cf1-2c93-4d7c-af2c-099442d6d0e6",
       "width": 320,
-      "x": 320,
-      "y": 288,
-      "zOrder": 114,
+      "x": 160,
+      "y": 32,
+      "zOrder": 113,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1087,14 +742,14 @@
       "angle": 0,
       "customSize": true,
       "depth": 1,
-      "height": 64,
+      "height": 96,
       "keepRatio": true,
       "layer": "",
       "name": "GuardingArea",
-      "persistentUuid": "76e6f3ee-6304-4b69-81aa-d6f87b1ef458",
+      "persistentUuid": "3ddefe81-305b-4f50-90c2-3f09a90fbceb",
       "width": 320,
-      "x": 0,
-      "y": 0,
+      "x": 160,
+      "y": 256,
       "zOrder": 114,
       "numberProperties": [],
       "stringProperties": [],
@@ -1104,31 +759,14 @@
       "angle": 0,
       "customSize": true,
       "depth": 1,
-      "height": 64,
+      "height": 320,
       "keepRatio": true,
       "layer": "",
       "name": "GuardingArea",
-      "persistentUuid": "33c5aca3-1b27-4f56-abfd-89a166fa1a4a",
-      "width": 320,
-      "x": 320,
-      "y": 0,
-      "zOrder": 114,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 224,
-      "keepRatio": true,
-      "layer": "",
-      "name": "GuardingArea",
-      "persistentUuid": "5122c529-2f91-4375-8037-eb98445517b8",
-      "width": 96,
-      "x": 0,
-      "y": 64,
+      "persistentUuid": "dea63093-a0ee-4dfe-a1f1-3bdca69979be",
+      "width": 128,
+      "x": 32,
+      "y": 32,
       "zOrder": 115,
       "numberProperties": [],
       "stringProperties": [],
@@ -1138,30 +776,14 @@
       "angle": 0,
       "customSize": true,
       "depth": 1,
-      "height": 64,
+      "height": 320,
       "keepRatio": true,
       "layer": "",
       "name": "GuardingArea",
-      "persistentUuid": "b9bce267-a65d-4f85-bb6a-99386d7f1045",
-      "width": 320,
-      "x": 0,
-      "y": 288,
-      "zOrder": 114,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallDurable",
-      "persistentUuid": "cdcfae69-a5c6-4f6e-ac4e-b52055905a94",
-      "width": 0,
-      "x": 96,
-      "y": 224,
+      "persistentUuid": "06ac2459-baf6-466e-ae2d-5bc503350e6b",
+      "width": 128,
+      "x": 480,
+      "y": 32,
       "zOrder": 116,
       "numberProperties": [],
       "stringProperties": [],
@@ -1169,15 +791,16 @@
     },
     {
       "angle": 0,
-      "customSize": false,
-      "height": 0,
+      "customSize": true,
+      "depth": 1,
+      "height": 128,
       "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallDurable",
-      "persistentUuid": "f6e37f9b-1644-4449-ad20-e6881ffa408a",
-      "width": 0,
-      "x": 96,
-      "y": 256,
+      "layer": "",
+      "name": "GuardingArea",
+      "persistentUuid": "9d979353-7cda-4ca4-b524-499e228c958b",
+      "width": 256,
+      "x": 192,
+      "y": 128,
       "zOrder": 117,
       "numberProperties": [],
       "stringProperties": [],
@@ -1189,12 +812,156 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Base",
-      "name": "StationaryEnemy",
-      "persistentUuid": "570af8e8-703a-4239-9dc4-304f4a35aaf2",
+      "name": "BreakableWallWhite",
+      "persistentUuid": "1cd76964-064b-491d-9404-53e46f5dd518",
       "width": 0,
-      "x": 576,
+      "x": 128,
       "y": 256,
       "zOrder": 112,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "BreakableWallWhite",
+      "persistentUuid": "85fbfed5-8e6c-4d85-95d0-b38e37c28a56",
+      "width": 0,
+      "x": 128,
+      "y": 96,
+      "zOrder": 112,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "BreakableWallWhite",
+      "persistentUuid": "3d7c76b7-a235-4d3a-a007-538058d59ac5",
+      "width": 0,
+      "x": 160,
+      "y": 96,
+      "zOrder": 112,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "BreakableWallWhite",
+      "persistentUuid": "fd040728-5030-41f1-8e86-d7e61847350c",
+      "width": 0,
+      "x": 192,
+      "y": 128,
+      "zOrder": 118,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "BreakableWallWhite",
+      "persistentUuid": "6945c60d-a3d3-4299-8321-3ba032c2213e",
+      "width": 0,
+      "x": 192,
+      "y": 160,
+      "zOrder": 118,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "BreakableWallWhite",
+      "persistentUuid": "750bff14-02d9-4d5f-99a3-c6586169822e",
+      "width": 0,
+      "x": 192,
+      "y": 192,
+      "zOrder": 118,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "BreakableWallWhite",
+      "persistentUuid": "f5e3e376-0a72-4bb4-9c94-d5ed5ee0368c",
+      "width": 0,
+      "x": 192,
+      "y": 224,
+      "zOrder": 118,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "StationaryEnemy",
+      "persistentUuid": "d7413da1-4621-48a8-b0c8-fb17ec6322f6",
+      "width": 0,
+      "x": 320,
+      "y": 64,
+      "zOrder": 119,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "StationaryEnemy",
+      "persistentUuid": "335eab2e-b0cd-4150-8757-8a04be39fd5e",
+      "width": 0,
+      "x": 512,
+      "y": 192,
+      "zOrder": 120,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "StationaryEnemy",
+      "persistentUuid": "14816af7-ea82-44c5-b466-a5eb56c9e691",
+      "width": 0,
+      "x": 320,
+      "y": 320,
+      "zOrder": 121,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -3908,7 +3675,7 @@
         {
           "name": "Damage",
           "type": "number",
-          "value": 0
+          "value": 2
         },
         {
           "name": "Explode",
@@ -4081,7 +3848,7 @@
         {
           "name": "Damage",
           "type": "number",
-          "value": 10000
+          "value": 2
         }
       ],
       "effects": [],
@@ -5186,306 +4953,6 @@
           ]
         }
       ]
-    },
-    {
-      "adaptCollisionMaskAutomatically": false,
-      "assetStoreId": "",
-      "name": "BreakableWallDurable",
-      "type": "Sprite",
-      "updateIfNotVisible": false,
-      "variables": [
-        {
-          "name": "Health",
-          "type": "number",
-          "value": 9999
-        },
-        {
-          "name": "Type",
-          "type": "string",
-          "value": "BreakableWall"
-        }
-      ],
-      "effects": [],
-      "behaviors": [
-        {
-          "name": "Flash",
-          "type": "Flash::Flash",
-          "HalfPeriodTime": 0.1,
-          "IsFlashing": false,
-          "FlashDuration": 0
-        },
-        {
-          "name": "PathfindingObstacle",
-          "type": "PathfindingBehavior::PathfindingObstacleBehavior",
-          "cost": 2,
-          "impassable": true
-        },
-        {
-          "name": "YSort",
-          "type": "YSort::YSort"
-        }
-      ],
-      "animations": [
-        {
-          "name": "Idle",
-          "useMultipleDirections": false,
-          "directions": [
-            {
-              "looping": false,
-              "timeBetweenFrames": 0.08,
-              "sprites": [
-                {
-                  "hasCustomCollisionMask": false,
-                  "image": "assets\\Walls\\wall_white_for_landmine_100.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": []
-                },
-                {
-                  "hasCustomCollisionMask": false,
-                  "image": "assets\\Walls\\wall_white_for_landmine_100.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": []
-                },
-                {
-                  "hasCustomCollisionMask": false,
-                  "image": "assets\\Walls\\wall_white_for_landmine_100.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": []
-                },
-                {
-                  "hasCustomCollisionMask": false,
-                  "image": "assets\\Walls\\wall_white_for_landmine_100.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": []
-                },
-                {
-                  "hasCustomCollisionMask": false,
-                  "image": "assets\\Walls\\wall_white_for_landmine_100.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": []
-                },
-                {
-                  "hasCustomCollisionMask": false,
-                  "image": "assets\\Walls\\wall_white_for_landmine_100.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": []
-                },
-                {
-                  "hasCustomCollisionMask": false,
-                  "image": "assets\\Walls\\wall_white_for_landmine_100.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": []
-                },
-                {
-                  "hasCustomCollisionMask": false,
-                  "image": "assets\\Walls\\wall_white_for_landmine_100.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": []
-                },
-                {
-                  "hasCustomCollisionMask": false,
-                  "image": "assets\\Walls\\wall_white_for_landmine_100.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": []
-                },
-                {
-                  "hasCustomCollisionMask": false,
-                  "image": "assets\\Walls\\wall_white_for_landmine_100.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": []
-                },
-                {
-                  "hasCustomCollisionMask": false,
-                  "image": "assets\\Walls\\wall_white_for_landmine_100.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": []
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "adaptCollisionMaskAutomatically": false,
-      "assetStoreId": "",
-      "name": "BreakableWallDurableRemains",
-      "type": "Sprite",
-      "updateIfNotVisible": false,
-      "variables": [],
-      "effects": [],
-      "behaviors": [],
-      "animations": [
-        {
-          "name": "Idle",
-          "useMultipleDirections": false,
-          "directions": [
-            {
-              "looping": false,
-              "timeBetweenFrames": 0.08,
-              "sprites": [
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\Walls\\wall_white_for_landmine_000.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 1,
-                        "y": 1
-                      },
-                      {
-                        "x": 31,
-                        "y": 1
-                      },
-                      {
-                        "x": 31,
-                        "y": 31
-                      },
-                      {
-                        "x": 1,
-                        "y": 31
-                      }
-                    ]
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
     }
   ],
   "objectsFolderStructure": {
@@ -5538,13 +5005,7 @@
             "objectName": "BreakableWallWhite"
           },
           {
-            "objectName": "BreakableWallDurable"
-          },
-          {
             "objectName": "BreakableWallWhiteRemains"
-          },
-          {
-            "objectName": "BreakableWallDurableRemains"
           },
           {
             "objectName": "StartPosition"
@@ -5621,6 +5082,7 @@
   },
   "events": [
     {
+      "folded": true,
       "type": "BuiltinCommonInstructions::Standard",
       "conditions": [],
       "actions": [],
@@ -7583,6 +7045,7 @@
                   "comment": "Create player"
                 },
                 {
+                  "folded": true,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
                     {
@@ -7929,7 +7392,7 @@
                           },
                           "parameters": [
                             "",
-                            "RegularEnemy"
+                            "Enemies"
                           ]
                         }
                       ],
@@ -7956,7 +7419,7 @@
                             "value": "BooleanObjectVariable"
                           },
                           "parameters": [
-                            "RegularEnemy",
+                            "Enemies",
                             "IA.Aggresive",
                             "=",
                             ""
@@ -7970,7 +7433,7 @@
                           },
                           "parameters": [
                             "",
-                            "RegularEnemy"
+                            "Enemies"
                           ]
                         },
                         {
@@ -7978,7 +7441,7 @@
                             "value": "SetBooleanObjectVariable"
                           },
                           "parameters": [
-                            "RegularEnemy",
+                            "Enemies",
                             "IA.Aggresive",
                             "True",
                             ""
@@ -8814,6 +8277,7 @@
                                           ]
                                         },
                                         {
+                                          "folded": true,
                                           "type": "BuiltinCommonInstructions::Standard",
                                           "conditions": [
                                             {
@@ -9323,6 +8787,7 @@
                       "colorG": 33,
                       "colorR": 26,
                       "creationTime": 0,
+                      "folded": true,
                       "name": "Stationary enemy logic",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
@@ -9743,6 +9208,7 @@
                       "colorG": 33,
                       "colorR": 26,
                       "creationTime": 0,
+                      "folded": true,
                       "name": "Regular enemy logic",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
