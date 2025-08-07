@@ -3,7 +3,6 @@
   "name": "RegularEnemyBak",
   "events": [
     {
-      "folded": true,
       "type": "BuiltinCommonInstructions::Standard",
       "conditions": [],
       "actions": [],
@@ -128,7 +127,7 @@
                   "parameters": [
                     "Player",
                     "Enemies",
-                    "_DATA_.Enemies[Name].DetectionDistance",
+                    "_DATA_.Tanks[Name].DetectionDistance",
                     ""
                   ]
                 }
@@ -220,7 +219,7 @@
                             "LookX",
                             "LookY",
                             "Angle",
-                            "_DATA_.Enemies[Name].LookDistance",
+                            "_DATA_.Tanks[Name].LookDistance",
                             "intersectX",
                             "IntersectY",
                             ""
@@ -409,8 +408,8 @@
                             "NewShapePainter",
                             "LookX",
                             "LookY",
-                            "XFromAngleAndDistance(Angle, _DATA_.Enemies[Name].LookDistance) + PositionX",
-                            "YFromAngleAndDistance(Angle, _DATA_.Enemies[Name].LookDistance) + PositionY",
+                            "XFromAngleAndDistance(Angle, _DATA_.Tanks[Name].LookDistance) + PositionX",
+                            "YFromAngleAndDistance(Angle, _DATA_.Tanks[Name].LookDistance) + PositionY",
                             "1"
                           ]
                         }
@@ -516,7 +515,7 @@
                         "NewShapePainter",
                         "Enemies.CenterX()",
                         "Enemies.CenterY()",
-                        "_DATA_.Enemies[Name].DetectionDistance"
+                        "_DATA_.Tanks[Name].DetectionDistance"
                       ]
                     }
                   ]
@@ -563,7 +562,7 @@
                         "NewShapePainter",
                         "Enemies.CenterX()",
                         "Enemies.CenterY()",
-                        "_DATA_.Enemies[Name].DetectionDistance"
+                        "_DATA_.Tanks[Name].DetectionDistance"
                       ]
                     }
                   ]
@@ -611,7 +610,7 @@
                         "LookX",
                         "LookY",
                         "Angle",
-                        "_DATA_.Enemies[Name].LookDistance + _DATA_.Enemies.RegularEnemy.DetectionExtension",
+                        "_DATA_.Tanks[Name].LookDistance + _DATA_.Tanks.RegularEnemy.DetectionExtension",
                         "intersectX",
                         "IntersectY",
                         ""
@@ -800,8 +799,8 @@
                         "NewShapePainter",
                         "LookX",
                         "LookY",
-                        "XFromAngleAndDistance(Angle, _DATA_.Enemies[Name].LookDistance + _DATA_.Enemies[Name].DetectionExtension) + PositionX",
-                        "YFromAngleAndDistance(Angle, _DATA_.Enemies[Name].LookDistance + _DATA_.Enemies[Name].DetectionExtension) + PositionY",
+                        "XFromAngleAndDistance(Angle, _DATA_.Tanks[Name].LookDistance + _DATA_.Tanks[Name].DetectionExtension) + PositionX",
+                        "YFromAngleAndDistance(Angle, _DATA_.Tanks[Name].LookDistance + _DATA_.Tanks[Name].DetectionExtension) + PositionY",
                         "1"
                       ]
                     }
@@ -910,7 +909,7 @@
                         "NewShapePainter",
                         "Enemies.CenterX()",
                         "Enemies.CenterY()",
-                        "_DATA_.Enemies[Name].DetectionDistance + _DATA_.Enemies[Name].DetectionExtension"
+                        "_DATA_.Tanks[Name].DetectionDistance + _DATA_.Tanks[Name].DetectionExtension"
                       ]
                     }
                   ]
@@ -957,7 +956,7 @@
                         "NewShapePainter",
                         "Enemies.CenterX()",
                         "Enemies.CenterY()",
-                        "_DATA_.Enemies[Name].DetectionDistance + _DATA_.Enemies[Name].DetectionExtension"
+                        "_DATA_.Tanks[Name].DetectionDistance + _DATA_.Tanks[Name].DetectionExtension"
                       ]
                     }
                   ]
@@ -1085,7 +1084,7 @@
                       "parameters": [
                         "AngleOffset",
                         "=",
-                        "_DATA_.Enemies.StationaryEnemy.LookSpeed * TimeDelta() * LayerTimeScale(_CONSTANTS_.Layers.Base)"
+                        "_DATA_.Tanks.StationaryEnemy.LookSpeed * TimeDelta() * LayerTimeScale(_CONSTANTS_.Layers.Base)"
                       ]
                     }
                   ],
@@ -1240,7 +1239,7 @@
                       "parameters": [
                         "StationaryEnemy",
                         "Player",
-                        "_DATA_.Enemies.StationaryEnemy.LookDistance + _DATA_.Enemies.StationaryEnemy.DetectionExtension",
+                        "_DATA_.Tanks.StationaryEnemy.LookDistance + _DATA_.Tanks.StationaryEnemy.DetectionExtension",
                         ""
                       ]
                     }
@@ -1367,7 +1366,7 @@
                             "StationaryEnemy",
                             "BulletCount",
                             "<",
-                            "_DATA_.Enemies.StationaryEnemy.MaxBullets"
+                            "_DATA_.Tanks.StationaryEnemy.MaxBullets"
                           ]
                         },
                         {
@@ -1438,7 +1437,7 @@
                       "parameters": [
                         "StationaryEnemy",
                         "Player",
-                        "_DATA_.Enemies.StationaryEnemy.LookDistance + _DATA_.Enemies.StationaryEnemy.DetectionExtension",
+                        "_DATA_.Tanks.StationaryEnemy.LookDistance + _DATA_.Tanks.StationaryEnemy.DetectionExtension",
                         ""
                       ]
                     }
@@ -1545,7 +1544,6 @@
       "type": "BuiltinCommonInstructions::Group",
       "events": [
         {
-          "folded": true,
           "type": "BuiltinCommonInstructions::ForEach",
           "object": "RegularEnemy",
           "conditions": [],
@@ -1959,7 +1957,7 @@
                       "parameters": [
                         "AngleOffset",
                         "=",
-                        "_DATA_.Enemies.RegularEnemy.LookSpeed * TimeDelta() * LayerTimeScale(_CONSTANTS_.Layers.Base)"
+                        "_DATA_.Tanks.RegularEnemy.LookSpeed * TimeDelta() * LayerTimeScale(_CONSTANTS_.Layers.Base)"
                       ]
                     },
                     {
@@ -2140,7 +2138,7 @@
                   "parameters": [
                     "RegularEnemy",
                     "Player",
-                    "_DATA_.Enemies.RegularEnemy.DetectionDistance + _DATA_.Enemies.RegularEnemy.DetectionExtension",
+                    "_DATA_.Tanks.RegularEnemy.DetectionDistance + _DATA_.Tanks.RegularEnemy.DetectionExtension",
                     ""
                   ]
                 }
@@ -2291,7 +2289,7 @@
                       "parameters": [
                         "Player",
                         "RegularEnemy",
-                        "_DATA_.Enemies.RegularEnemy.SeparationDistance",
+                        "_DATA_.Tanks.RegularEnemy.LandmineDetection",
                         ""
                       ]
                     }
@@ -2333,7 +2331,7 @@
                       "parameters": [
                         "Player",
                         "RegularEnemy",
-                        "_DATA_.Enemies.RegularEnemy.SeparationDistance - 32",
+                        "_DATA_.Tanks.RegularEnemy.LandmineDetection - 32",
                         ""
                       ]
                     }
@@ -2525,7 +2523,7 @@
                         "RegularEnemy",
                         "BulletCount",
                         "<",
-                        "_DATA_.Enemies.RegularEnemy.MaxBullets"
+                        "_DATA_.Tanks.RegularEnemy.MaxBullets"
                       ]
                     },
                     {
@@ -2589,7 +2587,7 @@
                   "parameters": [
                     "RegularEnemy",
                     "Player",
-                    "_DATA_.Enemies.RegularEnemy.DetectionDistance + _DATA_.Enemies.RegularEnemy.DetectionExtension",
+                    "_DATA_.Tanks.RegularEnemy.DetectionDistance + _DATA_.Tanks.RegularEnemy.DetectionExtension",
                     ""
                   ]
                 }

@@ -5555,7 +5555,7 @@
                     "Enemies",
                     "ShootCooldown",
                     "=",
-                    "_DATA_.Enemies[Enemies.ObjectName()].ReloadTime"
+                    "_DATA_.Tanks[Enemies.ObjectName()].ReloadTime"
                   ]
                 },
                 {
@@ -6347,7 +6347,7 @@
                     "Player",
                     "LandMineCount",
                     "<",
-                    "_DATA_.Player.MaxLandMines"
+                    "_DATA_.Player.MaxLandmines"
                   ]
                 },
                 {
@@ -6771,7 +6771,7 @@
                     "Player",
                     "LandMineCount",
                     "<",
-                    "_DATA_.Player.MaxLandMines"
+                    "_DATA_.Player.MaxLandmines"
                   ]
                 },
                 {
@@ -7978,7 +7978,7 @@
                                       "parameters": [
                                         "Player",
                                         "Enemies",
-                                        "_DATA_.Enemies[Name].DetectionDistance",
+                                        "_DATA_.Tanks[Name].DetectionDistance",
                                         ""
                                       ]
                                     }
@@ -8859,7 +8859,7 @@
                                           "parameters": [
                                             "AngleOffset",
                                             "=",
-                                            "_DATA_.Enemies.StationaryEnemy.LookSpeed * TimeDelta() * LayerTimeScale(_CONSTANTS_.Layers.Base)"
+                                            "_DATA_.Tanks.StationaryEnemy.LookSpeed * TimeDelta() * LayerTimeScale(_CONSTANTS_.Layers.Base)"
                                           ]
                                         },
                                         {
@@ -9114,7 +9114,7 @@
                                         "StationaryEnemy",
                                         "BulletCount",
                                         "<",
-                                        "_DATA_.Enemies.RegularEnemy.MaxBullets"
+                                        "_DATA_.Tanks.RegularEnemy.MaxBullets"
                                       ]
                                     },
                                     {
@@ -9758,7 +9758,7 @@
                                           "parameters": [
                                             "AngleOffset",
                                             "=",
-                                            "_DATA_.Enemies.RegularEnemy.LookSpeed * TimeDelta() * LayerTimeScale(_CONSTANTS_.Layers.Base)"
+                                            "_DATA_.Tanks.RegularEnemy.LookSpeed * TimeDelta() * LayerTimeScale(_CONSTANTS_.Layers.Base)"
                                           ]
                                         },
                                         {
@@ -10052,7 +10052,7 @@
                                         "RegularEnemy",
                                         "BulletCount",
                                         "<",
-                                        "_DATA_.Enemies.RegularEnemy.MaxBullets"
+                                        "_DATA_.Tanks.RegularEnemy.MaxBullets"
                                       ]
                                     },
                                     {
