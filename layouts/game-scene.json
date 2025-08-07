@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.8046714318874548,
+    "zoomFactor": 1.2952916551236355,
     "windowMask": false
   },
   "objectsGroups": [
@@ -53,6 +53,9 @@
         },
         {
           "name": "BreakableWallDurable"
+        },
+        {
+          "name": "MissileBullet"
         }
       ]
     },
@@ -70,6 +73,9 @@
         },
         {
           "name": "LandmineEnemy"
+        },
+        {
+          "name": "MissilEnemy"
         }
       ]
     },
@@ -101,6 +107,9 @@
       "objects": [
         {
           "name": "WhiteBullet"
+        },
+        {
+          "name": "MissileBullet"
         }
       ]
     },
@@ -115,6 +124,9 @@
         },
         {
           "name": "LandmineEnemy"
+        },
+        {
+          "name": "MissilEnemy"
         }
       ]
     },
@@ -163,6 +175,9 @@
         },
         {
           "name": "LandmineEnemy"
+        },
+        {
+          "name": "MissilEnemy"
         }
       ]
     },
@@ -183,6 +198,9 @@
         },
         {
           "name": "LookPoint"
+        },
+        {
+          "name": "MissileBullet"
         }
       ]
     },
@@ -538,8 +556,8 @@
       "name": "fps",
       "persistentUuid": "066a85d6-3470-41d7-bb61-0b42c1bb6d86",
       "width": 0,
-      "x": 41,
-      "y": 41,
+      "x": 32,
+      "y": 32,
       "zOrder": 6,
       "numberProperties": [],
       "stringProperties": [],
@@ -588,8 +606,8 @@
       "name": "particlecount",
       "persistentUuid": "08197b99-ee03-47e7-af52-b7caf39d3079",
       "width": 0,
-      "x": 169,
-      "y": 41,
+      "x": 128,
+      "y": 32,
       "zOrder": 10,
       "numberProperties": [],
       "stringProperties": [],
@@ -947,8 +965,8 @@
       "name": "StationaryEnemy",
       "persistentUuid": "231139d8-81d3-4957-9b60-2b4c222c1614",
       "width": 0,
-      "x": 576,
-      "y": 64,
+      "x": 512,
+      "y": 0,
       "zOrder": 112,
       "numberProperties": [],
       "stringProperties": [],
@@ -1162,12 +1180,28 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Base",
-      "name": "StationaryEnemy",
-      "persistentUuid": "570af8e8-703a-4239-9dc4-304f4a35aaf2",
+      "name": "LandmineEnemy",
+      "persistentUuid": "5e5292ba-5c96-4d7c-ba4b-00409bc62508",
+      "width": 0,
+      "x": 192,
+      "y": 0,
+      "zOrder": 118,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "MissilEnemy",
+      "persistentUuid": "cce9668c-d04d-4c9c-be57-767bdf283e36",
       "width": 0,
       "x": 576,
       "y": 256,
-      "zOrder": 112,
+      "zOrder": 119,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1179,11 +1213,43 @@
       "keepRatio": true,
       "layer": "Base",
       "name": "LandmineEnemy",
-      "persistentUuid": "5e5292ba-5c96-4d7c-ba4b-00409bc62508",
+      "persistentUuid": "662a1805-920c-4796-a497-59abe6a9e9a5",
+      "width": 0,
+      "x": 576,
+      "y": 128,
+      "zOrder": 118,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Base",
+      "name": "LandmineEnemy",
+      "persistentUuid": "a5848ec8-77b3-4c74-9954-6a2cb92efe23",
       "width": 0,
       "x": 320,
-      "y": 160,
+      "y": 96,
       "zOrder": 118,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "RegularEnemy",
+      "persistentUuid": "553260f0-4d21-48f1-8898-8ee15dbe9f21",
+      "width": 0,
+      "x": 224,
+      "y": 160,
+      "zOrder": 120,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1415,7 +1481,7 @@
         {
           "name": "Health",
           "type": "number",
-          "value": 1000
+          "value": 1
         },
         {
           "name": "Type",
@@ -1547,6 +1613,12 @@
               "value": ""
             }
           ]
+        },
+        {
+          "name": "BulletType",
+          "persistentUuid": "86df708d-abd5-4c51-bd08-ab8e7ef4b9f8",
+          "type": "string",
+          "value": "WhiteSmall"
         }
       ],
       "effects": [
@@ -1581,12 +1653,13 @@
         {
           "name": "PathfindingObstacle",
           "type": "PathfindingBehavior::PathfindingObstacleBehavior",
-          "cost": 4,
-          "impassable": false
+          "impassable": false,
+          "cost": 4
         },
         {
           "name": "TopDownMovement",
           "type": "TopDownMovementBehavior::TopDownMovementBehavior",
+          "ignoreDefaultControls": true,
           "acceleration": 450,
           "maxSpeed": 70,
           "allowDiagonals": true,
@@ -1594,7 +1667,6 @@
           "angularMaxSpeed": 180,
           "customIsometryAngle": 30,
           "deceleration": 900,
-          "ignoreDefaultControls": true,
           "movementAngleOffset": 0,
           "rotateObject": false,
           "useLegacyTurnBack": false,
@@ -1995,6 +2067,12 @@
           "name": "IdleTime",
           "type": "number",
           "value": 0
+        },
+        {
+          "name": "BulletType",
+          "persistentUuid": "86df708d-abd5-4c51-bd08-ab8e7ef4b9f8",
+          "type": "string",
+          "value": "WhiteSmall"
         }
       ],
       "effects": [
@@ -3980,6 +4058,10 @@
           "type": "PathfindingBehavior::PathfindingObstacleBehavior",
           "cost": 7,
           "impassable": false
+        },
+        {
+          "name": "YSort",
+          "type": "YSort::YSort"
         }
       ],
       "animations": [
@@ -4975,6 +5057,12 @@
           "name": "IdleTime",
           "type": "number",
           "value": 0
+        },
+        {
+          "name": "BulletType",
+          "persistentUuid": "86df708d-abd5-4c51-bd08-ab8e7ef4b9f8",
+          "type": "string",
+          "value": "WhiteSmall"
         }
       ],
       "effects": [
@@ -5695,6 +5783,12 @@
           "name": "IdleTime",
           "type": "number",
           "value": 0
+        },
+        {
+          "name": "BulletType",
+          "persistentUuid": "86df708d-abd5-4c51-bd08-ab8e7ef4b9f8",
+          "type": "string",
+          "value": "WhiteSmall"
         }
       ],
       "effects": [
@@ -5726,6 +5820,7 @@
           "FlashDuration": 0
         },
         {
+          "maxSpeed": 45,
           "name": "Pathfinding",
           "type": "PathfindingBehavior::PathfindingBehavior",
           "acceleration": 350,
@@ -5737,7 +5832,6 @@
           "extraBorder": 2,
           "gridOffsetX": 0,
           "gridOffsetY": 0,
-          "maxSpeed": 35,
           "rotateObject": false,
           "smoothingMaxCellGap": 1
         },
@@ -5790,10 +5884,10 @@
       ],
       "behaviors": [
         {
-          "cost": 8,
-          "impassable": false,
           "name": "PathfindingObstacle",
-          "type": "PathfindingBehavior::PathfindingObstacleBehavior"
+          "type": "PathfindingBehavior::PathfindingObstacleBehavior",
+          "cost": 8,
+          "impassable": false
         },
         {
           "name": "Sticker",
@@ -5844,6 +5938,1322 @@
                       {
                         "x": 72,
                         "y": 32
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetStoreId": "",
+      "name": "MissilEnemy",
+      "type": "CustomObjects::Player",
+      "variant": "Black",
+      "variables": [
+        {
+          "name": "Health",
+          "type": "number",
+          "value": 1
+        },
+        {
+          "name": "Type",
+          "type": "string",
+          "value": "Enemy"
+        },
+        {
+          "name": "DistanceMoved",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "OldY",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "OldX",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "BulletCount",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "IA",
+          "type": "structure",
+          "children": [
+            {
+              "name": "Aggresive",
+              "type": "boolean",
+              "value": false
+            },
+            {
+              "name": "AngleRotationCount",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "AngleRotationCountOperationSign",
+              "type": "number",
+              "value": 1
+            },
+            {
+              "name": "AngleRotationFieldOfvision",
+              "type": "number",
+              "value": 360
+            },
+            {
+              "name": "BlockTarget",
+              "type": "string",
+              "value": ""
+            },
+            {
+              "name": "CurrentLookAngle",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "DelayFirstBullet",
+              "type": "number",
+              "value": 0.8
+            },
+            {
+              "name": "FireCooldownVariance",
+              "type": "number",
+              "value": 0.5
+            },
+            {
+              "name": "FollowPlayer",
+              "type": "boolean",
+              "value": false
+            },
+            {
+              "name": "LandmineCount",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "LandmineDetected",
+              "type": "boolean",
+              "value": false
+            },
+            {
+              "name": "PlaceLandmine",
+              "type": "boolean",
+              "value": false
+            },
+            {
+              "name": "RestartPath",
+              "type": "boolean",
+              "value": false
+            },
+            {
+              "name": "SeePlayer",
+              "type": "boolean",
+              "value": false
+            },
+            {
+              "name": "SeeSomething",
+              "type": "boolean",
+              "value": false
+            },
+            {
+              "name": "Shoot",
+              "type": "boolean",
+              "value": false
+            },
+            {
+              "name": "State",
+              "type": "string",
+              "value": ""
+            }
+          ]
+        },
+        {
+          "name": "LandMineCount",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "ShootCooldown",
+          "type": "number",
+          "value": 1
+        },
+        {
+          "name": "IdleTime",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "BulletType",
+          "persistentUuid": "86df708d-abd5-4c51-bd08-ab8e7ef4b9f8",
+          "type": "string",
+          "value": "Missile"
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "DropShadow",
+          "name": "Effect",
+          "doubleParameters": {
+            "alpha": 1,
+            "blur": 0.2,
+            "distance": 2,
+            "padding": 0,
+            "quality": 3,
+            "rotation": 90
+          },
+          "stringParameters": {
+            "color": "114;114;114"
+          },
+          "booleanParameters": {
+            "shadowOnly": false
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Flash",
+          "type": "Flash::Flash",
+          "HalfPeriodTime": 0.1,
+          "IsFlashing": false,
+          "FlashDuration": 0
+        },
+        {
+          "name": "PathfindingObstacle",
+          "type": "PathfindingBehavior::PathfindingObstacleBehavior",
+          "cost": 2,
+          "impassable": true
+        },
+        {
+          "name": "YSort",
+          "type": "YSort::YSort"
+        }
+      ],
+      "content": {
+        "CannonRotationSpeed": 1200
+      },
+      "animatable": {
+        "adaptCollisionMaskAutomatically": true,
+        "animations": []
+      }
+    },
+    {
+      "adaptCollisionMaskAutomatically": false,
+      "assetStoreId": "",
+      "name": "MissileBullet",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Bounces",
+          "type": "number",
+          "value": 2
+        },
+        {
+          "name": "Damage",
+          "type": "number",
+          "value": 1
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "DropShadow",
+          "name": "Effect",
+          "doubleParameters": {
+            "alpha": 1,
+            "blur": 0.2,
+            "distance": 8,
+            "padding": 8,
+            "quality": 3,
+            "rotation": 90
+          },
+          "stringParameters": {
+            "color": "114;114;114"
+          },
+          "booleanParameters": {
+            "shadowOnly": false
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "DestroyOutside",
+          "type": "DestroyOutsideBehavior::DestroyOutside",
+          "extraBorder": 50
+        },
+        {
+          "name": "PathfindingObstacle",
+          "type": "PathfindingBehavior::PathfindingObstacleBehavior",
+          "cost": 7,
+          "impassable": false
+        },
+        {
+          "name": "YSort",
+          "type": "YSort::YSort"
+        }
+      ],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_01.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": -1,
+                      "y": 8
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_02.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": -0.5,
+                      "y": 5.5
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_03.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 0.5,
+                      "y": 4
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_04.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 2,
+                      "y": 3.5
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_05.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 2.5,
+                      "y": 2.5
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_06.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 5,
+                      "y": 2.5
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_07.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 8,
+                      "y": 2
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_08.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 11.5,
+                      "y": 3
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_09.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 13.5,
+                      "y": 2.5
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_10.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 15,
+                      "y": 3.5
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_11.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 16.5,
+                      "y": 4
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_12.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 17.5,
+                      "y": 5.5
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_13.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 17.5,
+                      "y": 8
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_14.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 18,
+                      "y": 11
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_15.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 17.5,
+                      "y": 12
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_16.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 16,
+                      "y": 13.5
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_17.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 13,
+                      "y": 14.5
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_18.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 11,
+                      "y": 15.5
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_19.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 8,
+                      "y": 16
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_20.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 4,
+                      "y": 15.5
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_21.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 1,
+                      "y": 14
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_22.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": 0,
+                      "y": 13
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_23.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": -0.5,
+                      "y": 12.5
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_24.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": -1.5,
+                      "y": 10
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Bullets\\large_bullet_3d\\large_bullet_01.png",
+                  "points": [
+                    {
+                      "name": "Point",
+                      "x": -1.5,
+                      "y": 8
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 5
+                      },
+                      {
+                        "x": 11,
+                        "y": 11
+                      },
+                      {
+                        "x": 5,
+                        "y": 11
                       }
                     ]
                   ]
@@ -5934,6 +7344,9 @@
         "folderName": "UI",
         "children": [
           {
+            "objectName": "NewShapePainter"
+          },
+          {
             "objectName": "StartLabel"
           },
           {
@@ -5966,12 +7379,15 @@
             "objectName": "WhiteBullet"
           },
           {
+            "objectName": "MissileBullet"
+          },
+          {
             "objectName": "LandMine"
           }
         ]
       },
       {
-        "folderName": "Players",
+        "folderName": "Tanks",
         "children": [
           {
             "objectName": "Player"
@@ -5980,15 +7396,15 @@
             "objectName": "StationaryEnemy"
           },
           {
+            "objectName": "MissilEnemy"
+          },
+          {
             "objectName": "RegularEnemy"
           },
           {
             "objectName": "LandmineEnemy"
           }
         ]
-      },
-      {
-        "objectName": "NewShapePainter"
       }
     ]
   },
@@ -6997,6 +8413,7 @@
           "actions": [],
           "events": [
             {
+              "folded": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -7321,6 +8738,7 @@
               ]
             },
             {
+              "folded": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -7496,6 +8914,7 @@
           "comment": "Gamepad actions"
         },
         {
+          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -8860,7 +10279,7 @@
                                   "parameters": [
                                     "BulletBounces",
                                     "=",
-                                    "_DATA_.Bullets.WhiteSmall.MaxBounces"
+                                    "_DATA_.Bullets[Enemies.BulletType].MaxBounces"
                                   ]
                                 },
                                 {
@@ -9205,7 +10624,7 @@
                                       "parameters": [
                                         "BulletBounces",
                                         "=",
-                                        "_DATA_.Bullets.WhiteSmall.MaxBounces"
+                                        "_DATA_.Bullets[Enemies.BulletType].MaxBounces"
                                       ]
                                     }
                                   ]
@@ -9781,7 +11200,7 @@
                                           "parameters": [
                                             "RepeatCount",
                                             "=",
-                                            "_DATA_.Bullets.WhiteSmall.MaxBounces"
+                                            "_DATA_.Bullets[Enemies.BulletType].MaxBounces"
                                           ]
                                         }
                                       ]
@@ -10329,7 +11748,7 @@
                                         "StationaryEnemy",
                                         "BulletCount",
                                         "<",
-                                        "_DATA_.Tanks.RegularEnemy.MaxBullets"
+                                        "_DATA_.Tanks.StationaryEnemy.MaxBullets"
                                       ]
                                     },
                                     {
@@ -11801,7 +13220,7 @@
                                         "LandmineEnemy",
                                         "Pathfinding",
                                         "=",
-                                        "55"
+                                        "60"
                                       ]
                                     }
                                   ],
@@ -11977,6 +13396,33 @@
                                                 ""
                                               ]
                                             }
+                                          ],
+                                          "events": [
+                                            {
+                                              "type": "BuiltinCommonInstructions::Standard",
+                                              "conditions": [
+                                                {
+                                                  "type": {
+                                                    "value": "BooleanVariable"
+                                                  },
+                                                  "parameters": [
+                                                    "_CONFIG_.debug",
+                                                    "",
+                                                    ""
+                                                  ]
+                                                }
+                                              ],
+                                              "actions": [
+                                                {
+                                                  "type": {
+                                                    "value": "Cache"
+                                                  },
+                                                  "parameters": [
+                                                    "LookPoint"
+                                                  ]
+                                                }
+                                              ]
+                                            }
                                           ]
                                         }
                                       ]
@@ -12088,7 +13534,7 @@
                                         "LandmineEnemy",
                                         "Pathfinding",
                                         "=",
-                                        "35"
+                                        "45"
                                       ]
                                     }
                                   ],
@@ -12578,55 +14024,6 @@
                                       "name": "AngleOffset",
                                       "type": "number",
                                       "value": 0
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "BuiltinCommonInstructions::Comment",
-                                  "color": {
-                                    "b": 52,
-                                    "g": 44,
-                                    "r": 40,
-                                    "textB": 0,
-                                    "textG": 255,
-                                    "textR": 0
-                                  },
-                                  "comment": "// TODO: Mejorar la deteccion, si esta cerca del jugador"
-                                },
-                                {
-                                  "disabled": true,
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "BooleanObjectVariable"
-                                      },
-                                      "parameters": [
-                                        "LandmineEnemy",
-                                        "IA.SeePlayer",
-                                        "True",
-                                        ""
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [],
-                                  "events": [
-                                    {
-                                      "type": "BuiltinCommonInstructions::Standard",
-                                      "conditions": [],
-                                      "actions": [
-                                        {
-                                          "type": {
-                                            "value": "CustomObjects::Player::LookToByPoint"
-                                          },
-                                          "parameters": [
-                                            "LandmineEnemy",
-                                            "Player.CenterX()",
-                                            "Player.CenterY()",
-                                            ""
-                                          ]
-                                        }
-                                      ]
                                     }
                                   ]
                                 }
@@ -13146,6 +14543,462 @@
                         }
                       ],
                       "parameters": []
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 52,
+                        "g": 44,
+                        "r": 40,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "\n\n"
+                    },
+                    {
+                      "colorB": 139,
+                      "colorG": 33,
+                      "colorR": 26,
+                      "creationTime": 0,
+                      "name": "Missile enemy logic",
+                      "source": "",
+                      "type": "BuiltinCommonInstructions::Group",
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 209,
+                            "g": 199,
+                            "r": 85,
+                            "textB": 0,
+                            "textG": 0,
+                            "textR": 0
+                          },
+                          "comment": ""
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::ForEach",
+                          "object": "MissilEnemy",
+                          "conditions": [],
+                          "actions": [],
+                          "events": [
+                            {
+                              "colorB": 177,
+                              "colorG": 128,
+                              "colorR": 29,
+                              "creationTime": 0,
+                              "name": "Sight",
+                              "source": "",
+                              "type": "BuiltinCommonInstructions::Group",
+                              "events": [
+                                {
+                                  "type": "BuiltinCommonInstructions::Comment",
+                                  "color": {
+                                    "b": 209,
+                                    "g": 199,
+                                    "r": 85,
+                                    "textB": 0,
+                                    "textG": 0,
+                                    "textR": 0
+                                  },
+                                  "comment": ""
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "BooleanObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "MissilEnemy",
+                                        "IA.SeePlayer",
+                                        "False",
+                                        ""
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [],
+                                  "events": [
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "SetNumberVariable"
+                                          },
+                                          "parameters": [
+                                            "AngleOffset",
+                                            "=",
+                                            "_DATA_.Tanks.MissilEnemy.LookSpeed * TimeDelta() * LayerTimeScale(_CONSTANTS_.Layers.Base)"
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "SetNumberObjectVariable"
+                                          },
+                                          "parameters": [
+                                            "MissilEnemy",
+                                            "IA.AngleRotationCount",
+                                            "+",
+                                            "AngleOffset"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [
+                                        {
+                                          "type": {
+                                            "value": "NumberObjectVariable"
+                                          },
+                                          "parameters": [
+                                            "MissilEnemy",
+                                            "IA.AngleRotationCount",
+                                            ">=",
+                                            "MissilEnemy.IA.AngleRotationFieldOfvision"
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "NumberObjectVariable"
+                                          },
+                                          "parameters": [
+                                            "MissilEnemy",
+                                            "IA.AngleRotationFieldOfvision",
+                                            "<",
+                                            "360"
+                                          ]
+                                        }
+                                      ],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "SetNumberObjectVariable"
+                                          },
+                                          "parameters": [
+                                            "MissilEnemy",
+                                            "IA.AngleRotationCount",
+                                            "=",
+                                            "0"
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "SetNumberObjectVariable"
+                                          },
+                                          "parameters": [
+                                            "MissilEnemy",
+                                            "IA.AngleRotationCountOperationSign",
+                                            "=",
+                                            "-MissilEnemy.IA.AngleRotationCountOperationSign"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "SetNumberObjectVariable"
+                                          },
+                                          "parameters": [
+                                            "MissilEnemy",
+                                            "IA.CurrentLookAngle",
+                                            "+",
+                                            "AngleOffset * MissilEnemy.IA.AngleRotationCountOperationSign"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [
+                                        {
+                                          "type": {
+                                            "value": "NumberObjectVariable"
+                                          },
+                                          "parameters": [
+                                            "MissilEnemy",
+                                            "IA.CurrentLookAngle",
+                                            ">=",
+                                            "360"
+                                          ]
+                                        }
+                                      ],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "SetNumberObjectVariable"
+                                          },
+                                          "parameters": [
+                                            "MissilEnemy",
+                                            "IA.CurrentLookAngle",
+                                            "-",
+                                            "360"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "CustomObjects::Player::LookToByAngle"
+                                          },
+                                          "parameters": [
+                                            "MissilEnemy",
+                                            "MissilEnemy.IA.CurrentLookAngle",
+                                            ""
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ],
+                                  "variables": [
+                                    {
+                                      "name": "AngleOffset",
+                                      "type": "number",
+                                      "value": 0
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Comment",
+                                  "color": {
+                                    "b": 52,
+                                    "g": 44,
+                                    "r": 40,
+                                    "textB": 0,
+                                    "textG": 255,
+                                    "textR": 0
+                                  },
+                                  "comment": "// TODO: Mejorar la deteccion, si esta cerca del jugador"
+                                },
+                                {
+                                  "disabled": true,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "BooleanObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "MissilEnemy",
+                                        "IA.SeePlayer",
+                                        "True",
+                                        ""
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [],
+                                  "events": [
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "CustomObjects::Player::LookToByPoint"
+                                          },
+                                          "parameters": [
+                                            "MissilEnemy",
+                                            "Player.CenterX()",
+                                            "Player.CenterY()",
+                                            ""
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "parameters": []
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Comment",
+                              "color": {
+                                "b": 52,
+                                "g": 44,
+                                "r": 40,
+                                "textB": 0,
+                                "textG": 0,
+                                "textR": 0
+                              },
+                              "comment": "\n\n"
+                            },
+                            {
+                              "colorB": 177,
+                              "colorG": 128,
+                              "colorR": 29,
+                              "creationTime": 0,
+                              "name": "Shoot",
+                              "source": "",
+                              "type": "BuiltinCommonInstructions::Group",
+                              "events": [
+                                {
+                                  "type": "BuiltinCommonInstructions::Comment",
+                                  "color": {
+                                    "b": 209,
+                                    "g": 199,
+                                    "r": 85,
+                                    "textB": 0,
+                                    "textG": 0,
+                                    "textR": 0
+                                  },
+                                  "comment": ""
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetNumberObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "MissilEnemy",
+                                        "BulletCount",
+                                        "=",
+                                        "0"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "LinkedObjects::PickObjectsLinkedTo"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "MissileBullet",
+                                        "MissilEnemy",
+                                        ""
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetNumberObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "MissilEnemy",
+                                        "BulletCount",
+                                        "=",
+                                        "PickedInstancesCount(MissileBullet)"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "BooleanObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "MissilEnemy",
+                                        "IA.SeePlayer",
+                                        "True",
+                                        "_DATA_.Enemies.RegularEnemy.MaxBullets"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "NumberObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "MissilEnemy",
+                                        "BulletCount",
+                                        "<",
+                                        "_DATA_.Tanks.MissilEnemy.MaxBullets"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "StringObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "MissilEnemy",
+                                        "IA.BlockTarget",
+                                        "!=",
+                                        "_CONSTANTS_.Entities.Enemy"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "StringObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "MissilEnemy",
+                                        "IA.BlockTarget",
+                                        "!=",
+                                        "_CONSTANTS_.Entities.BreakableWall"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetBooleanObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "MissilEnemy",
+                                        "IA.Shoot",
+                                        "True",
+                                        ""
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "BooleanObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "MissilEnemy",
+                                        "IA.SeePlayer",
+                                        "False",
+                                        "_DATA_.Enemies.RegularEnemy.MaxBullets"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetBooleanObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "MissilEnemy",
+                                        "IA.Shoot",
+                                        "False",
+                                        ""
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "parameters": []
+                            }
+                          ]
+                        }
+                      ],
+                      "parameters": []
                     }
                   ],
                   "parameters": []
@@ -13163,73 +15016,118 @@
                   "comment": "\n\n"
                 },
                 {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
+                  "colorB": 177,
+                  "colorG": 128,
+                  "colorR": 29,
+                  "creationTime": 0,
+                  "folded": true,
+                  "name": "Landmine detection debbug",
+                  "source": "",
+                  "type": "BuiltinCommonInstructions::Group",
+                  "events": [
                     {
-                      "type": {
-                        "value": "AjoutObjConcern"
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 209,
+                        "g": 199,
+                        "r": 85,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
                       },
-                      "parameters": [
-                        "",
-                        "LandmineDetection"
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "EffectCapability::EffectBehavior::EnableEffect"
-                      },
-                      "parameters": [
-                        "LandmineDetection",
-                        "Effect",
-                        "\"Outline\"",
-                        "no"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "LinkedObjects::PickObjectsLinkedTo"
-                      },
-                      "parameters": [
-                        "",
-                        "LandmineDetection",
-                        "LandmineEnemy",
-                        ""
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "EffectCapability::EffectBehavior::EnableEffect"
-                      },
-                      "parameters": [
-                        "LandmineDetection",
-                        "Effect",
-                        "\"Outline\"",
-                        "yes"
-                      ]
+                      "comment": ""
                     },
                     {
-                      "type": {
-                        "value": "PrimitiveDrawing::LineV2"
-                      },
-                      "parameters": [
-                        "NewShapePainter",
-                        "LandmineDetection.X()",
-                        "LandmineDetection.Y()",
-                        "Enemies.CenterX()",
-                        "Enemies.CenterY()",
-                        "1"
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "_CONFIG_.debug",
+                            "True",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "disabled": true,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "AjoutObjConcern"
+                              },
+                              "parameters": [
+                                "",
+                                "LandmineDetection"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "EffectCapability::EffectBehavior::EnableEffect"
+                              },
+                              "parameters": [
+                                "LandmineDetection",
+                                "Effect",
+                                "\"Outline\"",
+                                "no"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "disabled": true,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "LinkedObjects::PickObjectsLinkedTo"
+                              },
+                              "parameters": [
+                                "",
+                                "LandmineDetection",
+                                "LandmineEnemy",
+                                ""
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "EffectCapability::EffectBehavior::EnableEffect"
+                              },
+                              "parameters": [
+                                "LandmineDetection",
+                                "Effect",
+                                "\"Outline\"",
+                                "yes"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "PrimitiveDrawing::LineV2"
+                              },
+                              "parameters": [
+                                "NewShapePainter",
+                                "LandmineDetection.X()",
+                                "LandmineDetection.Y()",
+                                "Enemies.CenterX()",
+                                "Enemies.CenterY()",
+                                "1"
+                              ]
+                            }
+                          ]
+                        }
                       ]
                     }
-                  ]
+                  ],
+                  "parameters": []
                 },
                 {
                   "type": "BuiltinCommonInstructions::Comment",
@@ -13312,159 +15210,360 @@
                           "events": [
                             {
                               "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": [
+                              "conditions": [
                                 {
                                   "type": {
-                                    "value": "SetBooleanObjectVariable"
+                                    "value": "StringObjectVariable"
                                   },
                                   "parameters": [
                                     "Tanks",
-                                    "IA.Shoot",
-                                    "False",
-                                    ""
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "Create"
-                                  },
-                                  "parameters": [
-                                    "",
-                                    "WhiteBullet",
-                                    "Tanks.GetMuzzlePointX()",
-                                    "Tanks.GetMuzzlePointY()",
-                                    "_CONSTANTS_.Layers.Base"
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "AddForceAL"
-                                  },
-                                  "parameters": [
-                                    "WhiteBullet",
-                                    "Tanks.GetCannonAngle()",
-                                    "_DATA_.Bullets.WhiteSmall.Speed",
-                                    "1"
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "AnimatableCapability::AnimatableBehavior::PauseAnimation"
-                                  },
-                                  "parameters": [
-                                    "WhiteBullet",
-                                    "Animation"
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "ChangeSprite"
-                                  },
-                                  "parameters": [
-                                    "WhiteBullet",
+                                    "BulletType",
                                     "=",
-                                    "CustomObjects::GetFrameByAngle12frames(Tanks.GetCannonAngle())"
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "LinkedObjects::LinkObjects"
-                                  },
-                                  "parameters": [
-                                    "",
-                                    "WhiteBullet",
-                                    "Tanks"
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "Create"
-                                  },
-                                  "parameters": [
-                                    "",
-                                    "BulletSmoke",
-                                    "WhiteBullet.CenterX()",
-                                    "WhiteBullet.CenterY()",
-                                    "_CONSTANTS_.Layers.Base"
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "Sticker::Sticker::Stick"
-                                  },
-                                  "parameters": [
-                                    "BulletSmoke",
-                                    "Sticker",
-                                    "WhiteBullet",
-                                    ""
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "Create"
-                                  },
-                                  "parameters": [
-                                    "",
-                                    "BulletAuxCollider",
-                                    "WhiteBullet.PointX(\"Point\")",
-                                    "WhiteBullet.PointY(\"Point\")",
-                                    "_CONSTANTS_.Layers.Base"
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "Sticker::Sticker::Stick"
-                                  },
-                                  "parameters": [
-                                    "BulletAuxCollider",
-                                    "Sticker",
-                                    "WhiteBullet",
-                                    ""
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "LinkedObjects::LinkObjects"
-                                  },
-                                  "parameters": [
-                                    "",
-                                    "BulletAuxCollider",
-                                    "WhiteBullet"
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "ResetObjectTimer"
-                                  },
-                                  "parameters": [
-                                    "Tanks",
-                                    "Timers.ShootCooldown"
+                                    "_CONSTANTS_.BulletType.WhiteSmall"
                                   ]
                                 }
                               ],
+                              "actions": [],
                               "events": [
                                 {
+                                  "folded": true,
                                   "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "BooleanVariable"
-                                      },
-                                      "parameters": [
-                                        "_CONFIG_.debug",
-                                        "",
-                                        ""
-                                      ]
-                                    }
-                                  ],
+                                  "conditions": [],
                                   "actions": [
                                     {
                                       "type": {
-                                        "value": "Cache"
+                                        "value": "SetBooleanObjectVariable"
                                       },
                                       "parameters": [
-                                        "BulletAuxCollider"
+                                        "Tanks",
+                                        "IA.Shoot",
+                                        "False",
+                                        ""
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "Create"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "WhiteBullet",
+                                        "Tanks.GetMuzzlePointX()",
+                                        "Tanks.GetMuzzlePointY()",
+                                        "_CONSTANTS_.Layers.Base"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "AddForceAL"
+                                      },
+                                      "parameters": [
+                                        "WhiteBullet",
+                                        "Tanks.GetCannonAngle()",
+                                        "_DATA_.Bullets.WhiteSmall.Speed",
+                                        "1"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "AnimatableCapability::AnimatableBehavior::PauseAnimation"
+                                      },
+                                      "parameters": [
+                                        "WhiteBullet",
+                                        "Animation"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "ChangeSprite"
+                                      },
+                                      "parameters": [
+                                        "WhiteBullet",
+                                        "=",
+                                        "CustomObjects::GetFrameByAngle12frames(Tanks.GetCannonAngle())"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "LinkedObjects::LinkObjects"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "WhiteBullet",
+                                        "Tanks"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "Create"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "BulletSmoke",
+                                        "WhiteBullet.CenterX()",
+                                        "WhiteBullet.CenterY()",
+                                        "_CONSTANTS_.Layers.Base"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "Sticker::Sticker::Stick"
+                                      },
+                                      "parameters": [
+                                        "BulletSmoke",
+                                        "Sticker",
+                                        "WhiteBullet",
+                                        ""
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "Create"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "BulletAuxCollider",
+                                        "WhiteBullet.PointX(\"Point\")",
+                                        "WhiteBullet.PointY(\"Point\")",
+                                        "_CONSTANTS_.Layers.Base"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "Sticker::Sticker::Stick"
+                                      },
+                                      "parameters": [
+                                        "BulletAuxCollider",
+                                        "Sticker",
+                                        "WhiteBullet",
+                                        ""
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "LinkedObjects::LinkObjects"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "BulletAuxCollider",
+                                        "WhiteBullet"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "ResetObjectTimer"
+                                      },
+                                      "parameters": [
+                                        "Tanks",
+                                        "Timers.ShootCooldown"
+                                      ]
+                                    }
+                                  ],
+                                  "events": [
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [
+                                        {
+                                          "type": {
+                                            "value": "BooleanVariable"
+                                          },
+                                          "parameters": [
+                                            "_CONFIG_.debug",
+                                            "",
+                                            ""
+                                          ]
+                                        }
+                                      ],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "Cache"
+                                          },
+                                          "parameters": [
+                                            "BulletAuxCollider"
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "StringObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "Tanks",
+                                    "BulletType",
+                                    "=",
+                                    "_CONSTANTS_.BulletType.Missile"
+                                  ]
+                                }
+                              ],
+                              "actions": [],
+                              "events": [
+                                {
+                                  "folded": true,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetBooleanObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "Tanks",
+                                        "IA.Shoot",
+                                        "False",
+                                        ""
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "Create"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "MissileBullet",
+                                        "Tanks.GetMuzzlePointX()",
+                                        "Tanks.GetMuzzlePointY()",
+                                        "_CONSTANTS_.Layers.Base"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "AddForceAL"
+                                      },
+                                      "parameters": [
+                                        "MissileBullet",
+                                        "Tanks.GetCannonAngle()",
+                                        "_DATA_.Bullets.Missile.Speed",
+                                        "1"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "AnimatableCapability::AnimatableBehavior::PauseAnimation"
+                                      },
+                                      "parameters": [
+                                        "MissileBullet",
+                                        "Animation"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "ChangeSprite"
+                                      },
+                                      "parameters": [
+                                        "MissileBullet",
+                                        "=",
+                                        "CustomObjects::GetFrameByAngle12frames(Tanks.GetCannonAngle())"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "LinkedObjects::LinkObjects"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "MissileBullet",
+                                        "Tanks"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "Create"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "BulletSmoke",
+                                        "MissileBullet.CenterX()",
+                                        "MissileBullet.CenterY()",
+                                        "_CONSTANTS_.Layers.Base"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "Sticker::Sticker::Stick"
+                                      },
+                                      "parameters": [
+                                        "BulletSmoke",
+                                        "Sticker",
+                                        "MissileBullet",
+                                        ""
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "Create"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "BulletAuxCollider",
+                                        "MissileBullet.PointX(\"Point\")",
+                                        "MissileBullet.PointY(\"Point\")",
+                                        "_CONSTANTS_.Layers.Base"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "Sticker::Sticker::Stick"
+                                      },
+                                      "parameters": [
+                                        "BulletAuxCollider",
+                                        "Sticker",
+                                        "MissileBullet",
+                                        ""
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "LinkedObjects::LinkObjects"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "BulletAuxCollider",
+                                        "MissileBullet"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "ResetObjectTimer"
+                                      },
+                                      "parameters": [
+                                        "Tanks",
+                                        "Timers.ShootCooldown"
+                                      ]
+                                    }
+                                  ],
+                                  "events": [
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [
+                                        {
+                                          "type": {
+                                            "value": "BooleanVariable"
+                                          },
+                                          "parameters": [
+                                            "_CONFIG_.debug",
+                                            "",
+                                            ""
+                                          ]
+                                        }
+                                      ],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "Cache"
+                                          },
+                                          "parameters": [
+                                            "BulletAuxCollider"
+                                          ]
+                                        }
                                       ]
                                     }
                                   ]
@@ -13875,7 +15974,6 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
-                  "folded": true,
                   "name": "Bullets",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -14079,9 +16177,9 @@
                                   "parameters": [
                                     "BulletAuxCollider",
                                     "=",
-                                    "WhiteBullet.PointX(\"Point\")",
+                                    "Bullets.PointX(\"Point\")",
                                     "=",
-                                    "WhiteBullet.PointY(\"Point\")"
+                                    "Bullets.PointY(\"Point\")"
                                   ]
                                 }
                               ],
@@ -14181,7 +16279,7 @@
                               },
                               "parameters": [
                                 "",
-                                "WhiteBullet",
+                                "Bullets",
                                 "BulletAuxCollider",
                                 ""
                               ]
@@ -14195,7 +16293,7 @@
                               "parameters": [
                                 "BulletDamage",
                                 "=",
-                                "WhiteBullet.Damage"
+                                "Bullets.Damage"
                               ]
                             },
                             {
@@ -14205,8 +16303,8 @@
                               "parameters": [
                                 "",
                                 "Explosion",
-                                "WhiteBullet.CenterX()",
-                                "WhiteBullet.CenterY()",
+                                "Bullets.CenterX()",
+                                "Bullets.CenterY()",
                                 "_CONSTANTS_.Layers.Base"
                               ]
                             },
@@ -14215,7 +16313,7 @@
                                 "value": "Delete"
                               },
                               "parameters": [
-                                "WhiteBullet",
+                                "Bullets",
                                 ""
                               ]
                             }
@@ -14397,6 +16495,59 @@
                           "value": false
                         }
                       ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "Distance"
+                          },
+                          "parameters": [
+                            "WhiteBullet",
+                            "MissileBullet",
+                            "WhiteBullet.Width() / 2",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "Create"
+                              },
+                              "parameters": [
+                                "",
+                                "Explosion",
+                                "Bullets.CenterX()",
+                                "Bullets.CenterY()",
+                                "_CONSTANTS_.Layers.Base"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "Delete"
+                              },
+                              "parameters": [
+                                "Bullets",
+                                ""
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "variables": [
+                        {
+                          "name": "DestroyBullet",
+                          "type": "boolean",
+                          "value": false
+                        }
+                      ]
                     }
                   ],
                   "parameters": []
@@ -14533,7 +16684,6 @@
                       ]
                     },
                     {
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
