@@ -362,7 +362,7 @@
           "parameters": [
             "_INGAMEDATA_.GameState",
             "=",
-            "_CONSTANTS_.InitilizeData.Game.GameState"
+            "_DATA_.Game.GameState"
           ]
         },
         {
@@ -372,7 +372,7 @@
           "parameters": [
             "_INGAMEDATA_.Mission",
             "=",
-            "_CONSTANTS_.InitilizeData.Game.Mission"
+            "_DATA_.Game.Mission"
           ]
         },
         {
@@ -382,7 +382,17 @@
           "parameters": [
             "_INGAMEDATA_.PlayerLives",
             "=",
-            "_CONSTANTS_.InitilizeData.Game.PlayerLives"
+            "_DATA_.Game.PlayerLives"
+          ]
+        },
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "_INGAMEDATA_.MaxAggresiveEnemies",
+            "=",
+            "_DATA_.Game.MaxAggresiveEnemies"
           ]
         },
         {

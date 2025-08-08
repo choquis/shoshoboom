@@ -18,9 +18,9 @@
     "scaleMode": "nearest",
     "sizeOnStartupMode": "",
     "templateSlug": "starting-top-down-pixel",
-    "version": "0.2.1",
+    "version": "0.4.0",
     "name": "shoshobum",
-    "description": "",
+    "description": "Tanks! (Wii) clone\n\nTo stat \"LEFT click\" on start label\nThen after mission screen press \"INTRO\"\n\n- Move with \"WASD\"\n- Shoot with \"SPACE2 or \"LEFT click\"\n- Place landmine with \"Q\" or \"RIGHT click\"\n- Pause with \"ESC\"",
     "author": "Wizzarn",
     "windowWidth": 640,
     "windowHeight": 360,
@@ -1856,7 +1856,7 @@
       {
         "file": "assets/StartPosition3.png",
         "kind": "image",
-        "metadata": "{\"extension\":\".png\"}",
+        "metadata": "{\"extension\":\".png\",\"localFilePath\":\"assets/StartPosition3.png\"}",
         "name": "StartPosition3",
         "smoothed": false,
         "userAdded": false
@@ -2108,6 +2108,22 @@
         "name": "assets\\Bullets\\large_bullet_3d\\large_bullet_24.png",
         "smoothed": false,
         "userAdded": false
+      },
+      {
+        "file": "assets/EnemySpawnPoint.png",
+        "kind": "image",
+        "metadata": "{\"extension\":\".png\"}",
+        "name": "EnemySpawnPoint",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/EnemySpawnPoint2.png",
+        "kind": "image",
+        "metadata": "{\"extension\":\".png\",\"localFilePath\":\"assets/EnemySpawnPoint2.png\"}",
+        "name": "EnemySpawnPoint2",
+        "smoothed": false,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -2133,6 +2149,7 @@
           "type": "array",
           "children": [
             {
+              "folded": true,
               "type": "structure",
               "children": [
                 {
@@ -2286,6 +2303,7 @@
               ]
             },
             {
+              "folded": true,
               "type": "structure",
               "children": [
                 {
@@ -2456,6 +2474,7 @@
       "type": "structure",
       "children": [
         {
+          "folded": true,
           "name": "BulletType",
           "type": "structure",
           "children": [
@@ -2468,6 +2487,32 @@
               "name": "WhiteSmall",
               "type": "string",
               "value": "WhiteSmall"
+            }
+          ]
+        },
+        {
+          "name": "EnemyType",
+          "type": "structure",
+          "children": [
+            {
+              "name": "Landmine",
+              "type": "string",
+              "value": "LandmineEnemy"
+            },
+            {
+              "name": "Missil",
+              "type": "string",
+              "value": "MissilEnemy"
+            },
+            {
+              "name": "Regular",
+              "type": "string",
+              "value": "RegularEnemy"
+            },
+            {
+              "name": "Stationary",
+              "type": "string",
+              "value": "StationaryEnemy"
             }
           ]
         },
@@ -2569,39 +2614,6 @@
         },
         {
           "folded": true,
-          "name": "InitilizeData",
-          "type": "structure",
-          "children": [
-            {
-              "name": "Game",
-              "type": "structure",
-              "children": [
-                {
-                  "name": "GameState",
-                  "type": "string",
-                  "value": "Start"
-                },
-                {
-                  "name": "MaxAggresiveEnemies",
-                  "type": "number",
-                  "value": 1
-                },
-                {
-                  "name": "Mission",
-                  "type": "number",
-                  "value": 1
-                },
-                {
-                  "name": "PlayerLives",
-                  "type": "number",
-                  "value": 3
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "folded": true,
           "name": "InputType",
           "type": "structure",
           "children": [
@@ -2654,6 +2666,22 @@
                   "value": "ExplosionCooldown"
                 }
               ]
+            },
+            {
+              "name": "Tanks",
+              "type": "structure",
+              "children": [
+                {
+                  "name": "PlaceLandmineCooldown",
+                  "type": "string",
+                  "value": "PlaceLandmineCooldown"
+                },
+                {
+                  "name": "ShootCooldown",
+                  "type": "string",
+                  "value": "ShootCooldown"
+                }
+              ]
             }
           ]
         }
@@ -2671,7 +2699,7 @@
         {
           "name": "MaxAggresiveEnemies",
           "type": "number",
-          "value": 0
+          "value": 2
         },
         {
           "name": "Mission",
@@ -2690,6 +2718,7 @@
       "type": "structure",
       "children": [
         {
+          "folded": true,
           "name": "Bullets",
           "type": "structure",
           "children": [
@@ -2749,6 +2778,38 @@
           ]
         },
         {
+          "name": "Game",
+          "type": "structure",
+          "children": [
+            {
+              "name": "GameState",
+              "type": "string",
+              "value": "Start"
+            },
+            {
+              "name": "MaxAggresiveEnemies",
+              "type": "number",
+              "value": 2
+            },
+            {
+              "name": "Mission",
+              "type": "number",
+              "value": 1
+            },
+            {
+              "name": "PlayerLives",
+              "type": "number",
+              "value": 3
+            },
+            {
+              "name": "TotalMissions",
+              "type": "number",
+              "value": 5
+            }
+          ]
+        },
+        {
+          "folded": true,
           "name": "Player",
           "type": "structure",
           "children": [
@@ -2770,6 +2831,7 @@
           ]
         },
         {
+          "folded": true,
           "name": "Tanks",
           "type": "structure",
           "children": [
@@ -3006,6 +3068,7 @@
           ]
         },
         {
+          "folded": true,
           "name": "Walls",
           "type": "structure",
           "children": [
@@ -3037,10 +3100,6 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/layouts/game-scene"
-    },
-    {
-      "__REFERENCE_TO_SPLIT_OBJECT": true,
-      "referenceTo": "/layouts/test-scene"
     }
   ],
   "externalEvents": [
@@ -3095,5 +3154,26 @@
       "referenceTo": "/eventsFunctionsExtensions/rectanglemovement"
     }
   ],
-  "externalLayouts": []
+  "externalLayouts": [
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/externalLayouts/mission_1"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/externalLayouts/mission_2"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/externalLayouts/mission_3"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/externalLayouts/mission_4"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/externalLayouts/mission_5"
+    }
+  ]
 }

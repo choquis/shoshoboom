@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.2952916551236355,
+    "zoomFactor": 1.3841198046307326,
     "windowMask": false
   },
   "objectsGroups": [
@@ -90,9 +90,6 @@
         },
         {
           "name": "Player"
-        },
-        {
-          "name": "EnemySquare"
         },
         {
           "name": "BreakableWallDurable"
@@ -201,6 +198,12 @@
         },
         {
           "name": "MissileBullet"
+        },
+        {
+          "name": "BulletSmoke"
+        },
+        {
+          "name": "Explosion"
         }
       ]
     },
@@ -242,21 +245,14 @@
         },
         {
           "name": "LandmineDetection"
+        },
+        {
+          "name": "EnemyPosition"
         }
       ]
     }
   ],
   "variables": [
-    {
-      "name": "loopChildText",
-      "type": "string",
-      "value": ""
-    },
-    {
-      "name": "loopChildName",
-      "type": "string",
-      "value": ""
-    },
     {
       "folded": true,
       "name": "playerOne",
@@ -337,19 +333,9 @@
           "value": "Opacity"
         },
         {
-          "name": "PlaceLandmineCooldown",
-          "type": "string",
-          "value": "PlaceLandmineCooldown"
-        },
-        {
           "name": "Scale",
           "type": "string",
           "value": "Scale"
-        },
-        {
-          "name": "ShootCooldown",
-          "type": "string",
-          "value": "ShootCooldown"
         }
       ]
     },
@@ -382,11 +368,6 @@
       "name": "ResumeGame",
       "type": "boolean",
       "value": false
-    },
-    {
-      "name": "EnemiesFollowPlayer",
-      "type": "number",
-      "value": 0
     },
     {
       "name": "FullRange",
@@ -425,108 +406,6 @@
       "x": 0,
       "y": 352,
       "zOrder": 12,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 384,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "WhiteWall",
-      "persistentUuid": "be2e7125-3cfc-49e6-89b0-f55cc1806254",
-      "width": 32,
-      "x": -28,
-      "y": 0,
-      "zOrder": 0,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 32,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "WhiteWall",
-      "persistentUuid": "8e445067-e386-4a50-827b-9bf04b1fd441",
-      "width": 640,
-      "x": 0,
-      "y": 356,
-      "zOrder": 0,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 32,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "WhiteWall",
-      "persistentUuid": "0c2bf76c-b015-4b65-829a-d7b3d80a80f8",
-      "width": 704,
-      "x": -32,
-      "y": -28,
-      "zOrder": 0,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 384,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "WhiteWall",
-      "persistentUuid": "71d70e29-281c-4f79-a146-d4fdf6e818a3",
-      "width": 32,
-      "x": 636,
-      "y": 0,
-      "zOrder": 0,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 32,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "WhiteHole",
-      "persistentUuid": "4e53bf01-6c7b-414d-8b36-f6ec5cfcadc3",
-      "width": 96,
-      "x": 416,
-      "y": 256,
-      "zOrder": 0,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 32,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "WhiteHole",
-      "persistentUuid": "010d7436-7ced-4249-9a05-1eeaad4f4f48",
-      "width": 96,
-      "x": 128,
-      "y": 64,
-      "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -625,631 +504,6 @@
       "x": 226,
       "y": 513,
       "zOrder": 11,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "",
-      "name": "StartPosition",
-      "persistentUuid": "e77b29b5-008a-4893-acb1-f30aa1d4f84d",
-      "width": 0,
-      "x": 32,
-      "y": 192,
-      "zOrder": 106,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 64,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "WhiteWall",
-      "persistentUuid": "8c084b4c-8872-4c1f-96d7-ea3395b5f3a8",
-      "width": 32,
-      "x": 96,
-      "y": 64,
-      "zOrder": 107,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 64,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "WhiteWall",
-      "persistentUuid": "eebbbed7-7717-4814-aff5-22b1bb166fb4",
-      "width": 32,
-      "x": 512,
-      "y": 224,
-      "zOrder": 107,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 64,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "WhiteWall",
-      "persistentUuid": "6ff8b4cc-56fc-4f8b-a1e7-67e1ee199b58",
-      "width": 32,
-      "x": 512,
-      "y": 64,
-      "zOrder": 107,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "a754e9a1-35f4-48a6-a2d3-7a8e8ccb9f30",
-      "width": 0,
-      "x": 96,
-      "y": 128,
-      "zOrder": 108,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "abb40814-475e-4251-a300-f7876f1f5ea1",
-      "width": 0,
-      "x": 512,
-      "y": 160,
-      "zOrder": 109,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "e807deeb-6e3b-452b-8727-8570df02ee0a",
-      "width": 0,
-      "x": 512,
-      "y": 128,
-      "zOrder": 110,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "394b4889-d301-45c0-85d4-4678982f67e7",
-      "width": 0,
-      "x": 96,
-      "y": 160,
-      "zOrder": 111,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 32,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "WhiteWall",
-      "persistentUuid": "20d2f7e4-83a5-4edf-ad77-c7d28a844044",
-      "width": 32,
-      "x": 224,
-      "y": 64,
-      "zOrder": 107,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 32,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "WhiteWall",
-      "persistentUuid": "fff4b2a4-9c48-4840-ab40-051114a7112c",
-      "width": 32,
-      "x": 384,
-      "y": 256,
-      "zOrder": 107,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "01fc8813-3448-4316-900b-f46ab85f6d93",
-      "width": 0,
-      "x": 352,
-      "y": 256,
-      "zOrder": 109,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "8cb34992-e7de-44e1-8e5d-9a9ce1858953",
-      "width": 0,
-      "x": 256,
-      "y": 64,
-      "zOrder": 109,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "b5544695-12bc-44c5-a6ab-668ccc1076e9",
-      "width": 0,
-      "x": 288,
-      "y": 64,
-      "zOrder": 109,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "00c67262-13d0-4524-84ab-9bcbb550cfb2",
-      "width": 0,
-      "x": 320,
-      "y": 256,
-      "zOrder": 109,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "df0164bb-cf79-4eaf-ad08-b035ffc04d7d",
-      "width": 0,
-      "x": 288,
-      "y": 256,
-      "zOrder": 109,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "48152a2c-a938-40fc-b14b-d6ca83c1806b",
-      "width": 0,
-      "x": 320,
-      "y": 64,
-      "zOrder": 109,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 32,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "WhiteWall",
-      "persistentUuid": "6203e4b2-f3ff-48ef-90cd-880e81129a37",
-      "width": 64,
-      "x": 224,
-      "y": 256,
-      "zOrder": 107,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 32,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "WhiteWall",
-      "persistentUuid": "7d0c54dd-10af-4ff0-ae00-7c4dbcae3863",
-      "width": 64,
-      "x": 352,
-      "y": 64,
-      "zOrder": 107,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "c32c979b-88f5-495d-a132-4daf6d059924",
-      "width": 0,
-      "x": 96,
-      "y": 192,
-      "zOrder": 111,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallWhite",
-      "persistentUuid": "c2a96cb0-f6c5-4bb2-b104-c700fd82f24c",
-      "width": 0,
-      "x": 512,
-      "y": 192,
-      "zOrder": 110,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "StationaryEnemy",
-      "persistentUuid": "231139d8-81d3-4957-9b60-2b4c222c1614",
-      "width": 0,
-      "x": 512,
-      "y": 0,
-      "zOrder": 112,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 96,
-      "keepRatio": true,
-      "layer": "",
-      "name": "GuardingArea",
-      "persistentUuid": "68c8235e-2c3c-40b9-b879-b7bd60907e3a",
-      "width": 224,
-      "x": 96,
-      "y": 96,
-      "zOrder": 114,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 96,
-      "keepRatio": true,
-      "layer": "",
-      "name": "GuardingArea",
-      "persistentUuid": "c60c51c5-9218-4fcc-942d-28d27e6a4107",
-      "width": 224,
-      "x": 320,
-      "y": 64,
-      "zOrder": 114,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 96,
-      "keepRatio": true,
-      "layer": "",
-      "name": "GuardingArea",
-      "persistentUuid": "9401928c-57ab-4fac-a380-192c7ab3e6cd",
-      "width": 256,
-      "x": 96,
-      "y": 192,
-      "zOrder": 114,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 96,
-      "keepRatio": true,
-      "layer": "",
-      "name": "GuardingArea",
-      "persistentUuid": "64d277cd-1691-43e7-b585-7b4e51319ab8",
-      "width": 192,
-      "x": 352,
-      "y": 160,
-      "zOrder": 114,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 224,
-      "keepRatio": true,
-      "layer": "",
-      "name": "GuardingArea",
-      "persistentUuid": "79f9588a-6a43-4ab7-af7d-736289c70c6b",
-      "width": 96,
-      "x": 544,
-      "y": 64,
-      "zOrder": 114,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 64,
-      "keepRatio": true,
-      "layer": "",
-      "name": "GuardingArea",
-      "persistentUuid": "d5e2133a-af4d-46af-a83e-0ea65850da11",
-      "width": 320,
-      "x": 320,
-      "y": 288,
-      "zOrder": 114,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 64,
-      "keepRatio": true,
-      "layer": "",
-      "name": "GuardingArea",
-      "persistentUuid": "76e6f3ee-6304-4b69-81aa-d6f87b1ef458",
-      "width": 320,
-      "x": 0,
-      "y": 0,
-      "zOrder": 114,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 64,
-      "keepRatio": true,
-      "layer": "",
-      "name": "GuardingArea",
-      "persistentUuid": "33c5aca3-1b27-4f56-abfd-89a166fa1a4a",
-      "width": 320,
-      "x": 320,
-      "y": 0,
-      "zOrder": 114,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 224,
-      "keepRatio": true,
-      "layer": "",
-      "name": "GuardingArea",
-      "persistentUuid": "5122c529-2f91-4375-8037-eb98445517b8",
-      "width": 96,
-      "x": 0,
-      "y": 64,
-      "zOrder": 115,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 64,
-      "keepRatio": true,
-      "layer": "",
-      "name": "GuardingArea",
-      "persistentUuid": "b9bce267-a65d-4f85-bb6a-99386d7f1045",
-      "width": 320,
-      "x": 0,
-      "y": 288,
-      "zOrder": 114,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallDurable",
-      "persistentUuid": "cdcfae69-a5c6-4f6e-ac4e-b52055905a94",
-      "width": 0,
-      "x": 96,
-      "y": 224,
-      "zOrder": 116,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "BreakableWallDurable",
-      "persistentUuid": "f6e37f9b-1644-4449-ad20-e6881ffa408a",
-      "width": 0,
-      "x": 96,
-      "y": 256,
-      "zOrder": 117,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "LandmineEnemy",
-      "persistentUuid": "5e5292ba-5c96-4d7c-ba4b-00409bc62508",
-      "width": 0,
-      "x": 192,
-      "y": 0,
-      "zOrder": 118,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "",
-      "name": "MissilEnemy",
-      "persistentUuid": "cce9668c-d04d-4c9c-be57-767bdf283e36",
-      "width": 0,
-      "x": 576,
-      "y": 256,
-      "zOrder": 119,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "LandmineEnemy",
-      "persistentUuid": "662a1805-920c-4796-a497-59abe6a9e9a5",
-      "width": 0,
-      "x": 576,
-      "y": 128,
-      "zOrder": 118,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Base",
-      "name": "LandmineEnemy",
-      "persistentUuid": "a5848ec8-77b3-4c74-9954-6a2cb92efe23",
-      "width": 0,
-      "x": 320,
-      "y": 96,
-      "zOrder": 118,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "",
-      "name": "RegularEnemy",
-      "persistentUuid": "553260f0-4d21-48f1-8898-8ee15dbe9f21",
-      "width": 0,
-      "x": 224,
-      "y": 160,
-      "zOrder": 120,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1593,6 +847,11 @@
               "value": false
             },
             {
+              "name": "SeeEnemy",
+              "type": "boolean",
+              "value": false
+            },
+            {
               "name": "SeePlayer",
               "type": "boolean",
               "value": false
@@ -1616,7 +875,6 @@
         },
         {
           "name": "BulletType",
-          "persistentUuid": "86df708d-abd5-4c51-bd08-ab8e7ef4b9f8",
           "type": "string",
           "value": "WhiteSmall"
         }
@@ -2032,6 +1290,11 @@
               "value": false
             },
             {
+              "name": "SeeEnemy",
+              "type": "boolean",
+              "value": false
+            },
+            {
               "name": "SeePlayer",
               "type": "boolean",
               "value": false
@@ -2070,7 +1333,6 @@
         },
         {
           "name": "BulletType",
-          "persistentUuid": "86df708d-abd5-4c51-bd08-ab8e7ef4b9f8",
           "type": "string",
           "value": "WhiteSmall"
         }
@@ -2406,20 +1668,20 @@
                   "customCollisionMask": [
                     [
                       {
-                        "x": 9,
-                        "y": 8
+                        "x": 8,
+                        "y": 6
                       },
                       {
-                        "x": 23,
-                        "y": 8
+                        "x": 24,
+                        "y": 6
                       },
                       {
-                        "x": 23,
-                        "y": 24
+                        "x": 24,
+                        "y": 25
                       },
                       {
-                        "x": 9,
-                        "y": 24
+                        "x": 8,
+                        "y": 25
                       }
                     ]
                   ]
@@ -2534,7 +1796,15 @@
       "textureParticleName": "BulletSmoke",
       "type": "ParticleSystem::ParticleEmitter",
       "zoneRadius": 0,
-      "variables": [],
+      "variables": [
+        {
+          "hasMixedValues": true,
+          "name": "Damage",
+          "persistentUuid": "a5bd935d-9f72-4327-9c86-8e1cc617acb1",
+          "type": "number",
+          "value": 1
+        }
+      ],
       "effects": [],
       "behaviors": [
         {
@@ -2588,7 +1858,15 @@
       "textureParticleName": "Explosion1.png",
       "type": "ParticleSystem::ParticleEmitter",
       "zoneRadius": 10,
-      "variables": [],
+      "variables": [
+        {
+          "hasMixedValues": true,
+          "name": "Damage",
+          "persistentUuid": "a5bd935d-9f72-4327-9c86-8e1cc617acb1",
+          "type": "number",
+          "value": 1
+        }
+      ],
       "effects": [],
       "behaviors": []
     },
@@ -5022,6 +4300,11 @@
               "value": true
             },
             {
+              "name": "SeeEnemy",
+              "type": "boolean",
+              "value": false
+            },
+            {
               "name": "SeePlayer",
               "type": "boolean",
               "value": false
@@ -5060,7 +4343,6 @@
         },
         {
           "name": "BulletType",
-          "persistentUuid": "86df708d-abd5-4c51-bd08-ab8e7ef4b9f8",
           "type": "string",
           "value": "WhiteSmall"
         }
@@ -5748,6 +5030,11 @@
               "value": true
             },
             {
+              "name": "SeeEnemy",
+              "type": "boolean",
+              "value": false
+            },
+            {
               "name": "SeePlayer",
               "type": "boolean",
               "value": false
@@ -5786,7 +5073,6 @@
         },
         {
           "name": "BulletType",
-          "persistentUuid": "86df708d-abd5-4c51-bd08-ab8e7ef4b9f8",
           "type": "string",
           "value": "WhiteSmall"
         }
@@ -6054,6 +5340,11 @@
               "value": false
             },
             {
+              "name": "SeeEnemy",
+              "type": "boolean",
+              "value": false
+            },
+            {
               "name": "SeePlayer",
               "type": "boolean",
               "value": false
@@ -6092,7 +5383,6 @@
         },
         {
           "name": "BulletType",
-          "persistentUuid": "86df708d-abd5-4c51-bd08-ab8e7ef4b9f8",
           "type": "string",
           "value": "Missile"
         }
@@ -7263,6 +6553,73 @@
           ]
         }
       ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "EnemyPosition",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "ObjectName",
+          "type": "string",
+          "value": ""
+        }
+      ],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "EnemySpawnPoint",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "EnemySpawnPoint2",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 5,
+                        "y": 2
+                      },
+                      {
+                        "x": 27,
+                        "y": 2
+                      },
+                      {
+                        "x": 27,
+                        "y": 28
+                      },
+                      {
+                        "x": 5,
+                        "y": 28
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "objectsFolderStructure": {
@@ -7337,6 +6694,9 @@
           },
           {
             "objectName": "PathfindingObstacles"
+          },
+          {
+            "objectName": "EnemyPosition"
           }
         ]
       },
@@ -7410,6 +6770,7 @@
   },
   "events": [
     {
+      "folded": true,
       "type": "BuiltinCommonInstructions::Standard",
       "conditions": [],
       "actions": [],
@@ -7628,6 +6989,71 @@
               ]
             },
             {
+              "colorB": 177,
+              "colorG": 128,
+              "colorR": 29,
+              "creationTime": 0,
+              "name": "Load external layout",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "BuiltinExternalLayouts::CreateObjectsFromExternalLayout"
+                      },
+                      "parameters": [
+                        "",
+                        "\"Mission_\"+_INGAMEDATA_.Mission",
+                        "",
+                        "",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": []
+                },
+                {
+                  "type": "BuiltinCommonInstructions::ForEach",
+                  "object": "EnemyPosition",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "CreateByName"
+                      },
+                      "parameters": [
+                        "",
+                        "Enemies",
+                        "_CONSTANTS_.EnemyType[EnemyPosition.ObjectName]",
+                        "EnemyPosition.X()",
+                        "EnemyPosition.Y()",
+                        "_CONSTANTS_.Layers.Base"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "LinkedObjects::LinkObjects"
+                      },
+                      "parameters": [
+                        "",
+                        "EnemyPosition",
+                        "Enemies"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
+            },
+            {
               "type": "BuiltinCommonInstructions::Comment",
               "color": {
                 "b": 52,
@@ -7792,6 +7218,7 @@
               ]
             },
             {
+              "folded": true,
               "type": "BuiltinCommonInstructions::ForEach",
               "object": "Enemies",
               "conditions": [],
@@ -7891,7 +7318,7 @@
                   },
                   "parameters": [
                     "Enemies",
-                    "Timers.ShootCooldown"
+                    "_CONSTANTS_.Timers.Tanks.ShootCooldown"
                   ]
                 },
                 {
@@ -8397,6 +7824,7 @@
           "comment": "Keyboard actions"
         },
         {
+          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -9370,6 +8798,7 @@
           "colorG": 33,
           "colorR": 26,
           "creationTime": 0,
+          "folded": true,
           "name": "START",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -9459,7 +8888,7 @@
                       },
                       "parameters": [
                         "Player",
-                        "Timers.ShootCooldown"
+                        "_CONSTANTS_.Timers.Tanks.ShootCooldown"
                       ]
                     },
                     {
@@ -9850,7 +9279,7 @@
                           },
                           "parameters": [
                             "LandmineEnemy",
-                            "Timers.PlaceLandmineCooldown"
+                            "_CONSTANTS_.Timers.Tanks.PlaceLandmineCooldown"
                           ]
                         }
                       ]
@@ -10146,6 +9575,7 @@
                       "colorG": 128,
                       "colorR": 29,
                       "creationTime": 0,
+                      "folded": true,
                       "name": "Detection",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
@@ -10167,7 +9597,7 @@
                                   "parameters": [
                                     "LookX",
                                     "=",
-                                    "Enemies.GetLookPointX()"
+                                    "Enemies.GetMuzzlePointX()"
                                   ]
                                 },
                                 {
@@ -10177,7 +9607,7 @@
                                   "parameters": [
                                     "LookY",
                                     "=",
-                                    "Enemies.GetLookPointY()"
+                                    "Enemies.GetMuzzlePointY()"
                                   ]
                                 },
                                 {
@@ -10353,6 +9783,7 @@
                                   "comment": "Landmine detection"
                                 },
                                 {
+                                  "folded": true,
                                   "type": "BuiltinCommonInstructions::Standard",
                                   "conditions": [
                                     {
@@ -10477,6 +9908,7 @@
                                   "colorG": 128,
                                   "colorR": 29,
                                   "creationTime": 0,
+                                  "folded": true,
                                   "name": "Debuggin circle",
                                   "source": "",
                                   "type": "BuiltinCommonInstructions::Group",
@@ -10688,6 +10120,18 @@
                                   "actions": [],
                                   "events": [
                                     {
+                                      "type": "BuiltinCommonInstructions::Comment",
+                                      "color": {
+                                        "b": 52,
+                                        "g": 44,
+                                        "r": 40,
+                                        "textB": 0,
+                                        "textG": 255,
+                                        "textR": 0
+                                      },
+                                      "comment": "// Primero separo el rayo para deteccion de enemigo en mira"
+                                    },
+                                    {
                                       "type": "BuiltinCommonInstructions::Standard",
                                       "conditions": [
                                         {
@@ -10727,7 +10171,7 @@
                                           "parameters": [
                                             "AuxX",
                                             "=",
-                                            "IntersectsX[RepeatCount]"
+                                            "XFromAngleAndDistance(Angle, 16) + IntersectsX[RepeatCount]"
                                           ]
                                         },
                                         {
@@ -10737,7 +10181,7 @@
                                           "parameters": [
                                             "AuxY",
                                             "=",
-                                            "IntersectsY[RepeatCount]"
+                                            "YFromAngleAndDistance(Angle, 16) + IntersectsY[RepeatCount]"
                                           ]
                                         }
                                       ]
@@ -10800,6 +10244,119 @@
                                       ]
                                     },
                                     {
+                                      "type": "BuiltinCommonInstructions::Comment",
+                                      "color": {
+                                        "b": 52,
+                                        "g": 44,
+                                        "r": 40,
+                                        "textB": 0,
+                                        "textG": 255,
+                                        "textR": 0
+                                      },
+                                      "comment": "// La deteccion del enemigo esta separado para que no tope con su colision"
+                                    },
+                                    {
+                                      "folded": true,
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [
+                                        {
+                                          "type": {
+                                            "value": "Raycast"
+                                          },
+                                          "parameters": [
+                                            "Enemies",
+                                            "AuxX",
+                                            "AuxY",
+                                            "Angle",
+                                            "FullRange",
+                                            "IntersectsX[RepeatCount+1]",
+                                            "IntersectsY[RepeatCount+1]",
+                                            ""
+                                          ]
+                                        }
+                                      ],
+                                      "actions": [],
+                                      "events": [
+                                        {
+                                          "type": "BuiltinCommonInstructions::Standard",
+                                          "conditions": [
+                                            {
+                                              "type": {
+                                                "value": "PickedInstancesCount"
+                                              },
+                                              "parameters": [
+                                                "Enemies",
+                                                ">",
+                                                "0"
+                                              ]
+                                            }
+                                          ],
+                                          "actions": [
+                                            {
+                                              "type": {
+                                                "value": "SetBooleanVariable"
+                                              },
+                                              "parameters": [
+                                                "SeeEnemy",
+                                                "True",
+                                                "PurpleEnemy.ID"
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "BuiltinCommonInstructions::Comment",
+                                      "color": {
+                                        "b": 52,
+                                        "g": 44,
+                                        "r": 40,
+                                        "textB": 0,
+                                        "textG": 255,
+                                        "textR": 0
+                                      },
+                                      "comment": "// Luego el rayo normal"
+                                    },
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [
+                                        {
+                                          "type": {
+                                            "value": "NumberVariable"
+                                          },
+                                          "parameters": [
+                                            "RepeatCount",
+                                            "=",
+                                            "0"
+                                          ]
+                                        }
+                                      ],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "SetNumberVariable"
+                                          },
+                                          "parameters": [
+                                            "AuxX",
+                                            "=",
+                                            "IntersectsX[RepeatCount]"
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "SetNumberVariable"
+                                          },
+                                          "parameters": [
+                                            "AuxY",
+                                            "=",
+                                            "IntersectsY[RepeatCount]"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "folded": true,
                                       "type": "BuiltinCommonInstructions::Standard",
                                       "conditions": [
                                         {
@@ -11081,7 +10638,7 @@
                                               "parameters": [
                                                 "VisibleToEnemy.Type",
                                                 "!=",
-                                                "_CONSTANTS_.Entities.Enemy"
+                                                "_CONSTANTS_.Entities.Player"
                                               ]
                                             }
                                           ],
@@ -11135,6 +10692,62 @@
                                             "PositionX",
                                             "PositionY",
                                             ""
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [
+                                        {
+                                          "type": {
+                                            "value": "BooleanVariable"
+                                          },
+                                          "parameters": [
+                                            "SeeEnemy",
+                                            "False",
+                                            ""
+                                          ]
+                                        }
+                                      ],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "SetBooleanObjectVariable"
+                                          },
+                                          "parameters": [
+                                            "Enemies",
+                                            "IA.SeeEnemy",
+                                            "False",
+                                            "_CONSTANTS_.IAStates.Alert"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [
+                                        {
+                                          "type": {
+                                            "value": "BooleanVariable"
+                                          },
+                                          "parameters": [
+                                            "SeeEnemy",
+                                            "True",
+                                            ""
+                                          ]
+                                        }
+                                      ],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "SetBooleanObjectVariable"
+                                          },
+                                          "parameters": [
+                                            "Enemies",
+                                            "IA.SeeEnemy",
+                                            "True",
+                                            "_CONSTANTS_.IAStates.Alert"
                                           ]
                                         }
                                       ]
@@ -11362,6 +10975,11 @@
                               "name": "BulletBounces",
                               "type": "number",
                               "value": 0
+                            },
+                            {
+                              "name": "SeeEnemy",
+                              "type": "boolean",
+                              "value": false
                             }
                           ]
                         }
@@ -11385,7 +11003,6 @@
                       "colorG": 33,
                       "colorR": 26,
                       "creationTime": 0,
-                      "folded": true,
                       "name": "Stationary enemy logic",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
@@ -11749,6 +11366,17 @@
                                         "BulletCount",
                                         "<",
                                         "_DATA_.Tanks.StationaryEnemy.MaxBullets"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "BooleanObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "StationaryEnemy",
+                                        "IA.SeeEnemy",
+                                        "False",
+                                        "_CONSTANTS_.Entities.BreakableWall"
                                       ]
                                     },
                                     {
@@ -14301,7 +13929,7 @@
                                       },
                                       "parameters": [
                                         "LandmineEnemy",
-                                        "Timers.PlaceLandmineCooldown",
+                                        "_CONSTANTS_.Timers.Tanks.PlaceLandmineCooldown",
                                         ">=",
                                         "_DATA_.Tanks.LandmineEnemy.PlaceLandmineCooldown"
                                       ]
@@ -14325,7 +13953,7 @@
                                       },
                                       "parameters": [
                                         "LandmineEnemy",
-                                        "Timers.PlaceLandmineCooldown"
+                                        "_CONSTANTS_.Timers.Tanks.PlaceLandmineCooldown"
                                       ]
                                     }
                                   ]
@@ -15189,7 +14817,7 @@
                               },
                               "parameters": [
                                 "Tanks",
-                                "Timers.ShootCooldown",
+                                "_CONSTANTS_.Timers.Tanks.ShootCooldown",
                                 ">=",
                                 "Tanks.ShootCooldown"
                               ]
@@ -15355,7 +14983,7 @@
                                       },
                                       "parameters": [
                                         "Tanks",
-                                        "Timers.ShootCooldown"
+                                        "_CONSTANTS_.Timers.Tanks.ShootCooldown"
                                       ]
                                     }
                                   ],
@@ -15536,7 +15164,7 @@
                                       },
                                       "parameters": [
                                         "Tanks",
-                                        "Timers.ShootCooldown"
+                                        "_CONSTANTS_.Timers.Tanks.ShootCooldown"
                                       ]
                                     }
                                   ],
@@ -17005,7 +16633,6 @@
           "colorG": 33,
           "colorR": 26,
           "creationTime": 0,
-          "folded": true,
           "name": "GAME WON",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -17116,11 +16743,22 @@
                         "textG": 0,
                         "textR": 0
                       },
-                      "comment": "Go to title screen"
+                      "comment": "Go to next mission"
                     },
                     {
                       "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberVariable"
+                          },
+                          "parameters": [
+                            "_INGAMEDATA_.Mission",
+                            "<=",
+                            "_DATA_.Game.TotalMissions"
+                          ]
+                        }
+                      ],
                       "actions": [
                         {
                           "type": {
@@ -17139,6 +16777,45 @@
                           "parameters": [
                             "",
                             "\"Game Scene\"",
+                            ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 209,
+                        "g": 199,
+                        "r": 85,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "Won Game"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberVariable"
+                          },
+                          "parameters": [
+                            "_INGAMEDATA_.Mission",
+                            ">",
+                            "_DATA_.Game.TotalMissions"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Scene"
+                          },
+                          "parameters": [
+                            "",
+                            "\"Title Scene\"",
                             ""
                           ]
                         }
@@ -17168,7 +16845,6 @@
           "colorG": 33,
           "colorR": 26,
           "creationTime": 0,
-          "folded": true,
           "name": "GAME OVER",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
