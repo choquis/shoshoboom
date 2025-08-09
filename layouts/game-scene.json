@@ -14870,6 +14870,7 @@
                           "actions": [],
                           "events": [
                             {
+                              "folded": true,
                               "type": "BuiltinCommonInstructions::Standard",
                               "conditions": [
                                 {
@@ -15051,6 +15052,7 @@
                               ]
                             },
                             {
+                              "folded": true,
                               "type": "BuiltinCommonInstructions::Standard",
                               "conditions": [
                                 {
@@ -15227,6 +15229,68 @@
                                         }
                                       ]
                                     }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "_INGAMEDATA_.Channels.Shoot",
+                                    "+",
+                                    "1"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "NumberVariable"
+                                  },
+                                  "parameters": [
+                                    "_INGAMEDATA_.Channels.Shoot",
+                                    ">=",
+                                    "2199"
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "_INGAMEDATA_.Channels.Shoot",
+                                    "=",
+                                    "2100"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "PlaySoundCanal"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "assets\\SFX\\shoot_sfx_05.wav",
+                                    "_INGAMEDATA_.Channels.Shoot",
+                                    "RandomInRange(18,20) - (2 * TanksMoving)",
+                                    "RandomInRange(22,24)",
+                                    "RandomFloatInRange(0.9,1)"
                                   ]
                                 }
                               ]
@@ -15623,7 +15687,7 @@
                                       "parameters": [
                                         "_INGAMEDATA_.Channels.Move",
                                         ">=",
-                                        "1100"
+                                        "2099"
                                       ]
                                     }
                                   ],
@@ -15635,7 +15699,7 @@
                                       "parameters": [
                                         "_INGAMEDATA_.Channels.Move",
                                         "=",
-                                        "1000"
+                                        "2000"
                                       ]
                                     }
                                   ]
