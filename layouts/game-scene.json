@@ -15477,6 +15477,81 @@
                                   ]
                                 }
                               ]
+                            },
+                            {
+                              "colorB": 177,
+                              "colorG": 128,
+                              "colorR": 29,
+                              "creationTime": 0,
+                              "folded": true,
+                              "name": "Place landmine SFX",
+                              "source": "",
+                              "type": "BuiltinCommonInstructions::Group",
+                              "events": [
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "PlaySoundCanal"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "assets\\SFX\\place_landmine_02.wav",
+                                        "_INGAMEDATA_.Channels.Place",
+                                        "RandomInRange(18,20) - (2 * TanksMoving)",
+                                        "RandomInRange(_DATA_.Audio.Volume.PlaceLandmine,_DATA_.Audio.Volume.PlaceLandmine + 2)",
+                                        "RandomFloatInRange(0.8,1)"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "NumberVariable"
+                                      },
+                                      "parameters": [
+                                        "_INGAMEDATA_.Channels.Place",
+                                        ">=",
+                                        "2499"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetNumberVariable"
+                                      },
+                                      "parameters": [
+                                        "_INGAMEDATA_.Channels.Place",
+                                        "=",
+                                        "2400"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetNumberVariable"
+                                      },
+                                      "parameters": [
+                                        "_INGAMEDATA_.Channels.Place",
+                                        "+",
+                                        "1"
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "parameters": []
                             }
                           ]
                         },
@@ -16199,6 +16274,7 @@
                           "colorG": 128,
                           "colorR": 29,
                           "creationTime": 0,
+                          "folded": true,
                           "name": "Bullet bounce SFX",
                           "source": "",
                           "type": "BuiltinCommonInstructions::Group",
@@ -16711,43 +16787,36 @@
                           ]
                         }
                       ],
-                      "actions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Create"
+                          },
+                          "parameters": [
+                            "",
+                            "Explosion",
+                            "Bullets.CenterX()",
+                            "Bullets.CenterY()",
+                            "_CONSTANTS_.Layers.Base"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Delete"
+                          },
+                          "parameters": [
+                            "Bullets",
+                            ""
+                          ]
+                        }
+                      ],
                       "events": [
                         {
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [],
-                          "actions": [
-                            {
-                              "type": {
-                                "value": "Create"
-                              },
-                              "parameters": [
-                                "",
-                                "Explosion",
-                                "Bullets.CenterX()",
-                                "Bullets.CenterY()",
-                                "_CONSTANTS_.Layers.Base"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "Delete"
-                              },
-                              "parameters": [
-                                "Bullets",
-                                ""
-                              ]
-                            }
-                          ],
-                          "events": [
-                            {
-                              "type": "BuiltinCommonInstructions::Link",
-                              "include": {
-                                "includeConfig": 0
-                              },
-                              "target": "ExplosionSound"
-                            }
-                          ]
+                          "type": "BuiltinCommonInstructions::Link",
+                          "include": {
+                            "includeConfig": 0
+                          },
+                          "target": "ExplosionSound"
                         }
                       ],
                       "variables": [
@@ -16773,43 +16842,36 @@
                           ]
                         }
                       ],
-                      "actions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Create"
+                          },
+                          "parameters": [
+                            "",
+                            "Explosion",
+                            "Bullets.CenterX()",
+                            "Bullets.CenterY()",
+                            "_CONSTANTS_.Layers.Base"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Delete"
+                          },
+                          "parameters": [
+                            "Bullets",
+                            ""
+                          ]
+                        }
+                      ],
                       "events": [
                         {
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [],
-                          "actions": [
-                            {
-                              "type": {
-                                "value": "Create"
-                              },
-                              "parameters": [
-                                "",
-                                "Explosion",
-                                "Bullets.CenterX()",
-                                "Bullets.CenterY()",
-                                "_CONSTANTS_.Layers.Base"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "Delete"
-                              },
-                              "parameters": [
-                                "Bullets",
-                                ""
-                              ]
-                            }
-                          ],
-                          "events": [
-                            {
-                              "type": "BuiltinCommonInstructions::Link",
-                              "include": {
-                                "includeConfig": 0
-                              },
-                              "target": "ExplosionSound"
-                            }
-                          ]
+                          "type": "BuiltinCommonInstructions::Link",
+                          "include": {
+                            "includeConfig": 0
+                          },
+                          "target": "ExplosionSound"
                         }
                       ],
                       "variables": [
@@ -17074,6 +17136,82 @@
                             "LandMine",
                             ""
                           ]
+                        }
+                      ],
+                      "events": [
+                        {
+                          "colorB": 177,
+                          "colorG": 128,
+                          "colorR": 29,
+                          "creationTime": 0,
+                          "name": "Small Explosion SFX",
+                          "source": "",
+                          "type": "BuiltinCommonInstructions::Group",
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "_INGAMEDATA_.Channels.Explosion",
+                                    "+",
+                                    "1"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "NumberVariable"
+                                  },
+                                  "parameters": [
+                                    "_INGAMEDATA_.Channels.Explosion",
+                                    ">=",
+                                    "2299"
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "_INGAMEDATA_.Channels.Explosion",
+                                    "=",
+                                    "2200"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "PlaySoundCanal"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "assets\\SFX\\explosion_05.wav",
+                                    "_INGAMEDATA_.Channels.Explosion",
+                                    "RandomInRange(18,20) - (2 * TanksMoving)",
+                                    "RandomInRange(_DATA_.Audio.Volume.SmallExplosion,_DATA_.Audio.Volume.SmallExplosion + 2)",
+                                    "RandomFloatInRange(0.8,1)"
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "parameters": []
                         }
                       ]
                     },

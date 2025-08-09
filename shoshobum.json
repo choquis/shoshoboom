@@ -18,7 +18,7 @@
     "scaleMode": "nearest",
     "sizeOnStartupMode": "",
     "templateSlug": "starting-top-down-pixel",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "name": "shoshobum",
     "description": "Tanks! (Wii) clone\n\nTo stat \"LEFT click\" on start label\nThen after mission screen press \"INTRO\"\n\n- Move with \"WASD\"\n- Shoot with \"SPACE2 or \"LEFT click\"\n- Place landmine with \"Q\" or \"RIGHT click\"\n- Pause with \"ESC\"",
     "author": "Wizzarn",
@@ -2226,6 +2226,36 @@
         "preloadAsSound": false,
         "preloadInCache": false,
         "userAdded": false
+      },
+      {
+        "file": "assets/SFX/place_landmine_02.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "assets\\SFX\\place_landmine_02.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "preloadInCache": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/SFX/explosion_04.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "assets\\SFX\\explosion_04.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "preloadInCache": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/SFX/explosion_05.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "assets\\SFX\\explosion_05.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "preloadInCache": false,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -2814,6 +2844,11 @@
               "value": 2000
             },
             {
+              "name": "Place",
+              "type": "number",
+              "value": 2400
+            },
+            {
               "name": "Shoot",
               "type": "number",
               "value": 2100
@@ -2858,6 +2893,11 @@
                   "name": "BulletBounce",
                   "type": "number",
                   "value": 88
+                },
+                {
+                  "name": "PlaceLandmine",
+                  "type": "number",
+                  "value": 50
                 },
                 {
                   "name": "SmallExplosion",
