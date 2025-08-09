@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.3841198046307326,
+    "zoomFactor": 1.1343715797161347,
     "windowMask": false
   },
   "objectsGroups": [
@@ -323,9 +323,9 @@
       "type": "structure",
       "children": [
         {
-          "name": "DelayFirstBullet",
+          "name": "MovementSound",
           "type": "string",
-          "value": "DelayFirstBullet"
+          "value": "MovementSound"
         },
         {
           "name": "Opacity",
@@ -373,6 +373,11 @@
       "name": "FullRange",
       "type": "number",
       "value": 1000
+    },
+    {
+      "name": "TanksMoving",
+      "type": "number",
+      "value": 0
     }
   ],
   "instances": [
@@ -497,7 +502,7 @@
       "customSize": false,
       "height": 0,
       "keepRatio": true,
-      "layer": "Base",
+      "layer": "UI",
       "name": "PauseLabel",
       "persistentUuid": "8792ade0-52bf-4394-8b99-b8ebcd3ae765",
       "width": 0,
@@ -664,14 +669,14 @@
     },
     {
       "assetStoreId": "",
-      "bottomMargin": 32,
+      "bottomMargin": 16,
       "height": 96,
-      "leftMargin": 32,
+      "leftMargin": 16,
       "name": "WhiteWall",
-      "rightMargin": 32,
+      "rightMargin": 16,
       "texture": "assets\\Walls\\wall_white.png",
       "tiled": false,
-      "topMargin": 32,
+      "topMargin": 16,
       "type": "PanelSpriteObject::PanelSprite",
       "width": 96,
       "variables": [
@@ -705,14 +710,14 @@
     },
     {
       "assetStoreId": "",
-      "bottomMargin": 32,
+      "bottomMargin": 16,
       "height": 96,
-      "leftMargin": 32,
+      "leftMargin": 16,
       "name": "WhiteHole",
-      "rightMargin": 32,
+      "rightMargin": 16,
       "texture": "assets\\Walls\\hole_white.png",
       "tiled": false,
-      "topMargin": 32,
+      "topMargin": 16,
       "type": "PanelSpriteObject::PanelSprite",
       "width": 96,
       "variables": [],
@@ -5106,9 +5111,9 @@
           "FlashDuration": 0
         },
         {
-          "maxSpeed": 45,
           "name": "Pathfinding",
           "type": "PathfindingBehavior::PathfindingBehavior",
+          "maxSpeed": 45,
           "acceleration": 350,
           "allowDiagonals": true,
           "angleOffset": 0,
@@ -7323,6 +7328,15 @@
                 },
                 {
                   "type": {
+                    "value": "ResetObjectTimer"
+                  },
+                  "parameters": [
+                    "Enemies",
+                    "Timers.MovementSound"
+                  ]
+                },
+                {
+                  "type": {
                     "value": "Create"
                   },
                   "parameters": [
@@ -8798,7 +8812,6 @@
           "colorG": 33,
           "colorR": 26,
           "creationTime": 0,
-          "folded": true,
           "name": "START",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -8880,6 +8893,15 @@
                         "ShootCooldown",
                         "=",
                         "_DATA_.Tanks.Player.ReloadTime"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ResetObjectTimer"
+                      },
+                      "parameters": [
+                        "Player",
+                        "Timers.MovementSound"
                       ]
                     },
                     {
@@ -14794,7 +14816,18 @@
                       "type": "BuiltinCommonInstructions::ForEach",
                       "object": "Tanks",
                       "conditions": [],
-                      "actions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "TanksMoving",
+                            "=",
+                            "0"
+                          ]
+                        }
+                      ],
                       "events": [
                         {
                           "type": "BuiltinCommonInstructions::Comment",
@@ -15470,9 +15503,286 @@
                                 "=",
                                 "0"
                               ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "TanksMoving",
+                                "+",
+                                "1"
+                              ]
                             }
                           ],
                           "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Comment",
+                              "color": {
+                                "b": 209,
+                                "g": 199,
+                                "r": 85,
+                                "textB": 0,
+                                "textG": 0,
+                                "textR": 0
+                              },
+                              "comment": "Movement Sound"
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "StringObjectVariable"
+                                  },
+                                  "parameters": [
+                                    "Tanks",
+                                    "Type",
+                                    "=",
+                                    "_CONSTANTS_.Entities.Player"
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "TanksMoving",
+                                    "-",
+                                    "1"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "CompareObjectTimer"
+                                  },
+                                  "parameters": [
+                                    "Tanks",
+                                    "Timers.MovementSound",
+                                    ">=",
+                                    "0.09 + (0.01 * TanksMoving)"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "NumberVariable"
+                                  },
+                                  "parameters": [
+                                    "TanksMoving",
+                                    "<",
+                                    "2"
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "AuxId",
+                                    "=",
+                                    "1"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "_INGAMEDATA_.Channels.Move",
+                                    "+",
+                                    "1"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "ResetObjectTimer"
+                                  },
+                                  "parameters": [
+                                    "Tanks",
+                                    "Timers.MovementSound"
+                                  ]
+                                }
+                              ],
+                              "events": [
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "NumberVariable"
+                                      },
+                                      "parameters": [
+                                        "_INGAMEDATA_.Channels.Move",
+                                        ">=",
+                                        "1100"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetNumberVariable"
+                                      },
+                                      "parameters": [
+                                        "_INGAMEDATA_.Channels.Move",
+                                        "=",
+                                        "1000"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "StringObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "Tanks",
+                                        "Type",
+                                        "=",
+                                        "_CONSTANTS_.Entities.Player"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "PlaySoundCanal"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "assets\\SFX\\tanktrack_10.wav",
+                                        "_INGAMEDATA_.Channels.Move",
+                                        "RandomInRange(18,20) - (2 * TanksMoving)",
+                                        "RandomInRange(18,20) - (2 * TanksMoving)",
+                                        "RandomFloatInRange(0.96,1)"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "disabled": true,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "NumberVariable"
+                                      },
+                                      "parameters": [
+                                        "AuxId",
+                                        "=",
+                                        "3"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "PlaySoundCanal"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "assets\\SFX\\tanktrack_11.wav",
+                                        "_INGAMEDATA_.Channels.Move",
+                                        "RandomInRange(18,20) - (2 * TanksMoving)",
+                                        "RandomInRange(18,20) - (2 * TanksMoving)",
+                                        "RandomFloatInRange(0.96,1)"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "disabled": true,
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "NumberVariable"
+                                      },
+                                      "parameters": [
+                                        "AuxId",
+                                        "=",
+                                        "4"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "PlaySoundCanal"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "assets\\SFX\\tanktrack_12.wav",
+                                        "_INGAMEDATA_.Channels.Move",
+                                        "RandomInRange(18,20) - (2 * TanksMoving)",
+                                        "RandomInRange(16,18) - (2 * TanksMoving)",
+                                        "RandomFloatInRange(0.96,1)"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "StringObjectVariable"
+                                      },
+                                      "parameters": [
+                                        "Tanks",
+                                        "Type",
+                                        "=",
+                                        "_CONSTANTS_.Entities.Enemy"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "PlaySoundCanal"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "assets\\SFX\\tanktrack_20.wav",
+                                        "_INGAMEDATA_.Channels.Move",
+                                        "RandomInRange(18,20) - (2 * TanksMoving)",
+                                        "RandomInRange(14,16) - (2 * TanksMoving)",
+                                        "RandomFloatInRange(0.96,1)"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "FadeSoundVolume"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "_INGAMEDATA_.Channels.Move",
+                                        "0",
+                                        "0.1"
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
                             {
                               "type": "BuiltinCommonInstructions::Standard",
                               "conditions": [
@@ -15537,6 +15847,11 @@
                           "variables": [
                             {
                               "name": "NewDistance",
+                              "type": "number",
+                              "value": 0
+                            },
+                            {
+                              "name": "AuxId",
                               "type": "number",
                               "value": 0
                             }
@@ -16633,6 +16948,7 @@
           "colorG": 33,
           "colorR": 26,
           "creationTime": 0,
+          "folded": true,
           "name": "GAME WON",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -16845,6 +17161,7 @@
           "colorG": 33,
           "colorR": 26,
           "creationTime": 0,
+          "folded": true,
           "name": "GAME OVER",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -17050,7 +17367,6 @@
       "colorG": 128,
       "colorR": 29,
       "creationTime": 0,
-      "folded": true,
       "name": "Global events",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -17543,7 +17859,7 @@
                 "particlecount",
                 "Text",
                 "+",
-                "\" : \" + ToString(TotalTrailDecals)"
+                "\" : \" + ToString(TotalTrailDecals) + \" : \""
               ]
             }
           ]
