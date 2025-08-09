@@ -2166,6 +2166,66 @@
         "preloadAsSound": false,
         "preloadInCache": false,
         "userAdded": false
+      },
+      {
+        "file": "assets/SFX/explosion_02.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "assets\\SFX\\explosion_02.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "preloadInCache": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/SFX/explosion_03.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "assets\\SFX\\explosion_03.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "preloadInCache": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/SFX/bounce_01.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "assets\\SFX\\bounce_01.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "preloadInCache": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/SFX/bounce_02.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "assets\\SFX\\bounce_02.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "preloadInCache": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/SFX/bounce_03.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "assets\\SFX\\bounce_03.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "preloadInCache": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/SFX/bounce_04.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "assets\\SFX\\bounce_04.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "preloadInCache": false,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -2739,6 +2799,16 @@
           "type": "structure",
           "children": [
             {
+              "name": "Bounce",
+              "type": "number",
+              "value": 2300
+            },
+            {
+              "name": "Explosion",
+              "type": "number",
+              "value": 2200
+            },
+            {
               "name": "Move",
               "type": "number",
               "value": 2000
@@ -2776,6 +2846,38 @@
       "name": "_DATA_",
       "type": "structure",
       "children": [
+        {
+          "name": "Audio",
+          "type": "structure",
+          "children": [
+            {
+              "name": "Volume",
+              "type": "structure",
+              "children": [
+                {
+                  "name": "BulletBounce",
+                  "type": "number",
+                  "value": 88
+                },
+                {
+                  "name": "SmallExplosion",
+                  "type": "number",
+                  "value": 26
+                },
+                {
+                  "name": "TankMovement",
+                  "type": "number",
+                  "value": 18
+                },
+                {
+                  "name": "TankShoot",
+                  "type": "number",
+                  "value": 22
+                }
+              ]
+            }
+          ]
+        },
         {
           "folded": true,
           "name": "Bullets",
@@ -2837,6 +2939,7 @@
           ]
         },
         {
+          "folded": true,
           "name": "Game",
           "type": "structure",
           "children": [
@@ -3165,6 +3268,10 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/externalEvents/regularenemybak"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/externalEvents/explosionsound"
     }
   ],
   "eventsFunctionsExtensions": [

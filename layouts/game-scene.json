@@ -14704,7 +14704,6 @@
                       "actions": [],
                       "events": [
                         {
-                          "disabled": true,
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
                             {
@@ -14732,7 +14731,6 @@
                           ]
                         },
                         {
-                          "disabled": true,
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
                             {
@@ -15234,66 +15232,79 @@
                               ]
                             },
                             {
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": [
+                              "colorB": 177,
+                              "colorG": 128,
+                              "colorR": 29,
+                              "creationTime": 0,
+                              "folded": true,
+                              "name": "Tank shooting SFX",
+                              "source": "",
+                              "type": "BuiltinCommonInstructions::Group",
+                              "events": [
                                 {
-                                  "type": {
-                                    "value": "SetNumberVariable"
-                                  },
-                                  "parameters": [
-                                    "_INGAMEDATA_.Channels.Shoot",
-                                    "+",
-                                    "1"
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetNumberVariable"
+                                      },
+                                      "parameters": [
+                                        "_INGAMEDATA_.Channels.Shoot",
+                                        "+",
+                                        "1"
+                                      ]
+                                    }
                                   ]
-                                }
-                              ]
-                            },
-                            {
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [
+                                },
                                 {
-                                  "type": {
-                                    "value": "NumberVariable"
-                                  },
-                                  "parameters": [
-                                    "_INGAMEDATA_.Channels.Shoot",
-                                    ">=",
-                                    "2199"
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "NumberVariable"
+                                      },
+                                      "parameters": [
+                                        "_INGAMEDATA_.Channels.Shoot",
+                                        ">=",
+                                        "2199"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetNumberVariable"
+                                      },
+                                      "parameters": [
+                                        "_INGAMEDATA_.Channels.Shoot",
+                                        "=",
+                                        "2100"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "PlaySoundCanal"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "assets\\SFX\\shoot_sfx_05.wav",
+                                        "_INGAMEDATA_.Channels.Shoot",
+                                        "RandomInRange(18,20) - (2 * TanksMoving)",
+                                        "RandomInRange(_DATA_.Audio.Volume.TankShoot,_DATA_.Audio.Volume.TankShoot + 2)",
+                                        "RandomFloatInRange(0.9,1)"
+                                      ]
+                                    }
                                   ]
                                 }
                               ],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "value": "SetNumberVariable"
-                                  },
-                                  "parameters": [
-                                    "_INGAMEDATA_.Channels.Shoot",
-                                    "=",
-                                    "2100"
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "value": "PlaySoundCanal"
-                                  },
-                                  "parameters": [
-                                    "",
-                                    "assets\\SFX\\shoot_sfx_05.wav",
-                                    "_INGAMEDATA_.Channels.Shoot",
-                                    "RandomInRange(18,20) - (2 * TanksMoving)",
-                                    "RandomInRange(22,24)",
-                                    "RandomFloatInRange(0.9,1)"
-                                  ]
-                                }
-                              ]
+                              "parameters": []
                             }
                           ]
                         },
@@ -15581,128 +15592,26 @@
                           ],
                           "events": [
                             {
-                              "type": "BuiltinCommonInstructions::Comment",
-                              "color": {
-                                "b": 209,
-                                "g": 199,
-                                "r": 85,
-                                "textB": 0,
-                                "textG": 0,
-                                "textR": 0
-                              },
-                              "comment": "Movement Sound"
-                            },
-                            {
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [
-                                {
-                                  "type": {
-                                    "value": "StringObjectVariable"
-                                  },
-                                  "parameters": [
-                                    "Tanks",
-                                    "Type",
-                                    "=",
-                                    "_CONSTANTS_.Entities.Player"
-                                  ]
-                                }
-                              ],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "value": "SetNumberVariable"
-                                  },
-                                  "parameters": [
-                                    "TanksMoving",
-                                    "-",
-                                    "1"
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [
-                                {
-                                  "type": {
-                                    "value": "CompareObjectTimer"
-                                  },
-                                  "parameters": [
-                                    "Tanks",
-                                    "Timers.MovementSound",
-                                    ">=",
-                                    "0.09 + (0.01 * TanksMoving)"
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "NumberVariable"
-                                  },
-                                  "parameters": [
-                                    "TanksMoving",
-                                    "<",
-                                    "2"
-                                  ]
-                                }
-                              ],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "value": "SetNumberVariable"
-                                  },
-                                  "parameters": [
-                                    "AuxId",
-                                    "=",
-                                    "1"
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "SetNumberVariable"
-                                  },
-                                  "parameters": [
-                                    "_INGAMEDATA_.Channels.Move",
-                                    "+",
-                                    "1"
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "ResetObjectTimer"
-                                  },
-                                  "parameters": [
-                                    "Tanks",
-                                    "Timers.MovementSound"
-                                  ]
-                                }
-                              ],
+                              "colorB": 177,
+                              "colorG": 128,
+                              "colorR": 29,
+                              "creationTime": 0,
+                              "folded": true,
+                              "name": "Tank moving SFX",
+                              "source": "",
+                              "type": "BuiltinCommonInstructions::Group",
                               "events": [
                                 {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "NumberVariable"
-                                      },
-                                      "parameters": [
-                                        "_INGAMEDATA_.Channels.Move",
-                                        ">=",
-                                        "2099"
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "SetNumberVariable"
-                                      },
-                                      "parameters": [
-                                        "_INGAMEDATA_.Channels.Move",
-                                        "=",
-                                        "2000"
-                                      ]
-                                    }
-                                  ]
+                                  "type": "BuiltinCommonInstructions::Comment",
+                                  "color": {
+                                    "b": 209,
+                                    "g": 199,
+                                    "r": 85,
+                                    "textB": 0,
+                                    "textG": 0,
+                                    "textR": 0
+                                  },
+                                  "comment": ""
                                 },
                                 {
                                   "type": "BuiltinCommonInstructions::Standard",
@@ -15722,77 +15631,12 @@
                                   "actions": [
                                     {
                                       "type": {
-                                        "value": "PlaySoundCanal"
+                                        "value": "SetNumberVariable"
                                       },
                                       "parameters": [
-                                        "",
-                                        "assets\\SFX\\tanktrack_10.wav",
-                                        "_INGAMEDATA_.Channels.Move",
-                                        "RandomInRange(18,20) - (2 * TanksMoving)",
-                                        "RandomInRange(18,20) - (2 * TanksMoving)",
-                                        "RandomFloatInRange(0.96,1)"
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "disabled": true,
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "NumberVariable"
-                                      },
-                                      "parameters": [
-                                        "AuxId",
-                                        "=",
-                                        "3"
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "PlaySoundCanal"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "assets\\SFX\\tanktrack_11.wav",
-                                        "_INGAMEDATA_.Channels.Move",
-                                        "RandomInRange(18,20) - (2 * TanksMoving)",
-                                        "RandomInRange(18,20) - (2 * TanksMoving)",
-                                        "RandomFloatInRange(0.96,1)"
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "disabled": true,
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [
-                                    {
-                                      "type": {
-                                        "value": "NumberVariable"
-                                      },
-                                      "parameters": [
-                                        "AuxId",
-                                        "=",
-                                        "4"
-                                      ]
-                                    }
-                                  ],
-                                  "actions": [
-                                    {
-                                      "type": {
-                                        "value": "PlaySoundCanal"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "assets\\SFX\\tanktrack_12.wav",
-                                        "_INGAMEDATA_.Channels.Move",
-                                        "RandomInRange(18,20) - (2 * TanksMoving)",
-                                        "RandomInRange(16,18) - (2 * TanksMoving)",
-                                        "RandomFloatInRange(0.96,1)"
+                                        "TanksMoving",
+                                        "-",
+                                        "1"
                                       ]
                                     }
                                   ]
@@ -15802,50 +15646,158 @@
                                   "conditions": [
                                     {
                                       "type": {
-                                        "value": "StringObjectVariable"
+                                        "value": "CompareObjectTimer"
                                       },
                                       "parameters": [
                                         "Tanks",
-                                        "Type",
-                                        "=",
-                                        "_CONSTANTS_.Entities.Enemy"
+                                        "Timers.MovementSound",
+                                        ">=",
+                                        "0.09 + (0.01 * TanksMoving)"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "NumberVariable"
+                                      },
+                                      "parameters": [
+                                        "TanksMoving",
+                                        "<",
+                                        "2"
                                       ]
                                     }
                                   ],
                                   "actions": [
                                     {
                                       "type": {
-                                        "value": "PlaySoundCanal"
+                                        "value": "SetNumberVariable"
                                       },
                                       "parameters": [
-                                        "",
-                                        "assets\\SFX\\tanktrack_20.wav",
                                         "_INGAMEDATA_.Channels.Move",
-                                        "RandomInRange(18,20) - (2 * TanksMoving)",
-                                        "RandomInRange(14,16) - (2 * TanksMoving)",
-                                        "RandomFloatInRange(0.96,1)"
+                                        "+",
+                                        "1"
                                       ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "type": "BuiltinCommonInstructions::Standard",
-                                  "conditions": [],
-                                  "actions": [
+                                    },
                                     {
                                       "type": {
-                                        "value": "FadeSoundVolume"
+                                        "value": "ResetObjectTimer"
                                       },
                                       "parameters": [
-                                        "",
-                                        "_INGAMEDATA_.Channels.Move",
-                                        "0",
-                                        "0.1"
+                                        "Tanks",
+                                        "Timers.MovementSound"
+                                      ]
+                                    }
+                                  ],
+                                  "events": [
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [
+                                        {
+                                          "type": {
+                                            "value": "NumberVariable"
+                                          },
+                                          "parameters": [
+                                            "_INGAMEDATA_.Channels.Move",
+                                            ">=",
+                                            "2099"
+                                          ]
+                                        }
+                                      ],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "SetNumberVariable"
+                                          },
+                                          "parameters": [
+                                            "_INGAMEDATA_.Channels.Move",
+                                            "=",
+                                            "2000"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [
+                                        {
+                                          "type": {
+                                            "value": "StringObjectVariable"
+                                          },
+                                          "parameters": [
+                                            "Tanks",
+                                            "Type",
+                                            "=",
+                                            "_CONSTANTS_.Entities.Player"
+                                          ]
+                                        }
+                                      ],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "PlaySoundCanal"
+                                          },
+                                          "parameters": [
+                                            "",
+                                            "assets\\SFX\\tanktrack_10.wav",
+                                            "_INGAMEDATA_.Channels.Move",
+                                            "RandomInRange(18,20) - (2 * TanksMoving)",
+                                            "RandomInRange(_DATA_.Audio.Volume.TankMovement,_DATA_.Audio.Volume.TankMovement + 2) - (2 * TanksMoving)",
+                                            "RandomFloatInRange(0.96,1)"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [
+                                        {
+                                          "type": {
+                                            "value": "StringObjectVariable"
+                                          },
+                                          "parameters": [
+                                            "Tanks",
+                                            "Type",
+                                            "=",
+                                            "_CONSTANTS_.Entities.Enemy"
+                                          ]
+                                        }
+                                      ],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "PlaySoundCanal"
+                                          },
+                                          "parameters": [
+                                            "",
+                                            "assets\\SFX\\tanktrack_20.wav",
+                                            "_INGAMEDATA_.Channels.Move",
+                                            "RandomInRange(18,20) - (2 * TanksMoving)",
+                                            "RandomInRange(_DATA_.Audio.Volume.TankMovement - 2,_DATA_.Audio.Volume.TankMovement) - (2 * TanksMoving)",
+                                            "RandomFloatInRange(0.96,1)"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "FadeSoundVolume"
+                                          },
+                                          "parameters": [
+                                            "",
+                                            "_INGAMEDATA_.Channels.Move",
+                                            "0",
+                                            "0.1"
+                                          ]
+                                        }
                                       ]
                                     }
                                   ]
                                 }
-                              ]
+                              ],
+                              "parameters": []
                             },
                             {
                               "type": "BuiltinCommonInstructions::Standard",
@@ -15911,11 +15863,6 @@
                           "variables": [
                             {
                               "name": "NewDistance",
-                              "type": "number",
-                              "value": 0
-                            },
-                            {
-                              "name": "AuxId",
                               "type": "number",
                               "value": 0
                             }
@@ -16236,7 +16183,221 @@
                                 ""
                               ]
                             }
+                          ],
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Link",
+                              "include": {
+                                "includeConfig": 0
+                              },
+                              "target": "ExplosionSound"
+                            }
                           ]
+                        },
+                        {
+                          "colorB": 177,
+                          "colorG": 128,
+                          "colorR": 29,
+                          "creationTime": 0,
+                          "name": "Bullet bounce SFX",
+                          "source": "",
+                          "type": "BuiltinCommonInstructions::Group",
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "BooleanVariable"
+                                  },
+                                  "parameters": [
+                                    "DestroyBullet",
+                                    "=",
+                                    ""
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "_INGAMEDATA_.Channels.Bounce",
+                                    "+",
+                                    "1"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "AuxId",
+                                    "=",
+                                    "RandomInRange(1,4)"
+                                  ]
+                                }
+                              ],
+                              "events": [
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "NumberVariable"
+                                      },
+                                      "parameters": [
+                                        "_INGAMEDATA_.Channels.Bounce",
+                                        ">",
+                                        "2399"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetNumberVariable"
+                                      },
+                                      "parameters": [
+                                        "_INGAMEDATA_.Channels.Bounce",
+                                        "=",
+                                        "2300"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "NumberVariable"
+                                      },
+                                      "parameters": [
+                                        "AuxId",
+                                        "=",
+                                        "1"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "PlaySoundCanal"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "assets\\SFX\\bounce_01.wav",
+                                        "_INGAMEDATA_.Channels.Bounce",
+                                        "RandomInRange(18,20) - (2 * TanksMoving)",
+                                        "RandomInRange(_DATA_.Audio.Volume.BulletBounce,_DATA_.Audio.Volume.BulletBounce + 2)",
+                                        "RandomFloatInRange(0.96,1)"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "NumberVariable"
+                                      },
+                                      "parameters": [
+                                        "AuxId",
+                                        "=",
+                                        "2"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "PlaySoundCanal"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "assets\\SFX\\bounce_02.wav",
+                                        "_INGAMEDATA_.Channels.Bounce",
+                                        "RandomInRange(18,20) - (2 * TanksMoving)",
+                                        "RandomInRange(_DATA_.Audio.Volume.BulletBounce,_DATA_.Audio.Volume.BulletBounce + 2)",
+                                        "RandomFloatInRange(0.96,1)"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "NumberVariable"
+                                      },
+                                      "parameters": [
+                                        "AuxId",
+                                        "=",
+                                        "3"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "PlaySoundCanal"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "assets\\SFX\\bounce_03.wav",
+                                        "_INGAMEDATA_.Channels.Bounce",
+                                        "RandomInRange(18,20) - (2 * TanksMoving)",
+                                        "RandomInRange(_DATA_.Audio.Volume.BulletBounce,_DATA_.Audio.Volume.BulletBounce + 2)",
+                                        "RandomFloatInRange(0.96,1)"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "NumberVariable"
+                                      },
+                                      "parameters": [
+                                        "AuxId",
+                                        "=",
+                                        "4"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "PlaySoundCanal"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "assets\\SFX\\bounce_04.wav",
+                                        "_INGAMEDATA_.Channels.Bounce",
+                                        "RandomInRange(18,20) - (2 * TanksMoving)",
+                                        "RandomInRange(_DATA_.Audio.Volume.BulletBounce,_DATA_.Audio.Volume.BulletBounce + 2)",
+                                        "RandomFloatInRange(0.96,1)"
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "variables": [
+                                {
+                                  "name": "AuxId",
+                                  "type": "number",
+                                  "value": 0
+                                }
+                              ]
+                            }
+                          ],
+                          "parameters": []
                         }
                       ],
                       "variables": [
@@ -16323,6 +16484,91 @@
                                 "Bullets",
                                 ""
                               ]
+                            }
+                          ],
+                          "events": [
+                            {
+                              "colorB": 177,
+                              "colorG": 128,
+                              "colorR": 29,
+                              "creationTime": 0,
+                              "folded": true,
+                              "name": "Small Explosion SFX",
+                              "source": "",
+                              "type": "BuiltinCommonInstructions::Group",
+                              "events": [
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetNumberVariable"
+                                      },
+                                      "parameters": [
+                                        "_INGAMEDATA_.Channels.Explosion",
+                                        "+",
+                                        "1"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [
+                                    {
+                                      "type": {
+                                        "value": "NumberVariable"
+                                      },
+                                      "parameters": [
+                                        "_INGAMEDATA_.Channels.Explosion",
+                                        ">=",
+                                        "2299"
+                                      ]
+                                    }
+                                  ],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "SetNumberVariable"
+                                      },
+                                      "parameters": [
+                                        "_INGAMEDATA_.Channels.Explosion",
+                                        "=",
+                                        "2200"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "PlaySoundCanal"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "assets\\SFX\\explosion_02.wav",
+                                        "_INGAMEDATA_.Channels.Explosion",
+                                        "RandomInRange(18,20) - (2 * TanksMoving)",
+                                        "RandomInRange(_DATA_.Audio.Volume.SmallExplosion,_DATA_.Audio.Volume.SmallExplosion + 2)",
+                                        "RandomFloatInRange(0.8,1)"
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "disabled": true,
+                                  "type": "BuiltinCommonInstructions::Link",
+                                  "include": {
+                                    "includeConfig": 0
+                                  },
+                                  "target": "ExplosionSound"
+                                }
+                              ],
+                              "parameters": []
                             }
                           ]
                         },
@@ -16492,6 +16738,15 @@
                                 ""
                               ]
                             }
+                          ],
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Link",
+                              "include": {
+                                "includeConfig": 0
+                              },
+                              "target": "ExplosionSound"
+                            }
                           ]
                         }
                       ],
@@ -16544,6 +16799,15 @@
                                 "Bullets",
                                 ""
                               ]
+                            }
+                          ],
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Link",
+                              "include": {
+                                "includeConfig": 0
+                              },
+                              "target": "ExplosionSound"
                             }
                           ]
                         }

@@ -1,0 +1,68 @@
+{
+  "associatedLayout": "Game Scene",
+  "name": "ExplosionSound",
+  "events": [
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "_INGAMEDATA_.Channels.Explosion",
+            "+",
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "NumberVariable"
+          },
+          "parameters": [
+            "_INGAMEDATA_.Channels.Explosion",
+            ">=",
+            "2299"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "_INGAMEDATA_.Channels.Explosion",
+            "=",
+            "2200"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "PlaySoundCanal"
+          },
+          "parameters": [
+            "",
+            "assets\\SFX\\explosion_03.wav",
+            "_INGAMEDATA_.Channels.Explosion",
+            "RandomInRange(18,20) - (2 * TanksMoving)",
+            "RandomInRange(_DATA_.Audio.Volume.SmallExplosion,_DATA_.Audio.Volume.SmallExplosion + 2)",
+            "RandomFloatInRange(0.8,1)"
+          ]
+        }
+      ]
+    }
+  ]
+}
