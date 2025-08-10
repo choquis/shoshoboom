@@ -9216,6 +9216,37 @@
                       "comment": "Before game begin events"
                     },
                     {
+                      "type": "BuiltinCommonInstructions::ForEach",
+                      "object": "Enemies",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "LinkedObjects::PickObjectsLinkedTo"
+                          },
+                          "parameters": [
+                            "",
+                            "EnemyPosition",
+                            "Enemies",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "MettreXY"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "=",
+                            "EnemyPosition.X()",
+                            "=",
+                            "EnemyPosition.Y()"
+                          ]
+                        }
+                      ]
+                    },
+                    {
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -9305,6 +9336,11 @@
                           ]
                         }
                       ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": []
                     }
                   ]
                 }
@@ -9576,6 +9612,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Enemy logic",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -11025,6 +11062,7 @@
                       "colorG": 33,
                       "colorR": 26,
                       "creationTime": 0,
+                      "folded": true,
                       "name": "Stationary enemy logic",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
@@ -12625,6 +12663,7 @@
                       "colorG": 33,
                       "colorR": 26,
                       "creationTime": 0,
+                      "folded": true,
                       "name": "Landmine enemy logic",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
@@ -14211,6 +14250,7 @@
                       "colorG": 33,
                       "colorR": 26,
                       "creationTime": 0,
+                      "folded": true,
                       "name": "Missile enemy logic",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
@@ -14794,6 +14834,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Tank actions",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -16003,6 +16044,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Bullets",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -16020,6 +16062,7 @@
                       "comment": "Check collisions"
                     },
                     {
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -16088,6 +16131,7 @@
                           "comment": "Bounce of walls"
                         },
                         {
+                          "folded": true,
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
                             {
@@ -16223,6 +16267,7 @@
                           ]
                         },
                         {
+                          "folded": true,
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
                             {
@@ -16497,6 +16542,7 @@
                       "comment": "Hit tanks"
                     },
                     {
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -16773,6 +16819,7 @@
                       "comment": "// Se usa distancia entre balas, porque colisiones con la misma instancia es mas complicado de implementar."
                     },
                     {
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -16828,6 +16875,7 @@
                       ]
                     },
                     {
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -16902,6 +16950,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Land mines",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -17017,6 +17066,7 @@
                       ]
                     },
                     {
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -17082,6 +17132,7 @@
                       ]
                     },
                     {
+                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -17414,7 +17465,6 @@
           "colorG": 33,
           "colorR": 26,
           "creationTime": 0,
-          "folded": true,
           "name": "GAME WON",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -17627,7 +17677,6 @@
           "colorG": 33,
           "colorR": 26,
           "creationTime": 0,
-          "folded": true,
           "name": "GAME OVER",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -17671,6 +17720,16 @@
                     }
                   ],
                   "actions": [
+                    {
+                      "type": {
+                        "value": "ChangeLayerTimeScale"
+                      },
+                      "parameters": [
+                        "",
+                        "_CONSTANTS_.Layers.Base",
+                        "0"
+                      ]
+                    },
                     {
                       "type": {
                         "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
@@ -17833,6 +17892,7 @@
       "colorG": 128,
       "colorR": 29,
       "creationTime": 0,
+      "folded": true,
       "name": "Global events",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
