@@ -1371,6 +1371,22 @@
           "FlashDuration": 0
         },
         {
+          "acceleration": 400,
+          "allowDiagonals": true,
+          "angleOffset": 0,
+          "angularMaxSpeed": 180,
+          "cellHeight": 20,
+          "cellWidth": 20,
+          "extraBorder": 0,
+          "gridOffsetX": 0,
+          "gridOffsetY": 0,
+          "maxSpeed": 200,
+          "name": "Pathfinding",
+          "rotateObject": true,
+          "smoothingMaxCellGap": 1,
+          "type": "PathfindingBehavior::PathfindingBehavior"
+        },
+        {
           "name": "PathfindingObstacle",
           "type": "PathfindingBehavior::PathfindingObstacleBehavior",
           "cost": 2,
@@ -5421,6 +5437,22 @@
           "FlashDuration": 0
         },
         {
+          "acceleration": 400,
+          "allowDiagonals": true,
+          "angleOffset": 0,
+          "angularMaxSpeed": 180,
+          "cellHeight": 20,
+          "cellWidth": 20,
+          "extraBorder": 0,
+          "gridOffsetX": 0,
+          "gridOffsetY": 0,
+          "maxSpeed": 200,
+          "name": "Pathfinding",
+          "rotateObject": true,
+          "smoothingMaxCellGap": 1,
+          "type": "PathfindingBehavior::PathfindingBehavior"
+        },
+        {
           "name": "PathfindingObstacle",
           "type": "PathfindingBehavior::PathfindingObstacleBehavior",
           "cost": 2,
@@ -9008,6 +9040,37 @@
                   ]
                 },
                 {
+                  "type": "BuiltinCommonInstructions::ForEach",
+                  "object": "Enemies",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "LinkedObjects::PickObjectsLinkedTo"
+                      },
+                      "parameters": [
+                        "",
+                        "EnemyPosition",
+                        "Enemies",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "MettreXY"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "=",
+                        "EnemyPosition.X()",
+                        "=",
+                        "EnemyPosition.Y()"
+                      ]
+                    }
+                  ]
+                },
+                {
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
                     {
@@ -9214,37 +9277,6 @@
                         "textR": 0
                       },
                       "comment": "Before game begin events"
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::ForEach",
-                      "object": "Enemies",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "LinkedObjects::PickObjectsLinkedTo"
-                          },
-                          "parameters": [
-                            "",
-                            "EnemyPosition",
-                            "Enemies",
-                            ""
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "MettreXY"
-                          },
-                          "parameters": [
-                            "Enemies",
-                            "=",
-                            "EnemyPosition.X()",
-                            "=",
-                            "EnemyPosition.Y()"
-                          ]
-                        }
-                      ]
                     },
                     {
                       "type": "BuiltinCommonInstructions::Standard",
@@ -9612,7 +9644,6 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
-                  "folded": true,
                   "name": "Enemy logic",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -11530,7 +11561,6 @@
                       "colorG": 33,
                       "colorR": 26,
                       "creationTime": 0,
-                      "folded": true,
                       "name": "Regular enemy logic",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
@@ -11736,6 +11766,7 @@
                               "colorG": 128,
                               "colorR": 29,
                               "creationTime": 0,
+                              "folded": true,
                               "name": "Movement",
                               "source": "",
                               "type": "BuiltinCommonInstructions::Group",
@@ -17508,6 +17539,16 @@
                     }
                   ],
                   "actions": [
+                    {
+                      "type": {
+                        "value": "ChangeLayerTimeScale"
+                      },
+                      "parameters": [
+                        "",
+                        "_CONSTANTS_.Layers.Base",
+                        "0"
+                      ]
+                    },
                     {
                       "type": {
                         "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
