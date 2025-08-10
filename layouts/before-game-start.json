@@ -5,7 +5,7 @@
   "name": "Before Game Start",
   "r": 209,
   "standardSortMethod": true,
-  "stopSoundsOnStartup": true,
+  "stopSoundsOnStartup": false,
   "title": "",
   "v": 209,
   "uiSettings": {
@@ -337,6 +337,16 @@
       "actions": [
         {
           "type": {
+            "value": "SetStringVariable"
+          },
+          "parameters": [
+            "_INGAMEDATA_.CurrentScene",
+            "=",
+            "CurrentSceneName()"
+          ]
+        },
+        {
+          "type": {
             "value": "TextContainerCapability::TextContainerBehavior::SetValue"
           },
           "parameters": [
@@ -355,6 +365,19 @@
             "Text",
             "=",
             "_INGAMEDATA_.PlayerLives + \" Lives\""
+          ]
+        },
+        {
+          "type": {
+            "value": "PlayMusicCanal"
+          },
+          "parameters": [
+            "",
+            "assets\\Music\\melody_start_01.m4a",
+            "_CONSTANTS_.Channel.StartMusic",
+            "",
+            "100",
+            ""
           ]
         }
       ]
@@ -386,10 +409,36 @@
       ]
     },
     {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "inverted": true,
+            "value": "MusicPlaying"
+          },
+          "parameters": [
+            "",
+            "_CONSTANTS_.Channel.StartMusic"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "PopScene"
+          },
+          "parameters": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
       "colorB": 177,
       "colorG": 128,
       "colorR": 29,
       "creationTime": 0,
+      "disabled": true,
       "name": "Switch inputs",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -510,6 +559,7 @@
       "colorG": 128,
       "colorR": 29,
       "creationTime": 0,
+      "disabled": true,
       "name": "Player one actions",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",

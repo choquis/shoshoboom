@@ -2226,6 +2226,36 @@
         "preloadAsSound": false,
         "preloadInCache": false,
         "userAdded": false
+      },
+      {
+        "file": "assets/Music/melody_start_01.m4a",
+        "kind": "audio",
+        "metadata": "",
+        "name": "assets\\Music\\melody_start_01.m4a",
+        "preloadAsMusic": true,
+        "preloadAsSound": false,
+        "preloadInCache": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Music/melody_battle_snare_01.m4a",
+        "kind": "audio",
+        "metadata": "",
+        "name": "assets\\Music\\melody_battle_snare_01.m4a",
+        "preloadAsMusic": true,
+        "preloadAsSound": false,
+        "preloadInCache": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Music/melody_game_over_01.m4a",
+        "kind": "audio",
+        "metadata": "",
+        "name": "assets\\Music\\melody_game_over_01.m4a",
+        "preloadAsMusic": true,
+        "preloadAsSound": false,
+        "preloadInCache": false,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -2573,7 +2603,6 @@
       ]
     },
     {
-      "folded": true,
       "name": "_CONSTANTS_",
       "type": "structure",
       "children": [
@@ -2595,6 +2624,28 @@
           ]
         },
         {
+          "name": "Channel",
+          "type": "structure",
+          "children": [
+            {
+              "name": "BattleMusic",
+              "type": "number",
+              "value": 2
+            },
+            {
+              "name": "GameDeadMusic",
+              "type": "number",
+              "value": 3
+            },
+            {
+              "name": "StartMusic",
+              "type": "number",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "folded": true,
           "name": "EnemyType",
           "type": "structure",
           "children": [
@@ -2751,6 +2802,7 @@
           ]
         },
         {
+          "folded": true,
           "name": "Timers",
           "type": "structure",
           "children": [
@@ -2795,6 +2847,7 @@
       "type": "structure",
       "children": [
         {
+          "folded": true,
           "name": "Channels",
           "type": "structure",
           "children": [
@@ -2824,6 +2877,11 @@
               "value": 2100
             }
           ]
+        },
+        {
+          "name": "CurrentScene",
+          "type": "string",
+          "value": ""
         },
         {
           "name": "GameState",

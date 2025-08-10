@@ -5,7 +5,7 @@
   "name": "Game Scene",
   "r": 255,
   "standardSortMethod": true,
-  "stopSoundsOnStartup": true,
+  "stopSoundsOnStartup": false,
   "title": "",
   "v": 255,
   "uiSettings": {
@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.1343715797161347,
+    "zoomFactor": 1.4790395861757901,
     "windowMask": false
   },
   "objectsGroups": [
@@ -6894,7 +6894,18 @@
               ]
             }
           ],
-          "actions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetStringVariable"
+              },
+              "parameters": [
+                "_INGAMEDATA_.CurrentScene",
+                "=",
+                "CurrentSceneName()"
+              ]
+            }
+          ],
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
@@ -7030,6 +7041,7 @@
               "colorG": 128,
               "colorR": 29,
               "creationTime": 0,
+              "folded": true,
               "name": "Load external layout",
               "source": "",
               "type": "BuiltinCommonInstructions::Group",
@@ -7555,6 +7567,64 @@
                   ]
                 }
               ]
+            },
+            {
+              "colorB": 177,
+              "colorG": 128,
+              "colorR": 29,
+              "creationTime": 0,
+              "name": "Load music",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "disabled": true,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "PlayMusicCanal"
+                      },
+                      "parameters": [
+                        "",
+                        "assets\\Music\\melody_start_01.m4a",
+                        "_CONSTANTS_.Channel.StartMusic",
+                        "",
+                        "0",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "PlayMusicCanal"
+                      },
+                      "parameters": [
+                        "",
+                        "assets\\Music\\melody_battle_snare_01.m4a",
+                        "_CONSTANTS_.Channel.BattleMusic",
+                        "",
+                        "0",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "PlayMusicCanal"
+                      },
+                      "parameters": [
+                        "",
+                        "assets\\Music\\melody_game_over_01.m4a",
+                        "_CONSTANTS_.Channel.GameDeadMusic",
+                        "",
+                        "0",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
             }
           ]
         }
@@ -8877,6 +8947,73 @@
               "actions": [],
               "events": [
                 {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "MusicPlaying"
+                      },
+                      "parameters": [
+                        "",
+                        "_CONSTANTS_.Channel.StartMusic"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "FadeMusicVolume"
+                      },
+                      "parameters": [
+                        "",
+                        "_CONSTANTS_.Channel.StartMusic",
+                        "0",
+                        "2"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "StringVariable"
+                      },
+                      "parameters": [
+                        "_INGAMEDATA_.CurrentScene",
+                        "=",
+                        "\"Before Game Start\""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetStringVariable"
+                      },
+                      "parameters": [
+                        "_INGAMEDATA_.CurrentScene",
+                        "=",
+                        "CurrentSceneName()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "PlayMusicCanal"
+                      },
+                      "parameters": [
+                        "",
+                        "assets\\Music\\melody_battle_snare_01.m4a",
+                        "_CONSTANTS_.Channel.BattleMusic",
+                        "yes",
+                        "100",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
                   "type": "BuiltinCommonInstructions::Comment",
                   "color": {
                     "b": 209,
@@ -9030,11 +9167,32 @@
                   "actions": [
                     {
                       "type": {
+                        "value": "FadeMusicVolume"
+                      },
+                      "parameters": [
+                        "",
+                        "_CONSTANTS_.Channel.BattleMusic",
+                        "0",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
                         "value": "PushScene"
                       },
                       "parameters": [
                         "",
                         "\"Before Game Start\""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "DebuggerTools::ConsoleLog"
+                      },
+                      "parameters": [
+                        "\"HERE 1!!!\"",
+                        "",
+                        ""
                       ]
                     }
                   ]
@@ -9066,6 +9224,18 @@
                         "EnemyPosition.X()",
                         "=",
                         "EnemyPosition.Y()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "PathfindingBehavior::SetDestination"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "Pathfinding",
+                        "",
+                        "Enemies.X()",
+                        "Enemies.Y()"
                       ]
                     }
                   ]
@@ -9146,6 +9316,16 @@
                         "Tween",
                         "Timers.Scale"
                       ]
+                    },
+                    {
+                      "type": {
+                        "value": "DebuggerTools::ConsoleLog"
+                      },
+                      "parameters": [
+                        "\"HERE 2!!!\"",
+                        "",
+                        ""
+                      ]
                     }
                   ]
                 },
@@ -9196,6 +9376,16 @@
                         "255",
                         "\"easeInSine\"",
                         "0.5",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "DebuggerTools::ConsoleLog"
+                      },
+                      "parameters": [
+                        "\"HERE 3!!!\"",
+                        "",
                         ""
                       ]
                     }
@@ -9263,6 +9453,16 @@
                         "_CONSTANTS_.Layers.Base",
                         "1"
                       ]
+                    },
+                    {
+                      "type": {
+                        "value": "DebuggerTools::ConsoleLog"
+                      },
+                      "parameters": [
+                        "\"HERE 4!!!\"",
+                        "",
+                        ""
+                      ]
                     }
                   ],
                   "events": [
@@ -9292,6 +9492,15 @@
                         }
                       ],
                       "actions": [
+                        {
+                          "type": {
+                            "value": "RePlayMusicCanal"
+                          },
+                          "parameters": [
+                            "",
+                            "_CONSTANTS_.Channel.BattleMusic"
+                          ]
+                        },
                         {
                           "type": {
                             "value": "SetBooleanObjectVariable"
@@ -17589,7 +17798,19 @@
                       ]
                     }
                   ],
-                  "actions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "FadeMusicVolume"
+                      },
+                      "parameters": [
+                        "",
+                        "_CONSTANTS_.Channel.BattleMusic",
+                        "0",
+                        "1"
+                      ]
+                    }
+                  ],
                   "events": [
                     {
                       "type": "BuiltinCommonInstructions::Standard",
@@ -17794,6 +18015,30 @@
                         "-",
                         "1"
                       ]
+                    },
+                    {
+                      "type": {
+                        "value": "FadeMusicVolume"
+                      },
+                      "parameters": [
+                        "",
+                        "_CONSTANTS_.Channel.BattleMusic",
+                        "0",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "PlayMusicCanal"
+                      },
+                      "parameters": [
+                        "",
+                        "assets\\Music\\melody_game_over_01.m4a",
+                        "_CONSTANTS_.Channel.GameDeadMusic",
+                        "",
+                        "",
+                        ""
+                      ]
                     }
                   ]
                 },
@@ -17808,6 +18053,16 @@
                         "FadeForeground",
                         "Tween",
                         "Timers.Opacity"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "MusicPlaying"
+                      },
+                      "parameters": [
+                        "",
+                        "_CONSTANTS_.Channel.GameDeadMusic"
                       ]
                     }
                   ],
