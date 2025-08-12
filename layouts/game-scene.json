@@ -1,13 +1,13 @@
 {
-  "b": 82,
+  "b": 39,
   "disableInputWhenNotFocused": true,
   "mangledName": "Game_32Scene",
   "name": "Game Scene",
-  "r": 189,
+  "r": 185,
   "standardSortMethod": true,
   "stopSoundsOnStartup": false,
   "title": "",
-  "v": 215,
+  "v": 220,
   "uiSettings": {
     "grid": true,
     "gridType": "rectangular",
@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.4790395861757901,
+    "zoomFactor": 1.688853694704185,
     "windowMask": false
   },
   "objectsGroups": [
@@ -258,13 +258,16 @@
       "name": "Shadows",
       "objects": [
         {
-          "name": "ShadowLeftCorner"
+          "name": "SoftShadowTop"
         },
         {
-          "name": "ShadowTop"
+          "name": "SoftShadow"
         },
         {
-          "name": "ShadowRightInner"
+          "name": "SoftShadowCorner"
+        },
+        {
+          "name": "SoftShadowInnerCorner"
         }
       ]
     }
@@ -6762,7 +6765,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": true,
-                  "image": "NewSprite2",
+                  "image": "WallCollider",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -6819,39 +6822,6 @@
     },
     {
       "assetStoreId": "",
-      "height": 32,
-      "name": "ShadowLeftCorner",
-      "texture": "assets\\Walls\\shadow_left_corner.png",
-      "type": "TiledSpriteObject::TiledSprite",
-      "width": 32,
-      "variables": [],
-      "effects": [],
-      "behaviors": []
-    },
-    {
-      "assetStoreId": "",
-      "height": 32,
-      "name": "ShadowTop",
-      "texture": "assets\\Walls\\shadow_top.png",
-      "type": "TiledSpriteObject::TiledSprite",
-      "width": 32,
-      "variables": [],
-      "effects": [],
-      "behaviors": []
-    },
-    {
-      "assetStoreId": "",
-      "height": 32,
-      "name": "ShadowRightInner",
-      "texture": "assets\\Walls\\shadow_inner_right.png",
-      "type": "TiledSpriteObject::TiledSprite",
-      "width": 32,
-      "variables": [],
-      "effects": [],
-      "behaviors": []
-    },
-    {
-      "assetStoreId": "",
       "name": "WarmLight",
       "type": "Lighting::LightObject",
       "variables": [],
@@ -6863,6 +6833,50 @@
         "debugMode": false,
         "texture": ""
       }
+    },
+    {
+      "assetStoreId": "",
+      "height": 8,
+      "name": "SoftShadowTop",
+      "texture": "assets\\Walls\\soft_shadow_top.png",
+      "type": "TiledSpriteObject::TiledSprite",
+      "width": 8,
+      "variables": [],
+      "effects": [],
+      "behaviors": []
+    },
+    {
+      "assetStoreId": "",
+      "height": 8,
+      "name": "SoftShadow",
+      "texture": "assets\\Walls\\soft_shadow.png",
+      "type": "TiledSpriteObject::TiledSprite",
+      "width": 8,
+      "variables": [],
+      "effects": [],
+      "behaviors": []
+    },
+    {
+      "assetStoreId": "",
+      "height": 8,
+      "name": "SoftShadowCorner",
+      "texture": "assets\\Walls\\soft_shadow_corner.png",
+      "type": "TiledSpriteObject::TiledSprite",
+      "width": 8,
+      "variables": [],
+      "effects": [],
+      "behaviors": []
+    },
+    {
+      "assetStoreId": "",
+      "height": 8,
+      "name": "SoftShadowInnerCorner",
+      "texture": "assets\\Walls\\soft_shadow_inner_corner.png",
+      "type": "TiledSpriteObject::TiledSprite",
+      "width": 8,
+      "variables": [],
+      "effects": [],
+      "behaviors": []
     }
   ],
   "objectsFolderStructure": {
@@ -6927,13 +6941,16 @@
                 "objectName": "DarkerForeground"
               },
               {
-                "objectName": "ShadowLeftCorner"
+                "objectName": "SoftShadowTop"
               },
               {
-                "objectName": "ShadowTop"
+                "objectName": "SoftShadowCorner"
               },
               {
-                "objectName": "ShadowRightInner"
+                "objectName": "SoftShadowInnerCorner"
+              },
+              {
+                "objectName": "SoftShadow"
               }
             ]
           },
@@ -8100,6 +8117,7 @@
       "colorG": 128,
       "colorR": 29,
       "creationTime": 0,
+      "folded": true,
       "name": "Player one inputs",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -9812,11 +9830,6 @@
                           ]
                         }
                       ]
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": []
                     }
                   ]
                 }
@@ -15311,6 +15324,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Tank actions",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
