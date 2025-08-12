@@ -1,13 +1,13 @@
 {
-  "b": 255,
+  "b": 82,
   "disableInputWhenNotFocused": true,
   "mangledName": "Game_32Scene",
   "name": "Game Scene",
-  "r": 255,
+  "r": 189,
   "standardSortMethod": true,
   "stopSoundsOnStartup": false,
   "title": "",
-  "v": 255,
+  "v": 215,
   "uiSettings": {
     "grid": true,
     "gridType": "rectangular",
@@ -26,9 +26,6 @@
       "name": "Player_Walls",
       "objects": [
         {
-          "name": "WhiteWall"
-        },
-        {
           "name": "BreakableWallWhite"
         },
         {
@@ -39,6 +36,9 @@
         },
         {
           "name": "BreakableWallDurable"
+        },
+        {
+          "name": "WallColision"
         }
       ]
     },
@@ -83,9 +83,6 @@
       "name": "VisibleToEnemy",
       "objects": [
         {
-          "name": "WhiteWall"
-        },
-        {
           "name": "BreakableWallWhite"
         },
         {
@@ -96,6 +93,9 @@
         },
         {
           "name": "LandMine"
+        },
+        {
+          "name": "WallColision"
         }
       ]
     },
@@ -145,10 +145,10 @@
           "name": "BreakableWallWhite"
         },
         {
-          "name": "WhiteWall"
+          "name": "BreakableWallDurable"
         },
         {
-          "name": "BreakableWallDurable"
+          "name": "WallColision"
         }
       ]
     },
@@ -248,6 +248,23 @@
         },
         {
           "name": "EnemyPosition"
+        },
+        {
+          "name": "WallColision"
+        }
+      ]
+    },
+    {
+      "name": "Shadows",
+      "objects": [
+        {
+          "name": "ShadowLeftCorner"
+        },
+        {
+          "name": "ShadowTop"
+        },
+        {
+          "name": "ShadowRightInner"
         }
       ]
     }
@@ -884,26 +901,7 @@
           "value": "WhiteSmall"
         }
       ],
-      "effects": [
-        {
-          "effectType": "DropShadow",
-          "name": "Effect",
-          "doubleParameters": {
-            "alpha": 1,
-            "blur": 0.2,
-            "distance": 2,
-            "padding": 0,
-            "quality": 3,
-            "rotation": 90
-          },
-          "stringParameters": {
-            "color": "114;114;114"
-          },
-          "booleanParameters": {
-            "shadowOnly": false
-          }
-        }
-      ],
+      "effects": [],
       "behaviors": [
         {
           "isFolded": true,
@@ -1347,15 +1345,15 @@
           "effectType": "DropShadow",
           "name": "Effect",
           "doubleParameters": {
-            "alpha": 1,
-            "blur": 0.2,
+            "alpha": 0.5,
+            "blur": 0,
             "distance": 2,
-            "padding": 0,
-            "quality": 3,
-            "rotation": 90
+            "padding": 4,
+            "quality": 1,
+            "rotation": 30
           },
           "stringParameters": {
-            "color": "114;114;114"
+            "color": "0;0;0"
           },
           "booleanParameters": {
             "shadowOnly": false
@@ -1371,6 +1369,8 @@
           "FlashDuration": 0
         },
         {
+          "name": "Pathfinding",
+          "type": "PathfindingBehavior::PathfindingBehavior",
           "acceleration": 400,
           "allowDiagonals": true,
           "angleOffset": 0,
@@ -1381,10 +1381,8 @@
           "gridOffsetX": 0,
           "gridOffsetY": 0,
           "maxSpeed": 200,
-          "name": "Pathfinding",
           "rotateObject": true,
-          "smoothingMaxCellGap": 1,
-          "type": "PathfindingBehavior::PathfindingBehavior"
+          "smoothingMaxCellGap": 1
         },
         {
           "name": "PathfindingObstacle",
@@ -5437,6 +5435,8 @@
           "FlashDuration": 0
         },
         {
+          "name": "Pathfinding",
+          "type": "PathfindingBehavior::PathfindingBehavior",
           "acceleration": 400,
           "allowDiagonals": true,
           "angleOffset": 0,
@@ -5447,10 +5447,8 @@
           "gridOffsetX": 0,
           "gridOffsetY": 0,
           "maxSpeed": 200,
-          "name": "Pathfinding",
           "rotateObject": true,
-          "smoothingMaxCellGap": 1,
-          "type": "PathfindingBehavior::PathfindingBehavior"
+          "smoothingMaxCellGap": 1
         },
         {
           "name": "PathfindingObstacle",
@@ -6657,6 +6655,214 @@
           ]
         }
       ]
+    },
+    {
+      "assetStoreId": "",
+      "bottomMargin": 16,
+      "height": 32,
+      "leftMargin": 16,
+      "name": "GroundWall",
+      "rightMargin": 16,
+      "texture": "assets\\Walls\\ground_02.png",
+      "tiled": true,
+      "topMargin": 16,
+      "type": "PanelSpriteObject::PanelSprite",
+      "width": 32,
+      "variables": [
+        {
+          "name": "Type",
+          "type": "string",
+          "value": "Wall"
+        },
+        {
+          "name": "Health",
+          "type": "number",
+          "value": 10000
+        }
+      ],
+      "effects": [],
+      "behaviors": []
+    },
+    {
+      "assetStoreId": "",
+      "height": 64,
+      "name": "Grass03",
+      "texture": "assets\\Walls\\grass_03.png",
+      "type": "TiledSpriteObject::TiledSprite",
+      "width": 64,
+      "variables": [],
+      "effects": [],
+      "behaviors": []
+    },
+    {
+      "assetStoreId": "",
+      "bottomMargin": 32,
+      "height": 96,
+      "leftMargin": 32,
+      "name": "TallGroundWall",
+      "rightMargin": 32,
+      "texture": "assets\\Walls\\ground_03.png",
+      "tiled": true,
+      "topMargin": 32,
+      "type": "PanelSpriteObject::PanelSprite",
+      "width": 96,
+      "variables": [
+        {
+          "hasMixedValues": true,
+          "name": "Type",
+          "type": "string",
+          "value": "Wall"
+        },
+        {
+          "hasMixedValues": true,
+          "name": "Health",
+          "type": "number",
+          "value": 10000
+        }
+      ],
+      "effects": [],
+      "behaviors": []
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "WallColision",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Type",
+          "type": "string",
+          "value": "Wall"
+        },
+        {
+          "name": "Health",
+          "type": "number",
+          "value": 10000
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "PathfindingObstacle",
+          "type": "PathfindingBehavior::PathfindingObstacleBehavior",
+          "cost": 2,
+          "impassable": true
+        }
+      ],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "NewSprite2",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 0,
+                        "y": 0
+                      },
+                      {
+                        "x": 64,
+                        "y": 0
+                      },
+                      {
+                        "x": 64,
+                        "y": 64
+                      },
+                      {
+                        "x": 0,
+                        "y": 64
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetStoreId": "",
+      "name": "DarkerForeground",
+      "type": "TileMap::SimpleTileMap",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "atlasImage": "assets\\Walls\\darker_transition.png",
+        "rowCount": 4,
+        "columnCount": 4,
+        "tileSize": 16,
+        "tilesWithHitBox": ""
+      }
+    },
+    {
+      "assetStoreId": "",
+      "height": 32,
+      "name": "ShadowLeftCorner",
+      "texture": "assets\\Walls\\shadow_left_corner.png",
+      "type": "TiledSpriteObject::TiledSprite",
+      "width": 32,
+      "variables": [],
+      "effects": [],
+      "behaviors": []
+    },
+    {
+      "assetStoreId": "",
+      "height": 32,
+      "name": "ShadowTop",
+      "texture": "assets\\Walls\\shadow_top.png",
+      "type": "TiledSpriteObject::TiledSprite",
+      "width": 32,
+      "variables": [],
+      "effects": [],
+      "behaviors": []
+    },
+    {
+      "assetStoreId": "",
+      "height": 32,
+      "name": "ShadowRightInner",
+      "texture": "assets\\Walls\\shadow_inner_right.png",
+      "type": "TiledSpriteObject::TiledSprite",
+      "width": 32,
+      "variables": [],
+      "effects": [],
+      "behaviors": []
+    },
+    {
+      "assetStoreId": "",
+      "name": "WarmLight",
+      "type": "Lighting::LightObject",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "radius": 370,
+        "color": "255;219;120",
+        "debugMode": false,
+        "texture": ""
+      }
     }
   ],
   "objectsFolderStructure": {
@@ -6676,6 +6882,9 @@
           },
           {
             "objectName": "LandmineDetection"
+          },
+          {
+            "objectName": "WallColision"
           }
         ]
       },
@@ -6702,6 +6911,35 @@
       {
         "folderName": "Scene",
         "children": [
+          {
+            "folderName": "Decoration",
+            "children": [
+              {
+                "objectName": "Grass03"
+              },
+              {
+                "objectName": "GroundWall"
+              },
+              {
+                "objectName": "TallGroundWall"
+              },
+              {
+                "objectName": "DarkerForeground"
+              },
+              {
+                "objectName": "ShadowLeftCorner"
+              },
+              {
+                "objectName": "ShadowTop"
+              },
+              {
+                "objectName": "ShadowRightInner"
+              }
+            ]
+          },
+          {
+            "objectName": "WarmLight"
+          },
           {
             "objectName": "WhiteWall"
           },
@@ -7569,16 +7807,53 @@
               ]
             },
             {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "AjoutObjConcern"
+                  },
+                  "parameters": [
+                    "",
+                    "Shadows"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "TiledSpriteObject::SetColor"
+                  },
+                  "parameters": [
+                    "Shadows",
+                    "\"101;134;61\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "OpacityCapability::OpacityBehavior::SetValue"
+                  },
+                  "parameters": [
+                    "Shadows",
+                    "Opacity",
+                    "=",
+                    "110"
+                  ]
+                }
+              ]
+            },
+            {
               "colorB": 177,
               "colorG": 128,
               "colorR": 29,
               "creationTime": 0,
+              "disabled": true,
+              "folded": true,
               "name": "Load music",
               "source": "",
               "type": "BuiltinCommonInstructions::Group",
               "events": [
                 {
-                  "disabled": true,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [],
                   "actions": [
@@ -9184,16 +9459,6 @@
                         "",
                         "\"Before Game Start\""
                       ]
-                    },
-                    {
-                      "type": {
-                        "value": "DebuggerTools::ConsoleLog"
-                      },
-                      "parameters": [
-                        "\"HERE 1!!!\"",
-                        "",
-                        ""
-                      ]
                     }
                   ]
                 },
@@ -9316,16 +9581,6 @@
                         "Tween",
                         "Timers.Scale"
                       ]
-                    },
-                    {
-                      "type": {
-                        "value": "DebuggerTools::ConsoleLog"
-                      },
-                      "parameters": [
-                        "\"HERE 2!!!\"",
-                        "",
-                        ""
-                      ]
                     }
                   ]
                 },
@@ -9376,16 +9631,6 @@
                         "255",
                         "\"easeInSine\"",
                         "0.5",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "DebuggerTools::ConsoleLog"
-                      },
-                      "parameters": [
-                        "\"HERE 3!!!\"",
-                        "",
                         ""
                       ]
                     }
@@ -9452,16 +9697,6 @@
                         "",
                         "_CONSTANTS_.Layers.Base",
                         "1"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "DebuggerTools::ConsoleLog"
-                      },
-                      "parameters": [
-                        "\"HERE 4!!!\"",
-                        "",
-                        ""
                       ]
                     }
                   ],
@@ -9853,6 +10088,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Enemy logic",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -11770,6 +12006,7 @@
                       "colorG": 33,
                       "colorR": 26,
                       "creationTime": 0,
+                      "folded": true,
                       "name": "Regular enemy logic",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
@@ -15074,7 +15311,6 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
-                  "folded": true,
                   "name": "Tank actions",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -16190,6 +16426,15 @@
                                     "TrailDecal",
                                     "=",
                                     "Tanks.GetBodyAngle() + 90"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "ChangeColor"
+                                  },
+                                  "parameters": [
+                                    "TrailDecal",
+                                    "\"101;134;61\""
                                   ]
                                 },
                                 {
@@ -18726,7 +18971,7 @@
       "camera3DFarPlaneDistance": 10000,
       "camera3DFieldOfView": 45,
       "camera3DNearPlaneDistance": 3,
-      "cameraType": "",
+      "cameraType": "orthographic",
       "followBaseLayerCamera": false,
       "isLightingLayer": false,
       "isLocked": false,
@@ -18734,39 +18979,7 @@
       "renderingType": "",
       "visibility": true,
       "cameras": [],
-      "effects": [
-        {
-          "effectType": "Scene3D::AmbientLight",
-          "name": "3D Ammbient Light",
-          "doubleParameters": {
-            "intensity": 0.25
-          },
-          "stringParameters": {
-            "color": "255;255;255"
-          },
-          "booleanParameters": {}
-        },
-        {
-          "effectType": "Scene3D::DirectionalLight",
-          "name": "3D Sun Light",
-          "doubleParameters": {
-            "distanceFromCamera": 1500,
-            "elevation": 40,
-            "frustumSize": 4000,
-            "intensity": 0.75,
-            "minimumShadowBias": 0,
-            "rotation": 300
-          },
-          "stringParameters": {
-            "color": "255;255;255",
-            "shadowQuality": "medium",
-            "top": "Z+"
-          },
-          "booleanParameters": {
-            "isCastingShadow": true
-          }
-        }
-      ]
+      "effects": []
     },
     {
       "ambientLightColorB": 200,
@@ -18783,23 +18996,24 @@
       "renderingType": "",
       "visibility": true,
       "cameras": [],
-      "effects": [
-        {
-          "effectType": "Scene3D::HemisphereLight",
-          "name": "3D Light",
-          "doubleParameters": {
-            "elevation": 45,
-            "intensity": 1,
-            "rotation": 0
-          },
-          "stringParameters": {
-            "groundColor": "64;64;64",
-            "skyColor": "255;255;255",
-            "top": "Y-"
-          },
-          "booleanParameters": {}
-        }
-      ]
+      "effects": []
+    },
+    {
+      "ambientLightColorB": 128,
+      "ambientLightColorG": 128,
+      "ambientLightColorR": 128,
+      "camera3DFarPlaneDistance": 10000,
+      "camera3DFieldOfView": 45,
+      "camera3DNearPlaneDistance": 3,
+      "cameraType": "",
+      "followBaseLayerCamera": true,
+      "isLightingLayer": true,
+      "isLocked": false,
+      "name": "Lighting",
+      "renderingType": "",
+      "visibility": true,
+      "cameras": [],
+      "effects": []
     }
   ],
   "behaviorsSharedData": [
