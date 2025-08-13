@@ -38,7 +38,7 @@
           "name": "BreakableWallDurable"
         },
         {
-          "name": "WallColision"
+          "name": "WallColilsion"
         }
       ]
     },
@@ -95,7 +95,7 @@
           "name": "LandMine"
         },
         {
-          "name": "WallColision"
+          "name": "WallColilsion"
         }
       ]
     },
@@ -148,7 +148,7 @@
           "name": "BreakableWallDurable"
         },
         {
-          "name": "WallColision"
+          "name": "WallColilsion"
         }
       ]
     },
@@ -250,7 +250,10 @@
           "name": "EnemyPosition"
         },
         {
-          "name": "WallColision"
+          "name": "WallColilsion"
+        },
+        {
+          "name": "ShadowCollision"
         }
       ]
     },
@@ -6729,7 +6732,7 @@
     {
       "adaptCollisionMaskAutomatically": true,
       "assetStoreId": "",
-      "name": "WallColision",
+      "name": "WallColilsion",
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [
@@ -6877,6 +6880,85 @@
       "variables": [],
       "effects": [],
       "behaviors": []
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "ShadowCollision",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Type",
+          "type": "string",
+          "value": "Wall"
+        },
+        {
+          "name": "Health",
+          "type": "number",
+          "value": 10000
+        }
+      ],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "PathfindingObstacle",
+          "type": "PathfindingBehavior::PathfindingObstacleBehavior",
+          "cost": 2,
+          "impassable": true
+        }
+      ],
+      "animations": [
+        {
+          "name": "ShadowCollider",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "ShadowCollider",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 0,
+                        "y": 0
+                      },
+                      {
+                        "x": 64,
+                        "y": 0
+                      },
+                      {
+                        "x": 64,
+                        "y": 64
+                      },
+                      {
+                        "x": 0,
+                        "y": 64
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "objectsFolderStructure": {
@@ -6898,7 +6980,10 @@
             "objectName": "LandmineDetection"
           },
           {
-            "objectName": "WallColision"
+            "objectName": "WallColilsion"
+          },
+          {
+            "objectName": "ShadowCollision"
           }
         ]
       },
@@ -7843,7 +7928,7 @@
                   },
                   "parameters": [
                     "Shadows",
-                    "\"101;134;61\""
+                    "_CONSTANTS_.Colors.ShadowColor"
                   ]
                 },
                 {
@@ -9207,6 +9292,7 @@
           "colorG": 33,
           "colorR": 26,
           "creationTime": 0,
+          "folded": true,
           "name": "START",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -10101,7 +10187,6 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
-                  "folded": true,
                   "name": "Enemy logic",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -10123,7 +10208,6 @@
                       "colorG": 128,
                       "colorR": 29,
                       "creationTime": 0,
-                      "folded": true,
                       "name": "Detection",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
@@ -10456,7 +10540,6 @@
                                   "colorG": 128,
                                   "colorR": 29,
                                   "creationTime": 0,
-                                  "folded": true,
                                   "name": "Debuggin circle",
                                   "source": "",
                                   "type": "BuiltinCommonInstructions::Group",
@@ -10483,7 +10566,7 @@
                                           },
                                           "parameters": [
                                             "NewShapePainter",
-                                            "_CONFIG_.RedLine"
+                                            "_CONSTANTS_.Colors.RedLine"
                                           ]
                                         }
                                       ]
@@ -10510,7 +10593,7 @@
                                           },
                                           "parameters": [
                                             "NewShapePainter",
-                                            "_CONFIG_.GreenLine"
+                                            "_CONSTANTS_.Colors.GreenLine"
                                           ]
                                         },
                                         {
@@ -11228,8 +11311,8 @@
                                           "parameters": [
                                             "",
                                             "NewShapePainter",
-                                            "_CONFIG_.GreenLine",
-                                            "_CONFIG_.RedLine",
+                                            "_CONSTANTS_.Colors.GreenLine",
+                                            "_CONSTANTS_.Colors.RedLine",
                                             "AuxX",
                                             "AuxY",
                                             "IntersectsX[RepeatCount+1]",
@@ -17964,6 +18047,7 @@
           "colorG": 33,
           "colorR": 26,
           "creationTime": 0,
+          "folded": true,
           "name": "GAME WON",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -18198,6 +18282,7 @@
           "colorG": 33,
           "colorR": 26,
           "creationTime": 0,
+          "folded": true,
           "name": "GAME OVER",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -18447,7 +18532,6 @@
       "colorG": 128,
       "colorR": 29,
       "creationTime": 0,
-      "folded": true,
       "name": "Global events",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -18604,7 +18688,7 @@
                   },
                   "parameters": [
                     "DeathMark",
-                    "_CONFIG_.RedLine"
+                    "_CONSTANTS_.Colors.RedLine"
                   ]
                 },
                 {
@@ -18944,6 +19028,76 @@
               ]
             }
           ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 209,
+            "g": 199,
+            "r": 85,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "Change tint of tanks in the shadows"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CollisionNP"
+              },
+              "parameters": [
+                "Tanks",
+                "ShadowCollision",
+                "",
+                "",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomObjects::Player::SetTint"
+              },
+              "parameters": [
+                "Tanks",
+                "_CONSTANTS_.Colors.ShadowColor",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": true,
+                "value": "CollisionNP"
+              },
+              "parameters": [
+                "Tanks",
+                "ShadowCollision",
+                "",
+                "",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomObjects::Player::ResetTint"
+              },
+              "parameters": [
+                "Tanks",
+                "\"200,160,200\""
+              ]
+            }
+          ]
         }
       ],
       "parameters": []
@@ -18996,23 +19150,6 @@
       "effects": []
     },
     {
-      "ambientLightColorB": 200,
-      "ambientLightColorG": 200,
-      "ambientLightColorR": 200,
-      "camera3DFarPlaneDistance": 10000,
-      "camera3DFieldOfView": 45,
-      "camera3DNearPlaneDistance": 3,
-      "cameraType": "",
-      "followBaseLayerCamera": false,
-      "isLightingLayer": false,
-      "isLocked": false,
-      "name": "UI",
-      "renderingType": "",
-      "visibility": true,
-      "cameras": [],
-      "effects": []
-    },
-    {
       "ambientLightColorB": 128,
       "ambientLightColorG": 128,
       "ambientLightColorR": 128,
@@ -19024,6 +19161,23 @@
       "isLightingLayer": true,
       "isLocked": false,
       "name": "Lighting",
+      "renderingType": "",
+      "visibility": true,
+      "cameras": [],
+      "effects": []
+    },
+    {
+      "ambientLightColorB": 200,
+      "ambientLightColorG": 200,
+      "ambientLightColorR": 200,
+      "camera3DFarPlaneDistance": 10000,
+      "camera3DFieldOfView": 45,
+      "camera3DNearPlaneDistance": 3,
+      "cameraType": "",
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
+      "isLocked": false,
+      "name": "UI",
       "renderingType": "",
       "visibility": true,
       "cameras": [],

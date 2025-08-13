@@ -1277,7 +1277,12 @@
           "updateIfNotVisible": false,
           "variables": [],
           "effects": [],
-          "behaviors": [],
+          "behaviors": [
+            {
+              "name": "Tween",
+              "type": "Tween::TweenBehavior"
+            }
+          ],
           "animations": [
             {
               "name": "body",
@@ -1913,7 +1918,12 @@
           "updateIfNotVisible": false,
           "variables": [],
           "effects": [],
-          "behaviors": [],
+          "behaviors": [
+            {
+              "name": "Tween",
+              "type": "Tween::TweenBehavior"
+            }
+          ],
           "animations": [
             {
               "name": "cannon",
@@ -3140,6 +3150,110 @@
                   ]
                 }
               ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "ChangeTint",
+                    "True",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::IsPlaying"
+                  },
+                  "parameters": [
+                    "BodySprite",
+                    "Tween",
+                    "\"ChangeTint\""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Tween::RemoveTween"
+                  },
+                  "parameters": [
+                    "BodySprite",
+                    "Tween",
+                    "\"ChangeTint\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::RemoveTween"
+                  },
+                  "parameters": [
+                    "CannonSprite",
+                    "Tween",
+                    "\"ChangeTint\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "ChangeTint",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectColorTween2"
+                  },
+                  "parameters": [
+                    "BodySprite",
+                    "Tween",
+                    "\"ChangeTint\"",
+                    "TintColor",
+                    "\"linear\"",
+                    "0.1",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectColorTween2"
+                  },
+                  "parameters": [
+                    "CannonSprite",
+                    "Tween",
+                    "\"ChangeTint\"",
+                    "TintColor",
+                    "\"linear\"",
+                    "0.1",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "ChangeTint",
+                    "False",
+                    ""
+                  ]
+                }
+              ]
             }
           ],
           "parameters": [
@@ -3503,6 +3617,99 @@
           "objectGroups": []
         },
         {
+          "description": "Set the tint color of cannon and body",
+          "fullName": "Set tint color",
+          "functionType": "Action",
+          "name": "SetTint",
+          "sentence": "Set tint color _PARAM1_ of _PARAM0_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "ChangeTint",
+                    "True",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "TintColor",
+                    "=",
+                    "Tint"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Player",
+              "type": "object"
+            },
+            {
+              "description": "",
+              "name": "Tint",
+              "type": "color"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Reset the tint color of cannon and body",
+          "fullName": "Reset tint color",
+          "functionType": "Action",
+          "name": "ResetTint",
+          "sentence": "Reset tint of  _PARAM0_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "TintColor",
+                    "=",
+                    "\"255;255;255\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "ChangeTint",
+                    "True",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Player",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
           "fullName": "",
           "functionType": "Expression",
           "name": "GetMuzzlePointX",
@@ -3752,6 +3959,20 @@
           "label": "",
           "hidden": true,
           "name": "MovementDirection"
+        },
+        {
+          "value": "",
+          "type": "Boolean",
+          "label": "",
+          "hidden": true,
+          "name": "ChangeTint"
+        },
+        {
+          "value": "255;255;255",
+          "type": "Color",
+          "label": "",
+          "hidden": true,
+          "name": "TintColor"
         }
       ],
       "variants": [
@@ -3926,7 +4147,12 @@
               "updateIfNotVisible": false,
               "variables": [],
               "effects": [],
-              "behaviors": [],
+              "behaviors": [
+                {
+                  "name": "Tween",
+                  "type": "Tween::TweenBehavior"
+                }
+              ],
               "animations": [
                 {
                   "name": "body",
@@ -4562,7 +4788,12 @@
               "updateIfNotVisible": false,
               "variables": [],
               "effects": [],
-              "behaviors": [],
+              "behaviors": [
+                {
+                  "name": "Tween",
+                  "type": "Tween::TweenBehavior"
+                }
+              ],
               "animations": [
                 {
                   "name": "cannon",
@@ -5599,7 +5830,12 @@
               "updateIfNotVisible": false,
               "variables": [],
               "effects": [],
-              "behaviors": [],
+              "behaviors": [
+                {
+                  "name": "Tween",
+                  "type": "Tween::TweenBehavior"
+                }
+              ],
               "animations": [
                 {
                   "name": "body",
@@ -6235,7 +6471,12 @@
               "updateIfNotVisible": false,
               "variables": [],
               "effects": [],
-              "behaviors": [],
+              "behaviors": [
+                {
+                  "name": "Tween",
+                  "type": "Tween::TweenBehavior"
+                }
+              ],
               "animations": [
                 {
                   "name": "cannon",
@@ -7272,7 +7513,12 @@
               "updateIfNotVisible": false,
               "variables": [],
               "effects": [],
-              "behaviors": [],
+              "behaviors": [
+                {
+                  "name": "Tween",
+                  "type": "Tween::TweenBehavior"
+                }
+              ],
               "animations": [
                 {
                   "name": "body",
@@ -7908,7 +8154,12 @@
               "updateIfNotVisible": false,
               "variables": [],
               "effects": [],
-              "behaviors": [],
+              "behaviors": [
+                {
+                  "name": "Tween",
+                  "type": "Tween::TweenBehavior"
+                }
+              ],
               "animations": [
                 {
                   "name": "cannon",
@@ -8945,7 +9196,12 @@
               "updateIfNotVisible": false,
               "variables": [],
               "effects": [],
-              "behaviors": [],
+              "behaviors": [
+                {
+                  "name": "Tween",
+                  "type": "Tween::TweenBehavior"
+                }
+              ],
               "animations": [
                 {
                   "name": "body",
@@ -9581,7 +9837,12 @@
               "updateIfNotVisible": false,
               "variables": [],
               "effects": [],
-              "behaviors": [],
+              "behaviors": [
+                {
+                  "name": "Tween",
+                  "type": "Tween::TweenBehavior"
+                }
+              ],
               "animations": [
                 {
                   "name": "cannon",
