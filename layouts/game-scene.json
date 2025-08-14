@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.688853694704185,
+    "zoomFactor": 1.2952916551236362,
     "windowMask": false
   },
   "objectsGroups": [
@@ -273,6 +273,9 @@
         },
         {
           "name": "Explosion"
+        },
+        {
+          "name": "MuzzleFire"
         }
       ]
     },
@@ -484,6 +487,16 @@
       "name": "TanksMoving",
       "type": "number",
       "value": 0
+    },
+    {
+      "name": "TestRayContactX",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "TestRayContactY",
+      "type": "number",
+      "value": 0
     }
   ],
   "instances": [
@@ -526,13 +539,13 @@
       "customSize": false,
       "height": 0,
       "keepRatio": true,
-      "layer": "Base",
+      "layer": "UI",
       "name": "NewShapePainter",
       "persistentUuid": "632f53ec-da72-4c7d-aeac-0e0d51ffece9",
       "width": 0,
       "x": 448,
       "y": -96,
-      "zOrder": 5,
+      "zOrder": 200,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -9161,11 +9174,483 @@
           ]
         }
       ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "MuzzleFire",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "hasMixedValues": true,
+          "name": "Damage",
+          "type": "number",
+          "value": 1
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "Adjustment",
+          "name": "Effect",
+          "doubleParameters": {
+            "alpha": 0.9,
+            "blue": 1,
+            "brightness": 1,
+            "contrast": 1,
+            "gamma": 1,
+            "green": 1,
+            "red": 1,
+            "saturation": 1
+          },
+          "stringParameters": {},
+          "booleanParameters": {}
+        }
+      ],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.09,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Muzzle fire\\muzzle_fire_01_1.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 16,
+                    "y": 16
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 6,
+                        "y": 5
+                      },
+                      {
+                        "x": 25,
+                        "y": 5
+                      },
+                      {
+                        "x": 25,
+                        "y": 26
+                      },
+                      {
+                        "x": 6,
+                        "y": 26
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Muzzle fire\\muzzle_fire_01_2.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 16,
+                    "y": 16
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 6,
+                        "y": 5
+                      },
+                      {
+                        "x": 25,
+                        "y": 5
+                      },
+                      {
+                        "x": 25,
+                        "y": 26
+                      },
+                      {
+                        "x": 6,
+                        "y": 26
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Muzzle fire\\muzzle_fire_01_3.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 16,
+                    "y": 16
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 6,
+                        "y": 5
+                      },
+                      {
+                        "x": 25,
+                        "y": 5
+                      },
+                      {
+                        "x": 25,
+                        "y": 26
+                      },
+                      {
+                        "x": 6,
+                        "y": 26
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Muzzle fire\\muzzle_fire_01_4.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 16,
+                    "y": 16
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 6,
+                        "y": 5
+                      },
+                      {
+                        "x": 25,
+                        "y": 5
+                      },
+                      {
+                        "x": 25,
+                        "y": 26
+                      },
+                      {
+                        "x": 6,
+                        "y": 26
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Muzzle fire\\muzzle_fire_01_5.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 16,
+                    "y": 16
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 6,
+                        "y": 5
+                      },
+                      {
+                        "x": 25,
+                        "y": 5
+                      },
+                      {
+                        "x": 25,
+                        "y": 26
+                      },
+                      {
+                        "x": 6,
+                        "y": 26
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "GlowLight",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [
+        {
+          "effectType": "BlendingMode",
+          "name": "Effect",
+          "doubleParameters": {
+            "blendmode": 1,
+            "opacity": 1
+          },
+          "stringParameters": {},
+          "booleanParameters": {}
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Sticker",
+          "type": "Sticker::Sticker",
+          "OnlyFollowPosition": true,
+          "IsDestroyedWithParent": true
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "animations": [
+        {
+          "name": "default",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Explosions\\Glow.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 64,
+                    "y": 64
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 34,
+                        "y": 31
+                      },
+                      {
+                        "x": 96,
+                        "y": 31
+                      },
+                      {
+                        "x": 96,
+                        "y": 93
+                      },
+                      {
+                        "x": 34,
+                        "y": 93
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "Doug",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "acceleration": 1500,
+          "canGoDownFromJumpthru": true,
+          "canGrabPlatforms": false,
+          "canGrabWithoutMoving": true,
+          "deceleration": 1500,
+          "gravity": 1000,
+          "ignoreDefaultControls": false,
+          "jumpSpeed": 600,
+          "jumpSustainTime": 0.2,
+          "ladderClimbingSpeed": 150,
+          "maxFallingSpeed": 700,
+          "maxSpeed": 250,
+          "name": "PlatformerObject",
+          "slopeMaxAngle": 60,
+          "type": "PlatformBehavior::PlatformerObjectBehavior",
+          "useLegacyTrajectory": false,
+          "useRepeatedJump": false,
+          "xGrabTolerance": 10,
+          "yGrabOffset": 0
+        }
+      ],
+      "animations": [
+        {
+          "name": "default",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Player\\tank_red_cannon_0005.png",
+                  "points": [
+                    {
+                      "name": "GapCheck",
+                      "x": 32,
+                      "y": 16
+                    }
+                  ],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": false,
+                    "name": "centre",
+                    "x": 16,
+                    "y": 16
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 9,
+                        "y": 4
+                      },
+                      {
+                        "x": 29,
+                        "y": 4
+                      },
+                      {
+                        "x": 29,
+                        "y": 16
+                      },
+                      {
+                        "x": 9,
+                        "y": 16
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "Platform",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "canBeGrabbed": true,
+          "name": "Platform",
+          "platformType": "NormalPlatform",
+          "type": "PlatformBehavior::PlatformBehavior",
+          "yGrabOffset": 0
+        }
+      ],
+      "animations": [
+        {
+          "name": "default",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Walls\\wall_white.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 0,
+                        "y": 0
+                      },
+                      {
+                        "x": 96,
+                        "y": 0
+                      },
+                      {
+                        "x": 96,
+                        "y": 96
+                      },
+                      {
+                        "x": 0,
+                        "y": 96
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "objectsFolderStructure": {
     "folderName": "__ROOT",
     "children": [
+      {
+        "objectName": "Doug"
+      },
+      {
+        "objectName": "Platform"
+      },
       {
         "folderName": "HiddenCollisions",
         "children": [
@@ -9206,6 +9691,12 @@
           },
           {
             "objectName": "DeathMark"
+          },
+          {
+            "objectName": "MuzzleFire"
+          },
+          {
+            "objectName": "GlowLight"
           }
         ]
       },
@@ -9619,7 +10110,6 @@
               "colorG": 128,
               "colorR": 29,
               "creationTime": 0,
-              "folded": true,
               "name": "Load external layout",
               "source": "",
               "type": "BuiltinCommonInstructions::Group",
@@ -9845,7 +10335,6 @@
               ]
             },
             {
-              "folded": true,
               "type": "BuiltinCommonInstructions::ForEach",
               "object": "Enemies",
               "conditions": [],
@@ -10413,7 +10902,6 @@
       "colorG": 128,
       "colorR": 29,
       "creationTime": 0,
-      "folded": true,
       "name": "Player one inputs",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -10642,6 +11130,17 @@
                     "",
                     "_CONFIG_.Players[0].Keyboard.MoveDown"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "CompareObjectTimer"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    "_CONSTANTS_.Timers.Tanks.ShootCooldown",
+                    ">=",
+                    "Tanks.ShootCooldown"
+                  ]
                 }
               ],
               "actions": [
@@ -10667,6 +11166,17 @@
                     "",
                     "_CONFIG_.Players[0].Keyboard.MoveLeft"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "CompareObjectTimer"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    "_CONSTANTS_.Timers.Tanks.ShootCooldown",
+                    ">=",
+                    "Tanks.ShootCooldown"
+                  ]
                 }
               ],
               "actions": [
@@ -10677,6 +11187,34 @@
                   "parameters": [
                     "Player",
                     "TopDownMovement"
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "disabled": true,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "PlatformBehavior::SimulateLeftKey"
+                      },
+                      "parameters": [
+                        "Doug",
+                        "PlatformerObject"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "FlippableCapability::FlippableBehavior::FlipX"
+                      },
+                      "parameters": [
+                        "Doug",
+                        "Flippable",
+                        "yes"
+                      ]
+                    }
                   ]
                 }
               ]
@@ -10692,6 +11230,17 @@
                     "",
                     "_CONFIG_.Players[0].Keyboard.MoveRight"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "CompareObjectTimer"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    "_CONSTANTS_.Timers.Tanks.ShootCooldown",
+                    ">=",
+                    "Tanks.ShootCooldown"
+                  ]
                 }
               ],
               "actions": [
@@ -10702,6 +11251,34 @@
                   "parameters": [
                     "Player",
                     "TopDownMovement"
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "disabled": true,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "PlatformBehavior::SimulateRightKey"
+                      },
+                      "parameters": [
+                        "Doug",
+                        "PlatformerObject"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "FlippableCapability::FlippableBehavior::FlipX"
+                      },
+                      "parameters": [
+                        "Doug",
+                        "Flippable",
+                        ""
+                      ]
+                    }
                   ]
                 }
               ]
@@ -10716,6 +11293,17 @@
                   "parameters": [
                     "",
                     "_CONFIG_.Players[0].Keyboard.MoveUp"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CompareObjectTimer"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    "_CONSTANTS_.Timers.Tanks.ShootCooldown",
+                    ">=",
+                    "Tanks.ShootCooldown"
                   ]
                 }
               ],
@@ -12398,6 +12986,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Enemy logic",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -12626,7 +13215,6 @@
                                   "comment": "Landmine detection"
                                 },
                                 {
-                                  "folded": true,
                                   "type": "BuiltinCommonInstructions::Standard",
                                   "conditions": [
                                     {
@@ -13098,7 +13686,6 @@
                                       "comment": "// La deteccion del enemigo esta separado para que no tope con su colision"
                                     },
                                     {
-                                      "folded": true,
                                       "type": "BuiltinCommonInstructions::Standard",
                                       "conditions": [
                                         {
@@ -13198,7 +13785,6 @@
                                       ]
                                     },
                                     {
-                                      "folded": true,
                                       "type": "BuiltinCommonInstructions::Standard",
                                       "conditions": [
                                         {
@@ -13845,6 +14431,7 @@
                       "colorG": 33,
                       "colorR": 26,
                       "creationTime": 0,
+                      "folded": true,
                       "name": "Stationary enemy logic",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
@@ -14312,6 +14899,7 @@
                       "colorG": 33,
                       "colorR": 26,
                       "creationTime": 0,
+                      "folded": true,
                       "name": "Regular enemy logic",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
@@ -15445,6 +16033,7 @@
                       "colorG": 33,
                       "colorR": 26,
                       "creationTime": 0,
+                      "folded": true,
                       "name": "Landmine enemy logic",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
@@ -17031,6 +17620,7 @@
                       "colorG": 33,
                       "colorR": 26,
                       "creationTime": 0,
+                      "folded": true,
                       "name": "Missile enemy logic",
                       "source": "",
                       "type": "BuiltinCommonInstructions::Group",
@@ -17614,7 +18204,6 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
-                  "folded": true,
                   "name": "Tank actions",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -17686,7 +18275,17 @@
                               ]
                             }
                           ],
-                          "actions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "CustomObjects::Player::ShootAnimation"
+                              },
+                              "parameters": [
+                                "Tanks",
+                                ""
+                              ]
+                            }
+                          ],
                           "events": [
                             {
                               "folded": true,
@@ -18051,6 +18650,185 @@
                                   ]
                                 }
                               ]
+                            },
+                            {
+                              "colorB": 177,
+                              "colorG": 128,
+                              "colorR": 29,
+                              "creationTime": 0,
+                              "name": "Muzzle fire",
+                              "source": "",
+                              "type": "BuiltinCommonInstructions::Group",
+                              "events": [
+                                {
+                                  "type": "BuiltinCommonInstructions::Standard",
+                                  "conditions": [],
+                                  "actions": [
+                                    {
+                                      "type": {
+                                        "value": "Create"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "MuzzleFire",
+                                        "Tanks.GetMuzzlePointX() + XFromAngleAndDistance(Tanks.GetCannonAngle(), 8)",
+                                        "Tanks.GetMuzzlePointY() + YFromAngleAndDistance(Tanks.GetCannonAngle(), 8)",
+                                        "\"Base\""
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "SetAngle"
+                                      },
+                                      "parameters": [
+                                        "MuzzleFire",
+                                        "=",
+                                        "Tanks.GetCannonAngle()"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "ChangePlan"
+                                      },
+                                      "parameters": [
+                                        "MuzzleFire",
+                                        "=",
+                                        "MuzzleFire.Y()"
+                                      ]
+                                    },
+                                    {
+                                      "type": {
+                                        "value": "LinkedObjects::LinkObjects"
+                                      },
+                                      "parameters": [
+                                        "",
+                                        "MuzzleFire",
+                                        "Tanks"
+                                      ]
+                                    }
+                                  ],
+                                  "events": [
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [
+                                        {
+                                          "type": {
+                                            "value": "BuiltinCommonInstructions::CompareNumbers"
+                                          },
+                                          "parameters": [
+                                            "abs(Tanks.GetCannonAngle())",
+                                            ">",
+                                            "90"
+                                          ]
+                                        }
+                                      ],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "FlippableCapability::FlippableBehavior::FlipY"
+                                          },
+                                          "parameters": [
+                                            "MuzzleFire",
+                                            "Flippable",
+                                            "yes"
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "BuiltinCommonInstructions::Standard",
+                                      "conditions": [],
+                                      "actions": [
+                                        {
+                                          "type": {
+                                            "value": "Create"
+                                          },
+                                          "parameters": [
+                                            "",
+                                            "GlowLight",
+                                            "MuzzleFire.X()",
+                                            "MuzzleFire.Y()",
+                                            "\"Base\""
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "ChangePlan"
+                                          },
+                                          "parameters": [
+                                            "GlowLight",
+                                            "=",
+                                            "MuzzleFire.Y()-1"
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "Sticker::Sticker::Stick"
+                                          },
+                                          "parameters": [
+                                            "GlowLight",
+                                            "Sticker",
+                                            "MuzzleFire",
+                                            ""
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "OpacityCapability::OpacityBehavior::SetValue"
+                                          },
+                                          "parameters": [
+                                            "GlowLight",
+                                            "Opacity",
+                                            "=",
+                                            "200"
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "ScalableCapability::ScalableBehavior::SetValue"
+                                          },
+                                          "parameters": [
+                                            "GlowLight",
+                                            "Scale",
+                                            "=",
+                                            "0.5"
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "Tween::TweenBehavior::AddObjectScaleTween3"
+                                          },
+                                          "parameters": [
+                                            "GlowLight",
+                                            "Tween",
+                                            "Timers.Scale",
+                                            "0.2",
+                                            "\"bounce\"",
+                                            "0.6",
+                                            "",
+                                            ""
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
+                                          },
+                                          "parameters": [
+                                            "GlowLight",
+                                            "Tween",
+                                            "Timers.Scale",
+                                            "0",
+                                            "\"easeOutQuad\"",
+                                            "0.6",
+                                            ""
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ],
+                              "parameters": []
                             },
                             {
                               "colorB": 177,
@@ -18833,6 +19611,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Bullets",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -20751,9 +21530,47 @@
             "textG": 0,
             "textR": 0
           },
+          "comment": "Destroy muzzle fire"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::HasAnimationEnded"
+              },
+              "parameters": [
+                "MuzzleFire",
+                "Animation"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Delete"
+              },
+              "parameters": [
+                "MuzzleFire",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 209,
+            "g": 199,
+            "r": 85,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
           "comment": "Destroy damageables"
         },
         {
+          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -21093,6 +21910,7 @@
           "comment": "Update animation for BreakableWalls"
         },
         {
+          "folded": true,
           "type": "BuiltinCommonInstructions::ForEach",
           "object": "BreakableWalls",
           "conditions": [],
@@ -21268,6 +22086,7 @@
           ]
         },
         {
+          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -21410,6 +22229,181 @@
         }
       ],
       "parameters": []
+    },
+    {
+      "colorB": 228,
+      "colorG": 176,
+      "colorR": 74,
+      "creationTime": 0,
+      "disabled": true,
+      "folded": true,
+      "name": "Raycast test",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Raycast"
+                  },
+                  "parameters": [
+                    "Platform",
+                    "Doug.PointX(\"GapCheck\")",
+                    "Doug.PointY(\"GapCheck\")",
+                    "Angle",
+                    "Distance",
+                    "TestRayContactX",
+                    "TestRayContactY",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "TestRay",
+                    "True",
+                    "PurpleEnemy.ID"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "TestRay",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "PrimitiveDrawing::OutlineColor"
+                  },
+                  "parameters": [
+                    "NewShapePainter",
+                    "_CONSTANTS_.Colors.GreenLine"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PrimitiveDrawing::LineV2"
+                  },
+                  "parameters": [
+                    "NewShapePainter",
+                    "Doug.PointX(\"GapCheck\")",
+                    "Doug.PointY(\"GapCheck\")",
+                    "TestRayContactX",
+                    "TestRayContactY",
+                    "1"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "TestRay",
+                    "False",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "PrimitiveDrawing::OutlineColor"
+                  },
+                  "parameters": [
+                    "NewShapePainter",
+                    "_CONSTANTS_.Colors.RedLine"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PrimitiveDrawing::LineV2"
+                  },
+                  "parameters": [
+                    "NewShapePainter",
+                    "Doug.PointX(\"GapCheck\")",
+                    "Doug.PointY(\"GapCheck\")",
+                    "XFromAngleAndDistance(Angle, Distance) + Doug.PointX(\"GapCheck\")",
+                    "YFromAngleAndDistance(Angle, Distance) + Doug.PointY(\"GapCheck\")",
+                    "1"
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "PlatformBehavior::SimulateJumpKey"
+                      },
+                      "parameters": [
+                        "Doug",
+                        "PlatformerObject"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "Angle",
+              "type": "number",
+              "value": 90
+            },
+            {
+              "name": "Distance",
+              "type": "number",
+              "value": 128
+            },
+            {
+              "name": "PosX",
+              "type": "number",
+              "value": 180
+            },
+            {
+              "name": "PosY",
+              "type": "number",
+              "value": 120
+            },
+            {
+              "name": "TestRay",
+              "type": "boolean",
+              "value": false
+            }
+          ]
+        }
+      ],
+      "parameters": []
     }
   ],
   "layers": [
@@ -21525,6 +22519,14 @@
     {
       "name": "PathfindingObstacle",
       "type": "PathfindingBehavior::PathfindingObstacleBehavior"
+    },
+    {
+      "name": "Platform",
+      "type": "PlatformBehavior::PlatformBehavior"
+    },
+    {
+      "name": "PlatformerObject",
+      "type": "PlatformBehavior::PlatformerObjectBehavior"
     },
     {
       "name": "RectangleMovement",

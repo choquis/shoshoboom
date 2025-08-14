@@ -1276,7 +1276,22 @@
           "type": "Sprite",
           "updateIfNotVisible": false,
           "variables": [],
-          "effects": [],
+          "effects": [
+            {
+              "effectType": "HslAdjustment",
+              "name": "flash",
+              "doubleParameters": {
+                "alpha": 1,
+                "hue": 0,
+                "lightness": 0,
+                "saturation": 0
+              },
+              "stringParameters": {},
+              "booleanParameters": {
+                "colorize": false
+              }
+            }
+          ],
           "behaviors": [
             {
               "name": "Tween",
@@ -1917,7 +1932,22 @@
           "type": "Sprite",
           "updateIfNotVisible": false,
           "variables": [],
-          "effects": [],
+          "effects": [
+            {
+              "effectType": "HslAdjustment",
+              "name": "flash",
+              "doubleParameters": {
+                "alpha": 1,
+                "hue": 0,
+                "lightness": 0,
+                "saturation": 0
+              },
+              "stringParameters": {},
+              "booleanParameters": {
+                "colorize": false
+              }
+            }
+          ],
           "behaviors": [
             {
               "name": "Tween",
@@ -3254,6 +3284,300 @@
                   ]
                 }
               ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Shooting",
+                    "True",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::IsPlaying"
+                  },
+                  "parameters": [
+                    "CannonSprite",
+                    "Tween",
+                    "\"Shooting\""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Tween::RemoveTween"
+                  },
+                  "parameters": [
+                    "CannonSprite",
+                    "Tween",
+                    "\"Shooting\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Shooting",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "AuxX",
+                    "=",
+                    "CannonContainer.CenterX()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "AuxY",
+                    "=",
+                    "CannonContainer.CenterY()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "Shooting",
+                    "False",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EffectCapability::EffectBehavior::SetEffectDoubleParameter"
+                  },
+                  "parameters": [
+                    "CannonSprite",
+                    "Effect",
+                    "\"flash\"",
+                    "\"lightness\"",
+                    "0.24"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EffectCapability::EffectBehavior::SetEffectDoubleParameter"
+                  },
+                  "parameters": [
+                    "CannonSprite",
+                    "Effect",
+                    "\"flash\"",
+                    "\"hue\"",
+                    "12"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EffectCapability::EffectBehavior::SetEffectDoubleParameter"
+                  },
+                  "parameters": [
+                    "BodySprite",
+                    "Effect",
+                    "\"flash\"",
+                    "\"lightness\"",
+                    "0.24"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EffectCapability::EffectBehavior::SetEffectDoubleParameter"
+                  },
+                  "parameters": [
+                    "BodySprite",
+                    "Effect",
+                    "\"flash\"",
+                    "\"hue\"",
+                    "12"
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::Once"
+                      },
+                      "parameters": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "MettreXY"
+                      },
+                      "parameters": [
+                        "CannonSprite",
+                        "=",
+                        "AuxX + XFromAngleAndDistance(Object.GetCannonAngle(), -2)",
+                        "=",
+                        "AuxY + YFromAngleAndDistance(Object.GetCannonAngle(), -2)"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "Tween::TweenBehavior::AddObjectPositionTween2"
+                      },
+                      "parameters": [
+                        "CannonSprite",
+                        "Tween",
+                        "\"Shooting\"",
+                        "AuxX",
+                        "AuxY",
+                        "\"easeInQuad\"",
+                        "0.1",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Tween::TweenBehavior::AddNumberEffectPropertyTween"
+                      },
+                      "parameters": [
+                        "CannonSprite",
+                        "Tween",
+                        "Effect",
+                        "\"Flash\"",
+                        "0",
+                        "\"flash\"",
+                        "\"lightness\"",
+                        "\"linear\"",
+                        "0.2",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Tween::TweenBehavior::AddNumberEffectPropertyTween"
+                      },
+                      "parameters": [
+                        "BodySprite",
+                        "Tween",
+                        "Effect",
+                        "\"Flash\"",
+                        "0",
+                        "\"flash\"",
+                        "\"lightness\"",
+                        "\"linear\"",
+                        "0.2",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Tween::TweenBehavior::AddNumberEffectPropertyTween"
+                      },
+                      "parameters": [
+                        "CannonSprite",
+                        "Tween",
+                        "Effect",
+                        "\"FlashHUE\"",
+                        "0",
+                        "\"flash\"",
+                        "\"hue\"",
+                        "\"linear\"",
+                        "0.2",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Tween::TweenBehavior::AddNumberEffectPropertyTween"
+                      },
+                      "parameters": [
+                        "BodySprite",
+                        "Tween",
+                        "Effect",
+                        "\"FlashHUE\"",
+                        "0",
+                        "\"flash\"",
+                        "\"hue\"",
+                        "\"linear\"",
+                        "0.2",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "variables": [
+                {
+                  "name": "AuxX",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "AuxY",
+                  "type": "number",
+                  "value": 0
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Player",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Start or restart the shoot animation for the tank",
+          "fullName": "Start shoot animation",
+          "functionType": "Action",
+          "name": "ShootAnimation",
+          "sentence": "Start shoot animation of _PARAM0_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "Shooting",
+                    "True",
+                    ""
+                  ]
+                }
+              ]
             }
           ],
           "parameters": [
@@ -3678,22 +4002,22 @@
               "actions": [
                 {
                   "type": {
-                    "value": "SetStringVariable"
-                  },
-                  "parameters": [
-                    "TintColor",
-                    "=",
-                    "\"255;255;255\""
-                  ]
-                },
-                {
-                  "type": {
                     "value": "SetBooleanVariable"
                   },
                   "parameters": [
                     "ChangeTint",
                     "True",
                     ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "TintColor",
+                    "=",
+                    "\"255;255;255\""
                   ]
                 }
               ]
@@ -3973,6 +4297,13 @@
           "label": "",
           "hidden": true,
           "name": "TintColor"
+        },
+        {
+          "value": "",
+          "type": "Boolean",
+          "label": "",
+          "hidden": true,
+          "name": "Shooting"
         }
       ],
       "variants": [
@@ -4146,7 +4477,22 @@
               "type": "Sprite",
               "updateIfNotVisible": false,
               "variables": [],
-              "effects": [],
+              "effects": [
+                {
+                  "effectType": "HslAdjustment",
+                  "name": "flash",
+                  "doubleParameters": {
+                    "alpha": 1,
+                    "hue": 0,
+                    "lightness": 0,
+                    "saturation": 0
+                  },
+                  "stringParameters": {},
+                  "booleanParameters": {
+                    "colorize": false
+                  }
+                }
+              ],
               "behaviors": [
                 {
                   "name": "Tween",
@@ -4787,7 +5133,22 @@
               "type": "Sprite",
               "updateIfNotVisible": false,
               "variables": [],
-              "effects": [],
+              "effects": [
+                {
+                  "effectType": "HslAdjustment",
+                  "name": "flash",
+                  "doubleParameters": {
+                    "alpha": 1,
+                    "hue": 0,
+                    "lightness": 0,
+                    "saturation": 0
+                  },
+                  "stringParameters": {},
+                  "booleanParameters": {
+                    "colorize": false
+                  }
+                }
+              ],
               "behaviors": [
                 {
                   "name": "Tween",
@@ -5829,7 +6190,22 @@
               "type": "Sprite",
               "updateIfNotVisible": false,
               "variables": [],
-              "effects": [],
+              "effects": [
+                {
+                  "effectType": "HslAdjustment",
+                  "name": "flash",
+                  "doubleParameters": {
+                    "alpha": 1,
+                    "hue": 0,
+                    "lightness": 0,
+                    "saturation": 0
+                  },
+                  "stringParameters": {},
+                  "booleanParameters": {
+                    "colorize": false
+                  }
+                }
+              ],
               "behaviors": [
                 {
                   "name": "Tween",
@@ -6470,7 +6846,22 @@
               "type": "Sprite",
               "updateIfNotVisible": false,
               "variables": [],
-              "effects": [],
+              "effects": [
+                {
+                  "effectType": "HslAdjustment",
+                  "name": "flash",
+                  "doubleParameters": {
+                    "alpha": 1,
+                    "hue": 0,
+                    "lightness": 0,
+                    "saturation": 0
+                  },
+                  "stringParameters": {},
+                  "booleanParameters": {
+                    "colorize": false
+                  }
+                }
+              ],
               "behaviors": [
                 {
                   "name": "Tween",
@@ -7512,7 +7903,22 @@
               "type": "Sprite",
               "updateIfNotVisible": false,
               "variables": [],
-              "effects": [],
+              "effects": [
+                {
+                  "effectType": "HslAdjustment",
+                  "name": "flash",
+                  "doubleParameters": {
+                    "alpha": 1,
+                    "hue": 0,
+                    "lightness": 0,
+                    "saturation": 0
+                  },
+                  "stringParameters": {},
+                  "booleanParameters": {
+                    "colorize": false
+                  }
+                }
+              ],
               "behaviors": [
                 {
                   "name": "Tween",
@@ -8153,7 +8559,22 @@
               "type": "Sprite",
               "updateIfNotVisible": false,
               "variables": [],
-              "effects": [],
+              "effects": [
+                {
+                  "effectType": "HslAdjustment",
+                  "name": "flash",
+                  "doubleParameters": {
+                    "alpha": 1,
+                    "hue": 0,
+                    "lightness": 0,
+                    "saturation": 0
+                  },
+                  "stringParameters": {},
+                  "booleanParameters": {
+                    "colorize": false
+                  }
+                }
+              ],
               "behaviors": [
                 {
                   "name": "Tween",
@@ -9195,7 +9616,22 @@
               "type": "Sprite",
               "updateIfNotVisible": false,
               "variables": [],
-              "effects": [],
+              "effects": [
+                {
+                  "effectType": "HslAdjustment",
+                  "name": "flash",
+                  "doubleParameters": {
+                    "alpha": 1,
+                    "hue": 0,
+                    "lightness": 0,
+                    "saturation": 0
+                  },
+                  "stringParameters": {},
+                  "booleanParameters": {
+                    "colorize": false
+                  }
+                }
+              ],
               "behaviors": [
                 {
                   "name": "Tween",
@@ -9836,7 +10272,22 @@
               "type": "Sprite",
               "updateIfNotVisible": false,
               "variables": [],
-              "effects": [],
+              "effects": [
+                {
+                  "effectType": "HslAdjustment",
+                  "name": "flash",
+                  "doubleParameters": {
+                    "alpha": 1,
+                    "hue": 0,
+                    "lightness": 0,
+                    "saturation": 0
+                  },
+                  "stringParameters": {},
+                  "booleanParameters": {
+                    "colorize": false
+                  }
+                }
+              ],
               "behaviors": [
                 {
                   "name": "Tween",
@@ -11516,7 +11967,7 @@
                     "Glow",
                     "Tween",
                     "\"OpacityOutGlow\"",
-                    "0",
+                    "0.85",
                     "\"easeOutQuad\"",
                     "1",
                     ""
@@ -11530,7 +11981,7 @@
                     "Glow",
                     "Tween",
                     "\"ScaleOutGlow\"",
-                    "1.2",
+                    "2",
                     "\"easeOutQuad\"",
                     "0.2",
                     "",
