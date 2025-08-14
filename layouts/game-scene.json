@@ -276,6 +276,12 @@
         },
         {
           "name": "MuzzleFire"
+        },
+        {
+          "name": "SmallBulletSmoke"
+        },
+        {
+          "name": "SmallExplosion"
         }
       ]
     },
@@ -431,6 +437,11 @@
       "name": "Timers",
       "type": "structure",
       "children": [
+        {
+          "name": "BulletSmoke",
+          "type": "string",
+          "value": "BulletSmoke"
+        },
         {
           "name": "MovementSound",
           "type": "string",
@@ -9488,125 +9499,42 @@
     {
       "adaptCollisionMaskAutomatically": true,
       "assetStoreId": "",
-      "name": "Doug",
+      "name": "SmallBulletSmoke",
       "type": "Sprite",
       "updateIfNotVisible": false,
-      "variables": [],
+      "variables": [
+        {
+          "hasMixedValues": true,
+          "name": "Damage",
+          "persistentUuid": "005359d1-4b6f-4d7f-b748-c50775f13c12",
+          "type": "number",
+          "value": 1
+        }
+      ],
       "effects": [],
       "behaviors": [
         {
-          "acceleration": 1500,
-          "canGoDownFromJumpthru": true,
-          "canGrabPlatforms": false,
-          "canGrabWithoutMoving": true,
-          "deceleration": 1500,
-          "gravity": 1000,
-          "ignoreDefaultControls": false,
-          "jumpSpeed": 600,
-          "jumpSustainTime": 0.2,
-          "ladderClimbingSpeed": 150,
-          "maxFallingSpeed": 700,
-          "maxSpeed": 250,
-          "name": "PlatformerObject",
-          "slopeMaxAngle": 60,
-          "type": "PlatformBehavior::PlatformerObjectBehavior",
-          "useLegacyTrajectory": false,
-          "useRepeatedJump": false,
-          "xGrabTolerance": 10,
-          "yGrabOffset": 0
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
         }
       ],
       "animations": [
         {
-          "name": "default",
+          "name": "",
           "useMultipleDirections": false,
           "directions": [
             {
               "looping": false,
-              "timeBetweenFrames": 0.08,
+              "timeBetweenFrames": 0.1,
               "sprites": [
                 {
                   "hasCustomCollisionMask": true,
-                  "image": "assets\\Player\\tank_red_cannon_0005.png",
-                  "points": [
-                    {
-                      "name": "GapCheck",
-                      "x": 32,
-                      "y": 16
-                    }
-                  ],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "centerPoint": {
-                    "automatic": false,
-                    "name": "centre",
-                    "x": 16,
-                    "y": 16
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 9,
-                        "y": 4
-                      },
-                      {
-                        "x": 29,
-                        "y": 4
-                      },
-                      {
-                        "x": 29,
-                        "y": 16
-                      },
-                      {
-                        "x": 9,
-                        "y": 16
-                      }
-                    ]
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "adaptCollisionMaskAutomatically": true,
-      "assetStoreId": "",
-      "name": "Platform",
-      "type": "Sprite",
-      "updateIfNotVisible": false,
-      "variables": [],
-      "effects": [],
-      "behaviors": [
-        {
-          "canBeGrabbed": true,
-          "name": "Platform",
-          "platformType": "NormalPlatform",
-          "type": "PlatformBehavior::PlatformBehavior",
-          "yGrabOffset": 0
-        }
-      ],
-      "animations": [
-        {
-          "name": "default",
-          "useMultipleDirections": false,
-          "directions": [
-            {
-              "looping": false,
-              "timeBetweenFrames": 0.08,
-              "sprites": [
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\Walls\\wall_white.png",
+                  "image": "assets\\gray.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
-                    "x": 0,
-                    "y": 0
+                    "x": 4,
+                    "y": 4
                   },
                   "centerPoint": {
                     "automatic": true,
@@ -9621,16 +9549,336 @@
                         "y": 0
                       },
                       {
-                        "x": 96,
+                        "x": 8,
                         "y": 0
                       },
                       {
-                        "x": 96,
-                        "y": 96
+                        "x": 8,
+                        "y": 8
                       },
                       {
                         "x": 0,
-                        "y": 96
+                        "y": 8
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "SmallExplosion",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "hasMixedValues": true,
+          "name": "Damage",
+          "persistentUuid": "90756afa-c689-4780-b332-e626daeeb798",
+          "type": "number",
+          "value": 1
+        }
+      ],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Explosions\\small_explosion\\small_explosion_1.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 16,
+                    "y": 16
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 2,
+                        "y": 3
+                      },
+                      {
+                        "x": 29,
+                        "y": 3
+                      },
+                      {
+                        "x": 29,
+                        "y": 31
+                      },
+                      {
+                        "x": 2,
+                        "y": 31
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Explosions\\small_explosion\\small_explosion_2.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 16,
+                    "y": 16
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 2,
+                        "y": 3
+                      },
+                      {
+                        "x": 29,
+                        "y": 3
+                      },
+                      {
+                        "x": 29,
+                        "y": 31
+                      },
+                      {
+                        "x": 2,
+                        "y": 31
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Explosions\\small_explosion\\small_explosion_3.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 16,
+                    "y": 16
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 2,
+                        "y": 3
+                      },
+                      {
+                        "x": 29,
+                        "y": 3
+                      },
+                      {
+                        "x": 29,
+                        "y": 31
+                      },
+                      {
+                        "x": 2,
+                        "y": 31
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Explosions\\small_explosion\\small_explosion_4.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 16,
+                    "y": 16
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 2,
+                        "y": 3
+                      },
+                      {
+                        "x": 29,
+                        "y": 3
+                      },
+                      {
+                        "x": 29,
+                        "y": 31
+                      },
+                      {
+                        "x": 2,
+                        "y": 31
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Explosions\\small_explosion\\small_explosion_5.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 16,
+                    "y": 16
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 2,
+                        "y": 3
+                      },
+                      {
+                        "x": 29,
+                        "y": 3
+                      },
+                      {
+                        "x": 29,
+                        "y": 31
+                      },
+                      {
+                        "x": 2,
+                        "y": 31
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Explosions\\small_explosion\\small_explosion_6.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 16,
+                    "y": 16
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 2,
+                        "y": 3
+                      },
+                      {
+                        "x": 29,
+                        "y": 3
+                      },
+                      {
+                        "x": 29,
+                        "y": 31
+                      },
+                      {
+                        "x": 2,
+                        "y": 31
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Explosions\\small_explosion\\small_explosion_7.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 16,
+                    "y": 16
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 2,
+                        "y": 3
+                      },
+                      {
+                        "x": 29,
+                        "y": 3
+                      },
+                      {
+                        "x": 29,
+                        "y": 31
+                      },
+                      {
+                        "x": 2,
+                        "y": 31
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Explosions\\small_explosion\\small_explosion_8.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 16,
+                    "y": 16
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 2,
+                        "y": 3
+                      },
+                      {
+                        "x": 29,
+                        "y": 3
+                      },
+                      {
+                        "x": 29,
+                        "y": 31
+                      },
+                      {
+                        "x": 2,
+                        "y": 31
                       }
                     ]
                   ]
@@ -9645,12 +9893,6 @@
   "objectsFolderStructure": {
     "folderName": "__ROOT",
     "children": [
-      {
-        "objectName": "Doug"
-      },
-      {
-        "objectName": "Platform"
-      },
       {
         "folderName": "HiddenCollisions",
         "children": [
@@ -9697,6 +9939,12 @@
           },
           {
             "objectName": "GlowLight"
+          },
+          {
+            "objectName": "SmallBulletSmoke"
+          },
+          {
+            "objectName": "SmallExplosion"
           }
         ]
       },
@@ -11189,34 +11437,6 @@
                     "TopDownMovement"
                   ]
                 }
-              ],
-              "events": [
-                {
-                  "disabled": true,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "PlatformBehavior::SimulateLeftKey"
-                      },
-                      "parameters": [
-                        "Doug",
-                        "PlatformerObject"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "FlippableCapability::FlippableBehavior::FlipX"
-                      },
-                      "parameters": [
-                        "Doug",
-                        "Flippable",
-                        "yes"
-                      ]
-                    }
-                  ]
-                }
               ]
             },
             {
@@ -11251,34 +11471,6 @@
                   "parameters": [
                     "Player",
                     "TopDownMovement"
-                  ]
-                }
-              ],
-              "events": [
-                {
-                  "disabled": true,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "PlatformBehavior::SimulateRightKey"
-                      },
-                      "parameters": [
-                        "Doug",
-                        "PlatformerObject"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "FlippableCapability::FlippableBehavior::FlipX"
-                      },
-                      "parameters": [
-                        "Doug",
-                        "Flippable",
-                        ""
-                      ]
-                    }
                   ]
                 }
               ]
@@ -11635,7 +11827,6 @@
           "comment": "Gamepad actions"
         },
         {
-          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -18284,6 +18475,15 @@
                                 "Tanks",
                                 ""
                               ]
+                            },
+                            {
+                              "type": {
+                                "value": "ResetObjectTimer"
+                              },
+                              "parameters": [
+                                "Tanks",
+                                "_CONSTANTS_.Timers.Tanks.ShootCooldown"
+                              ]
                             }
                           ],
                           "events": [
@@ -18306,7 +18506,6 @@
                               "actions": [],
                               "events": [
                                 {
-                                  "folded": true,
                                   "type": "BuiltinCommonInstructions::Standard",
                                   "conditions": [],
                                   "actions": [
@@ -18375,92 +18574,78 @@
                                     },
                                     {
                                       "type": {
-                                        "value": "Create"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "BulletSmoke",
-                                        "WhiteBullet.CenterX()",
-                                        "WhiteBullet.CenterY()",
-                                        "_CONSTANTS_.Layers.Base"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "Sticker::Sticker::Stick"
-                                      },
-                                      "parameters": [
-                                        "BulletSmoke",
-                                        "Sticker",
-                                        "WhiteBullet",
-                                        ""
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "Create"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "BulletAuxCollider",
-                                        "WhiteBullet.PointX(\"Point\")",
-                                        "WhiteBullet.PointY(\"Point\")",
-                                        "_CONSTANTS_.Layers.Base"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "Sticker::Sticker::Stick"
-                                      },
-                                      "parameters": [
-                                        "BulletAuxCollider",
-                                        "Sticker",
-                                        "WhiteBullet",
-                                        ""
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "LinkedObjects::LinkObjects"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "BulletAuxCollider",
-                                        "WhiteBullet"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
                                         "value": "ResetObjectTimer"
                                       },
                                       "parameters": [
-                                        "Tanks",
-                                        "_CONSTANTS_.Timers.Tanks.ShootCooldown"
+                                        "WhiteBullet",
+                                        "Timers.BulletSmoke"
                                       ]
                                     }
                                   ],
                                   "events": [
                                     {
+                                      "folded": true,
                                       "type": "BuiltinCommonInstructions::Standard",
-                                      "conditions": [
-                                        {
-                                          "type": {
-                                            "value": "BooleanVariable"
-                                          },
-                                          "parameters": [
-                                            "_CONFIG_.debug",
-                                            "",
-                                            ""
-                                          ]
-                                        }
-                                      ],
+                                      "conditions": [],
                                       "actions": [
                                         {
                                           "type": {
-                                            "value": "Cache"
+                                            "value": "Create"
                                           },
                                           "parameters": [
-                                            "BulletAuxCollider"
+                                            "",
+                                            "BulletAuxCollider",
+                                            "WhiteBullet.PointX(\"Point\")",
+                                            "WhiteBullet.PointY(\"Point\")",
+                                            "_CONSTANTS_.Layers.Base"
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "Sticker::Sticker::Stick"
+                                          },
+                                          "parameters": [
+                                            "BulletAuxCollider",
+                                            "Sticker",
+                                            "WhiteBullet",
+                                            ""
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "LinkedObjects::LinkObjects"
+                                          },
+                                          "parameters": [
+                                            "",
+                                            "BulletAuxCollider",
+                                            "WhiteBullet"
+                                          ]
+                                        }
+                                      ],
+                                      "events": [
+                                        {
+                                          "type": "BuiltinCommonInstructions::Standard",
+                                          "conditions": [
+                                            {
+                                              "type": {
+                                                "value": "BooleanVariable"
+                                              },
+                                              "parameters": [
+                                                "_CONFIG_.debug",
+                                                "",
+                                                ""
+                                              ]
+                                            }
+                                          ],
+                                          "actions": [
+                                            {
+                                              "type": {
+                                                "value": "Cache"
+                                              },
+                                              "parameters": [
+                                                "BulletAuxCollider"
+                                              ]
+                                            }
                                           ]
                                         }
                                       ]
@@ -18488,7 +18673,6 @@
                               "actions": [],
                               "events": [
                                 {
-                                  "folded": true,
                                   "type": "BuiltinCommonInstructions::Standard",
                                   "conditions": [],
                                   "actions": [
@@ -18557,92 +18741,78 @@
                                     },
                                     {
                                       "type": {
-                                        "value": "Create"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "BulletSmoke",
-                                        "MissileBullet.CenterX()",
-                                        "MissileBullet.CenterY()",
-                                        "_CONSTANTS_.Layers.Base"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "Sticker::Sticker::Stick"
-                                      },
-                                      "parameters": [
-                                        "BulletSmoke",
-                                        "Sticker",
-                                        "MissileBullet",
-                                        ""
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "Create"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "BulletAuxCollider",
-                                        "MissileBullet.PointX(\"Point\")",
-                                        "MissileBullet.PointY(\"Point\")",
-                                        "_CONSTANTS_.Layers.Base"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "Sticker::Sticker::Stick"
-                                      },
-                                      "parameters": [
-                                        "BulletAuxCollider",
-                                        "Sticker",
-                                        "MissileBullet",
-                                        ""
-                                      ]
-                                    },
-                                    {
-                                      "type": {
-                                        "value": "LinkedObjects::LinkObjects"
-                                      },
-                                      "parameters": [
-                                        "",
-                                        "BulletAuxCollider",
-                                        "MissileBullet"
-                                      ]
-                                    },
-                                    {
-                                      "type": {
                                         "value": "ResetObjectTimer"
                                       },
                                       "parameters": [
-                                        "Tanks",
-                                        "_CONSTANTS_.Timers.Tanks.ShootCooldown"
+                                        "MissileBullet",
+                                        "Timers.BulletSmoke"
                                       ]
                                     }
                                   ],
                                   "events": [
                                     {
+                                      "folded": true,
                                       "type": "BuiltinCommonInstructions::Standard",
-                                      "conditions": [
-                                        {
-                                          "type": {
-                                            "value": "BooleanVariable"
-                                          },
-                                          "parameters": [
-                                            "_CONFIG_.debug",
-                                            "",
-                                            ""
-                                          ]
-                                        }
-                                      ],
+                                      "conditions": [],
                                       "actions": [
                                         {
                                           "type": {
-                                            "value": "Cache"
+                                            "value": "Create"
                                           },
                                           "parameters": [
-                                            "BulletAuxCollider"
+                                            "",
+                                            "BulletAuxCollider",
+                                            "MissileBullet.PointX(\"Point\")",
+                                            "MissileBullet.PointY(\"Point\")",
+                                            "_CONSTANTS_.Layers.Base"
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "Sticker::Sticker::Stick"
+                                          },
+                                          "parameters": [
+                                            "BulletAuxCollider",
+                                            "Sticker",
+                                            "MissileBullet",
+                                            ""
+                                          ]
+                                        },
+                                        {
+                                          "type": {
+                                            "value": "LinkedObjects::LinkObjects"
+                                          },
+                                          "parameters": [
+                                            "",
+                                            "BulletAuxCollider",
+                                            "MissileBullet"
+                                          ]
+                                        }
+                                      ],
+                                      "events": [
+                                        {
+                                          "type": "BuiltinCommonInstructions::Standard",
+                                          "conditions": [
+                                            {
+                                              "type": {
+                                                "value": "BooleanVariable"
+                                              },
+                                              "parameters": [
+                                                "_CONFIG_.debug",
+                                                "",
+                                                ""
+                                              ]
+                                            }
+                                          ],
+                                          "actions": [
+                                            {
+                                              "type": {
+                                                "value": "Cache"
+                                              },
+                                              "parameters": [
+                                                "BulletAuxCollider"
+                                              ]
+                                            }
                                           ]
                                         }
                                       ]
@@ -19611,7 +19781,6 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
-                  "folded": true,
                   "name": "Bullets",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -19833,7 +20002,6 @@
                           ]
                         },
                         {
-                          "folded": true,
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
                             {
@@ -19854,10 +20022,20 @@
                               },
                               "parameters": [
                                 "",
-                                "Explosion",
+                                "SmallExplosion",
                                 "Bullets.CenterX()",
                                 "Bullets.CenterY()",
                                 "_CONSTANTS_.Layers.Base"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "ChangePlan"
+                              },
+                              "parameters": [
+                                "SmallExplosion",
+                                "=",
+                                "Bullets.CenterY()"
                               ]
                             },
                             {
@@ -19871,6 +20049,96 @@
                             }
                           ],
                           "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "Create"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "GlowLight",
+                                    "SmallExplosion.X()",
+                                    "SmallExplosion.Y()",
+                                    "\"Base\""
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "ChangePlan"
+                                  },
+                                  "parameters": [
+                                    "GlowLight",
+                                    "=",
+                                    "SmallExplosion.Y()-1"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "Sticker::Sticker::Stick"
+                                  },
+                                  "parameters": [
+                                    "GlowLight",
+                                    "Sticker",
+                                    "SmallExplosion",
+                                    ""
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "OpacityCapability::OpacityBehavior::SetValue"
+                                  },
+                                  "parameters": [
+                                    "GlowLight",
+                                    "Opacity",
+                                    "=",
+                                    "200"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "ScalableCapability::ScalableBehavior::SetValue"
+                                  },
+                                  "parameters": [
+                                    "GlowLight",
+                                    "Scale",
+                                    "=",
+                                    "0.8"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "Tween::TweenBehavior::AddObjectScaleTween3"
+                                  },
+                                  "parameters": [
+                                    "GlowLight",
+                                    "Tween",
+                                    "Timers.Scale",
+                                    "0.2",
+                                    "\"bounce\"",
+                                    "0.6",
+                                    "",
+                                    ""
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
+                                  },
+                                  "parameters": [
+                                    "GlowLight",
+                                    "Tween",
+                                    "Timers.Scale",
+                                    "0",
+                                    "\"easeOutQuad\"",
+                                    "0.6",
+                                    ""
+                                  ]
+                                }
+                              ]
+                            },
                             {
                               "type": "BuiltinCommonInstructions::Link",
                               "include": {
@@ -20108,7 +20376,6 @@
                       "comment": "Hit tanks"
                     },
                     {
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -20158,10 +20425,20 @@
                               },
                               "parameters": [
                                 "",
-                                "Explosion",
+                                "SmallExplosion",
                                 "Bullets.CenterX()",
                                 "Bullets.CenterY()",
                                 "_CONSTANTS_.Layers.Base"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "ChangePlan"
+                              },
+                              "parameters": [
+                                "SmallExplosion",
+                                "=",
+                                "Bullets.CenterY()"
                               ]
                             },
                             {
@@ -20175,6 +20452,96 @@
                             }
                           ],
                           "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "Create"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "GlowLight",
+                                    "SmallExplosion.X()",
+                                    "SmallExplosion.Y()",
+                                    "\"Base\""
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "ChangePlan"
+                                  },
+                                  "parameters": [
+                                    "GlowLight",
+                                    "=",
+                                    "SmallExplosion.Y()-1"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "Sticker::Sticker::Stick"
+                                  },
+                                  "parameters": [
+                                    "GlowLight",
+                                    "Sticker",
+                                    "SmallExplosion",
+                                    ""
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "OpacityCapability::OpacityBehavior::SetValue"
+                                  },
+                                  "parameters": [
+                                    "GlowLight",
+                                    "Opacity",
+                                    "=",
+                                    "200"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "ScalableCapability::ScalableBehavior::SetValue"
+                                  },
+                                  "parameters": [
+                                    "GlowLight",
+                                    "Scale",
+                                    "=",
+                                    "0.8"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "Tween::TweenBehavior::AddObjectScaleTween3"
+                                  },
+                                  "parameters": [
+                                    "GlowLight",
+                                    "Tween",
+                                    "Timers.Scale",
+                                    "0.2",
+                                    "\"bounce\"",
+                                    "0.6",
+                                    "",
+                                    ""
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
+                                  },
+                                  "parameters": [
+                                    "GlowLight",
+                                    "Tween",
+                                    "Timers.Scale",
+                                    "0",
+                                    "\"easeOutQuad\"",
+                                    "0.6",
+                                    ""
+                                  ]
+                                }
+                              ]
+                            },
                             {
                               "colorB": 177,
                               "colorG": 128,
@@ -20385,7 +20752,6 @@
                       "comment": "// Se usa distancia entre balas, porque colisiones con la misma instancia es mas complicado de implementar."
                     },
                     {
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -20407,10 +20773,20 @@
                           },
                           "parameters": [
                             "",
-                            "Explosion",
+                            "SmallExplosion",
                             "Bullets.CenterX()",
                             "Bullets.CenterY()",
                             "_CONSTANTS_.Layers.Base"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "ChangePlan"
+                          },
+                          "parameters": [
+                            "SmallExplosion",
+                            "=",
+                            "Bullets.CenterY()"
                           ]
                         },
                         {
@@ -20424,6 +20800,96 @@
                         }
                       ],
                       "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "Create"
+                              },
+                              "parameters": [
+                                "",
+                                "GlowLight",
+                                "SmallExplosion.X()",
+                                "SmallExplosion.Y()",
+                                "\"Base\""
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "ChangePlan"
+                              },
+                              "parameters": [
+                                "GlowLight",
+                                "=",
+                                "SmallExplosion.Y()-1"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "Sticker::Sticker::Stick"
+                              },
+                              "parameters": [
+                                "GlowLight",
+                                "Sticker",
+                                "SmallExplosion",
+                                ""
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "OpacityCapability::OpacityBehavior::SetValue"
+                              },
+                              "parameters": [
+                                "GlowLight",
+                                "Opacity",
+                                "=",
+                                "200"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "ScalableCapability::ScalableBehavior::SetValue"
+                              },
+                              "parameters": [
+                                "GlowLight",
+                                "Scale",
+                                "=",
+                                "0.8"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "Tween::TweenBehavior::AddObjectScaleTween3"
+                              },
+                              "parameters": [
+                                "GlowLight",
+                                "Tween",
+                                "Timers.Scale",
+                                "0.2",
+                                "\"bounce\"",
+                                "0.6",
+                                "",
+                                ""
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
+                              },
+                              "parameters": [
+                                "GlowLight",
+                                "Tween",
+                                "Timers.Scale",
+                                "0",
+                                "\"easeOutQuad\"",
+                                "0.6",
+                                ""
+                              ]
+                            }
+                          ]
+                        },
                         {
                           "type": "BuiltinCommonInstructions::Link",
                           "include": {
@@ -20441,7 +20907,6 @@
                       ]
                     },
                     {
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -20463,10 +20928,20 @@
                           },
                           "parameters": [
                             "",
-                            "Explosion",
+                            "SmallExplosion",
                             "Bullets.CenterX()",
                             "Bullets.CenterY()",
                             "_CONSTANTS_.Layers.Base"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "ChangePlan"
+                          },
+                          "parameters": [
+                            "SmallExplosion",
+                            "=",
+                            "Bullets.CenterY()"
                           ]
                         },
                         {
@@ -20481,6 +20956,96 @@
                       ],
                       "events": [
                         {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "Create"
+                              },
+                              "parameters": [
+                                "",
+                                "GlowLight",
+                                "SmallExplosion.X()",
+                                "SmallExplosion.Y()",
+                                "\"Base\""
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "ChangePlan"
+                              },
+                              "parameters": [
+                                "GlowLight",
+                                "=",
+                                "SmallExplosion.Y()-1"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "Sticker::Sticker::Stick"
+                              },
+                              "parameters": [
+                                "GlowLight",
+                                "Sticker",
+                                "SmallExplosion",
+                                ""
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "OpacityCapability::OpacityBehavior::SetValue"
+                              },
+                              "parameters": [
+                                "GlowLight",
+                                "Opacity",
+                                "=",
+                                "200"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "ScalableCapability::ScalableBehavior::SetValue"
+                              },
+                              "parameters": [
+                                "GlowLight",
+                                "Scale",
+                                "=",
+                                "0.8"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "Tween::TweenBehavior::AddObjectScaleTween3"
+                              },
+                              "parameters": [
+                                "GlowLight",
+                                "Tween",
+                                "Timers.Scale",
+                                "0.2",
+                                "\"bounce\"",
+                                "0.6",
+                                "",
+                                ""
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
+                              },
+                              "parameters": [
+                                "GlowLight",
+                                "Tween",
+                                "Timers.Scale",
+                                "0",
+                                "\"easeOutQuad\"",
+                                "0.6",
+                                ""
+                              ]
+                            }
+                          ]
+                        },
+                        {
                           "type": "BuiltinCommonInstructions::Link",
                           "include": {
                             "includeConfig": 0
@@ -20493,6 +21058,103 @@
                           "name": "DestroyBullet",
                           "type": "boolean",
                           "value": false
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 209,
+                        "g": 199,
+                        "r": 85,
+                        "textB": 0,
+                        "textG": 0,
+                        "textR": 0
+                      },
+                      "comment": "Bullet smoke"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::ForEach",
+                      "object": "Bullets",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "CompareObjectTimer"
+                          },
+                          "parameters": [
+                            "Bullets",
+                            "Timers.BulletSmoke",
+                            ">=",
+                            "0.03"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "Create"
+                          },
+                          "parameters": [
+                            "",
+                            "SmallBulletSmoke",
+                            "Bullets.CenterX()",
+                            "Bullets.CenterY()",
+                            "\"Base\""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "ResetObjectTimer"
+                          },
+                          "parameters": [
+                            "Bullets",
+                            "Timers.BulletSmoke"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "ChangePlan"
+                          },
+                          "parameters": [
+                            "SmallBulletSmoke",
+                            "=",
+                            "Bullets.CenterY()-1"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetAngle"
+                          },
+                          "parameters": [
+                            "SmallBulletSmoke",
+                            "=",
+                            "Bullets.ForceAngle()"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "OpacityCapability::OpacityBehavior::SetValue"
+                          },
+                          "parameters": [
+                            "SmallBulletSmoke",
+                            "Opacity",
+                            "=",
+                            "125"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
+                          },
+                          "parameters": [
+                            "SmallBulletSmoke",
+                            "Tween",
+                            "Timers.Opacity",
+                            "0",
+                            "\"linear\"",
+                            "0.6",
+                            "yes"
+                          ]
                         }
                       ]
                     }
@@ -20516,7 +21178,6 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
-                  "folded": true,
                   "name": "Land mines",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -20632,7 +21293,6 @@
                       ]
                     },
                     {
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -20698,7 +21358,6 @@
                       ]
                     },
                     {
-                      "folded": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
@@ -21530,7 +22189,7 @@
             "textG": 0,
             "textR": 0
           },
-          "comment": "Destroy muzzle fire"
+          "comment": "Destroy effects"
         },
         {
           "type": "BuiltinCommonInstructions::Standard",
@@ -21552,6 +22211,31 @@
               },
               "parameters": [
                 "MuzzleFire",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::HasAnimationEnded"
+              },
+              "parameters": [
+                "SmallExplosion",
+                "Animation"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Delete"
+              },
+              "parameters": [
+                "SmallExplosion",
                 ""
               ]
             }
@@ -21910,7 +22594,6 @@
           "comment": "Update animation for BreakableWalls"
         },
         {
-          "folded": true,
           "type": "BuiltinCommonInstructions::ForEach",
           "object": "BreakableWalls",
           "conditions": [],
@@ -22224,181 +22907,6 @@
                 "Tanks",
                 "\"200,160,200\""
               ]
-            }
-          ]
-        }
-      ],
-      "parameters": []
-    },
-    {
-      "colorB": 228,
-      "colorG": 176,
-      "colorR": 74,
-      "creationTime": 0,
-      "disabled": true,
-      "folded": true,
-      "name": "Raycast test",
-      "source": "",
-      "type": "BuiltinCommonInstructions::Group",
-      "events": [
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [],
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "Raycast"
-                  },
-                  "parameters": [
-                    "Platform",
-                    "Doug.PointX(\"GapCheck\")",
-                    "Doug.PointY(\"GapCheck\")",
-                    "Angle",
-                    "Distance",
-                    "TestRayContactX",
-                    "TestRayContactY",
-                    ""
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetBooleanVariable"
-                  },
-                  "parameters": [
-                    "TestRay",
-                    "True",
-                    "PurpleEnemy.ID"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "BooleanVariable"
-                  },
-                  "parameters": [
-                    "TestRay",
-                    "True",
-                    ""
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "PrimitiveDrawing::OutlineColor"
-                  },
-                  "parameters": [
-                    "NewShapePainter",
-                    "_CONSTANTS_.Colors.GreenLine"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "PrimitiveDrawing::LineV2"
-                  },
-                  "parameters": [
-                    "NewShapePainter",
-                    "Doug.PointX(\"GapCheck\")",
-                    "Doug.PointY(\"GapCheck\")",
-                    "TestRayContactX",
-                    "TestRayContactY",
-                    "1"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "BooleanVariable"
-                  },
-                  "parameters": [
-                    "TestRay",
-                    "False",
-                    ""
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "PrimitiveDrawing::OutlineColor"
-                  },
-                  "parameters": [
-                    "NewShapePainter",
-                    "_CONSTANTS_.Colors.RedLine"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "PrimitiveDrawing::LineV2"
-                  },
-                  "parameters": [
-                    "NewShapePainter",
-                    "Doug.PointX(\"GapCheck\")",
-                    "Doug.PointY(\"GapCheck\")",
-                    "XFromAngleAndDistance(Angle, Distance) + Doug.PointX(\"GapCheck\")",
-                    "YFromAngleAndDistance(Angle, Distance) + Doug.PointY(\"GapCheck\")",
-                    "1"
-                  ]
-                }
-              ],
-              "events": [
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "PlatformBehavior::SimulateJumpKey"
-                      },
-                      "parameters": [
-                        "Doug",
-                        "PlatformerObject"
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "variables": [
-            {
-              "name": "Angle",
-              "type": "number",
-              "value": 90
-            },
-            {
-              "name": "Distance",
-              "type": "number",
-              "value": 128
-            },
-            {
-              "name": "PosX",
-              "type": "number",
-              "value": 180
-            },
-            {
-              "name": "PosY",
-              "type": "number",
-              "value": 120
-            },
-            {
-              "name": "TestRay",
-              "type": "boolean",
-              "value": false
             }
           ]
         }
