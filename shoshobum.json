@@ -1,7 +1,7 @@
 {
   "firstLayout": "",
   "gdVersion": {
-    "build": 238,
+    "build": 239,
     "major": 5,
     "minor": 5,
     "revision": 0
@@ -18,7 +18,7 @@
     "scaleMode": "nearest",
     "sizeOnStartupMode": "",
     "templateSlug": "starting-top-down-pixel",
-    "version": "0.4.1",
+    "version": "0.4.6",
     "name": "shoshobum",
     "description": "Tanks! (Wii) clone\n\nTo stat \"LEFT click\" on start label\nThen after mission screen press \"INTRO\"\n\n- Move with \"WASD\"\n- Shoot with \"SPACE2 or \"LEFT click\"\n- Place landmine with \"Q\" or \"RIGHT click\"\n- Pause with \"ESC\"",
     "author": "Wizzarn",
@@ -1873,7 +1873,7 @@
         "file": "assets/enemy_collision.png",
         "kind": "image",
         "metadata": "",
-        "name": "assets\\NewSprite3.png",
+        "name": "enemy_collision",
         "smoothed": false,
         "userAdded": false
       },
@@ -1913,7 +1913,7 @@
         "file": "assets/landmine_detection.png",
         "kind": "image",
         "metadata": "{\"extension\":\".png\"}",
-        "name": "NewSprite6",
+        "name": "landmine_detection",
         "smoothed": false,
         "userAdded": false
       },
@@ -2486,30 +2486,6 @@
         "kind": "image",
         "metadata": "",
         "name": "assets\\FX\\Muzzle fire\\muzzle_fire_01_5.png",
-        "smoothed": false,
-        "userAdded": false
-      },
-      {
-        "file": "assets/FX/bullet_smoke/bullet_smoke_1.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\FX\\bullet_smoke\\bullet_smoke_1.png",
-        "smoothed": false,
-        "userAdded": false
-      },
-      {
-        "file": "assets/FX/bullet_smoke/bullet_smoke_2.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\FX\\bullet_smoke\\bullet_smoke_2.png",
-        "smoothed": false,
-        "userAdded": false
-      },
-      {
-        "file": "assets/FX/bullet_smoke/bullet_smoke_3.png",
-        "kind": "image",
-        "metadata": "",
-        "name": "assets\\FX\\bullet_smoke\\bullet_smoke_3.png",
         "smoothed": false,
         "userAdded": false
       },
@@ -3686,6 +3662,10 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/externalEvents/regularenemybak"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/externalEvents/enemylogic"
     },
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,

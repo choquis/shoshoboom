@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 0.35534345588171107,
+    "zoomFactor": 1.061571430522035,
     "windowMask": false
   },
   "objectsGroups": [
@@ -794,6 +794,7 @@
         "textAlignment": "left",
         "verticalTextAlignment": "bottom",
         "characterSize": 20,
+        "lineHeight": 0,
         "color": "0;0;0"
       }
     },
@@ -1647,6 +1648,7 @@
         "textAlignment": "left",
         "verticalTextAlignment": "top",
         "characterSize": 20,
+        "lineHeight": 0,
         "color": "0;255;68"
       }
     },
@@ -1760,6 +1762,7 @@
         "textAlignment": "center",
         "verticalTextAlignment": "center",
         "characterSize": 60,
+        "lineHeight": 0,
         "color": "235;235;235"
       }
     },
@@ -3119,6 +3122,7 @@
         "textAlignment": "left",
         "verticalTextAlignment": "top",
         "characterSize": 20,
+        "lineHeight": 0,
         "color": "255;27;0"
       }
     },
@@ -3166,6 +3170,7 @@
         "textAlignment": "center",
         "verticalTextAlignment": "center",
         "characterSize": 60,
+        "lineHeight": 0,
         "color": "235;235;235"
       }
     },
@@ -3368,7 +3373,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": true,
-                  "image": "assets\\NewSprite3.png",
+                  "image": "enemy_collision",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -5326,7 +5331,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": true,
-                  "image": "NewSprite6",
+                  "image": "landmine_detection",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -10973,7 +10978,6 @@
       "colorG": 128,
       "colorR": 29,
       "creationTime": 0,
-      "folded": true,
       "name": "Switch inputs",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -11265,7 +11269,6 @@
           "comment": "Keyboard actions"
         },
         {
-          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -12282,7 +12285,6 @@
           "colorG": 33,
           "colorR": 26,
           "creationTime": 0,
-          "folded": true,
           "name": "START",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -12931,6 +12933,7 @@
           "colorG": 33,
           "colorR": 26,
           "creationTime": 0,
+          "folded": true,
           "name": "GAME",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -12948,6 +12951,7 @@
               "comment": ""
             },
             {
+              "folded": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -12978,7 +12982,6 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
-                  "folded": true,
                   "name": "Check gamestate",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -13145,18 +13148,6 @@
                   "comment": "\n\n"
                 },
                 {
-                  "type": "BuiltinCommonInstructions::Comment",
-                  "color": {
-                    "b": 52,
-                    "g": 44,
-                    "r": 40,
-                    "textB": 0,
-                    "textG": 0,
-                    "textR": 0
-                  },
-                  "comment": "\n\n"
-                },
-                {
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [],
                   "actions": [
@@ -13177,7 +13168,6 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
-                  "folded": true,
                   "name": "Enemy logic",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -18395,6 +18385,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Tank actions",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -19781,6 +19772,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Bullets",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -21178,6 +21170,7 @@
                   "colorG": 128,
                   "colorR": 29,
                   "creationTime": 0,
+                  "folded": true,
                   "name": "Land mines",
                   "source": "",
                   "type": "BuiltinCommonInstructions::Group",
@@ -22594,6 +22587,7 @@
           "comment": "Update animation for BreakableWalls"
         },
         {
+          "folded": true,
           "type": "BuiltinCommonInstructions::ForEach",
           "object": "BreakableWalls",
           "conditions": [],
@@ -23027,14 +23021,6 @@
     {
       "name": "PathfindingObstacle",
       "type": "PathfindingBehavior::PathfindingObstacleBehavior"
-    },
-    {
-      "name": "Platform",
-      "type": "PlatformBehavior::PlatformBehavior"
-    },
-    {
-      "name": "PlatformerObject",
-      "type": "PlatformBehavior::PlatformerObjectBehavior"
     },
     {
       "name": "RectangleMovement",
