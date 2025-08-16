@@ -1,5 +1,5 @@
 {
-  "associatedLayout": "Game Scene",
+  "associatedLayout": "Main Game",
   "name": "ExplosionSound",
   "events": [
     {
@@ -11,7 +11,7 @@
             "value": "SetNumberVariable"
           },
           "parameters": [
-            "_INGAMEDATA_.Channels.Explosion",
+            "MAINGAME.Channels.Explosion",
             "+",
             "1"
           ]
@@ -26,7 +26,7 @@
             "value": "NumberVariable"
           },
           "parameters": [
-            "_INGAMEDATA_.Channels.Explosion",
+            "MAINGAME.Channels.Explosion",
             ">=",
             "2299"
           ]
@@ -38,7 +38,7 @@
             "value": "SetNumberVariable"
           },
           "parameters": [
-            "_INGAMEDATA_.Channels.Explosion",
+            "MAINGAME.Channels.Explosion",
             "=",
             "2200"
           ]
@@ -55,8 +55,8 @@
           },
           "parameters": [
             "",
-            "assets\\SFX\\explosion_06.wav",
-            "_INGAMEDATA_.Channels.Explosion",
+            "explosion_06.wav",
+            "MAINGAME.Channels.Explosion",
             "RandomInRange(18,20) - (2 * TanksMoving)",
             "RandomInRange(_DATA_.Audio.Volume.SmallExplosion,_DATA_.Audio.Volume.SmallExplosion + 2)",
             "RandomFloatInRange(0.8,1)"

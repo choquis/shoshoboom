@@ -1,0 +1,5064 @@
+{
+  "associatedLayout": "Main Game",
+  "name": "Enemy Logic",
+  "events": [
+    {
+      "colorB": 177,
+      "colorG": 128,
+      "colorR": 29,
+      "creationTime": 0,
+      "folded": true,
+      "name": "Detection",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Enemies",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "LookX",
+                    "=",
+                    "Enemies.GetMuzzlePointX()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "LookY",
+                    "=",
+                    "Enemies.GetMuzzlePointY()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "PositionX",
+                    "=",
+                    "Enemies.CenterX()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "PositionY",
+                    "=",
+                    "Enemies.CenterY()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "Angle",
+                    "=",
+                    "Enemies.GetCannonAngle()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "SeePlayer",
+                    "False",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "SeeSomething",
+                    "False",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetStringObjectVariable"
+                  },
+                  "parameters": [
+                    "Enemies",
+                    "IA.BlockTarget",
+                    "=",
+                    "\"\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetBooleanObjectVariable"
+                  },
+                  "parameters": [
+                    "Enemies",
+                    "IA.LandmineDetected",
+                    "False",
+                    "\"\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "Name",
+                    "=",
+                    "Enemies.ObjectName()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "RepeatCount",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "BulletBounces",
+                    "=",
+                    "_DATA_.Bullets[Enemies.BulletType].MaxBounces"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ClearVariableChildren"
+                  },
+                  "parameters": [
+                    "IntersectsX"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ClearVariableChildren"
+                  },
+                  "parameters": [
+                    "IntersectsY"
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "disabled": true,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "Distance"
+                      },
+                      "parameters": [
+                        "Player",
+                        "Enemies",
+                        "_DATA_.Tanks[Name].DetectionDistance",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetBooleanVariable"
+                      },
+                      "parameters": [
+                        "SeePlayer",
+                        "True",
+                        "PurpleEnemy.ID"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetStringObjectVariable"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "IA.State",
+                        "=",
+                        "_CONSTANTS_.IAStates.Alert"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "Landmine detection"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "Distance"
+                      },
+                      "parameters": [
+                        "LandmineDetection",
+                        "Enemies",
+                        "_DATA_.Tanks[Name].LandmineDetection",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetBooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "IA.LandmineDetected",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::ForEach",
+                          "object": "LandmineDetection",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetBooleanVariable"
+                              },
+                              "parameters": [
+                                "link",
+                                "False",
+                                ""
+                              ]
+                            }
+                          ],
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "inverted": true,
+                                    "value": "LinkedObjects::PickObjectsLinkedTo"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "LandmineDetection",
+                                    "Enemies",
+                                    ""
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetBooleanVariable"
+                                  },
+                                  "parameters": [
+                                    "link",
+                                    "True",
+                                    ""
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "BooleanVariable"
+                                  },
+                                  "parameters": [
+                                    "link",
+                                    "True",
+                                    ""
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "LinkedObjects::LinkObjects"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "LandmineDetection",
+                                    "Enemies"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "variables": [
+                        {
+                          "name": "link",
+                          "type": "boolean",
+                          "value": false
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "colorB": 177,
+                  "colorG": 128,
+                  "colorR": 29,
+                  "creationTime": 0,
+                  "name": "Debuggin circle",
+                  "source": "",
+                  "type": "BuiltinCommonInstructions::Group",
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanObjectVariable"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "IA.LandmineDetected",
+                            "",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "PrimitiveDrawing::OutlineColor"
+                          },
+                          "parameters": [
+                            "NewShapePainter",
+                            "_CONSTANTS_.Colors.RedLine"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanObjectVariable"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "IA.LandmineDetected",
+                            "True",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "PrimitiveDrawing::OutlineColor"
+                          },
+                          "parameters": [
+                            "NewShapePainter",
+                            "_CONSTANTS_.Colors.GreenLine"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Log_Manager::WriteLog"
+                          },
+                          "parameters": [
+                            "",
+                            "Logger",
+                            "\"LandmineDetected\"",
+                            ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "_CONFIG_.debug",
+                            "True",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "PrimitiveDrawing::Circle"
+                          },
+                          "parameters": [
+                            "NewShapePainter",
+                            "Enemies.CenterX()",
+                            "Enemies.CenterY()",
+                            "_DATA_.Tanks[Name].LandmineDetection"
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "parameters": []
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "Sight section"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 52,
+                    "g": 44,
+                    "r": 40,
+                    "textB": 0,
+                    "textG": 255,
+                    "textR": 0
+                  },
+                  "comment": "// Enemigo a la defensiva, toma en cuenta el rebote de las balas"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "IA.Aggresive",
+                        "False",
+                        "_CONSTANTS_.IAStates.Alert"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "BulletBounces",
+                        "=",
+                        "_DATA_.Bullets[Enemies.BulletType].MaxBounces"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 52,
+                    "g": 44,
+                    "r": 40,
+                    "textB": 0,
+                    "textG": 255,
+                    "textR": 0
+                  },
+                  "comment": "// Enemigo agresivo no revisa si las balas rebotan"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "IA.Aggresive",
+                        "True",
+                        "_CONSTANTS_.IAStates.Alert"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "BulletBounces",
+                        "=",
+                        "0"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "infiniteLoopWarning": true,
+                  "type": "BuiltinCommonInstructions::While",
+                  "whileConditions": [
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "RepeatCount",
+                        "<=",
+                        "BulletBounces"
+                      ]
+                    }
+                  ],
+                  "conditions": [],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 52,
+                        "g": 44,
+                        "r": 40,
+                        "textB": 0,
+                        "textG": 255,
+                        "textR": 0
+                      },
+                      "comment": "// Primero separo el rayo para deteccion de enemigo en mira"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberVariable"
+                          },
+                          "parameters": [
+                            "RepeatCount",
+                            "=",
+                            "0"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "PushNumber"
+                          },
+                          "parameters": [
+                            "IntersectsX",
+                            "LookX"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "PushNumber"
+                          },
+                          "parameters": [
+                            "IntersectsY",
+                            "LookY"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "AuxX",
+                            "=",
+                            "XFromAngleAndDistance(Angle, 16) + IntersectsX[RepeatCount]"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "AuxY",
+                            "=",
+                            "YFromAngleAndDistance(Angle, 16) + IntersectsY[RepeatCount]"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberVariable"
+                          },
+                          "parameters": [
+                            "RepeatCount",
+                            ">",
+                            "0"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "NormalAngle",
+                            "=",
+                            "ToDeg(atan2(NormalX, NormalY))"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "Angle",
+                            "=",
+                            "NormalAngle + AngleDifference(NormalAngle, Angle + 180)"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "AuxX",
+                            "=",
+                            "XFromAngleAndDistance(Angle, 2) + IntersectsX[RepeatCount]"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "AuxY",
+                            "=",
+                            "YFromAngleAndDistance(Angle, 2) + IntersectsY[RepeatCount]"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 52,
+                        "g": 44,
+                        "r": 40,
+                        "textB": 0,
+                        "textG": 255,
+                        "textR": 0
+                      },
+                      "comment": "// La deteccion del enemigo esta separado para que no tope con su colision"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "Raycast"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "AuxX",
+                            "AuxY",
+                            "Angle",
+                            "FullRange",
+                            "IntersectsX[RepeatCount+1]",
+                            "IntersectsY[RepeatCount+1]",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "PickedInstancesCount"
+                              },
+                              "parameters": [
+                                "Enemies",
+                                ">",
+                                "0"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetBooleanVariable"
+                              },
+                              "parameters": [
+                                "SeeEnemy",
+                                "True",
+                                "PurpleEnemy.ID"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 52,
+                        "g": 44,
+                        "r": 40,
+                        "textB": 0,
+                        "textG": 255,
+                        "textR": 0
+                      },
+                      "comment": "// Luego el rayo normal"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberVariable"
+                          },
+                          "parameters": [
+                            "RepeatCount",
+                            "=",
+                            "0"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "AuxX",
+                            "=",
+                            "IntersectsX[RepeatCount]"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "AuxY",
+                            "=",
+                            "IntersectsY[RepeatCount]"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "Raycast"
+                          },
+                          "parameters": [
+                            "VisibleToEnemy",
+                            "AuxX",
+                            "AuxY",
+                            "Angle",
+                            "FullRange",
+                            "IntersectsX[RepeatCount+1]",
+                            "IntersectsY[RepeatCount+1]",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetBooleanVariable"
+                          },
+                          "parameters": [
+                            "SeeSomething",
+                            "True",
+                            "PurpleEnemy.ID"
+                          ]
+                        }
+                      ],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "PickedInstancesCount"
+                              },
+                              "parameters": [
+                                "Player",
+                                ">",
+                                "0"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetBooleanVariable"
+                              },
+                              "parameters": [
+                                "SeePlayer",
+                                "True",
+                                "PurpleEnemy.ID"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "folded": true,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "PickedInstancesCount"
+                              },
+                              "parameters": [
+                                "Walls",
+                                ">",
+                                "0"
+                              ]
+                            }
+                          ],
+                          "actions": [],
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Comment",
+                              "color": {
+                                "b": 52,
+                                "g": 44,
+                                "r": 40,
+                                "textB": 0,
+                                "textG": 255,
+                                "textR": 0
+                              },
+                              "comment": "// Obtener la normal en base al bounding box. Si no tienen sentido los resultados, es porque las coordenadas estan invertidas"
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                                  },
+                                  "parameters": [
+                                    "AuxX",
+                                    ">",
+                                    "Walls.BoundingBoxLeft()"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                                  },
+                                  "parameters": [
+                                    "AuxX",
+                                    "<",
+                                    "Walls.BoundingBoxRight()"
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "NormalY",
+                                    "=",
+                                    "0"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                                  },
+                                  "parameters": [
+                                    "trunc(round(AuxX))",
+                                    ">=",
+                                    "Walls.BoundingBoxRight()"
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "NormalY",
+                                    "=",
+                                    "1"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                                  },
+                                  "parameters": [
+                                    "trunc(round(AuxX))",
+                                    "<=",
+                                    "Walls.BoundingBoxLeft()"
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "NormalY",
+                                    "=",
+                                    "-1"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                                  },
+                                  "parameters": [
+                                    "AuxY",
+                                    ">",
+                                    "Walls.BoundingBoxTop()"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                                  },
+                                  "parameters": [
+                                    "AuxY",
+                                    "<",
+                                    "Walls.BoundingBoxBottom()"
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "NormalX",
+                                    "=",
+                                    "0"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                                  },
+                                  "parameters": [
+                                    "trunc(round(AuxY))",
+                                    "<=",
+                                    "Walls.BoundingBoxTop()"
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "NormalX",
+                                    "=",
+                                    "-1"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                                  },
+                                  "parameters": [
+                                    "trunc(round(AuxY))",
+                                    ">=",
+                                    "Walls.BoundingBoxBottom()"
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "NormalX",
+                                    "=",
+                                    "1"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "BuiltinCommonInstructions::CompareStrings"
+                              },
+                              "parameters": [
+                                "VisibleToEnemy.Type",
+                                "!=",
+                                "_CONSTANTS_.Entities.Player"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetStringObjectVariable"
+                              },
+                              "parameters": [
+                                "Enemies",
+                                "IA.BlockTarget",
+                                "=",
+                                "VisibleToEnemy.Type"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "_CONFIG_.debug",
+                            "True",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "CustomObjects::DrawDebugLines"
+                          },
+                          "parameters": [
+                            "",
+                            "NewShapePainter",
+                            "_CONSTANTS_.Colors.GreenLine",
+                            "_CONSTANTS_.Colors.RedLine",
+                            "AuxX",
+                            "AuxY",
+                            "IntersectsX[RepeatCount+1]",
+                            "IntersectsY[RepeatCount+1]",
+                            "Angle",
+                            "SeePlayer",
+                            "SeeSomething",
+                            "PositionX",
+                            "PositionY",
+                            ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "SeeEnemy",
+                            "False",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetBooleanObjectVariable"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "IA.SeeEnemy",
+                            "False",
+                            "_CONSTANTS_.IAStates.Alert"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "SeeEnemy",
+                            "True",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetBooleanObjectVariable"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "IA.SeeEnemy",
+                            "True",
+                            "_CONSTANTS_.IAStates.Alert"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "SeePlayer",
+                            "False",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetBooleanObjectVariable"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "IA.SeePlayer",
+                            "False",
+                            "_CONSTANTS_.IAStates.Alert"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "SeePlayer",
+                            "True",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetBooleanObjectVariable"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "IA.SeePlayer",
+                            "True",
+                            "_CONSTANTS_.IAStates.Alert"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "RepeatCount",
+                            "=",
+                            "_DATA_.Bullets[Enemies.BulletType].MaxBounces"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "SeeSomething",
+                            "True",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetBooleanObjectVariable"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "IA.SeeSomething",
+                            "True",
+                            "_CONSTANTS_.IAStates.Alert"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "SeeSomething",
+                            "False",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetBooleanObjectVariable"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "IA.SeeSomething",
+                            "False",
+                            "_CONSTANTS_.IAStates.Alert"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "RepeatCount",
+                            "+",
+                            "1"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "LookX",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "LookY",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "PositionX",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "PositionY",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "Angle",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "BulletsCount",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "SeeSomething",
+              "type": "boolean",
+              "value": false
+            },
+            {
+              "name": "SeePlayer",
+              "type": "boolean",
+              "value": false
+            },
+            {
+              "name": "NormalAngle",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "NormalX",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "NormalY",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "AuxX",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "AuxY",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "RepeatCount",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "Name",
+              "type": "string",
+              "value": "0"
+            },
+            {
+              "name": "BulletBounces",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "SeeEnemy",
+              "type": "boolean",
+              "value": false
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 139,
+      "colorG": 33,
+      "colorR": 26,
+      "creationTime": 0,
+      "folded": true,
+      "name": "Stationary enemy logic",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 209,
+            "g": 199,
+            "r": 85,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": ""
+        },
+        {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "StationaryEnemy",
+          "conditions": [],
+          "actions": [],
+          "events": [
+            {
+              "colorB": 177,
+              "colorG": 128,
+              "colorR": 29,
+              "creationTime": 0,
+              "name": "Sight",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": ""
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "StationaryEnemy",
+                        "IA.SeePlayer",
+                        "False",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "AngleOffset",
+                            "=",
+                            "_DATA_.Tanks.StationaryEnemy.LookSpeed * TimeDelta() * LayerTimeScale(_CONSTANTS_.Layers.Main)"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "StationaryEnemy",
+                            "IA.AngleRotationCount",
+                            "+",
+                            "AngleOffset"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberObjectVariable"
+                          },
+                          "parameters": [
+                            "StationaryEnemy",
+                            "IA.AngleRotationCount",
+                            ">=",
+                            "StationaryEnemy.IA.AngleRotationFieldOfvision"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "NumberObjectVariable"
+                          },
+                          "parameters": [
+                            "StationaryEnemy",
+                            "IA.AngleRotationFieldOfvision",
+                            "<",
+                            "360"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "StationaryEnemy",
+                            "IA.AngleRotationCount",
+                            "=",
+                            "0"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "StationaryEnemy",
+                            "IA.AngleRotationCountOperationSign",
+                            "=",
+                            "-StationaryEnemy.IA.AngleRotationCountOperationSign"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "StationaryEnemy",
+                            "IA.CurrentLookAngle",
+                            "+",
+                            "AngleOffset * StationaryEnemy.IA.AngleRotationCountOperationSign"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberObjectVariable"
+                          },
+                          "parameters": [
+                            "StationaryEnemy",
+                            "IA.CurrentLookAngle",
+                            ">=",
+                            "360"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "StationaryEnemy",
+                            "IA.CurrentLookAngle",
+                            "-",
+                            "360"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "CustomObjects::Player::LookToByAngle"
+                          },
+                          "parameters": [
+                            "StationaryEnemy",
+                            "StationaryEnemy.IA.CurrentLookAngle",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "variables": [
+                    {
+                      "name": "AngleOffset",
+                      "type": "number",
+                      "value": 0
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 52,
+                    "g": 44,
+                    "r": 40,
+                    "textB": 0,
+                    "textG": 255,
+                    "textR": 0
+                  },
+                  "comment": "// TODO: Mejorar la deteccion, si esta cerca del jugador"
+                },
+                {
+                  "disabled": true,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "StationaryEnemy",
+                        "IA.SeePlayer",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "CustomObjects::Player::LookToByPoint"
+                          },
+                          "parameters": [
+                            "StationaryEnemy",
+                            "Player.CenterX()",
+                            "Player.CenterY()",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
+            },
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "\n\n"
+            },
+            {
+              "colorB": 177,
+              "colorG": 128,
+              "colorR": 29,
+              "creationTime": 0,
+              "name": "Shoot",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": ""
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberObjectVariable"
+                      },
+                      "parameters": [
+                        "StationaryEnemy",
+                        "BulletCount",
+                        "=",
+                        "0"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "LinkedObjects::PickObjectsLinkedTo"
+                      },
+                      "parameters": [
+                        "",
+                        "WhiteBullet",
+                        "StationaryEnemy",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberObjectVariable"
+                      },
+                      "parameters": [
+                        "StationaryEnemy",
+                        "BulletCount",
+                        "=",
+                        "PickedInstancesCount(WhiteBullet)"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "StationaryEnemy",
+                        "IA.SeePlayer",
+                        "True",
+                        "_DATA_.Enemies.RegularEnemy.MaxBullets"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberObjectVariable"
+                      },
+                      "parameters": [
+                        "StationaryEnemy",
+                        "BulletCount",
+                        "<",
+                        "_DATA_.Tanks.StationaryEnemy.MaxBullets"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "StationaryEnemy",
+                        "IA.SeeEnemy",
+                        "False",
+                        "_CONSTANTS_.Entities.BreakableWall"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "StringObjectVariable"
+                      },
+                      "parameters": [
+                        "StationaryEnemy",
+                        "IA.BlockTarget",
+                        "!=",
+                        "_CONSTANTS_.Entities.Enemy"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "StringObjectVariable"
+                      },
+                      "parameters": [
+                        "StationaryEnemy",
+                        "IA.BlockTarget",
+                        "!=",
+                        "_CONSTANTS_.Entities.BreakableWall"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetBooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "StationaryEnemy",
+                        "IA.Shoot",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "StationaryEnemy",
+                        "IA.SeePlayer",
+                        "False",
+                        "_DATA_.Enemies.RegularEnemy.MaxBullets"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetBooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "StationaryEnemy",
+                        "IA.Shoot",
+                        "False",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 139,
+      "colorG": 33,
+      "colorR": 26,
+      "creationTime": 0,
+      "folded": true,
+      "name": "Regular enemy logic",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 209,
+            "g": 199,
+            "r": 85,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": ""
+        },
+        {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "RegularEnemy",
+          "conditions": [],
+          "actions": [],
+          "events": [
+            {
+              "colorB": 177,
+              "colorG": 128,
+              "colorR": 29,
+              "creationTime": 0,
+              "folded": true,
+              "name": "Debuggin lines",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": ""
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanVariable"
+                      },
+                      "parameters": [
+                        "_CONFIG_.debug",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "PrimitiveDrawing::UseRelativeCoordinates"
+                      },
+                      "parameters": [
+                        "NewShapePainter",
+                        ""
+                      ]
+                    }
+                  ],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Repeat",
+                      "repeatExpression": "RegularEnemy.Pathfinding::NodeCount()",
+                      "conditions": [],
+                      "actions": [],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 52,
+                            "g": 44,
+                            "r": 40,
+                            "textB": 0,
+                            "textG": 255,
+                            "textR": 0
+                          },
+                          "comment": "// Draw circles on each node"
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "NumberVariable"
+                              },
+                              "parameters": [
+                                "LoopIndex",
+                                "<=",
+                                "RegularEnemy.Pathfinding::NodeCount()-1"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "PrimitiveDrawing::Circle"
+                              },
+                              "parameters": [
+                                "NewShapePainter",
+                                "RegularEnemy.Pathfinding::GetNodeX(LoopIndex)",
+                                "RegularEnemy.Pathfinding::GetNodeY(LoopIndex)",
+                                "3"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 52,
+                            "g": 44,
+                            "r": 40,
+                            "textB": 0,
+                            "textG": 255,
+                            "textR": 0
+                          },
+                          "comment": "// Draw lines between nodes"
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "NumberVariable"
+                              },
+                              "parameters": [
+                                "LoopIndex",
+                                "<",
+                                "RegularEnemy.Pathfinding::NodeCount()-1"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "PrimitiveDrawing::LineV2"
+                              },
+                              "parameters": [
+                                "NewShapePainter",
+                                "RegularEnemy.Pathfinding::GetNodeX(LoopIndex)",
+                                "RegularEnemy.Pathfinding::GetNodeY(LoopIndex)",
+                                "RegularEnemy.Pathfinding::GetNodeX(LoopIndex +1)",
+                                "RegularEnemy.Pathfinding::GetNodeY(LoopIndex+1)",
+                                "3"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "LoopIndex",
+                                "+",
+                                "1"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "variables": [
+                    {
+                      "name": "LoopIndex",
+                      "type": "number",
+                      "value": 0
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
+            },
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "\n\n"
+            },
+            {
+              "colorB": 177,
+              "colorG": 128,
+              "colorR": 29,
+              "creationTime": 0,
+              "folded": true,
+              "name": "Movement",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": ""
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::Not"
+                      },
+                      "parameters": [],
+                      "subInstructions": [
+                        {
+                          "type": {
+                            "value": "LinkedObjects::PickObjectsLinkedTo"
+                          },
+                          "parameters": [
+                            "",
+                            "GuardingArea",
+                            "RegularEnemy",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "AjoutObjConcern"
+                          },
+                          "parameters": [
+                            "",
+                            "GuardingArea"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "PickNearest"
+                          },
+                          "parameters": [
+                            "GuardingArea",
+                            "RegularEnemy.X()",
+                            "RegularEnemy.Y()",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "LinkedObjects::LinkObjects"
+                          },
+                          "parameters": [
+                            "",
+                            "GuardingArea",
+                            "RegularEnemy"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetBooleanObjectVariable"
+                          },
+                          "parameters": [
+                            "RegularEnemy",
+                            "IA.RestartPath",
+                            "True",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "IA.RestartPath",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "LinkedObjects::PickObjectsLinkedTo"
+                      },
+                      "parameters": [
+                        "",
+                        "GuardingArea",
+                        "RegularEnemy",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "AuxX",
+                        "=",
+                        "RandomInRange(GuardingArea.X(), GuardingArea.X() + GuardingArea.Width())"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "AuxY",
+                        "=",
+                        "RandomInRange(GuardingArea.Y(), GuardingArea.Y() + GuardingArea.Height())"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "PathfindingBehavior::SetDestination"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "Pathfinding",
+                        "",
+                        "AuxX",
+                        "AuxY"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetBooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "IA.RestartPath",
+                        "False",
+                        ""
+                      ]
+                    }
+                  ],
+                  "variables": [
+                    {
+                      "name": "AuxY",
+                      "type": "number",
+                      "value": 0
+                    },
+                    {
+                      "name": "AuxX",
+                      "type": "number",
+                      "value": 0
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "PathfindingBehavior::PathFound"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "Pathfinding"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetBooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "IA.RestartPath",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "PathfindingBehavior::DestinationReached"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "Pathfinding"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "IA.RestartPath",
+                        "False",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "Wait"
+                      },
+                      "parameters": [
+                        "0.2"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "LinkedObjects::PickObjectsLinkedTo"
+                      },
+                      "parameters": [
+                        "",
+                        "GuardingArea",
+                        "RegularEnemy",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "LinkedObjects::RemoveLinkBetween"
+                      },
+                      "parameters": [
+                        "",
+                        "GuardingArea",
+                        "RegularEnemy"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetBooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "IA.RestartPath",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
+            },
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "\n\n"
+            },
+            {
+              "colorB": 177,
+              "colorG": 128,
+              "colorR": 29,
+              "creationTime": 0,
+              "name": "Sight",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "On defense"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "IA.Aggresive",
+                        "False",
+                        "_CONSTANTS_.IAStates.Alert"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "IA.SeePlayer",
+                        "False",
+                        "_CONSTANTS_.IAStates.Alert"
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "AngleOffset",
+                            "=",
+                            "_DATA_.Tanks.RegularEnemy.LookSpeed * TimeDelta() * LayerTimeScale(_CONSTANTS_.Layers.Main)"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "RegularEnemy",
+                            "IA.AngleRotationCount",
+                            "+",
+                            "AngleOffset"
+                          ]
+                        }
+                      ],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 52,
+                            "g": 44,
+                            "r": 40,
+                            "textB": 0,
+                            "textG": 255,
+                            "textR": 0
+                          },
+                          "comment": "// Si esta en 360 el angulo dejar que gire totalmente, no cambiar el sentido"
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "NumberObjectVariable"
+                              },
+                              "parameters": [
+                                "RegularEnemy",
+                                "IA.AngleRotationCount",
+                                ">=",
+                                "RegularEnemy.IA.AngleRotationFieldOfvision"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "NumberObjectVariable"
+                              },
+                              "parameters": [
+                                "RegularEnemy",
+                                "IA.AngleRotationFieldOfvision",
+                                "<",
+                                "360"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetNumberObjectVariable"
+                              },
+                              "parameters": [
+                                "RegularEnemy",
+                                "IA.AngleRotationCount",
+                                "=",
+                                "0"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetNumberObjectVariable"
+                              },
+                              "parameters": [
+                                "RegularEnemy",
+                                "IA.AngleRotationCountOperationSign",
+                                "=",
+                                "-RegularEnemy.IA.AngleRotationCountOperationSign"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetNumberObjectVariable"
+                              },
+                              "parameters": [
+                                "RegularEnemy",
+                                "IA.CurrentLookAngle",
+                                "+",
+                                "AngleOffset * RegularEnemy.IA.AngleRotationCountOperationSign"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "NumberObjectVariable"
+                              },
+                              "parameters": [
+                                "RegularEnemy",
+                                "IA.CurrentLookAngle",
+                                ">=",
+                                "360"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetNumberObjectVariable"
+                              },
+                              "parameters": [
+                                "RegularEnemy",
+                                "IA.CurrentLookAngle",
+                                "-",
+                                "360"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "CustomObjects::Player::LookToByAngle"
+                              },
+                              "parameters": [
+                                "RegularEnemy",
+                                "RegularEnemy.IA.CurrentLookAngle",
+                                ""
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "variables": [
+                        {
+                          "name": "AngleOffset",
+                          "type": "number",
+                          "value": 0
+                        }
+                      ]
+                    }
+                  ],
+                  "variables": [
+                    {
+                      "name": "AngleOffset",
+                      "type": "number",
+                      "value": 0
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "On offense"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "IA.Aggresive",
+                        "True",
+                        "_CONSTANTS_.IAStates.Alert"
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "CustomObjects::Player::LookToByPoint"
+                          },
+                          "parameters": [
+                            "RegularEnemy",
+                            "Player.CenterX()",
+                            "Player.CenterY()",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
+            },
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "\n\n"
+            },
+            {
+              "colorB": 177,
+              "colorG": 128,
+              "colorR": 29,
+              "creationTime": 0,
+              "name": "Shoot",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": ""
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberObjectVariable"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "BulletCount",
+                        "=",
+                        "0"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "LinkedObjects::PickObjectsLinkedTo"
+                      },
+                      "parameters": [
+                        "",
+                        "WhiteBullet",
+                        "RegularEnemy",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberObjectVariable"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "BulletCount",
+                        "=",
+                        "PickedInstancesCount(WhiteBullet)"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "IA.SeePlayer",
+                        "True",
+                        "_DATA_.Enemies.RegularEnemy.MaxBullets"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberObjectVariable"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "BulletCount",
+                        "<",
+                        "_DATA_.Tanks.RegularEnemy.MaxBullets"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "StringObjectVariable"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "IA.BlockTarget",
+                        "!=",
+                        "_CONSTANTS_.Entities.Enemy"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "StringObjectVariable"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "IA.BlockTarget",
+                        "!=",
+                        "_CONSTANTS_.Entities.BreakableWall"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetBooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "IA.Shoot",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "IA.SeePlayer",
+                        "False",
+                        "_DATA_.Enemies.RegularEnemy.MaxBullets"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetBooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "IA.Shoot",
+                        "False",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
+            },
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "\n\n"
+            },
+            {
+              "folded": true,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "LinkedObjects::PickObjectsLinkedTo"
+                  },
+                  "parameters": [
+                    "",
+                    "IAAlerts",
+                    "RegularEnemy",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "MettreXY"
+                  },
+                  "parameters": [
+                    "IAAlerts",
+                    "=",
+                    "RegularEnemy.GetLookPointX()",
+                    "=",
+                    "RegularEnemy.GetLookPointY()"
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "IA.Aggresive",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                      },
+                      "parameters": [
+                        "IAAlerts",
+                        "Animation",
+                        "=",
+                        "\"Alert\""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "RegularEnemy",
+                        "IA.Aggresive",
+                        "False",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                      },
+                      "parameters": [
+                        "IAAlerts",
+                        "Animation",
+                        "=",
+                        "\"Searching\""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "\n\n"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 209,
+            "g": 199,
+            "r": 85,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": ""
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "Distance"
+              },
+              "parameters": [
+                "RegularEnemy",
+                "RegularEnemy",
+                "RegularEnemy.Width()",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "BooleanObjectVariable"
+              },
+              "parameters": [
+                "RegularEnemy",
+                "IA.RestartPath",
+                "False",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetBooleanObjectVariable"
+              },
+              "parameters": [
+                "RegularEnemy",
+                "IA.RestartPath",
+                "True",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "SeparateFromObjects"
+              },
+              "parameters": [
+                "RegularEnemy",
+                "RegularEnemy",
+                ""
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 139,
+      "colorG": 33,
+      "colorR": 26,
+      "creationTime": 0,
+      "folded": true,
+      "name": "Landmine enemy logic",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 209,
+            "g": 199,
+            "r": 85,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": ""
+        },
+        {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "LandmineEnemy",
+          "conditions": [],
+          "actions": [],
+          "events": [
+            {
+              "colorB": 177,
+              "colorG": 128,
+              "colorR": 29,
+              "creationTime": 0,
+              "folded": true,
+              "name": "Debuggin lines",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": ""
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanVariable"
+                      },
+                      "parameters": [
+                        "_CONFIG_.debug",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "PrimitiveDrawing::UseRelativeCoordinates"
+                      },
+                      "parameters": [
+                        "NewShapePainter",
+                        ""
+                      ]
+                    }
+                  ],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Repeat",
+                      "repeatExpression": "LandmineEnemy.Pathfinding::NodeCount()",
+                      "conditions": [],
+                      "actions": [],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 52,
+                            "g": 44,
+                            "r": 40,
+                            "textB": 0,
+                            "textG": 255,
+                            "textR": 0
+                          },
+                          "comment": "// Draw circles on each node"
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "NumberVariable"
+                              },
+                              "parameters": [
+                                "LoopIndex",
+                                "<=",
+                                "LandmineEnemy.Pathfinding::NodeCount()-1"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "PrimitiveDrawing::Circle"
+                              },
+                              "parameters": [
+                                "NewShapePainter",
+                                "LandmineEnemy.Pathfinding::GetNodeX(LoopIndex) + (LandmineEnemy.Width() / 2)",
+                                "LandmineEnemy.Pathfinding::GetNodeY(LoopIndex) + (LandmineEnemy.Height() / 2)",
+                                "3"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 52,
+                            "g": 44,
+                            "r": 40,
+                            "textB": 0,
+                            "textG": 255,
+                            "textR": 0
+                          },
+                          "comment": "// Draw lines between nodes"
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "NumberVariable"
+                              },
+                              "parameters": [
+                                "LoopIndex",
+                                "<",
+                                "LandmineEnemy.Pathfinding::NodeCount()-1"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "PrimitiveDrawing::LineV2"
+                              },
+                              "parameters": [
+                                "NewShapePainter",
+                                "LandmineEnemy.Pathfinding::GetNodeX(LoopIndex) + (LandmineEnemy.Width() / 2)",
+                                "LandmineEnemy.Pathfinding::GetNodeY(LoopIndex) + (LandmineEnemy.Height() / 2)",
+                                "LandmineEnemy.Pathfinding::GetNodeX(LoopIndex +1) + (LandmineEnemy.Width() / 2)",
+                                "LandmineEnemy.Pathfinding::GetNodeY(LoopIndex+1) + (LandmineEnemy.Height() / 2)",
+                                "3"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "LoopIndex",
+                                "+",
+                                "1"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "variables": [
+                    {
+                      "name": "LoopIndex",
+                      "type": "number",
+                      "value": 0
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
+            },
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "\n\n"
+            },
+            {
+              "colorB": 177,
+              "colorG": 128,
+              "colorR": 29,
+              "creationTime": 0,
+              "name": "Movement",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": ""
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "IA.LandmineDetected",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "PathfindingBehavior::MaxSpeed"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "Pathfinding",
+                        "=",
+                        "60"
+                      ]
+                    }
+                  ],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "LinkedObjects::PickObjectsLinkedTo"
+                          },
+                          "parameters": [
+                            "",
+                            "LandmineDetection",
+                            "LandmineEnemy",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "LandmineCount",
+                            "=",
+                            "PickedInstancesCount(LandmineEnemy)"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::CompareNumbers"
+                          },
+                          "parameters": [
+                            "LandmineCount",
+                            "!=",
+                            "LandmineEnemy.IA.LandmineCount"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetBooleanObjectVariable"
+                          },
+                          "parameters": [
+                            "LandmineEnemy",
+                            "IA.RestartPath",
+                            "True",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "LinkedObjects::PickObjectsLinkedTo"
+                          },
+                          "parameters": [
+                            "",
+                            "LookPoint",
+                            "LandmineEnemy",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "Delete"
+                          },
+                          "parameters": [
+                            "LookPoint",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "LandmineEnemy",
+                            "IA.LandmineCount",
+                            "=",
+                            "LandmineCount"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "LinkedObjects::PickObjectsLinkedTo"
+                          },
+                          "parameters": [
+                            "",
+                            "LandmineDetection",
+                            "LandmineEnemy",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "PickNearest"
+                          },
+                          "parameters": [
+                            "LandmineDetection",
+                            "LandmineEnemy.CenterX()",
+                            "LandmineEnemy.CenterY()",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "BuiltinCommonInstructions::Not"
+                              },
+                              "parameters": [],
+                              "subInstructions": [
+                                {
+                                  "type": {
+                                    "value": "LinkedObjects::PickObjectsLinkedTo"
+                                  },
+                                  "parameters": [
+                                    "",
+                                    "LookPoint",
+                                    "LandmineEnemy",
+                                    ""
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "Create"
+                              },
+                              "parameters": [
+                                "",
+                                "LookPoint",
+                                "0",
+                                "0",
+                                ""
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "LinkedObjects::LinkObjects"
+                              },
+                              "parameters": [
+                                "",
+                                "LookPoint",
+                                "LandmineEnemy"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetBooleanObjectVariable"
+                              },
+                              "parameters": [
+                                "LandmineEnemy",
+                                "IA.RestartPath",
+                                "True",
+                                ""
+                              ]
+                            }
+                          ],
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "BooleanVariable"
+                                  },
+                                  "parameters": [
+                                    "_CONFIG_.debug",
+                                    "",
+                                    ""
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "Cache"
+                                  },
+                                  "parameters": [
+                                    "LookPoint"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanObjectVariable"
+                          },
+                          "parameters": [
+                            "LandmineEnemy",
+                            "IA.RestartPath",
+                            "True",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "LinkedObjects::PickObjectsLinkedTo"
+                          },
+                          "parameters": [
+                            "",
+                            "LookPoint",
+                            "LandmineEnemy",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "MettreAutour"
+                          },
+                          "parameters": [
+                            "LookPoint",
+                            "LandMine",
+                            "50",
+                            "RandomFloatInRange(0,360)"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "PathfindingBehavior::SetDestination"
+                          },
+                          "parameters": [
+                            "LandmineEnemy",
+                            "Pathfinding",
+                            "",
+                            "LookPoint.X()",
+                            "LookPoint.Y()"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetBooleanObjectVariable"
+                          },
+                          "parameters": [
+                            "LandmineEnemy",
+                            "IA.RestartPath",
+                            "False",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "variables": [
+                    {
+                      "name": "AuxX",
+                      "type": "number",
+                      "value": 0
+                    },
+                    {
+                      "name": "AuxY",
+                      "type": "number",
+                      "value": 0
+                    },
+                    {
+                      "name": "LandmineCount",
+                      "type": "number",
+                      "value": 0
+                    }
+                  ]
+                },
+                {
+                  "folded": true,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "IA.LandmineDetected",
+                        "False",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "PathfindingBehavior::MaxSpeed"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "Pathfinding",
+                        "=",
+                        "45"
+                      ]
+                    }
+                  ],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::Not"
+                          },
+                          "parameters": [],
+                          "subInstructions": [
+                            {
+                              "type": {
+                                "value": "LinkedObjects::PickObjectsLinkedTo"
+                              },
+                              "parameters": [
+                                "",
+                                "GuardingArea",
+                                "LandmineEnemy",
+                                ""
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "AjoutObjConcern"
+                              },
+                              "parameters": [
+                                "",
+                                "GuardingArea"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "PickNearest"
+                              },
+                              "parameters": [
+                                "GuardingArea",
+                                "LandmineEnemy.X()",
+                                "LandmineEnemy.Y()",
+                                ""
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "LinkedObjects::LinkObjects"
+                              },
+                              "parameters": [
+                                "",
+                                "GuardingArea",
+                                "LandmineEnemy"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetBooleanObjectVariable"
+                              },
+                              "parameters": [
+                                "LandmineEnemy",
+                                "IA.RestartPath",
+                                "True",
+                                ""
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanObjectVariable"
+                          },
+                          "parameters": [
+                            "LandmineEnemy",
+                            "IA.RestartPath",
+                            "True",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "LinkedObjects::PickObjectsLinkedTo"
+                          },
+                          "parameters": [
+                            "",
+                            "GuardingArea",
+                            "LandmineEnemy",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "AuxX",
+                            "=",
+                            "RandomInRange(GuardingArea.X(), GuardingArea.X() + GuardingArea.Width())"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "AuxY",
+                            "=",
+                            "RandomInRange(GuardingArea.Y(), GuardingArea.Y() + GuardingArea.Height())"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "PathfindingBehavior::SetDestination"
+                          },
+                          "parameters": [
+                            "LandmineEnemy",
+                            "Pathfinding",
+                            "",
+                            "AuxX",
+                            "AuxY"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetBooleanObjectVariable"
+                          },
+                          "parameters": [
+                            "LandmineEnemy",
+                            "IA.RestartPath",
+                            "False",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "variables": [
+                    {
+                      "name": "AuxY",
+                      "type": "number",
+                      "value": 0
+                    },
+                    {
+                      "name": "AuxX",
+                      "type": "number",
+                      "value": 0
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "PathfindingBehavior::PathFound"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "Pathfinding"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetBooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "IA.RestartPath",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "PathfindingBehavior::DestinationReached"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "Pathfinding"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "IA.RestartPath",
+                        "False",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "Wait"
+                      },
+                      "parameters": [
+                        "0.2"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "LinkedObjects::PickObjectsLinkedTo"
+                      },
+                      "parameters": [
+                        "",
+                        "GuardingArea",
+                        "LandmineEnemy",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "LinkedObjects::RemoveLinkBetween"
+                      },
+                      "parameters": [
+                        "",
+                        "GuardingArea",
+                        "LandmineEnemy"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "LinkedObjects::PickObjectsLinkedTo"
+                      },
+                      "parameters": [
+                        "",
+                        "LookPoint",
+                        "LandmineEnemy",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "LinkedObjects::RemoveLinkBetween"
+                      },
+                      "parameters": [
+                        "",
+                        "LookPoint",
+                        "LandmineEnemy"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Delete"
+                      },
+                      "parameters": [
+                        "LookPoint",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetBooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "IA.RestartPath",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
+            },
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "\n\n"
+            },
+            {
+              "colorB": 177,
+              "colorG": 128,
+              "colorR": 29,
+              "creationTime": 0,
+              "name": "Sight",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": ""
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "IA.SeePlayer",
+                        "False",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "AngleOffset",
+                            "=",
+                            "_DATA_.Tanks.LandmineEnemy.LookSpeed * TimeDelta() * LayerTimeScale(_CONSTANTS_.Layers.Main)"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "LandmineEnemy",
+                            "IA.AngleRotationCount",
+                            "+",
+                            "AngleOffset"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberObjectVariable"
+                          },
+                          "parameters": [
+                            "LandmineEnemy",
+                            "IA.AngleRotationCount",
+                            ">=",
+                            "LandmineEnemy.IA.AngleRotationFieldOfvision"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "NumberObjectVariable"
+                          },
+                          "parameters": [
+                            "LandmineEnemy",
+                            "IA.AngleRotationFieldOfvision",
+                            "<",
+                            "360"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "LandmineEnemy",
+                            "IA.AngleRotationCount",
+                            "=",
+                            "0"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "LandmineEnemy",
+                            "IA.AngleRotationCountOperationSign",
+                            "=",
+                            "-LandmineEnemy.IA.AngleRotationCountOperationSign"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "LandmineEnemy",
+                            "IA.CurrentLookAngle",
+                            "+",
+                            "AngleOffset * LandmineEnemy.IA.AngleRotationCountOperationSign"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberObjectVariable"
+                          },
+                          "parameters": [
+                            "LandmineEnemy",
+                            "IA.CurrentLookAngle",
+                            ">=",
+                            "360"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "LandmineEnemy",
+                            "IA.CurrentLookAngle",
+                            "-",
+                            "360"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "CustomObjects::Player::LookToByAngle"
+                          },
+                          "parameters": [
+                            "LandmineEnemy",
+                            "LandmineEnemy.AngleToObject(Player) + LandmineEnemy.IA.CurrentLookAngle - (LandmineEnemy.IA.AngleRotationFieldOfvision / 2)",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "variables": [
+                    {
+                      "name": "AngleOffset",
+                      "type": "number",
+                      "value": 0
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
+            },
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "\n\n"
+            },
+            {
+              "colorB": 177,
+              "colorG": 128,
+              "colorR": 29,
+              "creationTime": 0,
+              "name": "Shoot",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": ""
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "BulletCount",
+                        "=",
+                        "0"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "LinkedObjects::PickObjectsLinkedTo"
+                      },
+                      "parameters": [
+                        "",
+                        "WhiteBullet",
+                        "LandmineEnemy",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "BulletCount",
+                        "=",
+                        "PickedInstancesCount(WhiteBullet)"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "IA.SeePlayer",
+                        "True",
+                        "_DATA_.Enemies.RegularEnemy.MaxBullets"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "IA.LandmineDetected",
+                        "False",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "BulletCount",
+                        "<",
+                        "_DATA_.Tanks.LandmineEnemy.MaxBullets"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "StringObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "IA.BlockTarget",
+                        "!=",
+                        "_CONSTANTS_.Entities.Landmine"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "StringObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "IA.BlockTarget",
+                        "!=",
+                        "_CONSTANTS_.Entities.BreakableWall"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetBooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "IA.Shoot",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "IA.SeePlayer",
+                        "False",
+                        "_DATA_.Enemies.RegularEnemy.MaxBullets"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetBooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "IA.Shoot",
+                        "False",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
+            },
+            {
+              "colorB": 177,
+              "colorG": 128,
+              "colorR": 29,
+              "creationTime": 0,
+              "name": "Place landmine",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": ""
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "LandMineCount",
+                        "=",
+                        "0"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "LinkedObjects::PickObjectsLinkedTo"
+                      },
+                      "parameters": [
+                        "",
+                        "LandMine",
+                        "LandmineEnemy",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "LandMineCount",
+                        "=",
+                        "PickedInstancesCount(LandMine)"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "NumberObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "BulletCount",
+                        "<",
+                        "_DATA_.Tanks.LandmineEnemy.MaxLandmines"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "CompareObjectTimer"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "_CONSTANTS_.Timers.Tanks.PlaceLandmineCooldown",
+                        ">=",
+                        "_DATA_.Tanks.LandmineEnemy.PlaceLandmineCooldown"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetBooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "IA.PlaceLandmine",
+                        "True",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ResetObjectTimer"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "_CONSTANTS_.Timers.Tanks.PlaceLandmineCooldown"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "IA.SeePlayer",
+                        "False",
+                        "_DATA_.Enemies.RegularEnemy.MaxBullets"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetBooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "IA.Shoot",
+                        "False",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
+            },
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "\n\n"
+            },
+            {
+              "folded": true,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "LinkedObjects::PickObjectsLinkedTo"
+                  },
+                  "parameters": [
+                    "",
+                    "IAAlerts",
+                    "LandmineEnemy",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "MettreXY"
+                  },
+                  "parameters": [
+                    "IAAlerts",
+                    "=",
+                    "LandmineEnemy.GetLookPointX()",
+                    "=",
+                    "LandmineEnemy.GetLookPointY()"
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "IA.Aggresive",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                      },
+                      "parameters": [
+                        "IAAlerts",
+                        "Animation",
+                        "=",
+                        "\"Alert\""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "LandmineEnemy",
+                        "IA.Aggresive",
+                        "False",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                      },
+                      "parameters": [
+                        "IAAlerts",
+                        "Animation",
+                        "=",
+                        "\"Searching\""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "\n\n"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 209,
+            "g": 199,
+            "r": 85,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": ""
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "Distance"
+              },
+              "parameters": [
+                "LandmineEnemy",
+                "LandmineEnemy",
+                "LandmineEnemy.Width()",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "BooleanObjectVariable"
+              },
+              "parameters": [
+                "LandmineEnemy",
+                "IA.RestartPath",
+                "False",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetBooleanObjectVariable"
+              },
+              "parameters": [
+                "LandmineEnemy",
+                "IA.RestartPath",
+                "True",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "SeparateFromObjects"
+              },
+              "parameters": [
+                "LandmineEnemy",
+                "LandmineEnemy",
+                ""
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 0,
+        "textG": 0,
+        "textR": 0
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 139,
+      "colorG": 33,
+      "colorR": 26,
+      "creationTime": 0,
+      "folded": true,
+      "name": "Missile enemy logic",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 209,
+            "g": 199,
+            "r": 85,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": ""
+        },
+        {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "MissilEnemy",
+          "conditions": [],
+          "actions": [],
+          "events": [
+            {
+              "colorB": 177,
+              "colorG": 128,
+              "colorR": 29,
+              "creationTime": 0,
+              "name": "Sight",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": ""
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "MissilEnemy",
+                        "IA.SeePlayer",
+                        "False",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "AngleOffset",
+                            "=",
+                            "_DATA_.Tanks.MissilEnemy.LookSpeed * TimeDelta() * LayerTimeScale(_CONSTANTS_.Layers.Main)"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "MissilEnemy",
+                            "IA.AngleRotationCount",
+                            "+",
+                            "AngleOffset"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberObjectVariable"
+                          },
+                          "parameters": [
+                            "MissilEnemy",
+                            "IA.AngleRotationCount",
+                            ">=",
+                            "MissilEnemy.IA.AngleRotationFieldOfvision"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "NumberObjectVariable"
+                          },
+                          "parameters": [
+                            "MissilEnemy",
+                            "IA.AngleRotationFieldOfvision",
+                            "<",
+                            "360"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "MissilEnemy",
+                            "IA.AngleRotationCount",
+                            "=",
+                            "0"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "MissilEnemy",
+                            "IA.AngleRotationCountOperationSign",
+                            "=",
+                            "-MissilEnemy.IA.AngleRotationCountOperationSign"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "MissilEnemy",
+                            "IA.CurrentLookAngle",
+                            "+",
+                            "AngleOffset * MissilEnemy.IA.AngleRotationCountOperationSign"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NumberObjectVariable"
+                          },
+                          "parameters": [
+                            "MissilEnemy",
+                            "IA.CurrentLookAngle",
+                            ">=",
+                            "360"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberObjectVariable"
+                          },
+                          "parameters": [
+                            "MissilEnemy",
+                            "IA.CurrentLookAngle",
+                            "-",
+                            "360"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "CustomObjects::Player::LookToByAngle"
+                          },
+                          "parameters": [
+                            "MissilEnemy",
+                            "MissilEnemy.IA.CurrentLookAngle",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "variables": [
+                    {
+                      "name": "AngleOffset",
+                      "type": "number",
+                      "value": 0
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 52,
+                    "g": 44,
+                    "r": 40,
+                    "textB": 0,
+                    "textG": 255,
+                    "textR": 0
+                  },
+                  "comment": "// TODO: Mejorar la deteccion, si esta cerca del jugador"
+                },
+                {
+                  "disabled": true,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "MissilEnemy",
+                        "IA.SeePlayer",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "CustomObjects::Player::LookToByPoint"
+                          },
+                          "parameters": [
+                            "MissilEnemy",
+                            "Player.CenterX()",
+                            "Player.CenterY()",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
+            },
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "\n\n"
+            },
+            {
+              "colorB": 177,
+              "colorG": 128,
+              "colorR": 29,
+              "creationTime": 0,
+              "name": "Shoot",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 209,
+                    "g": 199,
+                    "r": 85,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": ""
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberObjectVariable"
+                      },
+                      "parameters": [
+                        "MissilEnemy",
+                        "BulletCount",
+                        "=",
+                        "0"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "LinkedObjects::PickObjectsLinkedTo"
+                      },
+                      "parameters": [
+                        "",
+                        "MissileBullet",
+                        "MissilEnemy",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberObjectVariable"
+                      },
+                      "parameters": [
+                        "MissilEnemy",
+                        "BulletCount",
+                        "=",
+                        "PickedInstancesCount(MissileBullet)"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "MissilEnemy",
+                        "IA.SeePlayer",
+                        "True",
+                        "_DATA_.Enemies.RegularEnemy.MaxBullets"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberObjectVariable"
+                      },
+                      "parameters": [
+                        "MissilEnemy",
+                        "BulletCount",
+                        "<",
+                        "_DATA_.Tanks.MissilEnemy.MaxBullets"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "StringObjectVariable"
+                      },
+                      "parameters": [
+                        "MissilEnemy",
+                        "IA.BlockTarget",
+                        "!=",
+                        "_CONSTANTS_.Entities.Enemy"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "StringObjectVariable"
+                      },
+                      "parameters": [
+                        "MissilEnemy",
+                        "IA.BlockTarget",
+                        "!=",
+                        "_CONSTANTS_.Entities.BreakableWall"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetBooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "MissilEnemy",
+                        "IA.Shoot",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "MissilEnemy",
+                        "IA.SeePlayer",
+                        "False",
+                        "_DATA_.Enemies.RegularEnemy.MaxBullets"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetBooleanObjectVariable"
+                      },
+                      "parameters": [
+                        "MissilEnemy",
+                        "IA.Shoot",
+                        "False",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "parameters": []
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    }
+  ]
+}

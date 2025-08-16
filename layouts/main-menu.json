@@ -1,8 +1,8 @@
 {
   "b": 209,
   "disableInputWhenNotFocused": true,
-  "mangledName": "Title_32Scene",
-  "name": "Title Scene",
+  "mangledName": "Main_32Menu",
+  "name": "Main Menu",
   "r": 209,
   "standardSortMethod": true,
   "stopSoundsOnStartup": true,
@@ -113,248 +113,12 @@
             "value": "SetStringVariable"
           },
           "parameters": [
-            "_INGAMEDATA_.CurrentScene",
+            "MAINGAME.CurrentScene",
             "=",
             "CurrentSceneName()"
           ]
         }
       ]
-    },
-    {
-      "colorB": 177,
-      "colorG": 128,
-      "colorR": 29,
-      "creationTime": 0,
-      "name": "Switch inputs",
-      "source": "",
-      "type": "BuiltinCommonInstructions::Group",
-      "events": [
-        {
-          "type": "BuiltinCommonInstructions::Comment",
-          "color": {
-            "b": 209,
-            "g": 199,
-            "r": 85,
-            "textB": 0,
-            "textG": 0,
-            "textR": 0
-          },
-          "comment": "Switch to keyboard"
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "AnyKeyPressed"
-              },
-              "parameters": [
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "StringVariable"
-              },
-              "parameters": [
-                "_CONFIG_.Players[0].InputType",
-                "=",
-                "_CONSTANTS_.InputType.Gamepad"
-              ]
-            },
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::Once"
-              },
-              "parameters": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "SetStringVariable"
-              },
-              "parameters": [
-                "_CONFIG_.Players[0].InputType",
-                "=",
-                "_CONSTANTS_.InputType.Keyboard"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Comment",
-          "color": {
-            "b": 209,
-            "g": 199,
-            "r": 85,
-            "textB": 0,
-            "textG": 0,
-            "textR": 0
-          },
-          "comment": "Switch to gamepad"
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "Gamepads::C_Any_Button_pressed"
-              },
-              "parameters": [
-                "",
-                "1",
-                "\"A\""
-              ]
-            },
-            {
-              "type": {
-                "value": "StringVariable"
-              },
-              "parameters": [
-                "_CONFIG_.Players[0].InputType",
-                "=",
-                "_CONSTANTS_.InputType.Keyboard"
-              ]
-            },
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::Once"
-              },
-              "parameters": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "SetStringVariable"
-              },
-              "parameters": [
-                "_CONFIG_.Players[0].InputType",
-                "=",
-                "_CONSTANTS_.InputType.Gamepad"
-              ]
-            }
-          ]
-        }
-      ],
-      "parameters": []
-    },
-    {
-      "colorB": 177,
-      "colorG": 128,
-      "colorR": 29,
-      "creationTime": 0,
-      "name": "Player one actions",
-      "source": "",
-      "type": "BuiltinCommonInstructions::Group",
-      "events": [
-        {
-          "type": "BuiltinCommonInstructions::Comment",
-          "color": {
-            "b": 209,
-            "g": 199,
-            "r": 85,
-            "textB": 0,
-            "textG": 0,
-            "textR": 0
-          },
-          "comment": "Keyboard actions"
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "StringVariable"
-              },
-              "parameters": [
-                "_CONFIG_.Players[0].InputType",
-                "=",
-                "_CONSTANTS_.InputType.Keyboard"
-              ]
-            }
-          ],
-          "actions": [],
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "KeyFromTextPressed"
-                  },
-                  "parameters": [
-                    "",
-                    "_CONFIG_.Players[0].Keyboard.Accept"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Once"
-                  },
-                  "parameters": []
-                }
-              ],
-              "actions": []
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Comment",
-          "color": {
-            "b": 209,
-            "g": 199,
-            "r": 85,
-            "textB": 0,
-            "textG": 0,
-            "textR": 0
-          },
-          "comment": "Gamepad actions"
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "StringVariable"
-              },
-              "parameters": [
-                "_CONFIG_.Players[0].InputType",
-                "=",
-                "_CONSTANTS_.InputType.Gamepad"
-              ]
-            }
-          ],
-          "actions": [],
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "Gamepads::C_Button_pressed"
-                  },
-                  "parameters": [
-                    "",
-                    "1",
-                    "_CONFIG_.Players[0].Gamepad.Accept",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Once"
-                  },
-                  "parameters": []
-                }
-              ],
-              "actions": []
-            }
-          ]
-        }
-      ],
-      "parameters": []
     },
     {
       "type": "BuiltinCommonInstructions::Standard",
@@ -386,7 +150,7 @@
             "value": "SetStringVariable"
           },
           "parameters": [
-            "_INGAMEDATA_.GameState",
+            "MAINGAME.GameState",
             "=",
             "_DATA_.Game.GameState"
           ]
@@ -396,7 +160,7 @@
             "value": "SetNumberVariable"
           },
           "parameters": [
-            "_INGAMEDATA_.Mission",
+            "MAINGAME.Mission",
             "=",
             "_DATA_.Game.Mission"
           ]
@@ -406,7 +170,7 @@
             "value": "SetNumberVariable"
           },
           "parameters": [
-            "_INGAMEDATA_.PlayerLives",
+            "MAINGAME.PlayerLives",
             "=",
             "_DATA_.Game.PlayerLives"
           ]
@@ -416,7 +180,7 @@
             "value": "SetNumberVariable"
           },
           "parameters": [
-            "_INGAMEDATA_.MaxAggresiveEnemies",
+            "MAINGAME.MaxAggresiveEnemies",
             "=",
             "_DATA_.Game.MaxAggresiveEnemies"
           ]
@@ -427,7 +191,7 @@
           },
           "parameters": [
             "",
-            "\"Game Scene\"",
+            "\"Main Game\"",
             ""
           ]
         }
@@ -576,12 +340,24 @@
   ],
   "behaviorsSharedData": [
     {
+      "name": "Animation",
+      "type": "AnimatableCapability::AnimatableBehavior"
+    },
+    {
       "name": "Effect",
       "type": "EffectCapability::EffectBehavior"
     },
     {
+      "name": "Flippable",
+      "type": "FlippableCapability::FlippableBehavior"
+    },
+    {
       "name": "Opacity",
       "type": "OpacityCapability::OpacityBehavior"
+    },
+    {
+      "name": "Resizable",
+      "type": "ResizableCapability::ResizableBehavior"
     },
     {
       "name": "Scale",
@@ -590,6 +366,10 @@
     {
       "name": "Text",
       "type": "TextContainerCapability::TextContainerBehavior"
+    },
+    {
+      "name": "Tween",
+      "type": "Tween::TweenBehavior"
     }
   ]
 }

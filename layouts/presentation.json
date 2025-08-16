@@ -1,8 +1,8 @@
 {
   "b": 209,
   "disableInputWhenNotFocused": true,
-  "mangledName": "Before_32Game_32Start",
-  "name": "Before Game Start",
+  "mangledName": "Presentation",
+  "name": "Presentation",
   "r": 209,
   "standardSortMethod": true,
   "stopSoundsOnStartup": false,
@@ -342,7 +342,7 @@
             "value": "SetStringVariable"
           },
           "parameters": [
-            "_INGAMEDATA_.CurrentScene",
+            "MAINGAME.CurrentScene",
             "=",
             "CurrentSceneName()"
           ]
@@ -355,7 +355,7 @@
             "Title",
             "Text",
             "=",
-            "\"Mission  \" + ToString(_INGAMEDATA_.Mission)"
+            "\"Mission  \" + ToString(MAINGAME.Mission)"
           ]
         },
         {
@@ -366,7 +366,7 @@
             "Lives",
             "Text",
             "=",
-            "_INGAMEDATA_.PlayerLives + \" Lives\""
+            "MAINGAME.PlayerLives + \" Lives\""
           ]
         },
         {
@@ -375,7 +375,7 @@
           },
           "parameters": [
             "",
-            "assets\\Music\\melody_start_01.m4a",
+            "melody_start_01.m4a",
             "_CONSTANTS_.Channel.StartMusic",
             "",
             "100",
@@ -434,127 +434,6 @@
           ]
         }
       ]
-    },
-    {
-      "colorB": 177,
-      "colorG": 128,
-      "colorR": 29,
-      "creationTime": 0,
-      "disabled": true,
-      "name": "Switch inputs",
-      "source": "",
-      "type": "BuiltinCommonInstructions::Group",
-      "events": [
-        {
-          "type": "BuiltinCommonInstructions::Comment",
-          "color": {
-            "b": 209,
-            "g": 199,
-            "r": 85,
-            "textB": 0,
-            "textG": 0,
-            "textR": 0
-          },
-          "comment": "Switch to keyboard"
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "AnyKeyPressed"
-              },
-              "parameters": [
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "StringVariable"
-              },
-              "parameters": [
-                "_CONFIG_.Players[0].InputType",
-                "=",
-                "_CONSTANTS_.InputType.Gamepad"
-              ]
-            },
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::Once"
-              },
-              "parameters": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "SetStringVariable"
-              },
-              "parameters": [
-                "_CONFIG_.Players[0].InputType",
-                "=",
-                "_CONSTANTS_.InputType.Keyboard"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Comment",
-          "color": {
-            "b": 209,
-            "g": 199,
-            "r": 85,
-            "textB": 0,
-            "textG": 0,
-            "textR": 0
-          },
-          "comment": "Switch to gamepad"
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "Gamepads::C_Any_Button_pressed"
-              },
-              "parameters": [
-                "",
-                "1",
-                "\"A\""
-              ]
-            },
-            {
-              "type": {
-                "value": "StringVariable"
-              },
-              "parameters": [
-                "_CONFIG_.Players[0].InputType",
-                "=",
-                "_CONSTANTS_.InputType.Keyboard"
-              ]
-            },
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::Once"
-              },
-              "parameters": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "SetStringVariable"
-              },
-              "parameters": [
-                "_CONFIG_.Players[0].InputType",
-                "=",
-                "_CONSTANTS_.InputType.Gamepad"
-              ]
-            }
-          ]
-        }
-      ],
-      "parameters": []
     },
     {
       "colorB": 177,
@@ -782,6 +661,10 @@
     {
       "name": "Text",
       "type": "TextContainerCapability::TextContainerBehavior"
+    },
+    {
+      "name": "Tween",
+      "type": "Tween::TweenBehavior"
     }
   ]
 }
