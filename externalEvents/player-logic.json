@@ -7,6 +7,7 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "folded": true,
       "name": "Move",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -211,6 +212,118 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "folded": true,
+      "name": "Count ammo",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberObjectVariable"
+              },
+              "parameters": [
+                "Player",
+                "BulletCount",
+                "=",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberObjectVariable"
+              },
+              "parameters": [
+                "Player",
+                "LandMineCount",
+                "=",
+                "0"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "LinkedObjects::PickObjectsLinkedTo"
+              },
+              "parameters": [
+                "",
+                "WhiteBullet",
+                "Player",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberObjectVariable"
+              },
+              "parameters": [
+                "Player",
+                "BulletCount",
+                "=",
+                "PickedInstancesCount(WhiteBullet)"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "LinkedObjects::PickObjectsLinkedTo"
+              },
+              "parameters": [
+                "",
+                "LandMine",
+                "Player",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberObjectVariable"
+              },
+              "parameters": [
+                "Player",
+                "LandMineCount",
+                "=",
+                "PickedInstancesCount(LandMine)"
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 238,
+        "textG": 238,
+        "textR": 238
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "folded": true,
       "name": "Shoot",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -280,6 +393,7 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "folded": true,
       "name": "Place landmine",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -349,6 +463,7 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "folded": true,
       "name": "Pause game",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -535,6 +650,7 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "folded": true,
       "name": "Sight",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
