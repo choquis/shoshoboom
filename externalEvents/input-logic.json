@@ -3,139 +3,163 @@
   "name": "Input Logic",
   "events": [
     {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "value": "DepartScene"
-          },
-          "parameters": [
-            ""
-          ]
-        }
-      ],
-      "actions": [],
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Begin scene",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
       "events": [
         {
-          "type": "BuiltinCommonInstructions::Comment",
-          "color": {
-            "b": 52,
-            "g": 44,
-            "r": 40,
-            "textB": 0,
-            "textG": 255,
-            "textR": 0
-          },
-          "comment": "// La configuración se guarda en la variable global \"player_one.gamepad\"\n// Se guarda en formato (\"stick\", \"direction\"), hay que parsearlo para poder leerlo\n// Se usa una variable de escena para guardar el parseo \"player_one.gamepad\""
-        },
-        {
           "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
+          "conditions": [
             {
               "type": {
-                "value": "ArrayTools::SplitString"
+                "value": "DepartScene"
               },
               "parameters": [
-                "",
-                "_CONFIG_.Players[0].Gamepad.LookDown",
-                "\",\"",
-                "MAINGAME.Player1.Gamepad.Look.Down",
                 ""
               ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 0,
+                "textG": 255,
+                "textR": 0
+              },
+              "comment": "// La configuración se guarda en la variable global \"players[].gamepad\"\n// Se guarda en formato (\"stick\", \"direction\"), hay que parsearlo para poder leerlo"
             },
             {
-              "type": {
-                "value": "ArrayTools::SplitString"
-              },
-              "parameters": [
-                "",
-                "_CONFIG_.Players[0].Gamepad.LookLeft",
-                "\",\"",
-                "MAINGAME.Player1.Gamepad.Look.Left",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ArrayTools::SplitString"
-              },
-              "parameters": [
-                "",
-                "_CONFIG_.Players[0].Gamepad.LookRight",
-                "\",\"",
-                "MAINGAME.Player1.Gamepad.Look.Right",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ArrayTools::SplitString"
-              },
-              "parameters": [
-                "",
-                "_CONFIG_.Players[0].Gamepad.LookUp",
-                "\",\"",
-                "MAINGAME.Player1.Gamepad.Look.Up",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ArrayTools::SplitString"
-              },
-              "parameters": [
-                "",
-                "_CONFIG_.Players[0].Gamepad.MoveDown",
-                "\",\"",
-                "MAINGAME.Player1.Gamepad.Move.Down",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ArrayTools::SplitString"
-              },
-              "parameters": [
-                "",
-                "_CONFIG_.Players[0].Gamepad.MoveLeft",
-                "\",\"",
-                "MAINGAME.Player1.Gamepad.Move.Left",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ArrayTools::SplitString"
-              },
-              "parameters": [
-                "",
-                "_CONFIG_.Players[0].Gamepad.MoveRight",
-                "\",\"",
-                "MAINGAME.Player1.Gamepad.Move.Right",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ArrayTools::SplitString"
-              },
-              "parameters": [
-                "",
-                "_CONFIG_.Players[0].Gamepad.MoveUp",
-                "\",\"",
-                "MAINGAME.Player1.Gamepad.Move.Up",
-                ""
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ArrayTools::SplitString"
+                  },
+                  "parameters": [
+                    "",
+                    "_CONFIG_.Players[0].Gamepad.LookDown",
+                    "\",\"",
+                    "MAINGAME.Player1.Gamepad.Look.Down",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ArrayTools::SplitString"
+                  },
+                  "parameters": [
+                    "",
+                    "_CONFIG_.Players[0].Gamepad.LookLeft",
+                    "\",\"",
+                    "MAINGAME.Player1.Gamepad.Look.Left",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ArrayTools::SplitString"
+                  },
+                  "parameters": [
+                    "",
+                    "_CONFIG_.Players[0].Gamepad.LookRight",
+                    "\",\"",
+                    "MAINGAME.Player1.Gamepad.Look.Right",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ArrayTools::SplitString"
+                  },
+                  "parameters": [
+                    "",
+                    "_CONFIG_.Players[0].Gamepad.LookUp",
+                    "\",\"",
+                    "MAINGAME.Player1.Gamepad.Look.Up",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ArrayTools::SplitString"
+                  },
+                  "parameters": [
+                    "",
+                    "_CONFIG_.Players[0].Gamepad.MoveDown",
+                    "\",\"",
+                    "MAINGAME.Player1.Gamepad.Move.Down",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ArrayTools::SplitString"
+                  },
+                  "parameters": [
+                    "",
+                    "_CONFIG_.Players[0].Gamepad.MoveLeft",
+                    "\",\"",
+                    "MAINGAME.Player1.Gamepad.Move.Left",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ArrayTools::SplitString"
+                  },
+                  "parameters": [
+                    "",
+                    "_CONFIG_.Players[0].Gamepad.MoveRight",
+                    "\",\"",
+                    "MAINGAME.Player1.Gamepad.Move.Right",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ArrayTools::SplitString"
+                  },
+                  "parameters": [
+                    "",
+                    "_CONFIG_.Players[0].Gamepad.MoveUp",
+                    "\",\"",
+                    "MAINGAME.Player1.Gamepad.Move.Up",
+                    ""
+                  ]
+                }
               ]
             }
           ]
         }
-      ]
+      ],
+      "parameters": []
     },
     {
-      "colorB": 177,
-      "colorG": 128,
-      "colorR": 29,
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 238,
+        "textG": 238,
+        "textR": 238
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
       "creationTime": 0,
       "name": "Switch inputs",
       "source": "",
@@ -144,12 +168,12 @@
         {
           "type": "BuiltinCommonInstructions::Comment",
           "color": {
-            "b": 209,
-            "g": 199,
-            "r": 85,
-            "textB": 0,
-            "textG": 0,
-            "textR": 0
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
           },
           "comment": "Switch to keyboard"
         },
@@ -197,12 +221,12 @@
         {
           "type": "BuiltinCommonInstructions::Comment",
           "color": {
-            "b": 209,
-            "g": 199,
-            "r": 85,
-            "textB": 0,
-            "textG": 0,
-            "textR": 0
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
           },
           "comment": "Switch to gamepad"
         },
@@ -265,23 +289,79 @@
       "comment": "\n\n"
     },
     {
-      "colorB": 177,
-      "colorG": 128,
-      "colorR": 29,
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
       "creationTime": 0,
       "name": "Player one inputs",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
       "events": [
         {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "MAINGAME.Input.MoveY",
+                "=",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "MAINGAME.Input.MoveX",
+                "=",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetStringVariable"
+              },
+              "parameters": [
+                "MAINGAME.Input.Pause",
+                "=",
+                "_CONSTANTS_.InputState.NA"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetStringVariable"
+              },
+              "parameters": [
+                "MAINGAME.Input.PlaceLandmine",
+                "=",
+                "_CONSTANTS_.InputState.NA"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetStringVariable"
+              },
+              "parameters": [
+                "MAINGAME.Input.Shoot",
+                "=",
+                "_CONSTANTS_.InputState.NA"
+              ]
+            }
+          ]
+        },
+        {
           "type": "BuiltinCommonInstructions::Comment",
           "color": {
-            "b": 209,
-            "g": 199,
-            "r": 85,
-            "textB": 0,
-            "textG": 0,
-            "textR": 0
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
           },
           "comment": "Keyboard actions"
         },
@@ -312,27 +392,17 @@
                     "",
                     "_CONFIG_.Players[0].Keyboard.MoveDown"
                   ]
-                },
-                {
-                  "type": {
-                    "value": "CompareObjectTimer"
-                  },
-                  "parameters": [
-                    "Player",
-                    "_CONSTANTS_.Timers.Tanks.ShootCooldown",
-                    ">=",
-                    "Player.ShootCooldown"
-                  ]
                 }
               ],
               "actions": [
                 {
                   "type": {
-                    "value": "TopDownMovementBehavior::SimulateDownKey"
+                    "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "Player",
-                    "TopDownMovement"
+                    "MAINGAME.Input.MoveY",
+                    "=",
+                    "-1"
                   ]
                 }
               ]
@@ -348,27 +418,17 @@
                     "",
                     "_CONFIG_.Players[0].Keyboard.MoveLeft"
                   ]
-                },
-                {
-                  "type": {
-                    "value": "CompareObjectTimer"
-                  },
-                  "parameters": [
-                    "Player",
-                    "_CONSTANTS_.Timers.Tanks.ShootCooldown",
-                    ">=",
-                    "Player.ShootCooldown"
-                  ]
                 }
               ],
               "actions": [
                 {
                   "type": {
-                    "value": "TopDownMovementBehavior::SimulateLeftKey"
+                    "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "Player",
-                    "TopDownMovement"
+                    "MAINGAME.Input.MoveX",
+                    "=",
+                    "-1"
                   ]
                 }
               ]
@@ -384,27 +444,17 @@
                     "",
                     "_CONFIG_.Players[0].Keyboard.MoveRight"
                   ]
-                },
-                {
-                  "type": {
-                    "value": "CompareObjectTimer"
-                  },
-                  "parameters": [
-                    "Player",
-                    "_CONSTANTS_.Timers.Tanks.ShootCooldown",
-                    ">=",
-                    "Player.ShootCooldown"
-                  ]
                 }
               ],
               "actions": [
                 {
                   "type": {
-                    "value": "TopDownMovementBehavior::SimulateRightKey"
+                    "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "Player",
-                    "TopDownMovement"
+                    "MAINGAME.Input.MoveX",
+                    "=",
+                    "1"
                   ]
                 }
               ]
@@ -420,27 +470,17 @@
                     "",
                     "_CONFIG_.Players[0].Keyboard.MoveUp"
                   ]
-                },
-                {
-                  "type": {
-                    "value": "CompareObjectTimer"
-                  },
-                  "parameters": [
-                    "Player",
-                    "_CONSTANTS_.Timers.Tanks.ShootCooldown",
-                    ">=",
-                    "Player.ShootCooldown"
-                  ]
                 }
               ],
               "actions": [
                 {
                   "type": {
-                    "value": "TopDownMovementBehavior::SimulateUpKey"
+                    "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "Player",
-                    "TopDownMovement"
+                    "MAINGAME.Input.MoveY",
+                    "=",
+                    "1"
                   ]
                 }
               ]
@@ -451,13 +491,22 @@
               "actions": [
                 {
                   "type": {
-                    "value": "CustomObjects::Player::LookToByPoint"
+                    "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "Player",
-                    "CursorX()",
-                    "CursorY()",
-                    ""
+                    "MAINGAME.Input.LookX",
+                    "=",
+                    "CursorX()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.Input.LookY",
+                    "=",
+                    "CursorY()"
                   ]
                 }
               ]
@@ -490,35 +539,17 @@
                       ]
                     }
                   ]
-                },
-                {
-                  "type": {
-                    "value": "NumberObjectVariable"
-                  },
-                  "parameters": [
-                    "Player",
-                    "BulletCount",
-                    "<",
-                    "_DATA_.Tanks.Player.MaxBullets"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Once"
-                  },
-                  "parameters": []
                 }
               ],
               "actions": [
                 {
                   "type": {
-                    "value": "SetBooleanObjectVariable"
+                    "value": "SetStringVariable"
                   },
                   "parameters": [
-                    "Player",
-                    "IA.Shoot",
-                    "True",
-                    ""
+                    "MAINGAME.Input.Shoot",
+                    "=",
+                    "_CONSTANTS_.InputState.Pressed"
                   ]
                 }
               ]
@@ -551,35 +582,17 @@
                       ]
                     }
                   ]
-                },
-                {
-                  "type": {
-                    "value": "NumberObjectVariable"
-                  },
-                  "parameters": [
-                    "Player",
-                    "LandMineCount",
-                    "<",
-                    "_DATA_.Tanks.Player.MaxLandmines"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Once"
-                  },
-                  "parameters": []
                 }
               ],
               "actions": [
                 {
                   "type": {
-                    "value": "SetBooleanObjectVariable"
+                    "value": "SetStringVariable"
                   },
                   "parameters": [
-                    "Player",
-                    "IA.PlaceLandmine",
-                    "True",
-                    ""
+                    "MAINGAME.Input.PlaceLandmine",
+                    "=",
+                    "_CONSTANTS_.InputState.Pressed"
                   ]
                 }
               ]
@@ -595,152 +608,17 @@
                     "",
                     "_CONFIG_.Players[0].Keyboard.Pause"
                   ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Once"
-                  },
-                  "parameters": []
                 }
               ],
-              "actions": [],
-              "events": [
+              "actions": [
                 {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "StringVariable"
-                      },
-                      "parameters": [
-                        "MAINGAME.GameState",
-                        "=",
-                        "_CONSTANTS_.GameState.Game"
-                      ]
-                    }
-                  ],
-                  "actions": [],
-                  "events": [
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "BooleanVariable"
-                          },
-                          "parameters": [
-                            "MAINGAME.Actions.PauseGame",
-                            "False",
-                            ""
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "BuiltinCommonInstructions::Or"
-                          },
-                          "parameters": [],
-                          "subInstructions": [
-                            {
-                              "type": {
-                                "value": "StringVariable"
-                              },
-                              "parameters": [
-                                "MAINGAME.GameState",
-                                "!=",
-                                "_CONSTANTS_.GameState.GameOver"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "StringVariable"
-                              },
-                              "parameters": [
-                                "MAINGAME.GameState",
-                                "!=",
-                                "_CONSTANTS_.GameState.GameWon"
-                              ]
-                            }
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "SetBooleanVariable"
-                          },
-                          "parameters": [
-                            "MAINGAME.Actions.PauseGame",
-                            "True",
-                            ""
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetStringVariable"
-                          },
-                          "parameters": [
-                            "MAINGAME.GameState",
-                            "=",
-                            "_CONSTANTS_.GameState.Pause"
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "StringVariable"
-                      },
-                      "parameters": [
-                        "MAINGAME.GameState",
-                        "=",
-                        "_CONSTANTS_.GameState.Pause"
-                      ]
-                    }
-                  ],
-                  "actions": [],
-                  "events": [
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "BooleanVariable"
-                          },
-                          "parameters": [
-                            "MAINGAME.Actions.PauseGame",
-                            "False",
-                            ""
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "SetBooleanVariable"
-                          },
-                          "parameters": [
-                            "MAINGAME.Actions.PauseGame",
-                            "True",
-                            ""
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetStringVariable"
-                          },
-                          "parameters": [
-                            "MAINGAME.GameState",
-                            "=",
-                            "_CONSTANTS_.GameState.Game"
-                          ]
-                        }
-                      ]
-                    }
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.Input.Pause",
+                    "=",
+                    "_CONSTANTS_.InputState.Pressed"
                   ]
                 }
               ]
@@ -750,12 +628,12 @@
         {
           "type": "BuiltinCommonInstructions::Comment",
           "color": {
-            "b": 209,
-            "g": 199,
-            "r": 85,
-            "textB": 0,
-            "textG": 0,
-            "textR": 0
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
           },
           "comment": "Gamepad actions"
         },
@@ -776,6 +654,7 @@
           "actions": [],
           "events": [
             {
+              "disabled": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -794,16 +673,18 @@
               "actions": [
                 {
                   "type": {
-                    "value": "TopDownMovementBehavior::SimulateDownKey"
+                    "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "Player",
-                    "TopDownMovement"
+                    "MAINGAME.Input.LookY",
+                    "=",
+                    "-1"
                   ]
                 }
               ]
             },
             {
+              "disabled": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -822,16 +703,18 @@
               "actions": [
                 {
                   "type": {
-                    "value": "TopDownMovementBehavior::SimulateLeftKey"
+                    "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "Player",
-                    "TopDownMovement"
+                    "MAINGAME.Input.LookX",
+                    "=",
+                    "-1"
                   ]
                 }
               ]
             },
             {
+              "disabled": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -850,16 +733,18 @@
               "actions": [
                 {
                   "type": {
-                    "value": "TopDownMovementBehavior::SimulateRightKey"
+                    "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "Player",
-                    "TopDownMovement"
+                    "MAINGAME.Input.LookX",
+                    "=",
+                    "1"
                   ]
                 }
               ]
             },
             {
+              "disabled": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -878,11 +763,51 @@
               "actions": [
                 {
                   "type": {
-                    "value": "TopDownMovementBehavior::SimulateUpKey"
+                    "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "Player",
-                    "TopDownMovement"
+                    "MAINGAME.Input.LookY",
+                    "=",
+                    "1"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Gamepads::C_Axis_pushed"
+                  },
+                  "parameters": [
+                    "",
+                    "1",
+                    "\"Left\"",
+                    "\"Any\"",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.Input.MoveX",
+                    "=",
+                    "Gamepads::StickForceX(1, \"Left\")"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.Input.MoveY",
+                    "=",
+                    "Gamepads::StickForceY(1, \"Left\")"
                   ]
                 }
               ]
@@ -906,13 +831,22 @@
               "actions": [
                 {
                   "type": {
-                    "value": "CustomObjects::Player::LookToByVector"
+                    "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "Player",
-                    "Gamepads::StickForceX(1, \"Right\")",
-                    "Gamepads::StickForceY(1, \"Right\")",
-                    ""
+                    "MAINGAME.Input.LookX",
+                    "=",
+                    "Gamepads::StickForceX(1, \"Right\")"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.Input.LookY",
+                    "=",
+                    "Gamepads::StickForceY(1, \"Right\")"
                   ]
                 }
               ]
@@ -930,35 +864,17 @@
                     "_CONFIG_.Players[0].Gamepad.Shoot",
                     ""
                   ]
-                },
-                {
-                  "type": {
-                    "value": "NumberObjectVariable"
-                  },
-                  "parameters": [
-                    "Player",
-                    "BulletCount",
-                    "<",
-                    "_DATA_.Tanks.Player.MaxBullets"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Once"
-                  },
-                  "parameters": []
                 }
               ],
               "actions": [
                 {
                   "type": {
-                    "value": "SetBooleanObjectVariable"
+                    "value": "SetStringVariable"
                   },
                   "parameters": [
-                    "Player",
-                    "IA.Shoot",
-                    "True",
-                    ""
+                    "MAINGAME.Input.Shoot",
+                    "=",
+                    "_CONSTANTS_.InputState.Pressed"
                   ]
                 }
               ]
@@ -976,35 +892,17 @@
                     "_CONFIG_.Players[0].Gamepad.LandMine",
                     ""
                   ]
-                },
-                {
-                  "type": {
-                    "value": "NumberObjectVariable"
-                  },
-                  "parameters": [
-                    "Player",
-                    "LandMineCount",
-                    "<",
-                    "_DATA_.Tanks.Player.MaxLandmines"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Once"
-                  },
-                  "parameters": []
                 }
               ],
               "actions": [
                 {
                   "type": {
-                    "value": "SetBooleanObjectVariable"
+                    "value": "SetStringVariable"
                   },
                   "parameters": [
-                    "Player",
-                    "IA.PlaceLandmine",
-                    "True",
-                    ""
+                    "MAINGAME.Input.PlaceLandmine",
+                    "=",
+                    "_CONSTANTS_.InputState.Pressed"
                   ]
                 }
               ]
@@ -1022,152 +920,17 @@
                     "_CONFIG_.Players[0].Gamepad.Pause",
                     ""
                   ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Once"
-                  },
-                  "parameters": []
                 }
               ],
-              "actions": [],
-              "events": [
+              "actions": [
                 {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "StringVariable"
-                      },
-                      "parameters": [
-                        "MAINGAME.GameState",
-                        "=",
-                        "_CONSTANTS_.GameState.Game"
-                      ]
-                    }
-                  ],
-                  "actions": [],
-                  "events": [
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "BooleanVariable"
-                          },
-                          "parameters": [
-                            "MAINGAME.Actions.PauseGame",
-                            "False",
-                            ""
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "BuiltinCommonInstructions::Or"
-                          },
-                          "parameters": [],
-                          "subInstructions": [
-                            {
-                              "type": {
-                                "value": "StringVariable"
-                              },
-                              "parameters": [
-                                "MAINGAME.GameState",
-                                "!=",
-                                "_CONSTANTS_.GameState.GameOver"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "StringVariable"
-                              },
-                              "parameters": [
-                                "MAINGAME.GameState",
-                                "!=",
-                                "_CONSTANTS_.GameState.GameWon"
-                              ]
-                            }
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "SetBooleanVariable"
-                          },
-                          "parameters": [
-                            "MAINGAME.Actions.PauseGame",
-                            "True",
-                            ""
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetStringVariable"
-                          },
-                          "parameters": [
-                            "MAINGAME.GameState",
-                            "=",
-                            "_CONSTANTS_.GameState.Pause"
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "StringVariable"
-                      },
-                      "parameters": [
-                        "MAINGAME.GameState",
-                        "=",
-                        "_CONSTANTS_.GameState.Pause"
-                      ]
-                    }
-                  ],
-                  "actions": [],
-                  "events": [
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "BooleanVariable"
-                          },
-                          "parameters": [
-                            "MAINGAME.Actions.PauseGame",
-                            "False",
-                            ""
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "SetBooleanVariable"
-                          },
-                          "parameters": [
-                            "MAINGAME.Actions.PauseGame",
-                            "True",
-                            ""
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetStringVariable"
-                          },
-                          "parameters": [
-                            "MAINGAME.GameState",
-                            "=",
-                            "_CONSTANTS_.GameState.Game"
-                          ]
-                        }
-                      ]
-                    }
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.Input.Pause",
+                    "=",
+                    "_CONSTANTS_.InputState.Pressed"
                   ]
                 }
               ]
