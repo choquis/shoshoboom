@@ -11,17 +11,45 @@
   "uiSettings": {
     "grid": true,
     "gridType": "rectangular",
-    "gridWidth": 32,
-    "gridHeight": 32,
+    "gridWidth": 16,
+    "gridHeight": 16,
     "gridOffsetX": 0,
     "gridOffsetY": 0,
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.3345547996659946,
+    "zoomFactor": 2.4243283944347365,
     "windowMask": false
   },
-  "objectsGroups": [],
+  "objectsGroups": [
+    {
+      "name": "Projectiles",
+      "objects": [
+        {
+          "name": "NewProjectile"
+        }
+      ]
+    },
+    {
+      "name": "Walls",
+      "objects": [
+        {
+          "name": "WallBounceable"
+        },
+        {
+          "name": "WallNoBounceable"
+        }
+      ]
+    },
+    {
+      "name": "Bounceable",
+      "objects": [
+        {
+          "name": "WallBounceable"
+        }
+      ]
+    }
+  ],
   "variables": [],
   "instances": [
     {
@@ -95,12 +123,92 @@
       "height": 0,
       "keepRatio": true,
       "layer": "",
-      "name": "Player",
-      "persistentUuid": "8326d263-1961-4083-8953-51c35de751e4",
+      "name": "NewActor",
+      "persistentUuid": "3454e55e-1b93-46c1-8ac0-3cf45b200022",
       "width": 0,
-      "x": 64,
-      "y": 224,
+      "x": 80,
+      "y": 176,
       "zOrder": 6,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "NewProjectile",
+      "persistentUuid": "66d5bfe9-c33f-4505-bb64-e5299619f1bc",
+      "width": 0,
+      "x": 88,
+      "y": 264,
+      "zOrder": 7,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "WallBounceable",
+      "persistentUuid": "80b804d4-8955-4e34-bbfe-4e22ee4096ab",
+      "width": 0,
+      "x": 224,
+      "y": 256,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "NewProjectile",
+      "persistentUuid": "3d5b3eb9-7b93-45db-8efb-53ab7ced35f2",
+      "width": 0,
+      "x": 88,
+      "y": 304,
+      "zOrder": 7,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "WallNoBounceable",
+      "persistentUuid": "00511b13-ec9a-4226-9601-0b77e5b03520",
+      "width": 0,
+      "x": 256,
+      "y": 288,
+      "zOrder": 9,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "WallBounceable",
+      "persistentUuid": "6c90f31c-9c54-45e2-93f3-5a1e1799f85d",
+      "width": 0,
+      "x": 0,
+      "y": 256,
+      "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -267,6 +375,88 @@
         "lineHeight": 0,
         "color": "0;0;0"
       }
+    },
+    {
+      "assetStoreId": "",
+      "name": "NewActor",
+      "type": "CustomObjects::Actor",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Entity",
+          "type": "CustomObjects::Entity",
+          "Property": "Actor",
+          "Id": 3.3236692178158365e+178
+        }
+      ],
+      "content": {},
+      "animatable": {
+        "adaptCollisionMaskAutomatically": true,
+        "animations": []
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "NewProjectile",
+      "type": "CustomObjects::Projectile",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Entity",
+          "type": "CustomObjects::Entity",
+          "Property": "Projectile",
+          "Id": 3.3236692178158365e+178
+        }
+      ],
+      "content": {
+        "Bounces": 1
+      },
+      "animatable": {
+        "adaptCollisionMaskAutomatically": true,
+        "animations": []
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "WallBounceable",
+      "type": "CustomObjects::Wall",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Bounceable",
+          "type": "CustomObjects::Bounceable"
+        },
+        {
+          "name": "Entity",
+          "type": "CustomObjects::Entity",
+          "Property": "Wall",
+          "Id": 3.3236692178158365e+178
+        }
+      ],
+      "content": {}
+    },
+    {
+      "assetStoreId": "",
+      "name": "WallNoBounceable",
+      "type": "CustomObjects::Wall",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Entity",
+          "type": "CustomObjects::Entity",
+          "Property": "Wall",
+          "Id": 3.3236692178158365e+178
+        }
+      ],
+      "content": {}
     }
   ],
   "objectsFolderStructure": {
@@ -283,6 +473,18 @@
       },
       {
         "objectName": "Logger"
+      },
+      {
+        "objectName": "NewActor"
+      },
+      {
+        "objectName": "NewProjectile"
+      },
+      {
+        "objectName": "WallBounceable"
+      },
+      {
+        "objectName": "WallNoBounceable"
       }
     ]
   },
@@ -310,7 +512,7 @@
                 "value": "AdvancedWindow::Maximize"
               },
               "parameters": [
-                "yes",
+                "no",
                 ""
               ]
             },
@@ -328,142 +530,76 @@
       ]
     },
     {
-      "type": "BuiltinCommonInstructions::Link",
-      "include": {
-        "includeConfig": 0
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
       },
-      "target": "Main Game UI Logic"
+      "comment": "\n\n"
     },
     {
-      "type": "BuiltinCommonInstructions::Link",
-      "include": {
-        "includeConfig": 0
-      },
-      "target": "Input Logic"
-    },
-    {
-      "type": "BuiltinCommonInstructions::Link",
-      "include": {
-        "includeConfig": 0
-      },
-      "target": "Player Logic"
-    },
-    {
-      "disabled": true,
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "value": "KeyFromTextPressed"
-          },
-          "parameters": [
-            "",
-            "\"g\""
-          ]
-        },
-        {
-          "type": {
-            "value": "BuiltinCommonInstructions::Once"
-          },
-          "parameters": []
-        }
-      ],
-      "actions": [
-        {
-          "type": {
-            "value": "SetBooleanVariable"
-          },
-          "parameters": [
-            "_CONFIG_.debug",
-            "Toggle",
-            ""
-          ]
-        }
-      ],
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Includes",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
       "events": [
         {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "BooleanVariable"
-              },
-              "parameters": [
-                "_CONFIG_.debug",
-                "True",
-                ""
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "Montre"
-              },
-              "parameters": [
-                "Hidden",
-                ""
-              ]
-            }
-          ]
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
+          },
+          "target": "Main Game UI Logic"
         },
         {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "BooleanVariable"
-              },
-              "parameters": [
-                "_CONFIG_.debug",
-                "",
-                ""
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "Cache"
-              },
-              "parameters": [
-                "Hidden"
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [],
-      "actions": [
-        {
-          "type": {
-            "value": "SetNumberVariable"
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
           },
-          "parameters": [
-            "TotalParticles",
-            "=",
-            "0"
-          ]
+          "target": "Input Logic"
         },
         {
-          "type": {
-            "value": "SetNumberVariable"
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
           },
-          "parameters": [
-            "TotalTrailDecals",
-            "=",
-            "0"
-          ]
+          "target": "Player Logic"
         }
       ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "folded": true,
+      "name": "misc",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
       "events": [
         {
           "disabled": true,
-          "type": "BuiltinCommonInstructions::ForEach",
-          "object": "ParticleEmitters",
+          "folded": true,
+          "type": "BuiltinCommonInstructions::Standard",
           "conditions": [],
           "actions": [
             {
@@ -472,11 +608,263 @@
               },
               "parameters": [
                 "TotalParticles",
-                "+",
-                "ParticleEmitters.CurrentParticleCount()"
+                "=",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "TotalTrailDecals",
+                "=",
+                "0"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "disabled": true,
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "ParticleEmitters",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "TotalParticles",
+                    "+",
+                    "ParticleEmitters.CurrentParticleCount()"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                  },
+                  "parameters": [
+                    "particlecount",
+                    "Text",
+                    "=",
+                    "ToString(TotalParticles)"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                  },
+                  "parameters": [
+                    "particlecount",
+                    "Text",
+                    "+",
+                    "\" : \" + ToString(TotalTrailDecals) + \" : \""
+                  ]
+                }
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "TotalParticles",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "TotalTrailDecals",
+              "type": "number",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "disabled": true,
+          "folded": true,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "KeyFromTextPressed"
+              },
+              "parameters": [
+                "",
+                "\"g\""
+              ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "_CONFIG_.debug",
+                "Toggle",
+                ""
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "_CONFIG_.debug",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Montre"
+                  },
+                  "parameters": [
+                    "Hidden",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "_CONFIG_.debug",
+                    "",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Cache"
+                  },
+                  "parameters": [
+                    "Hidden"
+                  ]
+                }
               ]
             }
           ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Shoot",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "StringVariable"
+              },
+              "parameters": [
+                "MAINGAME.Input.Shoot",
+                "=",
+                "_CONSTANTS_.InputState.Pressed"
+              ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Create"
+              },
+              "parameters": [
+                "",
+                "NewProjectile",
+                "NewActor.CenterX()",
+                "NewActor.CenterY()",
+                ""
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Move",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
+          },
+          "comment": "Invert Y for the coordinals"
         },
         {
           "type": "BuiltinCommonInstructions::Standard",
@@ -484,39 +872,174 @@
           "actions": [
             {
               "type": {
-                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                "value": "SetNumberVariable"
               },
               "parameters": [
-                "particlecount",
-                "Text",
+                "MoveX",
                 "=",
-                "ToString(TotalParticles)"
+                "MAINGAME.Input.MoveX"
               ]
             },
             {
               "type": {
-                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                "value": "SetNumberVariable"
               },
               "parameters": [
-                "particlecount",
-                "Text",
-                "+",
-                "\" : \" + ToString(TotalTrailDecals) + \" : \""
+                "MoveY",
+                "=",
+                "-MAINGAME.Input.MoveY"
               ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::CompareNumbers"
+                      },
+                      "parameters": [
+                        "abs(MoveX)",
+                        ">",
+                        "0"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::CompareNumbers"
+                      },
+                      "parameters": [
+                        "abs(MoveY)",
+                        ">",
+                        "0"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "MoveAngle",
+                    "=",
+                    "AngleBetweenPositions(0,0,MoveX, MoveY)"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AddForceAL"
+                  },
+                  "parameters": [
+                    "NewActor",
+                    "MoveAngle",
+                    "50",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "MoveY",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "MoveX",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "MoveAngle",
+              "type": "number",
+              "value": 0
             }
           ]
         }
       ],
-      "variables": [
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
         {
-          "name": "TotalParticles",
-          "type": "number",
-          "value": 0
-        },
+          "type": {
+            "value": "CollisionNP"
+          },
+          "parameters": [
+            "Projectiles",
+            "Bounceable",
+            "",
+            "",
+            ""
+          ]
+        }
+      ],
+      "actions": [
         {
-          "name": "TotalTrailDecals",
-          "type": "number",
-          "value": 0
+          "type": {
+            "value": "CustomObjects::Projectile::CollisionWithBounceableWall"
+          },
+          "parameters": [
+            "Projectiles",
+            "Bounceable",
+            "Bounceable",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "disabled": true,
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "CollisionNP"
+          },
+          "parameters": [
+            "Projectiles",
+            "Walls",
+            "",
+            "",
+            ""
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "CustomObjects::Projectile::CollisionWithWall"
+          },
+          "parameters": [
+            "Projectiles",
+            "Walls",
+            "Entity",
+            ""
+          ]
         }
       ]
     }
@@ -699,8 +1222,16 @@
       "type": "AnimatableCapability::AnimatableBehavior"
     },
     {
+      "name": "Bounceable",
+      "type": "CustomObjects::Bounceable"
+    },
+    {
       "name": "Effect",
       "type": "EffectCapability::EffectBehavior"
+    },
+    {
+      "name": "Entity",
+      "type": "CustomObjects::Entity"
     },
     {
       "name": "FPSDisplayer",

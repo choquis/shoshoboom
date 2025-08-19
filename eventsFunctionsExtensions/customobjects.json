@@ -14,8 +14,56 @@
   "tags": [],
   "authorIds": [],
   "dependencies": [],
-  "globalVariables": [],
-  "sceneVariables": [],
+  "globalVariables": [
+    {
+      "name": "CurrentId",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "EntityType",
+      "type": "structure",
+      "children": [
+        {
+          "name": "Actor",
+          "type": "string",
+          "value": "Actor"
+        },
+        {
+          "name": "Hazard",
+          "type": "string",
+          "value": "Hazard"
+        },
+        {
+          "name": "Obstacle",
+          "type": "string",
+          "value": "Obstacle"
+        },
+        {
+          "name": "Projectile",
+          "type": "string",
+          "value": "Projectile"
+        },
+        {
+          "name": "Wall",
+          "type": "string",
+          "value": "Wall"
+        }
+      ]
+    }
+  ],
+  "sceneVariables": [
+    {
+      "name": "log_lines",
+      "type": "array",
+      "children": []
+    },
+    {
+      "name": "child",
+      "type": "string",
+      "value": ""
+    }
+  ],
   "eventsFunctions": [
     {
       "description": "Draw lines for enemy sight",
@@ -212,130 +260,6 @@
         {
           "description": "PosY",
           "name": "PosY",
-          "type": "expression"
-        }
-      ],
-      "objectGroups": []
-    },
-    {
-      "description": "Create the default white bullet with 12 frames of rotation",
-      "fullName": "Shoot white bullet",
-      "functionType": "Action",
-      "name": "ShootWhiteBullet",
-      "sentence": "Shoot _PARAM5_ (Req: _PARAM6_) from _PARAM3_ (Req: _PARAM4_) at speed _PARAM7_ (px/s) with trail _PARAM1_ (Req: _PARAM2_)",
-      "events": [
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "CustomObjects::ShootBullet::Shoot"
-              },
-              "parameters": [
-                "Tank",
-                "ShootBullet",
-                "Tank.GetLookPointX()",
-                "Tank.GetLookPointY()",
-                "WhiteBullet",
-                "Tank.GetCannonAngle()",
-                "Speed",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "Create"
-              },
-              "parameters": [
-                "",
-                "BulletSmoke",
-                "WhiteBullet.CenterX()",
-                "WhiteBullet.CenterY()",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "Sticker::Sticker::Stick"
-              },
-              "parameters": [
-                "BulletSmoke",
-                "Sticker",
-                "WhiteBullet",
-                ""
-              ]
-            }
-          ],
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "AnimatableCapability::AnimatableBehavior::PauseAnimation"
-                  },
-                  "parameters": [
-                    "WhiteBullet",
-                    "Animation"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "ChangeSprite"
-                  },
-                  "parameters": [
-                    "WhiteBullet",
-                    "=",
-                    "CustomObjects::GetFrameByAngle12frames(Tank.GetCannonAngle())"
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "parameters": [
-        {
-          "description": "",
-          "name": "BulletSmoke",
-          "supplementaryInformation": "ParticleSystem::ParticleEmitter",
-          "type": "objectList"
-        },
-        {
-          "description": "",
-          "name": "Sticker",
-          "supplementaryInformation": "Sticker::Sticker",
-          "type": "behavior"
-        },
-        {
-          "description": "",
-          "name": "Tank",
-          "supplementaryInformation": "CustomObjects::Player",
-          "type": "objectList"
-        },
-        {
-          "description": "",
-          "name": "ShootBullet",
-          "supplementaryInformation": "CustomObjects::ShootBullet",
-          "type": "behavior"
-        },
-        {
-          "description": "",
-          "name": "WhiteBullet",
-          "supplementaryInformation": "Sprite",
-          "type": "objectList"
-        },
-        {
-          "description": "",
-          "name": "Animation",
-          "supplementaryInformation": "AnimatableCapability::AnimatableBehavior",
-          "type": "behavior"
-        },
-        {
-          "description": "Speed",
-          "name": "Speed",
           "type": "expression"
         }
       ],
@@ -547,6 +471,174 @@
           "name": "Rotate",
           "optional": true,
           "type": "yesorno"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Write log in text label",
+      "fullName": "Write log",
+      "functionType": "Action",
+      "name": "WriteLog",
+      "sentence": "Print _PARAM2_ on _PARAM1_",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "DepartScene"
+              },
+              "parameters": [
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "TextObject::SetWrapping"
+              },
+              "parameters": [
+                "TextLabel",
+                "yes"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "PushString"
+              },
+              "parameters": [
+                "log_lines",
+                "Text"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "VariableChildCount"
+              },
+              "parameters": [
+                "log_lines",
+                ">=",
+                "20"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "RemoveVariableAt"
+              },
+              "parameters": [
+                "log_lines",
+                "0"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+              },
+              "parameters": [
+                "TextLabel",
+                "Text",
+                "=",
+                "\"\""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::ForEachChildVariable",
+          "iterableVariableName": "log_lines",
+          "valueIteratorVariableName": "child",
+          "keyIteratorVariableName": "",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+              },
+              "parameters": [
+                "TextLabel",
+                "Text",
+                "+",
+                "child + \"\n\""
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "description": "Logger",
+          "name": "TextLabel",
+          "supplementaryInformation": "TextObject::Text",
+          "type": "objectList"
+        },
+        {
+          "description": "Text to display",
+          "name": "Text",
+          "supplementaryInformation": "TextContainerCapability::TextContainerBehavior",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "fullName": "Clear log",
+      "functionType": "Action",
+      "name": "Clear",
+      "sentence": "Clear the log of _PARAM1_",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "ClearVariableChildren"
+              },
+              "parameters": [
+                "log_lines"
+              ]
+            },
+            {
+              "type": {
+                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+              },
+              "parameters": [
+                "TextLabel",
+                "Text",
+                "=",
+                "\"\""
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "description": "",
+          "name": "TextLabel",
+          "supplementaryInformation": "TextObject::Text",
+          "type": "objectList"
         }
       ],
       "objectGroups": []
@@ -768,9 +860,9 @@
   ],
   "eventsBasedBehaviors": [
     {
-      "description": "",
-      "fullName": "Shoot bullets",
-      "name": "ShootBullet",
+      "description": "This is to indicate that the object interact with others that have the Entity Behavior",
+      "fullName": "Entity",
+      "name": "Entity",
       "objectType": "",
       "eventsFunctions": [
         {
@@ -785,11 +877,12 @@
               "actions": [
                 {
                   "type": {
-                    "value": "ResetObjectTimer"
+                    "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "Object",
-                    "\"Cooldown\""
+                    "Id",
+                    "=",
+                    "CurrentId"
                   ]
                 },
                 {
@@ -797,9 +890,9 @@
                     "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "CooldownAuxiliar",
-                    "=",
-                    "Cooldown"
+                    "CurrentId",
+                    "+",
+                    "1"
                   ]
                 }
               ]
@@ -814,203 +907,8 @@
             {
               "description": "Behavior",
               "name": "Behavior",
-              "supplementaryInformation": "CustomObjects::ShootBullet",
+              "supplementaryInformation": "CustomObjects::Entity",
               "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "fullName": "",
-          "functionType": "Action",
-          "name": "Shoot",
-          "sentence": "Shoot _PARAM4_ from _PARAM0_ at angle _PARAM2_ and speed _PARAM3_ px/s",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "BehaviorActivated"
-                  },
-                  "parameters": [
-                    "Object",
-                    "Behavior"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "CompareObjectTimer"
-                  },
-                  "parameters": [
-                    "Object",
-                    "\"Cooldown\"",
-                    ">=",
-                    "CooldownAuxiliar"
-                  ]
-                }
-              ],
-              "actions": [],
-              "events": [
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "RandomizedAngle",
-                        "=",
-                        "Angle + RandomInRange(-AngleSpread, AngleSpread)"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "AddForceAL"
-                      },
-                      "parameters": [
-                        "Bullet",
-                        "RandomizedAngle",
-                        "Speed",
-                        "1"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "AngleDirection",
-                        "=",
-                        "RandomizedAngle"
-                      ]
-                    }
-                  ],
-                  "variables": [
-                    {
-                      "name": "RandomizedAngle",
-                      "type": "number",
-                      "value": 0
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "BooleanVariable"
-                      },
-                      "parameters": [
-                        "RotateBullet",
-                        "True",
-                        ""
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetAngle"
-                      },
-                      "parameters": [
-                        "Bullet",
-                        "=",
-                        "AngleDirection"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "ResetObjectTimer"
-                      },
-                      "parameters": [
-                        "Object",
-                        "\"Cooldown\""
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "description": "Object",
-              "name": "Object",
-              "type": "object"
-            },
-            {
-              "description": "Behavior",
-              "name": "Behavior",
-              "supplementaryInformation": "CustomObjects::ShootBullet",
-              "type": "behavior"
-            },
-            {
-              "description": "Angle",
-              "name": "Angle",
-              "type": "expression"
-            },
-            {
-              "description": "Speed",
-              "name": "Speed",
-              "type": "expression"
-            },
-            {
-              "description": "Bullet",
-              "name": "Bullet",
-              "type": "objectList"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "Set the cannon rotation speed",
-          "fullName": "Set body angle offset",
-          "functionType": "Action",
-          "name": "SetCooldownOffset",
-          "sentence": "Set offset cooldown _PARAM2_ in _PARAM1_ of _PARAM0_",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "CooldownAuxiliar",
-                    "=",
-                    "Cooldown + OffsetTime"
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "description": "Object",
-              "name": "Object",
-              "type": "object"
-            },
-            {
-              "description": "Behavior",
-              "name": "Behavior",
-              "supplementaryInformation": "CustomObjects::ShootBullet",
-              "type": "behavior"
-            },
-            {
-              "description": "Time",
-              "name": "OffsetTime",
-              "type": "expression"
             }
           ],
           "objectGroups": []
@@ -1018,7 +916,7 @@
         {
           "fullName": "",
           "functionType": "Expression",
-          "name": "GetShootAngle",
+          "name": "Id",
           "sentence": "",
           "events": [
             {
@@ -1030,7 +928,7 @@
                     "value": "SetReturnNumber"
                   },
                   "parameters": [
-                    "AngleDirection"
+                    "Id"
                   ]
                 }
               ]
@@ -1048,8 +946,1053 @@
             {
               "description": "Behavior",
               "name": "Behavior",
-              "supplementaryInformation": "CustomObjects::ShootBullet",
+              "supplementaryInformation": "CustomObjects::Entity",
               "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Expression",
+          "name": "Type",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnString"
+                  },
+                  "parameters": [
+                    "Type"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomObjects::Entity",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "Wall",
+          "type": "Choice",
+          "label": "Type",
+          "description": "Entity type",
+          "extraInformation": [
+            "Actor",
+            "Wall",
+            "Projectile"
+          ],
+          "name": "Type"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "label": "Id",
+          "description": "Identifier assigned when object is instantiated",
+          "hidden": true,
+          "name": "Id"
+        }
+      ],
+      "sharedPropertyDescriptors": []
+    },
+    {
+      "description": "Other entity can bounce in this object",
+      "fullName": "Bounceable",
+      "name": "Bounceable",
+      "objectType": "",
+      "eventsFunctions": [],
+      "propertyDescriptors": [],
+      "sharedPropertyDescriptors": []
+    }
+  ],
+  "eventsBasedObjects": [
+    {
+      "areaMaxX": 64,
+      "areaMaxY": 64,
+      "areaMaxZ": 64,
+      "areaMinX": 0,
+      "areaMinY": 0,
+      "areaMinZ": 0,
+      "defaultName": "",
+      "description": "",
+      "fullName": "",
+      "isUsingLegacyInstancesRenderer": false,
+      "name": "BigExplosionFX",
+      "objects": [
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "Glow",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [
+            {
+              "name": "Tween",
+              "type": "Tween::TweenBehavior"
+            }
+          ],
+          "animations": [
+            {
+              "name": "default",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\Glow.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 64,
+                        "y": 64
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 34,
+                            "y": 31
+                          },
+                          {
+                            "x": 96,
+                            "y": 31
+                          },
+                          {
+                            "x": 96,
+                            "y": 93
+                          },
+                          {
+                            "x": 34,
+                            "y": 93
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "adaptCollisionMaskAutomatically": false,
+          "assetStoreId": "",
+          "name": "BodyAni",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [
+            {
+              "effectType": "HslAdjustment",
+              "name": "HSL",
+              "doubleParameters": {
+                "alpha": 1,
+                "hue": 0,
+                "lightness": 1,
+                "saturation": 0
+              },
+              "stringParameters": {},
+              "booleanParameters": {
+                "colorize": false
+              }
+            }
+          ],
+          "behaviors": [
+            {
+              "name": "Tween",
+              "type": "Tween::TweenBehavior"
+            }
+          ],
+          "animations": [
+            {
+              "name": "idle",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow1.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 64
+                          },
+                          {
+                            "x": 0,
+                            "y": 64
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "explode",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow1.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 64
+                          },
+                          {
+                            "x": 0,
+                            "y": 64
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow2.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 64
+                          },
+                          {
+                            "x": 0,
+                            "y": 64
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow3.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 64
+                          },
+                          {
+                            "x": 0,
+                            "y": 64
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow4.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 64
+                          },
+                          {
+                            "x": 0,
+                            "y": 64
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow5.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 64
+                          },
+                          {
+                            "x": 0,
+                            "y": 64
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow6.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 24
+                          },
+                          {
+                            "x": 64,
+                            "y": 64
+                          },
+                          {
+                            "x": 0,
+                            "y": 64
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow7.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 29,
+                            "y": 42
+                          },
+                          {
+                            "x": 33,
+                            "y": 42
+                          },
+                          {
+                            "x": 33,
+                            "y": 46
+                          },
+                          {
+                            "x": 29,
+                            "y": 46
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow7.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 29,
+                            "y": 42
+                          },
+                          {
+                            "x": 33,
+                            "y": 42
+                          },
+                          {
+                            "x": 33,
+                            "y": 46
+                          },
+                          {
+                            "x": 29,
+                            "y": 46
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\Collision64.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "centerPoint": {
+                        "automatic": false,
+                        "name": "centre",
+                        "x": 32,
+                        "y": 32
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 29,
+                            "y": 42
+                          },
+                          {
+                            "x": 33,
+                            "y": 42
+                          },
+                          {
+                            "x": 33,
+                            "y": 46
+                          },
+                          {
+                            "x": 29,
+                            "y": 46
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "adaptCollisionMaskAutomatically": false,
+          "assetStoreId": "",
+          "name": "RingAni",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [
+            {
+              "name": "Tween",
+              "type": "Tween::TweenBehavior"
+            }
+          ],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\FX\\Explosions\\explosion_ring_yellow.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 32,
+                        "y": 20
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 23,
+                            "y": 12
+                          },
+                          {
+                            "x": 38,
+                            "y": 12
+                          },
+                          {
+                            "x": 38,
+                            "y": 26
+                          },
+                          {
+                            "x": 23,
+                            "y": 26
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "objectsFolderStructure": {
+        "folderName": "__ROOT",
+        "children": [
+          {
+            "objectName": "Glow"
+          },
+          {
+            "objectName": "BodyAni"
+          },
+          {
+            "objectName": "RingAni"
+          }
+        ]
+      },
+      "objectsGroups": [],
+      "layers": [
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [
+            {
+              "defaultSize": true,
+              "defaultViewport": true,
+              "height": 0,
+              "viewportBottom": 1,
+              "viewportLeft": 0,
+              "viewportRight": 1,
+              "viewportTop": 0,
+              "width": 0
+            }
+          ],
+          "effects": []
+        }
+      ],
+      "instances": [],
+      "eventsFunctions": [
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "onCreated",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetIncludedInParentCollisionMask"
+                  },
+                  "parameters": [
+                    "BodyAni",
+                    "yes"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetIncludedInParentCollisionMask"
+                  },
+                  "parameters": [
+                    "RingAni",
+                    "no"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetIncludedInParentCollisionMask"
+                  },
+                  "parameters": [
+                    "Glow",
+                    "no"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::BigExplosionFX",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "doStepPostEvents",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "BodyAni",
+                    "0",
+                    "-20",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "RingAni",
+                    "0",
+                    "0",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "Glow",
+                    "0",
+                    "-16",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetIncludedInParentCollisionMask"
+                  },
+                  "parameters": [
+                    "BodyAni",
+                    "yes"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetIncludedInParentCollisionMask"
+                  },
+                  "parameters": [
+                    "RingAni",
+                    "no"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetIncludedInParentCollisionMask"
+                  },
+                  "parameters": [
+                    "Glow",
+                    "no"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ChangeColor"
+                  },
+                  "parameters": [
+                    "Glow",
+                    "\"255;251;90\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ChangePlan"
+                  },
+                  "parameters": [
+                    "BodyAni",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ChangePlan"
+                  },
+                  "parameters": [
+                    "RingAni",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectScaleTween3"
+                  },
+                  "parameters": [
+                    "BodyAni",
+                    "Tween",
+                    "\"ScaleOutBody\"",
+                    "1.2",
+                    "\"linear\"",
+                    "0.2",
+                    "",
+                    "yes"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddNumberEffectPropertyTween"
+                  },
+                  "parameters": [
+                    "BodyAni",
+                    "Tween",
+                    "",
+                    "\"HSLOutBody\"",
+                    "0",
+                    "\"HSL\"",
+                    "\"lightness\"",
+                    "\"linear\"",
+                    "0.2",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
+                  },
+                  "parameters": [
+                    "Glow",
+                    "Tween",
+                    "\"OpacityOutGlow\"",
+                    "0.85",
+                    "\"easeOutQuad\"",
+                    "1",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectScaleTween3"
+                  },
+                  "parameters": [
+                    "Glow",
+                    "Tween",
+                    "\"ScaleOutGlow\"",
+                    "2",
+                    "\"easeOutQuad\"",
+                    "0.2",
+                    "",
+                    "yes"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::PauseAnimation"
+                  },
+                  "parameters": [
+                    "BodyAni",
+                    "Animation"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectScaleTween3"
+                  },
+                  "parameters": [
+                    "RingAni",
+                    "Tween",
+                    "\"ScaleOutRing\"",
+                    "2",
+                    "\"easeOutQuad\"",
+                    "0.5",
+                    "",
+                    "yes"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Wait"
+                  },
+                  "parameters": [
+                    "0.25"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
+                  },
+                  "parameters": [
+                    "RingAni",
+                    "Tween",
+                    "\"OpacityOutRing\"",
+                    "0",
+                    "\"linear\"",
+                    "0.25",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Tween::HasFinished"
+                  },
+                  "parameters": [
+                    "BodyAni",
+                    "Tween",
+                    "\"HSLOutBody\""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "BodyAni",
+                    "Animation",
+                    "=",
+                    "\"explode\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::PlayAnimation"
+                  },
+                  "parameters": [
+                    "BodyAni",
+                    "Animation"
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "AnimatableCapability::AnimatableBehavior::HasAnimationEnded"
+                      },
+                      "parameters": [
+                        "BodyAni",
+                        "Animation"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Tween::HasFinished"
+                      },
+                      "parameters": [
+                        "RingAni",
+                        "Tween",
+                        "\"OpacityOutRing\""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Tween::HasFinished"
+                      },
+                      "parameters": [
+                        "Glow",
+                        "Tween",
+                        "\"OpacityOutGlow\""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "Delete"
+                      },
+                      "parameters": [
+                        "Object",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::BigExplosionFX",
+              "type": "object"
             }
           ],
           "objectGroups": []
@@ -1059,48 +2002,12 @@
         {
           "value": "",
           "type": "Number",
-          "unit": "DegreeAngle",
           "label": "",
-          "name": "AngleSpread"
-        },
-        {
-          "value": "1",
-          "type": "Number",
-          "unit": "Second",
-          "label": "Shooting cooldown",
-          "description": "Time to wait before it can shoot again",
-          "name": "Cooldown"
-        },
-        {
-          "value": "true",
-          "type": "Boolean",
-          "label": "Rotate on shoot",
-          "description": "Rotate de bullet in the direction is shoot",
-          "name": "RotateBullet"
-        },
-        {
-          "value": "0",
-          "type": "Number",
-          "unit": "DegreeAngle",
-          "label": "Angle of bullet",
-          "description": "Angle where bullet was shoot",
-          "hidden": true,
-          "name": "AngleDirection"
-        },
-        {
-          "value": "",
-          "type": "Number",
-          "unit": "Second",
-          "label": "",
-          "description": "This is used to update the cooldown without alter the original",
-          "hidden": true,
-          "name": "CooldownAuxiliar"
+          "name": "Restart"
         }
       ],
-      "sharedPropertyDescriptors": []
-    }
-  ],
-  "eventsBasedObjects": [
+      "variants": []
+    },
     {
       "areaMaxX": 32,
       "areaMaxY": 32,
@@ -3544,6 +4451,11 @@
                   "value": 0
                 }
               ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": []
             }
           ],
           "parameters": [
@@ -11162,32 +12074,28 @@
       ]
     },
     {
-      "areaMaxX": 64,
-      "areaMaxY": 64,
+      "areaMaxX": 8,
+      "areaMaxY": 8,
       "areaMaxZ": 64,
       "areaMinX": 0,
       "areaMinY": 0,
       "areaMinZ": 0,
       "defaultName": "",
-      "description": "",
-      "fullName": "",
+      "description": "Projectile entity",
+      "fullName": "Projectile",
+      "isAnimatable": true,
       "isUsingLegacyInstancesRenderer": false,
-      "name": "BigExplosionFX",
+      "name": "Projectile",
       "objects": [
         {
-          "adaptCollisionMaskAutomatically": true,
+          "adaptCollisionMaskAutomatically": false,
           "assetStoreId": "",
-          "name": "Glow",
+          "name": "Sprite",
           "type": "Sprite",
           "updateIfNotVisible": false,
           "variables": [],
           "effects": [],
-          "behaviors": [
-            {
-              "name": "Tween",
-              "type": "Tween::TweenBehavior"
-            }
-          ],
+          "behaviors": [],
           "animations": [
             {
               "name": "default",
@@ -11199,12 +12107,12 @@
                   "sprites": [
                     {
                       "hasCustomCollisionMask": true,
-                      "image": "assets\\FX\\Explosions\\Glow.png",
+                      "image": "ProjectileCollider2",
                       "points": [],
                       "originPoint": {
                         "name": "origine",
-                        "x": 64,
-                        "y": 64
+                        "x": 4,
+                        "y": 4
                       },
                       "centerPoint": {
                         "automatic": true,
@@ -11215,20 +12123,36 @@
                       "customCollisionMask": [
                         [
                           {
-                            "x": 34,
-                            "y": 31
+                            "x": 0,
+                            "y": 2
                           },
                           {
-                            "x": 96,
-                            "y": 31
+                            "x": 2,
+                            "y": 0
                           },
                           {
-                            "x": 96,
-                            "y": 93
+                            "x": 6,
+                            "y": 0
                           },
                           {
-                            "x": 34,
-                            "y": 93
+                            "x": 8,
+                            "y": 2
+                          },
+                          {
+                            "x": 8,
+                            "y": 6
+                          },
+                          {
+                            "x": 6,
+                            "y": 8
+                          },
+                          {
+                            "x": 2,
+                            "y": 8
+                          },
+                          {
+                            "x": 0,
+                            "y": 6
                           }
                         ]
                       ]
@@ -11240,438 +12164,17 @@
           ]
         },
         {
-          "adaptCollisionMaskAutomatically": false,
+          "adaptCollisionMaskAutomatically": true,
           "assetStoreId": "",
-          "name": "BodyAni",
-          "type": "Sprite",
-          "updateIfNotVisible": false,
-          "variables": [],
-          "effects": [
-            {
-              "effectType": "HslAdjustment",
-              "name": "HSL",
-              "doubleParameters": {
-                "alpha": 1,
-                "hue": 0,
-                "lightness": 1,
-                "saturation": 0
-              },
-              "stringParameters": {},
-              "booleanParameters": {
-                "colorize": false
-              }
-            }
-          ],
-          "behaviors": [
-            {
-              "name": "Tween",
-              "type": "Tween::TweenBehavior"
-            }
-          ],
-          "animations": [
-            {
-              "name": "idle",
-              "useMultipleDirections": false,
-              "directions": [
-                {
-                  "looping": false,
-                  "timeBetweenFrames": 0.08,
-                  "sprites": [
-                    {
-                      "hasCustomCollisionMask": true,
-                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow1.png",
-                      "points": [],
-                      "originPoint": {
-                        "name": "origine",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "centerPoint": {
-                        "automatic": false,
-                        "name": "centre",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "customCollisionMask": [
-                        [
-                          {
-                            "x": 0,
-                            "y": 24
-                          },
-                          {
-                            "x": 64,
-                            "y": 24
-                          },
-                          {
-                            "x": 64,
-                            "y": 64
-                          },
-                          {
-                            "x": 0,
-                            "y": 64
-                          }
-                        ]
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "name": "explode",
-              "useMultipleDirections": false,
-              "directions": [
-                {
-                  "looping": false,
-                  "timeBetweenFrames": 0.08,
-                  "sprites": [
-                    {
-                      "hasCustomCollisionMask": true,
-                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow1.png",
-                      "points": [],
-                      "originPoint": {
-                        "name": "origine",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "centerPoint": {
-                        "automatic": false,
-                        "name": "centre",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "customCollisionMask": [
-                        [
-                          {
-                            "x": 0,
-                            "y": 24
-                          },
-                          {
-                            "x": 64,
-                            "y": 24
-                          },
-                          {
-                            "x": 64,
-                            "y": 64
-                          },
-                          {
-                            "x": 0,
-                            "y": 64
-                          }
-                        ]
-                      ]
-                    },
-                    {
-                      "hasCustomCollisionMask": true,
-                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow2.png",
-                      "points": [],
-                      "originPoint": {
-                        "name": "origine",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "centerPoint": {
-                        "automatic": false,
-                        "name": "centre",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "customCollisionMask": [
-                        [
-                          {
-                            "x": 0,
-                            "y": 24
-                          },
-                          {
-                            "x": 64,
-                            "y": 24
-                          },
-                          {
-                            "x": 64,
-                            "y": 64
-                          },
-                          {
-                            "x": 0,
-                            "y": 64
-                          }
-                        ]
-                      ]
-                    },
-                    {
-                      "hasCustomCollisionMask": true,
-                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow3.png",
-                      "points": [],
-                      "originPoint": {
-                        "name": "origine",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "centerPoint": {
-                        "automatic": false,
-                        "name": "centre",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "customCollisionMask": [
-                        [
-                          {
-                            "x": 0,
-                            "y": 24
-                          },
-                          {
-                            "x": 64,
-                            "y": 24
-                          },
-                          {
-                            "x": 64,
-                            "y": 64
-                          },
-                          {
-                            "x": 0,
-                            "y": 64
-                          }
-                        ]
-                      ]
-                    },
-                    {
-                      "hasCustomCollisionMask": true,
-                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow4.png",
-                      "points": [],
-                      "originPoint": {
-                        "name": "origine",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "centerPoint": {
-                        "automatic": false,
-                        "name": "centre",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "customCollisionMask": [
-                        [
-                          {
-                            "x": 0,
-                            "y": 24
-                          },
-                          {
-                            "x": 64,
-                            "y": 24
-                          },
-                          {
-                            "x": 64,
-                            "y": 64
-                          },
-                          {
-                            "x": 0,
-                            "y": 64
-                          }
-                        ]
-                      ]
-                    },
-                    {
-                      "hasCustomCollisionMask": true,
-                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow5.png",
-                      "points": [],
-                      "originPoint": {
-                        "name": "origine",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "centerPoint": {
-                        "automatic": false,
-                        "name": "centre",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "customCollisionMask": [
-                        [
-                          {
-                            "x": 0,
-                            "y": 24
-                          },
-                          {
-                            "x": 64,
-                            "y": 24
-                          },
-                          {
-                            "x": 64,
-                            "y": 64
-                          },
-                          {
-                            "x": 0,
-                            "y": 64
-                          }
-                        ]
-                      ]
-                    },
-                    {
-                      "hasCustomCollisionMask": true,
-                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow6.png",
-                      "points": [],
-                      "originPoint": {
-                        "name": "origine",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "centerPoint": {
-                        "automatic": false,
-                        "name": "centre",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "customCollisionMask": [
-                        [
-                          {
-                            "x": 0,
-                            "y": 24
-                          },
-                          {
-                            "x": 64,
-                            "y": 24
-                          },
-                          {
-                            "x": 64,
-                            "y": 64
-                          },
-                          {
-                            "x": 0,
-                            "y": 64
-                          }
-                        ]
-                      ]
-                    },
-                    {
-                      "hasCustomCollisionMask": true,
-                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow7.png",
-                      "points": [],
-                      "originPoint": {
-                        "name": "origine",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "centerPoint": {
-                        "automatic": false,
-                        "name": "centre",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "customCollisionMask": [
-                        [
-                          {
-                            "x": 29,
-                            "y": 42
-                          },
-                          {
-                            "x": 33,
-                            "y": 42
-                          },
-                          {
-                            "x": 33,
-                            "y": 46
-                          },
-                          {
-                            "x": 29,
-                            "y": 46
-                          }
-                        ]
-                      ]
-                    },
-                    {
-                      "hasCustomCollisionMask": true,
-                      "image": "assets\\FX\\Explosions\\body_ani\\explosion_body_yellow7.png",
-                      "points": [],
-                      "originPoint": {
-                        "name": "origine",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "centerPoint": {
-                        "automatic": false,
-                        "name": "centre",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "customCollisionMask": [
-                        [
-                          {
-                            "x": 29,
-                            "y": 42
-                          },
-                          {
-                            "x": 33,
-                            "y": 42
-                          },
-                          {
-                            "x": 33,
-                            "y": 46
-                          },
-                          {
-                            "x": 29,
-                            "y": 46
-                          }
-                        ]
-                      ]
-                    },
-                    {
-                      "hasCustomCollisionMask": true,
-                      "image": "assets\\Collision64.png",
-                      "points": [],
-                      "originPoint": {
-                        "name": "origine",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "centerPoint": {
-                        "automatic": false,
-                        "name": "centre",
-                        "x": 32,
-                        "y": 32
-                      },
-                      "customCollisionMask": [
-                        [
-                          {
-                            "x": 29,
-                            "y": 42
-                          },
-                          {
-                            "x": 33,
-                            "y": 42
-                          },
-                          {
-                            "x": 33,
-                            "y": 46
-                          },
-                          {
-                            "x": 29,
-                            "y": 46
-                          }
-                        ]
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "adaptCollisionMaskAutomatically": false,
-          "assetStoreId": "",
-          "name": "RingAni",
+          "name": "BackSprite",
           "type": "Sprite",
           "updateIfNotVisible": false,
           "variables": [],
           "effects": [],
-          "behaviors": [
-            {
-              "name": "Tween",
-              "type": "Tween::TweenBehavior"
-            }
-          ],
+          "behaviors": [],
           "animations": [
             {
-              "name": "",
+              "name": "default",
               "useMultipleDirections": false,
               "directions": [
                 {
@@ -11680,12 +12183,12 @@
                   "sprites": [
                     {
                       "hasCustomCollisionMask": true,
-                      "image": "assets\\FX\\Explosions\\explosion_ring_yellow.png",
+                      "image": "SmallObstacleCollider",
                       "points": [],
                       "originPoint": {
                         "name": "origine",
-                        "x": 32,
-                        "y": 20
+                        "x": 0,
+                        "y": 0
                       },
                       "centerPoint": {
                         "automatic": true,
@@ -11696,20 +12199,20 @@
                       "customCollisionMask": [
                         [
                           {
-                            "x": 23,
-                            "y": 12
+                            "x": 0,
+                            "y": 0
                           },
                           {
-                            "x": 38,
-                            "y": 12
+                            "x": 16,
+                            "y": 0
                           },
                           {
-                            "x": 38,
-                            "y": 26
+                            "x": 16,
+                            "y": 16
                           },
                           {
-                            "x": 23,
-                            "y": 26
+                            "x": 0,
+                            "y": 16
                           }
                         ]
                       ]
@@ -11719,19 +12222,62 @@
               ]
             }
           ]
+        },
+        {
+          "assetStoreId": "",
+          "bold": false,
+          "italic": false,
+          "name": "Logs",
+          "smoothed": true,
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "string": "",
+          "font": "",
+          "textAlignment": "left",
+          "characterSize": 12,
+          "color": {
+            "b": 0,
+            "g": 0,
+            "r": 196
+          },
+          "content": {
+            "bold": false,
+            "isOutlineEnabled": false,
+            "isShadowEnabled": false,
+            "italic": false,
+            "outlineColor": "255;255;255",
+            "outlineThickness": 2,
+            "shadowAngle": 90,
+            "shadowBlurRadius": 2,
+            "shadowColor": "0;0;0",
+            "shadowDistance": 4,
+            "shadowOpacity": 127,
+            "smoothed": true,
+            "underlined": false,
+            "text": "",
+            "font": "",
+            "textAlignment": "left",
+            "verticalTextAlignment": "top",
+            "characterSize": 12,
+            "lineHeight": 0,
+            "color": "196;0;0"
+          }
         }
       ],
       "objectsFolderStructure": {
         "folderName": "__ROOT",
         "children": [
           {
-            "objectName": "Glow"
+            "objectName": "Sprite"
           },
           {
-            "objectName": "BodyAni"
+            "objectName": "BackSprite"
           },
           {
-            "objectName": "RingAni"
+            "objectName": "Logs"
           }
         ]
       },
@@ -11766,7 +12312,41 @@
           "effects": []
         }
       ],
-      "instances": [],
+      "instances": [
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Sprite",
+          "persistentUuid": "657844b4-17c0-4bd6-967e-8f063f15a7af",
+          "width": 0,
+          "x": 4,
+          "y": 4,
+          "zOrder": 1,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 1,
+          "height": 14,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Logs",
+          "persistentUuid": "635f589c-e162-4fa5-969a-307a57a733ae",
+          "width": 21,
+          "x": -7,
+          "y": 6,
+          "zOrder": 2,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        }
+      ],
       "eventsFunctions": [
         {
           "fullName": "",
@@ -11783,7 +12363,16 @@
                     "value": "SetIncludedInParentCollisionMask"
                   },
                   "parameters": [
-                    "BodyAni",
+                    "BackSprite",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetIncludedInParentCollisionMask"
+                  },
+                  "parameters": [
+                    "Sprite",
                     "yes"
                   ]
                 },
@@ -11792,17 +12381,19 @@
                     "value": "SetIncludedInParentCollisionMask"
                   },
                   "parameters": [
-                    "RingAni",
+                    "Logs",
                     "no"
                   ]
                 },
                 {
                   "type": {
-                    "value": "SetIncludedInParentCollisionMask"
+                    "value": "AddForceAL"
                   },
                   "parameters": [
-                    "Glow",
-                    "no"
+                    "Object",
+                    "0",
+                    "50",
+                    "1"
                   ]
                 }
               ]
@@ -11812,7 +12403,7 @@
             {
               "description": "Object",
               "name": "Object",
-              "supplementaryInformation": "CustomObjects::BigExplosionFX",
+              "supplementaryInformation": "CustomObjects::Projectile",
               "type": "object"
             }
           ],
@@ -11823,214 +12414,90 @@
           "functionType": "Action",
           "name": "doStepPostEvents",
           "sentence": "",
+          "events": [],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Projectile",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Tell the projectile that it hit a \"Wall\" and decide what to do next",
+          "fullName": "Collision with \"Wall\"",
+          "functionType": "Action",
+          "name": "CollisionWithWall",
+          "sentence": "_PARAM0_ collision with _PARAM1_ (that have _PARAM2_)",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Object",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Projectile",
+              "type": "object"
+            },
+            {
+              "description": "Object with behavior \"Entity\"",
+              "name": "Entity",
+              "supplementaryInformation": "CustomObjects::Wall",
+              "type": "objectList"
+            },
+            {
+              "description": "\"Entity\" behavior",
+              "name": "EntityBehavior",
+              "supplementaryInformation": "CustomObjects::Entity",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Tell the projectile that it hit a \"Wall\" that have \"Bouncable\" and decide what to do next",
+          "fullName": "Collision with \"Bounceable\" \"Wall\"",
+          "functionType": "Action",
+          "name": "CollisionWithBounceableWall",
+          "sentence": "_PARAM0_ collision with _PARAM1_ (that have _PARAM2_)",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
                   "type": {
-                    "value": "BuiltinCommonInstructions::Once"
+                    "value": "NumberVariable"
                   },
-                  "parameters": []
+                  "parameters": [
+                    "Bounces",
+                    "<=",
+                    "0"
+                  ]
                 }
               ],
               "actions": [
                 {
                   "type": {
-                    "value": "Create"
+                    "value": "Delete"
                   },
                   "parameters": [
-                    "",
-                    "BodyAni",
-                    "0",
-                    "-20",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "Create"
-                  },
-                  "parameters": [
-                    "",
-                    "RingAni",
-                    "0",
-                    "0",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "Create"
-                  },
-                  "parameters": [
-                    "",
-                    "Glow",
-                    "0",
-                    "-16",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetIncludedInParentCollisionMask"
-                  },
-                  "parameters": [
-                    "BodyAni",
-                    "yes"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetIncludedInParentCollisionMask"
-                  },
-                  "parameters": [
-                    "RingAni",
-                    "no"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetIncludedInParentCollisionMask"
-                  },
-                  "parameters": [
-                    "Glow",
-                    "no"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "ChangeColor"
-                  },
-                  "parameters": [
-                    "Glow",
-                    "\"255;251;90\""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "ChangePlan"
-                  },
-                  "parameters": [
-                    "BodyAni",
-                    "=",
-                    "1"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "ChangePlan"
-                  },
-                  "parameters": [
-                    "RingAni",
-                    "=",
-                    "0"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "Tween::TweenBehavior::AddObjectScaleTween3"
-                  },
-                  "parameters": [
-                    "BodyAni",
-                    "Tween",
-                    "\"ScaleOutBody\"",
-                    "1.2",
-                    "\"linear\"",
-                    "0.2",
-                    "",
-                    "yes"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "Tween::TweenBehavior::AddNumberEffectPropertyTween"
-                  },
-                  "parameters": [
-                    "BodyAni",
-                    "Tween",
-                    "",
-                    "\"HSLOutBody\"",
-                    "0",
-                    "\"HSL\"",
-                    "\"lightness\"",
-                    "\"linear\"",
-                    "0.2",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
-                  },
-                  "parameters": [
-                    "Glow",
-                    "Tween",
-                    "\"OpacityOutGlow\"",
-                    "0.85",
-                    "\"easeOutQuad\"",
-                    "1",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "Tween::TweenBehavior::AddObjectScaleTween3"
-                  },
-                  "parameters": [
-                    "Glow",
-                    "Tween",
-                    "\"ScaleOutGlow\"",
-                    "2",
-                    "\"easeOutQuad\"",
-                    "0.2",
-                    "",
-                    "yes"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "AnimatableCapability::AnimatableBehavior::PauseAnimation"
-                  },
-                  "parameters": [
-                    "BodyAni",
-                    "Animation"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "Tween::TweenBehavior::AddObjectScaleTween3"
-                  },
-                  "parameters": [
-                    "RingAni",
-                    "Tween",
-                    "\"ScaleOutRing\"",
-                    "2",
-                    "\"easeOutQuad\"",
-                    "0.5",
-                    "",
-                    "yes"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "Wait"
-                  },
-                  "parameters": [
-                    "0.25"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
-                  },
-                  "parameters": [
-                    "RingAni",
-                    "Tween",
-                    "\"OpacityOutRing\"",
-                    "0",
-                    "\"linear\"",
-                    "0.25",
+                    "Object",
                     ""
                   ]
                 }
@@ -12041,81 +12508,32 @@
               "conditions": [
                 {
                   "type": {
-                    "value": "Tween::HasFinished"
+                    "value": "NumberVariable"
                   },
                   "parameters": [
-                    "BodyAni",
-                    "Tween",
-                    "\"HSLOutBody\""
+                    "Bounces",
+                    ">",
+                    "0"
                   ]
                 }
               ],
               "actions": [
                 {
                   "type": {
-                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                    "value": "Arreter"
                   },
                   "parameters": [
-                    "BodyAni",
-                    "Animation",
-                    "=",
-                    "\"explode\""
+                    "Object"
                   ]
                 },
                 {
                   "type": {
-                    "value": "AnimatableCapability::AnimatableBehavior::PlayAnimation"
+                    "value": "DebuggerTools::ConsoleLog"
                   },
                   "parameters": [
-                    "BodyAni",
-                    "Animation"
-                  ]
-                }
-              ],
-              "events": [
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "AnimatableCapability::AnimatableBehavior::HasAnimationEnded"
-                      },
-                      "parameters": [
-                        "BodyAni",
-                        "Animation"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "Tween::HasFinished"
-                      },
-                      "parameters": [
-                        "RingAni",
-                        "Tween",
-                        "\"OpacityOutRing\""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "Tween::HasFinished"
-                      },
-                      "parameters": [
-                        "Glow",
-                        "Tween",
-                        "\"OpacityOutGlow\""
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "Delete"
-                      },
-                      "parameters": [
-                        "Object",
-                        ""
-                      ]
-                    }
+                    "\"Bounces \" + ToString(Bounces)",
+                    "",
+                    ""
                   ]
                 }
               ]
@@ -12125,8 +12543,78 @@
             {
               "description": "Object",
               "name": "Object",
-              "supplementaryInformation": "CustomObjects::BigExplosionFX",
+              "supplementaryInformation": "CustomObjects::Projectile",
               "type": "object"
+            },
+            {
+              "description": "Object with behavior \"Bounceable\"",
+              "name": "Bounceable",
+              "supplementaryInformation": "CustomObjects::Wall",
+              "type": "objectList"
+            },
+            {
+              "description": "\"Bouncable\" behavior",
+              "name": "EntityBehavior",
+              "supplementaryInformation": "CustomObjects::Bounceable",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Tell the projectile that it hit a \"Actor\" and decide what to do next",
+          "fullName": "Collision with \"Actor\"",
+          "functionType": "Action",
+          "name": "CollisionWithActor",
+          "sentence": "_PARAM0_ collision with _PARAM1_ (that have _PARAM2_)",
+          "events": [],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Projectile",
+              "type": "object"
+            },
+            {
+              "description": "Object with behavior \"Entity\"",
+              "name": "Actor",
+              "supplementaryInformation": "CustomObjects::Wall",
+              "type": "objectList"
+            },
+            {
+              "description": "\"Entity\" behavior",
+              "name": "EntityBehavior",
+              "supplementaryInformation": "CustomObjects::Entity",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Tell the projectile that it hit a \"Projectile\" and decide what to do next",
+          "fullName": "Collision with \"Projectile\"",
+          "functionType": "Action",
+          "name": "CollisionWithProjectile",
+          "sentence": "_PARAM0_ collision with _PARAM1_ (that have _PARAM2_)",
+          "events": [],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Projectile",
+              "type": "object"
+            },
+            {
+              "description": "Object with behavior \"Entity\"",
+              "name": "Entity",
+              "supplementaryInformation": "CustomObjects::Wall",
+              "type": "objectList"
+            },
+            {
+              "description": "\"Entity\" behavior",
+              "name": "EntityBehavior",
+              "supplementaryInformation": "CustomObjects::Entity",
+              "type": "behavior"
             }
           ],
           "objectGroups": []
@@ -12136,10 +12624,363 @@
         {
           "value": "",
           "type": "Number",
-          "label": "",
-          "name": "Restart"
+          "label": "Bounces",
+          "description": "Number of bounces before destroyed; if collide with \"Bounceable\" object",
+          "name": "Bounces"
         }
       ],
+      "variants": []
+    },
+    {
+      "areaMaxX": 32,
+      "areaMaxY": 32,
+      "areaMaxZ": 64,
+      "areaMinX": 0,
+      "areaMinY": 0,
+      "areaMinZ": 0,
+      "defaultName": "",
+      "description": "Actor entity",
+      "fullName": "Actor",
+      "isAnimatable": true,
+      "isUsingLegacyInstancesRenderer": false,
+      "name": "Actor",
+      "objects": [
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "Sprite",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "default",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "SmallObstacleCollider",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 8,
+                        "y": 8
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 16,
+                            "y": 0
+                          },
+                          {
+                            "x": 16,
+                            "y": 16
+                          },
+                          {
+                            "x": 0,
+                            "y": 16
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "BackSprite",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "SmallWallCollider",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "metadata": "{\"pskl\":{}}",
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "SmallWallCollider",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 8,
+                        "y": 8
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 16,
+                            "y": 0
+                          },
+                          {
+                            "x": 16,
+                            "y": 16
+                          },
+                          {
+                            "x": 0,
+                            "y": 16
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "objectsFolderStructure": {
+        "folderName": "__ROOT",
+        "children": [
+          {
+            "objectName": "Sprite"
+          },
+          {
+            "objectName": "BackSprite"
+          }
+        ]
+      },
+      "objectsGroups": [],
+      "layers": [
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [
+            {
+              "defaultSize": true,
+              "defaultViewport": true,
+              "height": 0,
+              "viewportBottom": 1,
+              "viewportLeft": 0,
+              "viewportRight": 1,
+              "viewportTop": 0,
+              "width": 0
+            }
+          ],
+          "effects": []
+        }
+      ],
+      "instances": [
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 1,
+          "height": 8,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Sprite",
+          "persistentUuid": "b3455651-2ac7-409b-aeac-b0bcbbd08fb2",
+          "width": 8,
+          "x": 16,
+          "y": 12,
+          "zOrder": 2,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "BackSprite",
+          "persistentUuid": "2f742742-682a-4fef-9ffb-6d10a4e39636",
+          "width": 0,
+          "x": 16,
+          "y": 20,
+          "zOrder": 1,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        }
+      ],
+      "eventsFunctions": [],
+      "propertyDescriptors": [],
+      "variants": []
+    },
+    {
+      "areaMaxX": 32,
+      "areaMaxY": 32,
+      "areaMaxZ": 64,
+      "areaMinX": 0,
+      "areaMinY": 0,
+      "areaMinZ": 0,
+      "defaultName": "",
+      "description": "Wall entity",
+      "fullName": "Wall",
+      "isUsingLegacyInstancesRenderer": false,
+      "name": "Wall",
+      "objects": [
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "Sprite",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "default",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "WallCollider2",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 32,
+                            "y": 0
+                          },
+                          {
+                            "x": 32,
+                            "y": 32
+                          },
+                          {
+                            "x": 0,
+                            "y": 32
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "objectsFolderStructure": {
+        "folderName": "__ROOT",
+        "children": [
+          {
+            "objectName": "Sprite"
+          }
+        ]
+      },
+      "objectsGroups": [],
+      "layers": [
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [
+            {
+              "defaultSize": true,
+              "defaultViewport": true,
+              "height": 0,
+              "viewportBottom": 1,
+              "viewportLeft": 0,
+              "viewportRight": 1,
+              "viewportTop": 0,
+              "width": 0
+            }
+          ],
+          "effects": []
+        }
+      ],
+      "instances": [
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Sprite",
+          "persistentUuid": "f4faaee4-c8d7-4450-a3d2-d4da2b23e0a5",
+          "width": 0,
+          "x": 0,
+          "y": 0,
+          "zOrder": 1,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        }
+      ],
+      "eventsFunctions": [],
+      "propertyDescriptors": [],
       "variants": []
     }
   ]
