@@ -754,6 +754,113 @@
       "description": "Custom function to obtain the current frame in animation by an angle",
       "fullName": "Get frame by angle",
       "functionType": "Expression",
+      "name": "GetFrameByAngle6frames",
+      "sentence": "",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "NewAngle",
+                "=",
+                "Angle + 180"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "NewAngle",
+                    ">=",
+                    "360"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "NewAngle",
+                    "-",
+                    "360"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "NewFrame",
+                    "=",
+                    "trunc(round(NewAngle * (4 / 180)))"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "NewFrame"
+                  ]
+                }
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "NewAngle",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "NewFrame",
+              "type": "number",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "expressionType": {
+        "type": "expression"
+      },
+      "parameters": [
+        {
+          "description": "Angle",
+          "name": "Angle",
+          "type": "expression"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Custom function to obtain the current frame in animation by an angle",
+      "fullName": "Get frame by angle",
+      "functionType": "Expression",
       "name": "GetFrameByAngle12frames",
       "sentence": "",
       "events": [
@@ -12791,17 +12898,6 @@
                   "actions": [
                     {
                       "type": {
-                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
-                      },
-                      "parameters": [
-                        "Logs",
-                        "Text",
-                        "=",
-                        "ToString(NormalAngle)"
-                      ]
-                    },
-                    {
-                      "type": {
                         "value": "SetNumberVariable"
                       },
                       "parameters": [
@@ -12819,6 +12915,38 @@
                         "NewAngle",
                         "OldForce",
                         "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                      },
+                      "parameters": [
+                        "Sprite",
+                        "Animation",
+                        "=",
+                        "\"Move\" + ToString(CustomObjects::GetFrameByAngle6frames(NewAngle))"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "Logs",
+                        "Text",
+                        "=",
+                        "ToString(NormalAngle) + \" \" + Sprite.Animation::Name()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetAngle"
+                      },
+                      "parameters": [
+                        "Sprite",
+                        "=",
+                        "NewAngle"
                       ]
                     },
                     {
@@ -13010,13 +13138,24 @@
                 },
                 {
                   "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "Sprite",
+                    "Animation",
+                    "=",
+                    "\"Move\" + ToString(CustomObjects::GetFrameByAngle6frames(Angle))"
+                  ]
+                },
+                {
+                  "type": {
                     "value": "TextContainerCapability::TextContainerBehavior::SetValue"
                   },
                   "parameters": [
                     "Logs",
                     "Text",
                     "=",
-                    "ToString(trunc(Angle))"
+                    "ToString(trunc(Angle)) + \" \" + Sprite.Animation::Name()"
                   ]
                 }
               ]
@@ -13054,7 +13193,1552 @@
           "name": "Bounces"
         }
       ],
-      "variants": []
+      "variants": [
+        {
+          "areaMaxX": 8,
+          "areaMaxY": 8,
+          "areaMaxZ": 64,
+          "areaMinX": 0,
+          "areaMinY": 0,
+          "areaMinZ": 0,
+          "name": "Long bullet",
+          "objects": [
+            {
+              "adaptCollisionMaskAutomatically": false,
+              "assetStoreId": "",
+              "name": "Sprite",
+              "type": "Sprite",
+              "updateIfNotVisible": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "animations": [
+                {
+                  "name": "Move0",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "long_bullet_bullet_5.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move1",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "long_bullet_bullet_4.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move2",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "long_bullet_bullet_3.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move3",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "long_bullet_bullet_2.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move4",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "long_bullet_bullet_1.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move5",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "long_bullet_bullet_6.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move6",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "long_bullet_bullet_7.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move7",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "long_bullet_bullet_8.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move8",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "long_bullet_bullet_5.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "assetStoreId": "",
+              "bold": false,
+              "italic": false,
+              "name": "Logs",
+              "smoothed": true,
+              "type": "TextObject::Text",
+              "underlined": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "string": "T",
+              "font": "",
+              "textAlignment": "left",
+              "characterSize": 10,
+              "color": {
+                "b": 0,
+                "g": 0,
+                "r": 196
+              },
+              "content": {
+                "bold": false,
+                "isOutlineEnabled": false,
+                "isShadowEnabled": false,
+                "italic": false,
+                "outlineColor": "255;255;255",
+                "outlineThickness": 2,
+                "shadowAngle": 90,
+                "shadowBlurRadius": 2,
+                "shadowColor": "0;0;0",
+                "shadowDistance": 4,
+                "shadowOpacity": 127,
+                "smoothed": true,
+                "underlined": false,
+                "text": "T",
+                "font": "",
+                "textAlignment": "left",
+                "verticalTextAlignment": "top",
+                "characterSize": 10,
+                "lineHeight": 0,
+                "color": "196;0;0"
+              }
+            }
+          ],
+          "objectsFolderStructure": {
+            "folderName": "__ROOT",
+            "children": [
+              {
+                "objectName": "Sprite"
+              },
+              {
+                "objectName": "Logs"
+              }
+            ]
+          },
+          "objectsGroups": [],
+          "layers": [
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [
+                {
+                  "defaultSize": true,
+                  "defaultViewport": true,
+                  "height": 0,
+                  "viewportBottom": 1,
+                  "viewportLeft": 0,
+                  "viewportRight": 1,
+                  "viewportTop": 0,
+                  "width": 0
+                }
+              ],
+              "effects": []
+            },
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "Hidden",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [],
+              "effects": [
+                {
+                  "effectType": "Scene3D::HemisphereLight",
+                  "name": "3D Ambient Hemisphere Light",
+                  "doubleParameters": {
+                    "elevation": 40,
+                    "intensity": 0.33,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "groundColor": "127;127;127",
+                    "skyColor": "255;255;255",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {}
+                },
+                {
+                  "effectType": "Scene3D::DirectionalLight",
+                  "name": "3D Sun Light",
+                  "doubleParameters": {
+                    "distanceFromCamera": 1500,
+                    "elevation": 40,
+                    "frustumSize": 4000,
+                    "intensity": 0.75,
+                    "minimumShadowBias": 0,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "color": "255;255;255",
+                    "shadowQuality": "medium",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {
+                    "isCastingShadow": true
+                  }
+                }
+              ]
+            }
+          ],
+          "instances": [
+            {
+              "angle": 0,
+              "customSize": false,
+              "height": 0,
+              "keepRatio": true,
+              "layer": "",
+              "name": "Sprite",
+              "persistentUuid": "657844b4-17c0-4bd6-967e-8f063f15a7af",
+              "width": 0,
+              "x": 0,
+              "y": 0,
+              "zOrder": 1,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            },
+            {
+              "angle": 0,
+              "customSize": true,
+              "depth": 1,
+              "height": 14,
+              "keepRatio": true,
+              "layer": "Hidden",
+              "name": "Logs",
+              "persistentUuid": "635f589c-e162-4fa5-969a-307a57a733ae",
+              "width": 36,
+              "x": -12,
+              "y": 6,
+              "zOrder": 2,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            }
+          ]
+        },
+        {
+          "areaMaxX": 8,
+          "areaMaxY": 8,
+          "areaMaxZ": 64,
+          "areaMinX": 0,
+          "areaMinY": 0,
+          "areaMinZ": 0,
+          "name": "Bullet",
+          "objects": [
+            {
+              "adaptCollisionMaskAutomatically": false,
+              "assetStoreId": "",
+              "name": "Sprite",
+              "type": "Sprite",
+              "updateIfNotVisible": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "animations": [
+                {
+                  "name": "Move0",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "default_bullet_5.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move1",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "default_bullet_4.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move2",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "default_bullet_3.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move3",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "default_bullet_2.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move4",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "default_bullet_1.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move5",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "default_bullet_6.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move6",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "default_bullet_7.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move7",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "default_bullet_8.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move8",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "default_bullet_5.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "assetStoreId": "",
+              "bold": false,
+              "italic": false,
+              "name": "Logs",
+              "smoothed": true,
+              "type": "TextObject::Text",
+              "underlined": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "string": "T",
+              "font": "",
+              "textAlignment": "left",
+              "characterSize": 10,
+              "color": {
+                "b": 0,
+                "g": 0,
+                "r": 196
+              },
+              "content": {
+                "bold": false,
+                "isOutlineEnabled": false,
+                "isShadowEnabled": false,
+                "italic": false,
+                "outlineColor": "255;255;255",
+                "outlineThickness": 2,
+                "shadowAngle": 90,
+                "shadowBlurRadius": 2,
+                "shadowColor": "0;0;0",
+                "shadowDistance": 4,
+                "shadowOpacity": 127,
+                "smoothed": true,
+                "underlined": false,
+                "text": "T",
+                "font": "",
+                "textAlignment": "left",
+                "verticalTextAlignment": "top",
+                "characterSize": 10,
+                "lineHeight": 0,
+                "color": "196;0;0"
+              }
+            }
+          ],
+          "objectsFolderStructure": {
+            "folderName": "__ROOT",
+            "children": [
+              {
+                "objectName": "Sprite"
+              },
+              {
+                "objectName": "Logs"
+              }
+            ]
+          },
+          "objectsGroups": [],
+          "layers": [
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [
+                {
+                  "defaultSize": true,
+                  "defaultViewport": true,
+                  "height": 0,
+                  "viewportBottom": 1,
+                  "viewportLeft": 0,
+                  "viewportRight": 1,
+                  "viewportTop": 0,
+                  "width": 0
+                }
+              ],
+              "effects": []
+            },
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "Hidden",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [],
+              "effects": [
+                {
+                  "effectType": "Scene3D::HemisphereLight",
+                  "name": "3D Ambient Hemisphere Light",
+                  "doubleParameters": {
+                    "elevation": 40,
+                    "intensity": 0.33,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "groundColor": "127;127;127",
+                    "skyColor": "255;255;255",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {}
+                },
+                {
+                  "effectType": "Scene3D::DirectionalLight",
+                  "name": "3D Sun Light",
+                  "doubleParameters": {
+                    "distanceFromCamera": 1500,
+                    "elevation": 40,
+                    "frustumSize": 4000,
+                    "intensity": 0.75,
+                    "minimumShadowBias": 0,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "color": "255;255;255",
+                    "shadowQuality": "medium",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {
+                    "isCastingShadow": true
+                  }
+                }
+              ]
+            }
+          ],
+          "instances": [
+            {
+              "angle": 0,
+              "customSize": false,
+              "height": 0,
+              "keepRatio": true,
+              "layer": "",
+              "name": "Sprite",
+              "persistentUuid": "657844b4-17c0-4bd6-967e-8f063f15a7af",
+              "width": 0,
+              "x": 0,
+              "y": 0,
+              "zOrder": 1,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            },
+            {
+              "angle": 0,
+              "customSize": true,
+              "depth": 1,
+              "height": 14,
+              "keepRatio": true,
+              "layer": "Hidden",
+              "name": "Logs",
+              "persistentUuid": "635f589c-e162-4fa5-969a-307a57a733ae",
+              "width": 36,
+              "x": -12,
+              "y": 6,
+              "zOrder": 2,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            }
+          ]
+        }
+      ]
     },
     {
       "areaMaxX": 32,
@@ -14565,6 +16249,45 @@
           "objectGroups": []
         },
         {
+          "description": "Change the projectile type",
+          "fullName": "Change projectile type",
+          "functionType": "Action",
+          "name": "SetProjectileType",
+          "sentence": "Change projectile type _PARAM1_ to _PARAM0_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "ProjectileType",
+                    "=",
+                    "Name"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Actor",
+              "type": "object"
+            },
+            {
+              "description": "Name of projectile type",
+              "name": "Name",
+              "type": "string"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
           "fullName": "",
           "functionType": "Expression",
           "name": "LookAngle",
@@ -14669,6 +16392,41 @@
           "objectGroups": []
         },
         {
+          "description": "Return the name of the projectile that will shoot",
+          "fullName": "Projectile type",
+          "functionType": "StringExpression",
+          "name": "ProjectileType",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnString"
+                  },
+                  "parameters": [
+                    "ProjectileType"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "string"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Actor",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
           "fullName": "",
           "functionType": "Expression",
           "name": "MovementSpeed",
@@ -14710,6 +16468,18 @@
           "label": "Movement speed",
           "description": "The base movement speed in the scene",
           "name": "MoveSpeed"
+        },
+        {
+          "value": "",
+          "type": "Choice",
+          "label": "Type of projectile",
+          "description": "The projectile that will give",
+          "extraInformation": [
+            "Projectile",
+            "DefaultBullet",
+            "LongBullet"
+          ],
+          "name": "ProjectileType"
         }
       ],
       "variants": []
@@ -15213,6 +16983,452 @@
               "x": -18,
               "y": 28,
               "zOrder": 2,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "areaMaxX": 32,
+      "areaMaxY": 32,
+      "areaMaxZ": 64,
+      "areaMinX": 0,
+      "areaMinY": 0,
+      "areaMinZ": 0,
+      "defaultName": "",
+      "description": "",
+      "fullName": "",
+      "isUsingLegacyInstancesRenderer": false,
+      "name": "Ammo",
+      "objects": [
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "Sprite",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "projectile_ammo.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 16,
+                        "y": 16
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 5,
+                            "y": 5
+                          },
+                          {
+                            "x": 27,
+                            "y": 5
+                          },
+                          {
+                            "x": 27,
+                            "y": 28
+                          },
+                          {
+                            "x": 5,
+                            "y": 28
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "objectsFolderStructure": {
+        "folderName": "__ROOT",
+        "children": [
+          {
+            "objectName": "Sprite"
+          }
+        ]
+      },
+      "objectsGroups": [],
+      "layers": [
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [
+            {
+              "defaultSize": true,
+              "defaultViewport": true,
+              "height": 0,
+              "viewportBottom": 1,
+              "viewportLeft": 0,
+              "viewportRight": 1,
+              "viewportTop": 0,
+              "width": 0
+            }
+          ],
+          "effects": []
+        }
+      ],
+      "instances": [
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Sprite",
+          "persistentUuid": "8844ef7e-6b54-4368-9d17-aa6a6763dde4",
+          "width": 0,
+          "x": 16,
+          "y": 16,
+          "zOrder": 1,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        }
+      ],
+      "eventsFunctions": [
+        {
+          "description": "Change the projetile type to shoot of the actor",
+          "fullName": "Change projectile type",
+          "functionType": "Action",
+          "name": "ChangeProjectileType",
+          "sentence": "Change projectile type of actor _PARAM1_ to _PARAM0_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Actor::SetProjectileType"
+                  },
+                  "parameters": [
+                    "Actor",
+                    "ProjectileType",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Ammo",
+              "type": "object"
+            },
+            {
+              "description": "Actor",
+              "name": "Actor",
+              "supplementaryInformation": "CustomObjects::Actor",
+              "type": "objectList"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "",
+          "type": "Choice",
+          "label": "Type of projectile",
+          "description": "The projectile that will give",
+          "extraInformation": [
+            "Projectile",
+            "DefaultBullet",
+            "LongBullet"
+          ],
+          "name": "ProjectileType"
+        }
+      ],
+      "variants": [
+        {
+          "areaMaxX": 32,
+          "areaMaxY": 32,
+          "areaMaxZ": 64,
+          "areaMinX": 0,
+          "areaMinY": 0,
+          "areaMinZ": 0,
+          "name": "Large bullet",
+          "objects": [
+            {
+              "adaptCollisionMaskAutomatically": true,
+              "assetStoreId": "",
+              "name": "Sprite",
+              "type": "Sprite",
+              "updateIfNotVisible": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "animations": [
+                {
+                  "name": "",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "large_bullet_ammo.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 5,
+                                "y": 5
+                              },
+                              {
+                                "x": 27,
+                                "y": 5
+                              },
+                              {
+                                "x": 27,
+                                "y": 28
+                              },
+                              {
+                                "x": 5,
+                                "y": 28
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "objectsFolderStructure": {
+            "folderName": "__ROOT",
+            "children": [
+              {
+                "objectName": "Sprite"
+              }
+            ]
+          },
+          "objectsGroups": [],
+          "layers": [
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [
+                {
+                  "defaultSize": true,
+                  "defaultViewport": true,
+                  "height": 0,
+                  "viewportBottom": 1,
+                  "viewportLeft": 0,
+                  "viewportRight": 1,
+                  "viewportTop": 0,
+                  "width": 0
+                }
+              ],
+              "effects": []
+            }
+          ],
+          "instances": [
+            {
+              "angle": 0,
+              "customSize": false,
+              "height": 0,
+              "keepRatio": true,
+              "layer": "",
+              "name": "Sprite",
+              "persistentUuid": "8844ef7e-6b54-4368-9d17-aa6a6763dde4",
+              "width": 0,
+              "x": 16,
+              "y": 16,
+              "zOrder": 1,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            }
+          ]
+        },
+        {
+          "areaMaxX": 32,
+          "areaMaxY": 32,
+          "areaMaxZ": 64,
+          "areaMinX": 0,
+          "areaMinY": 0,
+          "areaMinZ": 0,
+          "name": "Default bullet",
+          "objects": [
+            {
+              "adaptCollisionMaskAutomatically": true,
+              "assetStoreId": "",
+              "name": "Sprite",
+              "type": "Sprite",
+              "updateIfNotVisible": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "animations": [
+                {
+                  "name": "",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "default_bullet_ammo.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 5,
+                                "y": 5
+                              },
+                              {
+                                "x": 27,
+                                "y": 5
+                              },
+                              {
+                                "x": 27,
+                                "y": 28
+                              },
+                              {
+                                "x": 5,
+                                "y": 28
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "objectsFolderStructure": {
+            "folderName": "__ROOT",
+            "children": [
+              {
+                "objectName": "Sprite"
+              }
+            ]
+          },
+          "objectsGroups": [],
+          "layers": [
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [
+                {
+                  "defaultSize": true,
+                  "defaultViewport": true,
+                  "height": 0,
+                  "viewportBottom": 1,
+                  "viewportLeft": 0,
+                  "viewportRight": 1,
+                  "viewportTop": 0,
+                  "width": 0
+                }
+              ],
+              "effects": []
+            }
+          ],
+          "instances": [
+            {
+              "angle": 0,
+              "customSize": false,
+              "height": 0,
+              "keepRatio": true,
+              "layer": "",
+              "name": "Sprite",
+              "persistentUuid": "8844ef7e-6b54-4368-9d17-aa6a6763dde4",
+              "width": 0,
+              "x": 16,
+              "y": 16,
+              "zOrder": 1,
               "numberProperties": [],
               "stringProperties": [],
               "initialVariables": []

@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.058071480431374,
+    "zoomFactor": 2.0538851749962292,
     "windowMask": false
   },
   "objectsGroups": [
@@ -30,14 +30,6 @@
         },
         {
           "name": "CursorCollision"
-        }
-      ]
-    },
-    {
-      "name": "Projectiles",
-      "objects": [
-        {
-          "name": "Projectile"
         }
       ]
     },
@@ -54,6 +46,34 @@
       "objects": [
         {
           "name": "SolidWall"
+        }
+      ]
+    },
+    {
+      "name": "Projectiles",
+      "objects": [
+        {
+          "name": "Projectile"
+        },
+        {
+          "name": "DefaultBullet"
+        },
+        {
+          "name": "LongBullet"
+        }
+      ]
+    },
+    {
+      "name": "Ammo",
+      "objects": [
+        {
+          "name": "ProjectileAmmo"
+        },
+        {
+          "name": "DefaultBulletAmmo"
+        },
+        {
+          "name": "LargeBulletAmmo"
         }
       ]
     }
@@ -168,38 +188,6 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "Projectile",
-      "persistentUuid": "66d5bfe9-c33f-4505-bb64-e5299619f1bc",
-      "width": 0,
-      "x": 88,
-      "y": 264,
-      "zOrder": 7,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "Projectile",
-      "persistentUuid": "3d5b3eb9-7b93-45db-8efb-53ab7ced35f2",
-      "width": 0,
-      "x": 88,
-      "y": 304,
-      "zOrder": 7,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
       "name": "BounceableWall",
       "persistentUuid": "6c90f31c-9c54-45e2-93f3-5a1e1799f85d",
       "width": 0,
@@ -212,15 +200,16 @@
     },
     {
       "angle": 135,
-      "customSize": false,
-      "height": 0,
+      "customSize": true,
+      "depth": 65,
+      "height": 32,
       "keepRatio": true,
       "layer": "Main",
       "name": "BounceableWall",
       "persistentUuid": "385771b6-4fc1-4e16-bfcd-182593c8b2f8",
-      "width": 0,
-      "x": 398,
-      "y": 217,
+      "width": 32,
+      "x": 608,
+      "y": -135,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -503,7 +492,7 @@
       "angle": 180,
       "customSize": true,
       "depth": 64,
-      "height": 352,
+      "height": 320,
       "keepRatio": true,
       "layer": "Main",
       "name": "BounceableWall",
@@ -528,23 +517,6 @@
       "width": 32,
       "x": 280,
       "y": -760,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 270,
-      "customSize": true,
-      "depth": 64,
-      "height": 592,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWall",
-      "persistentUuid": "e9dbd8ef-04c4-4d91-ae37-ff62ee1870ee",
-      "width": 32,
-      "x": 872,
-      "y": -376,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -758,6 +730,104 @@
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
+    },
+    {
+      "angle": 90,
+      "customSize": true,
+      "depth": 64,
+      "height": 560,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "0a07d602-d84a-4789-93db-628645cdc547",
+      "width": 32,
+      "x": 888,
+      "y": -392,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 135,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "4b338443-a42c-4af6-8d19-2f4f5185c687",
+      "width": 0,
+      "x": 398,
+      "y": 217,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 135,
+      "customSize": true,
+      "depth": 65,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "5bf365a5-37da-42a4-b791-dda896db8ba2",
+      "width": 32,
+      "x": 599,
+      "y": -144,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "ProjectileAmmo",
+      "persistentUuid": "943273ed-efd2-4e1e-b6ff-b6988eebd1bb",
+      "width": 0,
+      "x": 48,
+      "y": -368,
+      "zOrder": 0,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "DefaultBulletAmmo",
+      "persistentUuid": "eeca53f1-7bce-4efa-9f32-33da11af9570",
+      "width": 0,
+      "x": 48,
+      "y": -304,
+      "zOrder": 0,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "LargeBulletAmmo",
+      "persistentUuid": "ce1f2dd8-23e0-49f8-ae6a-c5274b59546a",
+      "width": 0,
+      "x": 48,
+      "y": -240,
+      "zOrder": 0,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
     }
   ],
   "objects": [
@@ -939,7 +1009,8 @@
         }
       ],
       "content": {
-        "MoveSpeed": 100
+        "MoveSpeed": 100,
+        "ProjectileType": "Projectile"
       },
       "animatable": {
         "adaptCollisionMaskAutomatically": true,
@@ -963,7 +1034,7 @@
         }
       ],
       "content": {
-        "Bounces": 1,
+        "Bounces": 0,
         "Speed": 120
       },
       "animatable": {
@@ -1236,11 +1307,120 @@
           ]
         }
       ]
+    },
+    {
+      "assetStoreId": "",
+      "name": "DefaultBullet",
+      "type": "CustomObjects::Projectile",
+      "variant": "Bullet",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Entity",
+          "type": "CustomObjects::Entity",
+          "Property": "Projectile",
+          "Id": 3.3236692178158365e+178,
+          "Type": "Projectile"
+        }
+      ],
+      "content": {
+        "Bounces": 1,
+        "Speed": 200
+      },
+      "animatable": {
+        "adaptCollisionMaskAutomatically": true,
+        "animations": []
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "LongBullet",
+      "type": "CustomObjects::Projectile",
+      "variant": "Long bullet",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Entity",
+          "type": "CustomObjects::Entity",
+          "Property": "Projectile",
+          "Id": 3.3236692178158365e+178,
+          "Type": "Projectile"
+        }
+      ],
+      "content": {
+        "Bounces": 2,
+        "Speed": 200
+      },
+      "animatable": {
+        "adaptCollisionMaskAutomatically": true,
+        "animations": []
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "ProjectileAmmo",
+      "type": "CustomObjects::Ammo",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "ProjectileType": "Projectile"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "DefaultBulletAmmo",
+      "type": "CustomObjects::Ammo",
+      "variant": "Default bullet",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "ProjectileType": "DefaultBullet"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "LargeBulletAmmo",
+      "type": "CustomObjects::Ammo",
+      "variant": "Large bullet",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "ProjectileType": "LongBullet"
+      }
     }
   ],
   "objectsFolderStructure": {
     "folderName": "__ROOT",
     "children": [
+      {
+        "folderName": "Projectiles",
+        "children": [
+          {
+            "objectName": "Projectile"
+          },
+          {
+            "objectName": "DefaultBullet"
+          },
+          {
+            "objectName": "LongBullet"
+          },
+          {
+            "objectName": "ProjectileAmmo"
+          },
+          {
+            "objectName": "DefaultBulletAmmo"
+          },
+          {
+            "objectName": "LargeBulletAmmo"
+          }
+        ]
+      },
       {
         "objectName": "RedPen"
       },
@@ -1264,9 +1444,6 @@
       },
       {
         "objectName": "CursorCollision"
-      },
-      {
-        "objectName": "Projectile"
       },
       {
         "objectName": "BounceableWall"
@@ -1763,7 +1940,6 @@
           "colorG": 68,
           "colorR": 62,
           "creationTime": 0,
-          "folded": true,
           "name": "Shoot",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -1791,11 +1967,12 @@
               "actions": [
                 {
                   "type": {
-                    "value": "Create"
+                    "value": "CreateByName"
                   },
                   "parameters": [
                     "",
-                    "Projectile",
+                    "Projectiles",
+                    "Actor.ProjectileType()",
                     "Actor.MuzzleX()",
                     "Actor.MuzzleY()",
                     "_CONSTANTS_.Layers.Main"
@@ -1806,7 +1983,7 @@
                     "value": "CustomObjects::Projectile::Throw"
                   },
                   "parameters": [
-                    "Projectile",
+                    "Projectiles",
                     "Actor.LookAngle()",
                     ""
                   ]
@@ -1833,6 +2010,7 @@
           "colorG": 68,
           "colorR": 62,
           "creationTime": 0,
+          "folded": true,
           "name": "Sight",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -2661,6 +2839,45 @@
         },
         {
           "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CollisionNP"
+              },
+              "parameters": [
+                "Actor",
+                "Ammo",
+                "",
+                "",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomObjects::Ammo::ChangeProjectileType"
+              },
+              "parameters": [
+                "Ammo",
+                "Actor",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "DebuggerTools::ConsoleLog"
+              },
+              "parameters": [
+                "Ammo.ObjectName()",
+                "",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
           "conditions": [],
           "actions": [
             {
@@ -2691,22 +2908,11 @@
       "comment": "\n\n"
     },
     {
-      "type": "BuiltinCommonInstructions::Comment",
-      "color": {
-        "b": 52,
-        "g": 44,
-        "r": 40,
-        "textB": 255,
-        "textG": 255,
-        "textR": 255
-      },
-      "comment": "\n\n"
-    },
-    {
       "colorB": 82,
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "folded": true,
       "name": "Projectile logic",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
