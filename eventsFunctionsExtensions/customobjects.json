@@ -856,6 +856,179 @@
         }
       ],
       "objectGroups": []
+    },
+    {
+      "description": "Return the reflection angle given the direction and normal",
+      "fullName": "Reflect Angle",
+      "functionType": "Expression",
+      "name": "ReflectAngle",
+      "sentence": "Return the reflect angle with _PARAM1_ direction and _PARAM2_ Normal",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 109,
+            "g": 230,
+            "r": 255,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "Following the formula v = inDirection - 2 * inNormal * dot(inDirection, inNormal)\nImitated by Unity Vector2.Reflect"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "V1X",
+                "=",
+                "XFromAngleAndDistance(DirectionAngle, 1)"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "V1Y",
+                "=",
+                "YFromAngleAndDistance(DirectionAngle, 1)"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "V2X",
+                "=",
+                "XFromAngleAndDistance(NormalAngle, 1)"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "V2Y",
+                "=",
+                "YFromAngleAndDistance(NormalAngle, 1)"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "dot",
+                "=",
+                "-2 * ((V1X*V2X) + (V1Y*V2Y))"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "nVX",
+                "=",
+                "dot * V2X + V1X"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "nVY",
+                "=",
+                "dot * V2Y + V1Y"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "NewAngle",
+                "=",
+                "AngleBetweenPositions(0,0,nVX,nVY)"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetReturnNumber"
+              },
+              "parameters": [
+                "NewAngle"
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "V1X",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "V1Y",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "V2X",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "V2Y",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "dot",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "nVX",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "nVY",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "NewAngle",
+              "type": "number",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "expressionType": {
+        "type": "expression"
+      },
+      "parameters": [
+        {
+          "description": "Direction angle",
+          "name": "DirectionAngle",
+          "type": "expression"
+        },
+        {
+          "description": "Normal angle",
+          "name": "NormalAngle",
+          "type": "expression"
+        }
+      ],
+      "objectGroups": []
     }
   ],
   "eventsBasedBehaviors": [
@@ -12503,7 +12676,6 @@
           "sentence": "_PARAM0_ collision with _PARAM1_ (that have _PARAM2_)",
           "events": [
             {
-              "disabled": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -12528,6 +12700,18 @@
                   ]
                 }
               ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 109,
+                "g": 230,
+                "r": 255,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "Bounce projectile"
             },
             {
               "type": "BuiltinCommonInstructions::Standard",
@@ -12558,13 +12742,7 @@
                         "=",
                         "Bounceable.Angle()"
                       ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
+                    },
                     {
                       "type": {
                         "value": "SetNumberVariable"
@@ -12592,63 +12770,25 @@
                       "parameters": [
                         "Object"
                       ]
-                    },
-                    {
-                      "type": {
-                        "value": "SeparateFromObjects"
-                      },
-                      "parameters": [
-                        "Object",
-                        "Bounceable",
-                        ""
-                      ]
                     }
                   ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 109,
+                    "g": 230,
+                    "r": 255,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "Get reflect angle"
                 },
                 {
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [],
                   "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "V1X",
-                        "=",
-                        "XFromAngleAndDistance(OldAngle, 1)"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "V1Y",
-                        "=",
-                        "YFromAngleAndDistance(OldAngle, 1)"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "V2X",
-                        "=",
-                        "XFromAngleAndDistance(NormalAngle, 1)"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "V2Y",
-                        "=",
-                        "YFromAngleAndDistance(NormalAngle, 1)"
-                      ]
-                    },
                     {
                       "type": {
                         "value": "TextContainerCapability::TextContainerBehavior::SetValue"
@@ -12657,37 +12797,7 @@
                         "Logs",
                         "Text",
                         "=",
-                        "ToString(OldAngle) + \":\" + ToString(NormalAngle)"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "dot",
-                        "=",
-                        "-2 * ((V1X*V2X) + (V1Y*V2Y))"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "nVX",
-                        "=",
-                        "dot * V2X + V1X"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "nVY",
-                        "=",
-                        "dot * V2Y + V1Y"
+                        "ToString(NormalAngle)"
                       ]
                     },
                     {
@@ -12697,52 +12807,9 @@
                       "parameters": [
                         "NewAngle",
                         "=",
-                        "AngleBetweenPositions(0,0,nVX,nVY)"
+                        "CustomObjects::ReflectAngle(OldAngle, NormalAngle)"
                       ]
-                    }
-                  ],
-                  "variables": [
-                    {
-                      "name": "V1X",
-                      "type": "number",
-                      "value": 0
                     },
-                    {
-                      "name": "V1Y",
-                      "type": "number",
-                      "value": 0
-                    },
-                    {
-                      "name": "V2X",
-                      "type": "number",
-                      "value": 0
-                    },
-                    {
-                      "name": "V2Y",
-                      "type": "number",
-                      "value": 0
-                    },
-                    {
-                      "name": "dot",
-                      "type": "number",
-                      "value": 0
-                    },
-                    {
-                      "name": "nVX",
-                      "type": "number",
-                      "value": 0
-                    },
-                    {
-                      "name": "nVY",
-                      "type": "number",
-                      "value": 0
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
                     {
                       "type": {
                         "value": "AddForceAL"
@@ -12762,17 +12829,6 @@
                         "Bounces",
                         "-",
                         "1"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
-                      },
-                      "parameters": [
-                        "Logs",
-                        "Text",
-                        "+",
-                        "\" a:\" + ToString(trunc(NewAngle))"
                       ]
                     }
                   ]
@@ -12800,11 +12856,6 @@
                   "value": 0
                 }
               ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": []
             }
           ],
           "parameters": [
@@ -14888,60 +14939,6 @@
                   ]
                 }
               ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::CompareNumbers"
-                  },
-                  "parameters": [
-                    "Object.Angle()",
-                    "<",
-                    "180"
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "InitialAngle",
-                    "=",
-                    "Object.Angle()"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::CompareNumbers"
-                  },
-                  "parameters": [
-                    "Object.Angle()",
-                    ">=",
-                    "180"
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "InitialAngle",
-                    "=",
-                    "Object.Angle() - 360"
-                  ]
-                }
-              ]
             }
           ],
           "parameters": [
@@ -15029,7 +15026,200 @@
         }
       ],
       "propertyDescriptors": [],
-      "variants": []
+      "variants": [
+        {
+          "areaMaxX": 32,
+          "areaMaxY": 32,
+          "areaMaxZ": 64,
+          "areaMinX": 0,
+          "areaMinY": 0,
+          "areaMinZ": 0,
+          "name": "Solid",
+          "objects": [
+            {
+              "adaptCollisionMaskAutomatically": true,
+              "assetStoreId": "",
+              "name": "Sprite",
+              "type": "Sprite",
+              "updateIfNotVisible": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "animations": [
+                {
+                  "name": "default",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "metadata": "{\"pskl\":{}}",
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\SolidCollider.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 0
+                              },
+                              {
+                                "x": 32,
+                                "y": 0
+                              },
+                              {
+                                "x": 32,
+                                "y": 32
+                              },
+                              {
+                                "x": 0,
+                                "y": 32
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "assetStoreId": "",
+              "bold": false,
+              "italic": false,
+              "name": "Logs",
+              "smoothed": true,
+              "type": "TextObject::Text",
+              "underlined": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "string": "Text",
+              "font": "",
+              "textAlignment": "left",
+              "characterSize": 12,
+              "color": {
+                "b": 0,
+                "g": 0,
+                "r": 0
+              },
+              "content": {
+                "bold": false,
+                "isOutlineEnabled": false,
+                "isShadowEnabled": false,
+                "italic": false,
+                "outlineColor": "255;255;255",
+                "outlineThickness": 2,
+                "shadowAngle": 90,
+                "shadowBlurRadius": 2,
+                "shadowColor": "0;0;0",
+                "shadowDistance": 4,
+                "shadowOpacity": 127,
+                "smoothed": true,
+                "underlined": false,
+                "text": "Text",
+                "font": "",
+                "textAlignment": "left",
+                "verticalTextAlignment": "top",
+                "characterSize": 12,
+                "lineHeight": 0,
+                "color": "0;0;0"
+              }
+            }
+          ],
+          "objectsFolderStructure": {
+            "folderName": "__ROOT",
+            "children": [
+              {
+                "objectName": "Sprite"
+              },
+              {
+                "objectName": "Logs"
+              }
+            ]
+          },
+          "objectsGroups": [],
+          "layers": [
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [
+                {
+                  "defaultSize": true,
+                  "defaultViewport": true,
+                  "height": 0,
+                  "viewportBottom": 1,
+                  "viewportLeft": 0,
+                  "viewportRight": 1,
+                  "viewportTop": 0,
+                  "width": 0
+                }
+              ],
+              "effects": []
+            }
+          ],
+          "instances": [
+            {
+              "angle": 0,
+              "customSize": false,
+              "height": 0,
+              "keepRatio": true,
+              "layer": "",
+              "name": "Sprite",
+              "persistentUuid": "f4faaee4-c8d7-4450-a3d2-d4da2b23e0a5",
+              "width": 0,
+              "x": 0,
+              "y": 0,
+              "zOrder": 1,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            },
+            {
+              "angle": 0,
+              "customSize": true,
+              "depth": 1,
+              "height": 40,
+              "keepRatio": true,
+              "layer": "",
+              "name": "Logs",
+              "persistentUuid": "e5a6e3f3-03a8-4bc7-903e-a19622fd0927",
+              "width": 92,
+              "x": -18,
+              "y": 28,
+              "zOrder": 2,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            }
+          ]
+        }
+      ]
     }
   ]
 }

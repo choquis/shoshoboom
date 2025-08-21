@@ -18,10 +18,21 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 2.5060775481179753,
+    "zoomFactor": 1.0580714804313731,
     "windowMask": false
   },
   "objectsGroups": [
+    {
+      "name": "Cursor Collisions",
+      "objects": [
+        {
+          "name": "BounceableWall"
+        },
+        {
+          "name": "CursorCollision"
+        }
+      ]
+    },
     {
       "name": "Projectiles",
       "objects": [
@@ -34,7 +45,7 @@
       "name": "Bounceable",
       "objects": [
         {
-          "name": "WallBounceable"
+          "name": "BounceableWall"
         }
       ]
     },
@@ -42,24 +53,45 @@
       "name": "Solid",
       "objects": [
         {
-          "name": "WallNoBounceable"
+          "name": "SolidWall"
         }
       ]
     }
   ],
-  "variables": [],
+  "variables": [
+    {
+      "name": "iX",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "iY",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "CameraX",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "CameraY",
+      "type": "number",
+      "value": 0
+    }
+  ],
   "instances": [
     {
       "angle": 0,
       "customSize": false,
       "height": 0,
       "keepRatio": true,
-      "layer": "UI",
+      "layer": "Debug",
       "name": "RedPen",
       "persistentUuid": "2ea29eaa-19c4-426d-9588-db8f62106258",
       "width": 0,
-      "x": 560,
-      "y": -64,
+      "x": 688,
+      "y": 320,
       "zOrder": 2,
       "numberProperties": [],
       "stringProperties": [],
@@ -123,8 +155,8 @@
       "name": "Actor",
       "persistentUuid": "3454e55e-1b93-46c1-8ac0-3cf45b200022",
       "width": 0,
-      "x": 128,
-      "y": 128,
+      "x": 272,
+      "y": -304,
       "zOrder": 6,
       "numberProperties": [],
       "stringProperties": [],
@@ -168,7 +200,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "6c90f31c-9c54-45e2-93f3-5a1e1799f85d",
       "width": 0,
       "x": 0,
@@ -184,7 +216,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "385771b6-4fc1-4e16-bfcd-182593c8b2f8",
       "width": 0,
       "x": 398,
@@ -200,11 +232,11 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "b42a5beb-e4b6-41d1-bcde-188d2d49c457",
       "width": 0,
-      "x": 272,
-      "y": 16,
+      "x": 48,
+      "y": 64,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -216,11 +248,11 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "e0f9a961-7fe6-4496-9618-ba094f83a806",
       "width": 0,
-      "x": 240,
-      "y": 48,
+      "x": 16,
+      "y": 96,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -232,11 +264,11 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "a1d117af-1ec5-48b3-bb13-10eed45df6d1",
       "width": 0,
-      "x": 247,
-      "y": 32,
+      "x": 23,
+      "y": 80,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -248,11 +280,11 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "34729715-9fb1-4318-870a-9d45f57cec74",
       "width": 0,
-      "x": 272,
-      "y": 80,
+      "x": 48,
+      "y": 128,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -264,11 +296,11 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "c7a573c0-ebcc-4d50-9c9c-aa067f7a707d",
       "width": 0,
-      "x": 256,
-      "y": 23,
+      "x": 32,
+      "y": 71,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -280,11 +312,11 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "1be299c7-f11e-4660-b970-294afc07944a",
       "width": 0,
-      "x": 304,
-      "y": 48,
+      "x": 80,
+      "y": 96,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -296,11 +328,11 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "1389fd45-0bcd-4c4c-83b3-0f6224ced6be",
       "width": 0,
-      "x": 247,
-      "y": 64,
+      "x": 23,
+      "y": 112,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -312,11 +344,11 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "19e5986b-a8f3-4aef-81e5-ea376d8512e7",
       "width": 0,
-      "x": 256,
-      "y": 73,
+      "x": 32,
+      "y": 121,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -328,11 +360,11 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "07618236-7f4b-4fb7-bb1d-706d9b943fa2",
       "width": 0,
-      "x": 288,
-      "y": 73,
+      "x": 64,
+      "y": 121,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -344,11 +376,11 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "d3d7e881-aa13-43ac-bdb6-c01c46d3c797",
       "width": 0,
-      "x": 297,
-      "y": 64,
+      "x": 73,
+      "y": 112,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -360,11 +392,11 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "eeebfb50-bba9-4481-bac4-6a8e93a5904b",
       "width": 0,
-      "x": 297,
-      "y": 32,
+      "x": 73,
+      "y": 80,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -376,11 +408,11 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "7654a5fc-34d5-40f4-a712-c67915d023d6",
       "width": 0,
-      "x": 288,
-      "y": 23,
+      "x": 64,
+      "y": 71,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -391,12 +423,12 @@
       "customSize": false,
       "height": 0,
       "keepRatio": true,
-      "layer": "UI",
+      "layer": "Debug",
       "name": "YellowPen",
       "persistentUuid": "34748542-b58b-44b3-ad55-9aee3d13a017",
       "width": 0,
-      "x": 608,
-      "y": -64,
+      "x": 736,
+      "y": 320,
       "zOrder": 10,
       "numberProperties": [],
       "stringProperties": [],
@@ -407,12 +439,12 @@
       "customSize": false,
       "height": 0,
       "keepRatio": true,
-      "layer": "UI",
+      "layer": "Debug",
       "name": "BluePen",
       "persistentUuid": "66fb78d5-a2bb-427e-ab61-4dbee684f113",
       "width": 0,
-      "x": 512,
-      "y": -64,
+      "x": 640,
+      "y": 320,
       "zOrder": 11,
       "numberProperties": [],
       "stringProperties": [],
@@ -424,7 +456,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallNoBounceable",
+      "name": "SolidWall",
       "persistentUuid": "276a67d8-d93f-455c-9fdd-e0735e126e58",
       "width": 0,
       "x": 256,
@@ -440,7 +472,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "6b4bd34b-716e-40eb-b0b8-ba3de548f16f",
       "width": 0,
       "x": 224,
@@ -452,15 +484,16 @@
     },
     {
       "angle": 0,
-      "customSize": false,
-      "height": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 352,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "347d9cf2-f3ef-43d7-9c6e-1bdc445f3efa",
-      "width": 0,
-      "x": 528,
-      "y": 160,
+      "width": 32,
+      "x": -32,
+      "y": -448,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -468,15 +501,16 @@
     },
     {
       "angle": 180,
-      "customSize": false,
-      "height": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 352,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "1c785f33-9906-4aed-b2c2-c00487407ced",
-      "width": 0,
-      "x": 384,
-      "y": 160,
+      "width": 32,
+      "x": 592,
+      "y": -448,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -484,15 +518,16 @@
     },
     {
       "angle": 90,
-      "customSize": false,
-      "height": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 592,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "50de0f92-aaf6-4da5-b877-7ad89ff56e7c",
-      "width": 0,
-      "x": 448,
-      "y": 240,
+      "width": 32,
+      "x": 280,
+      "y": -760,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -500,15 +535,16 @@
     },
     {
       "angle": 270,
-      "customSize": false,
-      "height": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 592,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "e9dbd8ef-04c4-4d91-ae37-ff62ee1870ee",
-      "width": 0,
-      "x": 448,
-      "y": 80,
+      "width": 32,
+      "x": 872,
+      "y": -376,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -520,7 +556,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "85d84ee8-5f2f-48ec-84be-1c1cd492a100",
       "width": 0,
       "x": 396,
@@ -536,7 +572,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "82838873-fc4d-4e77-8152-70752512b28e",
       "width": 0,
       "x": 508,
@@ -552,12 +588,109 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "persistentUuid": "45ef216a-17e4-486e-a9ec-150734b547dc",
       "width": 0,
       "x": 508,
       "y": 217,
       "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "Cursor",
+      "persistentUuid": "0aedc7a7-6883-492d-bd61-84a89186f5b9",
+      "width": 0,
+      "x": 808,
+      "y": 344,
+      "zOrder": 0,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 90,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "0e8d7501-5df9-4045-90f4-3a4139604585",
+      "width": 0,
+      "x": 448,
+      "y": 240,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "b9b580ea-84ab-4239-8e9e-cee4c734519c",
+      "width": 0,
+      "x": 528,
+      "y": 160,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 180,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "bedf3c67-21c4-43ba-902e-589c25dd656e",
+      "width": 0,
+      "x": 384,
+      "y": 160,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 270,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "ab28c1ec-39f3-4cff-ac68-91f8647ca925",
+      "width": 0,
+      "x": 448,
+      "y": 80,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1,
+      "height": 8,
+      "keepRatio": true,
+      "layer": "Debug",
+      "name": "CursorCollision",
+      "persistentUuid": "407dc85f-54b2-4b85-982e-4dcf33f4abd2",
+      "width": 48,
+      "x": 696,
+      "y": 220,
+      "zOrder": 12,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -737,7 +870,8 @@
           "name": "Entity",
           "type": "CustomObjects::Entity",
           "Property": "Actor",
-          "Id": 3.3236692178158365e+178
+          "Id": 3.3236692178158365e+178,
+          "Type": "Actor"
         }
       ],
       "content": {
@@ -760,7 +894,8 @@
           "name": "Entity",
           "type": "CustomObjects::Entity",
           "Property": "Projectile",
-          "Id": 3.3236692178158365e+178
+          "Id": 3.3236692178158365e+178,
+          "Type": "Projectile"
         }
       ],
       "content": {
@@ -774,7 +909,7 @@
     },
     {
       "assetStoreId": "",
-      "name": "WallBounceable",
+      "name": "BounceableWall",
       "type": "CustomObjects::Wall",
       "variant": "",
       "variables": [],
@@ -795,9 +930,9 @@
     },
     {
       "assetStoreId": "",
-      "name": "WallNoBounceable",
+      "name": "SolidWall",
       "type": "CustomObjects::Wall",
-      "variant": "",
+      "variant": "Solid",
       "variables": [],
       "effects": [],
       "behaviors": [
@@ -857,6 +992,126 @@
         "g": 255,
         "b": 0
       }
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "Cursor",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\cursor.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 8,
+                    "y": 8
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 0,
+                        "y": 0
+                      },
+                      {
+                        "x": 16,
+                        "y": 0
+                      },
+                      {
+                        "x": 16,
+                        "y": 16
+                      },
+                      {
+                        "x": 0,
+                        "y": 16
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": false,
+      "assetStoreId": "",
+      "name": "CursorCollision",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\SolidCollider.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 16,
+                    "y": 16
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 0,
+                        "y": 0
+                      },
+                      {
+                        "x": 32,
+                        "y": 0
+                      },
+                      {
+                        "x": 32,
+                        "y": 32
+                      },
+                      {
+                        "x": 0,
+                        "y": 32
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "objectsFolderStructure": {
@@ -884,17 +1139,61 @@
         "objectName": "Actor"
       },
       {
+        "objectName": "CursorCollision"
+      },
+      {
         "objectName": "Projectile"
       },
       {
-        "objectName": "WallBounceable"
+        "objectName": "BounceableWall"
       },
       {
-        "objectName": "WallNoBounceable"
+        "objectName": "SolidWall"
+      },
+      {
+        "objectName": "Cursor"
       }
     ]
   },
   "events": [
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Includes",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
+          },
+          "target": "Main Game UI Logic"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
+          },
+          "target": "Input Logic"
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
     {
       "colorB": 82,
       "colorG": 68,
@@ -928,6 +1227,14 @@
                   },
                   "parameters": [
                     "no",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CacheSouris"
+                  },
+                  "parameters": [
                     ""
                   ]
                 }
@@ -986,42 +1293,54 @@
       ]
     },
     {
-      "type": "BuiltinCommonInstructions::Comment",
-      "color": {
-        "b": 52,
-        "g": 44,
-        "r": 40,
-        "textB": 255,
-        "textG": 255,
-        "textR": 255
-      },
-      "comment": "\n\n"
-    },
-    {
-      "colorB": 82,
-      "colorG": 68,
-      "colorR": 62,
-      "creationTime": 0,
-      "name": "Includes",
-      "source": "",
-      "type": "BuiltinCommonInstructions::Group",
-      "events": [
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
         {
-          "type": "BuiltinCommonInstructions::Link",
-          "include": {
-            "includeConfig": 0
+          "type": {
+            "value": "CentreCamera"
           },
-          "target": "Main Game UI Logic"
+          "parameters": [
+            "",
+            "Actor",
+            "",
+            "_CONSTANTS_.Layers.Main",
+            ""
+          ]
         },
         {
-          "type": "BuiltinCommonInstructions::Link",
-          "include": {
-            "includeConfig": 0
+          "type": {
+            "value": "CentreCamera"
           },
-          "target": "Input Logic"
+          "parameters": [
+            "",
+            "Actor",
+            "",
+            "\"Debug\"",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "CameraX",
+            "=",
+            "CameraBorderLeft(_CONSTANTS_.Layers.Main, 0)"
+          ]
+        },
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "CameraY",
+            "=",
+            "CameraBorderTop(_CONSTANTS_.Layers.Main, 0)"
+          ]
         }
-      ],
-      "parameters": []
+      ]
     },
     {
       "type": "BuiltinCommonInstructions::Comment",
@@ -1045,7 +1364,6 @@
       "type": "BuiltinCommonInstructions::Group",
       "events": [
         {
-          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [],
           "actions": [
@@ -1089,24 +1407,16 @@
                 "=",
                 "PickedInstancesCount(Projectile)"
               ]
-            }
-          ],
-          "events": [
+            },
             {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "TextContainerCapability::TextContainerBehavior::SetValue"
-                  },
-                  "parameters": [
-                    "particlecount",
-                    "Text",
-                    "=",
-                    "ToString(TotalBullets)"
-                  ]
-                }
+              "type": {
+                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+              },
+              "parameters": [
+                "particlecount",
+                "Text",
+                "=",
+                "ToString(TotalBullets)"
               ]
             }
           ],
@@ -1143,24 +1453,16 @@
                 "Actor.Y()",
                 "1"
               ]
-            }
-          ],
-          "events": [
+            },
             {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "PrimitiveDrawing::Circle"
-                  },
-                  "parameters": [
-                    "YellowPen",
-                    "Actor.MuzzleX()",
-                    "Actor.MuzzleY()",
-                    "1"
-                  ]
-                }
+              "type": {
+                "value": "PrimitiveDrawing::Circle"
+              },
+              "parameters": [
+                "YellowPen",
+                "Actor.MuzzleX()",
+                "Actor.MuzzleY()",
+                "1"
               ]
             }
           ]
@@ -1332,6 +1634,7 @@
           "colorG": 68,
           "colorR": 62,
           "creationTime": 0,
+          "folded": true,
           "name": "Shoot",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -1401,7 +1704,6 @@
           "colorG": 68,
           "colorR": 62,
           "creationTime": 0,
-          "folded": true,
           "name": "Sight",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -1445,6 +1747,18 @@
               ],
               "events": [
                 {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 52,
+                    "g": 44,
+                    "r": 40,
+                    "textB": 255,
+                    "textG": 255,
+                    "textR": 255
+                  },
+                  "comment": "Adjust for mouse control. And in case the camera follow the player"
+                },
+                {
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
                     {
@@ -1466,7 +1780,7 @@
                       "parameters": [
                         "LookX",
                         "=",
-                        "LookX - Actor.CenterX()"
+                        "LookX + CameraBorderLeft(_CONSTANTS_.Layers.Main,0) - Actor.CenterX()"
                       ]
                     },
                     {
@@ -1476,7 +1790,7 @@
                       "parameters": [
                         "LookY",
                         "=",
-                        "LookY - Actor.CenterY()"
+                        "LookY + CameraBorderTop(_CONSTANTS_.Layers.Main,0) - Actor.CenterY()"
                       ]
                     }
                   ]
@@ -1506,6 +1820,391 @@
                       ]
                     }
                   ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 52,
+                    "g": 44,
+                    "r": 40,
+                    "textB": 255,
+                    "textG": 255,
+                    "textR": 255
+                  },
+                  "comment": "Show cursor"
+                },
+                {
+                  "folded": true,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "StringVariable"
+                      },
+                      "parameters": [
+                        "_CONFIG_.Players[0].InputType",
+                        "=",
+                        "_CONSTANTS_.InputType.Keyboard"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "LookX",
+                        "=",
+                        "MAINGAME.Input.LookX + CameraBorderLeft(_CONSTANTS_.Layers.Main,0)"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "LookY",
+                        "=",
+                        "MAINGAME.Input.LookY + CameraBorderTop(_CONSTANTS_.Layers.Main,0)"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "DistanceOnCursor",
+                        "=",
+                        "DistanceBetweenPositions(Actor.MuzzleX(), Actor.MuzzleY(), LookX, LookY)"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "MettreXY"
+                      },
+                      "parameters": [
+                        "CursorCollision",
+                        "=",
+                        "LookX",
+                        "=",
+                        "LookY"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetAngle"
+                      },
+                      "parameters": [
+                        "CursorCollision",
+                        "=",
+                        "Actor.LookAngle() + 90"
+                      ]
+                    }
+                  ],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::CompareNumbers"
+                          },
+                          "parameters": [
+                            "DistanceOnCursor",
+                            ">",
+                            "MinDistance"
+                          ]
+                        }
+                      ],
+                      "actions": [],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "Raycast"
+                              },
+                              "parameters": [
+                                "Cursor Collisions",
+                                "Actor.MuzzleX()",
+                                "Actor.MuzzleY()",
+                                "LookAngle",
+                                "MaxDistance",
+                                "iX",
+                                "iY",
+                                ""
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetBooleanVariable"
+                              },
+                              "parameters": [
+                                "CursorHit",
+                                "True",
+                                ""
+                              ]
+                            }
+                          ],
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "PrimitiveDrawing::LineV2"
+                                  },
+                                  "parameters": [
+                                    "YellowPen",
+                                    "Actor.MuzzleX()",
+                                    "Actor.MuzzleY()",
+                                    "iX",
+                                    "iY",
+                                    "1"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "MettreXY"
+                                  },
+                                  "parameters": [
+                                    "Cursor",
+                                    "=",
+                                    "iX",
+                                    "=",
+                                    "iY"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::Or"
+                          },
+                          "parameters": [],
+                          "subInstructions": [
+                            {
+                              "type": {
+                                "value": "BuiltinCommonInstructions::CompareNumbers"
+                              },
+                              "parameters": [
+                                "DistanceOnCursor",
+                                "<=",
+                                "MinDistance"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "BooleanVariable"
+                              },
+                              "parameters": [
+                                "CursorHit",
+                                "",
+                                ""
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "PrimitiveDrawing::LineV2"
+                          },
+                          "parameters": [
+                            "YellowPen",
+                            "Actor.MuzzleX()",
+                            "Actor.MuzzleY()",
+                            "LookX",
+                            "LookY",
+                            "2"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "MettreXY"
+                          },
+                          "parameters": [
+                            "Cursor",
+                            "=",
+                            "LookX",
+                            "=",
+                            "LookY"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "folded": true,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "StringVariable"
+                      },
+                      "parameters": [
+                        "_CONFIG_.Players[0].InputType",
+                        "=",
+                        "_CONSTANTS_.InputType.Gamepad"
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "Raycast"
+                          },
+                          "parameters": [
+                            "Bounceable",
+                            "Actor.MuzzleX()",
+                            "Actor.MuzzleY()",
+                            "LookAngle",
+                            "MaxDistance",
+                            "iX",
+                            "iY",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetBooleanVariable"
+                          },
+                          "parameters": [
+                            "CursorHit",
+                            "True",
+                            ""
+                          ]
+                        }
+                      ],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "PrimitiveDrawing::LineV2"
+                              },
+                              "parameters": [
+                                "YellowPen",
+                                "Actor.MuzzleX()",
+                                "Actor.MuzzleY()",
+                                "iX",
+                                "iY",
+                                "1"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "MettreXY"
+                              },
+                              "parameters": [
+                                "Cursor",
+                                "=",
+                                "iX",
+                                "=",
+                                "iY"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BooleanVariable"
+                          },
+                          "parameters": [
+                            "CursorHit",
+                            "",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "LookX",
+                            "=",
+                            "XFromAngleAndDistance(Actor.LookAngle(), MaxDistance/5) + Actor.MuzzleX()"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "LookY",
+                            "=",
+                            "YFromAngleAndDistance(Actor.LookAngle(), MaxDistance/5) + Actor.MuzzleY()"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "PrimitiveDrawing::LineV2"
+                          },
+                          "parameters": [
+                            "YellowPen",
+                            "Actor.MuzzleX()",
+                            "Actor.MuzzleY()",
+                            "LookX",
+                            "LookY",
+                            "2"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "MettreXY"
+                          },
+                          "parameters": [
+                            "Cursor",
+                            "=",
+                            "LookX",
+                            "=",
+                            "LookY"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 52,
+                    "g": 44,
+                    "r": 40,
+                    "textB": 255,
+                    "textG": 255,
+                    "textR": 255
+                  },
+                  "comment": "Draw points to cursor"
                 }
               ],
               "variables": [
@@ -1523,6 +2222,26 @@
                   "name": "LookAngle",
                   "type": "number",
                   "value": 0
+                },
+                {
+                  "name": "CursorHit",
+                  "type": "boolean",
+                  "value": false
+                },
+                {
+                  "name": "DistanceOnCursor",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "MinDistance",
+                  "type": "number",
+                  "value": 24
+                },
+                {
+                  "name": "MaxDistance",
+                  "type": "number",
+                  "value": 1000
                 }
               ]
             }
@@ -1546,6 +2265,7 @@
           "colorG": 68,
           "colorR": 62,
           "creationTime": 0,
+          "folded": true,
           "name": "Move",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -1583,11 +2303,38 @@
                   "parameters": [
                     "MoveY",
                     "=",
-                    "-MAINGAME.Input.MoveY"
+                    "MAINGAME.Input.MoveY"
                   ]
                 }
               ],
               "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "StringVariable"
+                      },
+                      "parameters": [
+                        "_CONFIG_.Players[0].InputType",
+                        "=",
+                        "_CONSTANTS_.InputType.Keyboard"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "MoveY",
+                        "=",
+                        "-MoveY"
+                      ]
+                    }
+                  ]
+                },
                 {
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
@@ -1665,6 +2412,34 @@
             }
           ],
           "parameters": []
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
+          },
+          "comment": "\n\n"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SeparateFromObjects"
+              },
+              "parameters": [
+                "Actor",
+                "Solid",
+                ""
+              ]
+            }
+          ]
         }
       ],
       "parameters": []
@@ -1682,91 +2457,148 @@
       "comment": "\n\n"
     },
     {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Projectile logic",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
         {
-          "type": {
-            "value": "CollisionNP"
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
           },
-          "parameters": [
-            "Projectiles",
-            "Bounceable",
-            "",
-            "",
-            ""
-          ]
-        }
-      ],
-      "actions": [
+          "comment": "Collision with bouncable wall its made by distance because of problems with direct collision. Inconsitent results for some angles"
+        },
         {
-          "type": {
-            "value": "CustomObjects::Projectile::CollisionWithBounceable"
-          },
-          "parameters": [
-            "Projectiles",
-            "Bounceable",
-            "Bounceable",
-            ""
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "Projectiles",
+          "conditions": [],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Raycast"
+                  },
+                  "parameters": [
+                    "Bounceable",
+                    "Projectiles.X()",
+                    "Projectiles.Y()",
+                    "Projectiles.ForceAngle()",
+                    "1000",
+                    "iX",
+                    "iY",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "PrimitiveDrawing::LineV2"
+                      },
+                      "parameters": [
+                        "YellowPen",
+                        "Projectiles.X()",
+                        "Projectiles.Y()",
+                        "iX",
+                        "iY",
+                        "1"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::CompareNumbers"
+                      },
+                      "parameters": [
+                        "DistanceBetweenPositions(iX,iY,Projectiles.X(), Projectiles.Y())",
+                        "<=",
+                        "4"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "CustomObjects::Projectile::CollisionWithBounceable"
+                      },
+                      "parameters": [
+                        "Projectiles",
+                        "Bounceable",
+                        "Bounceable",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
           ]
         },
         {
-          "type": {
-            "value": "CustomObjects::WriteLog"
-          },
-          "parameters": [
-            "",
-            "Logger",
-            "ToString(Bounceable.Angle())",
-            ""
-          ]
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "value": "CollisionNP"
-          },
-          "parameters": [
-            "Projectiles",
-            "Solid",
-            "",
-            "",
-            ""
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CollisionNP"
+              },
+              "parameters": [
+                "Projectiles",
+                "Solid",
+                "",
+                "",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomObjects::Projectile::CollisionWithWall"
+              },
+              "parameters": [
+                "Projectiles",
+                "Solid",
+                "Entity",
+                ""
+              ]
+            }
           ]
         }
       ],
-      "actions": [
-        {
-          "type": {
-            "value": "CustomObjects::Projectile::CollisionWithWall"
-          },
-          "parameters": [
-            "Projectiles",
-            "Solid",
-            "Entity",
-            ""
-          ]
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [],
-      "actions": [
-        {
-          "type": {
-            "value": "SeparateFromObjects"
-          },
-          "parameters": [
-            "Actor",
-            "Solid",
-            ""
-          ]
-        }
-      ]
+      "parameters": []
     }
   ],
   "layers": [
@@ -1783,7 +2615,7 @@
       "isLocked": false,
       "name": "",
       "renderingType": "",
-      "visibility": false,
+      "visibility": true,
       "cameras": [
         {
           "defaultSize": true,
@@ -1901,6 +2733,59 @@
       "name": "UI",
       "renderingType": "",
       "visibility": true,
+      "cameras": [],
+      "effects": [
+        {
+          "effectType": "Scene3D::HemisphereLight",
+          "name": "3D Ambient Hemisphere Light",
+          "doubleParameters": {
+            "elevation": 40,
+            "intensity": 0.33,
+            "rotation": 300
+          },
+          "stringParameters": {
+            "groundColor": "127;127;127",
+            "skyColor": "255;255;255",
+            "top": "Z+"
+          },
+          "booleanParameters": {}
+        },
+        {
+          "effectType": "Scene3D::DirectionalLight",
+          "name": "3D Sun Light",
+          "doubleParameters": {
+            "distanceFromCamera": 1500,
+            "elevation": 40,
+            "frustumSize": 4000,
+            "intensity": 0.75,
+            "minimumShadowBias": 0,
+            "rotation": 300
+          },
+          "stringParameters": {
+            "color": "255;255;255",
+            "shadowQuality": "medium",
+            "top": "Z+"
+          },
+          "booleanParameters": {
+            "isCastingShadow": true
+          }
+        }
+      ]
+    },
+    {
+      "ambientLightColorB": 200,
+      "ambientLightColorG": 200,
+      "ambientLightColorR": 200,
+      "camera3DFarPlaneDistance": 10000,
+      "camera3DFieldOfView": 45,
+      "camera3DNearPlaneDistance": 3,
+      "cameraType": "",
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
+      "isLocked": false,
+      "name": "Debug",
+      "renderingType": "",
+      "visibility": false,
       "cameras": [],
       "effects": [
         {
