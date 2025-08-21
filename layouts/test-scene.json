@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.0580714804313731,
+    "zoomFactor": 1.058071480431374,
     "windowMask": false
   },
   "objectsGroups": [
@@ -607,8 +607,8 @@
       "name": "Cursor",
       "persistentUuid": "0aedc7a7-6883-492d-bd61-84a89186f5b9",
       "width": 0,
-      "x": 808,
-      "y": 344,
+      "x": 864,
+      "y": 368,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -691,6 +691,70 @@
       "x": 696,
       "y": 220,
       "zOrder": 12,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "CursorPoint",
+      "persistentUuid": "204f9ed7-0dcb-4dcf-af34-6fd713538fe3",
+      "width": 0,
+      "x": 880,
+      "y": 368,
+      "zOrder": 0,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "CursorPoint",
+      "persistentUuid": "9228c67c-e7d0-4d5d-a272-cee918b55c13",
+      "width": 0,
+      "x": 896,
+      "y": 368,
+      "zOrder": 0,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "CursorPoint",
+      "persistentUuid": "e213fa26-6745-41e9-b102-4398374a6448",
+      "width": 0,
+      "x": 912,
+      "y": 368,
+      "zOrder": 0,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "CursorPoint",
+      "persistentUuid": "92f140aa-9a9c-401e-b668-feb5d8516c3d",
+      "width": 0,
+      "x": 928,
+      "y": 368,
+      "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1112,6 +1176,66 @@
           ]
         }
       ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "CursorPoint",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\cursor_point.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 4,
+                    "y": 4
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 0,
+                        "y": 0
+                      },
+                      {
+                        "x": 8,
+                        "y": 0
+                      },
+                      {
+                        "x": 8,
+                        "y": 8
+                      },
+                      {
+                        "x": 0,
+                        "y": 8
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "objectsFolderStructure": {
@@ -1152,6 +1276,9 @@
       },
       {
         "objectName": "Cursor"
+      },
+      {
+        "objectName": "CursorPoint"
       }
     ]
   },
@@ -1199,6 +1326,7 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "folded": true,
       "name": "Begin scene",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -1359,6 +1487,7 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "folded": true,
       "name": "Logs",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -1756,7 +1885,7 @@
                     "textG": 255,
                     "textR": 255
                   },
-                  "comment": "Adjust for mouse control. And in case the camera follow the player"
+                  "comment": "Adjustment for mouse control. And in case the camera follow the player"
                 },
                 {
                   "type": "BuiltinCommonInstructions::Standard",
@@ -2049,7 +2178,6 @@
                   ]
                 },
                 {
-                  "folded": true,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
                     {
@@ -2205,6 +2333,91 @@
                     "textR": 255
                   },
                   "comment": "Draw points to cursor"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "AjoutObjConcern"
+                      },
+                      "parameters": [
+                        "",
+                        "CursorPoint"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "TotalPoints",
+                        "=",
+                        "PickedInstancesCount(CursorPoint)"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "DistanceOnCursor",
+                        "=",
+                        "DistanceBetweenPositions(Actor.MuzzleX(), Actor.MuzzleY(), Cursor.CenterX(), Cursor.CenterY())"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "SpaceX",
+                        "=",
+                        "(Cursor.CenterX() - Actor.MuzzleX()) / TotalPoints"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "SpaceY",
+                        "=",
+                        "(Cursor.CenterY() - Actor.MuzzleY()) / TotalPoints"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::ForEach",
+                  "object": "CursorPoint",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "MettreXY"
+                      },
+                      "parameters": [
+                        "CursorPoint",
+                        "=",
+                        "Actor.MuzzleX() + (PointIndex * SpaceX)",
+                        "=",
+                        "Actor.MuzzleY() + (PointIndex * SpaceY)"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "PointIndex",
+                        "+",
+                        "1"
+                      ]
+                    }
+                  ]
                 }
               ],
               "variables": [
@@ -2242,6 +2455,26 @@
                   "name": "MaxDistance",
                   "type": "number",
                   "value": 1000
+                },
+                {
+                  "name": "TotalPoints",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "SpaceX",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "SpaceY",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "PointIndex",
+                  "type": "number",
+                  "value": 0
                 }
               ]
             }
@@ -2283,6 +2516,7 @@
               "comment": "Invert Y for the coordinals"
             },
             {
+              "folded": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
               "actions": [
