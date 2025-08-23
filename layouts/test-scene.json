@@ -18,10 +18,33 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 2.0538851749962292,
+    "zoomFactor": 4.260331831800577,
     "windowMask": false
   },
   "objectsGroups": [
+    {
+      "name": "Debug",
+      "objects": [
+        {
+          "name": "fps"
+        },
+        {
+          "name": "Logger"
+        },
+        {
+          "name": "particlecount"
+        },
+        {
+          "name": "RedPen"
+        },
+        {
+          "name": "BluePen"
+        },
+        {
+          "name": "YellowPen"
+        }
+      ]
+    },
     {
       "name": "Cursor Collisions",
       "objects": [
@@ -53,7 +76,7 @@
       "name": "Projectiles",
       "objects": [
         {
-          "name": "Projectile"
+          "name": "TestBullet"
         },
         {
           "name": "DefaultBullet"
@@ -67,13 +90,21 @@
       "name": "Ammo",
       "objects": [
         {
-          "name": "ProjectileAmmo"
+          "name": "TestBulletAmmo"
         },
         {
           "name": "DefaultBulletAmmo"
         },
         {
-          "name": "LargeBulletAmmo"
+          "name": "LongBulletAmmo"
+        }
+      ]
+    },
+    {
+      "name": "Players",
+      "objects": [
+        {
+          "name": "Player0"
         }
       ]
     }
@@ -172,12 +203,12 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "Actor",
+      "name": "Player0",
       "persistentUuid": "3454e55e-1b93-46c1-8ac0-3cf45b200022",
       "width": 0,
-      "x": 272,
-      "y": -304,
-      "zOrder": 6,
+      "x": 32,
+      "y": -64,
+      "zOrder": 1,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -787,7 +818,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "ProjectileAmmo",
+      "name": "TestBulletAmmo",
       "persistentUuid": "943273ed-efd2-4e1e-b6ff-b6988eebd1bb",
       "width": 0,
       "x": 48,
@@ -819,11 +850,27 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "LargeBulletAmmo",
+      "name": "LongBulletAmmo",
       "persistentUuid": "ce1f2dd8-23e0-49f8-ae6a-c5274b59546a",
       "width": 0,
       "x": 48,
       "y": -240,
+      "zOrder": 0,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "NewTrails",
+      "persistentUuid": "852d7ec4-4a16-4375-bd3a-b15088cbf41f",
+      "width": 0,
+      "x": 0,
+      "y": 0,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -994,7 +1041,7 @@
     },
     {
       "assetStoreId": "",
-      "name": "Actor",
+      "name": "Player0",
       "type": "CustomObjects::Actor",
       "variant": "",
       "variables": [],
@@ -1005,12 +1052,20 @@
           "type": "CustomObjects::Entity",
           "Property": "Actor",
           "Id": 3.3236692178158365e+178,
-          "Type": "Actor"
+          "Type": "Actor",
+          "ProjectileType": "ProjectileType",
+          "ProjectileObject": "ProjectileType"
+        },
+        {
+          "name": "ProjectileType",
+          "type": "CustomObjects::ProjectileObjects",
+          "Property": "",
+          "ObjectName": "LongBullet"
         }
       ],
       "content": {
         "MoveSpeed": 100,
-        "ProjectileType": "Projectile"
+        "ProjectileType": "DefaultBullet"
       },
       "animatable": {
         "adaptCollisionMaskAutomatically": true,
@@ -1019,9 +1074,9 @@
     },
     {
       "assetStoreId": "",
-      "name": "Projectile",
+      "name": "TestBullet",
       "type": "CustomObjects::Projectile",
-      "variant": "",
+      "variant": "TestBullet",
       "variables": [],
       "effects": [],
       "behaviors": [
@@ -1030,7 +1085,15 @@
           "type": "CustomObjects::Entity",
           "Property": "Projectile",
           "Id": 3.3236692178158365e+178,
-          "Type": "Projectile"
+          "Type": "Projectile",
+          "ProjectileType": "ProjectileType",
+          "ProjectileObject": "ProjectileType"
+        },
+        {
+          "name": "ProjectileType",
+          "type": "CustomObjects::ProjectileObjects",
+          "Property": "",
+          "ObjectName": "TestBullet"
         }
       ],
       "content": {
@@ -1046,7 +1109,7 @@
       "assetStoreId": "",
       "name": "BounceableWall",
       "type": "CustomObjects::Wall",
-      "variant": "",
+      "variant": "BounceableWall",
       "variables": [],
       "effects": [],
       "behaviors": [
@@ -1058,7 +1121,14 @@
           "name": "Entity",
           "type": "CustomObjects::Entity",
           "Property": "Wall",
-          "Id": 3.3236692178158365e+178
+          "Id": 3.3236692178158365e+178,
+          "ProjectileType": "ProjectileType",
+          "ProjectileObject": "ProjectileType"
+        },
+        {
+          "name": "ProjectileType",
+          "type": "CustomObjects::ProjectileObjects",
+          "Property": ""
         }
       ],
       "content": {}
@@ -1067,7 +1137,7 @@
       "assetStoreId": "",
       "name": "SolidWall",
       "type": "CustomObjects::Wall",
-      "variant": "Solid",
+      "variant": "SolidWall",
       "variables": [],
       "effects": [],
       "behaviors": [
@@ -1075,7 +1145,14 @@
           "name": "Entity",
           "type": "CustomObjects::Entity",
           "Property": "Wall",
-          "Id": 3.3236692178158365e+178
+          "Id": 3.3236692178158365e+178,
+          "ProjectileType": "ProjectileType",
+          "ProjectileObject": "ProjectileType"
+        },
+        {
+          "name": "ProjectileType",
+          "type": "CustomObjects::ProjectileObjects",
+          "Property": ""
         }
       ],
       "content": {}
@@ -1312,7 +1389,7 @@
       "assetStoreId": "",
       "name": "DefaultBullet",
       "type": "CustomObjects::Projectile",
-      "variant": "Bullet",
+      "variant": "DefaultBullet",
       "variables": [],
       "effects": [],
       "behaviors": [
@@ -1321,7 +1398,15 @@
           "type": "CustomObjects::Entity",
           "Property": "Projectile",
           "Id": 3.3236692178158365e+178,
-          "Type": "Projectile"
+          "Type": "Projectile",
+          "ProjectileType": "ProjectileType",
+          "ProjectileObject": "ProjectileType"
+        },
+        {
+          "name": "ProjectileType",
+          "type": "CustomObjects::ProjectileObjects",
+          "Property": "",
+          "ObjectName": "DefaultBullet"
         }
       ],
       "content": {
@@ -1337,7 +1422,7 @@
       "assetStoreId": "",
       "name": "LongBullet",
       "type": "CustomObjects::Projectile",
-      "variant": "Long bullet",
+      "variant": "LongBullet",
       "variables": [],
       "effects": [],
       "behaviors": [
@@ -1346,7 +1431,15 @@
           "type": "CustomObjects::Entity",
           "Property": "Projectile",
           "Id": 3.3236692178158365e+178,
-          "Type": "Projectile"
+          "Type": "Projectile",
+          "ProjectileType": "ProjectileType",
+          "ProjectileObject": "ProjectileType"
+        },
+        {
+          "name": "ProjectileType",
+          "type": "CustomObjects::ProjectileObjects",
+          "Property": "",
+          "ObjectName": "LongBullet"
         }
       ],
       "content": {
@@ -1360,49 +1453,111 @@
     },
     {
       "assetStoreId": "",
-      "name": "ProjectileAmmo",
-      "type": "CustomObjects::Ammo",
-      "variant": "",
+      "name": "TestBulletAmmo",
+      "type": "CustomObjects::Resource",
+      "variant": "TestBullet",
       "variables": [],
       "effects": [],
-      "behaviors": [],
+      "behaviors": [
+        {
+          "name": "ProjectileObjects",
+          "type": "CustomObjects::ProjectileObjects",
+          "ObjectName": "TestBullet"
+        }
+      ],
       "content": {
-        "ProjectileType": "Projectile"
+        "ProjectileType": "TestBullet"
       }
     },
     {
       "assetStoreId": "",
       "name": "DefaultBulletAmmo",
-      "type": "CustomObjects::Ammo",
-      "variant": "Default bullet",
+      "type": "CustomObjects::Resource",
+      "variant": "DefaultBullet",
       "variables": [],
       "effects": [],
-      "behaviors": [],
+      "behaviors": [
+        {
+          "name": "ProjectileObjects",
+          "type": "CustomObjects::ProjectileObjects",
+          "ObjectName": "DefaultBullet"
+        }
+      ],
       "content": {
         "ProjectileType": "DefaultBullet"
       }
     },
     {
       "assetStoreId": "",
-      "name": "LargeBulletAmmo",
-      "type": "CustomObjects::Ammo",
-      "variant": "Large bullet",
+      "name": "LongBulletAmmo",
+      "type": "CustomObjects::Resource",
+      "variant": "LongBullet",
       "variables": [],
       "effects": [],
-      "behaviors": [],
+      "behaviors": [
+        {
+          "name": "ProjectileObjects",
+          "type": "CustomObjects::ProjectileObjects",
+          "ObjectName": "LongBullet"
+        }
+      ],
       "content": {
         "ProjectileType": "LongBullet"
       }
+    },
+    {
+      "assetStoreId": "",
+      "name": "NewTrails",
+      "type": "CustomObjects::Trails",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {}
     }
   ],
   "objectsFolderStructure": {
     "folderName": "__ROOT",
     "children": [
       {
+        "folderName": "Debug",
+        "children": [
+          {
+            "objectName": "Logger"
+          },
+          {
+            "objectName": "particlecount"
+          },
+          {
+            "objectName": "fps"
+          },
+          {
+            "objectName": "RedPen"
+          },
+          {
+            "objectName": "BluePen"
+          },
+          {
+            "objectName": "YellowPen"
+          }
+        ]
+      },
+      {
+        "folderName": "Walls",
+        "children": [
+          {
+            "objectName": "SolidWall"
+          },
+          {
+            "objectName": "BounceableWall"
+          }
+        ]
+      },
+      {
         "folderName": "Projectiles",
         "children": [
           {
-            "objectName": "Projectile"
+            "objectName": "TestBullet"
           },
           {
             "objectName": "DefaultBullet"
@@ -1411,45 +1566,24 @@
             "objectName": "LongBullet"
           },
           {
-            "objectName": "ProjectileAmmo"
+            "objectName": "TestBulletAmmo"
           },
           {
             "objectName": "DefaultBulletAmmo"
           },
           {
-            "objectName": "LargeBulletAmmo"
+            "objectName": "LongBulletAmmo"
           }
         ]
       },
       {
-        "objectName": "RedPen"
+        "objectName": "Player0"
       },
       {
-        "objectName": "BluePen"
-      },
-      {
-        "objectName": "YellowPen"
-      },
-      {
-        "objectName": "fps"
-      },
-      {
-        "objectName": "particlecount"
-      },
-      {
-        "objectName": "Logger"
-      },
-      {
-        "objectName": "Actor"
+        "objectName": "NewTrails"
       },
       {
         "objectName": "CursorCollision"
-      },
-      {
-        "objectName": "BounceableWall"
-      },
-      {
-        "objectName": "SolidWall"
       },
       {
         "objectName": "Cursor"
@@ -1469,6 +1603,13 @@
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
       "events": [
+        {
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
+          },
+          "target": "Debug Logic"
+        },
         {
           "type": "BuiltinCommonInstructions::Link",
           "include": {
@@ -1503,7 +1644,6 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
-      "folded": true,
       "name": "Begin scene",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -1534,14 +1674,6 @@
                     "no",
                     ""
                   ]
-                },
-                {
-                  "type": {
-                    "value": "CacheSouris"
-                  },
-                  "parameters": [
-                    ""
-                  ]
                 }
               ]
             },
@@ -1550,6 +1682,14 @@
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
               "actions": [
+                {
+                  "type": {
+                    "value": "CacheSouris"
+                  },
+                  "parameters": [
+                    ""
+                  ]
+                },
                 {
                   "type": {
                     "value": "DebuggerTools::EnableDebugDraw"
@@ -1607,7 +1747,7 @@
           },
           "parameters": [
             "",
-            "Actor",
+            "Player0",
             "",
             "_CONSTANTS_.Layers.Main",
             ""
@@ -1619,7 +1759,19 @@
           },
           "parameters": [
             "",
-            "Actor",
+            "Player",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "CentreCamera"
+          },
+          "parameters": [
+            "",
+            "Player0",
             "",
             "\"Debug\"",
             ""
@@ -1664,273 +1816,6 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
-      "folded": true,
-      "name": "Logs",
-      "source": "",
-      "type": "BuiltinCommonInstructions::Group",
-      "events": [
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "CentreCamera"
-              },
-              "parameters": [
-                "",
-                "Player",
-                "",
-                "",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "TotalBullets",
-                "=",
-                "0"
-              ]
-            },
-            {
-              "type": {
-                "value": "AjoutObjConcern"
-              },
-              "parameters": [
-                "",
-                "Projectile"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "TotalBullets",
-                "=",
-                "PickedInstancesCount(Projectile)"
-              ]
-            },
-            {
-              "type": {
-                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
-              },
-              "parameters": [
-                "particlecount",
-                "Text",
-                "=",
-                "ToString(TotalBullets)"
-              ]
-            }
-          ],
-          "variables": [
-            {
-              "name": "TotalBullets",
-              "type": "number",
-              "value": 0
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "PrimitiveDrawing::Circle"
-              },
-              "parameters": [
-                "RedPen",
-                "Actor.CenterX()",
-                "Actor.CenterY()",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "PrimitiveDrawing::Circle"
-              },
-              "parameters": [
-                "BluePen",
-                "Actor.X()",
-                "Actor.Y()",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "PrimitiveDrawing::Circle"
-              },
-              "parameters": [
-                "YellowPen",
-                "Actor.MuzzleX()",
-                "Actor.MuzzleY()",
-                "1"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::ForEach",
-          "object": "Projectiles",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "PrimitiveDrawing::Circle"
-              },
-              "parameters": [
-                "RedPen",
-                "Projectiles.CenterX()",
-                "Projectiles.CenterY()",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "PrimitiveDrawing::Circle"
-              },
-              "parameters": [
-                "BluePen",
-                "Projectiles.X()",
-                "Projectiles.Y()",
-                "1"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::ForEach",
-          "object": "Solid",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "PrimitiveDrawing::Circle"
-              },
-              "parameters": [
-                "RedPen",
-                "Solid.CenterX()",
-                "Solid.CenterY()",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "PrimitiveDrawing::Circle"
-              },
-              "parameters": [
-                "BluePen",
-                "Solid.X()",
-                "Solid.Y()",
-                "1"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::ForEach",
-          "object": "Bounceable",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "PrimitiveDrawing::Circle"
-              },
-              "parameters": [
-                "RedPen",
-                "Bounceable.CenterX()",
-                "Bounceable.CenterY()",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "PrimitiveDrawing::Circle"
-              },
-              "parameters": [
-                "BluePen",
-                "Bounceable.X()",
-                "Bounceable.Y()",
-                "1"
-              ]
-            }
-          ],
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [],
-              "events": [
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "Angle",
-                        "=",
-                        "Bounceable.Angle()"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "PrimitiveDrawing::LineV2"
-                      },
-                      "parameters": [
-                        "YellowPen",
-                        "Bounceable.CenterX()",
-                        "Bounceable.CenterY()",
-                        "XFromAngleAndDistance(Angle, 32) + Bounceable.CenterX()",
-                        "YFromAngleAndDistance(Angle, 32) + Bounceable.CenterY()",
-                        "2"
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "variables": [
-                {
-                  "name": "Angle",
-                  "type": "number",
-                  "value": 0
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "parameters": []
-    },
-    {
-      "type": "BuiltinCommonInstructions::Comment",
-      "color": {
-        "b": 52,
-        "g": 44,
-        "r": 40,
-        "textB": 255,
-        "textG": 255,
-        "textR": 255
-      },
-      "comment": "\n\n"
-    },
-    {
-      "colorB": 82,
-      "colorG": 68,
-      "colorR": 62,
-      "creationTime": 0,
       "name": "Player logic",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -1945,6 +1830,18 @@
           "type": "BuiltinCommonInstructions::Group",
           "events": [
             {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 255,
+                "textG": 255,
+                "textR": 255
+              },
+              "comment": "We use a group for 2 things.\n1. Can read the behaviors, in this case we need the behavior \"ProjectileObject\"\n2. We prepare for multplayer by checking with the object name"
+            },
+            {
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
@@ -1955,6 +1852,16 @@
                     "MAINGAME.Input.Shoot",
                     "=",
                     "_CONSTANTS_.InputState.Pressed"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareStrings"
+                  },
+                  "parameters": [
+                    "Players.ObjectName()",
+                    "=",
+                    "\"Player\" + \"0\""
                   ]
                 },
                 {
@@ -1972,19 +1879,20 @@
                   "parameters": [
                     "",
                     "Projectiles",
-                    "Actor.ProjectileType()",
-                    "Actor.MuzzleX()",
-                    "Actor.MuzzleY()",
+                    "Players.ProjectileType::ProjectileObjectName()",
+                    "Player0.MuzzleX()",
+                    "Player0.MuzzleY()",
                     "_CONSTANTS_.Layers.Main"
                   ]
                 },
                 {
                   "type": {
-                    "value": "CustomObjects::Projectile::Throw"
+                    "value": "CustomObjects::Projectile::ThrowForDebug"
                   },
                   "parameters": [
                     "Projectiles",
-                    "Actor.LookAngle()",
+                    "Player0.LookAngle()",
+                    "_CONFIG_.debug",
                     ""
                   ]
                 }
@@ -2010,7 +1918,6 @@
           "colorG": 68,
           "colorR": 62,
           "creationTime": 0,
-          "folded": true,
           "name": "Sight",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -2087,7 +1994,7 @@
                       "parameters": [
                         "LookX",
                         "=",
-                        "LookX + CameraBorderLeft(_CONSTANTS_.Layers.Main,0) - Actor.CenterX()"
+                        "LookX + CameraX - Player0.CenterX()"
                       ]
                     },
                     {
@@ -2097,7 +2004,7 @@
                       "parameters": [
                         "LookY",
                         "=",
-                        "LookY + CameraBorderTop(_CONSTANTS_.Layers.Main,0) - Actor.CenterY()"
+                        "LookY + CameraY - Player0.CenterY()"
                       ]
                     }
                   ]
@@ -2121,7 +2028,7 @@
                         "value": "CustomObjects::Actor::LookTo"
                       },
                       "parameters": [
-                        "Actor",
+                        "Player0",
                         "LookAngle",
                         ""
                       ]
@@ -2141,7 +2048,6 @@
                   "comment": "Show cursor"
                 },
                 {
-                  "folded": true,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
                     {
@@ -2163,7 +2069,7 @@
                       "parameters": [
                         "LookX",
                         "=",
-                        "MAINGAME.Input.LookX + CameraBorderLeft(_CONSTANTS_.Layers.Main,0)"
+                        "MAINGAME.Input.LookX + CameraX"
                       ]
                     },
                     {
@@ -2173,7 +2079,7 @@
                       "parameters": [
                         "LookY",
                         "=",
-                        "MAINGAME.Input.LookY + CameraBorderTop(_CONSTANTS_.Layers.Main,0)"
+                        "MAINGAME.Input.LookY + CameraY"
                       ]
                     },
                     {
@@ -2183,7 +2089,7 @@
                       "parameters": [
                         "DistanceOnCursor",
                         "=",
-                        "DistanceBetweenPositions(Actor.MuzzleX(), Actor.MuzzleY(), LookX, LookY)"
+                        "DistanceBetweenPositions(Player0.MuzzleX(), Player0.MuzzleY(), LookX, LookY)"
                       ]
                     },
                     {
@@ -2205,7 +2111,7 @@
                       "parameters": [
                         "CursorCollision",
                         "=",
-                        "Actor.LookAngle() + 90"
+                        "Player0.LookAngle() + 90"
                       ]
                     }
                   ],
@@ -2235,8 +2141,8 @@
                               },
                               "parameters": [
                                 "Cursor Collisions",
-                                "Actor.MuzzleX()",
-                                "Actor.MuzzleY()",
+                                "Player0.MuzzleX()",
+                                "Player0.MuzzleY()",
                                 "LookAngle",
                                 "MaxDistance",
                                 "iX",
@@ -2268,8 +2174,8 @@
                                   },
                                   "parameters": [
                                     "YellowPen",
-                                    "Actor.MuzzleX()",
-                                    "Actor.MuzzleY()",
+                                    "Player0.MuzzleX()",
+                                    "Player0.MuzzleY()",
                                     "iX",
                                     "iY",
                                     "1"
@@ -2332,8 +2238,8 @@
                           },
                           "parameters": [
                             "YellowPen",
-                            "Actor.MuzzleX()",
-                            "Actor.MuzzleY()",
+                            "Player0.MuzzleX()",
+                            "Player0.MuzzleY()",
                             "LookX",
                             "LookY",
                             "2"
@@ -2380,8 +2286,8 @@
                           },
                           "parameters": [
                             "Bounceable",
-                            "Actor.MuzzleX()",
-                            "Actor.MuzzleY()",
+                            "Player0.MuzzleX()",
+                            "Player0.MuzzleY()",
                             "LookAngle",
                             "MaxDistance",
                             "iX",
@@ -2413,8 +2319,8 @@
                               },
                               "parameters": [
                                 "YellowPen",
-                                "Actor.MuzzleX()",
-                                "Actor.MuzzleY()",
+                                "Player0.MuzzleX()",
+                                "Player0.MuzzleY()",
                                 "iX",
                                 "iY",
                                 "1"
@@ -2458,7 +2364,7 @@
                           "parameters": [
                             "LookX",
                             "=",
-                            "XFromAngleAndDistance(Actor.LookAngle(), MaxDistance/5) + Actor.MuzzleX()"
+                            "XFromAngleAndDistance(Player0.LookAngle(), MaxDistance / 5) + Player0.MuzzleX()"
                           ]
                         },
                         {
@@ -2468,7 +2374,7 @@
                           "parameters": [
                             "LookY",
                             "=",
-                            "YFromAngleAndDistance(Actor.LookAngle(), MaxDistance/5) + Actor.MuzzleY()"
+                            "YFromAngleAndDistance(Player0.LookAngle(), MaxDistance / 5) + Player0.MuzzleY()"
                           ]
                         },
                         {
@@ -2477,8 +2383,8 @@
                           },
                           "parameters": [
                             "YellowPen",
-                            "Actor.MuzzleX()",
-                            "Actor.MuzzleY()",
+                            "Player0.MuzzleX()",
+                            "Player0.MuzzleY()",
                             "LookX",
                             "LookY",
                             "2"
@@ -2543,7 +2449,7 @@
                       "parameters": [
                         "DistanceOnCursor",
                         "=",
-                        "DistanceBetweenPositions(Actor.MuzzleX(), Actor.MuzzleY(), Cursor.CenterX(), Cursor.CenterY())"
+                        "DistanceBetweenPositions(Player0.MuzzleX(), Player0.MuzzleY(), Cursor.CenterX(), Cursor.CenterY())"
                       ]
                     },
                     {
@@ -2553,7 +2459,7 @@
                       "parameters": [
                         "SpaceX",
                         "=",
-                        "(Cursor.CenterX() - Actor.MuzzleX()) / TotalPoints"
+                        "(Cursor.CenterX() - Player0.MuzzleX()) / TotalPoints"
                       ]
                     },
                     {
@@ -2563,7 +2469,7 @@
                       "parameters": [
                         "SpaceY",
                         "=",
-                        "(Cursor.CenterY() - Actor.MuzzleY()) / TotalPoints"
+                        "(Cursor.CenterY() - Player0.MuzzleY()) / TotalPoints"
                       ]
                     }
                   ]
@@ -2580,9 +2486,9 @@
                       "parameters": [
                         "CursorPoint",
                         "=",
-                        "Actor.MuzzleX() + (PointIndex * SpaceX)",
+                        "Player0.MuzzleX() + (PointIndex * SpaceX)",
                         "=",
-                        "Actor.MuzzleY() + (PointIndex * SpaceY)"
+                        "Player0.MuzzleY() + (PointIndex * SpaceY)"
                       ]
                     },
                     {
@@ -2676,7 +2582,6 @@
           "colorG": 68,
           "colorR": 62,
           "creationTime": 0,
-          "folded": true,
           "name": "Move",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -2694,7 +2599,6 @@
               "comment": "Invert Y for the coordinals"
             },
             {
-              "folded": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
               "actions": [
@@ -2795,9 +2699,9 @@
                         "value": "AddForceAL"
                       },
                       "parameters": [
-                        "Actor",
+                        "Player0",
                         "MoveAngle",
-                        "Actor.MovementSpeed()",
+                        "Player0.MovementSpeed()",
                         ""
                       ]
                     }
@@ -2845,7 +2749,7 @@
                 "value": "CollisionNP"
               },
               "parameters": [
-                "Actor",
+                "Player0",
                 "Ammo",
                 "",
                 "",
@@ -2856,12 +2760,12 @@
           "actions": [
             {
               "type": {
-                "value": "CustomObjects::Ammo::ChangeProjectileType"
+                "value": "CustomObjects::Resource::ChangeProjectileType"
               },
               "parameters": [
                 "Ammo",
-                "Actor",
-                ""
+                "Player0",
+                "ProjectileType"
               ]
             },
             {
@@ -2885,7 +2789,7 @@
                 "value": "SeparateFromObjects"
               },
               "parameters": [
-                "Actor",
+                "Player0",
                 "Solid",
                 ""
               ]
@@ -2912,7 +2816,6 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
-      "folded": true,
       "name": "Projectile logic",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -2927,7 +2830,7 @@
             "textG": 255,
             "textR": 255
           },
-          "comment": "Collision with bouncable wall its made by distance because of problems with direct collision. Inconsitent results for some angles"
+          "comment": "Collision with bouncable its made by distance because of problems with direct collision. Inconsitent results for some angles\nAnd its better for corners, because it is more precise."
         },
         {
           "type": "BuiltinCommonInstructions::ForEach",
@@ -3117,7 +3020,113 @@
       "followBaseLayerCamera": false,
       "isLightingLayer": false,
       "isLocked": false,
+      "name": "Background",
+      "renderingType": "",
+      "visibility": true,
+      "cameras": [],
+      "effects": [
+        {
+          "effectType": "Scene3D::HemisphereLight",
+          "name": "3D Ambient Hemisphere Light",
+          "doubleParameters": {
+            "elevation": 40,
+            "intensity": 0.33,
+            "rotation": 300
+          },
+          "stringParameters": {
+            "groundColor": "127;127;127",
+            "skyColor": "255;255;255",
+            "top": "Z+"
+          },
+          "booleanParameters": {}
+        },
+        {
+          "effectType": "Scene3D::DirectionalLight",
+          "name": "3D Sun Light",
+          "doubleParameters": {
+            "distanceFromCamera": 1500,
+            "elevation": 40,
+            "frustumSize": 4000,
+            "intensity": 0.75,
+            "minimumShadowBias": 0,
+            "rotation": 300
+          },
+          "stringParameters": {
+            "color": "255;255;255",
+            "shadowQuality": "medium",
+            "top": "Z+"
+          },
+          "booleanParameters": {
+            "isCastingShadow": true
+          }
+        }
+      ]
+    },
+    {
+      "ambientLightColorB": 200,
+      "ambientLightColorG": 200,
+      "ambientLightColorR": 200,
+      "camera3DFarPlaneDistance": 10000,
+      "camera3DFieldOfView": 45,
+      "camera3DNearPlaneDistance": 3,
+      "cameraType": "",
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
+      "isLocked": false,
       "name": "Main",
+      "renderingType": "",
+      "visibility": true,
+      "cameras": [],
+      "effects": [
+        {
+          "effectType": "Scene3D::HemisphereLight",
+          "name": "3D Ambient Hemisphere Light",
+          "doubleParameters": {
+            "elevation": 40,
+            "intensity": 0.33,
+            "rotation": 300
+          },
+          "stringParameters": {
+            "groundColor": "127;127;127",
+            "skyColor": "255;255;255",
+            "top": "Z+"
+          },
+          "booleanParameters": {}
+        },
+        {
+          "effectType": "Scene3D::DirectionalLight",
+          "name": "3D Sun Light",
+          "doubleParameters": {
+            "distanceFromCamera": 1500,
+            "elevation": 40,
+            "frustumSize": 4000,
+            "intensity": 0.75,
+            "minimumShadowBias": 0,
+            "rotation": 300
+          },
+          "stringParameters": {
+            "color": "255;255;255",
+            "shadowQuality": "medium",
+            "top": "Z+"
+          },
+          "booleanParameters": {
+            "isCastingShadow": true
+          }
+        }
+      ]
+    },
+    {
+      "ambientLightColorB": 200,
+      "ambientLightColorG": 200,
+      "ambientLightColorR": 200,
+      "camera3DFarPlaneDistance": 10000,
+      "camera3DFieldOfView": 45,
+      "camera3DNearPlaneDistance": 3,
+      "cameraType": "",
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
+      "isLocked": false,
+      "name": "Foreground",
       "renderingType": "",
       "visibility": true,
       "cameras": [],
@@ -3225,7 +3234,7 @@
       "isLocked": false,
       "name": "Debug",
       "renderingType": "",
-      "visibility": false,
+      "visibility": true,
       "cameras": [],
       "effects": [
         {
@@ -3302,6 +3311,14 @@
     {
       "name": "PathfindingObstacle",
       "type": "PathfindingBehavior::PathfindingObstacleBehavior"
+    },
+    {
+      "name": "ProjectileObjects",
+      "type": "CustomObjects::ProjectileObjects"
+    },
+    {
+      "name": "ProjectileType",
+      "type": "CustomObjects::ProjectileObjects"
     },
     {
       "name": "RectangleMovement",

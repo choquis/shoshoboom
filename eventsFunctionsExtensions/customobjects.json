@@ -1140,6 +1140,112 @@
   ],
   "eventsBasedBehaviors": [
     {
+      "description": "This is a list used to select the type of projectile object",
+      "fullName": "Projectile objects",
+      "name": "ProjectileObjects",
+      "objectType": "",
+      "eventsFunctions": [
+        {
+          "fullName": "",
+          "functionType": "StringExpression",
+          "name": "ProjectileObjectName",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnString"
+                  },
+                  "parameters": [
+                    "ObjectName"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "string"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomObjects::ProjectileObjects",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Change the projectile type",
+          "fullName": "Change projectile type",
+          "functionType": "Action",
+          "name": "SetProjectileObject",
+          "sentence": "Change projectile type _PARAM2_ to _PARAM0_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "ObjectName",
+                    "=",
+                    "Name"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomObjects::ProjectileObjects",
+              "type": "behavior"
+            },
+            {
+              "description": "Projectile object",
+              "name": "Name",
+              "type": "string"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "",
+          "type": "Choice",
+          "label": "Name of projectile objects",
+          "description": "This is a list of all the projectile objects that can be used",
+          "extraInformation": [
+            "TestBullet",
+            "DefaultBullet",
+            "LongBullet"
+          ],
+          "name": "ObjectName"
+        }
+      ],
+      "sharedPropertyDescriptors": []
+    },
+    {
       "description": "This is to indicate that the object interact with others that have the Entity Behavior",
       "fullName": "Entity",
       "name": "Entity",
@@ -1228,6 +1334,11 @@
               "name": "Behavior",
               "supplementaryInformation": "CustomObjects::Entity",
               "type": "behavior"
+            },
+            {
+              "description": "",
+              "name": "Parameter",
+              "type": "objectList"
             }
           ],
           "objectGroups": []
@@ -1274,6 +1385,14 @@
       ],
       "propertyDescriptors": [
         {
+          "value": "",
+          "type": "Number",
+          "label": "Id",
+          "description": "Identifier assigned when object is instantiated",
+          "hidden": true,
+          "name": "Id"
+        },
+        {
           "value": "Wall",
           "type": "Choice",
           "label": "Type",
@@ -1287,11 +1406,13 @@
         },
         {
           "value": "",
-          "type": "Number",
-          "label": "Id",
-          "description": "Identifier assigned when object is instantiated",
-          "hidden": true,
-          "name": "Id"
+          "type": "Behavior",
+          "label": "Projectile object to shoot",
+          "description": "The projectile object that will be created when shoot (It have to be a valid name)",
+          "extraInformation": [
+            "CustomObjects::ProjectileObjects"
+          ],
+          "name": "ProjectileObject"
         }
       ],
       "sharedPropertyDescriptors": []
@@ -12539,7 +12660,60 @@
           "followBaseLayerCamera": false,
           "isLightingLayer": false,
           "isLocked": false,
-          "name": "Hidden",
+          "name": "Main",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [],
+          "effects": [
+            {
+              "effectType": "Scene3D::HemisphereLight",
+              "name": "3D Ambient Hemisphere Light",
+              "doubleParameters": {
+                "elevation": 40,
+                "intensity": 0.33,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "groundColor": "127;127;127",
+                "skyColor": "255;255;255",
+                "top": "Z+"
+              },
+              "booleanParameters": {}
+            },
+            {
+              "effectType": "Scene3D::DirectionalLight",
+              "name": "3D Sun Light",
+              "doubleParameters": {
+                "distanceFromCamera": 1500,
+                "elevation": 40,
+                "frustumSize": 4000,
+                "intensity": 0.75,
+                "minimumShadowBias": 0,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "color": "255;255;255",
+                "shadowQuality": "medium",
+                "top": "Z+"
+              },
+              "booleanParameters": {
+                "isCastingShadow": true
+              }
+            }
+          ]
+        },
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "Debug",
           "renderingType": "",
           "visibility": true,
           "cameras": [],
@@ -12588,13 +12762,13 @@
           "customSize": false,
           "height": 0,
           "keepRatio": true,
-          "layer": "",
+          "layer": "Main",
           "name": "Sprite",
           "persistentUuid": "657844b4-17c0-4bd6-967e-8f063f15a7af",
           "width": 0,
           "x": 0,
           "y": 0,
-          "zOrder": 1,
+          "zOrder": 0,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -12605,13 +12779,13 @@
           "depth": 1,
           "height": 14,
           "keepRatio": true,
-          "layer": "Hidden",
+          "layer": "Debug",
           "name": "Logs",
           "persistentUuid": "635f589c-e162-4fa5-969a-307a57a733ae",
           "width": 36,
           "x": -12,
           "y": 6,
-          "zOrder": 2,
+          "zOrder": 0,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -13008,103 +13182,6 @@
           "objectGroups": []
         },
         {
-          "fullName": "Log on entity",
-          "functionType": "Action",
-          "name": "Log",
-          "sentence": "print _PARAM1_ on _PARAM0_",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "TextContainerCapability::TextContainerBehavior::SetValue"
-                  },
-                  "parameters": [
-                    "Logs",
-                    "Text",
-                    "=",
-                    "log"
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "description": "Object",
-              "name": "Object",
-              "supplementaryInformation": "CustomObjects::Projectile",
-              "type": "object"
-            },
-            {
-              "description": "Log",
-              "name": "log",
-              "type": "string"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "Tell the projectile that it hit a \"Actor\" and decide what to do next",
-          "fullName": "Collision with \"Actor\"",
-          "functionType": "Action",
-          "name": "CollisionWithActor",
-          "sentence": "_PARAM0_ collision with _PARAM1_ (that have _PARAM2_)",
-          "events": [],
-          "parameters": [
-            {
-              "description": "Object",
-              "name": "Object",
-              "supplementaryInformation": "CustomObjects::Projectile",
-              "type": "object"
-            },
-            {
-              "description": "Object with behavior \"Entity\"",
-              "name": "Actor",
-              "supplementaryInformation": "CustomObjects::Wall",
-              "type": "objectList"
-            },
-            {
-              "description": "\"Entity\" behavior",
-              "name": "EntityBehavior",
-              "supplementaryInformation": "CustomObjects::Entity",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "Tell the projectile that it hit a \"Projectile\" and decide what to do next",
-          "fullName": "Collision with \"Projectile\"",
-          "functionType": "Action",
-          "name": "CollisionWithProjectile",
-          "sentence": "_PARAM0_ collision with _PARAM1_ (that have _PARAM2_)",
-          "events": [],
-          "parameters": [
-            {
-              "description": "Object",
-              "name": "Object",
-              "supplementaryInformation": "CustomObjects::Projectile",
-              "type": "object"
-            },
-            {
-              "description": "Object with behavior \"Entity\"",
-              "name": "Entity",
-              "supplementaryInformation": "CustomObjects::Wall",
-              "type": "objectList"
-            },
-            {
-              "description": "\"Entity\" behavior",
-              "name": "EntityBehavior",
-              "supplementaryInformation": "CustomObjects::Entity",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
           "description": "Throw the projectile in given angle",
           "fullName": "Throw the projectile",
           "functionType": "Action",
@@ -13175,6 +13252,218 @@
             }
           ],
           "objectGroups": []
+        },
+        {
+          "description": "Throw the projectile in given angle",
+          "fullName": "Throw the projectile (debug)",
+          "functionType": "Action",
+          "name": "ThrowForDebug",
+          "sentence": "Throw _PARAM0_ at angle _PARAM1_ (Debug: _PARAM2_)",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "Debug",
+                    "=",
+                    "0"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Projectile::SetDebug"
+                  },
+                  "parameters": [
+                    "Object",
+                    "",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "Debug",
+                    "=",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Projectile::SetDebug"
+                  },
+                  "parameters": [
+                    "Object",
+                    "yes",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Projectile::Throw"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Angle",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Projectile",
+              "type": "object"
+            },
+            {
+              "description": "Angle",
+              "name": "Angle",
+              "type": "expression"
+            },
+            {
+              "description": "Debug",
+              "name": "Debug",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "Log on entity",
+          "functionType": "Action",
+          "name": "Log",
+          "sentence": "print _PARAM1_ on _PARAM0_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                  },
+                  "parameters": [
+                    "Logs",
+                    "Text",
+                    "=",
+                    "log"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Projectile",
+              "type": "object"
+            },
+            {
+              "description": "Log",
+              "name": "log",
+              "type": "string"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Show/Hide the layer that have all the debug stats and draws",
+          "fullName": "Show/Hide debug layer",
+          "functionType": "Action",
+          "name": "SetDebug",
+          "sentence": "Set _PARAM1_ on _PARAM0_ for debug",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Acitve",
+                    "",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "HideLayer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Debug\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Acitve",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ShowLayer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Debug\""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Projectile",
+              "type": "object"
+            },
+            {
+              "description": "Active",
+              "name": "Acitve",
+              "type": "yesorno"
+            }
+          ],
+          "objectGroups": []
         }
       ],
       "propertyDescriptors": [
@@ -13201,7 +13490,7 @@
           "areaMinX": 0,
           "areaMinY": 0,
           "areaMinZ": 0,
-          "name": "Long bullet",
+          "name": "TestBullet",
           "objects": [
             {
               "adaptCollisionMaskAutomatically": false,
@@ -13214,7 +13503,7 @@
               "behaviors": [],
               "animations": [
                 {
-                  "name": "Move0",
+                  "name": "default",
                   "useMultipleDirections": false,
                   "directions": [
                     {
@@ -13223,12 +13512,12 @@
                       "sprites": [
                         {
                           "hasCustomCollisionMask": true,
-                          "image": "long_bullet_bullet_5.png",
+                          "image": "ProjectileColliderSmall",
                           "points": [],
                           "originPoint": {
                             "name": "origine",
-                            "x": 8,
-                            "y": 8
+                            "x": 4,
+                            "y": 4
                           },
                           "centerPoint": {
                             "automatic": true,
@@ -13240,547 +13529,35 @@
                             [
                               {
                                 "x": 0,
-                                "y": 5
+                                "y": 2
                               },
                               {
-                                "x": 5,
+                                "x": 2,
                                 "y": 0
                               },
                               {
-                                "x": 11,
+                                "x": 6,
                                 "y": 0
                               },
                               {
-                                "x": 16,
-                                "y": 5
+                                "x": 8,
+                                "y": 2
                               },
                               {
-                                "x": 16,
-                                "y": 11
+                                "x": 8,
+                                "y": 6
                               },
                               {
-                                "x": 11,
-                                "y": 16
+                                "x": 6,
+                                "y": 8
                               },
                               {
-                                "x": 5,
-                                "y": 16
+                                "x": 2,
+                                "y": 8
                               },
                               {
                                 "x": 0,
-                                "y": 11
-                              }
-                            ]
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "Move1",
-                  "useMultipleDirections": false,
-                  "directions": [
-                    {
-                      "looping": false,
-                      "timeBetweenFrames": 0.08,
-                      "sprites": [
-                        {
-                          "hasCustomCollisionMask": true,
-                          "image": "long_bullet_bullet_4.png",
-                          "points": [],
-                          "originPoint": {
-                            "name": "origine",
-                            "x": 8,
-                            "y": 8
-                          },
-                          "centerPoint": {
-                            "automatic": true,
-                            "name": "centre",
-                            "x": 0,
-                            "y": 0
-                          },
-                          "customCollisionMask": [
-                            [
-                              {
-                                "x": 0,
-                                "y": 5
-                              },
-                              {
-                                "x": 5,
-                                "y": 0
-                              },
-                              {
-                                "x": 11,
-                                "y": 0
-                              },
-                              {
-                                "x": 16,
-                                "y": 5
-                              },
-                              {
-                                "x": 16,
-                                "y": 11
-                              },
-                              {
-                                "x": 11,
-                                "y": 16
-                              },
-                              {
-                                "x": 5,
-                                "y": 16
-                              },
-                              {
-                                "x": 0,
-                                "y": 11
-                              }
-                            ]
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "Move2",
-                  "useMultipleDirections": false,
-                  "directions": [
-                    {
-                      "looping": false,
-                      "timeBetweenFrames": 0.08,
-                      "sprites": [
-                        {
-                          "hasCustomCollisionMask": true,
-                          "image": "long_bullet_bullet_3.png",
-                          "points": [],
-                          "originPoint": {
-                            "name": "origine",
-                            "x": 8,
-                            "y": 8
-                          },
-                          "centerPoint": {
-                            "automatic": true,
-                            "name": "centre",
-                            "x": 0,
-                            "y": 0
-                          },
-                          "customCollisionMask": [
-                            [
-                              {
-                                "x": 0,
-                                "y": 5
-                              },
-                              {
-                                "x": 5,
-                                "y": 0
-                              },
-                              {
-                                "x": 11,
-                                "y": 0
-                              },
-                              {
-                                "x": 16,
-                                "y": 5
-                              },
-                              {
-                                "x": 16,
-                                "y": 11
-                              },
-                              {
-                                "x": 11,
-                                "y": 16
-                              },
-                              {
-                                "x": 5,
-                                "y": 16
-                              },
-                              {
-                                "x": 0,
-                                "y": 11
-                              }
-                            ]
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "Move3",
-                  "useMultipleDirections": false,
-                  "directions": [
-                    {
-                      "looping": false,
-                      "timeBetweenFrames": 0.08,
-                      "sprites": [
-                        {
-                          "hasCustomCollisionMask": true,
-                          "image": "long_bullet_bullet_2.png",
-                          "points": [],
-                          "originPoint": {
-                            "name": "origine",
-                            "x": 8,
-                            "y": 8
-                          },
-                          "centerPoint": {
-                            "automatic": true,
-                            "name": "centre",
-                            "x": 0,
-                            "y": 0
-                          },
-                          "customCollisionMask": [
-                            [
-                              {
-                                "x": 0,
-                                "y": 5
-                              },
-                              {
-                                "x": 5,
-                                "y": 0
-                              },
-                              {
-                                "x": 11,
-                                "y": 0
-                              },
-                              {
-                                "x": 16,
-                                "y": 5
-                              },
-                              {
-                                "x": 16,
-                                "y": 11
-                              },
-                              {
-                                "x": 11,
-                                "y": 16
-                              },
-                              {
-                                "x": 5,
-                                "y": 16
-                              },
-                              {
-                                "x": 0,
-                                "y": 11
-                              }
-                            ]
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "Move4",
-                  "useMultipleDirections": false,
-                  "directions": [
-                    {
-                      "looping": false,
-                      "timeBetweenFrames": 0.08,
-                      "sprites": [
-                        {
-                          "hasCustomCollisionMask": true,
-                          "image": "long_bullet_bullet_1.png",
-                          "points": [],
-                          "originPoint": {
-                            "name": "origine",
-                            "x": 8,
-                            "y": 8
-                          },
-                          "centerPoint": {
-                            "automatic": true,
-                            "name": "centre",
-                            "x": 0,
-                            "y": 0
-                          },
-                          "customCollisionMask": [
-                            [
-                              {
-                                "x": 0,
-                                "y": 5
-                              },
-                              {
-                                "x": 5,
-                                "y": 0
-                              },
-                              {
-                                "x": 11,
-                                "y": 0
-                              },
-                              {
-                                "x": 16,
-                                "y": 5
-                              },
-                              {
-                                "x": 16,
-                                "y": 11
-                              },
-                              {
-                                "x": 11,
-                                "y": 16
-                              },
-                              {
-                                "x": 5,
-                                "y": 16
-                              },
-                              {
-                                "x": 0,
-                                "y": 11
-                              }
-                            ]
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "Move5",
-                  "useMultipleDirections": false,
-                  "directions": [
-                    {
-                      "looping": false,
-                      "timeBetweenFrames": 0.08,
-                      "sprites": [
-                        {
-                          "hasCustomCollisionMask": true,
-                          "image": "long_bullet_bullet_6.png",
-                          "points": [],
-                          "originPoint": {
-                            "name": "origine",
-                            "x": 8,
-                            "y": 8
-                          },
-                          "centerPoint": {
-                            "automatic": true,
-                            "name": "centre",
-                            "x": 0,
-                            "y": 0
-                          },
-                          "customCollisionMask": [
-                            [
-                              {
-                                "x": 0,
-                                "y": 5
-                              },
-                              {
-                                "x": 5,
-                                "y": 0
-                              },
-                              {
-                                "x": 11,
-                                "y": 0
-                              },
-                              {
-                                "x": 16,
-                                "y": 5
-                              },
-                              {
-                                "x": 16,
-                                "y": 11
-                              },
-                              {
-                                "x": 11,
-                                "y": 16
-                              },
-                              {
-                                "x": 5,
-                                "y": 16
-                              },
-                              {
-                                "x": 0,
-                                "y": 11
-                              }
-                            ]
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "Move6",
-                  "useMultipleDirections": false,
-                  "directions": [
-                    {
-                      "looping": false,
-                      "timeBetweenFrames": 0.08,
-                      "sprites": [
-                        {
-                          "hasCustomCollisionMask": true,
-                          "image": "long_bullet_bullet_7.png",
-                          "points": [],
-                          "originPoint": {
-                            "name": "origine",
-                            "x": 8,
-                            "y": 8
-                          },
-                          "centerPoint": {
-                            "automatic": true,
-                            "name": "centre",
-                            "x": 0,
-                            "y": 0
-                          },
-                          "customCollisionMask": [
-                            [
-                              {
-                                "x": 0,
-                                "y": 5
-                              },
-                              {
-                                "x": 5,
-                                "y": 0
-                              },
-                              {
-                                "x": 11,
-                                "y": 0
-                              },
-                              {
-                                "x": 16,
-                                "y": 5
-                              },
-                              {
-                                "x": 16,
-                                "y": 11
-                              },
-                              {
-                                "x": 11,
-                                "y": 16
-                              },
-                              {
-                                "x": 5,
-                                "y": 16
-                              },
-                              {
-                                "x": 0,
-                                "y": 11
-                              }
-                            ]
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "Move7",
-                  "useMultipleDirections": false,
-                  "directions": [
-                    {
-                      "looping": false,
-                      "timeBetweenFrames": 0.08,
-                      "sprites": [
-                        {
-                          "hasCustomCollisionMask": true,
-                          "image": "long_bullet_bullet_8.png",
-                          "points": [],
-                          "originPoint": {
-                            "name": "origine",
-                            "x": 8,
-                            "y": 8
-                          },
-                          "centerPoint": {
-                            "automatic": true,
-                            "name": "centre",
-                            "x": 0,
-                            "y": 0
-                          },
-                          "customCollisionMask": [
-                            [
-                              {
-                                "x": 0,
-                                "y": 5
-                              },
-                              {
-                                "x": 5,
-                                "y": 0
-                              },
-                              {
-                                "x": 11,
-                                "y": 0
-                              },
-                              {
-                                "x": 16,
-                                "y": 5
-                              },
-                              {
-                                "x": 16,
-                                "y": 11
-                              },
-                              {
-                                "x": 11,
-                                "y": 16
-                              },
-                              {
-                                "x": 5,
-                                "y": 16
-                              },
-                              {
-                                "x": 0,
-                                "y": 11
-                              }
-                            ]
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "name": "Move8",
-                  "useMultipleDirections": false,
-                  "directions": [
-                    {
-                      "looping": false,
-                      "timeBetweenFrames": 0.08,
-                      "sprites": [
-                        {
-                          "hasCustomCollisionMask": true,
-                          "image": "long_bullet_bullet_5.png",
-                          "points": [],
-                          "originPoint": {
-                            "name": "origine",
-                            "x": 8,
-                            "y": 8
-                          },
-                          "centerPoint": {
-                            "automatic": true,
-                            "name": "centre",
-                            "x": 0,
-                            "y": 0
-                          },
-                          "customCollisionMask": [
-                            [
-                              {
-                                "x": 0,
-                                "y": 5
-                              },
-                              {
-                                "x": 5,
-                                "y": 0
-                              },
-                              {
-                                "x": 11,
-                                "y": 0
-                              },
-                              {
-                                "x": 16,
-                                "y": 5
-                              },
-                              {
-                                "x": 16,
-                                "y": 11
-                              },
-                              {
-                                "x": 11,
-                                "y": 16
-                              },
-                              {
-                                "x": 5,
-                                "y": 16
-                              },
-                              {
-                                "x": 0,
-                                "y": 11
+                                "y": 6
                               }
                             ]
                           ]
@@ -13973,7 +13750,7 @@
           "areaMinX": 0,
           "areaMinY": 0,
           "areaMinZ": 0,
-          "name": "Bullet",
+          "name": "DefaultBullet",
           "objects": [
             {
               "adaptCollisionMaskAutomatically": false,
@@ -14508,6 +14285,778 @@
                         {
                           "hasCustomCollisionMask": true,
                           "image": "default_bullet_5.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "assetStoreId": "",
+              "bold": false,
+              "italic": false,
+              "name": "Logs",
+              "smoothed": true,
+              "type": "TextObject::Text",
+              "underlined": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "string": "T",
+              "font": "",
+              "textAlignment": "left",
+              "characterSize": 10,
+              "color": {
+                "b": 0,
+                "g": 0,
+                "r": 196
+              },
+              "content": {
+                "bold": false,
+                "isOutlineEnabled": false,
+                "isShadowEnabled": false,
+                "italic": false,
+                "outlineColor": "255;255;255",
+                "outlineThickness": 2,
+                "shadowAngle": 90,
+                "shadowBlurRadius": 2,
+                "shadowColor": "0;0;0",
+                "shadowDistance": 4,
+                "shadowOpacity": 127,
+                "smoothed": true,
+                "underlined": false,
+                "text": "T",
+                "font": "",
+                "textAlignment": "left",
+                "verticalTextAlignment": "top",
+                "characterSize": 10,
+                "lineHeight": 0,
+                "color": "196;0;0"
+              }
+            }
+          ],
+          "objectsFolderStructure": {
+            "folderName": "__ROOT",
+            "children": [
+              {
+                "objectName": "Sprite"
+              },
+              {
+                "objectName": "Logs"
+              }
+            ]
+          },
+          "objectsGroups": [],
+          "layers": [
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [
+                {
+                  "defaultSize": true,
+                  "defaultViewport": true,
+                  "height": 0,
+                  "viewportBottom": 1,
+                  "viewportLeft": 0,
+                  "viewportRight": 1,
+                  "viewportTop": 0,
+                  "width": 0
+                }
+              ],
+              "effects": []
+            },
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "Hidden",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [],
+              "effects": [
+                {
+                  "effectType": "Scene3D::HemisphereLight",
+                  "name": "3D Ambient Hemisphere Light",
+                  "doubleParameters": {
+                    "elevation": 40,
+                    "intensity": 0.33,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "groundColor": "127;127;127",
+                    "skyColor": "255;255;255",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {}
+                },
+                {
+                  "effectType": "Scene3D::DirectionalLight",
+                  "name": "3D Sun Light",
+                  "doubleParameters": {
+                    "distanceFromCamera": 1500,
+                    "elevation": 40,
+                    "frustumSize": 4000,
+                    "intensity": 0.75,
+                    "minimumShadowBias": 0,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "color": "255;255;255",
+                    "shadowQuality": "medium",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {
+                    "isCastingShadow": true
+                  }
+                }
+              ]
+            }
+          ],
+          "instances": [
+            {
+              "angle": 0,
+              "customSize": false,
+              "height": 0,
+              "keepRatio": true,
+              "layer": "",
+              "name": "Sprite",
+              "persistentUuid": "657844b4-17c0-4bd6-967e-8f063f15a7af",
+              "width": 0,
+              "x": 0,
+              "y": 0,
+              "zOrder": 1,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            },
+            {
+              "angle": 0,
+              "customSize": true,
+              "depth": 1,
+              "height": 14,
+              "keepRatio": true,
+              "layer": "Hidden",
+              "name": "Logs",
+              "persistentUuid": "635f589c-e162-4fa5-969a-307a57a733ae",
+              "width": 36,
+              "x": -12,
+              "y": 6,
+              "zOrder": 2,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            }
+          ]
+        },
+        {
+          "areaMaxX": 8,
+          "areaMaxY": 8,
+          "areaMaxZ": 64,
+          "areaMinX": 0,
+          "areaMinY": 0,
+          "areaMinZ": 0,
+          "name": "LongBullet",
+          "objects": [
+            {
+              "adaptCollisionMaskAutomatically": false,
+              "assetStoreId": "",
+              "name": "Sprite",
+              "type": "Sprite",
+              "updateIfNotVisible": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "animations": [
+                {
+                  "name": "Move0",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "long_bullet_bullet_5.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move1",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "long_bullet_bullet_4.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move2",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "long_bullet_bullet_3.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move3",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "long_bullet_bullet_2.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move4",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "long_bullet_bullet_1.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move5",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "long_bullet_bullet_6.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move6",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "long_bullet_bullet_7.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move7",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "long_bullet_bullet_8.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 5
+                              },
+                              {
+                                "x": 5,
+                                "y": 0
+                              },
+                              {
+                                "x": 11,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 5
+                              },
+                              {
+                                "x": 16,
+                                "y": 11
+                              },
+                              {
+                                "x": 11,
+                                "y": 16
+                              },
+                              {
+                                "x": 5,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 11
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move8",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "long_bullet_bullet_5.png",
                           "points": [],
                           "originPoint": {
                             "name": "origine",
@@ -15986,7 +16535,60 @@
           "followBaseLayerCamera": false,
           "isLightingLayer": false,
           "isLocked": false,
-          "name": "Hidden",
+          "name": "Main",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [],
+          "effects": [
+            {
+              "effectType": "Scene3D::HemisphereLight",
+              "name": "3D Ambient Hemisphere Light",
+              "doubleParameters": {
+                "elevation": 40,
+                "intensity": 0.33,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "groundColor": "127;127;127",
+                "skyColor": "255;255;255",
+                "top": "Z+"
+              },
+              "booleanParameters": {}
+            },
+            {
+              "effectType": "Scene3D::DirectionalLight",
+              "name": "3D Sun Light",
+              "doubleParameters": {
+                "distanceFromCamera": 1500,
+                "elevation": 40,
+                "frustumSize": 4000,
+                "intensity": 0.75,
+                "minimumShadowBias": 0,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "color": "255;255;255",
+                "shadowQuality": "medium",
+                "top": "Z+"
+              },
+              "booleanParameters": {
+                "isCastingShadow": true
+              }
+            }
+          ]
+        },
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "Debug",
           "renderingType": "",
           "visibility": true,
           "cameras": [],
@@ -16035,12 +16637,12 @@
           "customSize": false,
           "height": 0,
           "keepRatio": true,
-          "layer": "Hidden",
+          "layer": "Debug",
           "name": "BackSprite",
           "persistentUuid": "9bd63dc1-ee2b-4f24-b04a-fda58127f9c0",
           "width": 0,
-          "x": 16,
-          "y": 19,
+          "x": 10,
+          "y": 25,
           "zOrder": 1,
           "numberProperties": [],
           "stringProperties": [],
@@ -16051,12 +16653,12 @@
           "customSize": false,
           "height": 0,
           "keepRatio": true,
-          "layer": "Hidden",
+          "layer": "Debug",
           "name": "Sprite",
           "persistentUuid": "7b4850d5-a78d-4f97-b117-5a2345402a13",
           "width": 0,
-          "x": 16,
-          "y": 8,
+          "x": 10,
+          "y": 11,
           "zOrder": 2,
           "numberProperties": [],
           "stringProperties": [],
@@ -16067,12 +16669,12 @@
           "customSize": false,
           "height": 0,
           "keepRatio": true,
-          "layer": "Hidden",
+          "layer": "Debug",
           "name": "Collision",
           "persistentUuid": "471edaf8-7d65-47b2-89a0-554a3f1c2fd2",
           "width": 0,
-          "x": 12,
-          "y": 5,
+          "x": 6,
+          "y": 7,
           "zOrder": 3,
           "numberProperties": [],
           "stringProperties": [],
@@ -16083,12 +16685,12 @@
           "customSize": false,
           "height": 0,
           "keepRatio": true,
-          "layer": "",
+          "layer": "Main",
           "name": "Cannon",
           "persistentUuid": "2a210916-515e-4cb9-a485-ef97ce4adad1",
           "width": 0,
-          "x": 16,
-          "y": 16,
+          "x": 10,
+          "y": 18,
           "zOrder": 0,
           "numberProperties": [],
           "stringProperties": [],
@@ -16100,7 +16702,7 @@
           "depth": 1,
           "height": 14,
           "keepRatio": true,
-          "layer": "Hidden",
+          "layer": "Debug",
           "name": "Logs",
           "persistentUuid": "fedf4743-c328-4e22-b7f2-e5617ab2cae2",
           "width": 55,
@@ -16166,6 +16768,39 @@
                   "parameters": [
                     "Logs",
                     "no"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Actor",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "doStepPostEvents",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ChangePlan"
+                  },
+                  "parameters": [
+                    "Object",
+                    "=",
+                    "Object.Y()"
                   ]
                 }
               ]
@@ -16249,24 +16884,60 @@
           "objectGroups": []
         },
         {
-          "description": "Change the projectile type",
-          "fullName": "Change projectile type",
+          "description": "Show/Hide the layer that have all the debug stats and draws",
+          "fullName": "Show/Hide debug layer",
           "functionType": "Action",
-          "name": "SetProjectileType",
-          "sentence": "Change projectile type _PARAM1_ to _PARAM0_",
+          "name": "SetDebug",
+          "sentence": "Set _PARAM1_ on _PARAM0_ for debug",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Acitve",
+                    "",
+                    ""
+                  ]
+                }
+              ],
               "actions": [
                 {
                   "type": {
-                    "value": "SetStringVariable"
+                    "value": "HideLayer"
                   },
                   "parameters": [
-                    "ProjectileType",
-                    "=",
-                    "Name"
+                    "",
+                    "\"Debug\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Acitve",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ShowLayer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Debug\""
                   ]
                 }
               ]
@@ -16280,9 +16951,9 @@
               "type": "object"
             },
             {
-              "description": "Name of projectile type",
-              "name": "Name",
-              "type": "string"
+              "description": "Active",
+              "name": "Acitve",
+              "type": "yesorno"
             }
           ],
           "objectGroups": []
@@ -16392,41 +17063,6 @@
           "objectGroups": []
         },
         {
-          "description": "Return the name of the projectile that will shoot",
-          "fullName": "Projectile type",
-          "functionType": "StringExpression",
-          "name": "ProjectileType",
-          "sentence": "",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetReturnString"
-                  },
-                  "parameters": [
-                    "ProjectileType"
-                  ]
-                }
-              ]
-            }
-          ],
-          "expressionType": {
-            "type": "string"
-          },
-          "parameters": [
-            {
-              "description": "Object",
-              "name": "Object",
-              "supplementaryInformation": "CustomObjects::Actor",
-              "type": "object"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
           "fullName": "",
           "functionType": "Expression",
           "name": "MovementSpeed",
@@ -16468,18 +17104,6 @@
           "label": "Movement speed",
           "description": "The base movement speed in the scene",
           "name": "MoveSpeed"
-        },
-        {
-          "value": "",
-          "type": "Choice",
-          "label": "Type of projectile",
-          "description": "The projectile that will give",
-          "extraInformation": [
-            "Projectile",
-            "DefaultBullet",
-            "LongBullet"
-          ],
-          "name": "ProjectileType"
         }
       ],
       "variants": []
@@ -16642,6 +17266,112 @@
             }
           ],
           "effects": []
+        },
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "Main",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [],
+          "effects": [
+            {
+              "effectType": "Scene3D::HemisphereLight",
+              "name": "3D Ambient Hemisphere Light",
+              "doubleParameters": {
+                "elevation": 40,
+                "intensity": 0.33,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "groundColor": "127;127;127",
+                "skyColor": "255;255;255",
+                "top": "Z+"
+              },
+              "booleanParameters": {}
+            },
+            {
+              "effectType": "Scene3D::DirectionalLight",
+              "name": "3D Sun Light",
+              "doubleParameters": {
+                "distanceFromCamera": 1500,
+                "elevation": 40,
+                "frustumSize": 4000,
+                "intensity": 0.75,
+                "minimumShadowBias": 0,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "color": "255;255;255",
+                "shadowQuality": "medium",
+                "top": "Z+"
+              },
+              "booleanParameters": {
+                "isCastingShadow": true
+              }
+            }
+          ]
+        },
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "Debug",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [],
+          "effects": [
+            {
+              "effectType": "Scene3D::HemisphereLight",
+              "name": "3D Ambient Hemisphere Light",
+              "doubleParameters": {
+                "elevation": 40,
+                "intensity": 0.33,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "groundColor": "127;127;127",
+                "skyColor": "255;255;255",
+                "top": "Z+"
+              },
+              "booleanParameters": {}
+            },
+            {
+              "effectType": "Scene3D::DirectionalLight",
+              "name": "3D Sun Light",
+              "doubleParameters": {
+                "distanceFromCamera": 1500,
+                "elevation": 40,
+                "frustumSize": 4000,
+                "intensity": 0.75,
+                "minimumShadowBias": 0,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "color": "255;255;255",
+                "shadowQuality": "medium",
+                "top": "Z+"
+              },
+              "booleanParameters": {
+                "isCastingShadow": true
+              }
+            }
+          ]
         }
       ],
       "instances": [
@@ -16650,7 +17380,7 @@
           "customSize": false,
           "height": 0,
           "keepRatio": true,
-          "layer": "",
+          "layer": "Main",
           "name": "Sprite",
           "persistentUuid": "f4faaee4-c8d7-4450-a3d2-d4da2b23e0a5",
           "width": 0,
@@ -16667,7 +17397,7 @@
           "depth": 1,
           "height": 40,
           "keepRatio": true,
-          "layer": "",
+          "layer": "Debug",
           "name": "Logs",
           "persistentUuid": "e5a6e3f3-03a8-4bc7-903e-a19622fd0927",
           "width": 92,
@@ -16793,6 +17523,81 @@
             }
           ],
           "objectGroups": []
+        },
+        {
+          "description": "Show/Hide the layer that have all the debug stats and draws",
+          "fullName": "Show/Hide debug layer",
+          "functionType": "Action",
+          "name": "SetDebug",
+          "sentence": "Set _PARAM1_ on _PARAM0_ for debug",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Acitve",
+                    "",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "HideLayer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Debug\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Acitve",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ShowLayer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Debug\""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Wall",
+              "type": "object"
+            },
+            {
+              "description": "Active",
+              "name": "Acitve",
+              "type": "yesorno"
+            }
+          ],
+          "objectGroups": []
         }
       ],
       "propertyDescriptors": [],
@@ -16804,7 +17609,252 @@
           "areaMinX": 0,
           "areaMinY": 0,
           "areaMinZ": 0,
-          "name": "Solid",
+          "name": "BounceableWall",
+          "objects": [
+            {
+              "adaptCollisionMaskAutomatically": true,
+              "assetStoreId": "",
+              "name": "Sprite",
+              "type": "Sprite",
+              "updateIfNotVisible": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "animations": [
+                {
+                  "name": "default",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "metadata": "{\"pskl\":{}}",
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "WallCollider",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 0
+                              },
+                              {
+                                "x": 32,
+                                "y": 0
+                              },
+                              {
+                                "x": 32,
+                                "y": 32
+                              },
+                              {
+                                "x": 0,
+                                "y": 32
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "assetStoreId": "",
+              "bold": false,
+              "italic": false,
+              "name": "Logs",
+              "smoothed": true,
+              "type": "TextObject::Text",
+              "underlined": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "string": "Text",
+              "font": "",
+              "textAlignment": "left",
+              "characterSize": 12,
+              "color": {
+                "b": 0,
+                "g": 0,
+                "r": 0
+              },
+              "content": {
+                "bold": false,
+                "isOutlineEnabled": false,
+                "isShadowEnabled": false,
+                "italic": false,
+                "outlineColor": "255;255;255",
+                "outlineThickness": 2,
+                "shadowAngle": 90,
+                "shadowBlurRadius": 2,
+                "shadowColor": "0;0;0",
+                "shadowDistance": 4,
+                "shadowOpacity": 127,
+                "smoothed": true,
+                "underlined": false,
+                "text": "Text",
+                "font": "",
+                "textAlignment": "left",
+                "verticalTextAlignment": "top",
+                "characterSize": 12,
+                "lineHeight": 0,
+                "color": "0;0;0"
+              }
+            }
+          ],
+          "objectsFolderStructure": {
+            "folderName": "__ROOT",
+            "children": [
+              {
+                "objectName": "Sprite"
+              },
+              {
+                "objectName": "Logs"
+              }
+            ]
+          },
+          "objectsGroups": [],
+          "layers": [
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [
+                {
+                  "defaultSize": true,
+                  "defaultViewport": true,
+                  "height": 0,
+                  "viewportBottom": 1,
+                  "viewportLeft": 0,
+                  "viewportRight": 1,
+                  "viewportTop": 0,
+                  "width": 0
+                }
+              ],
+              "effects": []
+            },
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "Hidden",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [],
+              "effects": [
+                {
+                  "effectType": "Scene3D::HemisphereLight",
+                  "name": "3D Ambient Hemisphere Light",
+                  "doubleParameters": {
+                    "elevation": 40,
+                    "intensity": 0.33,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "groundColor": "127;127;127",
+                    "skyColor": "255;255;255",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {}
+                },
+                {
+                  "effectType": "Scene3D::DirectionalLight",
+                  "name": "3D Sun Light",
+                  "doubleParameters": {
+                    "distanceFromCamera": 1500,
+                    "elevation": 40,
+                    "frustumSize": 4000,
+                    "intensity": 0.75,
+                    "minimumShadowBias": 0,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "color": "255;255;255",
+                    "shadowQuality": "medium",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {
+                    "isCastingShadow": true
+                  }
+                }
+              ]
+            }
+          ],
+          "instances": [
+            {
+              "angle": 0,
+              "customSize": false,
+              "height": 0,
+              "keepRatio": true,
+              "layer": "",
+              "name": "Sprite",
+              "persistentUuid": "f4faaee4-c8d7-4450-a3d2-d4da2b23e0a5",
+              "width": 0,
+              "x": 0,
+              "y": 0,
+              "zOrder": 1,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            },
+            {
+              "angle": 0,
+              "customSize": true,
+              "depth": 1,
+              "height": 40,
+              "keepRatio": true,
+              "layer": "Hidden",
+              "name": "Logs",
+              "persistentUuid": "e5a6e3f3-03a8-4bc7-903e-a19622fd0927",
+              "width": 92,
+              "x": -18,
+              "y": 28,
+              "zOrder": 2,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            }
+          ]
+        },
+        {
+          "areaMaxX": 32,
+          "areaMaxY": 32,
+          "areaMaxZ": 64,
+          "areaMinX": 0,
+          "areaMinY": 0,
+          "areaMinZ": 0,
+          "name": "SolidWall",
           "objects": [
             {
               "adaptCollisionMaskAutomatically": true,
@@ -16951,6 +18001,59 @@
                 }
               ],
               "effects": []
+            },
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "Hidden",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [],
+              "effects": [
+                {
+                  "effectType": "Scene3D::HemisphereLight",
+                  "name": "3D Ambient Hemisphere Light",
+                  "doubleParameters": {
+                    "elevation": 40,
+                    "intensity": 0.33,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "groundColor": "127;127;127",
+                    "skyColor": "255;255;255",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {}
+                },
+                {
+                  "effectType": "Scene3D::DirectionalLight",
+                  "name": "3D Sun Light",
+                  "doubleParameters": {
+                    "distanceFromCamera": 1500,
+                    "elevation": 40,
+                    "frustumSize": 4000,
+                    "intensity": 0.75,
+                    "minimumShadowBias": 0,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "color": "255;255;255",
+                    "shadowQuality": "medium",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {
+                    "isCastingShadow": true
+                  }
+                }
+              ]
             }
           ],
           "instances": [
@@ -16976,7 +18079,7 @@
               "depth": 1,
               "height": 40,
               "keepRatio": true,
-              "layer": "",
+              "layer": "Hidden",
               "name": "Logs",
               "persistentUuid": "e5a6e3f3-03a8-4bc7-903e-a19622fd0927",
               "width": 92,
@@ -17002,7 +18105,7 @@
       "description": "",
       "fullName": "",
       "isUsingLegacyInstancesRenderer": false,
-      "name": "Ammo",
+      "name": "Resource",
       "objects": [
         {
           "adaptCollisionMaskAutomatically": true,
@@ -17102,6 +18205,112 @@
             }
           ],
           "effects": []
+        },
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "Main",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [],
+          "effects": [
+            {
+              "effectType": "Scene3D::HemisphereLight",
+              "name": "3D Ambient Hemisphere Light",
+              "doubleParameters": {
+                "elevation": 40,
+                "intensity": 0.33,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "groundColor": "127;127;127",
+                "skyColor": "255;255;255",
+                "top": "Z+"
+              },
+              "booleanParameters": {}
+            },
+            {
+              "effectType": "Scene3D::DirectionalLight",
+              "name": "3D Sun Light",
+              "doubleParameters": {
+                "distanceFromCamera": 1500,
+                "elevation": 40,
+                "frustumSize": 4000,
+                "intensity": 0.75,
+                "minimumShadowBias": 0,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "color": "255;255;255",
+                "shadowQuality": "medium",
+                "top": "Z+"
+              },
+              "booleanParameters": {
+                "isCastingShadow": true
+              }
+            }
+          ]
+        },
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "Debug",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [],
+          "effects": [
+            {
+              "effectType": "Scene3D::HemisphereLight",
+              "name": "3D Ambient Hemisphere Light",
+              "doubleParameters": {
+                "elevation": 40,
+                "intensity": 0.33,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "groundColor": "127;127;127",
+                "skyColor": "255;255;255",
+                "top": "Z+"
+              },
+              "booleanParameters": {}
+            },
+            {
+              "effectType": "Scene3D::DirectionalLight",
+              "name": "3D Sun Light",
+              "doubleParameters": {
+                "distanceFromCamera": 1500,
+                "elevation": 40,
+                "frustumSize": 4000,
+                "intensity": 0.75,
+                "minimumShadowBias": 0,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "color": "255;255;255",
+                "shadowQuality": "medium",
+                "top": "Z+"
+              },
+              "booleanParameters": {
+                "isCastingShadow": true
+              }
+            }
+          ]
         }
       ],
       "instances": [
@@ -17110,13 +18319,13 @@
           "customSize": false,
           "height": 0,
           "keepRatio": true,
-          "layer": "",
+          "layer": "Main",
           "name": "Sprite",
           "persistentUuid": "8844ef7e-6b54-4368-9d17-aa6a6763dde4",
           "width": 0,
           "x": 16,
           "y": 16,
-          "zOrder": 1,
+          "zOrder": 0,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -17140,7 +18349,7 @@
                   },
                   "parameters": [
                     "Actor",
-                    "ProjectileType",
+                    "ToString(Actor.ProjectileTypeBehavior::ProjectileObjectName())",
                     ""
                   ]
                 }
@@ -17151,7 +18360,7 @@
             {
               "description": "Object",
               "name": "Object",
-              "supplementaryInformation": "CustomObjects::Ammo",
+              "supplementaryInformation": "CustomObjects::Resource",
               "type": "object"
             },
             {
@@ -17159,25 +18368,18 @@
               "name": "Actor",
               "supplementaryInformation": "CustomObjects::Actor",
               "type": "objectList"
+            },
+            {
+              "description": "Projectile Objects",
+              "name": "ProjectileTypeBehavior",
+              "supplementaryInformation": "CustomObjects::ProjectileObjects",
+              "type": "behavior"
             }
           ],
           "objectGroups": []
         }
       ],
-      "propertyDescriptors": [
-        {
-          "value": "",
-          "type": "Choice",
-          "label": "Type of projectile",
-          "description": "The projectile that will give",
-          "extraInformation": [
-            "Projectile",
-            "DefaultBullet",
-            "LongBullet"
-          ],
-          "name": "ProjectileType"
-        }
-      ],
+      "propertyDescriptors": [],
       "variants": [
         {
           "areaMaxX": 32,
@@ -17186,7 +18388,7 @@
           "areaMinX": 0,
           "areaMinY": 0,
           "areaMinZ": 0,
-          "name": "Large bullet",
+          "name": "LongBullet",
           "objects": [
             {
               "adaptCollisionMaskAutomatically": true,
@@ -17286,6 +18488,112 @@
                 }
               ],
               "effects": []
+            },
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "Main",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [],
+              "effects": [
+                {
+                  "effectType": "Scene3D::HemisphereLight",
+                  "name": "3D Ambient Hemisphere Light",
+                  "doubleParameters": {
+                    "elevation": 40,
+                    "intensity": 0.33,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "groundColor": "127;127;127",
+                    "skyColor": "255;255;255",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {}
+                },
+                {
+                  "effectType": "Scene3D::DirectionalLight",
+                  "name": "3D Sun Light",
+                  "doubleParameters": {
+                    "distanceFromCamera": 1500,
+                    "elevation": 40,
+                    "frustumSize": 4000,
+                    "intensity": 0.75,
+                    "minimumShadowBias": 0,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "color": "255;255;255",
+                    "shadowQuality": "medium",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {
+                    "isCastingShadow": true
+                  }
+                }
+              ]
+            },
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "Debug",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [],
+              "effects": [
+                {
+                  "effectType": "Scene3D::HemisphereLight",
+                  "name": "3D Ambient Hemisphere Light",
+                  "doubleParameters": {
+                    "elevation": 40,
+                    "intensity": 0.33,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "groundColor": "127;127;127",
+                    "skyColor": "255;255;255",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {}
+                },
+                {
+                  "effectType": "Scene3D::DirectionalLight",
+                  "name": "3D Sun Light",
+                  "doubleParameters": {
+                    "distanceFromCamera": 1500,
+                    "elevation": 40,
+                    "frustumSize": 4000,
+                    "intensity": 0.75,
+                    "minimumShadowBias": 0,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "color": "255;255;255",
+                    "shadowQuality": "medium",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {
+                    "isCastingShadow": true
+                  }
+                }
+              ]
             }
           ],
           "instances": [
@@ -17300,7 +18608,7 @@
               "width": 0,
               "x": 16,
               "y": 16,
-              "zOrder": 1,
+              "zOrder": 0,
               "numberProperties": [],
               "stringProperties": [],
               "initialVariables": []
@@ -17314,7 +18622,7 @@
           "areaMinX": 0,
           "areaMinY": 0,
           "areaMinZ": 0,
-          "name": "Default bullet",
+          "name": "DefaultBullet",
           "objects": [
             {
               "adaptCollisionMaskAutomatically": true,
@@ -17414,6 +18722,112 @@
                 }
               ],
               "effects": []
+            },
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "Main",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [],
+              "effects": [
+                {
+                  "effectType": "Scene3D::HemisphereLight",
+                  "name": "3D Ambient Hemisphere Light",
+                  "doubleParameters": {
+                    "elevation": 40,
+                    "intensity": 0.33,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "groundColor": "127;127;127",
+                    "skyColor": "255;255;255",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {}
+                },
+                {
+                  "effectType": "Scene3D::DirectionalLight",
+                  "name": "3D Sun Light",
+                  "doubleParameters": {
+                    "distanceFromCamera": 1500,
+                    "elevation": 40,
+                    "frustumSize": 4000,
+                    "intensity": 0.75,
+                    "minimumShadowBias": 0,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "color": "255;255;255",
+                    "shadowQuality": "medium",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {
+                    "isCastingShadow": true
+                  }
+                }
+              ]
+            },
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "Debug",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [],
+              "effects": [
+                {
+                  "effectType": "Scene3D::HemisphereLight",
+                  "name": "3D Ambient Hemisphere Light",
+                  "doubleParameters": {
+                    "elevation": 40,
+                    "intensity": 0.33,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "groundColor": "127;127;127",
+                    "skyColor": "255;255;255",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {}
+                },
+                {
+                  "effectType": "Scene3D::DirectionalLight",
+                  "name": "3D Sun Light",
+                  "doubleParameters": {
+                    "distanceFromCamera": 1500,
+                    "elevation": 40,
+                    "frustumSize": 4000,
+                    "intensity": 0.75,
+                    "minimumShadowBias": 0,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "color": "255;255;255",
+                    "shadowQuality": "medium",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {
+                    "isCastingShadow": true
+                  }
+                }
+              ]
             }
           ],
           "instances": [
@@ -17422,7 +18836,7 @@
               "customSize": false,
               "height": 0,
               "keepRatio": true,
-              "layer": "",
+              "layer": "Main",
               "name": "Sprite",
               "persistentUuid": "8844ef7e-6b54-4368-9d17-aa6a6763dde4",
               "width": 0,
@@ -17434,8 +18848,900 @@
               "initialVariables": []
             }
           ]
+        },
+        {
+          "areaMaxX": 32,
+          "areaMaxY": 32,
+          "areaMaxZ": 64,
+          "areaMinX": 0,
+          "areaMinY": 0,
+          "areaMinZ": 0,
+          "name": "TestBullet",
+          "objects": [
+            {
+              "adaptCollisionMaskAutomatically": true,
+              "assetStoreId": "",
+              "name": "Sprite",
+              "type": "Sprite",
+              "updateIfNotVisible": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "animations": [
+                {
+                  "name": "",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "projectile_ammo.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 5,
+                                "y": 5
+                              },
+                              {
+                                "x": 27,
+                                "y": 5
+                              },
+                              {
+                                "x": 27,
+                                "y": 28
+                              },
+                              {
+                                "x": 5,
+                                "y": 28
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "objectsFolderStructure": {
+            "folderName": "__ROOT",
+            "children": [
+              {
+                "objectName": "Sprite"
+              }
+            ]
+          },
+          "objectsGroups": [],
+          "layers": [
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [
+                {
+                  "defaultSize": true,
+                  "defaultViewport": true,
+                  "height": 0,
+                  "viewportBottom": 1,
+                  "viewportLeft": 0,
+                  "viewportRight": 1,
+                  "viewportTop": 0,
+                  "width": 0
+                }
+              ],
+              "effects": []
+            },
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "Main",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [],
+              "effects": [
+                {
+                  "effectType": "Scene3D::HemisphereLight",
+                  "name": "3D Ambient Hemisphere Light",
+                  "doubleParameters": {
+                    "elevation": 40,
+                    "intensity": 0.33,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "groundColor": "127;127;127",
+                    "skyColor": "255;255;255",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {}
+                },
+                {
+                  "effectType": "Scene3D::DirectionalLight",
+                  "name": "3D Sun Light",
+                  "doubleParameters": {
+                    "distanceFromCamera": 1500,
+                    "elevation": 40,
+                    "frustumSize": 4000,
+                    "intensity": 0.75,
+                    "minimumShadowBias": 0,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "color": "255;255;255",
+                    "shadowQuality": "medium",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {
+                    "isCastingShadow": true
+                  }
+                }
+              ]
+            },
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "Debug",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [],
+              "effects": [
+                {
+                  "effectType": "Scene3D::HemisphereLight",
+                  "name": "3D Ambient Hemisphere Light",
+                  "doubleParameters": {
+                    "elevation": 40,
+                    "intensity": 0.33,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "groundColor": "127;127;127",
+                    "skyColor": "255;255;255",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {}
+                },
+                {
+                  "effectType": "Scene3D::DirectionalLight",
+                  "name": "3D Sun Light",
+                  "doubleParameters": {
+                    "distanceFromCamera": 1500,
+                    "elevation": 40,
+                    "frustumSize": 4000,
+                    "intensity": 0.75,
+                    "minimumShadowBias": 0,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "color": "255;255;255",
+                    "shadowQuality": "medium",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {
+                    "isCastingShadow": true
+                  }
+                }
+              ]
+            }
+          ],
+          "instances": [
+            {
+              "angle": 0,
+              "customSize": false,
+              "height": 0,
+              "keepRatio": true,
+              "layer": "Main",
+              "name": "Sprite",
+              "persistentUuid": "8844ef7e-6b54-4368-9d17-aa6a6763dde4",
+              "width": 0,
+              "x": 16,
+              "y": 16,
+              "zOrder": 0,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            }
+          ]
         }
       ]
+    },
+    {
+      "areaMaxX": 16,
+      "areaMaxY": 16,
+      "areaMaxZ": 64,
+      "areaMinX": 0,
+      "areaMinY": 0,
+      "areaMinZ": 0,
+      "defaultName": "",
+      "description": "",
+      "fullName": "",
+      "isUsingLegacyInstancesRenderer": false,
+      "name": "Trails",
+      "objects": [
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "Smoke",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "default",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\gray.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 4,
+                        "y": 4
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 1
+                          },
+                          {
+                            "x": 7,
+                            "y": 1
+                          },
+                          {
+                            "x": 7,
+                            "y": 7
+                          },
+                          {
+                            "x": 0,
+                            "y": 7
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "assetStoreId": "",
+          "bold": false,
+          "italic": false,
+          "name": "Log",
+          "smoothed": true,
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "string": "Text",
+          "font": "",
+          "textAlignment": "left",
+          "characterSize": 20,
+          "color": {
+            "b": 0,
+            "g": 0,
+            "r": 0
+          },
+          "content": {
+            "bold": false,
+            "isOutlineEnabled": false,
+            "isShadowEnabled": false,
+            "italic": false,
+            "outlineColor": "255;255;255",
+            "outlineThickness": 2,
+            "shadowAngle": 90,
+            "shadowBlurRadius": 2,
+            "shadowColor": "0;0;0",
+            "shadowDistance": 4,
+            "shadowOpacity": 127,
+            "smoothed": true,
+            "underlined": false,
+            "text": "Text",
+            "font": "",
+            "textAlignment": "left",
+            "verticalTextAlignment": "top",
+            "characterSize": 20,
+            "lineHeight": 0,
+            "color": "0;0;0"
+          }
+        }
+      ],
+      "objectsFolderStructure": {
+        "folderName": "__ROOT",
+        "children": [
+          {
+            "objectName": "Smoke"
+          },
+          {
+            "objectName": "Log"
+          }
+        ]
+      },
+      "objectsGroups": [],
+      "layers": [
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [
+            {
+              "defaultSize": true,
+              "defaultViewport": true,
+              "height": 0,
+              "viewportBottom": 1,
+              "viewportLeft": 0,
+              "viewportRight": 1,
+              "viewportTop": 0,
+              "width": 0
+            }
+          ],
+          "effects": []
+        }
+      ],
+      "instances": [
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "102523f2-d907-4ab4-8169-f72951d860d0",
+          "width": 0,
+          "x": 0,
+          "y": 0,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "b3ed16cc-8147-43a6-8bb2-18b856e23080",
+          "width": 0,
+          "x": 0,
+          "y": 7,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "e7bd6730-1f8b-4580-b937-bf93ac800552",
+          "width": 0,
+          "x": 0,
+          "y": 14,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "5851c3df-97db-4769-8649-55a4656e0042",
+          "width": 0,
+          "x": 0,
+          "y": -21,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "a4ae7491-64f7-4520-b87e-43e980c5cb10",
+          "width": 0,
+          "x": 0,
+          "y": -14,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "3179ddc6-23ef-468d-9bcd-f084efd73dc2",
+          "width": 0,
+          "x": 0,
+          "y": -7,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "4678fcc8-a84c-498f-ad40-3c1948073885",
+          "width": 0,
+          "x": 0,
+          "y": 21,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "a7fe230d-54eb-4d6b-a412-b091d933b619",
+          "width": 0,
+          "x": 0,
+          "y": 28,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "d9089789-b56a-411a-b4b2-b1073d008d6d",
+          "width": 0,
+          "x": 0,
+          "y": 35,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "16f7104d-1457-4c61-b4a0-0374ca3bb84e",
+          "width": 0,
+          "x": 0,
+          "y": -63,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "24e68fa5-bcb0-4c9e-9b3f-a5b7fac9c12c",
+          "width": 0,
+          "x": 0,
+          "y": -56,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "756af02b-fb41-49ba-8e0c-eba85aa396bc",
+          "width": 0,
+          "x": 0,
+          "y": -49,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "997e78fd-ca7d-4628-9e9f-2ce4c1910db8",
+          "width": 0,
+          "x": 0,
+          "y": -84,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "07d0ab86-3c09-4def-b7f7-0b911e3a7e10",
+          "width": 0,
+          "x": 0,
+          "y": -77,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "b1d43519-decb-492b-bd1c-6f298e0d2b16",
+          "width": 0,
+          "x": 0,
+          "y": -70,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "4d9b6767-4684-4d4f-a3a7-816813dbc760",
+          "width": 0,
+          "x": 0,
+          "y": -42,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "02139b13-6a75-4303-b494-b105aa8083c1",
+          "width": 0,
+          "x": 0,
+          "y": -35,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "c0e6352b-b456-452f-8f25-b77a3995dbae",
+          "width": 0,
+          "x": 0,
+          "y": -28,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "7d339dab-9612-4eaf-87b3-da24e4a26e2b",
+          "width": 0,
+          "x": 0,
+          "y": 63,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "6ac4c4ef-234d-4294-9c04-c6ec57822721",
+          "width": 0,
+          "x": 0,
+          "y": 70,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "a5df9091-1614-48ec-a1bd-ecedf8844bda",
+          "width": 0,
+          "x": 0,
+          "y": 77,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "c53b09cb-9cd9-4bf7-b144-cb78be2f75b9",
+          "width": 0,
+          "x": 0,
+          "y": 42,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "e9f3f25e-98c2-4b8f-b99f-956067be8f9a",
+          "width": 0,
+          "x": 0,
+          "y": 49,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "fbc18e64-34bb-43c9-88a0-80880052147b",
+          "width": 0,
+          "x": 0,
+          "y": 56,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "02952a0e-a959-40d3-a47b-d6c82eb1e080",
+          "width": 0,
+          "x": 0,
+          "y": 84,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "47445a3e-b3b1-4254-b065-508b05561195",
+          "width": 0,
+          "x": 0,
+          "y": 91,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Smoke",
+          "persistentUuid": "d435a0d1-aca2-49b7-ae50-9e4959266f59",
+          "width": 0,
+          "x": 0,
+          "y": 98,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "Log",
+          "persistentUuid": "329261a1-fd55-465f-b8f8-276f44b2fe52",
+          "width": 0,
+          "x": -43,
+          "y": -5,
+          "zOrder": 9,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        }
+      ],
+      "eventsFunctions": [
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "doStepPostEvents",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ChangePlan"
+                  },
+                  "parameters": [
+                    "Object",
+                    "=",
+                    "Object.Y()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                  },
+                  "parameters": [
+                    "Log",
+                    "Text",
+                    "=",
+                    "ToString(Object.ZOrder())"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Trails",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [],
+      "variants": []
     }
   ]
 }
