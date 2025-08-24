@@ -9,7 +9,7 @@
   "title": "",
   "v": 220,
   "uiSettings": {
-    "grid": true,
+    "grid": false,
     "gridType": "rectangular",
     "gridWidth": 16,
     "gridHeight": 16,
@@ -17,8 +17,8 @@
     "gridOffsetY": 0,
     "gridColor": 10401023,
     "gridAlpha": 0.8,
-    "snap": true,
-    "zoomFactor": 4.260331831800577,
+    "snap": false,
+    "zoomFactor": 2.194735939125924,
     "windowMask": false
   },
   "objectsGroups": [
@@ -193,22 +193,6 @@
       "x": 0,
       "y": 352,
       "zOrder": 5,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "Player0",
-      "persistentUuid": "3454e55e-1b93-46c1-8ac0-3cf45b200022",
-      "width": 0,
-      "x": 32,
-      "y": -64,
-      "zOrder": 1,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -540,14 +524,14 @@
       "angle": 90,
       "customSize": true,
       "depth": 64,
-      "height": 592,
+      "height": 30,
       "keepRatio": true,
       "layer": "Main",
       "name": "BounceableWall",
       "persistentUuid": "50de0f92-aaf6-4da5-b877-7ad89ff56e7c",
       "width": 32,
-      "x": 280,
-      "y": -760,
+      "x": -32,
+      "y": -126,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -875,6 +859,39 @@
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
+    },
+    {
+      "angle": 90,
+      "customSize": true,
+      "depth": 64,
+      "height": 592,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "9529121b-abd6-4608-b5a5-8ce80cc599de",
+      "width": 32,
+      "x": 280,
+      "y": -760,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "Player0",
+      "persistentUuid": "67c4ad93-c0c4-461b-8cc7-15c38213f50c",
+      "width": 0,
+      "x": 234,
+      "y": -76,
+      "zOrder": 13,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
     }
   ],
   "objects": [
@@ -1041,72 +1058,6 @@
     },
     {
       "assetStoreId": "",
-      "name": "Player0",
-      "type": "CustomObjects::Actor",
-      "variant": "",
-      "variables": [],
-      "effects": [],
-      "behaviors": [
-        {
-          "name": "Entity",
-          "type": "CustomObjects::Entity",
-          "Property": "Actor",
-          "Id": 3.3236692178158365e+178,
-          "Type": "Actor",
-          "ProjectileType": "ProjectileType",
-          "ProjectileObject": "ProjectileType"
-        },
-        {
-          "name": "ProjectileType",
-          "type": "CustomObjects::ProjectileObjects",
-          "Property": "",
-          "ObjectName": "LongBullet"
-        }
-      ],
-      "content": {
-        "MoveSpeed": 100,
-        "ProjectileType": "DefaultBullet"
-      },
-      "animatable": {
-        "adaptCollisionMaskAutomatically": true,
-        "animations": []
-      }
-    },
-    {
-      "assetStoreId": "",
-      "name": "TestBullet",
-      "type": "CustomObjects::Projectile",
-      "variant": "TestBullet",
-      "variables": [],
-      "effects": [],
-      "behaviors": [
-        {
-          "name": "Entity",
-          "type": "CustomObjects::Entity",
-          "Property": "Projectile",
-          "Id": 3.3236692178158365e+178,
-          "Type": "Projectile",
-          "ProjectileType": "ProjectileType",
-          "ProjectileObject": "ProjectileType"
-        },
-        {
-          "name": "ProjectileType",
-          "type": "CustomObjects::ProjectileObjects",
-          "Property": "",
-          "ObjectName": "TestBullet"
-        }
-      ],
-      "content": {
-        "Bounces": 0,
-        "Speed": 120
-      },
-      "animatable": {
-        "adaptCollisionMaskAutomatically": true,
-        "animations": []
-      }
-    },
-    {
-      "assetStoreId": "",
       "name": "BounceableWall",
       "type": "CustomObjects::Wall",
       "variant": "BounceableWall",
@@ -1115,20 +1066,7 @@
       "behaviors": [
         {
           "name": "Bounceable",
-          "type": "CustomObjects::Bounceable"
-        },
-        {
-          "name": "Entity",
-          "type": "CustomObjects::Entity",
-          "Property": "Wall",
-          "Id": 3.3236692178158365e+178,
-          "ProjectileType": "ProjectileType",
-          "ProjectileObject": "ProjectileType"
-        },
-        {
-          "name": "ProjectileType",
-          "type": "CustomObjects::ProjectileObjects",
-          "Property": ""
+          "type": "CustomBehaviors::Bounceable"
         }
       ],
       "content": {}
@@ -1143,16 +1081,9 @@
       "behaviors": [
         {
           "name": "Entity",
-          "type": "CustomObjects::Entity",
-          "Property": "Wall",
-          "Id": 3.3236692178158365e+178,
-          "ProjectileType": "ProjectileType",
-          "ProjectileObject": "ProjectileType"
-        },
-        {
-          "name": "ProjectileType",
-          "type": "CustomObjects::ProjectileObjects",
-          "Property": ""
+          "type": "CustomBehaviors::Entity",
+          "Id": 1.3519747858422847e-306,
+          "Type": "Wall"
         }
       ],
       "content": {}
@@ -1387,72 +1318,6 @@
     },
     {
       "assetStoreId": "",
-      "name": "DefaultBullet",
-      "type": "CustomObjects::Projectile",
-      "variant": "DefaultBullet",
-      "variables": [],
-      "effects": [],
-      "behaviors": [
-        {
-          "name": "Entity",
-          "type": "CustomObjects::Entity",
-          "Property": "Projectile",
-          "Id": 3.3236692178158365e+178,
-          "Type": "Projectile",
-          "ProjectileType": "ProjectileType",
-          "ProjectileObject": "ProjectileType"
-        },
-        {
-          "name": "ProjectileType",
-          "type": "CustomObjects::ProjectileObjects",
-          "Property": "",
-          "ObjectName": "DefaultBullet"
-        }
-      ],
-      "content": {
-        "Bounces": 1,
-        "Speed": 200
-      },
-      "animatable": {
-        "adaptCollisionMaskAutomatically": true,
-        "animations": []
-      }
-    },
-    {
-      "assetStoreId": "",
-      "name": "LongBullet",
-      "type": "CustomObjects::Projectile",
-      "variant": "LongBullet",
-      "variables": [],
-      "effects": [],
-      "behaviors": [
-        {
-          "name": "Entity",
-          "type": "CustomObjects::Entity",
-          "Property": "Projectile",
-          "Id": 3.3236692178158365e+178,
-          "Type": "Projectile",
-          "ProjectileType": "ProjectileType",
-          "ProjectileObject": "ProjectileType"
-        },
-        {
-          "name": "ProjectileType",
-          "type": "CustomObjects::ProjectileObjects",
-          "Property": "",
-          "ObjectName": "LongBullet"
-        }
-      ],
-      "content": {
-        "Bounces": 2,
-        "Speed": 200
-      },
-      "animatable": {
-        "adaptCollisionMaskAutomatically": true,
-        "animations": []
-      }
-    },
-    {
-      "assetStoreId": "",
       "name": "TestBulletAmmo",
       "type": "CustomObjects::Resource",
       "variant": "TestBullet",
@@ -1460,8 +1325,8 @@
       "effects": [],
       "behaviors": [
         {
-          "name": "ProjectileObjects",
-          "type": "CustomObjects::ProjectileObjects",
+          "name": "BulletObjects",
+          "type": "CustomBehaviors::BulletObjects",
           "ObjectName": "TestBullet"
         }
       ],
@@ -1478,8 +1343,8 @@
       "effects": [],
       "behaviors": [
         {
-          "name": "ProjectileObjects",
-          "type": "CustomObjects::ProjectileObjects",
+          "name": "BulletObjects",
+          "type": "CustomBehaviors::BulletObjects",
           "ObjectName": "DefaultBullet"
         }
       ],
@@ -1496,8 +1361,8 @@
       "effects": [],
       "behaviors": [
         {
-          "name": "ProjectileObjects",
-          "type": "CustomObjects::ProjectileObjects",
+          "name": "BulletObjects",
+          "type": "CustomBehaviors::BulletObjects",
           "ObjectName": "LongBullet"
         }
       ],
@@ -1514,6 +1379,131 @@
       "effects": [],
       "behaviors": [],
       "content": {}
+    },
+    {
+      "assetStoreId": "",
+      "name": "Player0",
+      "type": "CustomObjects::Tank",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "BulletObjects",
+          "type": "CustomBehaviors::BulletObjects",
+          "ObjectName": "TestBullet"
+        },
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 9.854645721257145e+165,
+          "Type": "Tank"
+        },
+        {
+          "name": "Tank",
+          "type": "CustomBehaviors::Tank",
+          "EntityBehavior": "Entity",
+          "BulletObjects": "BulletObjects",
+          "MoveSpeed": 50
+        }
+      ],
+      "content": {},
+      "animatable": {
+        "adaptCollisionMaskAutomatically": true,
+        "animations": []
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "TestBullet",
+      "type": "CustomObjects::Bullet",
+      "variant": "TestBullet",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Bullet",
+          "type": "CustomBehaviors::Bullet",
+          "EntityBehavior": "Entity",
+          "Speed": 200,
+          "Bounces": 0
+        },
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 1.7263050289483554e-306,
+          "Type": "Bullet"
+        }
+      ],
+      "content": {
+        "Speed": 200
+      },
+      "animatable": {
+        "adaptCollisionMaskAutomatically": true,
+        "animations": []
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "DefaultBullet",
+      "type": "CustomObjects::Bullet",
+      "variant": "DefaultBullet",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Bullet",
+          "type": "CustomBehaviors::Bullet",
+          "EntityBehavior": "Entity",
+          "Speed": 200,
+          "Bounces": 1
+        },
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 1.7263050289483554e-306,
+          "Type": "Bullet"
+        }
+      ],
+      "content": {
+        "Bounces": 1,
+        "Speed": 200
+      },
+      "animatable": {
+        "adaptCollisionMaskAutomatically": true,
+        "animations": []
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "LongBullet",
+      "type": "CustomObjects::Bullet",
+      "variant": "LongBullet",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Bullet",
+          "type": "CustomBehaviors::Bullet",
+          "EntityBehavior": "Entity",
+          "Speed": 200,
+          "Bounces": 2
+        },
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 1.7263050289483554e-306,
+          "Type": "Bullet"
+        }
+      ],
+      "content": {
+        "Bounces": 2,
+        "Speed": 200
+      },
+      "animatable": {
+        "adaptCollisionMaskAutomatically": true,
+        "animations": []
+      }
     }
   ],
   "objectsFolderStructure": {
@@ -1577,9 +1567,6 @@
         ]
       },
       {
-        "objectName": "Player0"
-      },
-      {
         "objectName": "NewTrails"
       },
       {
@@ -1590,6 +1577,9 @@
       },
       {
         "objectName": "CursorPoint"
+      },
+      {
+        "objectName": "Player0"
       }
     ]
   },
@@ -1759,18 +1749,6 @@
           },
           "parameters": [
             "",
-            "Player",
-            "",
-            "",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "CentreCamera"
-          },
-          "parameters": [
-            "",
             "Player0",
             "",
             "\"Debug\"",
@@ -1856,16 +1834,6 @@
                 },
                 {
                   "type": {
-                    "value": "BuiltinCommonInstructions::CompareStrings"
-                  },
-                  "parameters": [
-                    "Players.ObjectName()",
-                    "=",
-                    "\"Player\" + \"0\""
-                  ]
-                },
-                {
-                  "type": {
                     "value": "BuiltinCommonInstructions::Once"
                   },
                   "parameters": []
@@ -1879,7 +1847,7 @@
                   "parameters": [
                     "",
                     "Projectiles",
-                    "Players.ProjectileType::ProjectileObjectName()",
+                    "Players.BulletObjects::ProjectileObjectName()",
                     "Player0.MuzzleX()",
                     "Player0.MuzzleY()",
                     "_CONSTANTS_.Layers.Main"
@@ -1887,11 +1855,13 @@
                 },
                 {
                   "type": {
-                    "value": "CustomObjects::Projectile::ThrowForDebug"
+                    "value": "CustomBehaviors::Bullet::ThrowForDebug"
                   },
                   "parameters": [
                     "Projectiles",
-                    "Player0.LookAngle()",
+                    "Bullet",
+                    "Projectiles",
+                    "Players.LookAngle()",
                     "_CONFIG_.debug",
                     ""
                   ]
@@ -2025,7 +1995,7 @@
                     },
                     {
                       "type": {
-                        "value": "CustomObjects::Actor::LookTo"
+                        "value": "CustomObjects::Tank::LookTo"
                       },
                       "parameters": [
                         "Player0",
@@ -2701,7 +2671,7 @@
                       "parameters": [
                         "Player0",
                         "MoveAngle",
-                        "Player0.MovementSpeed()",
+                        "150",
                         ""
                       ]
                     }
@@ -2760,21 +2730,12 @@
           "actions": [
             {
               "type": {
-                "value": "CustomObjects::Resource::ChangeProjectileType"
+                "value": "CustomBehaviors::BulletObjects::SetProjectileObject"
               },
               "parameters": [
-                "Ammo",
                 "Player0",
-                "ProjectileType"
-              ]
-            },
-            {
-              "type": {
-                "value": "DebuggerTools::ConsoleLog"
-              },
-              "parameters": [
-                "Ammo.ObjectName()",
-                "",
+                "BulletObjects",
+                "Ammo.BulletObjects::ProjectileObjectName()",
                 ""
               ]
             }
@@ -2895,10 +2856,11 @@
                   "actions": [
                     {
                       "type": {
-                        "value": "CustomObjects::Projectile::CollisionWithBounceable"
+                        "value": "CustomBehaviors::Bullet::CollisionWithBounceable"
                       },
                       "parameters": [
                         "Projectiles",
+                        "Bullet",
                         "Bounceable",
                         "Bounceable",
                         ""
@@ -2929,10 +2891,11 @@
           "actions": [
             {
               "type": {
-                "value": "CustomObjects::Projectile::CollisionWithWall"
+                "value": "CustomBehaviors::Bullet::CollisionWithWall"
               },
               "parameters": [
                 "Projectiles",
+                "Bullet",
                 "Solid",
                 "Entity",
                 ""
@@ -3282,7 +3245,15 @@
     },
     {
       "name": "Bounceable",
-      "type": "CustomObjects::Bounceable"
+      "type": "CustomBehaviors::Bounceable"
+    },
+    {
+      "name": "Bullet",
+      "type": "CustomBehaviors::Bullet"
+    },
+    {
+      "name": "BulletObjects",
+      "type": "CustomBehaviors::BulletObjects"
     },
     {
       "name": "Effect",
@@ -3290,7 +3261,7 @@
     },
     {
       "name": "Entity",
-      "type": "CustomObjects::Entity"
+      "type": "CustomBehaviors::Entity"
     },
     {
       "name": "FPSDisplayer",
@@ -3313,14 +3284,6 @@
       "type": "PathfindingBehavior::PathfindingObstacleBehavior"
     },
     {
-      "name": "ProjectileObjects",
-      "type": "CustomObjects::ProjectileObjects"
-    },
-    {
-      "name": "ProjectileType",
-      "type": "CustomObjects::ProjectileObjects"
-    },
-    {
       "name": "RectangleMovement",
       "type": "RectangleMovement::RectangleMovement"
     },
@@ -3335,6 +3298,10 @@
     {
       "name": "Sticker",
       "type": "Sticker::Sticker"
+    },
+    {
+      "name": "Tank",
+      "type": "CustomBehaviors::Tank"
     },
     {
       "name": "Text",

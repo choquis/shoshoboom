@@ -1,0 +1,971 @@
+{
+  "author": "",
+  "category": "",
+  "extensionNamespace": "",
+  "fullName": "",
+  "gdevelopVersion": "",
+  "helpPath": "",
+  "iconUrl": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0ibWRpLWNvbnRyb2xsZXItY2xhc3NpYyIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGQ9Ik02LDdIMThBNSw1IDAgMCwxIDIzLDEyQTUsNSAwIDAsMSAxOCwxN0MxNi4zNiwxNyAxNC45MSwxNi4yMSAxNCwxNUgxMEM5LjA5LDE2LjIxIDcuNjQsMTcgNiwxN0E1LDUgMCAwLDEgMSwxMkE1LDUgMCAwLDEgNiw3TTE5Ljc1LDkuNUExLjI1LDEuMjUgMCAwLDAgMTguNSwxMC43NUExLjI1LDEuMjUgMCAwLDAgMTkuNzUsMTJBMS4yNSwxLjI1IDAgMCwwIDIxLDEwLjc1QTEuMjUsMS4yNSAwIDAsMCAxOS43NSw5LjVNMTcuMjUsMTJBMS4yNSwxLjI1IDAgMCwwIDE2LDEzLjI1QTEuMjUsMS4yNSAwIDAsMCAxNy4yNSwxNC41QTEuMjUsMS4yNSAwIDAsMCAxOC41LDEzLjI1QTEuMjUsMS4yNSAwIDAsMCAxNy4yNSwxMk01LDlWMTFIM1YxM0g1VjE1SDdWMTNIOVYxMUg3VjlINVoiIC8+PC9zdmc+",
+  "name": "CustomBehaviors",
+  "previewIconUrl": "https://asset-resources.gdevelop.io/public-resources/Icons/1ad121147c14a152a996b90145da261925b2a50f8d509e32b2e4655eb3458fc4_controller-classic.svg",
+  "shortDescription": "",
+  "version": "",
+  "description": "",
+  "tags": [],
+  "authorIds": [],
+  "dependencies": [],
+  "globalVariables": [],
+  "sceneVariables": [
+    {
+      "name": "CurrentId",
+      "type": "number",
+      "value": 0
+    }
+  ],
+  "eventsFunctions": [],
+  "eventsBasedBehaviors": [
+    {
+      "description": "This is a list used to select the type of bullet object",
+      "fullName": "Bullet objects (Behavior)",
+      "name": "BulletObjects",
+      "objectType": "",
+      "eventsFunctions": [
+        {
+          "fullName": "",
+          "functionType": "StringExpression",
+          "name": "ProjectileObjectName",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnString"
+                  },
+                  "parameters": [
+                    "ObjectName"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "string"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::BulletObjects",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Change the projectile type",
+          "fullName": "Change projectile type",
+          "functionType": "Action",
+          "name": "SetProjectileObject",
+          "sentence": "Change projectile type _PARAM2_ to _PARAM0_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "ObjectName",
+                    "=",
+                    "Name"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::BulletObjects",
+              "type": "behavior"
+            },
+            {
+              "description": "Projectile object",
+              "name": "Name",
+              "type": "string"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "",
+          "type": "Choice",
+          "label": "Name of bullet objects",
+          "description": "This is a list of all the bullet objects that can be used",
+          "extraInformation": [
+            "TestBullet",
+            "DefaultBullet",
+            "LongBullet"
+          ],
+          "name": "ObjectName"
+        }
+      ],
+      "sharedPropertyDescriptors": []
+    },
+    {
+      "description": "This is to indicate that the object interact with others that have the Entity Behavior",
+      "fullName": "Entity (Behavior)",
+      "name": "Entity",
+      "objectType": "",
+      "eventsFunctions": [
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "onCreated",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "Id",
+                    "=",
+                    "CurrentId"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "CurrentId",
+                    "+",
+                    "1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Entity",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Expression",
+          "name": "Id",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "Id"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Entity",
+              "type": "behavior"
+            },
+            {
+              "description": "",
+              "name": "Parameter",
+              "type": "objectList"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Expression",
+          "name": "Type",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnString"
+                  },
+                  "parameters": [
+                    "Type"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Entity",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "",
+          "type": "Number",
+          "label": "Id",
+          "description": "Identifier assigned when object is instantiated",
+          "hidden": true,
+          "name": "Id"
+        },
+        {
+          "value": "Wall",
+          "type": "Choice",
+          "label": "Type",
+          "description": "Entity type",
+          "extraInformation": [
+            "Tank",
+            "Wall",
+            "Bullet",
+            "Resource"
+          ],
+          "name": "Type"
+        }
+      ],
+      "sharedPropertyDescriptors": []
+    },
+    {
+      "description": "Other entity can bounce in this object",
+      "fullName": "Bounceable (Behavior)",
+      "name": "Bounceable",
+      "objectType": "",
+      "eventsFunctions": [],
+      "propertyDescriptors": [],
+      "sharedPropertyDescriptors": []
+    },
+    {
+      "description": "The tank logic",
+      "fullName": "Tank (Behavior)",
+      "name": "Tank",
+      "objectType": "",
+      "eventsFunctions": [
+        {
+          "description": "Movement speed in scene",
+          "fullName": "Move speed",
+          "functionType": "Expression",
+          "name": "MoveSpeed",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "MoveSpeed"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Tank",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "",
+          "type": "Behavior",
+          "label": "Entity",
+          "description": "Entity behavior attached to the tank",
+          "extraInformation": [
+            "CustomBehaviors::Entity"
+          ],
+          "name": "EntityBehavior"
+        },
+        {
+          "value": "",
+          "type": "Behavior",
+          "label": "",
+          "extraInformation": [
+            "CustomBehaviors::BulletObjects"
+          ],
+          "name": "BulletObjects"
+        },
+        {
+          "value": "1",
+          "type": "Number",
+          "unit": "PixelSpeed",
+          "label": "Movement speed",
+          "description": "The base movement speed in the scene",
+          "name": "MoveSpeed"
+        }
+      ],
+      "sharedPropertyDescriptors": []
+    },
+    {
+      "description": "The bulle logic",
+      "fullName": "Bullet (Behavior)",
+      "name": "Bullet",
+      "objectType": "",
+      "eventsFunctions": [
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "onCreated",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ResetObjectTimer"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"Delete\""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Bullet",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "doStepPreEvents",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CompareObjectTimer"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"Delete\"",
+                    ">=",
+                    "15"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Object",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Bullet",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Tell the projectile that it hit a \"Wall\" and decide what to do next",
+          "fullName": "Collision with \"Wall\"",
+          "functionType": "Action",
+          "name": "CollisionWithWall",
+          "sentence": "_PARAM0_ collision with _PARAM2_ (that have _PARAM3_)",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Object",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Bullet",
+              "type": "behavior"
+            },
+            {
+              "description": "",
+              "name": "Solid",
+              "type": "objectList"
+            },
+            {
+              "description": "\"Entity\" behavior",
+              "name": "EntityBehavior",
+              "supplementaryInformation": "CustomBehaviors::Entity",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Tell the projectile that it hit a \"Wall\" that have \"Bouncable\" and decide what to do next",
+          "fullName": "Collision with \"Bounceable\" \"Wall\"",
+          "functionType": "Action",
+          "name": "CollisionWithBounceable",
+          "sentence": "_PARAM0_ collision with _PARAM2_ (that have _PARAM3_)",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "Bounces",
+                    "<=",
+                    "0"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Object",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 109,
+                "g": 230,
+                "r": 255,
+                "textB": 0,
+                "textG": 0,
+                "textR": 0
+              },
+              "comment": "Bounce projectile"
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "Bounces",
+                    ">",
+                    "0"
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "NormalAngle",
+                        "=",
+                        "Bounceable.Angle()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "OldAngle",
+                        "=",
+                        "Object.ForceAngle()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "OldForce",
+                        "=",
+                        "Object.ForceLength()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Arreter"
+                      },
+                      "parameters": [
+                        "Object"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 109,
+                    "g": 230,
+                    "r": 255,
+                    "textB": 0,
+                    "textG": 0,
+                    "textR": 0
+                  },
+                  "comment": "Get reflect angle"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "NewAngle",
+                        "=",
+                        "CustomObjects::ReflectAngle(OldAngle, NormalAngle)"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "AddForceAL"
+                      },
+                      "parameters": [
+                        "Object",
+                        "NewAngle",
+                        "OldForce",
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "Bounces",
+                        "-",
+                        "1"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "variables": [
+                {
+                  "name": "OldAngle",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "OldForce",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "NormalAngle",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "NewAngle",
+                  "type": "number",
+                  "value": 0
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Bullet",
+              "type": "behavior"
+            },
+            {
+              "description": "",
+              "name": "Bounceable",
+              "type": "objectList"
+            },
+            {
+              "description": "\"Bouncable\" behavior",
+              "name": "EntityBehavior",
+              "supplementaryInformation": "CustomBehaviors::Bounceable",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Throw the projectile in given angle",
+          "fullName": "Throw the projectile",
+          "functionType": "Action",
+          "name": "Throw",
+          "sentence": "Throw _PARAM0_ at angle _PARAM3_ and update _PARAM2_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "AddForceAL"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Angle",
+                    "Speed",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CustomObjects::Bullet::Update"
+                  },
+                  "parameters": [
+                    "Visuals",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Bullet",
+              "type": "behavior"
+            },
+            {
+              "description": "Bullet (Custom object)",
+              "name": "Visuals",
+              "supplementaryInformation": "CustomObjects::Bullet",
+              "type": "objectList"
+            },
+            {
+              "description": "Angle",
+              "name": "Angle",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Throw the projectile in given angle",
+          "fullName": "Throw the projectile (debug)",
+          "functionType": "Action",
+          "name": "ThrowForDebug",
+          "sentence": "Throw _PARAM0_ at angle _PARAM3_ (Debug: _PARAM4_) and update _PARAM2_ (Custom object Bullet)",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "Debug",
+                    "=",
+                    "0"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Bullet::SetDebug"
+                  },
+                  "parameters": [
+                    "Visuals",
+                    "",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "Debug",
+                    "=",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Bullet::SetDebug"
+                  },
+                  "parameters": [
+                    "Visuals",
+                    "yes",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Bullet::Throw"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Behavior",
+                    "Visuals",
+                    "Angle",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Bullet",
+              "type": "behavior"
+            },
+            {
+              "description": "Bullet (Custom object)",
+              "name": "Visuals",
+              "supplementaryInformation": "CustomObjects::Bullet",
+              "type": "objectList"
+            },
+            {
+              "description": "Angle",
+              "name": "Angle",
+              "type": "expression"
+            },
+            {
+              "description": "Debug",
+              "name": "Debug",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "",
+          "type": "Behavior",
+          "label": "Entity",
+          "description": "Entity behavior attached to the bullet",
+          "extraInformation": [
+            "CustomBehaviors::Entity"
+          ],
+          "name": "EntityBehavior"
+        },
+        {
+          "value": "100",
+          "type": "Number",
+          "label": "Speed of projectile",
+          "description": "The speed that the projectile move in the scene when throw",
+          "name": "Speed"
+        },
+        {
+          "value": "1",
+          "type": "Number",
+          "label": "Bounces",
+          "description": "Number of bounces before destroyed; if collide with \"Bounceable\" object",
+          "name": "Bounces"
+        }
+      ],
+      "sharedPropertyDescriptors": []
+    },
+    {
+      "description": "Just for test",
+      "fullName": "Wall (Behavior)",
+      "name": "Wall",
+      "objectType": "",
+      "eventsFunctions": [],
+      "propertyDescriptors": [
+        {
+          "value": "",
+          "type": "Behavior",
+          "label": "Entity",
+          "description": "Entity behavior attached to the wall",
+          "extraInformation": [
+            "json"
+          ],
+          "name": "EntityBehavior"
+        }
+      ],
+      "sharedPropertyDescriptors": []
+    },
+    {
+      "description": "Logic of resource to give ammo to tanks",
+      "fullName": "Resource (Behavior)",
+      "name": "Resource",
+      "objectType": "",
+      "eventsFunctions": [],
+      "propertyDescriptors": [
+        {
+          "value": "",
+          "type": "Behavior",
+          "label": "Entity",
+          "description": "Entity behavior attached to the resource",
+          "extraInformation": [
+            "CustomBehaviors::Entity"
+          ],
+          "name": "EntityBehavior"
+        }
+      ],
+      "sharedPropertyDescriptors": []
+    }
+  ],
+  "eventsBasedObjects": []
+}
