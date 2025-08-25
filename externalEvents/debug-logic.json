@@ -112,28 +112,6 @@
                 "value": "PrimitiveDrawing::Circle"
               },
               "parameters": [
-                "RedPen",
-                "Player0.CenterX()",
-                "Player0.CenterY()",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "PrimitiveDrawing::Circle"
-              },
-              "parameters": [
-                "BluePen",
-                "Player0.X()",
-                "Player0.Y()",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "PrimitiveDrawing::Circle"
-              },
-              "parameters": [
                 "YellowPen",
                 "Player0.MuzzleX()",
                 "Player0.MuzzleY()",
@@ -144,7 +122,7 @@
         },
         {
           "type": "BuiltinCommonInstructions::ForEach",
-          "object": "Projectiles",
+          "object": "Entities",
           "conditions": [],
           "actions": [
             {
@@ -153,8 +131,8 @@
               },
               "parameters": [
                 "RedPen",
-                "Projectiles.CenterX()",
-                "Projectiles.CenterY()",
+                "Entities.CenterX()",
+                "Entities.CenterY()",
                 "1"
               ]
             },
@@ -164,37 +142,8 @@
               },
               "parameters": [
                 "BluePen",
-                "Projectiles.X()",
-                "Projectiles.Y()",
-                "1"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::ForEach",
-          "object": "Solid",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "PrimitiveDrawing::Circle"
-              },
-              "parameters": [
-                "RedPen",
-                "Solid.CenterX()",
-                "Solid.CenterY()",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "PrimitiveDrawing::Circle"
-              },
-              "parameters": [
-                "BluePen",
-                "Solid.X()",
-                "Solid.Y()",
+                "Entities.X()",
+                "Entities.Y()",
                 "1"
               ]
             }
@@ -207,75 +156,15 @@
           "actions": [
             {
               "type": {
-                "value": "PrimitiveDrawing::Circle"
+                "value": "PrimitiveDrawing::LineV2"
               },
               "parameters": [
-                "RedPen",
+                "YellowPen",
                 "Bounceable.CenterX()",
                 "Bounceable.CenterY()",
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "PrimitiveDrawing::Circle"
-              },
-              "parameters": [
-                "BluePen",
-                "Bounceable.X()",
-                "Bounceable.Y()",
-                "1"
-              ]
-            }
-          ],
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [],
-              "events": [
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "Angle",
-                        "=",
-                        "Bounceable.Angle()"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "PrimitiveDrawing::LineV2"
-                      },
-                      "parameters": [
-                        "YellowPen",
-                        "Bounceable.CenterX()",
-                        "Bounceable.CenterY()",
-                        "XFromAngleAndDistance(Angle, 32) + Bounceable.CenterX()",
-                        "YFromAngleAndDistance(Angle, 32) + Bounceable.CenterY()",
-                        "2"
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "variables": [
-                {
-                  "name": "Angle",
-                  "type": "number",
-                  "value": 0
-                }
+                "XFromAngleAndDistance(Bounceable.Angle(), 32) + Bounceable.CenterX()",
+                "YFromAngleAndDistance(Bounceable.Angle(), 32) + Bounceable.CenterY()",
+                "2"
               ]
             }
           ]
@@ -378,6 +267,23 @@
                   },
                   "parameters": [
                     "Projectiles",
+                    "yes",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Explosions",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Explosion::SetDebug"
+                  },
+                  "parameters": [
+                    "Explosions",
                     "yes",
                     ""
                   ]
@@ -501,6 +407,23 @@
                   },
                   "parameters": [
                     "Projectiles",
+                    "no",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Explosions",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Explosion::SetDebug"
+                  },
+                  "parameters": [
+                    "Explosions",
                     "no",
                     ""
                   ]

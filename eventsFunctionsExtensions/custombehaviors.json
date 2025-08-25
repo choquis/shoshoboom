@@ -219,11 +219,6 @@
               "name": "Behavior",
               "supplementaryInformation": "CustomBehaviors::Entity",
               "type": "behavior"
-            },
-            {
-              "description": "",
-              "name": "Parameter",
-              "type": "objectList"
             }
           ],
           "objectGroups": []
@@ -286,7 +281,8 @@
             "Tank",
             "Wall",
             "Bullet",
-            "Resource"
+            "Resource",
+            "Explosion"
           ],
           "name": "Type"
         }
@@ -447,6 +443,33 @@
               "actions": [
                 {
                   "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "Explode",
+                    "True",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Explode",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
                     "value": "Delete"
                   },
                   "parameters": [
@@ -473,6 +496,89 @@
           "objectGroups": []
         },
         {
+          "description": "Set the parent id so it can identify what not to hurt",
+          "fullName": "Set parent Id",
+          "functionType": "Action",
+          "name": "SetParentId",
+          "sentence": "Set parent Id of _PARAM0_ as _PARAM2_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "ParentId",
+                    "=",
+                    "ParentId2"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Bullet",
+              "type": "behavior"
+            },
+            {
+              "description": "Parent Id",
+              "name": "ParentId2",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Expression",
+          "name": "ParentId",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "ParentId"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Bullet",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
           "description": "Tell the projectile that it hit a \"Wall\" and decide what to do next",
           "fullName": "Collision with \"Wall\"",
           "functionType": "Action",
@@ -481,14 +587,26 @@
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Explode",
+                    "",
+                    ""
+                  ]
+                }
+              ],
               "actions": [
                 {
                   "type": {
-                    "value": "Delete"
+                    "value": "SetBooleanVariable"
                   },
                   "parameters": [
-                    "Object",
+                    "Explode",
+                    "True",
                     ""
                   ]
                 }
@@ -533,6 +651,16 @@
               "conditions": [
                 {
                   "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Explode",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
                     "value": "NumberVariable"
                   },
                   "parameters": [
@@ -545,10 +673,11 @@
               "actions": [
                 {
                   "type": {
-                    "value": "Delete"
+                    "value": "SetBooleanVariable"
                   },
                   "parameters": [
-                    "Object",
+                    "Explode",
+                    "True",
                     ""
                   ]
                 }
@@ -569,6 +698,16 @@
             {
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Explode",
+                    "",
+                    ""
+                  ]
+                },
                 {
                   "type": {
                     "value": "NumberVariable"
@@ -649,7 +788,7 @@
                       "parameters": [
                         "NewAngle",
                         "=",
-                        "CustomObjects::ReflectAngle(OldAngle, NormalAngle)"
+                        "CustomFunctions::ReflectAngle(OldAngle, NormalAngle)"
                       ]
                     },
                     {
@@ -896,6 +1035,79 @@
             }
           ],
           "objectGroups": []
+        },
+        {
+          "description": "The bullet will explode in the next frame",
+          "fullName": "Will explode in next frame?",
+          "functionType": "Condition",
+          "name": "WillExplode",
+          "sentence": "_PARAM0_ will explode in next frame",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Explode",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Explode",
+                    "",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "False"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Bullet",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
         }
       ],
       "propertyDescriptors": [
@@ -922,6 +1134,21 @@
           "label": "Bounces",
           "description": "Number of bounces before destroyed; if collide with \"Bounceable\" object",
           "name": "Bounces"
+        },
+        {
+          "value": "",
+          "type": "Boolean",
+          "label": "",
+          "hidden": true,
+          "name": "Explode"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "label": "The object that should not damage",
+          "description": "This is the id of the parent that should not damage, ex. If a tank shoot a bullet, the bullet will explode and create this object. This explosion should not damage the tank.",
+          "hidden": true,
+          "name": "ParentId"
         }
       ],
       "sharedPropertyDescriptors": []
@@ -962,6 +1189,199 @@
             "CustomBehaviors::Entity"
           ],
           "name": "EntityBehavior"
+        }
+      ],
+      "sharedPropertyDescriptors": []
+    },
+    {
+      "description": "The explosion logic",
+      "fullName": "Explosion (Behavior)",
+      "name": "Explosion",
+      "objectType": "",
+      "eventsFunctions": [
+        {
+          "description": "Set the parent id so it can identify what not to hurt",
+          "fullName": "Set parent Id",
+          "functionType": "Action",
+          "name": "SetParentId",
+          "sentence": "Set parent Id of _PARAM0_ as _PARAM2_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "ParentId",
+                    "=",
+                    "ParentId2"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Explosion",
+              "type": "behavior"
+            },
+            {
+              "description": "Parent Id",
+              "name": "ParentId2",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Set the parent id so it can identify what not to hurt",
+          "fullName": "Set parent Id (debug)",
+          "functionType": "Action",
+          "name": "SetParentIdWithDebug",
+          "sentence": "Set parent Id of _PARAM0_ as _PARAM2_ and debug: _PARAM3_ for _PARAM4_ Explosion (Custom object)",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "Debug",
+                    "=",
+                    "0"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Explosion::SetDebug"
+                  },
+                  "parameters": [
+                    "Visuals",
+                    "",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "Debug",
+                    "=",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Explosion::SetDebug"
+                  },
+                  "parameters": [
+                    "Visuals",
+                    "yes",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CustomObjects::Explosion::Log"
+                  },
+                  "parameters": [
+                    "Visuals",
+                    "ToString(ParentId2)",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Explosion::SetParentId"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Behavior",
+                    "ParentId2",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Explosion",
+              "type": "behavior"
+            },
+            {
+              "description": "Parent Id",
+              "name": "ParentId2",
+              "type": "expression"
+            },
+            {
+              "description": "Debug",
+              "name": "Debug",
+              "type": "expression"
+            },
+            {
+              "description": "Explosion (Custom object)",
+              "name": "Visuals",
+              "supplementaryInformation": "CustomObjects::Explosion",
+              "type": "objectList"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "",
+          "type": "Behavior",
+          "label": "Entity",
+          "description": "Entity behavior attached to the bullet",
+          "extraInformation": [
+            "CustomBehaviors::Entity"
+          ],
+          "name": "EntityBehavior"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "label": "The object that should not damage",
+          "description": "This is the id of the parent that should not damage, ex. If a tank shoot a bullet, the bullet will explode and create this object. This explosion should not damage the tank.",
+          "hidden": true,
+          "name": "ParentId"
         }
       ],
       "sharedPropertyDescriptors": []

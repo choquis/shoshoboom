@@ -605,500 +605,6 @@
         }
       ],
       "objectGroups": []
-    },
-    {
-      "description": "Custom function to obtain the current frame in animation by an angle",
-      "fullName": "Get frame by angle",
-      "functionType": "Expression",
-      "name": "GetFrameByAngle",
-      "sentence": "",
-      "events": [
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "NewAngle",
-                "=",
-                "Angle + 180"
-              ]
-            }
-          ],
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::CompareNumbers"
-                  },
-                  "parameters": [
-                    "NewAngle",
-                    ">=",
-                    "360"
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "NewAngle",
-                    "-",
-                    "360"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "NewFrame",
-                    "=",
-                    "trunc(round(NewAngle * (8 / 180)))"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetReturnNumber"
-                  },
-                  "parameters": [
-                    "NewFrame"
-                  ]
-                }
-              ]
-            }
-          ],
-          "variables": [
-            {
-              "name": "NewAngle",
-              "type": "number",
-              "value": 0
-            },
-            {
-              "name": "NewFrame",
-              "type": "number",
-              "value": 0
-            }
-          ]
-        }
-      ],
-      "expressionType": {
-        "type": "expression"
-      },
-      "parameters": [
-        {
-          "description": "Angle",
-          "name": "Angle",
-          "type": "expression"
-        }
-      ],
-      "objectGroups": []
-    },
-    {
-      "description": "Custom function to obtain the current frame in animation by an angle",
-      "fullName": "Get frame by angle",
-      "functionType": "Expression",
-      "name": "GetFrameByAngle6frames",
-      "sentence": "",
-      "events": [
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "NewAngle",
-                "=",
-                "Angle + 180"
-              ]
-            }
-          ],
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::CompareNumbers"
-                  },
-                  "parameters": [
-                    "NewAngle",
-                    ">=",
-                    "360"
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "NewAngle",
-                    "-",
-                    "360"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "NewFrame",
-                    "=",
-                    "trunc(round(NewAngle * (4 / 180)))"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetReturnNumber"
-                  },
-                  "parameters": [
-                    "NewFrame"
-                  ]
-                }
-              ]
-            }
-          ],
-          "variables": [
-            {
-              "name": "NewAngle",
-              "type": "number",
-              "value": 0
-            },
-            {
-              "name": "NewFrame",
-              "type": "number",
-              "value": 0
-            }
-          ]
-        }
-      ],
-      "expressionType": {
-        "type": "expression"
-      },
-      "parameters": [
-        {
-          "description": "Angle",
-          "name": "Angle",
-          "type": "expression"
-        }
-      ],
-      "objectGroups": []
-    },
-    {
-      "description": "Custom function to obtain the current frame in animation by an angle",
-      "fullName": "Get frame by angle",
-      "functionType": "Expression",
-      "name": "GetFrameByAngle12frames",
-      "sentence": "",
-      "events": [
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "NewAngle",
-                "=",
-                "Angle + 180"
-              ]
-            }
-          ],
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::CompareNumbers"
-                  },
-                  "parameters": [
-                    "NewAngle",
-                    ">=",
-                    "360"
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "NewAngle",
-                    "-",
-                    "360"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "NewFrame",
-                    "=",
-                    "trunc(round(NewAngle * (12 / 180)))"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetReturnNumber"
-                  },
-                  "parameters": [
-                    "NewFrame"
-                  ]
-                }
-              ]
-            }
-          ],
-          "variables": [
-            {
-              "name": "NewAngle",
-              "type": "number",
-              "value": 0
-            },
-            {
-              "name": "NewFrame",
-              "type": "number",
-              "value": 0
-            }
-          ]
-        }
-      ],
-      "expressionType": {
-        "type": "expression"
-      },
-      "parameters": [
-        {
-          "description": "Angle",
-          "name": "Angle",
-          "type": "expression"
-        }
-      ],
-      "objectGroups": []
-    },
-    {
-      "description": "Return the reflection angle given the direction and normal",
-      "fullName": "Reflect Angle",
-      "functionType": "Expression",
-      "name": "ReflectAngle",
-      "sentence": "Return the reflect angle with _PARAM1_ direction and _PARAM2_ Normal",
-      "events": [
-        {
-          "type": "BuiltinCommonInstructions::Comment",
-          "color": {
-            "b": 109,
-            "g": 230,
-            "r": 255,
-            "textB": 0,
-            "textG": 0,
-            "textR": 0
-          },
-          "comment": "Following the formula v = inDirection - 2 * inNormal * dot(inDirection, inNormal)\nImitated by Unity Vector2.Reflect"
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "V1X",
-                "=",
-                "XFromAngleAndDistance(DirectionAngle, 1)"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "V1Y",
-                "=",
-                "YFromAngleAndDistance(DirectionAngle, 1)"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "V2X",
-                "=",
-                "XFromAngleAndDistance(NormalAngle, 1)"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "V2Y",
-                "=",
-                "YFromAngleAndDistance(NormalAngle, 1)"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "dot",
-                "=",
-                "-2 * ((V1X*V2X) + (V1Y*V2Y))"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "nVX",
-                "=",
-                "dot * V2X + V1X"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "nVY",
-                "=",
-                "dot * V2Y + V1Y"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "NewAngle",
-                "=",
-                "AngleBetweenPositions(0,0,nVX,nVY)"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetReturnNumber"
-              },
-              "parameters": [
-                "NewAngle"
-              ]
-            }
-          ],
-          "variables": [
-            {
-              "name": "V1X",
-              "type": "number",
-              "value": 0
-            },
-            {
-              "name": "V1Y",
-              "type": "number",
-              "value": 0
-            },
-            {
-              "name": "V2X",
-              "type": "number",
-              "value": 0
-            },
-            {
-              "name": "V2Y",
-              "type": "number",
-              "value": 0
-            },
-            {
-              "name": "dot",
-              "type": "number",
-              "value": 0
-            },
-            {
-              "name": "nVX",
-              "type": "number",
-              "value": 0
-            },
-            {
-              "name": "nVY",
-              "type": "number",
-              "value": 0
-            },
-            {
-              "name": "NewAngle",
-              "type": "number",
-              "value": 0
-            }
-          ]
-        }
-      ],
-      "expressionType": {
-        "type": "expression"
-      },
-      "parameters": [
-        {
-          "description": "Direction angle",
-          "name": "DirectionAngle",
-          "type": "expression"
-        },
-        {
-          "description": "Normal angle",
-          "name": "NormalAngle",
-          "type": "expression"
-        }
-      ],
-      "objectGroups": []
     }
   ],
   "eventsBasedBehaviors": [],
@@ -4149,7 +3655,7 @@
                   "parameters": [
                     "CannonSprite",
                     "=",
-                    "CustomObjects::GetFrameByAngle(Object.GetCannonAngle())"
+                    "CustomFunctions::GetFrameByAngle(Object.GetCannonAngle(), 8)"
                   ]
                 },
                 {
@@ -4159,7 +3665,7 @@
                   "parameters": [
                     "BodySprite",
                     "=",
-                    "CustomObjects::GetFrameByAngle(Object.GetBodyAngle())"
+                    "CustomFunctions::GetFrameByAngle(Object.GetBodyAngle(), 8)"
                   ]
                 }
               ]
@@ -4741,7 +4247,7 @@
                   "parameters": [
                     "BodySprite",
                     "=",
-                    "CustomObjects::GetFrameByAngle(Object.GetBodyAngle())"
+                    "CustomFunctions::GetFrameByAngle(Object.GetBodyAngle(), 8)"
                   ]
                 }
               ]
@@ -4790,7 +4296,7 @@
                   "parameters": [
                     "CannonSprite",
                     "=",
-                    "CustomObjects::GetFrameByAngle(Object.GetCannonAngle())"
+                    "CustomFunctions::GetFrameByAngle(Object.GetCannonAngle(), 8)"
                   ]
                 }
               ]
@@ -12542,66 +12048,10 @@
           "objectGroups": []
         },
         {
-          "description": "Use it when the bullet visuals need to refresh",
-          "fullName": "Update visuals in bullet",
-          "functionType": "Action",
-          "name": "Update",
-          "sentence": "Update visuals of _PARAM0_",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetAngle"
-                  },
-                  "parameters": [
-                    "Sprite",
-                    "=",
-                    "Object.ForceAngle()"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
-                  },
-                  "parameters": [
-                    "Sprite",
-                    "Animation",
-                    "=",
-                    "\"Move\" + ToString(CustomObjects::GetFrameByAngle6frames(Object.ForceAngle()))"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "TextContainerCapability::TextContainerBehavior::SetValue"
-                  },
-                  "parameters": [
-                    "Logs",
-                    "Text",
-                    "=",
-                    "Sprite.Animation::Name() + \":\" + ToString(Object.ForceAngle())"
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "description": "Object",
-              "name": "Object",
-              "supplementaryInformation": "CustomObjects::Bullet",
-              "type": "object"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "fullName": "Log on entity",
+          "fullName": "Log on bullet (Custom object)",
           "functionType": "Action",
           "name": "Log",
-          "sentence": "print _PARAM1_ on _PARAM0_",
+          "sentence": "print _PARAM1_ on _PARAM0_  (Bullet custom object)",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
@@ -12638,10 +12088,10 @@
         },
         {
           "description": "Show/Hide the layer that have all the debug stats and draws",
-          "fullName": "Show/Hide debug layer",
+          "fullName": "Show/Hide debug layer for bullet (Custom object)",
           "functionType": "Action",
           "name": "SetDebug",
-          "sentence": "Set _PARAM1_ on _PARAM0_ for debug",
+          "sentence": "Set _PARAM1_ on _PARAM0_ (Bullet custom object) for debug",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
@@ -12710,23 +12160,65 @@
             }
           ],
           "objectGroups": []
+        },
+        {
+          "description": "Use it when the bullet visuals need to refresh",
+          "fullName": "Update visuals in bullet",
+          "functionType": "Action",
+          "name": "Update",
+          "sentence": "Update visuals of _PARAM0_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetAngle"
+                  },
+                  "parameters": [
+                    "Sprite",
+                    "=",
+                    "Object.ForceAngle()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "Sprite",
+                    "Animation",
+                    "=",
+                    "\"Move\" + ToString(CustomFunctions::GetFrameByAngle(Object.ForceAngle(), 4))"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                  },
+                  "parameters": [
+                    "Logs",
+                    "Text",
+                    "=",
+                    "Sprite.Animation::Name() + \":\" + ToString(trunc(Object.ForceAngle()))"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Bullet",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
         }
       ],
       "propertyDescriptors": [
-        {
-          "value": "",
-          "type": "Number",
-          "label": "Speed of projectile",
-          "description": "The speed that the projectile move in the scene when throw",
-          "name": "Speed"
-        },
-        {
-          "value": "",
-          "type": "Number",
-          "label": "Bounces",
-          "description": "Number of bounces before destroyed; if collide with \"Bounceable\" object",
-          "name": "Bounces"
-        },
         {
           "value": "",
           "type": "Number",
@@ -13034,14 +12526,14 @@
               "angle": 0,
               "customSize": true,
               "depth": 1,
-              "height": 14,
+              "height": 12,
               "keepRatio": true,
-              "layer": "Hidden",
+              "layer": "Debug",
               "name": "Logs",
-              "persistentUuid": "635f589c-e162-4fa5-969a-307a57a733ae",
-              "width": 36,
-              "x": -12,
-              "y": 6,
+              "persistentUuid": "ded7f3e0-80b8-42bf-a5a5-8cabb2c4b38c",
+              "width": 32,
+              "x": -11,
+              "y": 7,
               "zOrder": 2,
               "numberProperties": [],
               "stringProperties": [],
@@ -16230,10 +15722,10 @@
         },
         {
           "description": "Show/Hide the layer that have all the debug stats and draws",
-          "fullName": "Show/Hide debug layer",
+          "fullName": "Show/Hide debug layer for tank (Custom object)",
           "functionType": "Action",
           "name": "SetDebug",
-          "sentence": "Set _PARAM1_ on _PARAM0_ for debug",
+          "sentence": "Set _PARAM1_ on _PARAM0_ (Tank custom object) for debug",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
@@ -16349,7 +15841,7 @@
                     "Cannon",
                     "Animation",
                     "=",
-                    "\"Look\" + ToString(CustomObjects::GetFrameByAngle(Sprite.Angle()))"
+                    "\"Look\" + ToString(CustomFunctions::GetFrameByAngle(Sprite.Angle(), 8))"
                   ]
                 }
               ]
@@ -18278,10 +17770,10 @@
           "objectGroups": []
         },
         {
-          "fullName": "Log on entity",
+          "fullName": "Log on Wall (Custom object)",
           "functionType": "Action",
           "name": "Log",
-          "sentence": "print _PARAM1_ on _PARAM0_",
+          "sentence": "print _PARAM1_ on _PARAM0_ (Wall custom object)",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
@@ -18318,10 +17810,10 @@
         },
         {
           "description": "Show/Hide the layer that have all the debug stats and draws",
-          "fullName": "Show/Hide debug layer",
+          "fullName": "Show/Hide debug layer for Wall (Custom object)",
           "functionType": "Action",
           "name": "SetDebug",
-          "sentence": "Set _PARAM1_ on _PARAM0_ for debug",
+          "sentence": "Set _PARAM1_ on _PARAM0_ (Wall custom object) for debug",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
@@ -20480,6 +19972,957 @@
               "name": "Object",
               "supplementaryInformation": "CustomObjects::Trails",
               "type": "object"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [],
+      "variants": []
+    },
+    {
+      "areaMaxX": 32,
+      "areaMaxY": 32,
+      "areaMaxZ": 64,
+      "areaMinX": 0,
+      "areaMinY": 0,
+      "areaMinZ": 0,
+      "defaultName": "",
+      "description": "Make an explosion that can interact with other entities",
+      "fullName": "Explosion (Custom object)",
+      "isUsingLegacyInstancesRenderer": false,
+      "name": "Explosion",
+      "objects": [
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "Sprite",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "default",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "small_explosion_1.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 16,
+                        "y": 16
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 2,
+                            "y": 3
+                          },
+                          {
+                            "x": 29,
+                            "y": 3
+                          },
+                          {
+                            "x": 29,
+                            "y": 31
+                          },
+                          {
+                            "x": 2,
+                            "y": 31
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "small_explosion_2.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 16,
+                        "y": 16
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 2,
+                            "y": 3
+                          },
+                          {
+                            "x": 29,
+                            "y": 3
+                          },
+                          {
+                            "x": 29,
+                            "y": 31
+                          },
+                          {
+                            "x": 2,
+                            "y": 31
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "small_explosion_3.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 16,
+                        "y": 16
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 2,
+                            "y": 3
+                          },
+                          {
+                            "x": 29,
+                            "y": 3
+                          },
+                          {
+                            "x": 29,
+                            "y": 31
+                          },
+                          {
+                            "x": 2,
+                            "y": 31
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "small_explosion_4.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 16,
+                        "y": 16
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 2,
+                            "y": 3
+                          },
+                          {
+                            "x": 29,
+                            "y": 3
+                          },
+                          {
+                            "x": 29,
+                            "y": 31
+                          },
+                          {
+                            "x": 2,
+                            "y": 31
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "small_explosion_5.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 16,
+                        "y": 16
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 2,
+                            "y": 3
+                          },
+                          {
+                            "x": 29,
+                            "y": 3
+                          },
+                          {
+                            "x": 29,
+                            "y": 31
+                          },
+                          {
+                            "x": 2,
+                            "y": 31
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "small_explosion_6.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 16,
+                        "y": 16
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 2,
+                            "y": 3
+                          },
+                          {
+                            "x": 29,
+                            "y": 3
+                          },
+                          {
+                            "x": 29,
+                            "y": 31
+                          },
+                          {
+                            "x": 2,
+                            "y": 31
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "small_explosion_7.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 16,
+                        "y": 16
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 2,
+                            "y": 3
+                          },
+                          {
+                            "x": 29,
+                            "y": 3
+                          },
+                          {
+                            "x": 29,
+                            "y": 31
+                          },
+                          {
+                            "x": 2,
+                            "y": 31
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "small_explosion_8.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 16,
+                        "y": 16
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 2,
+                            "y": 3
+                          },
+                          {
+                            "x": 29,
+                            "y": 3
+                          },
+                          {
+                            "x": 29,
+                            "y": 31
+                          },
+                          {
+                            "x": 2,
+                            "y": 31
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "adaptCollisionMaskAutomatically": false,
+          "assetStoreId": "",
+          "name": "Collider",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "metadata": "{\"pskl\":{}}",
+                  "timeBetweenFrames": 0.125,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\ProjectileCollider.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 8,
+                        "y": 8
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 5
+                          },
+                          {
+                            "x": 5,
+                            "y": 0
+                          },
+                          {
+                            "x": 11,
+                            "y": 0
+                          },
+                          {
+                            "x": 16,
+                            "y": 5
+                          },
+                          {
+                            "x": 16,
+                            "y": 11
+                          },
+                          {
+                            "x": 11,
+                            "y": 16
+                          },
+                          {
+                            "x": 5,
+                            "y": 16
+                          },
+                          {
+                            "x": 0,
+                            "y": 11
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "Transparent16",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 8,
+                        "y": 8
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 5
+                          },
+                          {
+                            "x": 5,
+                            "y": 0
+                          },
+                          {
+                            "x": 11,
+                            "y": 0
+                          },
+                          {
+                            "x": 16,
+                            "y": 5
+                          },
+                          {
+                            "x": 16,
+                            "y": 11
+                          },
+                          {
+                            "x": 11,
+                            "y": 16
+                          },
+                          {
+                            "x": 5,
+                            "y": 16
+                          },
+                          {
+                            "x": 0,
+                            "y": 11
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "assetStoreId": "",
+          "bold": false,
+          "italic": false,
+          "name": "Logs",
+          "smoothed": true,
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "string": "T",
+          "font": "",
+          "textAlignment": "left",
+          "characterSize": 20,
+          "color": {
+            "b": 0,
+            "g": 0,
+            "r": 0
+          },
+          "content": {
+            "bold": false,
+            "isOutlineEnabled": false,
+            "isShadowEnabled": false,
+            "italic": false,
+            "outlineColor": "255;255;255",
+            "outlineThickness": 2,
+            "shadowAngle": 90,
+            "shadowBlurRadius": 2,
+            "shadowColor": "0;0;0",
+            "shadowDistance": 4,
+            "shadowOpacity": 127,
+            "smoothed": true,
+            "underlined": false,
+            "text": "T",
+            "font": "",
+            "textAlignment": "left",
+            "verticalTextAlignment": "top",
+            "characterSize": 20,
+            "lineHeight": 0,
+            "color": "0;0;0"
+          }
+        }
+      ],
+      "objectsFolderStructure": {
+        "folderName": "__ROOT",
+        "children": [
+          {
+            "objectName": "Sprite"
+          },
+          {
+            "objectName": "Collider"
+          },
+          {
+            "objectName": "Logs"
+          }
+        ]
+      },
+      "objectsGroups": [],
+      "layers": [
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [
+            {
+              "defaultSize": true,
+              "defaultViewport": true,
+              "height": 0,
+              "viewportBottom": 1,
+              "viewportLeft": 0,
+              "viewportRight": 1,
+              "viewportTop": 0,
+              "width": 0
+            }
+          ],
+          "effects": []
+        },
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "Main",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [],
+          "effects": [
+            {
+              "effectType": "Scene3D::HemisphereLight",
+              "name": "3D Ambient Hemisphere Light",
+              "doubleParameters": {
+                "elevation": 40,
+                "intensity": 0.33,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "groundColor": "127;127;127",
+                "skyColor": "255;255;255",
+                "top": "Z+"
+              },
+              "booleanParameters": {}
+            },
+            {
+              "effectType": "Scene3D::DirectionalLight",
+              "name": "3D Sun Light",
+              "doubleParameters": {
+                "distanceFromCamera": 1500,
+                "elevation": 40,
+                "frustumSize": 4000,
+                "intensity": 0.75,
+                "minimumShadowBias": 0,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "color": "255;255;255",
+                "shadowQuality": "medium",
+                "top": "Z+"
+              },
+              "booleanParameters": {
+                "isCastingShadow": true
+              }
+            }
+          ]
+        },
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "Debug",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [],
+          "effects": [
+            {
+              "effectType": "Scene3D::HemisphereLight",
+              "name": "3D Ambient Hemisphere Light",
+              "doubleParameters": {
+                "elevation": 40,
+                "intensity": 0.33,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "groundColor": "127;127;127",
+                "skyColor": "255;255;255",
+                "top": "Z+"
+              },
+              "booleanParameters": {}
+            },
+            {
+              "effectType": "Scene3D::DirectionalLight",
+              "name": "3D Sun Light",
+              "doubleParameters": {
+                "distanceFromCamera": 1500,
+                "elevation": 40,
+                "frustumSize": 4000,
+                "intensity": 0.75,
+                "minimumShadowBias": 0,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "color": "255;255;255",
+                "shadowQuality": "medium",
+                "top": "Z+"
+              },
+              "booleanParameters": {
+                "isCastingShadow": true
+              }
+            }
+          ]
+        }
+      ],
+      "instances": [
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "Debug",
+          "name": "Collider",
+          "persistentUuid": "03bd1215-bf26-460a-be19-b63a766eb887",
+          "width": 0,
+          "x": 0,
+          "y": 0,
+          "zOrder": 1,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "Main",
+          "name": "Sprite",
+          "persistentUuid": "7365608c-73d6-4de9-ae41-b458bcc779de",
+          "width": 0,
+          "x": 0,
+          "y": 0,
+          "zOrder": 2,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "Debug",
+          "name": "Logs",
+          "persistentUuid": "895224b2-25d2-4d68-b3a2-24aec9018bf0",
+          "width": 0,
+          "x": -14,
+          "y": 20,
+          "zOrder": 0,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        }
+      ],
+      "eventsFunctions": [
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "onCreated",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetIncludedInParentCollisionMask"
+                  },
+                  "parameters": [
+                    "Sprite",
+                    "no"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetIncludedInParentCollisionMask"
+                  },
+                  "parameters": [
+                    "Collider",
+                    "yes"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetIncludedInParentCollisionMask"
+                  },
+                  "parameters": [
+                    "Logs",
+                    "no"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ChangePlan"
+                  },
+                  "parameters": [
+                    "Object",
+                    "=",
+                    "Object.Y()"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Explosion",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "doStepPostEvents",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::HasAnimationEnded"
+                  },
+                  "parameters": [
+                    "Collider",
+                    "Animation"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Collider",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::HasAnimationEnded"
+                  },
+                  "parameters": [
+                    "Sprite",
+                    "Animation"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Object",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Explosion",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "Log on Explosion (Custom object)",
+          "functionType": "Action",
+          "name": "Log",
+          "sentence": "print _PARAM1_ on _PARAM0_ (Explosion custom object)",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                  },
+                  "parameters": [
+                    "Logs",
+                    "Text",
+                    "=",
+                    "log"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Explosion",
+              "type": "object"
+            },
+            {
+              "description": "Log",
+              "name": "log",
+              "type": "string"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Show/Hide the layer that have all the debug stats and draws",
+          "fullName": "Show/Hide debug layer for explosion (Custom object)",
+          "functionType": "Action",
+          "name": "SetDebug",
+          "sentence": "Set _PARAM1_ on _PARAM0_ (Explosion custom object) for debug",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Acitve",
+                    "",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "HideLayer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Debug\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Acitve",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ShowLayer"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Debug\""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Explosion",
+              "type": "object"
+            },
+            {
+              "description": "Active",
+              "name": "Acitve",
+              "type": "yesorno"
             }
           ],
           "objectGroups": []

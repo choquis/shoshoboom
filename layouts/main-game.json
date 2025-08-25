@@ -2011,7 +2011,7 @@
                                       "parameters": [
                                         "WhiteBullet",
                                         "=",
-                                        "CustomObjects::GetFrameByAngle12frames(Tanks.GetCannonAngle())"
+                                        "CustomFunctions::GetFrameByAngle(Tanks.GetCannonAngle(), 12)"
                                       ]
                                     },
                                     {
@@ -2176,7 +2176,7 @@
                                       "parameters": [
                                         "MissileBullet",
                                         "=",
-                                        "CustomObjects::GetFrameByAngle12frames(Tanks.GetCannonAngle())"
+                                        "CustomFunctions::GetFrameByAngle(Tanks.GetCannonAngle(), 12)"
                                       ]
                                     },
                                     {
@@ -2538,7 +2538,6 @@
                           "comment": "Place landmine"
                         },
                         {
-                          "folded": true,
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
                             {
@@ -2785,7 +2784,6 @@
                           "comment": "Leave marks when move"
                         },
                         {
-                          "folded": true,
                           "type": "BuiltinCommonInstructions::Standard",
                           "conditions": [
                             {
@@ -3400,7 +3398,7 @@
                                   "parameters": [
                                     "Bullets",
                                     "=",
-                                    "CustomObjects::GetFrameByAngle12frames(AuxAngle)"
+                                    "CustomFunctions::GetFrameByAngle(AuxAngle, 12)"
                                   ]
                                 },
                                 {

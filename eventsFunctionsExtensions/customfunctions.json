@@ -1,0 +1,308 @@
+{
+  "author": "",
+  "category": "",
+  "extensionNamespace": "",
+  "fullName": "",
+  "gdevelopVersion": "",
+  "helpPath": "",
+  "iconUrl": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0ibWRpLWZ1bmN0aW9uLXZhcmlhbnQiIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIuNDIsNS4yOUMxMS4zMiw1LjE5IDEwLjM1LDYgMTAuMjUsNy4xMUwxMCwxMEgxMi44MlYxMkg5LjgyTDkuMzgsMTcuMDdDOS4xOCwxOS4yNyA3LjI0LDIwLjkgNS4wNCwyMC43QzMuNzksMjAuNTkgMi42NiwxOS45IDIsMTguODNMMy41LDE3LjMzQzMuODMsMTguMzggNC45NiwxOC45NyA2LDE4LjYzQzYuNzgsMTguMzkgNy4zMywxNy43IDcuNCwxNi44OUw3LjgyLDEySDQuODJWMTBIOEw4LjI3LDYuOTNDOC40Niw0LjczIDEwLjM5LDMuMSAxMi42LDMuMjhDMTMuODYsMy4zOSAxNSw0LjA5IDE1LjY2LDUuMTdMMTQuMTYsNi42N0MxMy45MSw1LjkgMTMuMjMsNS4zNiAxMi40Miw1LjI5TTIyLDEzLjY1TDIwLjU5LDEyLjI0TDE3Ljc2LDE1LjA3TDE0LjkzLDEyLjI0TDEzLjUsMTMuNjVMMTYuMzUsMTYuNUwxMy41LDE5LjMxTDE0LjkzLDIwLjcyTDE3Ljc2LDE3Ljg5TDIwLjU5LDIwLjcyTDIyLDE5LjMxTDE5LjE3LDE2LjVMMjIsMTMuNjVaIiAvPjwvc3ZnPg==",
+  "name": "CustomFunctions",
+  "previewIconUrl": "https://asset-resources.gdevelop.io/public-resources/Icons/dcc753572f8f742876bf5f836175837827c6317404f04966e119361ee17c70ec_function-variant.svg",
+  "shortDescription": "",
+  "version": "",
+  "description": "",
+  "tags": [],
+  "authorIds": [],
+  "dependencies": [],
+  "globalVariables": [],
+  "sceneVariables": [],
+  "eventsFunctions": [
+    {
+      "description": "Return the reflection angle given the direction and normal",
+      "fullName": "Reflect Angle",
+      "functionType": "Expression",
+      "name": "ReflectAngle",
+      "sentence": "Return the reflect angle with _PARAM1_ direction and _PARAM2_ Normal",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 109,
+            "g": 230,
+            "r": 255,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "Following the formula v = inDirection - 2 * inNormal * dot(inDirection, inNormal)\nImitated by Unity Vector2.Reflect"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "V1X",
+                "=",
+                "XFromAngleAndDistance(DirectionAngle, 1)"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "V1Y",
+                "=",
+                "YFromAngleAndDistance(DirectionAngle, 1)"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "V2X",
+                "=",
+                "XFromAngleAndDistance(NormalAngle, 1)"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "V2Y",
+                "=",
+                "YFromAngleAndDistance(NormalAngle, 1)"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "dot",
+                "=",
+                "-2 * ((V1X*V2X) + (V1Y*V2Y))"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "nVX",
+                "=",
+                "dot * V2X + V1X"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "nVY",
+                "=",
+                "dot * V2Y + V1Y"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "NewAngle",
+                "=",
+                "AngleBetweenPositions(0,0,nVX,nVY)"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetReturnNumber"
+              },
+              "parameters": [
+                "NewAngle"
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "V1X",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "V1Y",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "V2X",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "V2Y",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "dot",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "nVX",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "nVY",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "NewAngle",
+              "type": "number",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "expressionType": {
+        "type": "expression"
+      },
+      "parameters": [
+        {
+          "description": "Direction angle",
+          "name": "DirectionAngle",
+          "type": "expression"
+        },
+        {
+          "description": "Normal angle",
+          "name": "NormalAngle",
+          "type": "expression"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Custom function to obtain the current frame in animation by an angle and total of frames per range",
+      "fullName": "Get frame by angle",
+      "functionType": "Expression",
+      "name": "GetFrameByAngle",
+      "sentence": "",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "NewAngle",
+                "=",
+                "Angle + 180"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "NewAngle",
+                    ">=",
+                    "360"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "NewAngle",
+                    "-",
+                    "360"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "NewFrame",
+                    "=",
+                    "trunc(round(NewAngle * (Frames/ 180)))"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "NewFrame"
+                  ]
+                }
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "NewAngle",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "NewFrame",
+              "type": "number",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "expressionType": {
+        "type": "expression"
+      },
+      "parameters": [
+        {
+          "description": "Angle",
+          "name": "Angle",
+          "type": "expression"
+        },
+        {
+          "description": "Frames",
+          "name": "Frames",
+          "type": "expression"
+        }
+      ],
+      "objectGroups": []
+    }
+  ],
+  "eventsBasedBehaviors": [],
+  "eventsBasedObjects": []
+}
