@@ -70,7 +70,7 @@
               },
               "parameters": [
                 "",
-                "Projectiles"
+                "Bullets"
               ]
             },
             {
@@ -80,7 +80,7 @@
               "parameters": [
                 "TotalBullets",
                 "=",
-                "PickedInstancesCount(Projectiles)"
+                "PickedInstancesCount(Bullets)"
               ]
             },
             {
@@ -170,6 +170,41 @@
           ]
         },
         {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "Obstacles",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomObjects::Obstacle::Log"
+              },
+              "parameters": [
+                "Obstacles",
+                "ToString(Obstacles.Damageable::CurrentHealth())",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "Players",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomObjects::Tank::Log"
+              },
+              "parameters": [
+                "Players",
+                "ToString(Players.Damageable::CurrentHealth())",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -207,7 +242,7 @@
             },
             {
               "type": "BuiltinCommonInstructions::ForEach",
-              "object": "Player0",
+              "object": "Players",
               "conditions": [],
               "actions": [
                 {
@@ -215,7 +250,7 @@
                     "value": "CustomObjects::Tank::SetDebug"
                   },
                   "parameters": [
-                    "Player0",
+                    "Players",
                     "yes",
                     ""
                   ]
@@ -224,7 +259,7 @@
             },
             {
               "type": "BuiltinCommonInstructions::ForEach",
-              "object": "Solid",
+              "object": "Walls",
               "conditions": [],
               "actions": [
                 {
@@ -232,7 +267,7 @@
                     "value": "CustomObjects::Wall::SetDebug"
                   },
                   "parameters": [
-                    "Solid",
+                    "Walls",
                     "yes",
                     ""
                   ]
@@ -258,7 +293,7 @@
             },
             {
               "type": "BuiltinCommonInstructions::ForEach",
-              "object": "Projectiles",
+              "object": "Bullets",
               "conditions": [],
               "actions": [
                 {
@@ -266,7 +301,7 @@
                     "value": "CustomObjects::Bullet::SetDebug"
                   },
                   "parameters": [
-                    "Projectiles",
+                    "Bullets",
                     "yes",
                     ""
                   ]
@@ -289,12 +324,30 @@
                   ]
                 }
               ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Obstacles",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Obstacle::SetDebug"
+                  },
+                  "parameters": [
+                    "Obstacles",
+                    "yes",
+                    ""
+                  ]
+                }
+              ]
             }
           ]
         }
       ]
     },
     {
+      "folded": true,
       "type": "BuiltinCommonInstructions::Standard",
       "conditions": [
         {
@@ -347,7 +400,7 @@
             },
             {
               "type": "BuiltinCommonInstructions::ForEach",
-              "object": "Player0",
+              "object": "Players",
               "conditions": [],
               "actions": [
                 {
@@ -355,7 +408,7 @@
                     "value": "CustomObjects::Tank::SetDebug"
                   },
                   "parameters": [
-                    "Player0",
+                    "Players",
                     "no",
                     ""
                   ]
@@ -364,7 +417,7 @@
             },
             {
               "type": "BuiltinCommonInstructions::ForEach",
-              "object": "Solid",
+              "object": "Walls",
               "conditions": [],
               "actions": [
                 {
@@ -372,7 +425,7 @@
                     "value": "CustomObjects::Wall::SetDebug"
                   },
                   "parameters": [
-                    "Solid",
+                    "Walls",
                     "no",
                     ""
                   ]
@@ -398,7 +451,7 @@
             },
             {
               "type": "BuiltinCommonInstructions::ForEach",
-              "object": "Projectiles",
+              "object": "Bullets",
               "conditions": [],
               "actions": [
                 {
@@ -406,7 +459,7 @@
                     "value": "CustomObjects::Bullet::SetDebug"
                   },
                   "parameters": [
-                    "Projectiles",
+                    "Bullets",
                     "no",
                     ""
                   ]
@@ -425,6 +478,23 @@
                   "parameters": [
                     "Explosions",
                     "no",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Obstacles",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Obstacle::SetDebug"
+                  },
+                  "parameters": [
+                    "Obstacles",
+                    "",
                     ""
                   ]
                 }

@@ -9,7 +9,7 @@
   "title": "",
   "v": 220,
   "uiSettings": {
-    "grid": false,
+    "grid": true,
     "gridType": "rectangular",
     "gridWidth": 16,
     "gridHeight": 16,
@@ -17,8 +17,8 @@
     "gridOffsetY": 0,
     "gridColor": 10401023,
     "gridAlpha": 0.8,
-    "snap": false,
-    "zoomFactor": 2.345245927635566,
+    "snap": true,
+    "zoomFactor": 2.0538851749962554,
     "windowMask": false
   },
   "objectsGroups": [
@@ -88,6 +88,9 @@
         },
         {
           "name": "SolidWall"
+        },
+        {
+          "name": "SoftBreakableObstacle"
         }
       ]
     },
@@ -104,11 +107,31 @@
       "objects": [
         {
           "name": "SolidWall"
+        },
+        {
+          "name": "SoftBreakableObstacle"
+        },
+        {
+          "name": "BounceableWall"
         }
       ]
     },
     {
-      "name": "Projectiles",
+      "name": "SolidForBullet",
+      "objects": [
+        {
+          "name": "Player0"
+        },
+        {
+          "name": "SolidWall"
+        },
+        {
+          "name": "SoftBreakableObstacle"
+        }
+      ]
+    },
+    {
+      "name": "Bullets",
       "objects": [
         {
           "name": "TestBullet"
@@ -148,6 +171,33 @@
       "objects": [
         {
           "name": "ExplosionDefaultBullet"
+        }
+      ]
+    },
+    {
+      "name": "Obstacles",
+      "objects": [
+        {
+          "name": "SoftBreakableObstacle"
+        }
+      ]
+    },
+    {
+      "name": "Walls",
+      "objects": [
+        {
+          "name": "SolidWall"
+        }
+      ]
+    },
+    {
+      "name": "Damageable",
+      "objects": [
+        {
+          "name": "SoftBreakableObstacle"
+        },
+        {
+          "name": "Player0"
         }
       ]
     }
@@ -589,8 +639,8 @@
       "name": "BounceableWall",
       "persistentUuid": "85d84ee8-5f2f-48ec-84be-1c1cd492a100",
       "width": 0,
-      "x": 396,
-      "y": 102,
+      "x": 402,
+      "y": 114,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -605,8 +655,8 @@
       "name": "BounceableWall",
       "persistentUuid": "82838873-fc4d-4e77-8152-70752512b28e",
       "width": 0,
-      "x": 508,
-      "y": 102,
+      "x": 494,
+      "y": 115,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -621,8 +671,8 @@
       "name": "BounceableWall",
       "persistentUuid": "45ef216a-17e4-486e-a9ec-150734b547dc",
       "width": 0,
-      "x": 508,
-      "y": 217,
+      "x": 494,
+      "y": 206,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -654,7 +704,7 @@
       "persistentUuid": "0e8d7501-5df9-4045-90f4-3a4139604585",
       "width": 0,
       "x": 448,
-      "y": 240,
+      "y": 224,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -669,7 +719,7 @@
       "name": "BounceableWall",
       "persistentUuid": "b9b580ea-84ab-4239-8e9e-cee4c734519c",
       "width": 0,
-      "x": 528,
+      "x": 512,
       "y": 160,
       "zOrder": 8,
       "numberProperties": [],
@@ -702,7 +752,7 @@
       "persistentUuid": "ab28c1ec-39f3-4cff-ac68-91f8647ca925",
       "width": 0,
       "x": 448,
-      "y": 80,
+      "y": 96,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -815,8 +865,8 @@
       "name": "BounceableWall",
       "persistentUuid": "4b338443-a42c-4af6-8d19-2f4f5185c687",
       "width": 0,
-      "x": 398,
-      "y": 217,
+      "x": 402,
+      "y": 206,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -929,8 +979,8 @@
       "name": "Player0",
       "persistentUuid": "67c4ad93-c0c4-461b-8cc7-15c38213f50c",
       "width": 0,
-      "x": 234,
-      "y": -76,
+      "x": 240,
+      "y": 112,
       "zOrder": 13,
       "numberProperties": [],
       "stringProperties": [],
@@ -966,6 +1016,262 @@
       "x": -22,
       "y": -470,
       "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle",
+      "persistentUuid": "61596a50-e53b-4670-af18-880f846dab72",
+      "width": 0,
+      "x": 416,
+      "y": -304,
+      "zOrder": 14,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle",
+      "persistentUuid": "ec1ba835-3579-4bf2-9d4d-9dd28937b722",
+      "width": 0,
+      "x": 416,
+      "y": -368,
+      "zOrder": 14,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle",
+      "persistentUuid": "30c835cf-03d9-4d27-ab87-41ba9385679e",
+      "width": 0,
+      "x": 416,
+      "y": -288,
+      "zOrder": 14,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle",
+      "persistentUuid": "7159460a-cec0-4f4a-8595-70f1df81436a",
+      "width": 0,
+      "x": 416,
+      "y": -352,
+      "zOrder": 14,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle",
+      "persistentUuid": "a42ebab9-1ade-484f-a2b1-3ec7ee08d7a4",
+      "width": 0,
+      "x": 384,
+      "y": -97,
+      "zOrder": 14,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle",
+      "persistentUuid": "98b9943c-8a31-4d2b-be39-4420772af954",
+      "width": 0,
+      "x": 384,
+      "y": -160,
+      "zOrder": 14,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle",
+      "persistentUuid": "fcc57657-9759-405f-a4bf-ff41539e2e41",
+      "width": 0,
+      "x": 384,
+      "y": -81,
+      "zOrder": 16,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle",
+      "persistentUuid": "41564fb5-3152-4af2-9662-d7a26b652567",
+      "width": 0,
+      "x": 384,
+      "y": -144,
+      "zOrder": 16,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle",
+      "persistentUuid": "2c6d92e5-138e-4221-99dc-0b71cd4db16b",
+      "width": 0,
+      "x": 384,
+      "y": -304,
+      "zOrder": 14,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle",
+      "persistentUuid": "f4bba4cb-9e6d-4b12-a40e-25beedfbe3f4",
+      "width": 0,
+      "x": 384,
+      "y": -368,
+      "zOrder": 14,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle",
+      "persistentUuid": "0c9e4d64-50c2-4108-add8-ddc29c0e7b33",
+      "width": 0,
+      "x": 384,
+      "y": -288,
+      "zOrder": 14,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle",
+      "persistentUuid": "d0a0db5d-9af2-47df-84b8-f37c67334998",
+      "width": 0,
+      "x": 384,
+      "y": -352,
+      "zOrder": 14,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle",
+      "persistentUuid": "02b18be8-0bfc-44d4-999d-e8422ecb999e",
+      "width": 0,
+      "x": 400,
+      "y": -304,
+      "zOrder": 14,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle",
+      "persistentUuid": "73418408-6c0a-4094-812f-26817fc8c6c4",
+      "width": 0,
+      "x": 400,
+      "y": -368,
+      "zOrder": 14,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle",
+      "persistentUuid": "ef4236b5-16e5-4c80-847a-75063d662ca2",
+      "width": 0,
+      "x": 400,
+      "y": -288,
+      "zOrder": 14,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle",
+      "persistentUuid": "622529e4-802c-4919-9cbd-b9413b1fac55",
+      "width": 0,
+      "x": 400,
+      "y": -352,
+      "zOrder": 14,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1144,6 +1450,17 @@
         {
           "name": "Bounceable",
           "type": "CustomBehaviors::Bounceable"
+        },
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 3.033389e-317,
+          "Type": "Wall"
+        },
+        {
+          "name": "Wall",
+          "type": "CustomBehaviors::Wall",
+          "EntityBehavior": "Entity"
         }
       ],
       "content": {}
@@ -1471,6 +1788,13 @@
           "ObjectName": "DefaultBullet"
         },
         {
+          "name": "Damageable",
+          "type": "CustomBehaviors::Damageable",
+          "EntityBehavior": "Entity",
+          "Health": 200,
+          "CurrentHealth": 2.0247e-320
+        },
+        {
           "name": "Entity",
           "type": "CustomBehaviors::Entity",
           "Id": 9.854645721257145e+165,
@@ -1481,7 +1805,7 @@
           "type": "CustomBehaviors::Tank",
           "EntityBehavior": "Entity",
           "BulletObjects": "BulletObjects",
-          "MoveSpeed": 100
+          "MoveSpeed": 70
         }
       ],
       "content": {},
@@ -1599,7 +1923,63 @@
         {
           "name": "Explosion",
           "type": "CustomBehaviors::Explosion",
-          "EntityBehavior": "Entity"
+          "EntityBehavior": "Entity",
+          "Damage": 100,
+          "AOE": false
+        }
+      ],
+      "content": {}
+    },
+    {
+      "assetStoreId": "",
+      "name": "SoftBreakableObstacle",
+      "type": "CustomObjects::Obstacle",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Damageable",
+          "type": "CustomBehaviors::Damageable",
+          "EntityBehavior": "Entity",
+          "Health": 200,
+          "CurrentHealth": 2.0247e-320
+        },
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 2.75859452924e-313,
+          "Type": "Obstacle"
+        },
+        {
+          "name": "Obstacle",
+          "type": "CustomBehaviors::Obstacle",
+          "EntityBehavior": "Entity",
+          "Health": 200,
+          "CurrentHealth": 2.0247e-320
+        }
+      ],
+      "content": {}
+    },
+    {
+      "assetStoreId": "",
+      "name": "ExplosionLongBullet",
+      "type": "CustomObjects::Explosion",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 3.033389e-317,
+          "Type": "Wall"
+        },
+        {
+          "name": "Explosion",
+          "type": "CustomBehaviors::Explosion",
+          "EntityBehavior": "Entity",
+          "Damage": 100
         }
       ],
       "content": {}
@@ -1608,6 +1988,14 @@
   "objectsFolderStructure": {
     "folderName": "__ROOT",
     "children": [
+      {
+        "folderName": "Obstacles",
+        "children": [
+          {
+            "objectName": "SoftBreakableObstacle"
+          }
+        ]
+      },
       {
         "folderName": "Debug",
         "children": [
@@ -1656,6 +2044,9 @@
           },
           {
             "objectName": "LongBullet"
+          },
+          {
+            "objectName": "ExplosionLongBullet"
           },
           {
             "objectName": "TestBulletAmmo"
@@ -1795,6 +2186,41 @@
                   ]
                 }
               ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": []
+            },
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 255,
+                "textG": 255,
+                "textR": 255
+              },
+              "comment": "Initialize the health visuals of obstacles"
+            },
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Obstacles",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Obstacle::Update"
+                  },
+                  "parameters": [
+                    "Obstacles",
+                    "Obstacles.Damageable::CurrentHealth()",
+                    "Obstacles.Damageable::CurrentHealth()",
+                    ""
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -1853,6 +2279,18 @@
             "",
             "Player0",
             "",
+            "\"Background\"",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "CentreCamera"
+          },
+          "parameters": [
+            "",
+            "Player0",
+            "",
             "\"Debug\"",
             ""
           ]
@@ -1892,996 +2330,23 @@
       "comment": "\n\n"
     },
     {
-      "colorB": 82,
-      "colorG": 68,
-      "colorR": 62,
-      "creationTime": 0,
-      "name": "Player logic",
-      "source": "",
-      "type": "BuiltinCommonInstructions::Group",
-      "events": [
-        {
-          "colorB": 82,
-          "colorG": 68,
-          "colorR": 62,
-          "creationTime": 0,
-          "name": "Shoot",
-          "source": "",
-          "type": "BuiltinCommonInstructions::Group",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Comment",
-              "color": {
-                "b": 52,
-                "g": 44,
-                "r": 40,
-                "textB": 255,
-                "textG": 255,
-                "textR": 255
-              },
-              "comment": "We use a group for 2 things.\n1. Can read the behaviors, in this case we need the behavior \"ProjectileObject\"\n2. We prepare for multplayer by checking with the object name"
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "StringVariable"
-                  },
-                  "parameters": [
-                    "MAINGAME.Input.Shoot",
-                    "=",
-                    "_CONSTANTS_.InputState.Pressed"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::CompareStrings"
-                  },
-                  "parameters": [
-                    "Players.ObjectName()",
-                    "=",
-                    "\"Player\" + \"0\""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Once"
-                  },
-                  "parameters": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "CreateByName"
-                  },
-                  "parameters": [
-                    "",
-                    "Projectiles",
-                    "Players.BulletObjects::ProjectileObjectName()",
-                    "Player0.MuzzleX()",
-                    "Player0.MuzzleY()",
-                    "_CONSTANTS_.Layers.Main"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "CustomBehaviors::Bullet::ThrowForDebug"
-                  },
-                  "parameters": [
-                    "Projectiles",
-                    "Bullet",
-                    "Projectiles",
-                    "Players.LookAngle()",
-                    "_CONFIG_.debug",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "CustomBehaviors::Bullet::SetParentId"
-                  },
-                  "parameters": [
-                    "Projectiles",
-                    "Bullet",
-                    "Players.Entity::Id()",
-                    ""
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": []
-        },
-        {
-          "type": "BuiltinCommonInstructions::Comment",
-          "color": {
-            "b": 52,
-            "g": 44,
-            "r": 40,
-            "textB": 255,
-            "textG": 255,
-            "textR": 255
-          },
-          "comment": "\n\n"
-        },
-        {
-          "colorB": 82,
-          "colorG": 68,
-          "colorR": 62,
-          "creationTime": 0,
-          "name": "Sight",
-          "source": "",
-          "type": "BuiltinCommonInstructions::Group",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Comment",
-              "color": {
-                "b": 52,
-                "g": 44,
-                "r": 40,
-                "textB": 255,
-                "textG": 255,
-                "textR": 255
-              },
-              "comment": "Invert Y for the coordinals"
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "LookX",
-                    "=",
-                    "MAINGAME.Input.LookX"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "LookY",
-                    "=",
-                    "MAINGAME.Input.LookY"
-                  ]
-                }
-              ],
-              "events": [
-                {
-                  "type": "BuiltinCommonInstructions::Comment",
-                  "color": {
-                    "b": 52,
-                    "g": 44,
-                    "r": 40,
-                    "textB": 255,
-                    "textG": 255,
-                    "textR": 255
-                  },
-                  "comment": "Adjustment for mouse control. And in case the camera follow the player"
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "StringVariable"
-                      },
-                      "parameters": [
-                        "_CONFIG_.Players[0].InputType",
-                        "=",
-                        "_CONSTANTS_.InputType.Keyboard"
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "LookX",
-                        "=",
-                        "LookX + CameraX - Player0.CenterX()"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "LookY",
-                        "=",
-                        "LookY + CameraY - Player0.CenterY()"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "LookAngle",
-                        "=",
-                        "AngleBetweenPositions(0, 0, LookX, LookY)"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "CustomObjects::Tank::LookTo"
-                      },
-                      "parameters": [
-                        "Player0",
-                        "LookAngle",
-                        ""
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Comment",
-                  "color": {
-                    "b": 52,
-                    "g": 44,
-                    "r": 40,
-                    "textB": 255,
-                    "textG": 255,
-                    "textR": 255
-                  },
-                  "comment": "Show cursor"
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "StringVariable"
-                      },
-                      "parameters": [
-                        "_CONFIG_.Players[0].InputType",
-                        "=",
-                        "_CONSTANTS_.InputType.Keyboard"
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "LookX",
-                        "=",
-                        "MAINGAME.Input.LookX + CameraX"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "LookY",
-                        "=",
-                        "MAINGAME.Input.LookY + CameraY"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "DistanceOnCursor",
-                        "=",
-                        "DistanceBetweenPositions(Player0.MuzzleX(), Player0.MuzzleY(), LookX, LookY)"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "MettreXY"
-                      },
-                      "parameters": [
-                        "CursorCollision",
-                        "=",
-                        "LookX",
-                        "=",
-                        "LookY"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "SetAngle"
-                      },
-                      "parameters": [
-                        "CursorCollision",
-                        "=",
-                        "Player0.LookAngle() + 90"
-                      ]
-                    }
-                  ],
-                  "events": [
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "BuiltinCommonInstructions::CompareNumbers"
-                          },
-                          "parameters": [
-                            "DistanceOnCursor",
-                            ">",
-                            "MinDistance"
-                          ]
-                        }
-                      ],
-                      "actions": [],
-                      "events": [
-                        {
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [
-                            {
-                              "type": {
-                                "value": "Raycast"
-                              },
-                              "parameters": [
-                                "Cursor Collisions",
-                                "Player0.MuzzleX()",
-                                "Player0.MuzzleY()",
-                                "LookAngle",
-                                "MaxDistance",
-                                "iX",
-                                "iY",
-                                ""
-                              ]
-                            }
-                          ],
-                          "actions": [
-                            {
-                              "type": {
-                                "value": "SetBooleanVariable"
-                              },
-                              "parameters": [
-                                "CursorHit",
-                                "True",
-                                ""
-                              ]
-                            }
-                          ],
-                          "events": [
-                            {
-                              "type": "BuiltinCommonInstructions::Standard",
-                              "conditions": [],
-                              "actions": [
-                                {
-                                  "type": {
-                                    "value": "PrimitiveDrawing::LineV2"
-                                  },
-                                  "parameters": [
-                                    "YellowPen",
-                                    "Player0.MuzzleX()",
-                                    "Player0.MuzzleY()",
-                                    "iX",
-                                    "iY",
-                                    "1"
-                                  ]
-                                },
-                                {
-                                  "type": {
-                                    "value": "MettreXY"
-                                  },
-                                  "parameters": [
-                                    "Cursor",
-                                    "=",
-                                    "iX",
-                                    "=",
-                                    "iY"
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "BuiltinCommonInstructions::Or"
-                          },
-                          "parameters": [],
-                          "subInstructions": [
-                            {
-                              "type": {
-                                "value": "BuiltinCommonInstructions::CompareNumbers"
-                              },
-                              "parameters": [
-                                "DistanceOnCursor",
-                                "<=",
-                                "MinDistance"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "BooleanVariable"
-                              },
-                              "parameters": [
-                                "CursorHit",
-                                "",
-                                ""
-                              ]
-                            }
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "PrimitiveDrawing::LineV2"
-                          },
-                          "parameters": [
-                            "YellowPen",
-                            "Player0.MuzzleX()",
-                            "Player0.MuzzleY()",
-                            "LookX",
-                            "LookY",
-                            "2"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "MettreXY"
-                          },
-                          "parameters": [
-                            "Cursor",
-                            "=",
-                            "LookX",
-                            "=",
-                            "LookY"
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "StringVariable"
-                      },
-                      "parameters": [
-                        "_CONFIG_.Players[0].InputType",
-                        "=",
-                        "_CONSTANTS_.InputType.Gamepad"
-                      ]
-                    }
-                  ],
-                  "actions": [],
-                  "events": [
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "Raycast"
-                          },
-                          "parameters": [
-                            "Bounceable",
-                            "Player0.MuzzleX()",
-                            "Player0.MuzzleY()",
-                            "LookAngle",
-                            "MaxDistance",
-                            "iX",
-                            "iY",
-                            ""
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "SetBooleanVariable"
-                          },
-                          "parameters": [
-                            "CursorHit",
-                            "True",
-                            ""
-                          ]
-                        }
-                      ],
-                      "events": [
-                        {
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [],
-                          "actions": [
-                            {
-                              "type": {
-                                "value": "PrimitiveDrawing::LineV2"
-                              },
-                              "parameters": [
-                                "YellowPen",
-                                "Player0.MuzzleX()",
-                                "Player0.MuzzleY()",
-                                "iX",
-                                "iY",
-                                "1"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "MettreXY"
-                              },
-                              "parameters": [
-                                "Cursor",
-                                "=",
-                                "iX",
-                                "=",
-                                "iY"
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "BooleanVariable"
-                          },
-                          "parameters": [
-                            "CursorHit",
-                            "",
-                            ""
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "SetNumberVariable"
-                          },
-                          "parameters": [
-                            "LookX",
-                            "=",
-                            "XFromAngleAndDistance(Player0.LookAngle(), MaxDistance / 5) + Player0.MuzzleX()"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetNumberVariable"
-                          },
-                          "parameters": [
-                            "LookY",
-                            "=",
-                            "YFromAngleAndDistance(Player0.LookAngle(), MaxDistance / 5) + Player0.MuzzleY()"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "PrimitiveDrawing::LineV2"
-                          },
-                          "parameters": [
-                            "YellowPen",
-                            "Player0.MuzzleX()",
-                            "Player0.MuzzleY()",
-                            "LookX",
-                            "LookY",
-                            "2"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "MettreXY"
-                          },
-                          "parameters": [
-                            "Cursor",
-                            "=",
-                            "LookX",
-                            "=",
-                            "LookY"
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Comment",
-                  "color": {
-                    "b": 52,
-                    "g": 44,
-                    "r": 40,
-                    "textB": 255,
-                    "textG": 255,
-                    "textR": 255
-                  },
-                  "comment": "Draw points to cursor"
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "AjoutObjConcern"
-                      },
-                      "parameters": [
-                        "",
-                        "CursorPoint"
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "TotalPoints",
-                        "=",
-                        "PickedInstancesCount(CursorPoint)"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "DistanceOnCursor",
-                        "=",
-                        "DistanceBetweenPositions(Player0.MuzzleX(), Player0.MuzzleY(), Cursor.CenterX(), Cursor.CenterY())"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "SpaceX",
-                        "=",
-                        "(Cursor.CenterX() - Player0.MuzzleX()) / TotalPoints"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "SpaceY",
-                        "=",
-                        "(Cursor.CenterY() - Player0.MuzzleY()) / TotalPoints"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::ForEach",
-                  "object": "CursorPoint",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "MettreXY"
-                      },
-                      "parameters": [
-                        "CursorPoint",
-                        "=",
-                        "Player0.MuzzleX() + (PointIndex * SpaceX)",
-                        "=",
-                        "Player0.MuzzleY() + (PointIndex * SpaceY)"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "PointIndex",
-                        "+",
-                        "1"
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "variables": [
-                {
-                  "name": "LookX",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "LookY",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "LookAngle",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "CursorHit",
-                  "type": "boolean",
-                  "value": false
-                },
-                {
-                  "name": "DistanceOnCursor",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "MinDistance",
-                  "type": "number",
-                  "value": 24
-                },
-                {
-                  "name": "MaxDistance",
-                  "type": "number",
-                  "value": 1000
-                },
-                {
-                  "name": "TotalPoints",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "SpaceX",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "SpaceY",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "PointIndex",
-                  "type": "number",
-                  "value": 0
-                }
-              ]
-            }
-          ],
-          "parameters": []
-        },
-        {
-          "type": "BuiltinCommonInstructions::Comment",
-          "color": {
-            "b": 52,
-            "g": 44,
-            "r": 40,
-            "textB": 255,
-            "textG": 255,
-            "textR": 255
-          },
-          "comment": "\n\n"
-        },
-        {
-          "colorB": 82,
-          "colorG": 68,
-          "colorR": 62,
-          "creationTime": 0,
-          "name": "Move",
-          "source": "",
-          "type": "BuiltinCommonInstructions::Group",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Comment",
-              "color": {
-                "b": 52,
-                "g": 44,
-                "r": 40,
-                "textB": 255,
-                "textG": 255,
-                "textR": 255
-              },
-              "comment": "Invert Y for the coordinals"
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "MoveX",
-                    "=",
-                    "MAINGAME.Input.MoveX"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "MoveY",
-                    "=",
-                    "MAINGAME.Input.MoveY"
-                  ]
-                }
-              ],
-              "events": [
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "StringVariable"
-                      },
-                      "parameters": [
-                        "_CONFIG_.Players[0].InputType",
-                        "=",
-                        "_CONSTANTS_.InputType.Keyboard"
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "MoveY",
-                        "=",
-                        "-MoveY"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "BuiltinCommonInstructions::Or"
-                      },
-                      "parameters": [],
-                      "subInstructions": [
-                        {
-                          "type": {
-                            "value": "BuiltinCommonInstructions::CompareNumbers"
-                          },
-                          "parameters": [
-                            "abs(MoveX)",
-                            ">",
-                            "0"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "BuiltinCommonInstructions::CompareNumbers"
-                          },
-                          "parameters": [
-                            "abs(MoveY)",
-                            ">",
-                            "0"
-                          ]
-                        }
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "MoveAngle",
-                        "=",
-                        "AngleBetweenPositions(0,0,MoveX, MoveY)"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "AddForceAL"
-                      },
-                      "parameters": [
-                        "Player0",
-                        "MoveAngle",
-                        "Player0.Tank::MoveSpeed()",
-                        ""
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "variables": [
-                {
-                  "name": "MoveX",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "MoveY",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "MoveAngle",
-                  "type": "number",
-                  "value": 0
-                }
-              ]
-            }
-          ],
-          "parameters": []
-        },
-        {
-          "type": "BuiltinCommonInstructions::Comment",
-          "color": {
-            "b": 52,
-            "g": 44,
-            "r": 40,
-            "textB": 255,
-            "textG": 255,
-            "textR": 255
-          },
-          "comment": "\n\n"
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "CollisionNP"
-              },
-              "parameters": [
-                "Player0",
-                "Ammo",
-                "",
-                "",
-                ""
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "CustomBehaviors::BulletObjects::SetProjectileObject"
-              },
-              "parameters": [
-                "Player0",
-                "BulletObjects",
-                "Ammo.BulletObjects::ProjectileObjectName()",
-                ""
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "SeparateFromObjects"
-              },
-              "parameters": [
-                "Player0",
-                "Solid",
-                ""
-              ]
-            }
-          ]
-        }
-      ],
-      "parameters": []
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "Player related"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Link",
+      "include": {
+        "includeConfig": 0
+      },
+      "target": "Player Logic"
     },
     {
       "type": "BuiltinCommonInstructions::Comment",
@@ -2918,7 +2383,7 @@
         },
         {
           "type": "BuiltinCommonInstructions::ForEach",
-          "object": "Projectiles",
+          "object": "Bullets",
           "conditions": [],
           "actions": [],
           "events": [
@@ -2931,9 +2396,9 @@
                   },
                   "parameters": [
                     "Bounceable",
-                    "Projectiles.X()",
-                    "Projectiles.Y()",
-                    "Projectiles.ForceAngle()",
+                    "Bullets.X()",
+                    "Bullets.Y()",
+                    "Bullets.ForceAngle()",
                     "1000",
                     "iX",
                     "iY",
@@ -2953,8 +2418,8 @@
                       },
                       "parameters": [
                         "YellowPen",
-                        "Projectiles.X()",
-                        "Projectiles.Y()",
+                        "Bullets.X()",
+                        "Bullets.Y()",
                         "iX",
                         "iY",
                         "1"
@@ -2970,7 +2435,7 @@
                         "value": "BuiltinCommonInstructions::CompareNumbers"
                       },
                       "parameters": [
-                        "DistanceBetweenPositions(iX,iY,Projectiles.X(), Projectiles.Y())",
+                        "DistanceBetweenPositions(iX, iY, Bullets.X(), Bullets.Y())",
                         "<=",
                         "4"
                       ]
@@ -2982,7 +2447,7 @@
                         "value": "CustomBehaviors::Bullet::CollisionWithBounceable"
                       },
                       "parameters": [
-                        "Projectiles",
+                        "Bullets",
                         "Bullet",
                         "Bounceable",
                         "Bounceable",
@@ -2994,7 +2459,7 @@
                         "value": "CustomObjects::Bullet::Update"
                       },
                       "parameters": [
-                        "Projectiles",
+                        "Bullets",
                         ""
                       ]
                     }
@@ -3005,6 +2470,18 @@
           ]
         },
         {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
+          },
+          "comment": "CThe bullets don't do damage, I will create an explosion thats what will deal it"
+        },
+        {
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -3012,8 +2489,8 @@
                 "value": "CollisionNP"
               },
               "parameters": [
-                "Projectiles",
-                "Solid",
+                "Bullets",
+                "SolidForBullet",
                 "",
                 "",
                 ""
@@ -3026,9 +2503,9 @@
                 "value": "CustomBehaviors::Bullet::CollisionWithWall"
               },
               "parameters": [
-                "Projectiles",
+                "Bullets",
                 "Bullet",
-                "Solid",
+                "Damageable",
                 "Entity",
                 ""
               ]
@@ -3043,7 +2520,7 @@
                 "value": "CustomBehaviors::Bullet::WillExplode"
               },
               "parameters": [
-                "Projectiles",
+                "Bullets",
                 "Bullet",
                 ""
               ]
@@ -3057,9 +2534,9 @@
               "parameters": [
                 "",
                 "Explosions",
-                "\"Explosion\" + Projectiles.ObjectName()",
-                "Projectiles.X()",
-                "Projectiles.Y()",
+                "\"Explosion\" + Bullets.ObjectName()",
+                "Bullets.X()",
+                "Bullets.Y()",
                 "_CONSTANTS_.Layers.Main"
               ]
             },
@@ -3070,9 +2547,154 @@
               "parameters": [
                 "Explosions",
                 "Explosion",
-                "Projectiles.Bullet::ParentId()",
+                "Bullets.Bullet::ParentId()",
                 "_CONFIG_.debug",
                 "Explosions",
+                ""
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Explosion logic (damage related)",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": true,
+                "value": "CustomBehaviors::Explosion::AOE"
+              },
+              "parameters": [
+                "Explosions",
+                "Explosion",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "CollisionNP"
+              },
+              "parameters": [
+                "Explosions",
+                "Damageable",
+                "",
+                "",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "PickNearest"
+              },
+              "parameters": [
+                "Damageable",
+                "Explosions.X()",
+                "Explosions.Y()",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Damageable::DealDamage"
+              },
+              "parameters": [
+                "Damageable",
+                "Damageable",
+                "Explosions.Explosion::Damage()",
+                "Explosions.Entity::Id()",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Explosion::AOE"
+              },
+              "parameters": [
+                "Explosions",
+                "Explosion",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "CollisionNP"
+              },
+              "parameters": [
+                "Explosions",
+                "Damageable",
+                "",
+                "",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Damageable::DealDamage"
+              },
+              "parameters": [
+                "Damageable",
+                "Damageable",
+                "Explosions.Explosion::Damage()",
+                "Explosions.Entity::Id()",
+                ""
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Obstacles",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CustomObjects::Obstacle::Active"
+              },
+              "parameters": [
+                "Obstacles",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomObjects::Obstacle::Update"
+              },
+              "parameters": [
+                "Obstacles",
+                "Obstacles.Damageable::CurrentHealth()",
+                "Obstacles.Damageable::Health()",
                 ""
               ]
             }
@@ -3431,6 +3053,10 @@
       "type": "CustomBehaviors::BulletObjects"
     },
     {
+      "name": "Damageable",
+      "type": "CustomBehaviors::Damageable"
+    },
+    {
       "name": "Effect",
       "type": "EffectCapability::EffectBehavior"
     },
@@ -3449,6 +3075,10 @@
     {
       "name": "Flippable",
       "type": "FlippableCapability::FlippableBehavior"
+    },
+    {
+      "name": "Obstacle",
+      "type": "CustomBehaviors::Obstacle"
     },
     {
       "name": "Opacity",
@@ -3493,6 +3123,10 @@
     {
       "name": "Tween",
       "type": "Tween::TweenBehavior"
+    },
+    {
+      "name": "Wall",
+      "type": "CustomBehaviors::Wall"
     },
     {
       "name": "YSort",
