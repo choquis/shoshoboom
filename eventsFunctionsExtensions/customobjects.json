@@ -11663,7 +11663,7 @@
       "areaMinY": 0,
       "areaMinZ": 0,
       "defaultName": "",
-      "description": "Bullet visuals",
+      "description": "Bullet visuals.\nAdd the bullet to the \"Bullets\" group.\nAdd the name of the bullet in \"BulletObjects\" on \"CustomBehaviors\"",
       "fullName": "Bullet (Custom object)",
       "isAnimatable": true,
       "isUsingLegacyInstancesRenderer": false,
@@ -20347,7 +20347,7 @@
       "areaMinY": 0,
       "areaMinZ": 0,
       "defaultName": "",
-      "description": "Resource visuals",
+      "description": "Resource visuals.\nTo work you need to: \nCreate an object called \"BulletName\" + \"Ammo\" (the bullet reference).\nAppend the resource behavior to the object.\nAdd the new object in \"Ammo\" group.",
       "fullName": "Resource (Custom object)",
       "isUsingLegacyInstancesRenderer": false,
       "name": "Resource",
@@ -21291,7 +21291,7 @@
       "areaMinY": 0,
       "areaMinZ": 0,
       "defaultName": "",
-      "description": "",
+      "description": "Trails visual.\nTo work you need to:\nAttach the \"Trail\" behavior to the object that will leave the marks.\nCreate an object called \"Trail\" + \"Objectname\" (the object that will leave the marks).\nAdd the object to \"Trails\" group.",
       "fullName": "Trails (Custom object)",
       "isUsingLegacyInstancesRenderer": false,
       "name": "Trails",
@@ -21299,12 +21299,17 @@
         {
           "adaptCollisionMaskAutomatically": true,
           "assetStoreId": "",
-          "name": "Smoke",
+          "name": "Sprite",
           "type": "Sprite",
           "updateIfNotVisible": false,
           "variables": [],
           "effects": [],
-          "behaviors": [],
+          "behaviors": [
+            {
+              "name": "Tween",
+              "type": "Tween::TweenBehavior"
+            }
+          ],
           "animations": [
             {
               "name": "default",
@@ -21360,17 +21365,17 @@
           "assetStoreId": "",
           "bold": false,
           "italic": false,
-          "name": "Log",
+          "name": "Logs",
           "smoothed": true,
           "type": "TextObject::Text",
           "underlined": false,
           "variables": [],
           "effects": [],
           "behaviors": [],
-          "string": "Text",
+          "string": "T",
           "font": "",
           "textAlignment": "left",
-          "characterSize": 20,
+          "characterSize": 10,
           "color": {
             "b": 0,
             "g": 0,
@@ -21390,11 +21395,11 @@
             "shadowOpacity": 127,
             "smoothed": true,
             "underlined": false,
-            "text": "Text",
+            "text": "T",
             "font": "",
             "textAlignment": "left",
             "verticalTextAlignment": "top",
-            "characterSize": 20,
+            "characterSize": 10,
             "lineHeight": 0,
             "color": "0;0;0"
           }
@@ -21404,10 +21409,10 @@
         "folderName": "__ROOT",
         "children": [
           {
-            "objectName": "Smoke"
+            "objectName": "Sprite"
           },
           {
-            "objectName": "Log"
+            "objectName": "Logs"
           }
         ]
       },
@@ -21440,6 +21445,112 @@
             }
           ],
           "effects": []
+        },
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "Main",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [],
+          "effects": [
+            {
+              "effectType": "Scene3D::HemisphereLight",
+              "name": "3D Ambient Hemisphere Light",
+              "doubleParameters": {
+                "elevation": 40,
+                "intensity": 0.33,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "groundColor": "127;127;127",
+                "skyColor": "255;255;255",
+                "top": "Z+"
+              },
+              "booleanParameters": {}
+            },
+            {
+              "effectType": "Scene3D::DirectionalLight",
+              "name": "3D Sun Light",
+              "doubleParameters": {
+                "distanceFromCamera": 1500,
+                "elevation": 40,
+                "frustumSize": 4000,
+                "intensity": 0.75,
+                "minimumShadowBias": 0,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "color": "255;255;255",
+                "shadowQuality": "medium",
+                "top": "Z+"
+              },
+              "booleanParameters": {
+                "isCastingShadow": true
+              }
+            }
+          ]
+        },
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "Debug",
+          "renderingType": "",
+          "visibility": false,
+          "cameras": [],
+          "effects": [
+            {
+              "effectType": "Scene3D::HemisphereLight",
+              "name": "3D Ambient Hemisphere Light",
+              "doubleParameters": {
+                "elevation": 40,
+                "intensity": 0.33,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "groundColor": "127;127;127",
+                "skyColor": "255;255;255",
+                "top": "Z+"
+              },
+              "booleanParameters": {}
+            },
+            {
+              "effectType": "Scene3D::DirectionalLight",
+              "name": "3D Sun Light",
+              "doubleParameters": {
+                "distanceFromCamera": 1500,
+                "elevation": 40,
+                "frustumSize": 4000,
+                "intensity": 0.75,
+                "minimumShadowBias": 0,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "color": "255;255;255",
+                "shadowQuality": "medium",
+                "top": "Z+"
+              },
+              "booleanParameters": {
+                "isCastingShadow": true
+              }
+            }
+          ]
         }
       ],
       "instances": [
@@ -21448,8 +21559,8 @@
           "customSize": false,
           "height": 0,
           "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
+          "layer": "Main",
+          "name": "Sprite",
           "persistentUuid": "102523f2-d907-4ab4-8169-f72951d860d0",
           "width": 0,
           "x": 0,
@@ -21464,428 +21575,12 @@
           "customSize": false,
           "height": 0,
           "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "b3ed16cc-8147-43a6-8bb2-18b856e23080",
+          "layer": "Debug",
+          "name": "Logs",
+          "persistentUuid": "47bddd37-7c59-46cf-9bab-48feb57eee63",
           "width": 0,
           "x": 0,
-          "y": 7,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "e7bd6730-1f8b-4580-b937-bf93ac800552",
-          "width": 0,
-          "x": 0,
-          "y": 14,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "5851c3df-97db-4769-8649-55a4656e0042",
-          "width": 0,
-          "x": 0,
-          "y": -21,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "a4ae7491-64f7-4520-b87e-43e980c5cb10",
-          "width": 0,
-          "x": 0,
-          "y": -14,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "3179ddc6-23ef-468d-9bcd-f084efd73dc2",
-          "width": 0,
-          "x": 0,
-          "y": -7,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "4678fcc8-a84c-498f-ad40-3c1948073885",
-          "width": 0,
-          "x": 0,
-          "y": 21,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "a7fe230d-54eb-4d6b-a412-b091d933b619",
-          "width": 0,
-          "x": 0,
-          "y": 28,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "d9089789-b56a-411a-b4b2-b1073d008d6d",
-          "width": 0,
-          "x": 0,
-          "y": 35,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "16f7104d-1457-4c61-b4a0-0374ca3bb84e",
-          "width": 0,
-          "x": 0,
-          "y": -63,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "24e68fa5-bcb0-4c9e-9b3f-a5b7fac9c12c",
-          "width": 0,
-          "x": 0,
-          "y": -56,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "756af02b-fb41-49ba-8e0c-eba85aa396bc",
-          "width": 0,
-          "x": 0,
-          "y": -49,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "997e78fd-ca7d-4628-9e9f-2ce4c1910db8",
-          "width": 0,
-          "x": 0,
-          "y": -84,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "07d0ab86-3c09-4def-b7f7-0b911e3a7e10",
-          "width": 0,
-          "x": 0,
-          "y": -77,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "b1d43519-decb-492b-bd1c-6f298e0d2b16",
-          "width": 0,
-          "x": 0,
-          "y": -70,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "4d9b6767-4684-4d4f-a3a7-816813dbc760",
-          "width": 0,
-          "x": 0,
-          "y": -42,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "02139b13-6a75-4303-b494-b105aa8083c1",
-          "width": 0,
-          "x": 0,
-          "y": -35,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "c0e6352b-b456-452f-8f25-b77a3995dbae",
-          "width": 0,
-          "x": 0,
-          "y": -28,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "7d339dab-9612-4eaf-87b3-da24e4a26e2b",
-          "width": 0,
-          "x": 0,
-          "y": 63,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "6ac4c4ef-234d-4294-9c04-c6ec57822721",
-          "width": 0,
-          "x": 0,
-          "y": 70,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "a5df9091-1614-48ec-a1bd-ecedf8844bda",
-          "width": 0,
-          "x": 0,
-          "y": 77,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "c53b09cb-9cd9-4bf7-b144-cb78be2f75b9",
-          "width": 0,
-          "x": 0,
-          "y": 42,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "e9f3f25e-98c2-4b8f-b99f-956067be8f9a",
-          "width": 0,
-          "x": 0,
-          "y": 49,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "fbc18e64-34bb-43c9-88a0-80880052147b",
-          "width": 0,
-          "x": 0,
-          "y": 56,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "02952a0e-a959-40d3-a47b-d6c82eb1e080",
-          "width": 0,
-          "x": 0,
-          "y": 84,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "47445a3e-b3b1-4254-b065-508b05561195",
-          "width": 0,
-          "x": 0,
-          "y": 91,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Smoke",
-          "persistentUuid": "d435a0d1-aca2-49b7-ae50-9e4959266f59",
-          "width": 0,
-          "x": 0,
-          "y": 98,
-          "zOrder": 8,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": false,
-          "height": 0,
-          "keepRatio": true,
-          "layer": "",
-          "name": "Log",
-          "persistentUuid": "329261a1-fd55-465f-b8f8-276f44b2fe52",
-          "width": 0,
-          "x": -43,
-          "y": -5,
+          "y": 4,
           "zOrder": 9,
           "numberProperties": [],
           "stringProperties": [],
@@ -21896,7 +21591,7 @@
         {
           "fullName": "",
           "functionType": "Action",
-          "name": "doStepPostEvents",
+          "name": "onCreated",
           "sentence": "",
           "events": [
             {
@@ -21905,23 +21600,31 @@
               "actions": [
                 {
                   "type": {
-                    "value": "ChangePlan"
+                    "value": "SetIncludedInParentCollisionMask"
                   },
                   "parameters": [
-                    "Object",
-                    "=",
-                    "Object.Y()"
+                    "Sprite",
+                    "no"
                   ]
                 },
                 {
                   "type": {
-                    "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                    "value": "SetIncludedInParentCollisionMask"
                   },
                   "parameters": [
-                    "Log",
-                    "Text",
+                    "Logs",
+                    "no"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "OpacityCapability::OpacityBehavior::SetValue"
+                  },
+                  "parameters": [
+                    "Sprite",
+                    "Opacity",
                     "=",
-                    "ToString(Object.ZOrder())"
+                    "125"
                   ]
                 }
               ]
@@ -21933,6 +21636,136 @@
               "name": "Object",
               "supplementaryInformation": "CustomObjects::Trails",
               "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "doStepPostEvents",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ChangePlan"
+                  },
+                  "parameters": [
+                    "Object",
+                    "=",
+                    "Object.Y() - 1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                  },
+                  "parameters": [
+                    "Logs",
+                    "Text",
+                    "=",
+                    "ToString(trunc(Object.ZOrder()))"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
+                  },
+                  "parameters": [
+                    "Sprite",
+                    "Tween",
+                    "\"opacity\"",
+                    "0",
+                    "\"linear\"",
+                    "0.6",
+                    "no"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Tween::HasFinished"
+                  },
+                  "parameters": [
+                    "Sprite",
+                    "Tween",
+                    "\"opacity\""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Object",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Trails",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Update the angle of the sprite in the visuals",
+          "fullName": "Change angle of trail visual",
+          "functionType": "Action",
+          "name": "ChangeAngle",
+          "sentence": "Change visual angle of _PARAM0_ to _PARAM1_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetAngle"
+                  },
+                  "parameters": [
+                    "Sprite",
+                    "=",
+                    "Angle"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Trails",
+              "type": "object"
+            },
+            {
+              "description": "Angle",
+              "name": "Angle",
+              "type": "expression"
             }
           ],
           "objectGroups": []
@@ -21949,7 +21782,7 @@
       "areaMinY": 0,
       "areaMinZ": 0,
       "defaultName": "",
-      "description": "Make an explosion that can interact with other entities",
+      "description": "Make an explosion that can interact with other entities.\nTo work you need to: \nCreate an object called \"Explosion\" + \"BulletName\" (the bullet that create the explosion).\nAppend the explosion behavior to the object.\nAdd the new object in \"Explosions\" group.",
       "fullName": "Explosion (Custom object)",
       "isUsingLegacyInstancesRenderer": false,
       "name": "Explosion",

@@ -131,6 +131,382 @@
       "sharedPropertyDescriptors": []
     },
     {
+      "description": "Other entity can bounce in this object",
+      "fullName": "Bounceable (Behavior)",
+      "name": "Bounceable",
+      "objectType": "",
+      "eventsFunctions": [],
+      "propertyDescriptors": [],
+      "sharedPropertyDescriptors": []
+    },
+    {
+      "description": "This behavior give health and death to an entity",
+      "fullName": "Damageable (Behavior)",
+      "name": "Damageable",
+      "objectType": "",
+      "eventsFunctions": [
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "onCreated",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "CurrentHealth",
+                    "=",
+                    "Health"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Damageable",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Return the current health",
+          "fullName": "Get current health",
+          "functionType": "Expression",
+          "name": "CurrentHealth",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "CurrentHealth"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Damageable",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Return the current health",
+          "fullName": "Get current health",
+          "functionType": "Expression",
+          "name": "Health",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "Health"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Damageable",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Reduce health of object",
+          "fullName": "Deal damage",
+          "functionType": "Action",
+          "name": "DealDamage",
+          "sentence": "Deal_PARAM2_ damage to _PARAM0_ from _PARAM3_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ArrayTools::SplitString"
+                  },
+                  "parameters": [
+                    "",
+                    "IdsString",
+                    "\",\"",
+                    "ArrayList",
+                    ""
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::Not"
+                      },
+                      "parameters": [],
+                      "subInstructions": [
+                        {
+                          "type": {
+                            "value": "ArrayTools::HasString"
+                          },
+                          "parameters": [
+                            "",
+                            "ArrayList",
+                            "ToString(FromId)",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "CurrentHealth",
+                        "-",
+                        "Damage"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "DebuggerTools::ConsoleLog"
+                      },
+                      "parameters": [
+                        "\"deal damage \" + Object.ObjectName()",
+                        "",
+                        ""
+                      ]
+                    }
+                  ],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetStringVariable"
+                          },
+                          "parameters": [
+                            "IdsString",
+                            "+",
+                            "ToString(FromId) + \",\""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "DebuggerTools::ConsoleLog"
+                          },
+                          "parameters": [
+                            "IdsString",
+                            "",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "variables": [
+                {
+                  "name": "ArrayList",
+                  "type": "array",
+                  "children": []
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Damageable",
+              "type": "behavior"
+            },
+            {
+              "description": "Damage",
+              "name": "Damage",
+              "type": "expression"
+            },
+            {
+              "description": "From Id",
+              "name": "FromId",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Return if damageable have 0 health",
+          "fullName": "Check if damageable is dead",
+          "functionType": "Condition",
+          "name": "IsDead",
+          "sentence": "_PARAM0_ is dead",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "CurrentHealth",
+                    "<=",
+                    "0"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "CurrentHealth",
+                    ">",
+                    "0"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "False"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Damageable",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "",
+          "type": "Behavior",
+          "label": "Entity",
+          "description": "Entity behavior attached to the obstacle",
+          "extraInformation": [
+            "CustomBehaviors::Entity"
+          ],
+          "name": "EntityBehavior"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "label": "",
+          "description": "Max health of the obstacle before been destroyed",
+          "name": "Health"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "label": "",
+          "hidden": true,
+          "name": "CurrentHealth"
+        },
+        {
+          "value": "",
+          "type": "String",
+          "label": "",
+          "hidden": true,
+          "name": "IdsString"
+        }
+      ],
+      "sharedPropertyDescriptors": []
+    },
+    {
       "description": "This is to indicate that the object interact with others that have the Entity Behavior",
       "fullName": "Entity (Behavior)",
       "name": "Entity",
@@ -288,15 +664,6 @@
           "name": "Type"
         }
       ],
-      "sharedPropertyDescriptors": []
-    },
-    {
-      "description": "Other entity can bounce in this object",
-      "fullName": "Bounceable (Behavior)",
-      "name": "Bounceable",
-      "objectType": "",
-      "eventsFunctions": [],
-      "propertyDescriptors": [],
       "sharedPropertyDescriptors": []
     },
     {
@@ -1240,6 +1607,44 @@
       "objectType": "",
       "eventsFunctions": [
         {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "onCreated",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "CurrentTargets",
+                    "=",
+                    "0"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Explosion",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
           "description": "Set the parent id so it can identify what not to hurt",
           "fullName": "Set parent Id",
           "functionType": "Action",
@@ -1279,45 +1684,6 @@
               "description": "Parent Id",
               "name": "ParentId2",
               "type": "expression"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "fullName": "",
-          "functionType": "Expression",
-          "name": "ParentId",
-          "sentence": "",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetReturnNumber"
-                  },
-                  "parameters": [
-                    "ParentId"
-                  ]
-                }
-              ]
-            }
-          ],
-          "expressionType": {
-            "type": "expression"
-          },
-          "parameters": [
-            {
-              "description": "Object",
-              "name": "Object",
-              "type": "object"
-            },
-            {
-              "description": "Behavior",
-              "name": "Behavior",
-              "supplementaryInformation": "CustomBehaviors::Explosion",
-              "type": "behavior"
             }
           ],
           "objectGroups": []
@@ -1443,10 +1809,9 @@
           "objectGroups": []
         },
         {
-          "description": "Damage deal",
-          "fullName": "Damage",
+          "fullName": "",
           "functionType": "Expression",
-          "name": "Damage",
+          "name": "ParentId",
           "sentence": "",
           "events": [
             {
@@ -1458,7 +1823,123 @@
                     "value": "SetReturnNumber"
                   },
                   "parameters": [
+                    "ParentId"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Explosion",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Add count target to explosion",
+          "fullName": "Add count target",
+          "functionType": "Action",
+          "name": "AddTarget",
+          "sentence": "Add count target to _PARAM0_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "CurrentTargets",
+                    "+",
+                    "1"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Explosion",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Damage deal",
+          "fullName": "Damage",
+          "functionType": "Expression",
+          "name": "Damage",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Explosion::CanDamage"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Behavior",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
                     "Damage"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "CustomBehaviors::Explosion::CanDamage"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Behavior",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "0"
                   ]
                 }
               ]
@@ -1494,12 +1975,12 @@
               "conditions": [
                 {
                   "type": {
-                    "value": "BooleanVariable"
+                    "value": "NumberVariable"
                   },
                   "parameters": [
-                    "AOE",
-                    "True",
-                    ""
+                    "TotalTargets",
+                    ">",
+                    "1"
                   ]
                 }
               ],
@@ -1519,12 +2000,85 @@
               "conditions": [
                 {
                   "type": {
-                    "value": "BooleanVariable"
+                    "value": "NumberVariable"
                   },
                   "parameters": [
-                    "AOE",
-                    "",
-                    ""
+                    "TotalTargets",
+                    "<=",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "False"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Explosion",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Check if explosion has not reach his limit of targets",
+          "fullName": "Do explosion can do damage",
+          "functionType": "Condition",
+          "name": "CanDamage",
+          "sentence": "_PARAM0_ can deal damage",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "CurrentTargets",
+                    "<",
+                    "TotalTargets"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "CurrentTargets",
+                    ">=",
+                    "TotalTargets"
                   ]
                 }
               ],
@@ -1584,10 +2138,17 @@
         },
         {
           "value": "",
-          "type": "Boolean",
-          "label": "Do AOE damage",
-          "description": "Deal area of effect damage",
-          "name": "AOE"
+          "type": "Number",
+          "label": "Number of target hit",
+          "description": "The total of targets that will receive damage by this explosion; if 1 that means that only will hit 1 target.",
+          "name": "TotalTargets"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "label": "",
+          "hidden": true,
+          "name": "CurrentTargets"
         }
       ],
       "sharedPropertyDescriptors": []
@@ -1666,9 +2227,9 @@
       "sharedPropertyDescriptors": []
     },
     {
-      "description": "This behavior give health and death to an entity",
-      "fullName": "Damageable (Behavior)",
-      "name": "Damageable",
+      "description": "Marks that an object make when moving",
+      "fullName": "Trails (Behavior)",
+      "name": "Trails",
       "objectType": "",
       "eventsFunctions": [
         {
@@ -1683,12 +2244,11 @@
               "actions": [
                 {
                   "type": {
-                    "value": "SetNumberVariable"
+                    "value": "ResetObjectTimer"
                   },
                   "parameters": [
-                    "CurrentHealth",
-                    "=",
-                    "Health"
+                    "Object",
+                    "\"SpawnCooldown\""
                   ]
                 }
               ]
@@ -1703,224 +2263,90 @@
             {
               "description": "Behavior",
               "name": "Behavior",
-              "supplementaryInformation": "CustomBehaviors::Damageable",
+              "supplementaryInformation": "CustomBehaviors::Trails",
               "type": "behavior"
             }
           ],
           "objectGroups": []
         },
         {
-          "description": "Return the current health",
-          "fullName": "Get current health",
-          "functionType": "Expression",
-          "name": "CurrentHealth",
-          "sentence": "",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetReturnNumber"
-                  },
-                  "parameters": [
-                    "CurrentHealth"
-                  ]
-                }
-              ]
-            }
-          ],
-          "expressionType": {
-            "type": "expression"
-          },
-          "parameters": [
-            {
-              "description": "Object",
-              "name": "Object",
-              "type": "object"
-            },
-            {
-              "description": "Behavior",
-              "name": "Behavior",
-              "supplementaryInformation": "CustomBehaviors::Damageable",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "Return the current health",
-          "fullName": "Get current health",
-          "functionType": "Expression",
-          "name": "Health",
-          "sentence": "",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetReturnNumber"
-                  },
-                  "parameters": [
-                    "Health"
-                  ]
-                }
-              ]
-            }
-          ],
-          "expressionType": {
-            "type": "expression"
-          },
-          "parameters": [
-            {
-              "description": "Object",
-              "name": "Object",
-              "type": "object"
-            },
-            {
-              "description": "Behavior",
-              "name": "Behavior",
-              "supplementaryInformation": "CustomBehaviors::Damageable",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "Reduce health of object",
-          "fullName": "Deal damage",
+          "fullName": "",
           "functionType": "Action",
-          "name": "DealDamage",
-          "sentence": "Deal_PARAM2_ damage to _PARAM0_ from _PARAM3_",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "ArrayTools::SplitString"
-                  },
-                  "parameters": [
-                    "",
-                    "IdsString",
-                    "\",\"",
-                    "ArrayList",
-                    ""
-                  ]
-                }
-              ],
-              "events": [
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "BuiltinCommonInstructions::Not"
-                      },
-                      "parameters": [],
-                      "subInstructions": [
-                        {
-                          "type": {
-                            "value": "ArrayTools::HasString"
-                          },
-                          "parameters": [
-                            "",
-                            "ArrayList",
-                            "ToString(FromId)",
-                            ""
-                          ]
-                        }
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "CurrentHealth",
-                        "-",
-                        "Damage"
-                      ]
-                    }
-                  ],
-                  "events": [
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "SetStringVariable"
-                          },
-                          "parameters": [
-                            "IdsString",
-                            "+",
-                            "ToString(FromId) + \",\""
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "variables": [
-                {
-                  "name": "ArrayList",
-                  "type": "array",
-                  "children": []
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "description": "Object",
-              "name": "Object",
-              "type": "object"
-            },
-            {
-              "description": "Behavior",
-              "name": "Behavior",
-              "supplementaryInformation": "CustomBehaviors::Damageable",
-              "type": "behavior"
-            },
-            {
-              "description": "Damage",
-              "name": "Damage",
-              "type": "expression"
-            },
-            {
-              "description": "From Id",
-              "name": "FromId",
-              "type": "expression"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "Return if damageable have 0 health",
-          "fullName": "Check if damageable is dead",
-          "functionType": "Condition",
-          "name": "IsDead",
-          "sentence": "_PARAM0_ is dead",
+          "name": "doStepPreEvents",
+          "sentence": "",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
                   "type": {
-                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                    "value": "CompareObjectTimer"
                   },
                   "parameters": [
-                    "CurrentHealth",
-                    "<=",
-                    "0"
+                    "Object",
+                    "\"SpawnCooldown\"",
+                    ">=",
+                    "SpawnCooldown"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Spawn",
+                    "",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "Spawn",
+                    "True",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Trails",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Check if the trail should create a mark",
+          "fullName": "Should leave a mark",
+          "functionType": "Condition",
+          "name": "ShouldCreate",
+          "sentence": "_PARAM0_ should leave a mark",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Spawn",
+                    "True",
+                    ""
                   ]
                 }
               ],
@@ -1940,12 +2366,12 @@
               "conditions": [
                 {
                   "type": {
-                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                    "value": "BooleanVariable"
                   },
                   "parameters": [
-                    "CurrentHealth",
-                    ">",
-                    "0"
+                    "Spawn",
+                    "=",
+                    ""
                   ]
                 }
               ],
@@ -1970,7 +2396,55 @@
             {
               "description": "Behavior",
               "name": "Behavior",
-              "supplementaryInformation": "CustomBehaviors::Damageable",
+              "supplementaryInformation": "CustomBehaviors::Trails",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Restart the timer of trail behavior",
+          "fullName": "Reset the trail behavior",
+          "functionType": "Action",
+          "name": "Reset",
+          "sentence": "Reset _PARAM0_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "Spawn",
+                    "False",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ResetObjectTimer"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"SpawnCooldown\""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Trails",
               "type": "behavior"
             }
           ],
@@ -1979,35 +2453,19 @@
       ],
       "propertyDescriptors": [
         {
-          "value": "",
-          "type": "Behavior",
-          "label": "Entity",
-          "description": "Entity behavior attached to the obstacle",
-          "extraInformation": [
-            "CustomBehaviors::Entity"
-          ],
-          "name": "EntityBehavior"
+          "value": "1",
+          "type": "Number",
+          "unit": "Second",
+          "label": "Time to spawn the trail",
+          "description": "Time in seconds to spawn the trail",
+          "name": "SpawnCooldown"
         },
         {
           "value": "",
-          "type": "Number",
-          "label": "",
-          "description": "Max health of the obstacle before been destroyed",
-          "name": "Health"
-        },
-        {
-          "value": "",
-          "type": "Number",
+          "type": "Boolean",
           "label": "",
           "hidden": true,
-          "name": "CurrentHealth"
-        },
-        {
-          "value": "",
-          "type": "String",
-          "label": "",
-          "hidden": true,
-          "name": "IdsString"
+          "name": "Spawn"
         }
       ],
       "sharedPropertyDescriptors": []

@@ -93,11 +93,56 @@
                 "=",
                 "ToString(TotalBullets)"
               ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "TotalTrails",
+                "=",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "AjoutObjConcern"
+              },
+              "parameters": [
+                "",
+                "Trails"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "TotalTrails",
+                "=",
+                "PickedInstancesCount(Trails)"
+              ]
+            },
+            {
+              "type": {
+                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+              },
+              "parameters": [
+                "particlecount",
+                "Text",
+                "+",
+                " \" \" + ToString(TotalTrails)"
+              ]
             }
           ],
           "variables": [
             {
               "name": "TotalBullets",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "TotalTrails",
               "type": "number",
               "value": 0
             }
@@ -347,7 +392,6 @@
       ]
     },
     {
-      "folded": true,
       "type": "BuiltinCommonInstructions::Standard",
       "conditions": [
         {
@@ -409,23 +453,6 @@
                   },
                   "parameters": [
                     "Players",
-                    "no",
-                    ""
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::ForEach",
-              "object": "Walls",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "CustomObjects::Wall::SetDebug"
-                  },
-                  "parameters": [
-                    "Walls",
                     "no",
                     ""
                   ]

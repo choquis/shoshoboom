@@ -103,7 +103,7 @@
       ]
     },
     {
-      "name": "Solid",
+      "name": "SolidForTank",
       "objects": [
         {
           "name": "SolidWall"
@@ -171,6 +171,9 @@
       "objects": [
         {
           "name": "ExplosionDefaultBullet"
+        },
+        {
+          "name": "ExplosionLongBullet"
         }
       ]
     },
@@ -183,14 +186,6 @@
       ]
     },
     {
-      "name": "Walls",
-      "objects": [
-        {
-          "name": "SolidWall"
-        }
-      ]
-    },
-    {
       "name": "Damageable",
       "objects": [
         {
@@ -198,6 +193,22 @@
         },
         {
           "name": "Player0"
+        }
+      ]
+    },
+    {
+      "name": "LeaveTrails",
+      "objects": [
+        {
+          "name": "DefaultBullet"
+        }
+      ]
+    },
+    {
+      "name": "Trails",
+      "objects": [
+        {
+          "name": "TrailDefaultBullet"
         }
       ]
     }
@@ -943,7 +954,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "NewTrails",
+      "name": "TrailDefaultBullet",
       "persistentUuid": "852d7ec4-4a16-4375-bd3a-b15088cbf41f",
       "width": 0,
       "x": 0,
@@ -979,8 +990,8 @@
       "name": "Player0",
       "persistentUuid": "67c4ad93-c0c4-461b-8cc7-15c38213f50c",
       "width": 0,
-      "x": 240,
-      "y": 112,
+      "x": 256,
+      "y": -128,
       "zOrder": 13,
       "numberProperties": [],
       "stringProperties": [],
@@ -1766,7 +1777,7 @@
     },
     {
       "assetStoreId": "",
-      "name": "NewTrails",
+      "name": "TrailDefaultBullet",
       "type": "CustomObjects::Trails",
       "variant": "",
       "variables": [],
@@ -1864,6 +1875,12 @@
           "type": "CustomBehaviors::Entity",
           "Id": 1.7263050289483554e-306,
           "Type": "Bullet"
+        },
+        {
+          "name": "Trails",
+          "type": "CustomBehaviors::Trails",
+          "SpawnCooldown": 0.03,
+          "Spawn": false
         }
       ],
       "content": {
@@ -1925,7 +1942,8 @@
           "type": "CustomBehaviors::Explosion",
           "EntityBehavior": "Entity",
           "Damage": 100,
-          "AOE": false
+          "AOE": false,
+          "TotalTargets": 1
         }
       ],
       "content": {}
@@ -1979,7 +1997,8 @@
           "name": "Explosion",
           "type": "CustomBehaviors::Explosion",
           "EntityBehavior": "Entity",
-          "Damage": 100
+          "Damage": 100,
+          "TotalTargets": 1
         }
       ],
       "content": {}
@@ -2043,6 +2062,9 @@
             "objectName": "ExplosionDefaultBullet"
           },
           {
+            "objectName": "TrailDefaultBullet"
+          },
+          {
             "objectName": "LongBullet"
           },
           {
@@ -2058,9 +2080,6 @@
             "objectName": "LongBulletAmmo"
           }
         ]
-      },
-      {
-        "objectName": "NewTrails"
       },
       {
         "objectName": "CursorCollision"
@@ -2330,18 +2349,6 @@
       "comment": "\n\n"
     },
     {
-      "type": "BuiltinCommonInstructions::Comment",
-      "color": {
-        "b": 52,
-        "g": 44,
-        "r": 40,
-        "textB": 255,
-        "textG": 255,
-        "textR": 255
-      },
-      "comment": "Player related"
-    },
-    {
       "type": "BuiltinCommonInstructions::Link",
       "include": {
         "includeConfig": 0
@@ -2479,7 +2486,7 @@
             "textG": 255,
             "textR": 255
           },
-          "comment": "CThe bullets don't do damage, I will create an explosion thats what will deal it"
+          "comment": "The bullets don't do damage, It will create an explosion that will deal it"
         },
         {
           "type": "BuiltinCommonInstructions::Standard",
@@ -2505,7 +2512,7 @@
               "parameters": [
                 "Bullets",
                 "Bullet",
-                "Damageable",
+                "SolidForBullet",
                 "Entity",
                 ""
               ]
@@ -2559,6 +2566,18 @@
       "parameters": []
     },
     {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
       "colorB": 82,
       "colorG": 68,
       "colorR": 62,
@@ -2572,69 +2591,6 @@
           "conditions": [
             {
               "type": {
-                "inverted": true,
-                "value": "CustomBehaviors::Explosion::AOE"
-              },
-              "parameters": [
-                "Explosions",
-                "Explosion",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "CollisionNP"
-              },
-              "parameters": [
-                "Explosions",
-                "Damageable",
-                "",
-                "",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "PickNearest"
-              },
-              "parameters": [
-                "Damageable",
-                "Explosions.X()",
-                "Explosions.Y()",
-                ""
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "CustomBehaviors::Damageable::DealDamage"
-              },
-              "parameters": [
-                "Damageable",
-                "Damageable",
-                "Explosions.Explosion::Damage()",
-                "Explosions.Entity::Id()",
-                ""
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "CustomBehaviors::Explosion::AOE"
-              },
-              "parameters": [
-                "Explosions",
-                "Explosion",
-                ""
-              ]
-            },
-            {
-              "type": {
                 "value": "CollisionNP"
               },
               "parameters": [
@@ -2646,23 +2602,53 @@
               ]
             }
           ],
-          "actions": [
+          "actions": [],
+          "events": [
             {
-              "type": {
-                "value": "CustomBehaviors::Damageable::DealDamage"
-              },
-              "parameters": [
-                "Damageable",
-                "Damageable",
-                "Explosions.Explosion::Damage()",
-                "Explosions.Entity::Id()",
-                ""
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Damageable",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Damageable::DealDamage"
+                  },
+                  "parameters": [
+                    "Damageable",
+                    "Damageable",
+                    "Explosions.Explosion::Damage()",
+                    "Explosions.Entity::Id()",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Explosion::AddTarget"
+                  },
+                  "parameters": [
+                    "Explosions",
+                    "Explosion",
+                    ""
+                  ]
+                }
               ]
             }
           ]
         }
       ],
       "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
     },
     {
       "colorB": 82,
@@ -2695,6 +2681,81 @@
                 "Obstacles",
                 "Obstacles.Damageable::CurrentHealth()",
                 "Obstacles.Damageable::Health()",
+                ""
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Trails",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "LeaveTrails",
+          "conditions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Trails::ShouldCreate"
+              },
+              "parameters": [
+                "LeaveTrails",
+                "Trails",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CreateByName"
+              },
+              "parameters": [
+                "",
+                "Trails",
+                "\"Trail\" + LeaveTrails.ObjectName()",
+                "LeaveTrails.X()",
+                "LeaveTrails.Y()",
+                "\"Background\""
+              ]
+            },
+            {
+              "type": {
+                "value": "CustomObjects::Trails::ChangeAngle"
+              },
+              "parameters": [
+                "Trails",
+                "LeaveTrails.ForceAngle()",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "CustomBehaviors::Trails::Reset"
+              },
+              "parameters": [
+                "LeaveTrails",
+                "Trails",
                 ""
               ]
             }
@@ -3119,6 +3180,10 @@
     {
       "name": "TopDownMovement",
       "type": "TopDownMovementBehavior::TopDownMovementBehavior"
+    },
+    {
+      "name": "Trails",
+      "type": "CustomBehaviors::Trails"
     },
     {
       "name": "Tween",
