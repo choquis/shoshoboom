@@ -637,6 +637,84 @@
             }
           ],
           "objectGroups": []
+        },
+        {
+          "description": "Check if entity has the id",
+          "fullName": "Entity has id",
+          "functionType": "Condition",
+          "name": "HasId",
+          "sentence": "Entity _PARAM0_ has id _PARAM2_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "Id",
+                    "=",
+                    "ParamId"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "Id",
+                    "!=",
+                    "ParamId"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "False"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Entity",
+              "type": "behavior"
+            },
+            {
+              "description": "Id",
+              "name": "ParamId",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
         }
       ],
       "propertyDescriptors": [
@@ -1753,7 +1831,7 @@
                   },
                   "parameters": [
                     "Visuals",
-                    "ToString(ParentId2)",
+                    "ToString(Object.EntityBehavior::Id())",
                     ""
                   ]
                 }

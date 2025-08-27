@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 2.0538851749962554,
+    "zoomFactor": 2.2687431594322374,
     "windowMask": false
   },
   "objectsGroups": [
@@ -211,6 +211,31 @@
           "name": "TrailDefaultBullet"
         }
       ]
+    },
+    {
+      "name": "BuildableInstances",
+      "objects": [
+        {
+          "name": "SoftBreakableObstacle"
+        },
+        {
+          "name": "BounceableWall"
+        },
+        {
+          "name": "SolidWall"
+        }
+      ]
+    },
+    {
+      "name": "EditorTools",
+      "objects": [
+        {
+          "name": "EditorInfo"
+        },
+        {
+          "name": "EditorCursor"
+        }
+      ]
     }
   ],
   "variables": [
@@ -233,6 +258,60 @@
       "name": "CameraY",
       "type": "number",
       "value": 0
+    },
+    {
+      "folded": true,
+      "name": "BuildableInstancesArray",
+      "type": "array",
+      "children": [
+        {
+          "type": "string",
+          "value": "SoftBreakableObstacle"
+        },
+        {
+          "type": "string",
+          "value": "BounceableWall"
+        },
+        {
+          "type": "string",
+          "value": "SolidWall"
+        }
+      ]
+    },
+    {
+      "name": "SelectedInstanceIndex",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "CursorX",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "CursorY",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "EditorOn",
+      "type": "boolean",
+      "value": false
+    },
+    {
+      "name": "SelectedOffsetX",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "SelectedOffsetY",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "SelectedId",
+      "type": "number",
+      "value": -1
     }
   ],
   "instances": [
@@ -949,22 +1028,6 @@
       "initialVariables": []
     },
     {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "TrailDefaultBullet",
-      "persistentUuid": "852d7ec4-4a16-4375-bd3a-b15088cbf41f",
-      "width": 0,
-      "x": 0,
-      "y": 0,
-      "zOrder": 0,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
       "angle": 90,
       "customSize": true,
       "depth": 64,
@@ -991,7 +1054,7 @@
       "persistentUuid": "67c4ad93-c0c4-461b-8cc7-15c38213f50c",
       "width": 0,
       "x": 256,
-      "y": -128,
+      "y": 32,
       "zOrder": 13,
       "numberProperties": [],
       "stringProperties": [],
@@ -1456,7 +1519,24 @@
       "type": "CustomObjects::Wall",
       "variant": "BounceableWall",
       "variables": [],
-      "effects": [],
+      "effects": [
+        {
+          "effectType": "Adjustment",
+          "name": "EditorSelected",
+          "doubleParameters": {
+            "alpha": 1,
+            "blue": 1,
+            "brightness": 2.5,
+            "contrast": 1,
+            "gamma": 1,
+            "green": 1,
+            "red": 1,
+            "saturation": 1
+          },
+          "stringParameters": {},
+          "booleanParameters": {}
+        }
+      ],
       "behaviors": [
         {
           "name": "Bounceable",
@@ -1482,7 +1562,24 @@
       "type": "CustomObjects::Wall",
       "variant": "SolidWall",
       "variables": [],
-      "effects": [],
+      "effects": [
+        {
+          "effectType": "Adjustment",
+          "name": "EditorSelected",
+          "doubleParameters": {
+            "alpha": 1,
+            "blue": 1,
+            "brightness": 1,
+            "contrast": 1,
+            "gamma": 1,
+            "green": 1,
+            "red": 1,
+            "saturation": 0.6
+          },
+          "stringParameters": {},
+          "booleanParameters": {}
+        }
+      ],
       "behaviors": [
         {
           "name": "Entity",
@@ -1954,7 +2051,24 @@
       "type": "CustomObjects::Obstacle",
       "variant": "",
       "variables": [],
-      "effects": [],
+      "effects": [
+        {
+          "effectType": "Adjustment",
+          "name": "EditorSelected",
+          "doubleParameters": {
+            "alpha": 1,
+            "blue": 1,
+            "brightness": 1.2,
+            "contrast": 1,
+            "gamma": 1,
+            "green": 1,
+            "red": 1,
+            "saturation": 1
+          },
+          "stringParameters": {},
+          "booleanParameters": {}
+        }
+      ],
       "behaviors": [
         {
           "name": "Damageable",
@@ -2002,11 +2116,166 @@
         }
       ],
       "content": {}
+    },
+    {
+      "assetStoreId": "",
+      "bold": false,
+      "italic": false,
+      "name": "EditorInfo",
+      "smoothed": true,
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "Text",
+      "font": "",
+      "textAlignment": "left",
+      "characterSize": 14,
+      "color": {
+        "b": 0,
+        "g": 0,
+        "r": 0
+      },
+      "content": {
+        "bold": false,
+        "isOutlineEnabled": false,
+        "isShadowEnabled": false,
+        "italic": false,
+        "outlineColor": "255;255;255",
+        "outlineThickness": 2,
+        "shadowAngle": 90,
+        "shadowBlurRadius": 2,
+        "shadowColor": "0;0;0",
+        "shadowDistance": 4,
+        "shadowOpacity": 127,
+        "smoothed": true,
+        "underlined": false,
+        "text": "Text",
+        "font": "",
+        "textAlignment": "left",
+        "verticalTextAlignment": "bottom",
+        "characterSize": 14,
+        "lineHeight": 0,
+        "color": "0;0;0"
+      }
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "EditorCursor",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "default",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "yellowsquare",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 0,
+                        "y": 0
+                      },
+                      {
+                        "x": 16,
+                        "y": 0
+                      },
+                      {
+                        "x": 16,
+                        "y": 16
+                      },
+                      {
+                        "x": 0,
+                        "y": 16
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "CameraCenter",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "default",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": false,
+                  "image": "Transparent",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 16,
+                    "y": 16
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "objectsFolderStructure": {
     "folderName": "__ROOT",
     "children": [
+      {
+        "folderName": "Editor",
+        "children": [
+          {
+            "objectName": "EditorCursor"
+          },
+          {
+            "objectName": "CameraCenter"
+          }
+        ]
+      },
       {
         "folderName": "Obstacles",
         "children": [
@@ -2026,6 +2295,9 @@
           },
           {
             "objectName": "fps"
+          },
+          {
+            "objectName": "EditorInfo"
           },
           {
             "objectName": "RedPen"
@@ -2097,6 +2369,18 @@
   },
   "events": [
     {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
       "colorB": 82,
       "colorG": 68,
       "colorR": 62,
@@ -2117,17 +2401,228 @@
           "include": {
             "includeConfig": 0
           },
-          "target": "Main Game UI Logic"
+          "target": "Editor Logic"
         },
         {
           "type": "BuiltinCommonInstructions::Link",
           "include": {
             "includeConfig": 0
           },
-          "target": "Input Logic"
+          "target": "Main Game UI Logic"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BooleanVariable"
+              },
+              "parameters": [
+                "EditorOn",
+                "False",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "ChangeLayerTimeScale"
+              },
+              "parameters": [
+                "",
+                "\"Main\"",
+                "1"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Link",
+              "include": {
+                "includeConfig": 0
+              },
+              "target": "Input Logic"
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BooleanVariable"
+              },
+              "parameters": [
+                "EditorOn",
+                "True",
+                ""
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ChangeLayerTimeScale"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Main\"",
+                    "0"
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ],
       "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "CustomObjects::Clear"
+          },
+          "parameters": [
+            "",
+            "Logger",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "BooleanVariable"
+          },
+          "parameters": [
+            "EditorOn",
+            "False",
+            ""
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "CentreCamera"
+          },
+          "parameters": [
+            "",
+            "Player0",
+            "",
+            "_CONSTANTS_.Layers.Main",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "CentreCamera"
+          },
+          "parameters": [
+            "",
+            "Player0",
+            "",
+            "\"Debug\"",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "CameraX",
+            "=",
+            "CameraBorderLeft(_CONSTANTS_.Layers.Main, 0)"
+          ]
+        },
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "CameraY",
+            "=",
+            "CameraBorderTop(_CONSTANTS_.Layers.Main, 0)"
+          ]
+        }
+      ],
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
+          },
+          "target": "Player Logic"
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "From here on, its all the logic on the game"
     },
     {
       "type": "BuiltinCommonInstructions::Comment",
@@ -2180,36 +2675,21 @@
               ]
             },
             {
-              "disabled": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
               "actions": [
                 {
                   "type": {
-                    "value": "CacheSouris"
+                    "value": "EffectCapability::EffectBehavior::EnableEffect"
                   },
                   "parameters": [
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "DebuggerTools::EnableDebugDraw"
-                  },
-                  "parameters": [
-                    "",
-                    "yes",
-                    "",
-                    "",
+                    "BuildableInstances",
+                    "Effect",
+                    "\"EditorSelected\"",
                     ""
                   ]
                 }
               ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": []
             },
             {
               "type": "BuiltinCommonInstructions::Comment",
@@ -2259,115 +2739,6 @@
       "comment": "\n\n"
     },
     {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [],
-      "actions": [
-        {
-          "type": {
-            "value": "CustomObjects::Clear"
-          },
-          "parameters": [
-            "",
-            "Logger",
-            ""
-          ]
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [],
-      "actions": [
-        {
-          "type": {
-            "value": "CentreCamera"
-          },
-          "parameters": [
-            "",
-            "Player0",
-            "",
-            "_CONSTANTS_.Layers.Main",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "CentreCamera"
-          },
-          "parameters": [
-            "",
-            "Player0",
-            "",
-            "\"Background\"",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "CentreCamera"
-          },
-          "parameters": [
-            "",
-            "Player0",
-            "",
-            "\"Debug\"",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "CameraX",
-            "=",
-            "CameraBorderLeft(_CONSTANTS_.Layers.Main, 0)"
-          ]
-        },
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "CameraY",
-            "=",
-            "CameraBorderTop(_CONSTANTS_.Layers.Main, 0)"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Comment",
-      "color": {
-        "b": 52,
-        "g": 44,
-        "r": 40,
-        "textB": 255,
-        "textG": 255,
-        "textR": 255
-      },
-      "comment": "\n\n"
-    },
-    {
-      "type": "BuiltinCommonInstructions::Link",
-      "include": {
-        "includeConfig": 0
-      },
-      "target": "Player Logic"
-    },
-    {
-      "type": "BuiltinCommonInstructions::Comment",
-      "color": {
-        "b": 52,
-        "g": 44,
-        "r": 40,
-        "textB": 255,
-        "textG": 255,
-        "textR": 255
-      },
-      "comment": "\n\n"
-    },
-    {
       "colorB": 82,
       "colorG": 68,
       "colorR": 62,
@@ -2389,90 +2760,130 @@
           "comment": "Collision with bouncable its made by distance because of problems with direct collision. Inconsitent results for some angles\nAnd its better for corners, because it is more precise."
         },
         {
-          "type": "BuiltinCommonInstructions::ForEach",
-          "object": "Bullets",
+          "type": "BuiltinCommonInstructions::Standard",
           "conditions": [],
           "actions": [],
           "events": [
             {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Bullets",
+              "conditions": [],
+              "actions": [
                 {
                   "type": {
-                    "value": "Raycast"
+                    "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "Bounceable",
-                    "Bullets.X()",
-                    "Bullets.Y()",
-                    "Bullets.ForceAngle()",
-                    "1000",
-                    "iX",
-                    "iY",
-                    ""
+                    "BulletX",
+                    "=",
+                    "Bullets.X() + Bullets.Width() / 2"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "BulletY",
+                    "=",
+                    "Bullets.Y() + Bullets.Height() / 2"
                   ]
                 }
               ],
-              "actions": [],
               "events": [
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "PrimitiveDrawing::LineV2"
-                      },
-                      "parameters": [
-                        "YellowPen",
-                        "Bullets.X()",
-                        "Bullets.Y()",
-                        "iX",
-                        "iY",
-                        "1"
-                      ]
-                    }
-                  ]
-                },
                 {
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
                     {
                       "type": {
-                        "value": "BuiltinCommonInstructions::CompareNumbers"
+                        "value": "Raycast"
                       },
                       "parameters": [
-                        "DistanceBetweenPositions(iX, iY, Bullets.X(), Bullets.Y())",
-                        "<=",
-                        "4"
+                        "Bounceable",
+                        "BulletX",
+                        "BulletY",
+                        "Bullets.ForceAngle()",
+                        "1000",
+                        "iX",
+                        "iY",
+                        ""
                       ]
                     }
                   ],
-                  "actions": [
+                  "actions": [],
+                  "events": [
                     {
-                      "type": {
-                        "value": "CustomBehaviors::Bullet::CollisionWithBounceable"
-                      },
-                      "parameters": [
-                        "Bullets",
-                        "Bullet",
-                        "Bounceable",
-                        "Bounceable",
-                        ""
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "PrimitiveDrawing::LineV2"
+                          },
+                          "parameters": [
+                            "YellowPen",
+                            "BulletX",
+                            "BulletY",
+                            "iX",
+                            "iY",
+                            "1"
+                          ]
+                        }
                       ]
                     },
                     {
-                      "type": {
-                        "value": "CustomObjects::Bullet::Update"
-                      },
-                      "parameters": [
-                        "Bullets",
-                        ""
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::CompareNumbers"
+                          },
+                          "parameters": [
+                            "DistanceBetweenPositions(iX, iY, BulletX, BulletY)",
+                            "<=",
+                            "4"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::Bullet::CollisionWithBounceable"
+                          },
+                          "parameters": [
+                            "Bullets",
+                            "Bullet",
+                            "Bounceable",
+                            "Bounceable",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "CustomObjects::Bullet::Update"
+                          },
+                          "parameters": [
+                            "Bullets",
+                            ""
+                          ]
+                        }
                       ]
                     }
                   ]
                 }
               ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "BulletX",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "BulletY",
+              "type": "number",
+              "value": 0
             }
           ]
         },
@@ -2549,12 +2960,24 @@
             },
             {
               "type": {
+                "value": "MettreXY"
+              },
+              "parameters": [
+                "Explosions",
+                "-",
+                "Bullets.Width() / 2",
+                "-",
+                "Bullets.Height() / 2"
+              ]
+            },
+            {
+              "type": {
                 "value": "CustomBehaviors::Explosion::SetParentIdWithDebug"
               },
               "parameters": [
                 "Explosions",
                 "Explosion",
-                "Bullets.Bullet::ParentId()",
+                "Bullets.Entity::Id()",
                 "_CONFIG_.debug",
                 "Explosions",
                 ""
@@ -2582,6 +3005,7 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "folded": true,
       "name": "Explosion logic (damage related)",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -2606,29 +3030,37 @@
           "events": [
             {
               "type": "BuiltinCommonInstructions::ForEach",
-              "object": "Damageable",
+              "object": "Explosions",
               "conditions": [],
-              "actions": [
+              "actions": [],
+              "events": [
                 {
-                  "type": {
-                    "value": "CustomBehaviors::Damageable::DealDamage"
-                  },
-                  "parameters": [
-                    "Damageable",
-                    "Damageable",
-                    "Explosions.Explosion::Damage()",
-                    "Explosions.Entity::Id()",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "CustomBehaviors::Explosion::AddTarget"
-                  },
-                  "parameters": [
-                    "Explosions",
-                    "Explosion",
-                    ""
+                  "type": "BuiltinCommonInstructions::ForEach",
+                  "object": "Damageable",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Damageable::DealDamage"
+                      },
+                      "parameters": [
+                        "Damageable",
+                        "Damageable",
+                        "Explosions.Explosion::Damage()",
+                        "Explosions.Entity::Id()",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Explosion::AddTarget"
+                      },
+                      "parameters": [
+                        "Explosions",
+                        "Explosion",
+                        ""
+                      ]
+                    }
                   ]
                 }
               ]
@@ -2655,7 +3087,8 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
-      "name": "Obstacles",
+      "folded": true,
+      "name": "Obstacles updates",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
       "events": [
@@ -2706,7 +3139,8 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
-      "name": "Trails",
+      "folded": true,
+      "name": "Trails updates",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
       "events": [
@@ -2736,7 +3170,7 @@
                 "\"Trail\" + LeaveTrails.ObjectName()",
                 "LeaveTrails.X()",
                 "LeaveTrails.Y()",
-                "\"Background\""
+                "_CONSTANTS_.Layers.Main"
               ]
             },
             {

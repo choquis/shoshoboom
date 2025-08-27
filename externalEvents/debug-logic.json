@@ -4,6 +4,56 @@
   "events": [
     {
       "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "CursorX",
+            "=",
+            "CursorX(_CONSTANTS_.Layers.Main, 0)"
+          ]
+        },
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "CursorY",
+            "=",
+            "CursorY(_CONSTANTS_.Layers.Main, 0)"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "Activate/Deactivate debug visuals"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
       "conditions": [
         {
           "type": {
@@ -166,6 +216,23 @@
           ]
         },
         {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "PrimitiveDrawing::Circle"
+              },
+              "parameters": [
+                "BluePen",
+                "CursorX",
+                "CursorY",
+                "1"
+              ]
+            }
+          ]
+        },
+        {
           "type": "BuiltinCommonInstructions::ForEach",
           "object": "Entities",
           "conditions": [],
@@ -211,6 +278,16 @@
                 "YFromAngleAndDistance(Bounceable.Angle(), 32) + Bounceable.CenterY()",
                 "2"
               ]
+            },
+            {
+              "type": {
+                "value": "CustomObjects::Wall::Log"
+              },
+              "parameters": [
+                "Bounceable",
+                "ToString(Bounceable.Entity::Id())",
+                ""
+              ]
             }
           ]
         },
@@ -249,7 +326,6 @@
           ]
         },
         {
-          "folded": true,
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -296,23 +372,6 @@
                   },
                   "parameters": [
                     "Players",
-                    "yes",
-                    ""
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::ForEach",
-              "object": "Walls",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "CustomObjects::Wall::SetDebug"
-                  },
-                  "parameters": [
-                    "Walls",
                     "yes",
                     ""
                   ]
@@ -530,6 +589,18 @@
           ]
         }
       ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
     }
   ]
 }
