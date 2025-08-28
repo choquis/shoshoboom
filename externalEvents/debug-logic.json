@@ -302,7 +302,7 @@
               },
               "parameters": [
                 "Obstacles",
-                "ToString(Obstacles.Damageable::CurrentHealth())",
+                "ToString(Obstacles.ZOrder())",
                 ""
               ]
             }
@@ -315,11 +315,24 @@
           "actions": [
             {
               "type": {
+                "value": "PrimitiveDrawing::LineV2"
+              },
+              "parameters": [
+                "YellowPen",
+                "Players.MuzzleX()",
+                "Players.MuzzleY()",
+                "Cursor.X()",
+                "Cursor.Y()",
+                "2"
+              ]
+            },
+            {
+              "type": {
                 "value": "CustomObjects::Tank::Log"
               },
               "parameters": [
                 "Players",
-                "ToString(Players.Damageable::CurrentHealth())",
+                "ToString(trunc(Players.LookAngle()))",
                 ""
               ]
             }

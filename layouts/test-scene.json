@@ -46,13 +46,10 @@
       ]
     },
     {
-      "name": "Cursor Collisions",
+      "name": "CursorCollisions",
       "objects": [
         {
           "name": "BounceableWall"
-        },
-        {
-          "name": "CursorCollision"
         }
       ]
     },
@@ -844,23 +841,6 @@
       "x": 448,
       "y": 96,
       "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 8,
-      "keepRatio": true,
-      "layer": "Debug",
-      "name": "CursorCollision",
-      "persistentUuid": "407dc85f-54b2-4b85-982e-4dcf33f4abd2",
-      "width": 48,
-      "x": 696,
-      "y": 220,
-      "zOrder": 12,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1699,66 +1679,6 @@
       ]
     },
     {
-      "adaptCollisionMaskAutomatically": false,
-      "assetStoreId": "",
-      "name": "CursorCollision",
-      "type": "Sprite",
-      "updateIfNotVisible": false,
-      "variables": [],
-      "effects": [],
-      "behaviors": [],
-      "animations": [
-        {
-          "name": "",
-          "useMultipleDirections": false,
-          "directions": [
-            {
-              "looping": false,
-              "timeBetweenFrames": 0.08,
-              "sprites": [
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "assets\\SolidCollider.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 16,
-                    "y": 16
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 0,
-                        "y": 0
-                      },
-                      {
-                        "x": 32,
-                        "y": 0
-                      },
-                      {
-                        "x": 32,
-                        "y": 32
-                      },
-                      {
-                        "x": 0,
-                        "y": 32
-                      }
-                    ]
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
       "adaptCollisionMaskAutomatically": true,
       "assetStoreId": "",
       "name": "CursorPoint",
@@ -2354,9 +2274,6 @@
         ]
       },
       {
-        "objectName": "CursorCollision"
-      },
-      {
         "objectName": "Cursor"
       },
       {
@@ -2935,7 +2852,37 @@
           "conditions": [
             {
               "type": {
-                "value": "CustomBehaviors::Bullet::WillExplode"
+                "value": "Distance"
+              },
+              "parameters": [
+                "Bullets",
+                "Bullets",
+                "8",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Bullet::CollisionWithBullet"
+              },
+              "parameters": [
+                "Bullets",
+                "Bullet",
+                "Bullets",
+                "",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Bullet::HasToExplode"
               },
               "parameters": [
                 "Bullets",
@@ -3005,7 +2952,6 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
-      "folded": true,
       "name": "Explosion logic (damage related)",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -3087,7 +3033,6 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
-      "folded": true,
       "name": "Obstacles updates",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -3139,7 +3084,6 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
-      "folded": true,
       "name": "Trails updates",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",

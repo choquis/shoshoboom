@@ -23799,7 +23799,17 @@
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Obstacle::Active"
+                  },
+                  "parameters": [
+                    "Object",
+                    ""
+                  ]
+                }
+              ],
               "actions": [
                 {
                   "type": {
