@@ -113,11 +113,27 @@
                   "actions": [
                     {
                       "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "LookAngle",
+                        "=",
+                        "AngleBetweenPositions(0, 0, LookX, LookY)"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
                         "value": "CustomObjects::Tank::LookTo"
                       },
                       "parameters": [
                         "Player0",
-                        "AngleBetweenPositions(0, 0, LookX, LookY)",
+                        "LookAngle",
                         ""
                       ]
                     }
@@ -132,6 +148,11 @@
                 },
                 {
                   "name": "LookY",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "LookAngle",
                   "type": "number",
                   "value": 0
                 }
@@ -688,6 +709,16 @@
                         "Player0.Tank::MoveSpeed()",
                         ""
                       ]
+                    },
+                    {
+                      "type": {
+                        "value": "CustomObjects::Tank::RotateTo"
+                      },
+                      "parameters": [
+                        "Player0",
+                        "MoveAngle",
+                        ""
+                      ]
                     }
                   ]
                 }
@@ -808,16 +839,6 @@
                     },
                     {
                       "type": {
-                        "value": "NumberVariable"
-                      },
-                      "parameters": [
-                        "DeltaAngle",
-                        "<",
-                        "45"
-                      ]
-                    },
-                    {
-                      "type": {
                         "value": "BuiltinCommonInstructions::Not"
                       },
                       "parameters": [],
@@ -892,6 +913,22 @@
                       ]
                     }
                   ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "DeltaAngle",
+                        "<",
+                        "45"
+                      ]
+                    }
+                  ],
+                  "actions": []
                 }
               ],
               "variables": [

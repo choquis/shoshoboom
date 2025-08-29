@@ -13289,7 +13289,7 @@
               "isLocked": false,
               "name": "Debug",
               "renderingType": "",
-              "visibility": true,
+              "visibility": false,
               "cameras": [],
               "effects": [
                 {
@@ -13343,6 +13343,22 @@
               "x": 8,
               "y": 8,
               "zOrder": 1,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            },
+            {
+              "angle": 0,
+              "customSize": false,
+              "height": 0,
+              "keepRatio": true,
+              "layer": "Debug",
+              "name": "Logs",
+              "persistentUuid": "df1969a2-c51f-43d2-994d-afe85d7707f3",
+              "width": 0,
+              "x": -3,
+              "y": 16,
+              "zOrder": 2,
               "numberProperties": [],
               "stringProperties": [],
               "initialVariables": []
@@ -14198,7 +14214,12 @@
           "updateIfNotVisible": false,
           "variables": [],
           "effects": [],
-          "behaviors": [],
+          "behaviors": [
+            {
+              "name": "Tween",
+              "type": "Tween::TweenBehavior"
+            }
+          ],
           "animations": [
             {
               "name": "SmallWallCollider",
@@ -14300,9 +14321,20 @@
           "name": "Sprite",
           "type": "Sprite",
           "updateIfNotVisible": false,
-          "variables": [],
+          "variables": [
+            {
+              "name": "AngleCounter",
+              "type": "number",
+              "value": 0
+            }
+          ],
           "effects": [],
-          "behaviors": [],
+          "behaviors": [
+            {
+              "name": "Tween",
+              "type": "Tween::TweenBehavior"
+            }
+          ],
           "animations": [
             {
               "name": "default",
@@ -16652,19 +16684,29 @@
               ]
             },
             {
-              "disabled": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
               "actions": [
                 {
                   "type": {
-                    "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
                   },
                   "parameters": [
-                    "Logs",
-                    "Text",
+                    "Cannon",
+                    "Animation",
                     "=",
-                    "ToString(trunc(Object.ZOrder()))"
+                    "\"Look\" + ToString(CustomFunctions::GetFrameByAngle(Object.LookAngle(), 8))"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "Body",
+                    "Animation",
+                    "=",
+                    "\"Move\" + ToString(CustomFunctions::GetFrameByAngle(Object.BodyAngle(), 8))"
                   ]
                 }
               ]
@@ -16807,53 +16849,214 @@
               "actions": [
                 {
                   "type": {
-                    "value": "SetAngle"
+                    "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "Sprite",
+                    "AuxAngle",
                     "=",
-                    "Angle"
+                    "Sprite.Angle() + AngleDifference(Angle, Sprite.Angle())"
                   ]
                 },
                 {
                   "type": {
-                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                    "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "Cannon",
-                    "Animation",
+                    "DeltaAngle",
                     "=",
-                    "\"Look\" + ToString(CustomFunctions::GetFrameByAngle(Sprite.Angle(), 8))"
+                    "abs(AngleDifference(AuxAngle, Sprite.Angle()))"
                   ]
                 },
                 {
                   "type": {
-                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                    "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "Body",
-                    "Animation",
+                    "AuxSpeed",
                     "=",
-                    "\"Move\" + ToString(CustomFunctions::GetFrameByAngle(Sprite.Angle(), 8))"
+                    "CannonRotationSpeed * (DeltaAngle/180)"
                   ]
                 }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "Tween::TweenBehavior::AddObjectAngleTween2"
+                      },
+                      "parameters": [
+                        "Sprite",
+                        "Tween",
+                        "\"rotation\"",
+                        "AuxAngle",
+                        "\"linear\"",
+                        "AuxSpeed",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "Logs",
+                        "Text",
+                        "=",
+                        "ToString(roundTo(AuxAngle, 2)) + NewLine()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "Logs",
+                        "Text",
+                        "+",
+                        "ToString(roundTo(DeltaAngle, 2)) + NewLine()"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "variables": [
+                {
+                  "name": "AuxAngle",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "AuxSpeed",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "DeltaAngle",
+                  "type": "number",
+                  "value": 0
+                }
               ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Tank",
+              "type": "object"
             },
             {
-              "disabled": true,
+              "description": "Angle",
+              "name": "Angle",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Make the player rotate at given angle",
+          "fullName": "Change rotation at angle",
+          "functionType": "Action",
+          "name": "RotateTo",
+          "sentence": "Make _PARAM0_ rotate to _PARAM1_",
+          "events": [
+            {
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
               "actions": [
                 {
                   "type": {
-                    "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                    "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "Logs",
-                    "Text",
+                    "AuxAngle",
                     "=",
-                    "ToString(trunc(Sprite.Angle()))"
+                    "BackSprite.Angle() + AngleDifference(Angle, BackSprite.Angle())"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "DeltaAngle",
+                    "=",
+                    "abs(AngleDifference(AuxAngle, BackSprite.Angle()))"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "AuxSpeed",
+                    "=",
+                    "BodyRotationSpeed * (DeltaAngle/180)"
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "Tween::TweenBehavior::AddObjectAngleTween2"
+                      },
+                      "parameters": [
+                        "BackSprite",
+                        "Tween",
+                        "\"rotation\"",
+                        "AuxAngle",
+                        "\"linear\"",
+                        "AuxSpeed",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "Logs",
+                        "Text",
+                        "=",
+                        "ToString(roundTo(AuxAngle, 2)) + NewLine()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "Logs",
+                        "Text",
+                        "+",
+                        "ToString(roundTo(DeltaAngle, 2)) + NewLine()"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "variables": [
+                {
+                  "name": "AuxAngle",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "AuxSpeed",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "DeltaAngle",
+                  "type": "number",
+                  "value": 0
                 }
               ]
             }
@@ -16880,8 +17083,91 @@
           "sentence": "",
           "events": [
             {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 255,
+                "textG": 255,
+                "textR": 255
+              },
+              "comment": "Adjust the angle before returning, becausse in the function LookTo:\nSprite.Angle() is alter in a way that result in more than 360 or less than -360\nHere is returned a number between -180 and 180"
+            },
+            {
               "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "Sprite.Angle()",
+                    "<",
+                    "-180"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "Sprite.Angle() - (trunc((Sprite.Angle() - 180) / 360) * 360)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "Sprite.Angle()",
+                    ">",
+                    "180"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "Sprite.Angle() - (trunc((Sprite.Angle() + 180) / 360) * 360)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "Sprite.Angle()",
+                    "<=",
+                    "180"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "Sprite.Angle()",
+                    ">=",
+                    "-180"
+                  ]
+                }
+              ],
               "actions": [
                 {
                   "type": {
@@ -16889,6 +17175,123 @@
                   },
                   "parameters": [
                     "Sprite.Angle()"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Tank",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Expression",
+          "name": "BodyAngle",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 255,
+                "textG": 255,
+                "textR": 255
+              },
+              "comment": "Adjust the angle before returning, becausse in the function LookTo:\nBackSprite.Angle() is alter in a way that result in more than 360 or less than -360\nHere is returned a number between -180 and 180"
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "BackSprite.Angle()",
+                    "<",
+                    "-180"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "BackSprite.Angle() - (trunc((BackSprite.Angle() - 180) / 360) * 360)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "BackSprite.Angle()",
+                    ">",
+                    "180"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "BackSprite.Angle() - (trunc((BackSprite.Angle() + 180) / 360) * 360)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "BackSprite.Angle()",
+                    "<=",
+                    "180"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "BackSprite.Angle()",
+                    ">=",
+                    "-180"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "BackSprite.Angle()"
                   ]
                 }
               ]
@@ -16978,7 +17381,22 @@
           "objectGroups": []
         }
       ],
-      "propertyDescriptors": [],
+      "propertyDescriptors": [
+        {
+          "value": "1",
+          "type": "Number",
+          "label": "Cannon rotation speed",
+          "description": "The speed that the cannon rotate",
+          "name": "CannonRotationSpeed"
+        },
+        {
+          "value": "1",
+          "type": "Number",
+          "label": "Body rotation speed",
+          "description": "The speed that the body rotate",
+          "name": "BodyRotationSpeed"
+        }
+      ],
       "variants": [
         {
           "areaMaxX": 32,
@@ -16997,7 +17415,12 @@
               "updateIfNotVisible": false,
               "variables": [],
               "effects": [],
-              "behaviors": [],
+              "behaviors": [
+                {
+                  "name": "Tween",
+                  "type": "Tween::TweenBehavior"
+                }
+              ],
               "animations": [
                 {
                   "name": "SmallWallCollider",
@@ -17101,7 +17524,12 @@
               "updateIfNotVisible": false,
               "variables": [],
               "effects": [],
-              "behaviors": [],
+              "behaviors": [
+                {
+                  "name": "Tween",
+                  "type": "Tween::TweenBehavior"
+                }
+              ],
               "animations": [
                 {
                   "name": "default",

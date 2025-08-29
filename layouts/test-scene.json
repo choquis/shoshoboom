@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 2.2687431594322374,
+    "zoomFactor": 1.1687568821482106,
     "windowMask": false
   },
   "objectsGroups": [
@@ -1033,8 +1033,8 @@
       "name": "Player0",
       "persistentUuid": "67c4ad93-c0c4-461b-8cc7-15c38213f50c",
       "width": 0,
-      "x": 256,
-      "y": 32,
+      "x": 272,
+      "y": 96,
       "zOrder": 13,
       "numberProperties": [],
       "stringProperties": [],
@@ -1836,7 +1836,10 @@
           "MoveSpeed": 70
         }
       ],
-      "content": {},
+      "content": {
+        "CannonRotationSpeed": 0.25,
+        "BodyRotationSpeed": 0.3
+      },
       "animatable": {
         "adaptCollisionMaskAutomatically": true,
         "animations": []
@@ -2729,25 +2732,6 @@
                   ],
                   "actions": [],
                   "events": [
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "PrimitiveDrawing::LineV2"
-                          },
-                          "parameters": [
-                            "YellowPen",
-                            "BulletX",
-                            "BulletY",
-                            "iX",
-                            "iY",
-                            "1"
-                          ]
-                        }
-                      ]
-                    },
                     {
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [

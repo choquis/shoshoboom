@@ -309,6 +309,7 @@
           ]
         },
         {
+          "disabled": true,
           "type": "BuiltinCommonInstructions::ForEach",
           "object": "Players",
           "conditions": [],
@@ -335,6 +336,106 @@
                 "ToString(trunc(Players.LookAngle()))",
                 ""
               ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Bullets",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "BulletX",
+                    "=",
+                    "Bullets.X() + Bullets.Width() / 2"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "BulletY",
+                    "=",
+                    "Bullets.Y() + Bullets.Height() / 2"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CustomObjects::Bullet::Log"
+                  },
+                  "parameters": [
+                    "Bullets",
+                    "ToString(Bullets.ForceAngle())",
+                    ""
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "Raycast"
+                      },
+                      "parameters": [
+                        "Bounceable",
+                        "BulletX",
+                        "BulletY",
+                        "Bullets.ForceAngle()",
+                        "1000",
+                        "iX",
+                        "iY",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "PrimitiveDrawing::LineV2"
+                          },
+                          "parameters": [
+                            "YellowPen",
+                            "BulletX",
+                            "BulletY",
+                            "iX",
+                            "iY",
+                            "1"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "BulletX",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "BulletY",
+              "type": "number",
+              "value": 0
             }
           ]
         },
