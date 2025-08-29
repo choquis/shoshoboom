@@ -21808,10 +21808,777 @@
       "areaMinY": 0,
       "areaMinZ": 0,
       "defaultName": "",
-      "description": "Trails visual.\nTo work you need to:\nAttach the \"Trail\" behavior to the object that will leave the marks.\nCreate an object called \"Trail\" + \"Objectname\" (the object that will leave the marks).\nAdd the object to \"Trails\" group.",
-      "fullName": "Trails (Custom object)",
+      "description": "Trails visual for ground.\nTo work you need to:\nAttach the \"Ground Trail\" behavior to the object that will leave the marks.\nCreate an object called \"GroundTrail\" + \"Objectname\" (the object that will leave the marks).\nAdd the object to \"LeaveGroundTrails\" group.",
+      "fullName": "Ground trails (Custom object)",
       "isUsingLegacyInstancesRenderer": false,
-      "name": "Trails",
+      "name": "GroundTrails",
+      "objects": [
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "Sprite",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [
+            {
+              "name": "Tween",
+              "type": "Tween::TweenBehavior"
+            }
+          ],
+          "animations": [
+            {
+              "name": "default",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "TiresDecal",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 9,
+                        "y": 6.5
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 18,
+                            "y": 0
+                          },
+                          {
+                            "x": 18,
+                            "y": 12
+                          },
+                          {
+                            "x": 0,
+                            "y": 12
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "assetStoreId": "",
+          "bold": false,
+          "italic": false,
+          "name": "Logs",
+          "smoothed": true,
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "string": "T",
+          "font": "",
+          "textAlignment": "left",
+          "characterSize": 10,
+          "color": {
+            "b": 0,
+            "g": 0,
+            "r": 0
+          },
+          "content": {
+            "bold": false,
+            "isOutlineEnabled": false,
+            "isShadowEnabled": false,
+            "italic": false,
+            "outlineColor": "255;255;255",
+            "outlineThickness": 2,
+            "shadowAngle": 90,
+            "shadowBlurRadius": 2,
+            "shadowColor": "0;0;0",
+            "shadowDistance": 4,
+            "shadowOpacity": 127,
+            "smoothed": true,
+            "underlined": false,
+            "text": "T",
+            "font": "",
+            "textAlignment": "left",
+            "verticalTextAlignment": "top",
+            "characterSize": 10,
+            "lineHeight": 0,
+            "color": "0;0;0"
+          }
+        }
+      ],
+      "objectsFolderStructure": {
+        "folderName": "__ROOT",
+        "children": [
+          {
+            "objectName": "Sprite"
+          },
+          {
+            "objectName": "Logs"
+          }
+        ]
+      },
+      "objectsGroups": [],
+      "layers": [
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [
+            {
+              "defaultSize": true,
+              "defaultViewport": true,
+              "height": 0,
+              "viewportBottom": 1,
+              "viewportLeft": 0,
+              "viewportRight": 1,
+              "viewportTop": 0,
+              "width": 0
+            }
+          ],
+          "effects": []
+        },
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "Main",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [],
+          "effects": [
+            {
+              "effectType": "Scene3D::HemisphereLight",
+              "name": "3D Ambient Hemisphere Light",
+              "doubleParameters": {
+                "elevation": 40,
+                "intensity": 0.33,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "groundColor": "127;127;127",
+                "skyColor": "255;255;255",
+                "top": "Z+"
+              },
+              "booleanParameters": {}
+            },
+            {
+              "effectType": "Scene3D::DirectionalLight",
+              "name": "3D Sun Light",
+              "doubleParameters": {
+                "distanceFromCamera": 1500,
+                "elevation": 40,
+                "frustumSize": 4000,
+                "intensity": 0.75,
+                "minimumShadowBias": 0,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "color": "255;255;255",
+                "shadowQuality": "medium",
+                "top": "Z+"
+              },
+              "booleanParameters": {
+                "isCastingShadow": true
+              }
+            }
+          ]
+        },
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "Debug",
+          "renderingType": "",
+          "visibility": false,
+          "cameras": [],
+          "effects": [
+            {
+              "effectType": "Scene3D::HemisphereLight",
+              "name": "3D Ambient Hemisphere Light",
+              "doubleParameters": {
+                "elevation": 40,
+                "intensity": 0.33,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "groundColor": "127;127;127",
+                "skyColor": "255;255;255",
+                "top": "Z+"
+              },
+              "booleanParameters": {}
+            },
+            {
+              "effectType": "Scene3D::DirectionalLight",
+              "name": "3D Sun Light",
+              "doubleParameters": {
+                "distanceFromCamera": 1500,
+                "elevation": 40,
+                "frustumSize": 4000,
+                "intensity": 0.75,
+                "minimumShadowBias": 0,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "color": "255;255;255",
+                "shadowQuality": "medium",
+                "top": "Z+"
+              },
+              "booleanParameters": {
+                "isCastingShadow": true
+              }
+            }
+          ]
+        }
+      ],
+      "instances": [
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "Main",
+          "name": "Sprite",
+          "persistentUuid": "102523f2-d907-4ab4-8169-f72951d860d0",
+          "width": 0,
+          "x": 8,
+          "y": 8,
+          "zOrder": 8,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "Debug",
+          "name": "Logs",
+          "persistentUuid": "47bddd37-7c59-46cf-9bab-48feb57eee63",
+          "width": 0,
+          "x": 8,
+          "y": 12,
+          "zOrder": 9,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        }
+      ],
+      "eventsFunctions": [
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "onCreated",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetIncludedInParentCollisionMask"
+                  },
+                  "parameters": [
+                    "Sprite",
+                    "no"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetIncludedInParentCollisionMask"
+                  },
+                  "parameters": [
+                    "Logs",
+                    "no"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::GroundTrails",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "doStepPostEvents",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ChangePlan"
+                  },
+                  "parameters": [
+                    "Object",
+                    "=",
+                    "Object.Y() + 1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ChangeColor"
+                  },
+                  "parameters": [
+                    "Sprite",
+                    "Tint"
+                  ]
+                }
+              ]
+            },
+            {
+              "disabled": true,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                  },
+                  "parameters": [
+                    "Logs",
+                    "Text",
+                    "=",
+                    "ToString(trunc(Sprite.Angle()))"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::GroundTrails",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Update the angle of the sprite in the visuals",
+          "fullName": "Change angle of trail visual",
+          "functionType": "Action",
+          "name": "ChangeAngle",
+          "sentence": "Change visual angle of _PARAM0_ to _PARAM1_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetAngle"
+                  },
+                  "parameters": [
+                    "Sprite",
+                    "=",
+                    "Angle"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::GroundTrails",
+              "type": "object"
+            },
+            {
+              "description": "Angle",
+              "name": "Angle",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "255;255;255",
+          "type": "Color",
+          "label": "Color tint",
+          "description": "Change a little of the color",
+          "name": "Tint"
+        }
+      ],
+      "variants": [
+        {
+          "areaMaxX": 16,
+          "areaMaxY": 16,
+          "areaMaxZ": 64,
+          "areaMinX": 0,
+          "areaMinY": 0,
+          "areaMinZ": 0,
+          "name": "TankTireMarks",
+          "objects": [
+            {
+              "adaptCollisionMaskAutomatically": true,
+              "assetStoreId": "",
+              "name": "Sprite",
+              "type": "Sprite",
+              "updateIfNotVisible": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [
+                {
+                  "name": "Tween",
+                  "type": "Tween::TweenBehavior"
+                }
+              ],
+              "animations": [
+                {
+                  "name": "default",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "TiresDecal",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 9,
+                            "y": 6.5
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 0
+                              },
+                              {
+                                "x": 18,
+                                "y": 0
+                              },
+                              {
+                                "x": 18,
+                                "y": 12
+                              },
+                              {
+                                "x": 0,
+                                "y": 12
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "assetStoreId": "",
+              "bold": false,
+              "italic": false,
+              "name": "Logs",
+              "smoothed": true,
+              "type": "TextObject::Text",
+              "underlined": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "string": "T",
+              "font": "",
+              "textAlignment": "left",
+              "characterSize": 10,
+              "color": {
+                "b": 0,
+                "g": 0,
+                "r": 0
+              },
+              "content": {
+                "bold": false,
+                "isOutlineEnabled": false,
+                "isShadowEnabled": false,
+                "italic": false,
+                "outlineColor": "255;255;255",
+                "outlineThickness": 2,
+                "shadowAngle": 90,
+                "shadowBlurRadius": 2,
+                "shadowColor": "0;0;0",
+                "shadowDistance": 4,
+                "shadowOpacity": 127,
+                "smoothed": true,
+                "underlined": false,
+                "text": "T",
+                "font": "",
+                "textAlignment": "left",
+                "verticalTextAlignment": "top",
+                "characterSize": 10,
+                "lineHeight": 0,
+                "color": "0;0;0"
+              }
+            }
+          ],
+          "objectsFolderStructure": {
+            "folderName": "__ROOT",
+            "children": [
+              {
+                "objectName": "Sprite"
+              },
+              {
+                "objectName": "Logs"
+              }
+            ]
+          },
+          "objectsGroups": [],
+          "layers": [
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [
+                {
+                  "defaultSize": true,
+                  "defaultViewport": true,
+                  "height": 0,
+                  "viewportBottom": 1,
+                  "viewportLeft": 0,
+                  "viewportRight": 1,
+                  "viewportTop": 0,
+                  "width": 0
+                }
+              ],
+              "effects": []
+            },
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "Main",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [],
+              "effects": [
+                {
+                  "effectType": "Scene3D::HemisphereLight",
+                  "name": "3D Ambient Hemisphere Light",
+                  "doubleParameters": {
+                    "elevation": 40,
+                    "intensity": 0.33,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "groundColor": "127;127;127",
+                    "skyColor": "255;255;255",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {}
+                },
+                {
+                  "effectType": "Scene3D::DirectionalLight",
+                  "name": "3D Sun Light",
+                  "doubleParameters": {
+                    "distanceFromCamera": 1500,
+                    "elevation": 40,
+                    "frustumSize": 4000,
+                    "intensity": 0.75,
+                    "minimumShadowBias": 0,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "color": "255;255;255",
+                    "shadowQuality": "medium",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {
+                    "isCastingShadow": true
+                  }
+                }
+              ]
+            },
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "Debug",
+              "renderingType": "",
+              "visibility": false,
+              "cameras": [],
+              "effects": [
+                {
+                  "effectType": "Scene3D::HemisphereLight",
+                  "name": "3D Ambient Hemisphere Light",
+                  "doubleParameters": {
+                    "elevation": 40,
+                    "intensity": 0.33,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "groundColor": "127;127;127",
+                    "skyColor": "255;255;255",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {}
+                },
+                {
+                  "effectType": "Scene3D::DirectionalLight",
+                  "name": "3D Sun Light",
+                  "doubleParameters": {
+                    "distanceFromCamera": 1500,
+                    "elevation": 40,
+                    "frustumSize": 4000,
+                    "intensity": 0.75,
+                    "minimumShadowBias": 0,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "color": "255;255;255",
+                    "shadowQuality": "medium",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {
+                    "isCastingShadow": true
+                  }
+                }
+              ]
+            }
+          ],
+          "instances": [
+            {
+              "angle": 0,
+              "customSize": false,
+              "height": 0,
+              "keepRatio": true,
+              "layer": "Main",
+              "name": "Sprite",
+              "persistentUuid": "102523f2-d907-4ab4-8169-f72951d860d0",
+              "width": 0,
+              "x": 8,
+              "y": 8,
+              "zOrder": 8,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            },
+            {
+              "angle": 0,
+              "customSize": true,
+              "depth": 1,
+              "height": 12,
+              "keepRatio": true,
+              "layer": "Debug",
+              "name": "Logs",
+              "persistentUuid": "47bddd37-7c59-46cf-9bab-48feb57eee63",
+              "width": 21,
+              "x": 0,
+              "y": 15,
+              "zOrder": 9,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "areaMaxX": 16,
+      "areaMaxY": 16,
+      "areaMaxZ": 64,
+      "areaMinX": 0,
+      "areaMinY": 0,
+      "areaMinZ": 0,
+      "defaultName": "",
+      "description": "Smoke trails visual.\nTo work you need to:\nAttach the \"Smoke trail\" behavior to the object that will leave the marks.\nCreate an object called \"SmokeTrail\" + \"Objectname\" (the object that will leave the marks).\nAdd the object to \"LeaveSmokeTrails\" group.",
+      "fullName": "Smoke trails (Custom object)",
+      "isUsingLegacyInstancesRenderer": false,
+      "name": "SmokeTrails",
       "objects": [
         {
           "adaptCollisionMaskAutomatically": true,
@@ -22132,7 +22899,13 @@
                     "Logs",
                     "no"
                   ]
-                },
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
                 {
                   "type": {
                     "value": "OpacityCapability::OpacityBehavior::SetValue"
@@ -22151,7 +22924,7 @@
             {
               "description": "Object",
               "name": "Object",
-              "supplementaryInformation": "CustomObjects::Trails",
+              "supplementaryInformation": "CustomObjects::SmokeTrails",
               "type": "object"
             }
           ],
@@ -22194,28 +22967,17 @@
                     "\"opacity\"",
                     "0",
                     "\"linear\"",
-                    "0.6",
+                    "FadeOutDuration",
                     "no"
                   ]
-                }
-              ],
-              "events": [
+                },
                 {
-                  "disabled": true,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
-                      },
-                      "parameters": [
-                        "Logs",
-                        "Text",
-                        "=",
-                        "ToString(trunc(Object.ZOrder()))"
-                      ]
-                    }
+                  "type": {
+                    "value": "ChangeColor"
+                  },
+                  "parameters": [
+                    "Sprite",
+                    "Tint"
                   ]
                 }
               ]
@@ -22245,13 +23007,31 @@
                   ]
                 }
               ]
+            },
+            {
+              "disabled": true,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                  },
+                  "parameters": [
+                    "Logs",
+                    "Text",
+                    "=",
+                    "ToString(trunc(Sprite.Angle()))"
+                  ]
+                }
+              ]
             }
           ],
           "parameters": [
             {
               "description": "Object",
               "name": "Object",
-              "supplementaryInformation": "CustomObjects::Trails",
+              "supplementaryInformation": "CustomObjects::SmokeTrails",
               "type": "object"
             }
           ],
@@ -22285,7 +23065,7 @@
             {
               "description": "Object",
               "name": "Object",
-              "supplementaryInformation": "CustomObjects::Trails",
+              "supplementaryInformation": "CustomObjects::SmokeTrails",
               "type": "object"
             },
             {
@@ -22297,8 +23077,326 @@
           "objectGroups": []
         }
       ],
-      "propertyDescriptors": [],
-      "variants": []
+      "propertyDescriptors": [
+        {
+          "value": "1",
+          "type": "Number",
+          "label": "Fade out duration",
+          "description": "If FadeOutAnimation checked, this determine the time to fade out",
+          "name": "FadeOutDuration"
+        },
+        {
+          "value": "255;255;255",
+          "type": "Color",
+          "label": "Color tint",
+          "description": "Change a little of the color",
+          "name": "Tint"
+        }
+      ],
+      "variants": [
+        {
+          "areaMaxX": 16,
+          "areaMaxY": 16,
+          "areaMaxZ": 64,
+          "areaMinX": 0,
+          "areaMinY": 0,
+          "areaMinZ": 0,
+          "name": "TankTireMarks",
+          "objects": [
+            {
+              "adaptCollisionMaskAutomatically": true,
+              "assetStoreId": "",
+              "name": "Sprite",
+              "type": "Sprite",
+              "updateIfNotVisible": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [
+                {
+                  "name": "Tween",
+                  "type": "Tween::TweenBehavior"
+                }
+              ],
+              "animations": [
+                {
+                  "name": "default",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "TiresDecal",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 9,
+                            "y": 6.5
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 0
+                              },
+                              {
+                                "x": 18,
+                                "y": 0
+                              },
+                              {
+                                "x": 18,
+                                "y": 12
+                              },
+                              {
+                                "x": 0,
+                                "y": 12
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "assetStoreId": "",
+              "bold": false,
+              "italic": false,
+              "name": "Logs",
+              "smoothed": true,
+              "type": "TextObject::Text",
+              "underlined": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "string": "T",
+              "font": "",
+              "textAlignment": "left",
+              "characterSize": 10,
+              "color": {
+                "b": 0,
+                "g": 0,
+                "r": 0
+              },
+              "content": {
+                "bold": false,
+                "isOutlineEnabled": false,
+                "isShadowEnabled": false,
+                "italic": false,
+                "outlineColor": "255;255;255",
+                "outlineThickness": 2,
+                "shadowAngle": 90,
+                "shadowBlurRadius": 2,
+                "shadowColor": "0;0;0",
+                "shadowDistance": 4,
+                "shadowOpacity": 127,
+                "smoothed": true,
+                "underlined": false,
+                "text": "T",
+                "font": "",
+                "textAlignment": "left",
+                "verticalTextAlignment": "top",
+                "characterSize": 10,
+                "lineHeight": 0,
+                "color": "0;0;0"
+              }
+            }
+          ],
+          "objectsFolderStructure": {
+            "folderName": "__ROOT",
+            "children": [
+              {
+                "objectName": "Sprite"
+              },
+              {
+                "objectName": "Logs"
+              }
+            ]
+          },
+          "objectsGroups": [],
+          "layers": [
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [
+                {
+                  "defaultSize": true,
+                  "defaultViewport": true,
+                  "height": 0,
+                  "viewportBottom": 1,
+                  "viewportLeft": 0,
+                  "viewportRight": 1,
+                  "viewportTop": 0,
+                  "width": 0
+                }
+              ],
+              "effects": []
+            },
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "Main",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [],
+              "effects": [
+                {
+                  "effectType": "Scene3D::HemisphereLight",
+                  "name": "3D Ambient Hemisphere Light",
+                  "doubleParameters": {
+                    "elevation": 40,
+                    "intensity": 0.33,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "groundColor": "127;127;127",
+                    "skyColor": "255;255;255",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {}
+                },
+                {
+                  "effectType": "Scene3D::DirectionalLight",
+                  "name": "3D Sun Light",
+                  "doubleParameters": {
+                    "distanceFromCamera": 1500,
+                    "elevation": 40,
+                    "frustumSize": 4000,
+                    "intensity": 0.75,
+                    "minimumShadowBias": 0,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "color": "255;255;255",
+                    "shadowQuality": "medium",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {
+                    "isCastingShadow": true
+                  }
+                }
+              ]
+            },
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "Debug",
+              "renderingType": "",
+              "visibility": false,
+              "cameras": [],
+              "effects": [
+                {
+                  "effectType": "Scene3D::HemisphereLight",
+                  "name": "3D Ambient Hemisphere Light",
+                  "doubleParameters": {
+                    "elevation": 40,
+                    "intensity": 0.33,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "groundColor": "127;127;127",
+                    "skyColor": "255;255;255",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {}
+                },
+                {
+                  "effectType": "Scene3D::DirectionalLight",
+                  "name": "3D Sun Light",
+                  "doubleParameters": {
+                    "distanceFromCamera": 1500,
+                    "elevation": 40,
+                    "frustumSize": 4000,
+                    "intensity": 0.75,
+                    "minimumShadowBias": 0,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "color": "255;255;255",
+                    "shadowQuality": "medium",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {
+                    "isCastingShadow": true
+                  }
+                }
+              ]
+            }
+          ],
+          "instances": [
+            {
+              "angle": 0,
+              "customSize": false,
+              "height": 0,
+              "keepRatio": true,
+              "layer": "Main",
+              "name": "Sprite",
+              "persistentUuid": "102523f2-d907-4ab4-8169-f72951d860d0",
+              "width": 0,
+              "x": 8,
+              "y": 8,
+              "zOrder": 8,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            },
+            {
+              "angle": 0,
+              "customSize": true,
+              "depth": 1,
+              "height": 12,
+              "keepRatio": true,
+              "layer": "Debug",
+              "name": "Logs",
+              "persistentUuid": "47bddd37-7c59-46cf-9bab-48feb57eee63",
+              "width": 21,
+              "x": 0,
+              "y": 15,
+              "zOrder": 9,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            }
+          ]
+        }
+      ]
     },
     {
       "areaMaxX": 32,

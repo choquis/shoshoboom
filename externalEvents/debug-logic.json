@@ -160,7 +160,7 @@
               },
               "parameters": [
                 "",
-                "Trails"
+                "GroundTrails"
               ]
             },
             {
@@ -170,7 +170,7 @@
               "parameters": [
                 "TotalTrails",
                 "=",
-                "PickedInstancesCount(Trails)"
+                "PickedInstancesCount(GroundTrails)"
               ]
             },
             {
@@ -375,7 +375,7 @@
                   },
                   "parameters": [
                     "Bullets",
-                    "ToString(Bullets.ForceAngle())",
+                    "ToString(Bullets.Trails::GetDistanceMoved())",
                     ""
                   ]
                 }

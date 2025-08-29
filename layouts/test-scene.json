@@ -194,7 +194,15 @@
       ]
     },
     {
-      "name": "LeaveTrails",
+      "name": "LeaveGroundTrails",
+      "objects": [
+        {
+          "name": "Player0"
+        }
+      ]
+    },
+    {
+      "name": "LeaveSmokeTrails",
       "objects": [
         {
           "name": "DefaultBullet"
@@ -202,10 +210,18 @@
       ]
     },
     {
-      "name": "Trails",
+      "name": "GroundTrails",
       "objects": [
         {
-          "name": "TrailDefaultBullet"
+          "name": "GroundTrailsPlayer0"
+        }
+      ]
+    },
+    {
+      "name": "SmokeTrails",
+      "objects": [
+        {
+          "name": "SmokeTrailsDefaultBullet"
         }
       ]
     },
@@ -231,6 +247,14 @@
         },
         {
           "name": "EditorCursor"
+        }
+      ]
+    },
+    {
+      "name": "Tanks",
+      "objects": [
+        {
+          "name": "Player0"
         }
       ]
     }
@@ -1794,16 +1818,6 @@
     },
     {
       "assetStoreId": "",
-      "name": "TrailDefaultBullet",
-      "type": "CustomObjects::Trails",
-      "variant": "",
-      "variables": [],
-      "effects": [],
-      "behaviors": [],
-      "content": {}
-    },
-    {
-      "assetStoreId": "",
       "name": "Player0",
       "type": "CustomObjects::Tank",
       "variant": "",
@@ -1834,6 +1848,17 @@
           "EntityBehavior": "Entity",
           "BulletObjects": "BulletObjects",
           "MoveSpeed": 70
+        },
+        {
+          "name": "Trails",
+          "type": "CustomBehaviors::Trails",
+          "SpawnByTime": false,
+          "SpawnCooldown": 1,
+          "SpawnDistance": 16,
+          "Spawn": false,
+          "DistanceMoved": 0,
+          "OldX": 2.0247e-320,
+          "OldY": 2.0247e-320
         }
       ],
       "content": {
@@ -1865,6 +1890,14 @@
           "type": "CustomBehaviors::Entity",
           "Id": 1.7263050289483554e-306,
           "Type": "Bullet"
+        },
+        {
+          "name": "Trails",
+          "type": "CustomBehaviors::Trails",
+          "SpawnCooldown": 0.03,
+          "Spawn": false,
+          "SpawnByTime": true,
+          "SpawnDistance": 128
         }
       ],
       "content": {
@@ -1900,7 +1933,9 @@
           "name": "Trails",
           "type": "CustomBehaviors::Trails",
           "SpawnCooldown": 0.03,
-          "Spawn": false
+          "Spawn": false,
+          "SpawnByTime": true,
+          "SpawnDistance": 32
         }
       ],
       "content": {
@@ -1932,6 +1967,14 @@
           "type": "CustomBehaviors::Entity",
           "Id": 1.7263050289483554e-306,
           "Type": "Bullet"
+        },
+        {
+          "name": "Trails",
+          "type": "CustomBehaviors::Trails",
+          "SpawnCooldown": 0.03,
+          "Spawn": false,
+          "SpawnByTime": true,
+          "SpawnDistance": 128
         }
       ],
       "content": {
@@ -2183,6 +2226,30 @@
           ]
         }
       ]
+    },
+    {
+      "assetStoreId": "",
+      "name": "SmokeTrailsDefaultBullet",
+      "type": "CustomObjects::SmokeTrails",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "FadeOutDuration": 0.6
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "GroundTrailsPlayer0",
+      "type": "CustomObjects::GroundTrails",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "Tint": "101;134;61"
+      }
     }
   ],
   "objectsFolderStructure": {
@@ -2257,7 +2324,7 @@
             "objectName": "ExplosionDefaultBullet"
           },
           {
-            "objectName": "TrailDefaultBullet"
+            "objectName": "SmokeTrailsDefaultBullet"
           },
           {
             "objectName": "LongBullet"
@@ -2284,6 +2351,9 @@
       },
       {
         "objectName": "Player0"
+      },
+      {
+        "objectName": "GroundTrailsPlayer0"
       }
     ]
   },
@@ -2462,6 +2532,18 @@
             "Player0",
             "",
             "_CONSTANTS_.Layers.Main",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "CentreCamera"
+          },
+          "parameters": [
+            "",
+            "Player0",
+            "",
+            "_CONSTANTS_.Layers.Background",
             ""
           ]
         },
@@ -3074,51 +3156,136 @@
       "events": [
         {
           "type": "BuiltinCommonInstructions::ForEach",
-          "object": "LeaveTrails",
+          "object": "LeaveGroundTrails",
           "conditions": [
             {
               "type": {
                 "value": "CustomBehaviors::Trails::ShouldCreate"
               },
               "parameters": [
-                "LeaveTrails",
+                "LeaveGroundTrails",
+                "Trails",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::CompareNumbers"
+              },
+              "parameters": [
+                "Tanks.Entity::Id()",
+                "=",
+                "LeaveGroundTrails.Entity::Id()"
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CreateByName"
+                  },
+                  "parameters": [
+                    "",
+                    "GroundTrails",
+                    "\"GroundTrails\" + LeaveGroundTrails.ObjectName()",
+                    "LeaveGroundTrails.X()",
+                    "LeaveGroundTrails.CenterY()",
+                    "_CONSTANTS_.Layers.Background"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "MettreX"
+                  },
+                  "parameters": [
+                    "GroundTrails",
+                    "+",
+                    "GroundTrails.Width() / 2"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CustomObjects::GroundTrails::ChangeAngle"
+                  },
+                  "parameters": [
+                    "GroundTrails",
+                    "Tanks.BodyAngle() + 90",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Trails::Reset"
+                  },
+                  "parameters": [
+                    "LeaveGroundTrails",
+                    "Trails",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "LeaveSmokeTrails",
+          "conditions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Trails::ShouldCreate"
+              },
+              "parameters": [
+                "LeaveSmokeTrails",
                 "Trails",
                 ""
               ]
             }
           ],
-          "actions": [
+          "actions": [],
+          "events": [
             {
-              "type": {
-                "value": "CreateByName"
-              },
-              "parameters": [
-                "",
-                "Trails",
-                "\"Trail\" + LeaveTrails.ObjectName()",
-                "LeaveTrails.X()",
-                "LeaveTrails.Y()",
-                "_CONSTANTS_.Layers.Main"
-              ]
-            },
-            {
-              "type": {
-                "value": "CustomObjects::Trails::ChangeAngle"
-              },
-              "parameters": [
-                "Trails",
-                "LeaveTrails.ForceAngle()",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "CustomBehaviors::Trails::Reset"
-              },
-              "parameters": [
-                "LeaveTrails",
-                "Trails",
-                ""
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CreateByName"
+                  },
+                  "parameters": [
+                    "",
+                    "SmokeTrails",
+                    "\"SmokeTrails\" + LeaveSmokeTrails.ObjectName()",
+                    "LeaveSmokeTrails.X()",
+                    "LeaveSmokeTrails.Y()",
+                    "_CONSTANTS_.Layers.Main"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CustomObjects::SmokeTrails::ChangeAngle"
+                  },
+                  "parameters": [
+                    "SmokeTrails",
+                    "LeaveSmokeTrails.ForceAngle()",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Trails::Reset"
+                  },
+                  "parameters": [
+                    "LeaveSmokeTrails",
+                    "Trails",
+                    ""
+                  ]
+                }
               ]
             }
           ]

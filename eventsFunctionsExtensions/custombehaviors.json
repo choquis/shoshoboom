@@ -601,7 +601,7 @@
         },
         {
           "fullName": "",
-          "functionType": "Expression",
+          "functionType": "StringExpression",
           "name": "Type",
           "sentence": "",
           "events": [
@@ -621,7 +621,7 @@
             }
           ],
           "expressionType": {
-            "type": "expression"
+            "type": "string"
           },
           "parameters": [
             {
@@ -2355,7 +2355,7 @@
       "sharedPropertyDescriptors": []
     },
     {
-      "description": "Marks that an object make when moving",
+      "description": "Marks that an object leave when moving",
       "fullName": "Trails (Behavior)",
       "name": "Trails",
       "objectType": "",
@@ -2368,7 +2368,18 @@
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "SpawnByTime",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
               "actions": [
                 {
                   "type": {
@@ -2408,35 +2419,225 @@
               "conditions": [
                 {
                   "type": {
-                    "value": "CompareObjectTimer"
+                    "value": "BuiltinCommonInstructions::Once"
                   },
-                  "parameters": [
-                    "Object",
-                    "\"SpawnCooldown\"",
-                    ">=",
-                    "SpawnCooldown"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "BooleanVariable"
-                  },
-                  "parameters": [
-                    "Spawn",
-                    "",
-                    ""
-                  ]
+                  "parameters": []
                 }
               ],
               "actions": [
                 {
                   "type": {
-                    "value": "SetBooleanVariable"
+                    "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "Spawn",
+                    "OldX",
+                    "+",
+                    "Object.X()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "OldY",
+                    "+",
+                    "Object.Y()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "DistanceMoved",
+                    "+",
+                    "0"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "SpawnByTime",
                     "True",
                     ""
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "CompareObjectTimer"
+                      },
+                      "parameters": [
+                        "Object",
+                        "\"SpawnCooldown\"",
+                        ">=",
+                        "SpawnCooldown"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "BooleanVariable"
+                      },
+                      "parameters": [
+                        "Spawn",
+                        "",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetBooleanVariable"
+                      },
+                      "parameters": [
+                        "Spawn",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "SpawnByTime",
+                    "False",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::Or"
+                      },
+                      "parameters": [],
+                      "subInstructions": [
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::CompareNumbers"
+                          },
+                          "parameters": [
+                            "Object.X()",
+                            "!=",
+                            "OldX"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::CompareNumbers"
+                          },
+                          "parameters": [
+                            "Object.Y()",
+                            "!=",
+                            "OldY"
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "NewDistance",
+                        "=",
+                        "abs(DistanceBetweenPositions(Object.X(), Object.Y(), OldX, OldY))"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "DistanceMoved",
+                        "+",
+                        "NewDistance"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "OldX",
+                        "=",
+                        "Object.X()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "OldY",
+                        "=",
+                        "Object.Y()"
+                      ]
+                    }
+                  ],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::CompareNumbers"
+                          },
+                          "parameters": [
+                            "DistanceMoved",
+                            ">=",
+                            "SpawnDistance"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetBooleanVariable"
+                          },
+                          "parameters": [
+                            "Spawn",
+                            "True",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "variables": [
+                    {
+                      "name": "NewDistance",
+                      "type": "number",
+                      "value": 0
+                    }
                   ]
                 }
               ]
@@ -2531,6 +2732,45 @@
           "objectGroups": []
         },
         {
+          "fullName": "",
+          "functionType": "Expression",
+          "name": "GetDistanceMoved",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "DistanceMoved"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Trails",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
           "description": "Restart the timer of trail behavior",
           "fullName": "Reset the trail behavior",
           "functionType": "Action",
@@ -2549,6 +2789,16 @@
                     "Spawn",
                     "False",
                     ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "DistanceMoved",
+                    "=",
+                    "0"
                   ]
                 },
                 {
@@ -2581,12 +2831,26 @@
       ],
       "propertyDescriptors": [
         {
+          "value": "",
+          "type": "Boolean",
+          "label": "Spawn by time",
+          "description": "Use SpawnCooldown to spawn the trails by default its for distance",
+          "name": "SpawnByTime"
+        },
+        {
           "value": "1",
           "type": "Number",
           "unit": "Second",
           "label": "Time to spawn the trail",
-          "description": "Time in seconds to spawn the trail",
+          "description": "Time in seconds to spawn the trail (Used if SpawnByTime is checked)",
           "name": "SpawnCooldown"
+        },
+        {
+          "value": "32",
+          "type": "Number",
+          "label": "Distance to spawn the trail",
+          "description": "Distance in pixels to spawn the trail (Used if SpawnByTime is unchecked)",
+          "name": "SpawnDistance"
         },
         {
           "value": "",
@@ -2594,6 +2858,27 @@
           "label": "",
           "hidden": true,
           "name": "Spawn"
+        },
+        {
+          "value": "0",
+          "type": "Number",
+          "label": "",
+          "hidden": true,
+          "name": "DistanceMoved"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "label": "",
+          "hidden": true,
+          "name": "OldX"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "label": "",
+          "hidden": true,
+          "name": "OldY"
         }
       ],
       "sharedPropertyDescriptors": []

@@ -825,6 +825,18 @@
               ],
               "events": [
                 {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 52,
+                    "g": 44,
+                    "r": 40,
+                    "textB": 255,
+                    "textG": 255,
+                    "textR": 255
+                  },
+                  "comment": "DeltaAngle its used to prevent that the tank can shoot behaind if the cursor is on it"
+                },
+                {
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
                     {
@@ -835,6 +847,16 @@
                         "MAINGAME.Input.Shoot",
                         "=",
                         "_CONSTANTS_.InputState.Pressed"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NumberVariable"
+                      },
+                      "parameters": [
+                        "DeltaAngle",
+                        "<",
+                        "45"
                       ]
                     },
                     {
@@ -913,22 +935,6 @@
                       ]
                     }
                   ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "NumberVariable"
-                      },
-                      "parameters": [
-                        "DeltaAngle",
-                        "<",
-                        "45"
-                      ]
-                    }
-                  ],
-                  "actions": []
                 }
               ],
               "variables": [
