@@ -131,6 +131,112 @@
       "sharedPropertyDescriptors": []
     },
     {
+      "description": "This is a list used to select the type of bomb object",
+      "fullName": "Bomb objects (Behavior)",
+      "name": "BombObjects",
+      "objectType": "",
+      "eventsFunctions": [
+        {
+          "fullName": "",
+          "functionType": "StringExpression",
+          "name": "BombObjectName",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnString"
+                  },
+                  "parameters": [
+                    "ObjectName"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "string"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::BombObjects",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Change the bomb type",
+          "fullName": "Change bomb type",
+          "functionType": "Action",
+          "name": "SetBombObject",
+          "sentence": "Change bomb type _PARAM2_ to _PARAM0_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "ObjectName",
+                    "=",
+                    "Name"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::BombObjects",
+              "type": "behavior"
+            },
+            {
+              "description": "Bomb object",
+              "name": "Name",
+              "type": "string"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "",
+          "type": "Choice",
+          "label": "Name of bomb objects",
+          "description": "This is a list of all the bomb objects that can be used",
+          "extraInformation": [
+            "DefaultLandmine",
+            "IntelligentLandmine",
+            "InvisibleLandmine"
+          ],
+          "name": "ObjectName"
+        }
+      ],
+      "sharedPropertyDescriptors": []
+    },
+    {
       "description": "Other entity can bounce in this object",
       "fullName": "Bounceable (Behavior)",
       "name": "Bounceable",
@@ -268,11 +374,24 @@
           "fullName": "Deal damage",
           "functionType": "Action",
           "name": "DealDamage",
-          "sentence": "Deal_PARAM2_ damage to _PARAM0_ from _PARAM3_",
+          "sentence": "Deal_PARAM2_ damage type _PARAM4_ to _PARAM0_ (from Entity Id: _PARAM3_)",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "CustomBehaviors::Damageable::HasImmunity"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Behavior",
+                    "DamageType",
+                    ""
+                  ]
+                }
+              ],
               "actions": [
                 {
                   "type": {
@@ -321,16 +440,6 @@
                         "-",
                         "Damage"
                       ]
-                    },
-                    {
-                      "type": {
-                        "value": "DebuggerTools::ConsoleLog"
-                      },
-                      "parameters": [
-                        "\"deal damage \" + Object.ObjectName()",
-                        "",
-                        ""
-                      ]
                     }
                   ],
                   "events": [
@@ -346,16 +455,6 @@
                             "IdsString",
                             "+",
                             "ToString(FromId) + \",\""
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "DebuggerTools::ConsoleLog"
-                          },
-                          "parameters": [
-                            "IdsString",
-                            "",
-                            ""
                           ]
                         }
                       ]
@@ -393,6 +492,126 @@
               "description": "From Id",
               "name": "FromId",
               "type": "expression"
+            },
+            {
+              "description": "Damage type",
+              "name": "DamageType",
+              "type": "string"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Check if the damageable has immunity to damage type",
+          "fullName": "Has immunity",
+          "functionType": "Condition",
+          "name": "HasImmunity",
+          "sentence": "Does _PARAM0_ has immunity to _PARAM2_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ArrayTools::SplitString"
+                  },
+                  "parameters": [
+                    "",
+                    "ImmuneDamage",
+                    "\",\"",
+                    "ArrayList",
+                    ""
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "ArrayTools::HasString"
+                      },
+                      "parameters": [
+                        "",
+                        "ArrayList",
+                        "DamageType",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetReturnBoolean"
+                      },
+                      "parameters": [
+                        "True"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::Not"
+                      },
+                      "parameters": [],
+                      "subInstructions": [
+                        {
+                          "type": {
+                            "value": "ArrayTools::HasString"
+                          },
+                          "parameters": [
+                            "",
+                            "ArrayList",
+                            "DamageType",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetReturnBoolean"
+                      },
+                      "parameters": [
+                        "False"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "variables": [
+                {
+                  "name": "ArrayList",
+                  "type": "array",
+                  "children": []
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Damageable",
+              "type": "behavior"
+            },
+            {
+              "description": "Damage type",
+              "name": "DamageType",
+              "type": "string"
             }
           ],
           "objectGroups": []
@@ -502,6 +721,13 @@
           "label": "",
           "hidden": true,
           "name": "IdsString"
+        },
+        {
+          "value": "",
+          "type": "String",
+          "label": "Immune damage",
+          "description": "Opts: \"Bullet\", \"Explosion\". Tags for what type of damage is immune, if its listed here, It will not receive damage from that. Separated by commas.",
+          "name": "ImmuneDamage"
         }
       ],
       "sharedPropertyDescriptors": []
@@ -737,7 +963,8 @@
             "Bullet",
             "Resource",
             "Explosion",
-            "Obstacle"
+            "Obstacle",
+            "Bomb"
           ],
           "name": "Type"
         }
@@ -805,11 +1032,22 @@
         {
           "value": "",
           "type": "Behavior",
-          "label": "",
+          "label": "Bullet object",
+          "description": "Name of the bullet that will shoot",
           "extraInformation": [
             "CustomBehaviors::BulletObjects"
           ],
           "name": "BulletObjects"
+        },
+        {
+          "value": "",
+          "type": "Behavior",
+          "label": "Bomb object",
+          "description": "Name of the bomb that will place/throw",
+          "extraInformation": [
+            "CustomBehaviors::BombObjects"
+          ],
+          "name": "BombObjects"
         },
         {
           "value": "1",
@@ -823,7 +1061,7 @@
       "sharedPropertyDescriptors": []
     },
     {
-      "description": "The bulle logic",
+      "description": "The bullet logic",
       "fullName": "Bullet (Behavior)",
       "name": "Bullet",
       "objectType": "",
@@ -942,11 +1180,11 @@
           "objectGroups": []
         },
         {
-          "description": "Set the parent id so it can identify what not to hurt",
-          "fullName": "Set parent Id",
+          "description": "Set the parent id of bullet so it can identify what not to hurt",
+          "fullName": "Set parent Id of bullet",
           "functionType": "Action",
           "name": "SetParentId",
-          "sentence": "Set parent Id of _PARAM0_ as _PARAM2_",
+          "sentence": "Set parent Id of bullet _PARAM0_ as _PARAM2_",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
@@ -959,7 +1197,7 @@
                   "parameters": [
                     "ParentId",
                     "=",
-                    "ParentId2"
+                    "ParamParentId"
                   ]
                 }
               ]
@@ -979,7 +1217,7 @@
             },
             {
               "description": "Parent Id",
-              "name": "ParentId2",
+              "name": "ParamParentId",
               "type": "expression"
             }
           ],
@@ -1572,11 +1810,49 @@
           "objectGroups": []
         },
         {
+          "description": "Destroy the bullet without explosion",
+          "fullName": "Only destroy",
+          "functionType": "Action",
+          "name": "OnlyDestroy",
+          "sentence": "Destroy bullet _PARAM0_ without explosion",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Object",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Bullet",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
           "description": "The bullet will explode in the next frame",
           "fullName": "Has to explode",
           "functionType": "Condition",
           "name": "HasToExplode",
-          "sentence": "_PARAM0_ has to explode",
+          "sentence": "The bullet _PARAM0_ has to explode",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
@@ -1681,7 +1957,7 @@
           "value": "",
           "type": "Number",
           "label": "The object that should not damage",
-          "description": "This is the id of the parent that should not damage, ex. If a tank shoot a bullet, the bullet will explode and create this object. This explosion should not damage the tank.",
+          "description": "This is the id of the parent that should not damage, ex. If a tank shoot a bullet, the bullet will explode and create an explosion. This explosion should not damage the tank.",
           "hidden": true,
           "name": "ParentId"
         }
@@ -2236,6 +2512,47 @@
             }
           ],
           "objectGroups": []
+        },
+        {
+          "description": "The Damage type of the object",
+          "fullName": "Damage type",
+          "functionType": "StringExpression",
+          "name": "DamageType",
+          "sentence": "the damageType",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnString"
+                  },
+                  "parameters": [
+                    "DamageType"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "supplementaryInformation": "[\"Bullet\",\"Explosion\"]",
+            "type": "stringWithSelector"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Explosion",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
         }
       ],
       "propertyDescriptors": [
@@ -2256,6 +2573,17 @@
           "description": "This is the id of the parent that should not damage, ex. If a tank shoot a bullet, the bullet will explode and create this object. This explosion should not damage the tank.",
           "hidden": true,
           "name": "ParentId"
+        },
+        {
+          "value": "Bullet",
+          "type": "Choice",
+          "label": "Damage type",
+          "description": "The type of damage this deal to damageable",
+          "extraInformation": [
+            "Bullet",
+            "Explosion"
+          ],
+          "name": "DamageType"
         },
         {
           "value": "",
@@ -2286,46 +2614,7 @@
       "fullName": "Obstacle (Behavior)",
       "name": "Obstacle",
       "objectType": "",
-      "eventsFunctions": [
-        {
-          "fullName": "",
-          "functionType": "Action",
-          "name": "onCreated",
-          "sentence": "",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "CurrentHealth",
-                    "=",
-                    "Health"
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "description": "Object",
-              "name": "Object",
-              "type": "object"
-            },
-            {
-              "description": "Behavior",
-              "name": "Behavior",
-              "supplementaryInformation": "CustomBehaviors::Obstacle",
-              "type": "behavior"
-            }
-          ],
-          "objectGroups": []
-        }
-      ],
+      "eventsFunctions": [],
       "propertyDescriptors": [
         {
           "value": "",
@@ -2336,20 +2625,6 @@
             "CustomBehaviors::Entity"
           ],
           "name": "EntityBehavior"
-        },
-        {
-          "value": "",
-          "type": "Number",
-          "label": "",
-          "description": "Max health of the obstacle before been destroyed",
-          "name": "Health"
-        },
-        {
-          "value": "",
-          "type": "Number",
-          "label": "",
-          "hidden": true,
-          "name": "CurrentHealth"
         }
       ],
       "sharedPropertyDescriptors": []
@@ -2879,6 +3154,544 @@
           "label": "",
           "hidden": true,
           "name": "OldY"
+        }
+      ],
+      "sharedPropertyDescriptors": []
+    },
+    {
+      "description": "The bomb logic",
+      "fullName": "Bomb (Behavior)",
+      "name": "Bomb",
+      "objectType": "",
+      "eventsFunctions": [
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "onCreated",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ResetObjectTimer"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"DetonateTime\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ResetObjectTimer"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"ExplosionTime\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PauseObjectTimer"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"ExplosionTime\""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Bomb",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "doStepPreEvents",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Explode",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Object",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CompareObjectTimer"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"DetonateTime\"",
+                    ">=",
+                    "DetonateTime"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ObjectTimerPaused"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"ExplosionTime\""
+                  ]
+                },
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "CustomBehaviors::Bomb::HasToExplode"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Behavior",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "DebuggerTools::ConsoleLog"
+                  },
+                  "parameters": [
+                    "\"cc\"",
+                    "",
+                    ""
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "UnPauseObjectTimer"
+                      },
+                      "parameters": [
+                        "Object",
+                        "\"ExplosionTime\""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetBooleanVariable"
+                      },
+                      "parameters": [
+                        "Detonate",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CompareObjectTimer"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"ExplosionTime\"",
+                    ">=",
+                    "ExplodeTime"
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetBooleanVariable"
+                      },
+                      "parameters": [
+                        "Explode",
+                        "True",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Bomb",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Set the parent id of bomb so it can identify what not to hurt",
+          "fullName": "Set parent Id of bomb",
+          "functionType": "Action",
+          "name": "SetParentId",
+          "sentence": "Set parent Id of bomb _PARAM0_ as _PARAM2_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "ParentId",
+                    "=",
+                    "ParamParentId"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Bomb",
+              "type": "behavior"
+            },
+            {
+              "description": "Parent Id",
+              "name": "ParamParentId",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Set the bomb to explode in the next frame",
+          "fullName": "Explode",
+          "functionType": "Action",
+          "name": "Explode",
+          "sentence": "Make _PARAM0_ explode",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "Explode",
+                    "True",
+                    "ParamParentId"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Bomb",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Expression",
+          "name": "ParentId",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "ParentId"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Bomb",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "The bomb will start counting before explosion",
+          "fullName": "Detonates",
+          "functionType": "Condition",
+          "name": "IsDetonating",
+          "sentence": "The bomb _PARAM0_ detonates",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Detonate",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Detonate",
+                    "",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "False"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Bomb",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "The bomb will explode in the next frame",
+          "fullName": "Has to explode",
+          "functionType": "Condition",
+          "name": "HasToExplode",
+          "sentence": "The bomb _PARAM0_ has to explode",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Explode",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "Explode",
+                    "",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "False"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Bomb",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "",
+          "type": "Behavior",
+          "label": "Entity",
+          "description": "Entity behavior attached to the bomb",
+          "extraInformation": [
+            "CustomBehaviors::Entity"
+          ],
+          "name": "EntityBehavior"
+        },
+        {
+          "value": "",
+          "type": "Boolean",
+          "label": "",
+          "hidden": true,
+          "name": "Explode"
+        },
+        {
+          "value": "",
+          "type": "Boolean",
+          "label": "",
+          "hidden": true,
+          "name": "Detonate"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "label": "The object that should not damage",
+          "description": "This is the id of the parent that should not damage, ex. If a tank put a bomb, the bomb will explode and create an explosion. This explosion should not damage the tank.",
+          "hidden": true,
+          "name": "ParentId"
+        },
+        {
+          "value": "1",
+          "type": "Number",
+          "label": "Detonate time",
+          "description": "Time before start explode time",
+          "name": "DetonateTime"
+        },
+        {
+          "value": "1",
+          "type": "Number",
+          "label": "Explode time",
+          "description": "Time before explode",
+          "name": "ExplodeTime"
         }
       ],
       "sharedPropertyDescriptors": []

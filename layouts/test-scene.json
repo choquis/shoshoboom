@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.1687568821482106,
+    "zoomFactor": 2.768239609261427,
     "windowMask": false
   },
   "objectsGroups": [
@@ -87,7 +87,10 @@
           "name": "SolidWall"
         },
         {
-          "name": "SoftBreakableObstacle"
+          "name": "SoftBreakableObstacle16"
+        },
+        {
+          "name": "HardBreakableObstacle16"
         }
       ]
     },
@@ -106,10 +109,13 @@
           "name": "SolidWall"
         },
         {
-          "name": "SoftBreakableObstacle"
+          "name": "SoftBreakableObstacle16"
         },
         {
           "name": "BounceableWall"
+        },
+        {
+          "name": "HardBreakableObstacle16"
         }
       ]
     },
@@ -123,7 +129,10 @@
           "name": "SolidWall"
         },
         {
-          "name": "SoftBreakableObstacle"
+          "name": "SoftBreakableObstacle16"
+        },
+        {
+          "name": "HardBreakableObstacle16"
         }
       ]
     },
@@ -171,6 +180,9 @@
         },
         {
           "name": "ExplosionLongBullet"
+        },
+        {
+          "name": "ExplosionDefaultLandmine"
         }
       ]
     },
@@ -178,7 +190,10 @@
       "name": "Obstacles",
       "objects": [
         {
-          "name": "SoftBreakableObstacle"
+          "name": "SoftBreakableObstacle16"
+        },
+        {
+          "name": "HardBreakableObstacle16"
         }
       ]
     },
@@ -186,10 +201,13 @@
       "name": "Damageable",
       "objects": [
         {
-          "name": "SoftBreakableObstacle"
+          "name": "SoftBreakableObstacle16"
         },
         {
           "name": "Player0"
+        },
+        {
+          "name": "HardBreakableObstacle16"
         }
       ]
     },
@@ -229,13 +247,16 @@
       "name": "BuildableInstances",
       "objects": [
         {
-          "name": "SoftBreakableObstacle"
+          "name": "SoftBreakableObstacle16"
         },
         {
           "name": "BounceableWall"
         },
         {
           "name": "SolidWall"
+        },
+        {
+          "name": "HardBreakableObstacle16"
         }
       ]
     },
@@ -255,6 +276,14 @@
       "objects": [
         {
           "name": "Player0"
+        }
+      ]
+    },
+    {
+      "name": "Bombs",
+      "objects": [
+        {
+          "name": "DefaultLandmine"
         }
       ]
     }
@@ -281,13 +310,12 @@
       "value": 0
     },
     {
-      "folded": true,
       "name": "BuildableInstancesArray",
       "type": "array",
       "children": [
         {
           "type": "string",
-          "value": "SoftBreakableObstacle"
+          "value": "SoftBreakableObstacle16"
         },
         {
           "type": "string",
@@ -296,8 +324,17 @@
         {
           "type": "string",
           "value": "SolidWall"
+        },
+        {
+          "type": "string",
+          "value": "HardBreakableObstacle16"
         }
       ]
+    },
+    {
+      "name": "MaxBuildableInstances",
+      "type": "number",
+      "value": 3
     },
     {
       "name": "SelectedInstanceIndex",
@@ -1104,7 +1141,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "SoftBreakableObstacle",
+      "name": "SoftBreakableObstacle16",
       "persistentUuid": "61596a50-e53b-4670-af18-880f846dab72",
       "width": 0,
       "x": 416,
@@ -1120,7 +1157,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "SoftBreakableObstacle",
+      "name": "SoftBreakableObstacle16",
       "persistentUuid": "ec1ba835-3579-4bf2-9d4d-9dd28937b722",
       "width": 0,
       "x": 416,
@@ -1136,7 +1173,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "SoftBreakableObstacle",
+      "name": "SoftBreakableObstacle16",
       "persistentUuid": "30c835cf-03d9-4d27-ab87-41ba9385679e",
       "width": 0,
       "x": 416,
@@ -1152,7 +1189,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "SoftBreakableObstacle",
+      "name": "SoftBreakableObstacle16",
       "persistentUuid": "7159460a-cec0-4f4a-8595-70f1df81436a",
       "width": 0,
       "x": 416,
@@ -1168,7 +1205,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "SoftBreakableObstacle",
+      "name": "SoftBreakableObstacle16",
       "persistentUuid": "a42ebab9-1ade-484f-a2b1-3ec7ee08d7a4",
       "width": 0,
       "x": 384,
@@ -1184,7 +1221,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "SoftBreakableObstacle",
+      "name": "SoftBreakableObstacle16",
       "persistentUuid": "98b9943c-8a31-4d2b-be39-4420772af954",
       "width": 0,
       "x": 384,
@@ -1200,7 +1237,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "SoftBreakableObstacle",
+      "name": "SoftBreakableObstacle16",
       "persistentUuid": "fcc57657-9759-405f-a4bf-ff41539e2e41",
       "width": 0,
       "x": 384,
@@ -1216,7 +1253,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "SoftBreakableObstacle",
+      "name": "SoftBreakableObstacle16",
       "persistentUuid": "41564fb5-3152-4af2-9662-d7a26b652567",
       "width": 0,
       "x": 384,
@@ -1232,7 +1269,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "SoftBreakableObstacle",
+      "name": "SoftBreakableObstacle16",
       "persistentUuid": "2c6d92e5-138e-4221-99dc-0b71cd4db16b",
       "width": 0,
       "x": 384,
@@ -1248,7 +1285,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "SoftBreakableObstacle",
+      "name": "SoftBreakableObstacle16",
       "persistentUuid": "f4bba4cb-9e6d-4b12-a40e-25beedfbe3f4",
       "width": 0,
       "x": 384,
@@ -1264,7 +1301,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "SoftBreakableObstacle",
+      "name": "SoftBreakableObstacle16",
       "persistentUuid": "0c9e4d64-50c2-4108-add8-ddc29c0e7b33",
       "width": 0,
       "x": 384,
@@ -1280,7 +1317,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "SoftBreakableObstacle",
+      "name": "SoftBreakableObstacle16",
       "persistentUuid": "d0a0db5d-9af2-47df-84b8-f37c67334998",
       "width": 0,
       "x": 384,
@@ -1296,7 +1333,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "SoftBreakableObstacle",
+      "name": "SoftBreakableObstacle16",
       "persistentUuid": "02b18be8-0bfc-44d4-999d-e8422ecb999e",
       "width": 0,
       "x": 400,
@@ -1312,7 +1349,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "SoftBreakableObstacle",
+      "name": "SoftBreakableObstacle16",
       "persistentUuid": "73418408-6c0a-4094-812f-26817fc8c6c4",
       "width": 0,
       "x": 400,
@@ -1328,7 +1365,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "SoftBreakableObstacle",
+      "name": "SoftBreakableObstacle16",
       "persistentUuid": "ef4236b5-16e5-4c80-847a-75063d662ca2",
       "width": 0,
       "x": 400,
@@ -1344,12 +1381,108 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "SoftBreakableObstacle",
+      "name": "SoftBreakableObstacle16",
       "persistentUuid": "622529e4-802c-4919-9cbd-b9413b1fac55",
       "width": 0,
       "x": 400,
       "y": -352,
       "zOrder": 14,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "HardBreakableObstacle16",
+      "persistentUuid": "6fc44648-784d-4370-9a05-69ab9e89d752",
+      "width": 0,
+      "x": 416,
+      "y": -64,
+      "zOrder": 17,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "HardBreakableObstacle16",
+      "persistentUuid": "946bc5fa-3c73-4bef-af4b-cf76ca73bb6b",
+      "width": 0,
+      "x": 416,
+      "y": -80,
+      "zOrder": 16,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "HardBreakableObstacle16",
+      "persistentUuid": "aca8081d-76c6-408d-b8df-da575cfad7cd",
+      "width": 0,
+      "x": 464,
+      "y": -16,
+      "zOrder": 17,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "HardBreakableObstacle16",
+      "persistentUuid": "72488799-4cb6-4b63-bd76-10bbd38978b9",
+      "width": 0,
+      "x": 464,
+      "y": -32,
+      "zOrder": 16,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "HardBreakableObstacle16",
+      "persistentUuid": "ae680fe3-34a5-4b29-9503-605185d70bc6",
+      "width": 0,
+      "x": 416,
+      "y": 16,
+      "zOrder": 17,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "HardBreakableObstacle16",
+      "persistentUuid": "967d5f8d-b631-4f99-962a-6299899ccee1",
+      "width": 0,
+      "x": 416,
+      "y": 0,
+      "zOrder": 16,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1662,7 +1795,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": true,
-                  "image": "assets\\cursor.png",
+                  "image": "cursor.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -1722,7 +1855,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": true,
-                  "image": "assets\\cursor_point.png",
+                  "image": "cursor_point.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -1825,6 +1958,11 @@
       "effects": [],
       "behaviors": [
         {
+          "name": "BombObjects",
+          "type": "CustomBehaviors::BombObjects",
+          "ObjectName": "DefaultLandmine"
+        },
+        {
           "name": "BulletObjects",
           "type": "CustomBehaviors::BulletObjects",
           "ObjectName": "DefaultBullet"
@@ -1834,7 +1972,8 @@
           "type": "CustomBehaviors::Damageable",
           "EntityBehavior": "Entity",
           "Health": 200,
-          "CurrentHealth": 2.0247e-320
+          "CurrentHealth": 2.0247e-320,
+          "ImmuneDamage": ""
         },
         {
           "name": "Entity",
@@ -1847,7 +1986,8 @@
           "type": "CustomBehaviors::Tank",
           "EntityBehavior": "Entity",
           "BulletObjects": "BulletObjects",
-          "MoveSpeed": 70
+          "MoveSpeed": 70,
+          "BombObjects": "BombObjects"
         },
         {
           "name": "Trails",
@@ -1864,10 +2004,6 @@
       "content": {
         "CannonRotationSpeed": 0.25,
         "BodyRotationSpeed": 0.3
-      },
-      "animatable": {
-        "adaptCollisionMaskAutomatically": true,
-        "animations": []
       }
     },
     {
@@ -1902,10 +2038,6 @@
       ],
       "content": {
         "Speed": 200
-      },
-      "animatable": {
-        "adaptCollisionMaskAutomatically": true,
-        "animations": []
       }
     },
     {
@@ -1941,10 +2073,6 @@
       "content": {
         "Bounces": 1,
         "Speed": 200
-      },
-      "animatable": {
-        "adaptCollisionMaskAutomatically": true,
-        "animations": []
       }
     },
     {
@@ -1980,10 +2108,6 @@
       "content": {
         "Bounces": 2,
         "Speed": 200
-      },
-      "animatable": {
-        "adaptCollisionMaskAutomatically": true,
-        "animations": []
       }
     },
     {
@@ -2013,9 +2137,9 @@
     },
     {
       "assetStoreId": "",
-      "name": "SoftBreakableObstacle",
+      "name": "SoftBreakableObstacle16",
       "type": "CustomObjects::Obstacle",
-      "variant": "",
+      "variant": "SoftBreakableObstacle16",
       "variables": [],
       "effects": [
         {
@@ -2077,8 +2201,9 @@
           "name": "Explosion",
           "type": "CustomBehaviors::Explosion",
           "EntityBehavior": "Entity",
-          "Damage": 100,
-          "TotalTargets": 1
+          "Damage": 200,
+          "TotalTargets": 1,
+          "DamageType": "Bullet"
         }
       ],
       "content": {}
@@ -2250,6 +2375,109 @@
       "content": {
         "Tint": "101;134;61"
       }
+    },
+    {
+      "assetStoreId": "",
+      "name": "HardBreakableObstacle16",
+      "type": "CustomObjects::Obstacle",
+      "variant": "HardBreakableObstacle16",
+      "variables": [],
+      "effects": [
+        {
+          "effectType": "Adjustment",
+          "name": "EditorSelected",
+          "doubleParameters": {
+            "alpha": 1,
+            "blue": 1,
+            "brightness": 1.2,
+            "contrast": 1,
+            "gamma": 1,
+            "green": 1,
+            "red": 1,
+            "saturation": 1
+          },
+          "stringParameters": {},
+          "booleanParameters": {}
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Damageable",
+          "type": "CustomBehaviors::Damageable",
+          "EntityBehavior": "Entity",
+          "Health": 200,
+          "CurrentHealth": 2.0247e-320,
+          "ImmuneDamage": "Bullet"
+        },
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 2.75859452924e-313,
+          "Type": "Obstacle"
+        },
+        {
+          "name": "Obstacle",
+          "type": "CustomBehaviors::Obstacle",
+          "EntityBehavior": "Entity",
+          "Health": 200,
+          "CurrentHealth": 2.0247e-320
+        }
+      ],
+      "content": {}
+    },
+    {
+      "assetStoreId": "",
+      "name": "DefaultLandmine",
+      "type": "CustomObjects::Bomb",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Bomb",
+          "type": "CustomBehaviors::Bomb",
+          "EntityBehavior": "Entity",
+          "Explode": false,
+          "Detonate": false,
+          "ParentId": 6.2142646738418e-310,
+          "DetonateTime": 3,
+          "ExplodeTime": 3
+        },
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 2.33419537105e-313,
+          "Type": "Bomb"
+        }
+      ],
+      "content": {}
+    },
+    {
+      "assetStoreId": "",
+      "name": "ExplosionDefaultLandmine",
+      "type": "CustomObjects::Explosion",
+      "variant": "ExplosionDefaultLandmine",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 3.033389e-317,
+          "Type": "Wall"
+        },
+        {
+          "name": "Explosion",
+          "type": "CustomBehaviors::Explosion",
+          "EntityBehavior": "Entity",
+          "Damage": 200,
+          "TotalTargets": 99,
+          "DamageType": "Explosion"
+        }
+      ],
+      "content": {
+        "RandomAngle": false
+      }
     }
   ],
   "objectsFolderStructure": {
@@ -2270,7 +2498,10 @@
         "folderName": "Obstacles",
         "children": [
           {
-            "objectName": "SoftBreakableObstacle"
+            "objectName": "SoftBreakableObstacle16"
+          },
+          {
+            "objectName": "HardBreakableObstacle16"
           }
         ]
       },
@@ -2340,6 +2571,17 @@
           },
           {
             "objectName": "LongBulletAmmo"
+          }
+        ]
+      },
+      {
+        "folderName": "Bombs",
+        "children": [
+          {
+            "objectName": "DefaultLandmine"
+          },
+          {
+            "objectName": "ExplosionDefaultLandmine"
           }
         ]
       },
@@ -2948,6 +3190,44 @@
           "conditions": [
             {
               "type": {
+                "value": "CollisionNP"
+              },
+              "parameters": [
+                "Bullets",
+                "Bombs",
+                "",
+                "",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Delete"
+              },
+              "parameters": [
+                "Bullets",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "CustomBehaviors::Bomb::Explode"
+              },
+              "parameters": [
+                "Bombs",
+                "Bomb",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
                 "value": "CustomBehaviors::Bullet::HasToExplode"
               },
               "parameters": [
@@ -3018,6 +3298,123 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "name": "Bomb logic",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
+          },
+          "comment": "The bombs don't do damage, It will create an explosion that will deal it"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Bomb::IsDetonating"
+              },
+              "parameters": [
+                "Bombs",
+                "Bomb",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomObjects::Bomb::Update"
+              },
+              "parameters": [
+                "Bombs",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Bomb::HasToExplode"
+              },
+              "parameters": [
+                "Bombs",
+                "Bomb",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CreateByName"
+              },
+              "parameters": [
+                "",
+                "Explosions",
+                "\"Explosion\" + Bombs.ObjectName()",
+                "Bombs.CenterX()",
+                "Bombs.CenterY()",
+                "_CONSTANTS_.Layers.Main"
+              ]
+            },
+            {
+              "type": {
+                "value": "MettreXY"
+              },
+              "parameters": [
+                "Explosions",
+                "-",
+                "Explosions.Width() / 2",
+                "-",
+                "Explosions.Height() / 2"
+              ]
+            },
+            {
+              "type": {
+                "value": "CustomBehaviors::Explosion::SetParentIdWithDebug"
+              },
+              "parameters": [
+                "Explosions",
+                "Explosion",
+                "Bombs.Entity::Id()",
+                "_CONFIG_.debug",
+                "Explosions",
+                ""
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
       "name": "Explosion logic (damage related)",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -3060,6 +3457,7 @@
                         "Damageable",
                         "Explosions.Explosion::Damage()",
                         "Explosions.Entity::Id()",
+                        "Explosions.Explosion::DamageType()",
                         ""
                       ]
                     },
@@ -3321,43 +3719,7 @@
           "width": 0
         }
       ],
-      "effects": [
-        {
-          "effectType": "Scene3D::HemisphereLight",
-          "name": "3D Ambient Hemisphere Light",
-          "doubleParameters": {
-            "elevation": 40,
-            "intensity": 0.33,
-            "rotation": 300
-          },
-          "stringParameters": {
-            "groundColor": "127;127;127",
-            "skyColor": "255;255;255",
-            "top": "Z+"
-          },
-          "booleanParameters": {}
-        },
-        {
-          "effectType": "Scene3D::DirectionalLight",
-          "name": "3D Sun Light",
-          "doubleParameters": {
-            "distanceFromCamera": 1500,
-            "elevation": 40,
-            "frustumSize": 4000,
-            "intensity": 0.75,
-            "minimumShadowBias": 0,
-            "rotation": 300
-          },
-          "stringParameters": {
-            "color": "255;255;255",
-            "shadowQuality": "medium",
-            "top": "Z+"
-          },
-          "booleanParameters": {
-            "isCastingShadow": true
-          }
-        }
-      ]
+      "effects": []
     },
     {
       "ambientLightColorB": 200,
@@ -3374,43 +3736,7 @@
       "renderingType": "",
       "visibility": true,
       "cameras": [],
-      "effects": [
-        {
-          "effectType": "Scene3D::HemisphereLight",
-          "name": "3D Ambient Hemisphere Light",
-          "doubleParameters": {
-            "elevation": 40,
-            "intensity": 0.33,
-            "rotation": 300
-          },
-          "stringParameters": {
-            "groundColor": "127;127;127",
-            "skyColor": "255;255;255",
-            "top": "Z+"
-          },
-          "booleanParameters": {}
-        },
-        {
-          "effectType": "Scene3D::DirectionalLight",
-          "name": "3D Sun Light",
-          "doubleParameters": {
-            "distanceFromCamera": 1500,
-            "elevation": 40,
-            "frustumSize": 4000,
-            "intensity": 0.75,
-            "minimumShadowBias": 0,
-            "rotation": 300
-          },
-          "stringParameters": {
-            "color": "255;255;255",
-            "shadowQuality": "medium",
-            "top": "Z+"
-          },
-          "booleanParameters": {
-            "isCastingShadow": true
-          }
-        }
-      ]
+      "effects": []
     },
     {
       "ambientLightColorB": 200,
@@ -3427,43 +3753,7 @@
       "renderingType": "",
       "visibility": true,
       "cameras": [],
-      "effects": [
-        {
-          "effectType": "Scene3D::HemisphereLight",
-          "name": "3D Ambient Hemisphere Light",
-          "doubleParameters": {
-            "elevation": 40,
-            "intensity": 0.33,
-            "rotation": 300
-          },
-          "stringParameters": {
-            "groundColor": "127;127;127",
-            "skyColor": "255;255;255",
-            "top": "Z+"
-          },
-          "booleanParameters": {}
-        },
-        {
-          "effectType": "Scene3D::DirectionalLight",
-          "name": "3D Sun Light",
-          "doubleParameters": {
-            "distanceFromCamera": 1500,
-            "elevation": 40,
-            "frustumSize": 4000,
-            "intensity": 0.75,
-            "minimumShadowBias": 0,
-            "rotation": 300
-          },
-          "stringParameters": {
-            "color": "255;255;255",
-            "shadowQuality": "medium",
-            "top": "Z+"
-          },
-          "booleanParameters": {
-            "isCastingShadow": true
-          }
-        }
-      ]
+      "effects": []
     },
     {
       "ambientLightColorB": 200,
@@ -3480,43 +3770,7 @@
       "renderingType": "",
       "visibility": true,
       "cameras": [],
-      "effects": [
-        {
-          "effectType": "Scene3D::HemisphereLight",
-          "name": "3D Ambient Hemisphere Light",
-          "doubleParameters": {
-            "elevation": 40,
-            "intensity": 0.33,
-            "rotation": 300
-          },
-          "stringParameters": {
-            "groundColor": "127;127;127",
-            "skyColor": "255;255;255",
-            "top": "Z+"
-          },
-          "booleanParameters": {}
-        },
-        {
-          "effectType": "Scene3D::DirectionalLight",
-          "name": "3D Sun Light",
-          "doubleParameters": {
-            "distanceFromCamera": 1500,
-            "elevation": 40,
-            "frustumSize": 4000,
-            "intensity": 0.75,
-            "minimumShadowBias": 0,
-            "rotation": 300
-          },
-          "stringParameters": {
-            "color": "255;255;255",
-            "shadowQuality": "medium",
-            "top": "Z+"
-          },
-          "booleanParameters": {
-            "isCastingShadow": true
-          }
-        }
-      ]
+      "effects": []
     },
     {
       "ambientLightColorB": 200,
@@ -3533,43 +3787,7 @@
       "renderingType": "",
       "visibility": true,
       "cameras": [],
-      "effects": [
-        {
-          "effectType": "Scene3D::HemisphereLight",
-          "name": "3D Ambient Hemisphere Light",
-          "doubleParameters": {
-            "elevation": 40,
-            "intensity": 0.33,
-            "rotation": 300
-          },
-          "stringParameters": {
-            "groundColor": "127;127;127",
-            "skyColor": "255;255;255",
-            "top": "Z+"
-          },
-          "booleanParameters": {}
-        },
-        {
-          "effectType": "Scene3D::DirectionalLight",
-          "name": "3D Sun Light",
-          "doubleParameters": {
-            "distanceFromCamera": 1500,
-            "elevation": 40,
-            "frustumSize": 4000,
-            "intensity": 0.75,
-            "minimumShadowBias": 0,
-            "rotation": 300
-          },
-          "stringParameters": {
-            "color": "255;255;255",
-            "shadowQuality": "medium",
-            "top": "Z+"
-          },
-          "booleanParameters": {
-            "isCastingShadow": true
-          }
-        }
-      ]
+      "effects": []
     },
     {
       "ambientLightColorB": 200,
@@ -3586,49 +3804,21 @@
       "renderingType": "",
       "visibility": true,
       "cameras": [],
-      "effects": [
-        {
-          "effectType": "Scene3D::HemisphereLight",
-          "name": "3D Ambient Hemisphere Light",
-          "doubleParameters": {
-            "elevation": 40,
-            "intensity": 0.33,
-            "rotation": 300
-          },
-          "stringParameters": {
-            "groundColor": "127;127;127",
-            "skyColor": "255;255;255",
-            "top": "Z+"
-          },
-          "booleanParameters": {}
-        },
-        {
-          "effectType": "Scene3D::DirectionalLight",
-          "name": "3D Sun Light",
-          "doubleParameters": {
-            "distanceFromCamera": 1500,
-            "elevation": 40,
-            "frustumSize": 4000,
-            "intensity": 0.75,
-            "minimumShadowBias": 0,
-            "rotation": 300
-          },
-          "stringParameters": {
-            "color": "255;255;255",
-            "shadowQuality": "medium",
-            "top": "Z+"
-          },
-          "booleanParameters": {
-            "isCastingShadow": true
-          }
-        }
-      ]
+      "effects": []
     }
   ],
   "behaviorsSharedData": [
     {
       "name": "Animation",
       "type": "AnimatableCapability::AnimatableBehavior"
+    },
+    {
+      "name": "Bomb",
+      "type": "CustomBehaviors::Bomb"
+    },
+    {
+      "name": "BombObjects",
+      "type": "CustomBehaviors::BombObjects"
     },
     {
       "name": "Bounceable",

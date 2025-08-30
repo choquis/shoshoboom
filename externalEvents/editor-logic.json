@@ -100,7 +100,7 @@
           },
           "parameters": [
             "",
-            "\"Tab\""
+            "\"e\""
           ]
         },
         {
@@ -406,7 +406,7 @@
                       "parameters": [
                         "SelectedInstanceIndex",
                         "<",
-                        "2"
+                        "MaxBuildableInstances"
                       ]
                     }
                   ],
@@ -1125,6 +1125,39 @@
                     "Text",
                     "+",
                     "NewLine() + \"Angle: \" + ToString(EditorCursor.Angle())"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                  },
+                  "parameters": [
+                    "EditorInfo",
+                    "Text",
+                    "+",
+                    "NewLine() + \"WASD: move camera, C : create, <>: change object to create\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                  },
+                  "parameters": [
+                    "EditorInfo",
+                    "Text",
+                    "+",
+                    "NewLine() + \"Wheel: rotate, (when rotating) hold shift: quicker rotation\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                  },
+                  "parameters": [
+                    "EditorInfo",
+                    "Text",
+                    "+",
+                    "NewLine() + \"Drag with left click, (when dragging) supr: delete, Wheel: rotate\""
                   ]
                 }
               ]

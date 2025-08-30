@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": false,
-    "zoomFactor": 0.8416428125373101,
+    "zoomFactor": 2.514367296498754,
     "windowMask": false
   },
   "objectsGroups": [],
@@ -34,8 +34,24 @@
       "persistentUuid": "f403aac8-9c8b-4709-b79f-77fd8f193354",
       "width": 0,
       "x": 244,
-      "y": 210,
+      "y": 162,
       "zOrder": 1,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "EditorOption",
+      "persistentUuid": "4db11150-e85a-4af5-bdf0-0916f38013ae",
+      "width": 0,
+      "x": 237,
+      "y": 252,
+      "zOrder": 2,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -84,6 +100,49 @@
         "lineHeight": 0,
         "color": "0;0;0"
       }
+    },
+    {
+      "assetStoreId": "",
+      "bold": false,
+      "italic": false,
+      "name": "EditorOption",
+      "smoothed": true,
+      "type": "TextObject::Text",
+      "underlined": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "string": "EDITOR",
+      "font": "advance-wars-2-gba.ttf",
+      "textAlignment": "left",
+      "characterSize": 80,
+      "color": {
+        "b": 0,
+        "g": 0,
+        "r": 0
+      },
+      "content": {
+        "bold": false,
+        "isOutlineEnabled": false,
+        "isShadowEnabled": false,
+        "italic": false,
+        "outlineColor": "255;255;255",
+        "outlineThickness": 2,
+        "shadowAngle": 90,
+        "shadowBlurRadius": 2,
+        "shadowColor": "0;0;0",
+        "shadowDistance": 4,
+        "shadowOpacity": 127,
+        "smoothed": true,
+        "underlined": false,
+        "text": "EDITOR",
+        "font": "advance-wars-2-gba.ttf",
+        "textAlignment": "left",
+        "verticalTextAlignment": "top",
+        "characterSize": 80,
+        "lineHeight": 0,
+        "color": "0;0;0"
+      }
     }
   ],
   "objectsFolderStructure": {
@@ -91,6 +150,9 @@
     "children": [
       {
         "objectName": "StartOption"
+      },
+      {
+        "objectName": "EditorOption"
       }
     ]
   },
@@ -192,6 +254,83 @@
           "parameters": [
             "",
             "\"Main Game\"",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "SourisSurObjet"
+          },
+          "parameters": [
+            "EditorOption",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "MouseButtonFromTextPressed"
+          },
+          "parameters": [
+            "",
+            "\"Left\""
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "SetStringVariable"
+          },
+          "parameters": [
+            "MAINGAME.GameState",
+            "=",
+            "_DATA_.Game.GameState"
+          ]
+        },
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "MAINGAME.Mission",
+            "=",
+            "_DATA_.Game.Mission"
+          ]
+        },
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "MAINGAME.PlayerLives",
+            "=",
+            "_DATA_.Game.PlayerLives"
+          ]
+        },
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "MAINGAME.MaxAggresiveEnemies",
+            "=",
+            "_DATA_.Game.MaxAggresiveEnemies"
+          ]
+        },
+        {
+          "type": {
+            "value": "Scene"
+          },
+          "parameters": [
+            "",
+            "\"Test Scene\"",
             ""
           ]
         }

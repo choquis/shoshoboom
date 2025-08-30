@@ -893,8 +893,8 @@
                         "",
                         "Bullets",
                         "Players.BulletObjects::ProjectileObjectName()",
-                        "Player0.MuzzleX()",
-                        "Player0.MuzzleY()",
+                        "Players.MuzzleX()",
+                        "Players.MuzzleY()",
                         "_CONSTANTS_.Layers.Main"
                       ]
                     },
@@ -952,6 +952,107 @@
                   "name": "LookAngle",
                   "type": "number",
                   "value": 0
+                }
+              ]
+            }
+          ],
+          "parameters": []
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
+          },
+          "comment": "\n\n"
+        },
+        {
+          "colorB": 82,
+          "colorG": 68,
+          "colorR": 62,
+          "creationTime": 0,
+          "name": "Place landmine",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareStrings"
+                  },
+                  "parameters": [
+                    "Players.ObjectName()",
+                    "=",
+                    "\"Player0\""
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "StringVariable"
+                      },
+                      "parameters": [
+                        "MAINGAME.Input.PlaceLandmine",
+                        "=",
+                        "_CONSTANTS_.InputState.Pressed"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::Once"
+                      },
+                      "parameters": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "CreateByName"
+                      },
+                      "parameters": [
+                        "",
+                        "Bombs",
+                        "Players.BombObjects::BombObjectName()",
+                        "Players.X()",
+                        "Players.Y()",
+                        "_CONSTANTS_.Layers.Main"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "MettreXY"
+                      },
+                      "parameters": [
+                        "Bombs",
+                        "+",
+                        "Bombs.Width() / 2",
+                        "+",
+                        "Bombs.Height() / 2"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Bomb::SetParentId"
+                      },
+                      "parameters": [
+                        "Bombs",
+                        "Bomb",
+                        "Players.Entity::Id()",
+                        ""
+                      ]
+                    }
+                  ]
                 }
               ]
             }
