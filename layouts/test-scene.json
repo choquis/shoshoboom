@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 2.768239609261427,
+    "zoomFactor": 1.859375000000041,
     "windowMask": false
   },
   "objectsGroups": [
@@ -91,6 +91,21 @@
         },
         {
           "name": "HardBreakableObstacle16"
+        },
+        {
+          "name": "TankBSpawner"
+        },
+        {
+          "name": "TankGSpawner"
+        },
+        {
+          "name": "Player0Spawner"
+        },
+        {
+          "name": "TankB"
+        },
+        {
+          "name": "TankG"
         }
       ]
     },
@@ -133,6 +148,12 @@
         },
         {
           "name": "HardBreakableObstacle16"
+        },
+        {
+          "name": "TankG"
+        },
+        {
+          "name": "TankB"
         }
       ]
     },
@@ -208,6 +229,12 @@
         },
         {
           "name": "HardBreakableObstacle16"
+        },
+        {
+          "name": "TankB"
+        },
+        {
+          "name": "TankG"
         }
       ]
     },
@@ -276,6 +303,12 @@
       "objects": [
         {
           "name": "Player0"
+        },
+        {
+          "name": "TankB"
+        },
+        {
+          "name": "TankG"
         }
       ]
     },
@@ -284,6 +317,45 @@
       "objects": [
         {
           "name": "DefaultLandmine"
+        }
+      ]
+    },
+    {
+      "name": "Spawners",
+      "objects": [
+        {
+          "name": "TankBSpawner"
+        },
+        {
+          "name": "TankGSpawner"
+        },
+        {
+          "name": "Player0Spawner"
+        }
+      ]
+    },
+    {
+      "name": "CanBeSpawn",
+      "objects": [
+        {
+          "name": "Player0"
+        },
+        {
+          "name": "TankB"
+        },
+        {
+          "name": "TankG"
+        }
+      ]
+    },
+    {
+      "name": "Enemies",
+      "objects": [
+        {
+          "name": "TankB"
+        },
+        {
+          "name": "TankG"
         }
       ]
     }
@@ -382,8 +454,8 @@
       "name": "RedPen",
       "persistentUuid": "2ea29eaa-19c4-426d-9588-db8f62106258",
       "width": 0,
-      "x": 688,
-      "y": 320,
+      "x": 720,
+      "y": -224,
       "zOrder": 2,
       "numberProperties": [],
       "stringProperties": [],
@@ -439,22 +511,6 @@
       "initialVariables": []
     },
     {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWall",
-      "persistentUuid": "6c90f31c-9c54-45e2-93f3-5a1e1799f85d",
-      "width": 0,
-      "x": 0,
-      "y": 256,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
       "angle": 135,
       "customSize": true,
       "depth": 65,
@@ -480,8 +536,8 @@
       "name": "BounceableWall",
       "persistentUuid": "b42a5beb-e4b6-41d1-bcde-188d2d49c457",
       "width": 0,
-      "x": 48,
-      "y": 64,
+      "x": -112,
+      "y": -112,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -496,8 +552,8 @@
       "name": "BounceableWall",
       "persistentUuid": "e0f9a961-7fe6-4496-9618-ba094f83a806",
       "width": 0,
-      "x": 16,
-      "y": 96,
+      "x": -144,
+      "y": -80,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -512,8 +568,8 @@
       "name": "BounceableWall",
       "persistentUuid": "a1d117af-1ec5-48b3-bb13-10eed45df6d1",
       "width": 0,
-      "x": 23,
-      "y": 80,
+      "x": -137,
+      "y": -96,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -528,8 +584,8 @@
       "name": "BounceableWall",
       "persistentUuid": "34729715-9fb1-4318-870a-9d45f57cec74",
       "width": 0,
-      "x": 48,
-      "y": 128,
+      "x": -112,
+      "y": -48,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -544,8 +600,8 @@
       "name": "BounceableWall",
       "persistentUuid": "c7a573c0-ebcc-4d50-9c9c-aa067f7a707d",
       "width": 0,
-      "x": 32,
-      "y": 71,
+      "x": -128,
+      "y": -105,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -560,8 +616,8 @@
       "name": "BounceableWall",
       "persistentUuid": "1be299c7-f11e-4660-b970-294afc07944a",
       "width": 0,
-      "x": 80,
-      "y": 96,
+      "x": -80,
+      "y": -80,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -576,8 +632,8 @@
       "name": "BounceableWall",
       "persistentUuid": "1389fd45-0bcd-4c4c-83b3-0f6224ced6be",
       "width": 0,
-      "x": 23,
-      "y": 112,
+      "x": -137,
+      "y": -64,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -592,8 +648,8 @@
       "name": "BounceableWall",
       "persistentUuid": "19e5986b-a8f3-4aef-81e5-ea376d8512e7",
       "width": 0,
-      "x": 32,
-      "y": 121,
+      "x": -128,
+      "y": -55,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -608,8 +664,8 @@
       "name": "BounceableWall",
       "persistentUuid": "07618236-7f4b-4fb7-bb1d-706d9b943fa2",
       "width": 0,
-      "x": 64,
-      "y": 121,
+      "x": -96,
+      "y": -55,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -624,8 +680,8 @@
       "name": "BounceableWall",
       "persistentUuid": "d3d7e881-aa13-43ac-bdb6-c01c46d3c797",
       "width": 0,
-      "x": 73,
-      "y": 112,
+      "x": -87,
+      "y": -64,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -640,8 +696,8 @@
       "name": "BounceableWall",
       "persistentUuid": "eeebfb50-bba9-4481-bac4-6a8e93a5904b",
       "width": 0,
-      "x": 73,
-      "y": 80,
+      "x": -87,
+      "y": -96,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -656,8 +712,8 @@
       "name": "BounceableWall",
       "persistentUuid": "7654a5fc-34d5-40f4-a712-c67915d023d6",
       "width": 0,
-      "x": 64,
-      "y": 71,
+      "x": -96,
+      "y": -105,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -672,8 +728,8 @@
       "name": "YellowPen",
       "persistentUuid": "34748542-b58b-44b3-ad55-9aee3d13a017",
       "width": 0,
-      "x": 736,
-      "y": 320,
+      "x": 768,
+      "y": -224,
       "zOrder": 10,
       "numberProperties": [],
       "stringProperties": [],
@@ -688,41 +744,9 @@
       "name": "BluePen",
       "persistentUuid": "66fb78d5-a2bb-427e-ab61-4dbee684f113",
       "width": 0,
-      "x": 640,
-      "y": 320,
+      "x": 672,
+      "y": -224,
       "zOrder": 11,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "SolidWall",
-      "persistentUuid": "276a67d8-d93f-455c-9fdd-e0735e126e58",
-      "width": 0,
-      "x": 256,
-      "y": 288,
-      "zOrder": 9,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWall",
-      "persistentUuid": "6b4bd34b-716e-40eb-b0b8-ba3de548f16f",
-      "width": 0,
-      "x": 224,
-      "y": 256,
-      "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -787,8 +811,8 @@
       "name": "BounceableWall",
       "persistentUuid": "85d84ee8-5f2f-48ec-84be-1c1cd492a100",
       "width": 0,
-      "x": 402,
-      "y": 114,
+      "x": -222,
+      "y": 34,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -803,8 +827,8 @@
       "name": "BounceableWall",
       "persistentUuid": "82838873-fc4d-4e77-8152-70752512b28e",
       "width": 0,
-      "x": 494,
-      "y": 115,
+      "x": -130,
+      "y": 35,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -819,8 +843,8 @@
       "name": "BounceableWall",
       "persistentUuid": "45ef216a-17e4-486e-a9ec-150734b547dc",
       "width": 0,
-      "x": 494,
-      "y": 206,
+      "x": -130,
+      "y": 126,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -835,8 +859,8 @@
       "name": "Cursor",
       "persistentUuid": "0aedc7a7-6883-492d-bd61-84a89186f5b9",
       "width": 0,
-      "x": 864,
-      "y": 368,
+      "x": 896,
+      "y": -176,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -851,8 +875,8 @@
       "name": "BounceableWall",
       "persistentUuid": "0e8d7501-5df9-4045-90f4-3a4139604585",
       "width": 0,
-      "x": 448,
-      "y": 224,
+      "x": -176,
+      "y": 144,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -867,8 +891,8 @@
       "name": "BounceableWall",
       "persistentUuid": "b9b580ea-84ab-4239-8e9e-cee4c734519c",
       "width": 0,
-      "x": 512,
-      "y": 160,
+      "x": -112,
+      "y": 80,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -883,8 +907,8 @@
       "name": "BounceableWall",
       "persistentUuid": "bedf3c67-21c4-43ba-902e-589c25dd656e",
       "width": 0,
-      "x": 384,
-      "y": 160,
+      "x": -240,
+      "y": 80,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -899,8 +923,8 @@
       "name": "BounceableWall",
       "persistentUuid": "ab28c1ec-39f3-4cff-ac68-91f8647ca925",
       "width": 0,
-      "x": 448,
-      "y": 96,
+      "x": -176,
+      "y": 16,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -915,8 +939,8 @@
       "name": "CursorPoint",
       "persistentUuid": "204f9ed7-0dcb-4dcf-af34-6fd713538fe3",
       "width": 0,
-      "x": 880,
-      "y": 368,
+      "x": 912,
+      "y": -176,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -931,8 +955,8 @@
       "name": "CursorPoint",
       "persistentUuid": "9228c67c-e7d0-4d5d-a272-cee918b55c13",
       "width": 0,
-      "x": 896,
-      "y": 368,
+      "x": 928,
+      "y": -176,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -947,8 +971,8 @@
       "name": "CursorPoint",
       "persistentUuid": "e213fa26-6745-41e9-b102-4398374a6448",
       "width": 0,
-      "x": 912,
-      "y": 368,
+      "x": 944,
+      "y": -176,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -963,8 +987,8 @@
       "name": "CursorPoint",
       "persistentUuid": "92f140aa-9a9c-401e-b668-feb5d8516c3d",
       "width": 0,
-      "x": 928,
-      "y": 368,
+      "x": 960,
+      "y": -176,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -996,8 +1020,8 @@
       "name": "BounceableWall",
       "persistentUuid": "4b338443-a42c-4af6-8d19-2f4f5185c687",
       "width": 0,
-      "x": 402,
-      "y": 206,
+      "x": -222,
+      "y": 126,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -1029,8 +1053,8 @@
       "name": "TestBulletAmmo",
       "persistentUuid": "943273ed-efd2-4e1e-b6ff-b6988eebd1bb",
       "width": 0,
-      "x": 48,
-      "y": -368,
+      "x": -32,
+      "y": -80,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -1045,8 +1069,8 @@
       "name": "DefaultBulletAmmo",
       "persistentUuid": "eeca53f1-7bce-4efa-9f32-33da11af9570",
       "width": 0,
-      "x": 48,
-      "y": -304,
+      "x": 0,
+      "y": -80,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -1061,8 +1085,8 @@
       "name": "LongBulletAmmo",
       "persistentUuid": "ce1f2dd8-23e0-49f8-ae6a-c5274b59546a",
       "width": 0,
-      "x": 48,
-      "y": -240,
+      "x": 32,
+      "y": -80,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -1081,22 +1105,6 @@
       "x": 280,
       "y": -760,
       "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "Player0",
-      "persistentUuid": "67c4ad93-c0c4-461b-8cc7-15c38213f50c",
-      "width": 0,
-      "x": 272,
-      "y": 96,
-      "zOrder": 13,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1141,348 +1149,44 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "SoftBreakableObstacle16",
-      "persistentUuid": "61596a50-e53b-4670-af18-880f846dab72",
+      "name": "Player0Spawner",
+      "persistentUuid": "119e294a-d155-4f27-82be-37ca9d64a0be",
       "width": 0,
-      "x": 416,
-      "y": -304,
+      "x": 160,
+      "y": 176,
+      "zOrder": 12,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "TankBSpawner",
+      "persistentUuid": "2d22125d-a14c-4a9f-a98e-9051d0a6f670",
+      "width": 0,
+      "x": 336,
+      "y": 48,
+      "zOrder": 13,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "TankGSpawner",
+      "persistentUuid": "8c34dbe5-0201-4777-a710-91a2a1f8b77f",
+      "width": 0,
+      "x": 480,
+      "y": 160,
       "zOrder": 14,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "SoftBreakableObstacle16",
-      "persistentUuid": "ec1ba835-3579-4bf2-9d4d-9dd28937b722",
-      "width": 0,
-      "x": 416,
-      "y": -368,
-      "zOrder": 14,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "SoftBreakableObstacle16",
-      "persistentUuid": "30c835cf-03d9-4d27-ab87-41ba9385679e",
-      "width": 0,
-      "x": 416,
-      "y": -288,
-      "zOrder": 14,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "SoftBreakableObstacle16",
-      "persistentUuid": "7159460a-cec0-4f4a-8595-70f1df81436a",
-      "width": 0,
-      "x": 416,
-      "y": -352,
-      "zOrder": 14,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "SoftBreakableObstacle16",
-      "persistentUuid": "a42ebab9-1ade-484f-a2b1-3ec7ee08d7a4",
-      "width": 0,
-      "x": 384,
-      "y": -97,
-      "zOrder": 14,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "SoftBreakableObstacle16",
-      "persistentUuid": "98b9943c-8a31-4d2b-be39-4420772af954",
-      "width": 0,
-      "x": 384,
-      "y": -160,
-      "zOrder": 14,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "SoftBreakableObstacle16",
-      "persistentUuid": "fcc57657-9759-405f-a4bf-ff41539e2e41",
-      "width": 0,
-      "x": 384,
-      "y": -81,
-      "zOrder": 16,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "SoftBreakableObstacle16",
-      "persistentUuid": "41564fb5-3152-4af2-9662-d7a26b652567",
-      "width": 0,
-      "x": 384,
-      "y": -144,
-      "zOrder": 16,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "SoftBreakableObstacle16",
-      "persistentUuid": "2c6d92e5-138e-4221-99dc-0b71cd4db16b",
-      "width": 0,
-      "x": 384,
-      "y": -304,
-      "zOrder": 14,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "SoftBreakableObstacle16",
-      "persistentUuid": "f4bba4cb-9e6d-4b12-a40e-25beedfbe3f4",
-      "width": 0,
-      "x": 384,
-      "y": -368,
-      "zOrder": 14,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "SoftBreakableObstacle16",
-      "persistentUuid": "0c9e4d64-50c2-4108-add8-ddc29c0e7b33",
-      "width": 0,
-      "x": 384,
-      "y": -288,
-      "zOrder": 14,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "SoftBreakableObstacle16",
-      "persistentUuid": "d0a0db5d-9af2-47df-84b8-f37c67334998",
-      "width": 0,
-      "x": 384,
-      "y": -352,
-      "zOrder": 14,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "SoftBreakableObstacle16",
-      "persistentUuid": "02b18be8-0bfc-44d4-999d-e8422ecb999e",
-      "width": 0,
-      "x": 400,
-      "y": -304,
-      "zOrder": 14,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "SoftBreakableObstacle16",
-      "persistentUuid": "73418408-6c0a-4094-812f-26817fc8c6c4",
-      "width": 0,
-      "x": 400,
-      "y": -368,
-      "zOrder": 14,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "SoftBreakableObstacle16",
-      "persistentUuid": "ef4236b5-16e5-4c80-847a-75063d662ca2",
-      "width": 0,
-      "x": 400,
-      "y": -288,
-      "zOrder": 14,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "SoftBreakableObstacle16",
-      "persistentUuid": "622529e4-802c-4919-9cbd-b9413b1fac55",
-      "width": 0,
-      "x": 400,
-      "y": -352,
-      "zOrder": 14,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "HardBreakableObstacle16",
-      "persistentUuid": "6fc44648-784d-4370-9a05-69ab9e89d752",
-      "width": 0,
-      "x": 416,
-      "y": -64,
-      "zOrder": 17,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "HardBreakableObstacle16",
-      "persistentUuid": "946bc5fa-3c73-4bef-af4b-cf76ca73bb6b",
-      "width": 0,
-      "x": 416,
-      "y": -80,
-      "zOrder": 16,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "HardBreakableObstacle16",
-      "persistentUuid": "aca8081d-76c6-408d-b8df-da575cfad7cd",
-      "width": 0,
-      "x": 464,
-      "y": -16,
-      "zOrder": 17,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "HardBreakableObstacle16",
-      "persistentUuid": "72488799-4cb6-4b63-bd76-10bbd38978b9",
-      "width": 0,
-      "x": 464,
-      "y": -32,
-      "zOrder": 16,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "HardBreakableObstacle16",
-      "persistentUuid": "ae680fe3-34a5-4b29-9503-605185d70bc6",
-      "width": 0,
-      "x": 416,
-      "y": 16,
-      "zOrder": 17,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "HardBreakableObstacle16",
-      "persistentUuid": "967d5f8d-b631-4f99-962a-6299899ccee1",
-      "width": 0,
-      "x": 416,
-      "y": 0,
-      "zOrder": 16,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -2478,11 +2182,214 @@
       "content": {
         "RandomAngle": false
       }
+    },
+    {
+      "assetStoreId": "",
+      "name": "TankB",
+      "type": "CustomObjects::Tank",
+      "variant": "b",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "BombObjects",
+          "type": "CustomBehaviors::BombObjects",
+          "ObjectName": "DefaultLandmine"
+        },
+        {
+          "name": "BulletObjects",
+          "type": "CustomBehaviors::BulletObjects",
+          "ObjectName": "DefaultBullet"
+        },
+        {
+          "name": "Damageable",
+          "type": "CustomBehaviors::Damageable",
+          "EntityBehavior": "Entity",
+          "Health": 200,
+          "CurrentHealth": 2.0247e-320,
+          "ImmuneDamage": ""
+        },
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 9.854645721257145e+165,
+          "Type": "Tank"
+        },
+        {
+          "name": "Tank",
+          "type": "CustomBehaviors::Tank",
+          "EntityBehavior": "Entity",
+          "BulletObjects": "BulletObjects",
+          "MoveSpeed": 70,
+          "BombObjects": "BombObjects"
+        },
+        {
+          "name": "Trails",
+          "type": "CustomBehaviors::Trails",
+          "SpawnByTime": false,
+          "SpawnCooldown": 1,
+          "SpawnDistance": 16,
+          "Spawn": false,
+          "DistanceMoved": 0,
+          "OldX": 2.0247e-320,
+          "OldY": 2.0247e-320
+        }
+      ],
+      "content": {
+        "CannonRotationSpeed": 0.25,
+        "BodyRotationSpeed": 0.3
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "TankG",
+      "type": "CustomObjects::Tank",
+      "variant": "g",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "BombObjects",
+          "type": "CustomBehaviors::BombObjects",
+          "ObjectName": "DefaultLandmine"
+        },
+        {
+          "name": "BulletObjects",
+          "type": "CustomBehaviors::BulletObjects",
+          "ObjectName": "DefaultBullet"
+        },
+        {
+          "name": "Damageable",
+          "type": "CustomBehaviors::Damageable",
+          "EntityBehavior": "Entity",
+          "Health": 200,
+          "CurrentHealth": 2.0247e-320,
+          "ImmuneDamage": ""
+        },
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 9.854645721257145e+165,
+          "Type": "Tank"
+        },
+        {
+          "name": "Tank",
+          "type": "CustomBehaviors::Tank",
+          "EntityBehavior": "Entity",
+          "BulletObjects": "BulletObjects",
+          "MoveSpeed": 70,
+          "BombObjects": "BombObjects"
+        },
+        {
+          "name": "Trails",
+          "type": "CustomBehaviors::Trails",
+          "SpawnByTime": false,
+          "SpawnCooldown": 1,
+          "SpawnDistance": 16,
+          "Spawn": false,
+          "DistanceMoved": 0,
+          "OldX": 2.0247e-320,
+          "OldY": 2.0247e-320
+        }
+      ],
+      "content": {
+        "CannonRotationSpeed": 0.25,
+        "BodyRotationSpeed": 0.3
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "TankBSpawner",
+      "type": "CustomObjects::Wall",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 0,
+          "Type": "Resource"
+        },
+        {
+          "name": "Spawner",
+          "type": "CustomBehaviors::Spawner",
+          "ObjectName": "TankB",
+          "LimitPerScene": 1,
+          "SpawnCooldown": 3,
+          "CurrentCount": 0
+        }
+      ],
+      "content": {}
+    },
+    {
+      "assetStoreId": "",
+      "name": "TankGSpawner",
+      "type": "CustomObjects::Wall",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 0,
+          "Type": "Resource"
+        },
+        {
+          "name": "Spawner",
+          "type": "CustomBehaviors::Spawner",
+          "ObjectName": "TankG",
+          "LimitPerScene": 1,
+          "SpawnCooldown": 3,
+          "CurrentCount": 0
+        }
+      ],
+      "content": {}
+    },
+    {
+      "assetStoreId": "",
+      "name": "Player0Spawner",
+      "type": "CustomObjects::Wall",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 0,
+          "Type": "Resource"
+        },
+        {
+          "name": "Spawner",
+          "type": "CustomBehaviors::Spawner",
+          "ObjectName": "Player0",
+          "LimitPerScene": 1,
+          "SpawnCooldown": 3,
+          "CurrentCount": 0
+        }
+      ],
+      "content": {}
     }
   ],
   "objectsFolderStructure": {
     "folderName": "__ROOT",
     "children": [
+      {
+        "folderName": "Spawners",
+        "children": [
+          {
+            "objectName": "Player0Spawner"
+          },
+          {
+            "objectName": "TankBSpawner"
+          },
+          {
+            "objectName": "TankGSpawner"
+          }
+        ]
+      },
       {
         "folderName": "Editor",
         "children": [
@@ -2593,6 +2500,12 @@
       },
       {
         "objectName": "Player0"
+      },
+      {
+        "objectName": "TankB"
+      },
+      {
+        "objectName": "TankG"
       },
       {
         "objectName": "GroundTrailsPlayer0"
@@ -2963,6 +2876,48 @@
                     ""
                   ]
                 }
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Bomb logic",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "Enemies",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "AddForceXY"
+              },
+              "parameters": [
+                "Enemies",
+                "50",
+                "0",
+                ""
               ]
             }
           ]
@@ -3497,6 +3452,56 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "name": "Damageables death",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Damageable::IsDead"
+              },
+              "parameters": [
+                "Damageable",
+                "Damageable",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Delete"
+              },
+              "parameters": [
+                "Damageable",
+                ""
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
       "name": "Obstacles updates",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -3690,6 +3695,213 @@
         }
       ],
       "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Spawners",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "DepartScene"
+              },
+              "parameters": [
+                ""
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Spawners",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CreateByName"
+                  },
+                  "parameters": [
+                    "",
+                    "CanBeSpawn",
+                    "Spawners.Spawner::ObjectName()",
+                    "Spawners.X()",
+                    "Spawners.Y()",
+                    "_CONSTANTS_.Layers.Main"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Spawner::SetCount"
+                  },
+                  "parameters": [
+                    "Spawners",
+                    "Spawner",
+                    "CanBeSpawn",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "Spawners",
+          "conditions": [],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "CanBeSpawn",
+              "conditions": [],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::CompareStrings"
+                      },
+                      "parameters": [
+                        "Spawners.Spawner::ObjectName()",
+                        "=",
+                        "CanBeSpawn.ObjectName()"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Spawner::SetCount"
+                      },
+                      "parameters": [
+                        "Spawners",
+                        "Spawner",
+                        "CanBeSpawn",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "BuiltinCommonInstructions::CompareStrings"
+                      },
+                      "parameters": [
+                        "Spawners.Spawner::ObjectName()",
+                        "=",
+                        "CanBeSpawn.ObjectName()"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Spawner::ResetCount"
+                      },
+                      "parameters": [
+                        "Spawners",
+                        "Spawner",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "Spawners",
+          "conditions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Spawner::CanSpawn"
+              },
+              "parameters": [
+                "Spawners",
+                "Spawner",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CreateByName"
+              },
+              "parameters": [
+                "",
+                "CanBeSpawn",
+                "Spawners.Spawner::ObjectName()",
+                "Spawners.X()",
+                "Spawners.Y()",
+                "_CONSTANTS_.Layers.Main"
+              ]
+            },
+            {
+              "type": {
+                "value": "DebuggerTools::ConsoleLog"
+              },
+              "parameters": [
+                "Spawners.ObjectName() + \" \" + CanBeSpawn.ObjectName() + \" \" +ToString(SceneInstancesCount(CanBeSpawn))",
+                "",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "CustomBehaviors::Spawner::SetCount"
+              },
+              "parameters": [
+                "Spawners",
+                "Spawner",
+                "CanBeSpawn",
+                ""
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
     }
   ],
   "layers": [
@@ -3883,6 +4095,10 @@
     {
       "name": "Scale",
       "type": "ScalableCapability::ScalableBehavior"
+    },
+    {
+      "name": "Spawner",
+      "type": "CustomBehaviors::Spawner"
     },
     {
       "name": "Sticker",
