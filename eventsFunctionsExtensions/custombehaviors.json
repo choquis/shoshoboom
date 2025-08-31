@@ -787,6 +787,50 @@
           "objectGroups": []
         },
         {
+          "description": "Set spawner id",
+          "fullName": "Set spawner Id",
+          "functionType": "Action",
+          "name": "SetSpawnerId",
+          "sentence": "Set spawner id of _PARAM0_ with _PARAM2_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "SpawnerId",
+                    "=",
+                    "ParamSpawnerId"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Entity",
+              "type": "behavior"
+            },
+            {
+              "description": "Spawner id",
+              "name": "ParamSpawnerId",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
           "fullName": "",
           "functionType": "Expression",
           "name": "Id",
@@ -941,6 +985,84 @@
             }
           ],
           "objectGroups": []
+        },
+        {
+          "description": "Check if entity has the spawner id",
+          "fullName": "Entity has spawner id",
+          "functionType": "Condition",
+          "name": "HasSpawnerId",
+          "sentence": "Entity _PARAM0_ has spawner id _PARAM2_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "SpawnerId",
+                    "=",
+                    "ParamId"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "SpawnerId",
+                    "!=",
+                    "ParamId"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "False"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Entity",
+              "type": "behavior"
+            },
+            {
+              "description": "Spawner Id",
+              "name": "ParamId",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
         }
       ],
       "propertyDescriptors": [
@@ -967,6 +1089,13 @@
             "Bomb"
           ],
           "name": "Type"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "label": "Spawner Id",
+          "hidden": true,
+          "name": "SpawnerId"
         }
       ],
       "sharedPropertyDescriptors": []
@@ -3837,39 +3966,11 @@
           "fullName": "Set spawn count",
           "functionType": "Action",
           "name": "SetCount",
-          "sentence": "Set spawn count in scene of _PARAM0_ with instances of _PARAM2_",
+          "sentence": "Set spawn count in scene of _PARAM0_ with _PARAM2_",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "LinkedObjects::LinkObjects"
-                  },
-                  "parameters": [
-                    "",
-                    "ObjectToSpawn",
-                    "Object"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "LinkedObjects::PickObjectsLinkedTo"
-                  },
-                  "parameters": [
-                    "",
-                    "ObjectToSpawn",
-                    "Object",
-                    ""
-                  ]
-                }
-              ],
               "actions": [
                 {
                   "type": {
@@ -3878,7 +3979,7 @@
                   "parameters": [
                     "CurrentCount",
                     "=",
-                    "PickedInstancesCount(ObjectToSpawn)"
+                    "ParamCount"
                   ]
                 }
               ]
@@ -3897,57 +3998,9 @@
               "type": "behavior"
             },
             {
-              "description": "Object to spawn",
-              "name": "ObjectToSpawn",
-              "type": "objectList"
-            }
-          ],
-          "objectGroups": []
-        },
-        {
-          "description": "Set the count of instances to 0",
-          "fullName": "Reset count",
-          "functionType": "Action",
-          "name": "ResetCount",
-          "sentence": "Reset instances count of spawner _PARAM0_",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "CurrentCount",
-                    "=",
-                    "0"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "LinkedObjects::RemoveAllLinksOf"
-                  },
-                  "parameters": [
-                    "",
-                    "Object"
-                  ]
-                }
-              ]
-            }
-          ],
-          "parameters": [
-            {
-              "description": "Object",
-              "name": "Object",
-              "type": "object"
-            },
-            {
-              "description": "Behavior",
-              "name": "Behavior",
-              "supplementaryInformation": "CustomBehaviors::Spawner",
-              "type": "behavior"
+              "description": "Count",
+              "name": "ParamCount",
+              "type": "expression"
             }
           ],
           "objectGroups": []
@@ -3961,60 +4014,14 @@
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "LinkedObjects::PickObjectsLinkedTo"
-                  },
-                  "parameters": [
-                    "",
-                    "ObjectSpawned",
-                    "Object",
-                    ""
-                  ]
-                }
-              ],
+              "conditions": [],
               "actions": [
                 {
                   "type": {
                     "value": "SetReturnNumber"
                   },
                   "parameters": [
-                    "PickedInstancesCount(ObjectToSpawn)"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Not"
-                  },
-                  "parameters": [],
-                  "subInstructions": [
-                    {
-                      "type": {
-                        "value": "LinkedObjects::PickObjectsLinkedTo"
-                      },
-                      "parameters": [
-                        "",
-                        "ObjectSpawned",
-                        "Object",
-                        ""
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetReturnNumber"
-                  },
-                  "parameters": [
-                    "0"
+                    "CurrentCount"
                   ]
                 }
               ]
@@ -4034,11 +4041,6 @@
               "name": "Behavior",
               "supplementaryInformation": "CustomBehaviors::Spawner",
               "type": "behavior"
-            },
-            {
-              "description": "Object spawned",
-              "name": "ObjectSpawned",
-              "type": "objectList"
             }
           ],
           "objectGroups": []

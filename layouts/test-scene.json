@@ -1142,54 +1142,6 @@
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "Player0Spawner",
-      "persistentUuid": "119e294a-d155-4f27-82be-37ca9d64a0be",
-      "width": 0,
-      "x": 160,
-      "y": 176,
-      "zOrder": 12,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "TankBSpawner",
-      "persistentUuid": "2d22125d-a14c-4a9f-a98e-9051d0a6f670",
-      "width": 0,
-      "x": 336,
-      "y": 48,
-      "zOrder": 13,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "TankGSpawner",
-      "persistentUuid": "8c34dbe5-0201-4777-a710-91a2a1f8b77f",
-      "width": 0,
-      "x": 480,
-      "y": 160,
-      "zOrder": 14,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
     }
   ],
   "objects": [
@@ -2315,7 +2267,7 @@
           "name": "Spawner",
           "type": "CustomBehaviors::Spawner",
           "ObjectName": "TankB",
-          "LimitPerScene": 1,
+          "LimitPerScene": 2,
           "SpawnCooldown": 3,
           "CurrentCount": 0
         }
@@ -2915,7 +2867,7 @@
               },
               "parameters": [
                 "Enemies",
-                "50",
+                "10",
                 "0",
                 ""
               ]
@@ -3751,12 +3703,23 @@
                 },
                 {
                   "type": {
+                    "value": "CustomBehaviors::Entity::SetSpawnerId"
+                  },
+                  "parameters": [
+                    "CanBeSpawn",
+                    "Entity",
+                    "Spawners.Entity::Id()",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
                     "value": "CustomBehaviors::Spawner::SetCount"
                   },
                   "parameters": [
                     "Spawners",
                     "Spawner",
-                    "CanBeSpawn",
+                    "1",
                     ""
                   ]
                 }
@@ -3765,71 +3728,60 @@
           ]
         },
         {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
+          },
+          "comment": "Update instances count in the spawners"
+        },
+        {
           "type": "BuiltinCommonInstructions::ForEach",
           "object": "Spawners",
           "conditions": [],
-          "actions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Spawner::SetCount"
+              },
+              "parameters": [
+                "Spawners",
+                "Spawner",
+                "0",
+                ""
+              ]
+            }
+          ],
           "events": [
             {
-              "type": "BuiltinCommonInstructions::ForEach",
-              "object": "CanBeSpawn",
-              "conditions": [],
-              "actions": [],
-              "events": [
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
                 {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "BuiltinCommonInstructions::CompareStrings"
-                      },
-                      "parameters": [
-                        "Spawners.Spawner::ObjectName()",
-                        "=",
-                        "CanBeSpawn.ObjectName()"
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::Spawner::SetCount"
-                      },
-                      "parameters": [
-                        "Spawners",
-                        "Spawner",
-                        "CanBeSpawn",
-                        ""
-                      ]
-                    }
+                  "type": {
+                    "value": "CustomBehaviors::Entity::HasSpawnerId"
+                  },
+                  "parameters": [
+                    "CanBeSpawn",
+                    "Entity",
+                    "Spawners.Entity::Id()",
+                    ""
                   ]
-                },
+                }
+              ],
+              "actions": [
                 {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": true,
-                        "value": "BuiltinCommonInstructions::CompareStrings"
-                      },
-                      "parameters": [
-                        "Spawners.Spawner::ObjectName()",
-                        "=",
-                        "CanBeSpawn.ObjectName()"
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::Spawner::ResetCount"
-                      },
-                      "parameters": [
-                        "Spawners",
-                        "Spawner",
-                        ""
-                      ]
-                    }
+                  "type": {
+                    "value": "CustomBehaviors::Spawner::SetCount"
+                  },
+                  "parameters": [
+                    "Spawners",
+                    "Spawner",
+                    "PickedInstancesCount(CanBeSpawn)",
+                    ""
                   ]
                 }
               ]
@@ -3867,22 +3819,12 @@
             },
             {
               "type": {
-                "value": "DebuggerTools::ConsoleLog"
+                "value": "CustomBehaviors::Entity::SetSpawnerId"
               },
               "parameters": [
-                "Spawners.ObjectName() + \" \" + CanBeSpawn.ObjectName() + \" \" +ToString(SceneInstancesCount(CanBeSpawn))",
-                "",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "CustomBehaviors::Spawner::SetCount"
-              },
-              "parameters": [
-                "Spawners",
-                "Spawner",
                 "CanBeSpawn",
+                "Entity",
+                "Spawners.Entity::Id()",
                 ""
               ]
             }

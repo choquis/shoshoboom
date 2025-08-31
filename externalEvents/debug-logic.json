@@ -443,72 +443,30 @@
           "type": "BuiltinCommonInstructions::ForEach",
           "object": "Spawners",
           "conditions": [],
-          "actions": [],
-          "events": [
+          "actions": [
             {
-              "type": "BuiltinCommonInstructions::ForEach",
-              "object": "CanBeSpawn",
-              "conditions": [],
-              "actions": [],
-              "events": [
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "BuiltinCommonInstructions::CompareStrings"
-                      },
-                      "parameters": [
-                        "Spawners.Spawner::ObjectName()",
-                        "=",
-                        "CanBeSpawn.ObjectName()"
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "CustomObjects::Wall::Log"
-                      },
-                      "parameters": [
-                        "Spawners",
-                        "ToString(Spawners.Spawner::Counter(CanBeSpawn))",
-                        ""
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": true,
-                        "value": "BuiltinCommonInstructions::CompareStrings"
-                      },
-                      "parameters": [
-                        "Spawners.Spawner::ObjectName()",
-                        "=",
-                        "CanBeSpawn.ObjectName()"
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "CustomObjects::Wall::Log"
-                      },
-                      "parameters": [
-                        "Spawners",
-                        "\"0\"",
-                        ""
-                      ]
-                    }
-                  ]
-                }
+              "type": {
+                "value": "CustomObjects::Wall::Log"
+              },
+              "parameters": [
+                "Spawners",
+                "ToString(Spawners.Entity::Id()) + \" \" + ToString(Spawners.Spawner::Counter())",
+                ""
               ]
             }
           ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
+          },
+          "comment": "\n\n"
         },
         {
           "type": "BuiltinCommonInstructions::Standard",
