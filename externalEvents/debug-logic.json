@@ -446,11 +446,11 @@
           "actions": [
             {
               "type": {
-                "value": "CustomObjects::Wall::Log"
+                "value": "CustomObjects::Hidden::SetVisibility"
               },
               "parameters": [
                 "Spawners",
-                "ToString(Spawners.Entity::Id()) + \" \" + ToString(Spawners.Spawner::Counter())",
+                "yes",
                 ""
               ]
             }
@@ -515,6 +515,23 @@
                   },
                   "parameters": [
                     "Players",
+                    "yes",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Enemies",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Tank::SetDebug"
+                  },
+                  "parameters": [
+                    "Enemies",
                     "yes",
                     ""
                   ]
@@ -596,7 +613,7 @@
               "actions": [
                 {
                   "type": {
-                    "value": "CustomObjects::Wall::SetDebug"
+                    "value": "CustomObjects::Hidden::SetVisibility"
                   },
                   "parameters": [
                     "Spawners",
@@ -680,6 +697,23 @@
             },
             {
               "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Enemies",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Tank::SetDebug"
+                  },
+                  "parameters": [
+                    "Enemies",
+                    "no",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
               "object": "Bounceable",
               "conditions": [],
               "actions": [
@@ -753,7 +787,7 @@
               "actions": [
                 {
                   "type": {
-                    "value": "CustomObjects::Wall::SetDebug"
+                    "value": "CustomObjects::Hidden::SetVisibility"
                   },
                   "parameters": [
                     "Spawners",

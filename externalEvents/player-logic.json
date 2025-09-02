@@ -797,19 +797,9 @@
                     "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "LookAngle",
-                    "=",
-                    "trunc(Players.LookAngle())"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
                     "CursorAngle",
                     "=",
-                    "trunc(AngleBetweenPositions(Players.MuzzleX(), Players.MuzzleY(), Cursor.X(), Cursor.Y()))"
+                    "AngleBetweenPositions(Players.MuzzleX(), Players.MuzzleY(), Cursor.X(), Cursor.Y())"
                   ]
                 },
                 {
@@ -819,11 +809,40 @@
                   "parameters": [
                     "DeltaAngle",
                     "=",
-                    "abs(LookAngle - CursorAngle)"
+                    "abs(trunc(Players.LookAngle()) - trunc(CursorAngle))"
                   ]
                 }
               ],
               "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Bullet::AreFromTank"
+                      },
+                      "parameters": [
+                        "Bullets",
+                        "Bullet",
+                        "Players.Entity::Id()",
+                        "Players.BulletObjects::ProjectileObjectName()",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "BulletCount",
+                        "=",
+                        "PickedInstancesCount(Bullets)"
+                      ]
+                    }
+                  ]
+                },
                 {
                   "type": "BuiltinCommonInstructions::Comment",
                   "color": {
@@ -834,7 +853,7 @@
                     "textG": 255,
                     "textR": 255
                   },
-                  "comment": "DeltaAngle its used to prevent that the tank can shoot behaind if the cursor is on it"
+                  "comment": "DeltaAngle its used to prevent that the tank can shoot behind, if the cursor is on it"
                 },
                 {
                   "type": "BuiltinCommonInstructions::Standard",
@@ -847,6 +866,17 @@
                         "MAINGAME.Input.Shoot",
                         "=",
                         "_CONSTANTS_.InputState.Pressed"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Tank::CanShoot"
+                      },
+                      "parameters": [
+                        "Players",
+                        "Tank",
+                        "BulletCount",
+                        ""
                       ]
                     },
                     {
@@ -918,7 +948,7 @@
                         "Bullets",
                         "Bullet",
                         "Bullets",
-                        "AngleBetweenPositions(Players.MuzzleX(), Players.MuzzleY(), Cursor.X(), Cursor.Y())",
+                        "CursorAngle",
                         "_CONFIG_.debug",
                         ""
                       ]
@@ -931,6 +961,44 @@
                         "Bullets",
                         "Bullet",
                         "Players.Entity::Id()",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Tank::SetShootCooldown"
+                      },
+                      "parameters": [
+                        "Players",
+                        "Tank",
+                        "Bullets.Bullet::Cooldown()",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Tank::SetMaxBullets"
+                      },
+                      "parameters": [
+                        "Players",
+                        "Tank",
+                        "Bullets.Bullet::TotalBullets()",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "CustomObjects::Tank::Log"
+                      },
+                      "parameters": [
+                        "Players",
+                        "ToString(BulletCount) + NewLine() + ToString(Players.Tank::CurrTime())",
                         ""
                       ]
                     }
@@ -949,7 +1017,7 @@
                   "value": 0
                 },
                 {
-                  "name": "LookAngle",
+                  "name": "BulletCount",
                   "type": "number",
                   "value": 0
                 }
@@ -1096,22 +1164,6 @@
                 "Players",
                 "BulletObjects",
                 "Ammo.BulletObjects::ProjectileObjectName()",
-                ""
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "SeparateFromObjects"
-              },
-              "parameters": [
-                "Players",
-                "SolidForTank",
                 ""
               ]
             }

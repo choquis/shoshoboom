@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.859375000000041,
+    "zoomFactor": 1.6283762407420277,
     "windowMask": false
   },
   "objectsGroups": [
@@ -93,19 +93,10 @@
           "name": "HardBreakableObstacle16"
         },
         {
-          "name": "TankBSpawner"
+          "name": "TankBlue"
         },
         {
-          "name": "TankGSpawner"
-        },
-        {
-          "name": "Player0Spawner"
-        },
-        {
-          "name": "TankB"
-        },
-        {
-          "name": "TankG"
+          "name": "TankGreen"
         }
       ]
     },
@@ -150,10 +141,10 @@
           "name": "HardBreakableObstacle16"
         },
         {
-          "name": "TankG"
+          "name": "TankGreen"
         },
         {
-          "name": "TankB"
+          "name": "TankBlue"
         }
       ]
     },
@@ -231,10 +222,10 @@
           "name": "HardBreakableObstacle16"
         },
         {
-          "name": "TankB"
+          "name": "TankBlue"
         },
         {
-          "name": "TankG"
+          "name": "TankGreen"
         }
       ]
     },
@@ -243,6 +234,12 @@
       "objects": [
         {
           "name": "Player0"
+        },
+        {
+          "name": "TankBlue"
+        },
+        {
+          "name": "TankGreen"
         }
       ]
     },
@@ -259,6 +256,12 @@
       "objects": [
         {
           "name": "GroundTrailsPlayer0"
+        },
+        {
+          "name": "GroundTrailsTankGreen"
+        },
+        {
+          "name": "GroundTrailsTankBlue"
         }
       ]
     },
@@ -305,10 +308,10 @@
           "name": "Player0"
         },
         {
-          "name": "TankB"
+          "name": "TankBlue"
         },
         {
-          "name": "TankG"
+          "name": "TankGreen"
         }
       ]
     },
@@ -324,13 +327,13 @@
       "name": "Spawners",
       "objects": [
         {
-          "name": "TankBSpawner"
-        },
-        {
-          "name": "TankGSpawner"
-        },
-        {
           "name": "Player0Spawner"
+        },
+        {
+          "name": "TankBlueSpawner"
+        },
+        {
+          "name": "TankGreenSpawner"
         }
       ]
     },
@@ -341,10 +344,10 @@
           "name": "Player0"
         },
         {
-          "name": "TankB"
+          "name": "TankBlue"
         },
         {
-          "name": "TankG"
+          "name": "TankGreen"
         }
       ]
     },
@@ -352,10 +355,41 @@
       "name": "Enemies",
       "objects": [
         {
-          "name": "TankB"
+          "name": "TankBlue"
         },
         {
-          "name": "TankG"
+          "name": "TankGreen"
+        }
+      ]
+    },
+    {
+      "name": "OtherEnemies",
+      "objects": [
+        {
+          "name": "TankBlue"
+        },
+        {
+          "name": "TankGreen"
+        }
+      ]
+    },
+    {
+      "name": "EnemyLook",
+      "objects": [
+        {
+          "name": "Player0"
+        },
+        {
+          "name": "SolidWall"
+        },
+        {
+          "name": "SoftBreakableObstacle16"
+        },
+        {
+          "name": "HardBreakableObstacle16"
+        },
+        {
+          "name": "BounceableWall"
         }
       ]
     }
@@ -442,6 +476,16 @@
       "name": "SelectedId",
       "type": "number",
       "value": -1
+    },
+    {
+      "name": "EnemyLogic_IntersectsX",
+      "type": "array",
+      "children": []
+    },
+    {
+      "name": "EnemyLogic_IntersectsY",
+      "type": "array",
+      "children": []
     }
   ],
   "instances": [
@@ -454,8 +498,8 @@
       "name": "RedPen",
       "persistentUuid": "2ea29eaa-19c4-426d-9588-db8f62106258",
       "width": 0,
-      "x": 720,
-      "y": -224,
+      "x": -176,
+      "y": -192,
       "zOrder": 2,
       "numberProperties": [],
       "stringProperties": [],
@@ -486,7 +530,7 @@
       "name": "particlecount",
       "persistentUuid": "bda6a260-6bd7-46a3-b3e7-b1a638ae5203",
       "width": 0,
-      "x": 16,
+      "x": 41,
       "y": 9,
       "zOrder": 4,
       "numberProperties": [],
@@ -511,23 +555,6 @@
       "initialVariables": []
     },
     {
-      "angle": 135,
-      "customSize": true,
-      "depth": 65,
-      "height": 32,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWall",
-      "persistentUuid": "385771b6-4fc1-4e16-bfcd-182593c8b2f8",
-      "width": 32,
-      "x": 608,
-      "y": -135,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
       "angle": 270,
       "customSize": false,
       "height": 0,
@@ -536,8 +563,8 @@
       "name": "BounceableWall",
       "persistentUuid": "b42a5beb-e4b6-41d1-bcde-188d2d49c457",
       "width": 0,
-      "x": -112,
-      "y": -112,
+      "x": -152,
+      "y": 1,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -552,8 +579,8 @@
       "name": "BounceableWall",
       "persistentUuid": "e0f9a961-7fe6-4496-9618-ba094f83a806",
       "width": 0,
-      "x": -144,
-      "y": -80,
+      "x": -175,
+      "y": 24,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -568,8 +595,8 @@
       "name": "BounceableWall",
       "persistentUuid": "a1d117af-1ec5-48b3-bb13-10eed45df6d1",
       "width": 0,
-      "x": -137,
-      "y": -96,
+      "x": -168,
+      "y": 8,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -584,24 +611,8 @@
       "name": "BounceableWall",
       "persistentUuid": "34729715-9fb1-4318-870a-9d45f57cec74",
       "width": 0,
-      "x": -112,
-      "y": -48,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 225,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWall",
-      "persistentUuid": "c7a573c0-ebcc-4d50-9c9c-aa067f7a707d",
-      "width": 0,
-      "x": -128,
-      "y": -105,
+      "x": -152,
+      "y": 47,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -616,24 +627,8 @@
       "name": "BounceableWall",
       "persistentUuid": "1be299c7-f11e-4660-b970-294afc07944a",
       "width": 0,
-      "x": -80,
-      "y": -80,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 135,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWall",
-      "persistentUuid": "1389fd45-0bcd-4c4c-83b3-0f6224ced6be",
-      "width": 0,
-      "x": -137,
-      "y": -64,
+      "x": -129,
+      "y": 24,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -648,8 +643,8 @@
       "name": "BounceableWall",
       "persistentUuid": "19e5986b-a8f3-4aef-81e5-ea376d8512e7",
       "width": 0,
-      "x": -128,
-      "y": -55,
+      "x": -168,
+      "y": 40,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -664,24 +659,8 @@
       "name": "BounceableWall",
       "persistentUuid": "07618236-7f4b-4fb7-bb1d-706d9b943fa2",
       "width": 0,
-      "x": -96,
-      "y": -55,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 45,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWall",
-      "persistentUuid": "d3d7e881-aa13-43ac-bdb6-c01c46d3c797",
-      "width": 0,
-      "x": -87,
-      "y": -64,
+      "x": -136,
+      "y": 40,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -696,24 +675,8 @@
       "name": "BounceableWall",
       "persistentUuid": "eeebfb50-bba9-4481-bac4-6a8e93a5904b",
       "width": 0,
-      "x": -87,
-      "y": -96,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 315,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWall",
-      "persistentUuid": "7654a5fc-34d5-40f4-a712-c67915d023d6",
-      "width": 0,
-      "x": -96,
-      "y": -105,
+      "x": -136,
+      "y": 8,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -728,8 +691,8 @@
       "name": "YellowPen",
       "persistentUuid": "34748542-b58b-44b3-ad55-9aee3d13a017",
       "width": 0,
-      "x": 768,
-      "y": -224,
+      "x": -144,
+      "y": -192,
       "zOrder": 10,
       "numberProperties": [],
       "stringProperties": [],
@@ -744,8 +707,8 @@
       "name": "BluePen",
       "persistentUuid": "66fb78d5-a2bb-427e-ab61-4dbee684f113",
       "width": 0,
-      "x": 672,
-      "y": -224,
+      "x": -208,
+      "y": -192,
       "zOrder": 11,
       "numberProperties": [],
       "stringProperties": [],
@@ -761,8 +724,8 @@
       "name": "BounceableWall",
       "persistentUuid": "347d9cf2-f3ef-43d7-9c6e-1bdc445f3efa",
       "width": 32,
-      "x": -32,
-      "y": -448,
+      "x": 0,
+      "y": 0,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -772,21 +735,21 @@
       "angle": 180,
       "customSize": true,
       "depth": 64,
-      "height": 320,
+      "height": 352,
       "keepRatio": true,
       "layer": "Main",
       "name": "BounceableWall",
       "persistentUuid": "1c785f33-9906-4aed-b2c2-c00487407ced",
       "width": 32,
-      "x": 592,
-      "y": -448,
+      "x": 608,
+      "y": 0,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
     },
     {
-      "angle": 90,
+      "angle": 135,
       "customSize": true,
       "depth": 64,
       "height": 30,
@@ -795,56 +758,8 @@
       "name": "BounceableWall",
       "persistentUuid": "50de0f92-aaf6-4da5-b877-7ad89ff56e7c",
       "width": 32,
-      "x": -32,
-      "y": -126,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 225,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWall",
-      "persistentUuid": "85d84ee8-5f2f-48ec-84be-1c1cd492a100",
-      "width": 0,
-      "x": -222,
-      "y": 34,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 315,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWall",
-      "persistentUuid": "82838873-fc4d-4e77-8152-70752512b28e",
-      "width": 0,
-      "x": -130,
-      "y": 35,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 45,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWall",
-      "persistentUuid": "45ef216a-17e4-486e-a9ec-150734b547dc",
-      "width": 0,
-      "x": -130,
-      "y": 126,
+      "x": 598,
+      "y": 11,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -859,8 +774,8 @@
       "name": "Cursor",
       "persistentUuid": "0aedc7a7-6883-492d-bd61-84a89186f5b9",
       "width": 0,
-      "x": 896,
-      "y": -176,
+      "x": -56,
+      "y": -168,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -875,8 +790,8 @@
       "name": "BounceableWall",
       "persistentUuid": "0e8d7501-5df9-4045-90f4-3a4139604585",
       "width": 0,
-      "x": -176,
-      "y": 144,
+      "x": -208,
+      "y": -79,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -891,8 +806,8 @@
       "name": "BounceableWall",
       "persistentUuid": "b9b580ea-84ab-4239-8e9e-cee4c734519c",
       "width": 0,
-      "x": -112,
-      "y": 80,
+      "x": -207,
+      "y": -80,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -907,8 +822,8 @@
       "name": "BounceableWall",
       "persistentUuid": "bedf3c67-21c4-43ba-902e-589c25dd656e",
       "width": 0,
-      "x": -240,
-      "y": 80,
+      "x": -209,
+      "y": -80,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -923,8 +838,8 @@
       "name": "BounceableWall",
       "persistentUuid": "ab28c1ec-39f3-4cff-ac68-91f8647ca925",
       "width": 0,
-      "x": -176,
-      "y": 16,
+      "x": -208,
+      "y": -81,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -939,8 +854,8 @@
       "name": "CursorPoint",
       "persistentUuid": "204f9ed7-0dcb-4dcf-af34-6fd713538fe3",
       "width": 0,
-      "x": 912,
-      "y": -176,
+      "x": -40,
+      "y": -168,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -955,8 +870,8 @@
       "name": "CursorPoint",
       "persistentUuid": "9228c67c-e7d0-4d5d-a272-cee918b55c13",
       "width": 0,
-      "x": 928,
-      "y": -176,
+      "x": -24,
+      "y": -168,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -971,8 +886,8 @@
       "name": "CursorPoint",
       "persistentUuid": "e213fa26-6745-41e9-b102-4398374a6448",
       "width": 0,
-      "x": 944,
-      "y": -176,
+      "x": -8,
+      "y": -168,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
@@ -987,58 +902,25 @@
       "name": "CursorPoint",
       "persistentUuid": "92f140aa-9a9c-401e-b668-feb5d8516c3d",
       "width": 0,
-      "x": 960,
-      "y": -176,
+      "x": 8,
+      "y": -168,
       "zOrder": 0,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
     },
     {
-      "angle": 90,
+      "angle": 270,
       "customSize": true,
       "depth": 64,
-      "height": 560,
+      "height": 640,
       "keepRatio": true,
       "layer": "Main",
       "name": "BounceableWall",
       "persistentUuid": "0a07d602-d84a-4789-93db-628645cdc547",
       "width": 32,
-      "x": 888,
-      "y": -392,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 135,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWall",
-      "persistentUuid": "4b338443-a42c-4af6-8d19-2f4f5185c687",
-      "width": 0,
-      "x": -222,
-      "y": 126,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 135,
-      "customSize": true,
-      "depth": 65,
-      "height": 32,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWall",
-      "persistentUuid": "5bf365a5-37da-42a4-b791-dda896db8ba2",
-      "width": 32,
-      "x": 599,
-      "y": -144,
+      "x": 304,
+      "y": 16,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
@@ -1096,32 +978,63 @@
       "angle": 90,
       "customSize": true,
       "depth": 64,
-      "height": 593,
+      "height": 640,
       "keepRatio": true,
       "layer": "Main",
       "name": "BounceableWall",
       "persistentUuid": "9529121b-abd6-4608-b5a5-8ce80cc599de",
       "width": 32,
-      "x": 280,
-      "y": -760,
+      "x": 304,
+      "y": -303,
       "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
     },
     {
-      "angle": 135,
-      "customSize": true,
-      "depth": 65,
-      "height": 32,
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
-      "persistentUuid": "d30970a8-40da-4994-9717-85b7938cece6",
-      "width": 32,
-      "x": 583,
-      "y": -470,
-      "zOrder": 8,
+      "name": "Player0Spawner",
+      "persistentUuid": "a5d83742-c6e0-4515-8e21-5d4cb93de02d",
+      "width": 0,
+      "x": 144,
+      "y": 192,
+      "zOrder": 12,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "TankGreenSpawner",
+      "persistentUuid": "016773a3-eb52-4210-9e3f-69bee4cdc4d7",
+      "width": 0,
+      "x": 464,
+      "y": 208,
+      "zOrder": 13,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "TankBlueSpawner",
+      "persistentUuid": "d9435d0c-846f-4eb0-81e4-5e0dd0226053",
+      "width": 0,
+      "x": 384,
+      "y": 80,
+      "zOrder": 14,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1129,16 +1042,292 @@
     {
       "angle": 45,
       "customSize": true,
-      "depth": 65,
-      "height": 32,
+      "depth": 64,
+      "height": 30,
       "keepRatio": true,
       "layer": "Main",
       "name": "BounceableWall",
-      "persistentUuid": "f3ab1127-a9da-4f53-983d-aba0a95e2ce8",
+      "persistentUuid": "afef6042-cd08-47b2-b2be-07bd58e9c3c4",
       "width": 32,
-      "x": -22,
-      "y": -470,
+      "x": 10,
+      "y": 11,
       "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 315,
+      "customSize": true,
+      "depth": 64,
+      "height": 30,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "197d69ae-87da-4659-95f8-dffede61c35a",
+      "width": 32,
+      "x": 10,
+      "y": 311,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 225,
+      "customSize": true,
+      "depth": 64,
+      "height": 30,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "544a608a-67d9-4f14-b40c-ec3e635b2afc",
+      "width": 32,
+      "x": 598,
+      "y": 311,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Debug",
+      "name": "BlackPen",
+      "persistentUuid": "04dea7f6-cb30-4142-8794-15a3241887a6",
+      "width": 0,
+      "x": -112,
+      "y": -192,
+      "zOrder": 15,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 270,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "caf0787c-8749-4c53-bd6a-87707a5a4aa5",
+      "width": 0,
+      "x": -112,
+      "y": -112,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 180,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "a80ada68-2557-4df4-963b-ad30941c69e8",
+      "width": 0,
+      "x": -144,
+      "y": -80,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 225,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "b38eee1d-d093-450f-8708-bfa09b1463cc",
+      "width": 0,
+      "x": -137,
+      "y": -96,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 90,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "7aff194b-b930-4eeb-a4a2-a0b2f08432ab",
+      "width": 0,
+      "x": -112,
+      "y": -48,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 225,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "3f4473d2-896e-41b7-b128-3513cab7c0b7",
+      "width": 0,
+      "x": -128,
+      "y": -105,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "571eee7a-3b66-4f35-985d-44fc60082200",
+      "width": 0,
+      "x": -80,
+      "y": -80,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 135,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "58e52f26-8c9d-4b15-9e1c-790685bd93de",
+      "width": 0,
+      "x": -137,
+      "y": -64,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 135,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "b4f0e6e2-d53f-4743-9f51-b649c0fad792",
+      "width": 0,
+      "x": -128,
+      "y": -55,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 45,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "ec5eb64d-2e5f-459e-a11a-58c084515569",
+      "width": 0,
+      "x": -96,
+      "y": -55,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 45,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "f9995f54-51cb-40b9-aed2-de727f8ea059",
+      "width": 0,
+      "x": -87,
+      "y": -64,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 315,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "385cc333-c36e-440a-84d9-72503f5db66f",
+      "width": 0,
+      "x": -87,
+      "y": -96,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 315,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableWall",
+      "persistentUuid": "e6975717-9a2f-4b44-84f6-dd7cfc0812e3",
+      "width": 0,
+      "x": -96,
+      "y": -105,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 144,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "PathfindingZone",
+      "persistentUuid": "613e7a56-4e6b-4208-807b-39c858dc997b",
+      "width": 304,
+      "x": 304,
+      "y": 32,
+      "zOrder": 16,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 144,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "PathfindingZone",
+      "persistentUuid": "b7e62090-0c27-438b-bde8-439c05a1ed01",
+      "width": 304,
+      "x": 304,
+      "y": 176,
+      "zOrder": 16,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1340,6 +1529,10 @@
           "type": "CustomBehaviors::Entity",
           "Id": 3.033389e-317,
           "Type": "Wall"
+        },
+        {
+          "name": "NavMeshPathfindingObstacleBehavior",
+          "type": "NavMeshPathfinding::NavMeshPathfindingObstacleBehavior"
         },
         {
           "name": "Wall",
@@ -1674,8 +1867,10 @@
           "name": "Bullet",
           "type": "CustomBehaviors::Bullet",
           "EntityBehavior": "Entity",
-          "Speed": 200,
-          "Bounces": 0
+          "Speed": 400,
+          "Bounces": 0,
+          "TotalBullets": 2,
+          "Cooldown": 0.5
         },
         {
           "name": "Entity",
@@ -1709,7 +1904,9 @@
           "type": "CustomBehaviors::Bullet",
           "EntityBehavior": "Entity",
           "Speed": 200,
-          "Bounces": 1
+          "Bounces": 1,
+          "TotalBullets": 5,
+          "Cooldown": 0.2
         },
         {
           "name": "Entity",
@@ -1744,7 +1941,9 @@
           "type": "CustomBehaviors::Bullet",
           "EntityBehavior": "Entity",
           "Speed": 200,
-          "Bounces": 2
+          "Bounces": 2,
+          "TotalBullets": 2,
+          "Cooldown": 0.2
         },
         {
           "name": "Entity",
@@ -2137,9 +2336,9 @@
     },
     {
       "assetStoreId": "",
-      "name": "TankB",
+      "name": "TankBlue",
       "type": "CustomObjects::Tank",
-      "variant": "b",
+      "variant": "TankBlue",
       "variables": [],
       "effects": [],
       "behaviors": [
@@ -2162,10 +2361,29 @@
           "ImmuneDamage": ""
         },
         {
+          "name": "EnemyIA",
+          "type": "CustomBehaviors::EnemyIA",
+          "State": "idle",
+          "CannonRotationDelay": 1,
+          "MovementDelay": 2,
+          "ShootDelay": 1
+        },
+        {
           "name": "Entity",
           "type": "CustomBehaviors::Entity",
           "Id": 9.854645721257145e+165,
           "Type": "Tank"
+        },
+        {
+          "name": "NavMeshPathfindingBehavior",
+          "type": "NavMeshPathfinding::NavMeshPathfindingBehavior",
+          "Acceleration": 400,
+          "MaxSpeed": 50,
+          "AngularMaxSpeed": 180,
+          "RotateObject": false,
+          "AngleOffset": 0,
+          "CollisionShape": "Bounding disk",
+          "ExtraBorder": 0
         },
         {
           "name": "Tank",
@@ -2188,15 +2406,15 @@
         }
       ],
       "content": {
-        "CannonRotationSpeed": 0.25,
+        "CannonRotationSpeed": 2,
         "BodyRotationSpeed": 0.3
       }
     },
     {
       "assetStoreId": "",
-      "name": "TankG",
+      "name": "TankGreen",
       "type": "CustomObjects::Tank",
-      "variant": "g",
+      "variant": "TankGreen",
       "variables": [],
       "effects": [],
       "behaviors": [
@@ -2219,10 +2437,30 @@
           "ImmuneDamage": ""
         },
         {
+          "name": "EnemyIA",
+          "type": "CustomBehaviors::EnemyIA",
+          "State": "idle",
+          "Aggresive": true,
+          "CannonRotationDelay": 0.5,
+          "ShootDelay": 0.5
+        },
+        {
           "name": "Entity",
           "type": "CustomBehaviors::Entity",
           "Id": 9.854645721257145e+165,
           "Type": "Tank"
+        },
+        {
+          "isFolded": true,
+          "name": "NavMeshPathfindingBehavior",
+          "type": "NavMeshPathfinding::NavMeshPathfindingBehavior",
+          "Acceleration": 400,
+          "MaxSpeed": 50,
+          "AngularMaxSpeed": 180,
+          "RotateObject": false,
+          "AngleOffset": 0,
+          "CollisionShape": "Bounding disk",
+          "ExtraBorder": 0
         },
         {
           "name": "Tank",
@@ -2245,73 +2483,24 @@
         }
       ],
       "content": {
-        "CannonRotationSpeed": 0.25,
+        "CannonRotationSpeed": 2,
         "BodyRotationSpeed": 0.3
       }
-    },
-    {
-      "assetStoreId": "",
-      "name": "TankBSpawner",
-      "type": "CustomObjects::Wall",
-      "variant": "",
-      "variables": [],
-      "effects": [],
-      "behaviors": [
-        {
-          "name": "Entity",
-          "type": "CustomBehaviors::Entity",
-          "Id": 0,
-          "Type": "Resource"
-        },
-        {
-          "name": "Spawner",
-          "type": "CustomBehaviors::Spawner",
-          "ObjectName": "TankB",
-          "LimitPerScene": 2,
-          "SpawnCooldown": 3,
-          "CurrentCount": 0
-        }
-      ],
-      "content": {}
-    },
-    {
-      "assetStoreId": "",
-      "name": "TankGSpawner",
-      "type": "CustomObjects::Wall",
-      "variant": "",
-      "variables": [],
-      "effects": [],
-      "behaviors": [
-        {
-          "name": "Entity",
-          "type": "CustomBehaviors::Entity",
-          "Id": 0,
-          "Type": "Resource"
-        },
-        {
-          "name": "Spawner",
-          "type": "CustomBehaviors::Spawner",
-          "ObjectName": "TankG",
-          "LimitPerScene": 1,
-          "SpawnCooldown": 3,
-          "CurrentCount": 0
-        }
-      ],
-      "content": {}
     },
     {
       "assetStoreId": "",
       "name": "Player0Spawner",
-      "type": "CustomObjects::Wall",
-      "variant": "",
+      "type": "CustomObjects::Hidden",
+      "variant": "Player0Spawner",
       "variables": [],
       "effects": [],
       "behaviors": [
         {
           "name": "Entity",
           "type": "CustomBehaviors::Entity",
-          "Id": 0,
-          "Type": "Resource"
+          "Id": 2.54639494916e-313,
+          "Type": "Spawner",
+          "SpawnerId": 2.54639515163e-313
         },
         {
           "name": "Spawner",
@@ -2319,7 +2508,128 @@
           "ObjectName": "Player0",
           "LimitPerScene": 1,
           "SpawnCooldown": 3,
-          "CurrentCount": 0
+          "CurrentCount": 0,
+          "EntityBehavior": "Entity"
+        }
+      ],
+      "content": {}
+    },
+    {
+      "assetStoreId": "",
+      "name": "TankBlueSpawner",
+      "type": "CustomObjects::Hidden",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 2.54639494916e-313,
+          "Type": "Spawner",
+          "SpawnerId": 2.54639515163e-313
+        },
+        {
+          "name": "Spawner",
+          "type": "CustomBehaviors::Spawner",
+          "ObjectName": "TankBlue",
+          "LimitPerScene": 1,
+          "SpawnCooldown": 3,
+          "CurrentCount": 0,
+          "EntityBehavior": "Entity"
+        }
+      ],
+      "content": {}
+    },
+    {
+      "assetStoreId": "",
+      "name": "TankGreenSpawner",
+      "type": "CustomObjects::Hidden",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 2.54639494916e-313,
+          "Type": "Spawner",
+          "SpawnerId": 2.54639515163e-313
+        },
+        {
+          "name": "Spawner",
+          "type": "CustomBehaviors::Spawner",
+          "ObjectName": "TankGreen",
+          "LimitPerScene": 1,
+          "SpawnCooldown": 3,
+          "CurrentCount": 0,
+          "EntityBehavior": "Entity"
+        }
+      ],
+      "content": {}
+    },
+    {
+      "assetStoreId": "",
+      "name": "GroundTrailsTankGreen",
+      "type": "CustomObjects::GroundTrails",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "Tint": "101;134;61"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "GroundTrailsTankBlue",
+      "type": "CustomObjects::GroundTrails",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "Tint": "101;134;61"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "BlackPen",
+      "type": "PrimitiveDrawing::Drawer",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "fillOpacity": 0,
+      "outlineSize": 1,
+      "outlineOpacity": 255,
+      "absoluteCoordinates": true,
+      "clearBetweenFrames": true,
+      "antialiasing": "medium",
+      "fillColor": {
+        "r": 255,
+        "g": 255,
+        "b": 255
+      },
+      "outlineColor": {
+        "r": 0,
+        "g": 0,
+        "b": 0
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "PathfindingZone",
+      "type": "CustomObjects::Hidden",
+      "variant": "PathfindingZone",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 1.3519747858422847e-306,
+          "Type": "Logic Zone",
+          "SpawnerId": 1.3519747858429326e-306
         }
       ],
       "content": {}
@@ -2329,16 +2639,39 @@
     "folderName": "__ROOT",
     "children": [
       {
+        "folderName": "Tanks",
+        "children": [
+          {
+            "objectName": "TankGreen"
+          },
+          {
+            "objectName": "GroundTrailsTankGreen"
+          },
+          {
+            "objectName": "TankBlue"
+          },
+          {
+            "objectName": "GroundTrailsTankBlue"
+          },
+          {
+            "objectName": "Player0"
+          },
+          {
+            "objectName": "GroundTrailsPlayer0"
+          }
+        ]
+      },
+      {
         "folderName": "Spawners",
         "children": [
           {
             "objectName": "Player0Spawner"
           },
           {
-            "objectName": "TankBSpawner"
+            "objectName": "TankBlueSpawner"
           },
           {
-            "objectName": "TankGSpawner"
+            "objectName": "TankGreenSpawner"
           }
         ]
       },
@@ -2387,6 +2720,9 @@
           },
           {
             "objectName": "YellowPen"
+          },
+          {
+            "objectName": "BlackPen"
           }
         ]
       },
@@ -2445,22 +2781,13 @@
         ]
       },
       {
+        "objectName": "PathfindingZone"
+      },
+      {
         "objectName": "Cursor"
       },
       {
         "objectName": "CursorPoint"
-      },
-      {
-        "objectName": "Player0"
-      },
-      {
-        "objectName": "TankB"
-      },
-      {
-        "objectName": "TankG"
-      },
-      {
-        "objectName": "GroundTrailsPlayer0"
       }
     ]
   },
@@ -2629,71 +2956,84 @@
           ]
         }
       ],
-      "actions": [
-        {
-          "type": {
-            "value": "CentreCamera"
-          },
-          "parameters": [
-            "",
-            "Player0",
-            "",
-            "_CONSTANTS_.Layers.Main",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "CentreCamera"
-          },
-          "parameters": [
-            "",
-            "Player0",
-            "",
-            "_CONSTANTS_.Layers.Background",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "CentreCamera"
-          },
-          "parameters": [
-            "",
-            "Player0",
-            "",
-            "\"Debug\"",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "CameraX",
-            "=",
-            "CameraBorderLeft(_CONSTANTS_.Layers.Main, 0)"
-          ]
-        },
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "CameraY",
-            "=",
-            "CameraBorderTop(_CONSTANTS_.Layers.Main, 0)"
-          ]
-        }
-      ],
+      "actions": [],
       "events": [
+        {
+          "disabled": true,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "CentreCamera"
+              },
+              "parameters": [
+                "",
+                "Player0",
+                "",
+                "_CONSTANTS_.Layers.Main",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "CentreCamera"
+              },
+              "parameters": [
+                "",
+                "Player0",
+                "",
+                "_CONSTANTS_.Layers.Background",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "CentreCamera"
+              },
+              "parameters": [
+                "",
+                "Player0",
+                "",
+                "\"Debug\"",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "CameraX",
+                "=",
+                "CameraBorderLeft(_CONSTANTS_.Layers.Main, 0)"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "CameraY",
+                "=",
+                "CameraBorderTop(_CONSTANTS_.Layers.Main, 0)"
+              ]
+            }
+          ]
+        },
         {
           "type": "BuiltinCommonInstructions::Link",
           "include": {
             "includeConfig": 0
           },
           "target": "Player Logic"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
+          },
+          "target": "Enemy Logic"
         }
       ]
     },
@@ -2798,78 +3138,6 @@
                     ""
                   ]
                 }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Comment",
-              "color": {
-                "b": 52,
-                "g": 44,
-                "r": 40,
-                "textB": 255,
-                "textG": 255,
-                "textR": 255
-              },
-              "comment": "Initialize the health visuals of obstacles"
-            },
-            {
-              "type": "BuiltinCommonInstructions::ForEach",
-              "object": "Obstacles",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "CustomObjects::Obstacle::Update"
-                  },
-                  "parameters": [
-                    "Obstacles",
-                    "Obstacles.Damageable::CurrentHealth()",
-                    "Obstacles.Damageable::CurrentHealth()",
-                    ""
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "parameters": []
-    },
-    {
-      "type": "BuiltinCommonInstructions::Comment",
-      "color": {
-        "b": 52,
-        "g": 44,
-        "r": 40,
-        "textB": 255,
-        "textG": 255,
-        "textR": 255
-      },
-      "comment": "\n\n"
-    },
-    {
-      "colorB": 82,
-      "colorG": 68,
-      "colorR": 62,
-      "creationTime": 0,
-      "name": "Bomb logic",
-      "source": "",
-      "type": "BuiltinCommonInstructions::Group",
-      "events": [
-        {
-          "type": "BuiltinCommonInstructions::ForEach",
-          "object": "Enemies",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "AddForceXY"
-              },
-              "parameters": [
-                "Enemies",
-                "10",
-                "0",
-                ""
               ]
             }
           ]
@@ -3463,6 +3731,64 @@
           "conditions": [
             {
               "type": {
+                "value": "DepartScene"
+              },
+              "parameters": [
+                ""
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 255,
+                "textG": 255,
+                "textR": 255
+              },
+              "comment": "Initialize the health visuals of obstacles"
+            },
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Obstacles",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Obstacle::Update"
+                  },
+                  "parameters": [
+                    "Obstacles",
+                    "Obstacles.Damageable::CurrentHealth()",
+                    "Obstacles.Damageable::CurrentHealth()",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
+          },
+          "comment": "\n\n"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
                 "value": "CustomObjects::Obstacle::Active"
               },
               "parameters": [
@@ -3522,16 +3848,6 @@
                 "Trails",
                 ""
               ]
-            },
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::CompareNumbers"
-              },
-              "parameters": [
-                "Tanks.Entity::Id()",
-                "=",
-                "LeaveGroundTrails.Entity::Id()"
-              ]
             }
           ],
           "actions": [],
@@ -3569,7 +3885,7 @@
                   },
                   "parameters": [
                     "GroundTrails",
-                    "Tanks.BodyAngle() + 90",
+                    "LeaveGroundTrails.BodyAngle() + 90",
                     ""
                   ]
                 },
@@ -3737,7 +4053,7 @@
             "textG": 255,
             "textR": 255
           },
-          "comment": "Update instances count in the spawners"
+          "comment": "\n\n"
         },
         {
           "type": "BuiltinCommonInstructions::ForEach",
@@ -3757,6 +4073,18 @@
             }
           ],
           "events": [
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 255,
+                "textG": 255,
+                "textR": 255
+              },
+              "comment": "Update instances count in the spawners"
+            },
             {
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
@@ -3785,53 +4113,108 @@
                   ]
                 }
               ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::ForEach",
-          "object": "Spawners",
-          "conditions": [
+            },
             {
-              "type": {
-                "value": "CustomBehaviors::Spawner::CanSpawn"
-              },
-              "parameters": [
-                "Spawners",
-                "Spawner",
-                ""
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "CreateByName"
-              },
-              "parameters": [
-                "",
-                "CanBeSpawn",
-                "Spawners.Spawner::ObjectName()",
-                "Spawners.X()",
-                "Spawners.Y()",
-                "_CONSTANTS_.Layers.Main"
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Hidden::Log"
+                  },
+                  "parameters": [
+                    "Spawners",
+                    "ToString(Spawners.Spawner::Counter()) + NewLine() + ToString(Spawners.Spawner::CurrTime())",
+                    ""
+                  ]
+                }
               ]
             },
             {
-              "type": {
-                "value": "CustomBehaviors::Entity::SetSpawnerId"
-              },
-              "parameters": [
-                "CanBeSpawn",
-                "Entity",
-                "Spawners.Entity::Id()",
-                ""
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Spawner::CanSpawn"
+                  },
+                  "parameters": [
+                    "Spawners",
+                    "Spawner",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CreateByName"
+                  },
+                  "parameters": [
+                    "",
+                    "CanBeSpawn",
+                    "Spawners.Spawner::ObjectName()",
+                    "Spawners.X()",
+                    "Spawners.Y()",
+                    "_CONSTANTS_.Layers.Main"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Entity::SetSpawnerId"
+                  },
+                  "parameters": [
+                    "CanBeSpawn",
+                    "Entity",
+                    "Spawners.Entity::Id()",
+                    ""
+                  ]
+                }
               ]
             }
           ]
         }
       ],
       "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "Collision with walls for tanks"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "SeparateFromObjects"
+          },
+          "parameters": [
+            "Tanks",
+            "SolidForTank",
+            ""
+          ]
+        }
+      ]
     },
     {
       "type": "BuiltinCommonInstructions::Comment",
@@ -3995,6 +4378,10 @@
       "type": "EffectCapability::EffectBehavior"
     },
     {
+      "name": "EnemyIA",
+      "type": "CustomBehaviors::EnemyIA"
+    },
+    {
       "name": "Entity",
       "type": "CustomBehaviors::Entity"
     },
@@ -4009,6 +4396,21 @@
     {
       "name": "Flippable",
       "type": "FlippableCapability::FlippableBehavior"
+    },
+    {
+      "name": "NavMeshPathfindingBehavior",
+      "type": "NavMeshPathfinding::NavMeshPathfindingBehavior"
+    },
+    {
+      "name": "NavMeshPathfindingObstacleBehavior",
+      "type": "NavMeshPathfinding::NavMeshPathfindingObstacleBehavior",
+      "Viewpoint": "Top-Down",
+      "CellSize": 10,
+      "AreaLeftBound": 0,
+      "AreaTopBound": 0,
+      "AreaRightBound": 0,
+      "AreaBottomBound": 0,
+      "IsometricRatio": 2.0247e-320
     },
     {
       "name": "Obstacle",
