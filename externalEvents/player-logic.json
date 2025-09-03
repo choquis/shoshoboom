@@ -587,180 +587,6 @@
           "colorG": 68,
           "colorR": 62,
           "creationTime": 0,
-          "name": "Move",
-          "source": "",
-          "type": "BuiltinCommonInstructions::Group",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Comment",
-              "color": {
-                "b": 52,
-                "g": 44,
-                "r": 40,
-                "textB": 255,
-                "textG": 255,
-                "textR": 255
-              },
-              "comment": "Invert Y for the coordinals"
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "MoveX",
-                    "=",
-                    "MAINGAME.Input.MoveX"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "MoveY",
-                    "=",
-                    "MAINGAME.Input.MoveY"
-                  ]
-                }
-              ],
-              "events": [
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "StringVariable"
-                      },
-                      "parameters": [
-                        "_CONFIG_.Players[0].InputType",
-                        "=",
-                        "_CONSTANTS_.InputType.Keyboard"
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "MoveY",
-                        "=",
-                        "-MoveY"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "BuiltinCommonInstructions::Or"
-                      },
-                      "parameters": [],
-                      "subInstructions": [
-                        {
-                          "type": {
-                            "value": "BuiltinCommonInstructions::CompareNumbers"
-                          },
-                          "parameters": [
-                            "abs(MoveX)",
-                            ">",
-                            "0"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "BuiltinCommonInstructions::CompareNumbers"
-                          },
-                          "parameters": [
-                            "abs(MoveY)",
-                            ">",
-                            "0"
-                          ]
-                        }
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "MoveAngle",
-                        "=",
-                        "AngleBetweenPositions(0,0,MoveX, MoveY)"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "AddForceAL"
-                      },
-                      "parameters": [
-                        "Player0",
-                        "MoveAngle",
-                        "Player0.Tank::MoveSpeed()",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "CustomObjects::Tank::RotateTo"
-                      },
-                      "parameters": [
-                        "Player0",
-                        "MoveAngle",
-                        ""
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "variables": [
-                {
-                  "name": "MoveX",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "MoveY",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "MoveAngle",
-                  "type": "number",
-                  "value": 0
-                }
-              ]
-            }
-          ],
-          "parameters": []
-        },
-        {
-          "type": "BuiltinCommonInstructions::Comment",
-          "color": {
-            "b": 52,
-            "g": 44,
-            "r": 40,
-            "textB": 255,
-            "textG": 255,
-            "textR": 255
-          },
-          "comment": "\n\n"
-        },
-        {
-          "colorB": 82,
-          "colorG": 68,
-          "colorR": 62,
-          "creationTime": 0,
           "name": "Shoot",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -985,20 +811,17 @@
                         "Bullets.Bullet::TotalBullets()",
                         ""
                       ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
+                    },
                     {
                       "type": {
-                        "value": "CustomObjects::Tank::Log"
+                        "value": "CustomBehaviors::Tank::ApplyRecoil"
                       },
                       "parameters": [
                         "Players",
-                        "ToString(BulletCount) + NewLine() + ToString(Players.Tank::CurrTime())",
+                        "Tank",
+                        "Bullets.Bullet::PushForce()",
+                        "CursorAngle - 180",
+                        "Bullets.Bullet::Cooldown()",
                         ""
                       ]
                     }
@@ -1013,6 +836,197 @@
                 },
                 {
                   "name": "CursorAngle",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "BulletCount",
+                  "type": "number",
+                  "value": 0
+                }
+              ]
+            }
+          ],
+          "parameters": []
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
+          },
+          "comment": "\n\n"
+        },
+        {
+          "colorB": 82,
+          "colorG": 68,
+          "colorR": 62,
+          "creationTime": 0,
+          "name": "Move",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 255,
+                "textG": 255,
+                "textR": 255
+              },
+              "comment": "Invert Y for the coordinals\nCannot move while in shoot cooldown"
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "CustomBehaviors::Tank::InShootCooldown"
+                  },
+                  "parameters": [
+                    "Players",
+                    "Tank",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "MoveX",
+                    "=",
+                    "MAINGAME.Input.MoveX"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "MoveY",
+                    "=",
+                    "MAINGAME.Input.MoveY"
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "StringVariable"
+                      },
+                      "parameters": [
+                        "_CONFIG_.Players[0].InputType",
+                        "=",
+                        "_CONSTANTS_.InputType.Keyboard"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "MoveY",
+                        "=",
+                        "-MoveY"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::Or"
+                      },
+                      "parameters": [],
+                      "subInstructions": [
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::CompareNumbers"
+                          },
+                          "parameters": [
+                            "abs(MoveX)",
+                            ">",
+                            "0"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::CompareNumbers"
+                          },
+                          "parameters": [
+                            "abs(MoveY)",
+                            ">",
+                            "0"
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "MoveAngle",
+                        "=",
+                        "AngleBetweenPositions(0,0,MoveX, MoveY)"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "AddForceAL"
+                      },
+                      "parameters": [
+                        "Player0",
+                        "MoveAngle",
+                        "Player0.Tank::MoveSpeed()",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "CustomObjects::Tank::RotateTo"
+                      },
+                      "parameters": [
+                        "Player0",
+                        "MoveAngle",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "variables": [
+                {
+                  "name": "MoveX",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "MoveY",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "MoveAngle",
                   "type": "number",
                   "value": 0
                 },

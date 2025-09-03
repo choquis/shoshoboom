@@ -821,50 +821,16 @@
           "actions": [],
           "events": [
             {
-              "type": "BuiltinCommonInstructions::Comment",
-              "color": {
-                "b": 52,
-                "g": 44,
-                "r": 40,
-                "textB": 255,
-                "textG": 255,
-                "textR": 255
-              },
-              "comment": "Random movement"
-            },
-            {
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [
                 {
                   "type": {
                     "inverted": true,
-                    "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::IsMoving"
+                    "value": "CustomBehaviors::Tank::InRecoil"
                   },
                   "parameters": [
                     "Enemies",
-                    "NavMeshPathfindingBehavior",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "inverted": true,
-                    "value": "CustomBehaviors::EnemyIA::OnIDLE"
-                  },
-                  "parameters": [
-                    "Enemies",
-                    "EnemyIA",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "PickNearest"
-                  },
-                  "parameters": [
-                    "PathfindingZone",
-                    "Enemies.X()",
-                    "Enemies.Y()",
+                    "Tank",
                     ""
                   ]
                 }
@@ -872,41 +838,171 @@
               "actions": [
                 {
                   "type": {
-                    "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::SetDestination"
+                    "value": "ActivateBehavior"
                   },
                   "parameters": [
                     "Enemies",
                     "NavMeshPathfindingBehavior",
-                    "RandomFloatInRange(PathfindingZone.X(),  PathfindingZone.X() + PathfindingZone.Width())",
-                    "RandomFloatInRange(PathfindingZone.Y(),  PathfindingZone.Y() + PathfindingZone.Height())",
-                    ""
+                    "yes"
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 52,
+                    "g": 44,
+                    "r": 40,
+                    "textB": 255,
+                    "textG": 255,
+                    "textR": 255
+                  },
+                  "comment": "Random movement"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::IsMoving"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "NavMeshPathfindingBehavior",
+                        "="
+                      ]
+                    },
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "CustomBehaviors::EnemyIA::OnIDLE"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "EnemyIA",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "PickNearest"
+                      },
+                      "parameters": [
+                        "PathfindingZone",
+                        "Enemies.X()",
+                        "Enemies.Y()",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::EnemyIA::SetLastPathfindingX"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "EnemyIA",
+                        "RandomFloatInRange(PathfindingZone.X(),  PathfindingZone.X() + PathfindingZone.Width())",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::EnemyIA::SetLastPathfindingY"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "EnemyIA",
+                        "RandomFloatInRange(PathfindingZone.Y(),  PathfindingZone.Y() + PathfindingZone.Height())",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::SetDestination"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "NavMeshPathfindingBehavior",
+                        "Enemies.EnemyIA::LastPathfindingX()",
+                        "Enemies.EnemyIA::LastPathfindingY()",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::EnemyIA::PathfindingZoneId"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "EnemyIA",
+                        "PathfindingZone.Entity::Id()",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::DrawNavMesh"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "NavMeshPathfindingBehavior",
+                        "BlackPen",
+                        ""
+                      ]
+                    }
                   ]
                 },
                 {
-                  "type": {
-                    "value": "CustomBehaviors::EnemyIA::PathfindingZoneId"
-                  },
-                  "parameters": [
-                    "Enemies",
-                    "EnemyIA",
-                    "PathfindingZone.Entity::Id()",
-                    ""
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "CustomObjects::Tank::RotateTo"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "Enemies.NavMeshPathfindingBehavior::MovementAngle()",
+                        ""
+                      ]
+                    }
                   ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
+                },
                 {
-                  "type": {
-                    "value": "CustomObjects::Tank::RotateTo"
-                  },
-                  "parameters": [
-                    "Enemies",
-                    "Enemies.NavMeshPathfindingBehavior::MovementAngle()",
-                    ""
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::DestinationReached"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "NavMeshPathfindingBehavior",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::Once"
+                      },
+                      "parameters": []
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::EnemyIA::SwitchToIDLE"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "EnemyIA",
+                        ""
+                      ]
+                    }
                   ]
                 }
               ]
@@ -916,30 +1012,68 @@
               "conditions": [
                 {
                   "type": {
-                    "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::DestinationReached"
+                    "value": "CustomBehaviors::Tank::InRecoil"
                   },
                   "parameters": [
                     "Enemies",
-                    "NavMeshPathfindingBehavior",
+                    "Tank",
                     ""
                   ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Once"
-                  },
-                  "parameters": []
                 }
               ],
               "actions": [
                 {
                   "type": {
-                    "value": "CustomBehaviors::EnemyIA::SwitchToIDLE"
+                    "value": "ActivateBehavior"
                   },
                   "parameters": [
                     "Enemies",
-                    "EnemyIA",
-                    ""
+                    "NavMeshPathfindingBehavior",
+                    "no"
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 52,
+                    "g": 44,
+                    "r": 40,
+                    "textB": 255,
+                    "textG": 255,
+                    "textR": 255
+                  },
+                  "comment": "Restart movement"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::DestinationReached"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "NavMeshPathfindingBehavior",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::SetDestination"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "NavMeshPathfindingBehavior",
+                        "Enemies.EnemyIA::LastPathfindingX()",
+                        "Enemies.EnemyIA::LastPathfindingY()",
+                        ""
+                      ]
+                    }
                   ]
                 }
               ]
@@ -1067,18 +1201,7 @@
                   ]
                 }
               ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "CustomObjects::Tank::Log"
-                  },
-                  "parameters": [
-                    "Enemies",
-                    "ToString(Enemies.LookAngle()) + NewLine() + ToString(Enemies.EnemyIA::AngleToLook())",
-                    ""
-                  ]
-                }
-              ],
+              "actions": [],
               "events": [
                 {
                   "type": "BuiltinCommonInstructions::Standard",
@@ -1165,18 +1288,7 @@
                   ]
                 }
               ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "CustomObjects::Tank::Log"
-                  },
-                  "parameters": [
-                    "Enemies",
-                    "ToString(Enemies.LookAngle()) + NewLine() + ToString(Enemies.EnemyIA::AngleToLook())",
-                    ""
-                  ]
-                }
-              ],
+              "actions": [],
               "events": [
                 {
                   "type": "BuiltinCommonInstructions::Standard",
@@ -1361,22 +1473,6 @@
                         "Enemies",
                         "Tank",
                         "Bullets.Bullet::TotalBullets()",
-                        ""
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "CustomObjects::Tank::Log"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "ToString(BulletCount) + NewLine() + ToString(Enemies.Tank::CurrTime())",
                         ""
                       ]
                     }

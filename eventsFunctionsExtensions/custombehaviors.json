@@ -1146,6 +1146,55 @@
           "objectGroups": []
         },
         {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "doStepPreEvents",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Tween::SceneTweenIsPlaying"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Recoil\"+ToString(Object.EntityBehavior::Id())"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "AddForceAL"
+                  },
+                  "parameters": [
+                    "Object",
+                    "PushAngle",
+                    "Tween::Value(\"Recoil\"+ToString(Object.EntityBehavior::Id()))",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Tank",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
           "description": "Check if the tank can shoot again",
           "fullName": "Can shoot",
           "functionType": "Condition",
@@ -1231,6 +1280,81 @@
               "description": "Bullet count",
               "name": "BulletCount",
               "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Check if the tank its in cooldown for shooting",
+          "fullName": "In shoot cooldown",
+          "functionType": "Condition",
+          "name": "InShootCooldown",
+          "sentence": "Tank _PARAM0_ is in shoot cooldown",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CompareObjectTimer"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"ShootCooldown\"",
+                    ">=",
+                    "ShootCooldown"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "False"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CompareObjectTimer"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"ShootCooldown\"",
+                    "<",
+                    "ShootCooldown"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Tank",
+              "type": "behavior"
             }
           ],
           "objectGroups": []
@@ -1410,6 +1534,146 @@
             }
           ],
           "objectGroups": []
+        },
+        {
+          "description": "Push the tank to an angle for in a time",
+          "fullName": "Apply recoil",
+          "functionType": "Action",
+          "name": "ApplyRecoil",
+          "sentence": "Push _PARAM0_ with force _PARAM2_ at angle _PARAM3_ in _PARAM4_ p/s",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "PushAngle",
+                    "=",
+                    "ParamAngle"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::AddLayoutValueTween"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Recoil\"+ToString(Object.EntityBehavior::Id())",
+                    "ParamForce",
+                    "0",
+                    "\"easeInOutQuad\"",
+                    "ParamTime",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Tank",
+              "type": "behavior"
+            },
+            {
+              "description": "Push force",
+              "name": "ParamForce",
+              "type": "expression"
+            },
+            {
+              "description": "Angle",
+              "name": "ParamAngle",
+              "type": "expression"
+            },
+            {
+              "description": "Time",
+              "name": "ParamTime",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Check if the tank is being pushed",
+          "fullName": "In recoil",
+          "functionType": "Condition",
+          "name": "InRecoil",
+          "sentence": "Tank _PARAM0_ is being pushed",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Tween::SceneTweenIsPlaying"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Recoil\"+ToString(Object.EntityBehavior::Id())"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "Tween::SceneTweenIsPlaying"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Recoil\"+ToString(Object.EntityBehavior::Id())"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "False"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Tank",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
         }
       ],
       "propertyDescriptors": [
@@ -1464,6 +1728,13 @@
           "label": "",
           "hidden": true,
           "name": "MaxBullets"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "label": "",
+          "hidden": true,
+          "name": "PushAngle"
         }
       ],
       "sharedPropertyDescriptors": []
@@ -2485,6 +2756,45 @@
           "objectGroups": []
         },
         {
+          "fullName": "",
+          "functionType": "Expression",
+          "name": "PushForce",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "PushForce"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Bullet",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
           "description": "Check if the bullet is from a tank and what type is",
           "fullName": "Check if bullets are from tank",
           "functionType": "Condition",
@@ -2657,6 +2967,13 @@
           "description": "Used to count bullets for tanks. Because the bounce lost the parent Id",
           "hidden": true,
           "name": "OriginId"
+        },
+        {
+          "value": "100",
+          "type": "Number",
+          "label": "Push force",
+          "description": "The push force that its applied to the tank after shooting",
+          "name": "PushForce"
         }
       ],
       "sharedPropertyDescriptors": []
@@ -3250,6 +3567,45 @@
             }
           ],
           "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Expression",
+          "name": "PushForce",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "PushForce"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Explosion",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
         }
       ],
       "propertyDescriptors": [
@@ -3302,6 +3658,13 @@
           "label": "",
           "hidden": true,
           "name": "CurrentTargets"
+        },
+        {
+          "value": "200",
+          "type": "Number",
+          "label": "Push force",
+          "description": "The push force that its applied to the tank after exploding",
+          "name": "PushForce"
         }
       ],
       "sharedPropertyDescriptors": []
@@ -4818,16 +5181,6 @@
                     "Object",
                     "\"LookAngle\""
                   ]
-                },
-                {
-                  "type": {
-                    "value": "DebuggerTools::ConsoleLog"
-                  },
-                  "parameters": [
-                    "\"HERE\"",
-                    "",
-                    ""
-                  ]
                 }
               ]
             }
@@ -5854,6 +6207,174 @@
             }
           ],
           "objectGroups": []
+        },
+        {
+          "description": "Last coordinate X of pathfinding",
+          "fullName": "Last pathfinding X",
+          "functionType": "Expression",
+          "name": "LastPathfindingX",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "LastPathfindingX"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::EnemyIA",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Last coordinate Y of pathfinding",
+          "fullName": "Last pathfinding Y",
+          "functionType": "Expression",
+          "name": "LastPathfindingY",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "LastPathfindingY"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::EnemyIA",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Set coordinate X of last pathfinding move",
+          "fullName": "Set last pathfinding X",
+          "functionType": "Action",
+          "name": "SetLastPathfindingX",
+          "sentence": "Set pathfinding X _PARAM2_ of _PARAM0_ ",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "LastPathfindingX",
+                    "=",
+                    "ParamX"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::EnemyIA",
+              "type": "behavior"
+            },
+            {
+              "description": "X",
+              "name": "ParamX",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Set coordinate Y of last pathfinding move",
+          "fullName": "Set last pathfinding Y",
+          "functionType": "Action",
+          "name": "SetLastPathfindingY",
+          "sentence": "Set pathfinding Y _PARAM2_ of _PARAM0_ ",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "LastPathfindingY",
+                    "=",
+                    "ParamY"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::EnemyIA",
+              "type": "behavior"
+            },
+            {
+              "description": "Y",
+              "name": "ParamY",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
         }
       ],
       "propertyDescriptors": [
@@ -5919,6 +6440,20 @@
           "label": "Shoot delay",
           "description": "Add time to the shooting cooldown (can be negative)",
           "name": "ShootDelay"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "label": "",
+          "hidden": true,
+          "name": "LastPathfindingX"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "label": "",
+          "hidden": true,
+          "name": "LastPathfindingY"
         }
       ],
       "sharedPropertyDescriptors": []

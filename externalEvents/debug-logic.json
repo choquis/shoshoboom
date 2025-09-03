@@ -233,6 +233,37 @@
           ]
         },
         {
+          "disabled": true,
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "Players",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "PrimitiveDrawing::LineV2"
+              },
+              "parameters": [
+                "YellowPen",
+                "Players.MuzzleX()",
+                "Players.MuzzleY()",
+                "Cursor.X()",
+                "Cursor.Y()",
+                "2"
+              ]
+            },
+            {
+              "type": {
+                "value": "CustomObjects::Tank::Log"
+              },
+              "parameters": [
+                "Players",
+                "ToString(trunc(Players.LookAngle()))",
+                ""
+              ]
+            }
+          ]
+        },
+        {
           "type": "BuiltinCommonInstructions::ForEach",
           "object": "Entities",
           "conditions": [],
@@ -243,8 +274,8 @@
               },
               "parameters": [
                 "RedPen",
-                "Entities.CenterX()",
-                "Entities.CenterY()",
+                "Entities.BoundingBoxCenterX()",
+                "Entities.BoundingBoxCenterY()",
                 "1"
               ]
             },
@@ -311,29 +342,16 @@
         {
           "disabled": true,
           "type": "BuiltinCommonInstructions::ForEach",
-          "object": "Players",
+          "object": "Tanks",
           "conditions": [],
           "actions": [
-            {
-              "type": {
-                "value": "PrimitiveDrawing::LineV2"
-              },
-              "parameters": [
-                "YellowPen",
-                "Players.MuzzleX()",
-                "Players.MuzzleY()",
-                "Cursor.X()",
-                "Cursor.Y()",
-                "2"
-              ]
-            },
             {
               "type": {
                 "value": "CustomObjects::Tank::Log"
               },
               "parameters": [
-                "Players",
-                "ToString(trunc(Players.LookAngle()))",
+                "Tanks",
+                "ToString(Tanks.Damageable::CurrentHealth())",
                 ""
               ]
             }
@@ -436,23 +454,6 @@
               "name": "BulletY",
               "type": "number",
               "value": 0
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::ForEach",
-          "object": "Spawners",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "CustomObjects::Hidden::SetVisibility"
-              },
-              "parameters": [
-                "Spawners",
-                "yes",
-                ""
-              ]
             }
           ]
         },
@@ -617,6 +618,23 @@
                   },
                   "parameters": [
                     "Spawners",
+                    "yes",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "HoleCollider",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Hidden::SetVisibility"
+                  },
+                  "parameters": [
+                    "HoleCollider",
                     "yes",
                     ""
                   ]
@@ -791,6 +809,23 @@
                   },
                   "parameters": [
                     "Spawners",
+                    "no",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "HoleCollider",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Hidden::SetVisibility"
+                  },
+                  "parameters": [
+                    "HoleCollider",
                     "no",
                     ""
                   ]
