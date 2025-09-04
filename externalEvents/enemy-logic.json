@@ -532,7 +532,7 @@
                                 "value": "PickedInstancesCount"
                               },
                               "parameters": [
-                                "BounceableWall",
+                                "BounceableWallCollider",
                                 ">",
                                 "0"
                               ]
@@ -546,7 +546,7 @@
                               "parameters": [
                                 "NormalAngle",
                                 "=",
-                                "BounceableWall.Angle()"
+                                "BounceableWallCollider.Angle()"
                               ]
                             }
                           ]
@@ -820,6 +820,24 @@
           "conditions": [],
           "actions": [],
           "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::SetMaxSpeed"
+                  },
+                  "parameters": [
+                    "Enemies",
+                    "NavMeshPathfindingBehavior",
+                    "=",
+                    "Enemies.Tank::MoveSpeed()",
+                    ""
+                  ]
+                }
+              ]
+            },
             {
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [

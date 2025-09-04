@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 2.194735939125968,
+    "zoomFactor": 2.12314286104406,
     "windowMask": false
   },
   "objectsGroups": [
@@ -49,7 +49,7 @@
       "name": "CursorCollisions",
       "objects": [
         {
-          "name": "BounceableWall"
+          "name": "BounceableWallCollider"
         }
       ]
     },
@@ -81,10 +81,10 @@
           "name": "LongBulletAmmo"
         },
         {
-          "name": "BounceableWall"
+          "name": "BounceableWallCollider"
         },
         {
-          "name": "SolidWall"
+          "name": "SolidWallCollider"
         },
         {
           "name": "SoftBreakableObstacle16"
@@ -104,7 +104,7 @@
       "name": "Bounceable",
       "objects": [
         {
-          "name": "BounceableWall"
+          "name": "BounceableWallCollider"
         }
       ]
     },
@@ -112,13 +112,13 @@
       "name": "SolidForTank",
       "objects": [
         {
-          "name": "SolidWall"
+          "name": "SolidWallCollider"
         },
         {
           "name": "SoftBreakableObstacle16"
         },
         {
-          "name": "BounceableWall"
+          "name": "BounceableWallCollider"
         },
         {
           "name": "HardBreakableObstacle16"
@@ -132,7 +132,7 @@
           "name": "Player0"
         },
         {
-          "name": "SolidWall"
+          "name": "SolidWallCollider"
         },
         {
           "name": "SoftBreakableObstacle16"
@@ -280,10 +280,10 @@
           "name": "SoftBreakableObstacle16"
         },
         {
-          "name": "BounceableWall"
+          "name": "BounceableWallCollider"
         },
         {
-          "name": "SolidWall"
+          "name": "SolidWallCollider"
         },
         {
           "name": "HardBreakableObstacle16"
@@ -380,7 +380,7 @@
           "name": "Player0"
         },
         {
-          "name": "SolidWall"
+          "name": "SolidWallCollider"
         },
         {
           "name": "SoftBreakableObstacle16"
@@ -389,7 +389,21 @@
           "name": "HardBreakableObstacle16"
         },
         {
-          "name": "BounceableWall"
+          "name": "BounceableWallCollider"
+        }
+      ]
+    },
+    {
+      "name": "Hazards",
+      "objects": [
+        {
+          "name": "HazardMud"
+        },
+        {
+          "name": "HazardAsphalt"
+        },
+        {
+          "name": "HazardElectric"
         }
       ]
     }
@@ -425,11 +439,11 @@
         },
         {
           "type": "string",
-          "value": "BounceableWall"
+          "value": "BounceableWallCollider"
         },
         {
           "type": "string",
-          "value": "SolidWall"
+          "value": "SolidWallCollider"
         },
         {
           "type": "string",
@@ -560,7 +574,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "b42a5beb-e4b6-41d1-bcde-188d2d49c457",
       "width": 0,
       "x": -152,
@@ -576,7 +590,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "e0f9a961-7fe6-4496-9618-ba094f83a806",
       "width": 0,
       "x": -175,
@@ -592,7 +606,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "a1d117af-1ec5-48b3-bb13-10eed45df6d1",
       "width": 0,
       "x": -168,
@@ -608,7 +622,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "34729715-9fb1-4318-870a-9d45f57cec74",
       "width": 0,
       "x": -152,
@@ -624,7 +638,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "1be299c7-f11e-4660-b970-294afc07944a",
       "width": 0,
       "x": -129,
@@ -640,7 +654,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "19e5986b-a8f3-4aef-81e5-ea376d8512e7",
       "width": 0,
       "x": -168,
@@ -656,7 +670,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "07618236-7f4b-4fb7-bb1d-706d9b943fa2",
       "width": 0,
       "x": -136,
@@ -672,7 +686,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "eeebfb50-bba9-4481-bac4-6a8e93a5904b",
       "width": 0,
       "x": -136,
@@ -721,7 +735,7 @@
       "height": 352,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "347d9cf2-f3ef-43d7-9c6e-1bdc445f3efa",
       "width": 48,
       "x": -16,
@@ -738,7 +752,7 @@
       "height": 352,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "1c785f33-9906-4aed-b2c2-c00487407ced",
       "width": 48,
       "x": 608,
@@ -755,7 +769,7 @@
       "height": 55,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "50de0f92-aaf6-4da5-b877-7ad89ff56e7c",
       "width": 58,
       "x": 592,
@@ -787,7 +801,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "0e8d7501-5df9-4045-90f4-3a4139604585",
       "width": 0,
       "x": -208,
@@ -803,7 +817,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "b9b580ea-84ab-4239-8e9e-cee4c734519c",
       "width": 0,
       "x": -207,
@@ -819,7 +833,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "bedf3c67-21c4-43ba-902e-589c25dd656e",
       "width": 0,
       "x": -209,
@@ -835,7 +849,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "ab28c1ec-39f3-4cff-ac68-91f8647ca925",
       "width": 0,
       "x": -208,
@@ -916,7 +930,7 @@
       "height": 640,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "0a07d602-d84a-4789-93db-628645cdc547",
       "width": 48,
       "x": 296,
@@ -981,7 +995,7 @@
       "height": 640,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "9529121b-abd6-4608-b5a5-8ce80cc599de",
       "width": 49,
       "x": 296,
@@ -1016,7 +1030,7 @@
       "name": "TankGreenSpawner",
       "persistentUuid": "016773a3-eb52-4210-9e3f-69bee4cdc4d7",
       "width": 0,
-      "x": 416,
+      "x": 544,
       "y": 96,
       "zOrder": 18,
       "numberProperties": [],
@@ -1032,7 +1046,7 @@
       "name": "TankBlueSpawner",
       "persistentUuid": "d9435d0c-846f-4eb0-81e4-5e0dd0226053",
       "width": 0,
-      "x": 416,
+      "x": 544,
       "y": 224,
       "zOrder": 18,
       "numberProperties": [],
@@ -1046,7 +1060,7 @@
       "height": 55,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "afef6042-cd08-47b2-b2be-07bd58e9c3c4",
       "width": 59,
       "x": -10,
@@ -1063,7 +1077,7 @@
       "height": 55,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "197d69ae-87da-4659-95f8-dffede61c35a",
       "width": 58,
       "x": -7,
@@ -1080,7 +1094,7 @@
       "height": 55,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "544a608a-67d9-4f14-b40c-ec3e635b2afc",
       "width": 58,
       "x": 591,
@@ -1112,7 +1126,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "caf0787c-8749-4c53-bd6a-87707a5a4aa5",
       "width": 0,
       "x": -112,
@@ -1128,7 +1142,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "a80ada68-2557-4df4-963b-ad30941c69e8",
       "width": 0,
       "x": -144,
@@ -1144,7 +1158,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "b38eee1d-d093-450f-8708-bfa09b1463cc",
       "width": 0,
       "x": -137,
@@ -1160,7 +1174,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "7aff194b-b930-4eeb-a4a2-a0b2f08432ab",
       "width": 0,
       "x": -112,
@@ -1176,7 +1190,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "3f4473d2-896e-41b7-b128-3513cab7c0b7",
       "width": 0,
       "x": -128,
@@ -1192,7 +1206,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "571eee7a-3b66-4f35-985d-44fc60082200",
       "width": 0,
       "x": -80,
@@ -1208,7 +1222,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "58e52f26-8c9d-4b15-9e1c-790685bd93de",
       "width": 0,
       "x": -137,
@@ -1224,7 +1238,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "b4f0e6e2-d53f-4743-9f51-b649c0fad792",
       "width": 0,
       "x": -128,
@@ -1240,7 +1254,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "ec5eb64d-2e5f-459e-a11a-58c084515569",
       "width": 0,
       "x": -96,
@@ -1256,7 +1270,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "f9995f54-51cb-40b9-aed2-de727f8ea059",
       "width": 0,
       "x": -87,
@@ -1272,7 +1286,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "385cc333-c36e-440a-84d9-72503f5db66f",
       "width": 0,
       "x": -87,
@@ -1288,7 +1302,7 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "persistentUuid": "e6975717-9a2f-4b44-84f6-dd7cfc0812e3",
       "width": 0,
       "x": -96,
@@ -1308,7 +1322,7 @@
       "name": "PathfindingZone",
       "persistentUuid": "613e7a56-4e6b-4208-807b-39c858dc997b",
       "width": 192,
-      "x": 272,
+      "x": 416,
       "y": 64,
       "zOrder": 16,
       "numberProperties": [],
@@ -1325,43 +1339,9 @@
       "name": "PathfindingZone",
       "persistentUuid": "b7e62090-0c27-438b-bde8-439c05a1ed01",
       "width": 192,
-      "x": 272,
+      "x": 416,
       "y": 176,
       "zOrder": 16,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 64,
-      "height": 288,
-      "keepRatio": true,
-      "layer": "Background",
-      "name": "HoleCollider",
-      "persistentUuid": "2aaf2a2d-f612-495e-928e-8be53abf655a",
-      "width": 144,
-      "x": 464,
-      "y": 32,
-      "zOrder": 17,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 64,
-      "height": 288,
-      "keepRatio": true,
-      "layer": "Background",
-      "name": "HoleCollider",
-      "persistentUuid": "94e95191-aeea-4910-bb05-1a63e265b4fd",
-      "width": 144,
-      "x": 32,
-      "y": 32,
-      "zOrder": 17,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1403,33 +1383,865 @@
     {
       "angle": 0,
       "customSize": true,
-      "depth": 1,
-      "height": 224,
+      "depth": 64,
+      "height": 32,
       "keepRatio": true,
-      "layer": "Main",
-      "name": "Hole",
-      "persistentUuid": "0ed1d23b-ca7f-44d2-9ddc-ee29158a17d3",
-      "width": 144,
+      "layer": "Background",
+      "name": "HazardMud",
+      "persistentUuid": "1bfbfe6d-e939-4b82-8767-20b1f2db560b",
+      "width": 32,
+      "x": 480,
+      "y": 64,
+      "zOrder": 19,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardMud",
+      "persistentUuid": "8107b453-5778-4c44-93e9-2937da5bd0ca",
+      "width": 32,
+      "x": 240,
+      "y": 64,
+      "zOrder": 19,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardMud",
+      "persistentUuid": "fed8e296-23ea-46cd-97a8-19dd4920efd3",
+      "width": 32,
+      "x": 240,
+      "y": 96,
+      "zOrder": 19,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardMud",
+      "persistentUuid": "8ac791d6-0f12-48ac-88b8-1a161f3fb620",
+      "width": 32,
+      "x": 240,
+      "y": 128,
+      "zOrder": 19,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardMud",
+      "persistentUuid": "000243a2-d0cd-42e3-82e0-3ccacd37ee35",
+      "width": 32,
+      "x": 272,
+      "y": 128,
+      "zOrder": 19,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardMud",
+      "persistentUuid": "367cc8b1-7ebb-429f-b72a-c45355ec9deb",
+      "width": 32,
+      "x": 272,
+      "y": 96,
+      "zOrder": 19,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardMud",
+      "persistentUuid": "08e0899b-33ac-42fe-9002-1f7406b157a4",
+      "width": 32,
+      "x": 272,
+      "y": 64,
+      "zOrder": 19,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardMud",
+      "persistentUuid": "005f57b5-afe5-4e0b-9dbd-7e4d7de02bf0",
+      "width": 32,
+      "x": 304,
+      "y": 64,
+      "zOrder": 19,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardMud",
+      "persistentUuid": "f7d0b7ec-89d9-4f05-8b75-d2054f626fa5",
+      "width": 32,
+      "x": 304,
+      "y": 96,
+      "zOrder": 19,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardMud",
+      "persistentUuid": "115f1015-b784-44f5-8451-9eb8e2fb4784",
+      "width": 32,
+      "x": 304,
+      "y": 128,
+      "zOrder": 19,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardMud",
+      "persistentUuid": "9dac95e3-9489-418c-a91e-94a47980c67d",
+      "width": 32,
+      "x": 416,
+      "y": 64,
+      "zOrder": 19,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardMud",
+      "persistentUuid": "97f0754f-fd54-4d12-8fc6-d3a8b89a5079",
+      "width": 32,
+      "x": 448,
+      "y": 64,
+      "zOrder": 19,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardMud",
+      "persistentUuid": "fd51ad8f-9725-4512-9e67-84c019de5d4d",
+      "width": 32,
+      "x": 448,
+      "y": 96,
+      "zOrder": 19,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardMud",
+      "persistentUuid": "2c52cefa-1876-449c-8be1-d6f8f9b536bb",
+      "width": 32,
+      "x": 416,
+      "y": 96,
+      "zOrder": 19,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardMud",
+      "persistentUuid": "2a899d93-052e-4de8-9ace-2054688cd042",
+      "width": 32,
+      "x": 416,
+      "y": 128,
+      "zOrder": 19,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardMud",
+      "persistentUuid": "eaa6a13a-3837-4a62-9d49-5dc79dfd9f26",
+      "width": 32,
+      "x": 448,
+      "y": 128,
+      "zOrder": 19,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardMud",
+      "persistentUuid": "53e355d1-af2b-431a-9b47-45d72e2326f7",
+      "width": 32,
+      "x": 480,
+      "y": 128,
+      "zOrder": 19,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardMud",
+      "persistentUuid": "7b622619-25a1-4f5e-94da-575a9601c900",
+      "width": 32,
+      "x": 480,
+      "y": 96,
+      "zOrder": 19,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "98c6e633-08c0-4c81-bd90-b95534aa9a44",
+      "width": 0,
+      "x": 496,
+      "y": 192,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "714d9b6f-9afb-4d99-ad69-87d010b1d1b8",
+      "width": 0,
+      "x": 240,
+      "y": 256,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "989cbfef-7c2e-4f23-8a89-aa8082bddf50",
+      "width": 0,
+      "x": 240,
+      "y": 224,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "6bcd40ac-78b2-4192-9dde-6598707e5f99",
+      "width": 0,
+      "x": 240,
+      "y": 192,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "545a9dd5-3d24-4702-94b6-555dfa1d840c",
+      "width": 0,
+      "x": 272,
+      "y": 192,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "5029dfb3-f60b-466f-9ac0-4d28a7e4eb24",
+      "width": 0,
+      "x": 272,
+      "y": 224,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "38c9ae9f-cc43-4893-ac82-81b948830212",
+      "width": 0,
+      "x": 304,
+      "y": 224,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "8d3dd77e-b52a-4700-8eb9-053b368a97df",
+      "width": 0,
+      "x": 304,
+      "y": 192,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "6881420f-7738-4f70-a038-fcd74bea1f4c",
+      "width": 0,
+      "x": 336,
+      "y": 192,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "dc34fedf-fb53-4c8f-bb9a-66207a6ff173",
+      "width": 0,
+      "x": 336,
+      "y": 224,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "07ca2c9b-146f-4c68-8858-de2258092418",
+      "width": 0,
+      "x": 336,
+      "y": 256,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "3464a312-f936-42e6-9379-ec0a9efec4ef",
+      "width": 0,
+      "x": 272,
+      "y": 256,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "8894f530-1eb8-4818-ac88-7f090a6ebed4",
+      "width": 0,
+      "x": 432,
+      "y": 192,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "c7b0b295-3ff3-484c-9051-8290b4669600",
+      "width": 0,
       "x": 464,
-      "y": 64,
-      "zOrder": 0,
+      "y": 192,
+      "zOrder": 20,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
     },
     {
       "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 224,
+      "customSize": false,
+      "height": 0,
       "keepRatio": true,
-      "layer": "Main",
-      "name": "Hole",
-      "persistentUuid": "88671245-3bb9-44b3-8bae-69847dd67508",
-      "width": 144,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "c7183718-56b7-4011-b880-37f5e865db70",
+      "width": 0,
+      "x": 432,
+      "y": 224,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "f7854434-2de9-4e60-b2fe-8647788ef782",
+      "width": 0,
+      "x": 464,
+      "y": 224,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "58938b86-8dd8-4aef-a4af-42db228b01d2",
+      "width": 0,
+      "x": 432,
+      "y": 256,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "70889f57-4e9c-4be7-8b49-4a65f0c88e20",
+      "width": 0,
+      "x": 464,
+      "y": 256,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "bf2af70e-31ad-4a26-9381-0ee92c546bda",
+      "width": 0,
+      "x": 496,
+      "y": 256,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "885caeee-3021-4922-add0-7a7e81ed86c3",
+      "width": 0,
+      "x": 496,
+      "y": 224,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardAsphalt",
+      "persistentUuid": "199dcdbc-cfa3-4336-aca6-dd519dddaa7e",
+      "width": 0,
+      "x": 304,
+      "y": 256,
+      "zOrder": 20,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardElectric",
+      "persistentUuid": "4c847b0a-766c-4b6d-abfc-677675c62b5b",
+      "width": 0,
+      "x": 64,
+      "y": 256,
+      "zOrder": 21,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardElectric",
+      "persistentUuid": "76a04d21-19dd-4644-bf52-9e425aedb6d4",
+      "width": 0,
       "x": 32,
       "y": 64,
-      "zOrder": 0,
+      "zOrder": 21,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardElectric",
+      "persistentUuid": "7f4dda7e-47d7-4042-880a-2e9864622814",
+      "width": 0,
+      "x": 64,
+      "y": 64,
+      "zOrder": 21,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardElectric",
+      "persistentUuid": "4ef4f3e6-0239-4983-aace-6ba41dbfde5b",
+      "width": 0,
+      "x": 64,
+      "y": 96,
+      "zOrder": 21,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardElectric",
+      "persistentUuid": "159c47c4-382c-4c53-ac35-9de2b3793e24",
+      "width": 0,
+      "x": 32,
+      "y": 96,
+      "zOrder": 21,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardElectric",
+      "persistentUuid": "589efe7a-24d8-46a4-b1c8-b232c1ce6937",
+      "width": 0,
+      "x": 32,
+      "y": 128,
+      "zOrder": 21,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardElectric",
+      "persistentUuid": "2154e94f-482a-45ab-b279-0ff25ca912f1",
+      "width": 0,
+      "x": 64,
+      "y": 128,
+      "zOrder": 21,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardElectric",
+      "persistentUuid": "e741414d-e72d-48b9-abb1-7477685fa3af",
+      "width": 0,
+      "x": 64,
+      "y": 160,
+      "zOrder": 21,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardElectric",
+      "persistentUuid": "c4cc6c5f-3b70-45e2-a145-91e1bbc4d7bf",
+      "width": 0,
+      "x": 32,
+      "y": 160,
+      "zOrder": 21,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardElectric",
+      "persistentUuid": "76b4d859-8389-4d73-b62b-803fd439f691",
+      "width": 0,
+      "x": 32,
+      "y": 192,
+      "zOrder": 21,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardElectric",
+      "persistentUuid": "e857f8be-21e3-4ba1-bbce-92976b334851",
+      "width": 0,
+      "x": 64,
+      "y": 192,
+      "zOrder": 21,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardElectric",
+      "persistentUuid": "f2d2c59f-eea1-41b2-b8cf-6a59fa994ff1",
+      "width": 0,
+      "x": 64,
+      "y": 224,
+      "zOrder": 21,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardElectric",
+      "persistentUuid": "2286c5bf-8a24-4caf-af6c-de4c90603c37",
+      "width": 0,
+      "x": 32,
+      "y": 224,
+      "zOrder": 21,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "HazardElectric",
+      "persistentUuid": "16328d0e-2c7d-41be-a42e-c32ec6e5a180",
+      "width": 0,
+      "x": 32,
+      "y": 256,
+      "zOrder": 21,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1440,30 +2252,30 @@
       "depth": 1,
       "height": 32,
       "keepRatio": true,
-      "layer": "Main",
+      "layer": "Background",
       "name": "Hole",
-      "persistentUuid": "c96adf79-fb10-41df-abb8-a626656c70c1",
-      "width": 576,
-      "x": 32,
-      "y": 32,
-      "zOrder": 0,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
-      "height": 32,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "Hole",
-      "persistentUuid": "93aaecf1-f748-4e88-859c-15901174a86f",
+      "persistentUuid": "de07806a-b170-4b07-9d4c-55a8c6265984",
       "width": 576,
       "x": 32,
       "y": 288,
-      "zOrder": 0,
+      "zOrder": 22,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Background",
+      "name": "Hole",
+      "persistentUuid": "a8e7570d-d6da-4027-8080-45e9bfb21451",
+      "width": 576,
+      "x": 32,
+      "y": 32,
+      "zOrder": 22,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1633,7 +2445,7 @@
     },
     {
       "assetStoreId": "",
-      "name": "BounceableWall",
+      "name": "BounceableWallCollider",
       "type": "CustomObjects::Wall",
       "variant": "BounceableWall",
       "variables": [],
@@ -1680,7 +2492,7 @@
     },
     {
       "assetStoreId": "",
-      "name": "SolidWall",
+      "name": "SolidWallCollider",
       "type": "CustomObjects::Wall",
       "variant": "SolidWall",
       "variables": [],
@@ -1938,7 +2750,7 @@
       "assetStoreId": "",
       "name": "Player0",
       "type": "CustomObjects::Tank",
-      "variant": "",
+      "variant": "NewTankRed",
       "variables": [],
       "effects": [],
       "behaviors": [
@@ -2033,7 +2845,26 @@
       "type": "CustomObjects::Bullet",
       "variant": "DefaultBullet",
       "variables": [],
-      "effects": [],
+      "effects": [
+        {
+          "effectType": "DropShadow",
+          "name": "Shadow",
+          "doubleParameters": {
+            "alpha": 0.5,
+            "blur": 0.2,
+            "distance": 8,
+            "padding": 8,
+            "quality": 3,
+            "rotation": 90
+          },
+          "stringParameters": {
+            "color": "101;134;61"
+          },
+          "booleanParameters": {
+            "shadowOnly": false
+          }
+        }
+      ],
       "behaviors": [
         {
           "name": "Bullet",
@@ -2071,7 +2902,26 @@
       "type": "CustomObjects::Bullet",
       "variant": "LongBullet",
       "variables": [],
-      "effects": [],
+      "effects": [
+        {
+          "effectType": "DropShadow",
+          "name": "Shadow",
+          "doubleParameters": {
+            "alpha": 0.5,
+            "blur": 0.2,
+            "distance": 8,
+            "padding": 8,
+            "quality": 3,
+            "rotation": 90
+          },
+          "stringParameters": {
+            "color": "101;134;61"
+          },
+          "booleanParameters": {
+            "shadowOnly": false
+          }
+        }
+      ],
       "behaviors": [
         {
           "name": "Bullet",
@@ -2812,11 +3662,96 @@
       "variables": [],
       "effects": [],
       "behaviors": []
+    },
+    {
+      "assetStoreId": "",
+      "name": "HazardMud",
+      "type": "CustomObjects::Hazard",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Hazard",
+          "type": "CustomBehaviors::Hazard",
+          "SpeedAlteration": 0.5,
+          "Active": false
+        }
+      ],
+      "content": {}
+    },
+    {
+      "assetStoreId": "",
+      "name": "HazardAsphalt",
+      "type": "CustomObjects::Hazard",
+      "variant": "Asphalt",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Hazard",
+          "type": "CustomBehaviors::Hazard",
+          "SpeedAlteration": 1.5,
+          "Active": false,
+          "ActiveTime": 0,
+          "ActivationCooldown": 0
+        }
+      ],
+      "content": {}
+    },
+    {
+      "assetStoreId": "",
+      "name": "HazardElectric",
+      "type": "CustomObjects::Hazard",
+      "variant": "Electric",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Hazard",
+          "type": "CustomBehaviors::Hazard",
+          "SpeedAlteration": 1.25,
+          "Active": false,
+          "ActivationCooldown": 2,
+          "ActiveTime": 2
+        }
+      ],
+      "content": {}
+    },
+    {
+      "assetStoreId": "",
+      "bottomMargin": 16,
+      "height": 64,
+      "leftMargin": 19,
+      "name": "Ground",
+      "rightMargin": 16,
+      "texture": "hole_earth.png",
+      "tiled": true,
+      "topMargin": 19,
+      "type": "PanelSpriteObject::PanelSprite",
+      "width": 64,
+      "variables": [],
+      "effects": [],
+      "behaviors": []
     }
   ],
   "objectsFolderStructure": {
     "folderName": "__ROOT",
     "children": [
+      {
+        "folderName": "Hazard",
+        "children": [
+          {
+            "objectName": "HazardAsphalt"
+          },
+          {
+            "objectName": "HazardMud"
+          },
+          {
+            "objectName": "HazardElectric"
+          }
+        ]
+      },
       {
         "folderName": "Debug",
         "children": [
@@ -2938,10 +3873,10 @@
         "folderName": "Walls",
         "children": [
           {
-            "objectName": "SolidWall"
+            "objectName": "SolidWallCollider"
           },
           {
-            "objectName": "BounceableWall"
+            "objectName": "BounceableWallCollider"
           }
         ]
       },
@@ -2964,6 +3899,9 @@
         "children": [
           {
             "objectName": "Hole"
+          },
+          {
+            "objectName": "Ground"
           }
         ]
       },
@@ -4469,6 +5407,187 @@
       "comment": "\n\n"
     },
     {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Hazards",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Tank::SetSpeedModifier"
+              },
+              "parameters": [
+                "Tanks",
+                "Tank",
+                "1",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": true,
+                "value": "CustomBehaviors::Hazard::Active"
+              },
+              "parameters": [
+                "HazardElectric",
+                "Hazard",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomObjects::Hazard::PlayAnimation"
+              },
+              "parameters": [
+                "HazardElectric",
+                "0",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Hazard::Active"
+              },
+              "parameters": [
+                "HazardElectric",
+                "Hazard",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomObjects::Hazard::PlayAnimation"
+              },
+              "parameters": [
+                "HazardElectric",
+                "1",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "Tanks",
+          "conditions": [],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CollisionNP"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    "Hazards",
+                    "",
+                    "",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Hazard::Active"
+                      },
+                      "parameters": [
+                        "Hazards",
+                        "Hazard",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Tank::SetSpeedModifier"
+                      },
+                      "parameters": [
+                        "Tanks",
+                        "Tank",
+                        "0",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "CustomBehaviors::Hazard::Active"
+                      },
+                      "parameters": [
+                        "Hazards",
+                        "Hazard",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Tank::SetSpeedModifier"
+                      },
+                      "parameters": [
+                        "Tanks",
+                        "Tank",
+                        "Hazards.Hazard::SpeedAlteration()",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
       "type": "BuiltinCommonInstructions::Comment",
       "color": {
         "b": 52,
@@ -4676,6 +5795,10 @@
     {
       "name": "Flippable",
       "type": "FlippableCapability::FlippableBehavior"
+    },
+    {
+      "name": "Hazard",
+      "type": "CustomBehaviors::Hazard"
     },
     {
       "name": "NavMeshPathfindingBehavior",

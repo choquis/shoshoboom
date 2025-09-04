@@ -17567,6 +17567,2315 @@
           "areaMinX": 0,
           "areaMinY": 0,
           "areaMinZ": 0,
+          "name": "NewTankRed",
+          "objects": [
+            {
+              "adaptCollisionMaskAutomatically": true,
+              "assetStoreId": "",
+              "name": "BackSprite",
+              "type": "Sprite",
+              "updateIfNotVisible": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [
+                {
+                  "name": "Tween",
+                  "type": "Tween::TweenBehavior"
+                }
+              ],
+              "animations": [
+                {
+                  "name": "SmallWallCollider",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "metadata": "{\"pskl\":{}}",
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "WallColliderSmall",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 16
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "assetStoreId": "",
+              "bold": false,
+              "italic": false,
+              "name": "Logs",
+              "smoothed": true,
+              "type": "TextObject::Text",
+              "underlined": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "string": "Text",
+              "font": "",
+              "textAlignment": "left",
+              "characterSize": 12,
+              "color": {
+                "b": 0,
+                "g": 0,
+                "r": 0
+              },
+              "content": {
+                "bold": false,
+                "isOutlineEnabled": false,
+                "isShadowEnabled": false,
+                "italic": false,
+                "outlineColor": "255;255;255",
+                "outlineThickness": 2,
+                "shadowAngle": 90,
+                "shadowBlurRadius": 2,
+                "shadowColor": "0;0;0",
+                "shadowDistance": 4,
+                "shadowOpacity": 127,
+                "smoothed": true,
+                "underlined": false,
+                "text": "Text",
+                "font": "",
+                "textAlignment": "left",
+                "verticalTextAlignment": "top",
+                "characterSize": 12,
+                "lineHeight": 0,
+                "color": "0;0;0"
+              }
+            },
+            {
+              "adaptCollisionMaskAutomatically": true,
+              "assetStoreId": "",
+              "name": "Sprite",
+              "type": "Sprite",
+              "updateIfNotVisible": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [
+                {
+                  "name": "Tween",
+                  "type": "Tween::TweenBehavior"
+                }
+              ],
+              "animations": [
+                {
+                  "name": "default",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "ObstacleColliderSmall",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 8,
+                            "y": 8
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 0
+                              },
+                              {
+                                "x": 16,
+                                "y": 16
+                              },
+                              {
+                                "x": 0,
+                                "y": 16
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "adaptCollisionMaskAutomatically": false,
+              "assetStoreId": "",
+              "name": "Collision",
+              "type": "Sprite",
+              "updateIfNotVisible": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "animations": [
+                {
+                  "name": "default",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "ProjectileColliderSmall",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 2
+                              },
+                              {
+                                "x": 2,
+                                "y": 0
+                              },
+                              {
+                                "x": 6,
+                                "y": 0
+                              },
+                              {
+                                "x": 8,
+                                "y": 2
+                              },
+                              {
+                                "x": 8,
+                                "y": 6
+                              },
+                              {
+                                "x": 6,
+                                "y": 8
+                              },
+                              {
+                                "x": 2,
+                                "y": 8
+                              },
+                              {
+                                "x": 0,
+                                "y": 6
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "adaptCollisionMaskAutomatically": true,
+              "assetStoreId": "",
+              "name": "Cannon",
+              "type": "Sprite",
+              "updateIfNotVisible": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "animations": [
+                {
+                  "name": "Look0",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank_cannon1.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 2,
+                              "y": 9
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 1,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 18
+                              },
+                              {
+                                "x": 1,
+                                "y": 18
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Look1",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank_cannon2.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 3.5,
+                              "y": 4
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 1,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 18
+                              },
+                              {
+                                "x": 1,
+                                "y": 18
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Look2",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank_cannon3.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 4,
+                              "y": 1.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 1,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 18
+                              },
+                              {
+                                "x": 1,
+                                "y": 18
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Look3",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank_cannon4.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 8,
+                              "y": -1.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 1,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 18
+                              },
+                              {
+                                "x": 1,
+                                "y": 18
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Look4",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank_cannon5.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 16,
+                              "y": -3.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 1,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 18
+                              },
+                              {
+                                "x": 1,
+                                "y": 18
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Look5",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank_cannon6.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 24,
+                              "y": -1.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 1,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 18
+                              },
+                              {
+                                "x": 1,
+                                "y": 18
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Look6",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank_cannon7.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 28,
+                              "y": 2
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 1,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 18
+                              },
+                              {
+                                "x": 1,
+                                "y": 18
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Look7",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank_cannon8.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 29,
+                              "y": 4.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 1,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 18
+                              },
+                              {
+                                "x": 1,
+                                "y": 18
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Look8",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank_cannon9.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 30,
+                              "y": 9
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 1,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 18
+                              },
+                              {
+                                "x": 1,
+                                "y": 18
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Look9",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank_cannon10.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 29.5,
+                              "y": 13
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 1,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 18
+                              },
+                              {
+                                "x": 1,
+                                "y": 18
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Look10",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank_cannon11.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 28.5,
+                              "y": 17.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 1,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 18
+                              },
+                              {
+                                "x": 1,
+                                "y": 18
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Look11",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank_cannon12.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 22.5,
+                              "y": 20
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 1,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 18
+                              },
+                              {
+                                "x": 1,
+                                "y": 18
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Look12",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank_cannon13.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 16,
+                              "y": 21.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 1,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 18
+                              },
+                              {
+                                "x": 1,
+                                "y": 18
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Look13",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank_cannon14.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 8,
+                              "y": 19.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 1,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 18
+                              },
+                              {
+                                "x": 1,
+                                "y": 18
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Look14",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank_cannon15.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 2.5,
+                              "y": 16.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 1,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 18
+                              },
+                              {
+                                "x": 1,
+                                "y": 18
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Look15",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank_cannon16.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 1,
+                              "y": 13.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 1,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 18
+                              },
+                              {
+                                "x": 1,
+                                "y": 18
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Look16",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank_cannon1.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 2,
+                              "y": 9
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 1,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 3
+                              },
+                              {
+                                "x": 24,
+                                "y": 18
+                              },
+                              {
+                                "x": 1,
+                                "y": 18
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "adaptCollisionMaskAutomatically": true,
+              "assetStoreId": "",
+              "name": "Body",
+              "type": "Sprite",
+              "updateIfNotVisible": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "animations": [
+                {
+                  "name": "Move0",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank1.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 2,
+                              "y": 9
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 3,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 31
+                              },
+                              {
+                                "x": 3,
+                                "y": 31
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move1",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank2.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 3.5,
+                              "y": 4
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 3,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 31
+                              },
+                              {
+                                "x": 3,
+                                "y": 31
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move2",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank3.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 4,
+                              "y": 1.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 3,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 31
+                              },
+                              {
+                                "x": 3,
+                                "y": 31
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move3",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank4.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 8,
+                              "y": -1.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 3,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 31
+                              },
+                              {
+                                "x": 3,
+                                "y": 31
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move4",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank5.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 16,
+                              "y": -3.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 3,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 31
+                              },
+                              {
+                                "x": 3,
+                                "y": 31
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move5",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank6.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 24,
+                              "y": -1.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 3,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 31
+                              },
+                              {
+                                "x": 3,
+                                "y": 31
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move6",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank7.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 28,
+                              "y": 2
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 3,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 31
+                              },
+                              {
+                                "x": 3,
+                                "y": 31
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move7",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank8.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 29,
+                              "y": 4.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 3,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 31
+                              },
+                              {
+                                "x": 3,
+                                "y": 31
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move8",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank9.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 30,
+                              "y": 9
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 3,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 31
+                              },
+                              {
+                                "x": 3,
+                                "y": 31
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move9",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank10.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 29.5,
+                              "y": 13
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 3,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 31
+                              },
+                              {
+                                "x": 3,
+                                "y": 31
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move10",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank11.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 28.5,
+                              "y": 17.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 3,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 31
+                              },
+                              {
+                                "x": 3,
+                                "y": 31
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move11",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank12.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 22.5,
+                              "y": 20
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 3,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 31
+                              },
+                              {
+                                "x": 3,
+                                "y": 31
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move12",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank13.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 16,
+                              "y": 21.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 3,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 31
+                              },
+                              {
+                                "x": 3,
+                                "y": 31
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move13",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank14.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 8,
+                              "y": 19.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 3,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 31
+                              },
+                              {
+                                "x": 3,
+                                "y": 31
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move14",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank15.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 2.5,
+                              "y": 16.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 3,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 31
+                              },
+                              {
+                                "x": 3,
+                                "y": 31
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move15",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank16.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 1,
+                              "y": 13.5
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 3,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 31
+                              },
+                              {
+                                "x": 3,
+                                "y": 31
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Move16",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\new_red_tank17.png",
+                          "points": [
+                            {
+                              "name": "Muzzle",
+                              "x": 2,
+                              "y": 9
+                            }
+                          ],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 3,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 10
+                              },
+                              {
+                                "x": 28,
+                                "y": 31
+                              },
+                              {
+                                "x": 3,
+                                "y": 31
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "objectsFolderStructure": {
+            "folderName": "__ROOT",
+            "children": [
+              {
+                "objectName": "Cannon"
+              },
+              {
+                "objectName": "Body"
+              },
+              {
+                "objectName": "Sprite"
+              },
+              {
+                "objectName": "BackSprite"
+              },
+              {
+                "objectName": "Collision"
+              },
+              {
+                "objectName": "Logs"
+              }
+            ]
+          },
+          "objectsGroups": [],
+          "layers": [
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [
+                {
+                  "defaultSize": true,
+                  "defaultViewport": true,
+                  "height": 0,
+                  "viewportBottom": 1,
+                  "viewportLeft": 0,
+                  "viewportRight": 1,
+                  "viewportTop": 0,
+                  "width": 0
+                }
+              ],
+              "effects": []
+            },
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "Main",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [],
+              "effects": []
+            },
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "Debug",
+              "renderingType": "",
+              "visibility": false,
+              "cameras": [],
+              "effects": []
+            }
+          ],
+          "instances": [
+            {
+              "angle": 0,
+              "customSize": false,
+              "height": 0,
+              "keepRatio": true,
+              "layer": "Debug",
+              "name": "BackSprite",
+              "persistentUuid": "9bd63dc1-ee2b-4f24-b04a-fda58127f9c0",
+              "width": 0,
+              "x": 16,
+              "y": 23,
+              "zOrder": 2,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            },
+            {
+              "angle": 0,
+              "customSize": false,
+              "height": 0,
+              "keepRatio": true,
+              "layer": "Debug",
+              "name": "Sprite",
+              "persistentUuid": "7b4850d5-a78d-4f97-b117-5a2345402a13",
+              "width": 0,
+              "x": 16,
+              "y": 9,
+              "zOrder": 3,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            },
+            {
+              "angle": 0,
+              "customSize": true,
+              "depth": 3,
+              "height": 19,
+              "keepRatio": true,
+              "layer": "Debug",
+              "name": "Collision",
+              "persistentUuid": "471edaf8-7d65-47b2-89a0-554a3f1c2fd2",
+              "width": 30,
+              "x": 1,
+              "y": 6,
+              "zOrder": 3,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            },
+            {
+              "angle": 0,
+              "customSize": false,
+              "height": 0,
+              "keepRatio": true,
+              "layer": "Main",
+              "name": "Cannon",
+              "persistentUuid": "2a210916-515e-4cb9-a485-ef97ce4adad1",
+              "width": 0,
+              "x": 16,
+              "y": 16,
+              "zOrder": 10,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            },
+            {
+              "angle": 0,
+              "customSize": true,
+              "depth": 1,
+              "height": 14,
+              "keepRatio": true,
+              "layer": "Debug",
+              "name": "Logs",
+              "persistentUuid": "fedf4743-c328-4e22-b7f2-e5617ab2cae2",
+              "width": 55,
+              "x": 6,
+              "y": 29,
+              "zOrder": 4,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            },
+            {
+              "angle": 0,
+              "customSize": false,
+              "height": 0,
+              "keepRatio": true,
+              "layer": "Main",
+              "name": "Body",
+              "persistentUuid": "4487c868-6760-4016-ab1d-f932a906c8e9",
+              "width": 0,
+              "x": 16,
+              "y": 16,
+              "zOrder": 0,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            }
+          ]
+        },
+        {
+          "areaMaxX": 32,
+          "areaMaxY": 32,
+          "areaMaxZ": 64,
+          "areaMinX": 0,
+          "areaMinY": 0,
+          "areaMinZ": 0,
           "name": "TankGreen",
           "objects": [
             {
@@ -35766,6 +38075,695 @@
               "x": -1,
               "y": 32,
               "zOrder": 2,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "areaMaxX": 32,
+      "areaMaxY": 32,
+      "areaMaxZ": 64,
+      "areaMinX": 0,
+      "areaMinY": 0,
+      "areaMinZ": 0,
+      "defaultName": "Hazard",
+      "description": "Terrain that affect other objects",
+      "fullName": "Hazard (Custom object)",
+      "isUsingLegacyInstancesRenderer": false,
+      "name": "Hazard",
+      "objects": [
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "Sprite",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "default",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\Hazards\\mud_01.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 16,
+                        "y": 16
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 32,
+                            "y": 0
+                          },
+                          {
+                            "x": 32,
+                            "y": 32
+                          },
+                          {
+                            "x": 0,
+                            "y": 32
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "objectsFolderStructure": {
+        "folderName": "__ROOT",
+        "children": [
+          {
+            "objectName": "Sprite"
+          }
+        ]
+      },
+      "objectsGroups": [],
+      "layers": [
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [
+            {
+              "defaultSize": true,
+              "defaultViewport": true,
+              "height": 0,
+              "viewportBottom": 1,
+              "viewportLeft": 0,
+              "viewportRight": 1,
+              "viewportTop": 0,
+              "width": 0
+            }
+          ],
+          "effects": []
+        },
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "Main",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [],
+          "effects": [
+            {
+              "effectType": "Scene3D::HemisphereLight",
+              "name": "3D Ambient Hemisphere Light",
+              "doubleParameters": {
+                "elevation": 40,
+                "intensity": 0.33,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "groundColor": "127;127;127",
+                "skyColor": "255;255;255",
+                "top": "Z+"
+              },
+              "booleanParameters": {}
+            },
+            {
+              "effectType": "Scene3D::DirectionalLight",
+              "name": "3D Sun Light",
+              "doubleParameters": {
+                "distanceFromCamera": 1500,
+                "elevation": 40,
+                "frustumSize": 4000,
+                "intensity": 0.75,
+                "minimumShadowBias": 0,
+                "rotation": 300
+              },
+              "stringParameters": {
+                "color": "255;255;255",
+                "shadowQuality": "medium",
+                "top": "Z+"
+              },
+              "booleanParameters": {
+                "isCastingShadow": true
+              }
+            }
+          ]
+        }
+      ],
+      "instances": [
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "Main",
+          "name": "Sprite",
+          "persistentUuid": "85bc53d2-2d9a-4038-be6f-a06ee9a6cfc6",
+          "width": 0,
+          "x": 16,
+          "y": 16,
+          "zOrder": 1,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        }
+      ],
+      "eventsFunctions": [
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "onCreated",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetIncludedInParentCollisionMask"
+                  },
+                  "parameters": [
+                    "Sprite",
+                    "yes"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "Sprite",
+                    "Animation",
+                    "=",
+                    "\"default\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::PauseAnimation"
+                  },
+                  "parameters": [
+                    "Sprite",
+                    "Animation"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Hazard",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Start/End animation on sprite",
+          "fullName": "Play/Pause animation on hazard",
+          "functionType": "Action",
+          "name": "PlayAnimation",
+          "sentence": "Play hazard _PARAM0_ animation, set on _PARAM1_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "ParamActive",
+                    "=",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::PlayAnimation"
+                  },
+                  "parameters": [
+                    "Sprite",
+                    "Animation"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "ParamActive",
+                    "!=",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::PauseAnimation"
+                  },
+                  "parameters": [
+                    "Sprite",
+                    "Animation"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ChangeSprite"
+                  },
+                  "parameters": [
+                    "Sprite",
+                    "=",
+                    "0"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::Hazard",
+              "type": "object"
+            },
+            {
+              "description": "Active",
+              "name": "ParamActive",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [],
+      "variants": [
+        {
+          "areaMaxX": 32,
+          "areaMaxY": 32,
+          "areaMaxZ": 64,
+          "areaMinX": 0,
+          "areaMinY": 0,
+          "areaMinZ": 0,
+          "name": "Electric",
+          "objects": [
+            {
+              "adaptCollisionMaskAutomatically": true,
+              "assetStoreId": "",
+              "name": "Sprite",
+              "type": "Sprite",
+              "updateIfNotVisible": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "animations": [
+                {
+                  "name": "default",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": true,
+                      "timeBetweenFrames": 0.1,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Hazards\\elect_01.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 0
+                              },
+                              {
+                                "x": 32,
+                                "y": 0
+                              },
+                              {
+                                "x": 32,
+                                "y": 32
+                              },
+                              {
+                                "x": 0,
+                                "y": 32
+                              }
+                            ]
+                          ]
+                        },
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Hazards\\elect_02.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 0
+                              },
+                              {
+                                "x": 32,
+                                "y": 0
+                              },
+                              {
+                                "x": 32,
+                                "y": 32
+                              },
+                              {
+                                "x": 0,
+                                "y": 32
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "objectsFolderStructure": {
+            "folderName": "__ROOT",
+            "children": [
+              {
+                "objectName": "Sprite"
+              }
+            ]
+          },
+          "objectsGroups": [],
+          "layers": [
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [
+                {
+                  "defaultSize": true,
+                  "defaultViewport": true,
+                  "height": 0,
+                  "viewportBottom": 1,
+                  "viewportLeft": 0,
+                  "viewportRight": 1,
+                  "viewportTop": 0,
+                  "width": 0
+                }
+              ],
+              "effects": []
+            },
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "Main",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [],
+              "effects": []
+            }
+          ],
+          "instances": [
+            {
+              "angle": 0,
+              "customSize": false,
+              "height": 0,
+              "keepRatio": true,
+              "layer": "Main",
+              "name": "Sprite",
+              "persistentUuid": "85bc53d2-2d9a-4038-be6f-a06ee9a6cfc6",
+              "width": 0,
+              "x": 16,
+              "y": 16,
+              "zOrder": 1,
+              "numberProperties": [],
+              "stringProperties": [],
+              "initialVariables": []
+            }
+          ]
+        },
+        {
+          "areaMaxX": 32,
+          "areaMaxY": 32,
+          "areaMaxZ": 64,
+          "areaMinX": 0,
+          "areaMinY": 0,
+          "areaMinZ": 0,
+          "name": "Asphalt",
+          "objects": [
+            {
+              "adaptCollisionMaskAutomatically": true,
+              "assetStoreId": "",
+              "name": "Sprite",
+              "type": "Sprite",
+              "updateIfNotVisible": false,
+              "variables": [],
+              "effects": [],
+              "behaviors": [],
+              "animations": [
+                {
+                  "name": "default",
+                  "useMultipleDirections": false,
+                  "directions": [
+                    {
+                      "looping": false,
+                      "timeBetweenFrames": 0.08,
+                      "sprites": [
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Hazards\\asphalt_01.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 16,
+                            "y": 16
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 0,
+                                "y": 0
+                              },
+                              {
+                                "x": 32,
+                                "y": 0
+                              },
+                              {
+                                "x": 32,
+                                "y": 32
+                              },
+                              {
+                                "x": 0,
+                                "y": 32
+                              }
+                            ]
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "objectsFolderStructure": {
+            "folderName": "__ROOT",
+            "children": [
+              {
+                "objectName": "Sprite"
+              }
+            ]
+          },
+          "objectsGroups": [],
+          "layers": [
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [
+                {
+                  "defaultSize": true,
+                  "defaultViewport": true,
+                  "height": 0,
+                  "viewportBottom": 1,
+                  "viewportLeft": 0,
+                  "viewportRight": 1,
+                  "viewportTop": 0,
+                  "width": 0
+                }
+              ],
+              "effects": []
+            },
+            {
+              "ambientLightColorB": 200,
+              "ambientLightColorG": 200,
+              "ambientLightColorR": 200,
+              "camera3DFarPlaneDistance": 10000,
+              "camera3DFieldOfView": 45,
+              "camera3DNearPlaneDistance": 3,
+              "cameraType": "",
+              "followBaseLayerCamera": false,
+              "isLightingLayer": false,
+              "isLocked": false,
+              "name": "Main",
+              "renderingType": "",
+              "visibility": true,
+              "cameras": [],
+              "effects": [
+                {
+                  "effectType": "Scene3D::HemisphereLight",
+                  "name": "3D Ambient Hemisphere Light",
+                  "doubleParameters": {
+                    "elevation": 40,
+                    "intensity": 0.33,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "groundColor": "127;127;127",
+                    "skyColor": "255;255;255",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {}
+                },
+                {
+                  "effectType": "Scene3D::DirectionalLight",
+                  "name": "3D Sun Light",
+                  "doubleParameters": {
+                    "distanceFromCamera": 1500,
+                    "elevation": 40,
+                    "frustumSize": 4000,
+                    "intensity": 0.75,
+                    "minimumShadowBias": 0,
+                    "rotation": 300
+                  },
+                  "stringParameters": {
+                    "color": "255;255;255",
+                    "shadowQuality": "medium",
+                    "top": "Z+"
+                  },
+                  "booleanParameters": {
+                    "isCastingShadow": true
+                  }
+                }
+              ]
+            }
+          ],
+          "instances": [
+            {
+              "angle": 0,
+              "customSize": false,
+              "height": 0,
+              "keepRatio": true,
+              "layer": "Main",
+              "name": "Sprite",
+              "persistentUuid": "85bc53d2-2d9a-4038-be6f-a06ee9a6cfc6",
+              "width": 0,
+              "x": 16,
+              "y": 16,
+              "zOrder": 1,
               "numberProperties": [],
               "stringProperties": [],
               "initialVariables": []

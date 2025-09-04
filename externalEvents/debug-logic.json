@@ -340,7 +340,6 @@
           ]
         },
         {
-          "disabled": true,
           "type": "BuiltinCommonInstructions::ForEach",
           "object": "Tanks",
           "conditions": [],
@@ -351,7 +350,7 @@
               },
               "parameters": [
                 "Tanks",
-                "ToString(Tanks.Damageable::CurrentHealth())",
+                "ToString(Tanks.Tank::MoveSpeed())",
                 ""
               ]
             }
