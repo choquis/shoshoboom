@@ -917,6 +917,16 @@
                     "=",
                     "MAINGAME.Input.MoveY"
                   ]
+                },
+                {
+                  "type": {
+                    "value": "CustomObjects::Tank::SetMoveAnimationSpeed"
+                  },
+                  "parameters": [
+                    "Player0",
+                    "Player0.Tank::SpeedModifier()",
+                    ""
+                  ]
                 }
               ],
               "events": [
@@ -1010,6 +1020,83 @@
                         "MoveAngle",
                         ""
                       ]
+                    },
+                    {
+                      "type": {
+                        "value": "CustomObjects::Tank::PlayMoveAnimation"
+                      },
+                      "parameters": [
+                        "Player0",
+                        "yes",
+                        "1",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::CompareNumbers"
+                      },
+                      "parameters": [
+                        "abs(MoveX)",
+                        "=",
+                        "0"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::CompareNumbers"
+                      },
+                      "parameters": [
+                        "abs(MoveY)",
+                        "=",
+                        "0"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "CustomObjects::Tank::PlayMoveAnimation"
+                      },
+                      "parameters": [
+                        "Player0",
+                        "no",
+                        "1",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::CompareNumbers"
+                      },
+                      "parameters": [
+                        "Players.Tank::SpeedModifier()",
+                        "=",
+                        "0"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "CustomObjects::Tank::PlayMoveAnimation"
+                      },
+                      "parameters": [
+                        "Player0",
+                        "no",
+                        "1",
+                        ""
+                      ]
                     }
                   ]
                 }
@@ -1027,11 +1114,6 @@
                 },
                 {
                   "name": "MoveAngle",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "BulletCount",
                   "type": "number",
                   "value": 0
                 }

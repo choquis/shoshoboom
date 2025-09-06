@@ -257,7 +257,7 @@
               },
               "parameters": [
                 "Players",
-                "ToString(trunc(Players.LookAngle()))",
+                "\"DebugLogic\" + NewLine() + ToString(trunc(Players.LookAngle()))",
                 ""
               ]
             }
@@ -316,7 +316,7 @@
               },
               "parameters": [
                 "Bounceable",
-                "ToString(Bounceable.Entity::Id())",
+                "\"DebugLogic\" + NewLine() + ToString(Bounceable.Entity::Id())",
                 ""
               ]
             }
@@ -333,13 +333,14 @@
               },
               "parameters": [
                 "Obstacles",
-                "ToString(Obstacles.ZOrder())",
+                "\"DebugLogic\" + NewLine() + ToString(Obstacles.ZOrder())",
                 ""
               ]
             }
           ]
         },
         {
+          "disabled": true,
           "type": "BuiltinCommonInstructions::ForEach",
           "object": "Tanks",
           "conditions": [],
@@ -350,7 +351,7 @@
               },
               "parameters": [
                 "Tanks",
-                "ToString(Tanks.Tank::MoveSpeed())",
+                "\"DebugLogic\" + NewLine() + ToString(Tanks.Tank::MoveSpeed())",
                 ""
               ]
             }
@@ -392,7 +393,7 @@
                   },
                   "parameters": [
                     "Bullets",
-                    "ToString(Bullets.Trails::GetDistanceMoved())",
+                    "\"DebugLogic\" + NewLine() + ToString(Bullets.Trails::GetDistanceMoved())",
                     ""
                   ]
                 }
