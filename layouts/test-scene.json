@@ -430,6 +430,7 @@
       "value": 0
     },
     {
+      "folded": true,
       "name": "BuildableInstancesArray",
       "type": "array",
       "children": [
@@ -3750,6 +3751,63 @@
       "variables": [],
       "effects": [],
       "behaviors": []
+    },
+    {
+      "assetStoreId": "",
+      "name": "Player1",
+      "type": "CustomObjects::Tank",
+      "variant": "NewTankBlue",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "BombObjects",
+          "type": "CustomBehaviors::BombObjects",
+          "ObjectName": "DefaultLandmine"
+        },
+        {
+          "name": "BulletObjects",
+          "type": "CustomBehaviors::BulletObjects",
+          "ObjectName": "DefaultBullet"
+        },
+        {
+          "name": "Damageable",
+          "type": "CustomBehaviors::Damageable",
+          "EntityBehavior": "Entity",
+          "Health": 200,
+          "CurrentHealth": 2.0247e-320,
+          "ImmuneDamage": "Bullet"
+        },
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 9.854645721257145e+165,
+          "Type": "Tank"
+        },
+        {
+          "name": "Tank",
+          "type": "CustomBehaviors::Tank",
+          "EntityBehavior": "Entity",
+          "BulletObjects": "BulletObjects",
+          "MoveSpeed": 70,
+          "BombObjects": "BombObjects"
+        },
+        {
+          "name": "Trails",
+          "type": "CustomBehaviors::Trails",
+          "SpawnByTime": false,
+          "SpawnCooldown": 1,
+          "SpawnDistance": 16,
+          "Spawn": false,
+          "DistanceMoved": 0,
+          "OldX": 2.0247e-320,
+          "OldY": 2.0247e-320
+        }
+      ],
+      "content": {
+        "CannonRotationSpeed": 0.25,
+        "BodyRotationSpeed": 0.3
+      }
     }
   ],
   "objectsFolderStructure": {
@@ -3826,6 +3884,9 @@
           },
           {
             "objectName": "Player0"
+          },
+          {
+            "objectName": "Player1"
           },
           {
             "objectName": "GroundTrailsPlayer0"
@@ -3966,7 +4027,6 @@
           "target": "Debug Logic"
         },
         {
-          "disabled": true,
           "type": "BuiltinCommonInstructions::Link",
           "include": {
             "includeConfig": 0
@@ -3974,7 +4034,6 @@
           "target": "Editor Logic"
         },
         {
-          "disabled": true,
           "type": "BuiltinCommonInstructions::Link",
           "include": {
             "includeConfig": 0

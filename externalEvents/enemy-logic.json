@@ -521,6 +521,16 @@
                                 "True",
                                 "PurpleEnemy.ID"
                               ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "PlayerSeenId",
+                                "=",
+                                "Players.Entity::Id()"
+                              ]
                             }
                           ]
                         },
@@ -651,6 +661,7 @@
                             "Enemies",
                             "EnemyIA",
                             "0",
+                            "0",
                             ""
                           ]
                         }
@@ -701,6 +712,7 @@
                             "Enemies",
                             "EnemyIA",
                             "1",
+                            "PlayerSeenId",
                             ""
                           ]
                         }
@@ -785,6 +797,11 @@
                   "name": "SeeEnemy",
                   "type": "boolean",
                   "value": false
+                },
+                {
+                  "name": "PlayerSeenId",
+                  "type": "number",
+                  "value": 0
                 }
               ]
             }
@@ -1321,6 +1338,17 @@
                         "Enemies.LookAngle()",
                         ""
                       ]
+                    },
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Entity::HasId"
+                      },
+                      "parameters": [
+                        "Players",
+                        "Entity",
+                        "Enemies.EnemyIA::PlayerSeenId()",
+                        ""
+                      ]
                     }
                   ],
                   "actions": [
@@ -1331,7 +1359,7 @@
                       "parameters": [
                         "Enemies",
                         "EnemyIA",
-                        "AngleBetweenPositions(Enemies.MuzzleX(), Enemies.MuzzleY(), Player0.CenterX(), Player0.Y())",
+                        "AngleBetweenPositions(Enemies.MuzzleX(), Enemies.MuzzleY(), Players.CenterX(), Players.Y())",
                         ""
                       ]
                     },
@@ -1402,7 +1430,6 @@
                   ]
                 },
                 {
-                  "disabled": true,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
                     {

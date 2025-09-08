@@ -5626,11 +5626,11 @@
           "objectGroups": []
         },
         {
-          "description": "Set flag \"See player\"",
-          "fullName": "See player",
+          "description": "Set flag for \"Player seen\" and his id",
+          "fullName": "Set if player was seen",
           "functionType": "Action",
           "name": "SetSeePlayer",
-          "sentence": "_PARAM0_ has seen player _PARAM2_",
+          "sentence": "_PARAM0_ has seen player: _PARAM2_ (1:yes, 0:no) with id _PARAM3_",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
@@ -5655,6 +5655,16 @@
                     "SeePlayer",
                     "True",
                     ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "PlayerSeenId",
+                    "=",
+                    "ParamId"
                   ]
                 }
               ]
@@ -5683,6 +5693,16 @@
                     "False",
                     ""
                   ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "PlayerSeenId",
+                    "=",
+                    "0"
+                  ]
                 }
               ]
             }
@@ -5702,6 +5722,12 @@
             {
               "description": "Seen",
               "name": "ParamSeen",
+              "type": "expression"
+            },
+            {
+              "description": "Player Id",
+              "name": "ParamId",
+              "supplementaryInformation": "CustomBehaviors::Entity",
               "type": "expression"
             }
           ],
@@ -6270,6 +6296,46 @@
           "objectGroups": []
         },
         {
+          "description": "The id of the last player seen",
+          "fullName": "Last playe seen Id",
+          "functionType": "Expression",
+          "name": "PlayerSeenId",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "PlayerSeenId"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::EnemyIA",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
           "description": "Time to add delay after shooting",
           "fullName": "Shoot delay",
           "functionType": "Expression",
@@ -6499,6 +6565,13 @@
           "label": "",
           "hidden": true,
           "name": "SeePlayer"
+        },
+        {
+          "value": "0",
+          "type": "Number",
+          "label": "",
+          "hidden": true,
+          "name": "PlayerSeenId"
         },
         {
           "value": "",
