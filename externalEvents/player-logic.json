@@ -32,6 +32,24 @@
       "actions": [],
       "events": [
         {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "MettreXY"
+              },
+              "parameters": [
+                "NewSprite",
+                "=",
+                "Players.MuzzleX() - (NewSprite.Width() / 2)",
+                "=",
+                "Players.MuzzleY() - (NewSprite.Height() / 2)"
+              ]
+            }
+          ]
+        },
+        {
           "colorB": 82,
           "colorG": 68,
           "colorR": 62,
@@ -831,6 +849,88 @@
                             ""
                           ]
                         }
+                      ],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 52,
+                            "g": 44,
+                            "r": 40,
+                            "textB": 255,
+                            "textG": 255,
+                            "textR": 255
+                          },
+                          "comment": "Muzzle fire"
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "CreateByName"
+                              },
+                              "parameters": [
+                                "",
+                                "MuzzleFires",
+                                "\"MuzzleFire\" + Players.BulletObjects::ProjectileObjectName()",
+                                "Players.MuzzleX()",
+                                "Players.MuzzleY()",
+                                "_CONSTANTS_.Layers.Main"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetAngle"
+                              },
+                              "parameters": [
+                                "MuzzleFires",
+                                "=",
+                                "CursorAngle"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "ChangePlan"
+                              },
+                              "parameters": [
+                                "MuzzleFires",
+                                "=",
+                                "MuzzleFires.Y()"
+                              ]
+                            }
+                          ],
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                                  },
+                                  "parameters": [
+                                    "abs(CursorAngle)",
+                                    ">",
+                                    "90"
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "FlippableCapability::FlippableBehavior::FlipY"
+                                  },
+                                  "parameters": [
+                                    "MuzzleFires",
+                                    "Flippable",
+                                    "yes"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
                       ]
                     }
                   ],
@@ -1154,74 +1254,56 @@
                   "conditions": [
                     {
                       "type": {
-                        "value": "BuiltinCommonInstructions::CompareStrings"
+                        "value": "StringVariable"
                       },
                       "parameters": [
-                        "Players.ObjectName()",
+                        "MAINGAME.Input.PlaceLandmine",
                         "=",
-                        "\"Players\""
+                        "_CONSTANTS_.InputState.Pressed"
                       ]
+                    },
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::Once"
+                      },
+                      "parameters": []
                     }
                   ],
-                  "actions": [],
-                  "events": [
+                  "actions": [
                     {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "StringVariable"
-                          },
-                          "parameters": [
-                            "MAINGAME.Input.PlaceLandmine",
-                            "=",
-                            "_CONSTANTS_.InputState.Pressed"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "BuiltinCommonInstructions::Once"
-                          },
-                          "parameters": []
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "CreateByName"
-                          },
-                          "parameters": [
-                            "",
-                            "Bombs",
-                            "Players.BombObjects::BombObjectName()",
-                            "Players.X()",
-                            "Players.Y()",
-                            "_CONSTANTS_.Layers.Main"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "MettreXY"
-                          },
-                          "parameters": [
-                            "Bombs",
-                            "+",
-                            "Bombs.Width() / 2",
-                            "+",
-                            "Bombs.Height() / 2"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "CustomBehaviors::Bomb::SetParentId"
-                          },
-                          "parameters": [
-                            "Bombs",
-                            "Bomb",
-                            "Players.Entity::Id()",
-                            ""
-                          ]
-                        }
+                      "type": {
+                        "value": "CreateByName"
+                      },
+                      "parameters": [
+                        "",
+                        "Bombs",
+                        "Players.BombObjects::BombObjectName()",
+                        "Players.X()",
+                        "Players.Y()",
+                        "_CONSTANTS_.Layers.Main"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "MettreXY"
+                      },
+                      "parameters": [
+                        "Bombs",
+                        "+",
+                        "Bombs.Width() / 2",
+                        "+",
+                        "Bombs.Height() / 2"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Bomb::SetParentId"
+                      },
+                      "parameters": [
+                        "Bombs",
+                        "Bomb",
+                        "Players.Entity::Id()",
+                        ""
                       ]
                     }
                   ]

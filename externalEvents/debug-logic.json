@@ -183,6 +183,36 @@
                 "+",
                 " \" \" + ToString(TotalTrails)"
               ]
+            },
+            {
+              "type": {
+                "value": "AjoutObjConcern"
+              },
+              "parameters": [
+                "",
+                "MuzzleFires"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "TotalDeleteables",
+                "=",
+                "PickedInstancesCount(MuzzleFires)"
+              ]
+            },
+            {
+              "type": {
+                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+              },
+              "parameters": [
+                "particlecount",
+                "Text",
+                "+",
+                " \" \" + ToString(TotalDeleteables)"
+              ]
             }
           ],
           "variables": [
@@ -193,6 +223,11 @@
             },
             {
               "name": "TotalTrails",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "TotalDeleteables",
               "type": "number",
               "value": 0
             }
