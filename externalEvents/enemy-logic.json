@@ -860,13 +860,32 @@
               "conditions": [
                 {
                   "type": {
-                    "inverted": true,
-                    "value": "CustomBehaviors::Tank::InRecoil"
+                    "value": "BuiltinCommonInstructions::Or"
                   },
-                  "parameters": [
-                    "Enemies",
-                    "Tank",
-                    ""
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "CustomBehaviors::Tank::InRecoil"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "Tank",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "CustomBehaviors::Tank::InShootCooldown"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "Tank",
+                        ""
+                      ]
+                    }
                   ]
                 }
               ],
@@ -1047,12 +1066,30 @@
               "conditions": [
                 {
                   "type": {
-                    "value": "CustomBehaviors::Tank::InRecoil"
+                    "value": "BuiltinCommonInstructions::Or"
                   },
-                  "parameters": [
-                    "Enemies",
-                    "Tank",
-                    ""
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Tank::InRecoil"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "Tank",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Tank::InShootCooldown"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "Tank",
+                        ""
+                      ]
+                    }
                   ]
                 }
               ],
@@ -1430,7 +1467,6 @@
                   ]
                 },
                 {
-                  "disabled": true,
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
                     {
@@ -1522,6 +1558,23 @@
                         "Bullets.Bullet::TotalBullets()",
                         ""
                       ]
+                    },
+                    {
+                      "type": {
+                        "value": "ShakeObject::ShakeObject_PositionAngleScale::ShakeObject_PositionAngleScale"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "ShakeObject_PositionAngleScale",
+                        "0.25",
+                        "5",
+                        "5",
+                        "0",
+                        "5",
+                        "0.085",
+                        "",
+                        ""
+                      ]
                     }
                   ],
                   "events": [
@@ -1572,6 +1625,18 @@
                             "MuzzleFires",
                             "=",
                             "MuzzleFires.Y()"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "CustomObjects::Tank::Flash"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "0.5",
+                            "Enemies.LookAngle()",
+                            "\"Yellow\"",
+                            ""
                           ]
                         }
                       ],

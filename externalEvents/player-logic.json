@@ -32,24 +32,6 @@
       "actions": [],
       "events": [
         {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "MettreXY"
-              },
-              "parameters": [
-                "NewSprite",
-                "=",
-                "Players.MuzzleX() - (NewSprite.Width() / 2)",
-                "=",
-                "Players.MuzzleY() - (NewSprite.Height() / 2)"
-              ]
-            }
-          ]
-        },
-        {
           "colorB": 82,
           "colorG": 68,
           "colorR": 62,
@@ -456,6 +438,51 @@
                           ]
                         }
                       ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 52,
+                        "g": 44,
+                        "r": 40,
+                        "textB": 255,
+                        "textG": 255,
+                        "textR": 255
+                      },
+                      "comment": "Light"
+                    },
+                    {
+                      "disabled": true,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "MettreXY"
+                          },
+                          "parameters": [
+                            "GroundLight",
+                            "=",
+                            "Cursor.X() - (GroundLight.Width() / 2)",
+                            "=",
+                            "Cursor.Y() - (GroundLight.Height() / 2)"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "SnapToGrid::SnapObjectToVirtualGrid"
+                          },
+                          "parameters": [
+                            "",
+                            "GroundLight",
+                            "1",
+                            "1",
+                            "",
+                            "",
+                            ""
+                          ]
+                        }
+                      ]
                     }
                   ],
                   "variables": [
@@ -848,6 +875,23 @@
                             "Bullets.Bullet::Cooldown()",
                             ""
                           ]
+                        },
+                        {
+                          "type": {
+                            "value": "ShakeObject::ShakeObject_PositionAngleScale::ShakeObject_PositionAngleScale"
+                          },
+                          "parameters": [
+                            "Players",
+                            "ShakeObject_PositionAngleScale",
+                            "0.25",
+                            "5",
+                            "5",
+                            "0",
+                            "5",
+                            "0.085",
+                            "",
+                            ""
+                          ]
                         }
                       ],
                       "events": [
@@ -898,6 +942,18 @@
                                 "MuzzleFires",
                                 "=",
                                 "MuzzleFires.Y()"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "CustomObjects::Tank::Flash"
+                              },
+                              "parameters": [
+                                "Players",
+                                "0.5",
+                                "Players.LookAngle()",
+                                "\"Yellow\"",
+                                ""
                               ]
                             }
                           ],
