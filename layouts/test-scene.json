@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": true,
-    "zoomFactor": 1.8593750000000608,
+    "zoomFactor": 2.5905833102472675,
     "windowMask": false
   },
   "objectsGroups": [
@@ -1545,8 +1545,8 @@
       "name": "HoleCollider",
       "persistentUuid": "b36d65b3-2549-48b8-876e-8d489b2bdbc4",
       "width": 48,
-      "x": 42,
-      "y": 74,
+      "x": 32,
+      "y": 64,
       "zOrder": 17,
       "numberProperties": [],
       "stringProperties": [],
@@ -1582,6 +1582,74 @@
       "x": 560,
       "y": 64,
       "zOrder": 22,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1,
+      "height": 96,
+      "keepRatio": true,
+      "layer": "Foreground",
+      "name": "TallGroundWall",
+      "persistentUuid": "3b8e744a-b3ab-47e3-8091-c3685e0f7798",
+      "width": 736,
+      "x": -48,
+      "y": 320,
+      "zOrder": 30,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1,
+      "height": 96,
+      "keepRatio": true,
+      "layer": "Foreground",
+      "name": "TallGroundWall",
+      "persistentUuid": "175452b0-a08a-4459-ae3a-c6af675bcf42",
+      "width": 736,
+      "x": -48,
+      "y": -64,
+      "zOrder": 28,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1,
+      "height": 352,
+      "keepRatio": true,
+      "layer": "Foreground",
+      "name": "TallGroundWall",
+      "persistentUuid": "71498476-37ec-43ae-95ff-107689b735c7",
+      "width": 80,
+      "x": -48,
+      "y": 0,
+      "zOrder": 29,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1,
+      "height": 352,
+      "keepRatio": true,
+      "layer": "Foreground",
+      "name": "TallGroundWall",
+      "persistentUuid": "8929352c-f1b8-4983-8166-6402930ad277",
+      "width": 80,
+      "x": 608,
+      "y": 0,
+      "zOrder": 29,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -2056,7 +2124,7 @@
       "assetStoreId": "",
       "name": "Player0",
       "type": "CustomObjects::Tank",
-      "variant": "",
+      "variant": "NewTankRed",
       "variables": [],
       "effects": [],
       "behaviors": [
@@ -4799,6 +4867,41 @@
                     "Tanks.BoundingBoxCenterX()",
                     "Tanks.BoundingBoxCenterY()"
                   ]
+                },
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "CustomObjects::Tank::IsFalling"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Tank::SetFall"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Tank::FallFinished"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    ""
+                  ]
                 }
               ],
               "actions": [
@@ -4939,8 +5042,25 @@
                           "parameters": [
                             "Tanks",
                             "0.5",
-                            "AuxAngle",
+                            "AuxAngle - 180",
                             "\"Red\"",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "ShakeObject::ShakeObject_PositionAngleScale::ShakeObject_PositionAngleScale"
+                          },
+                          "parameters": [
+                            "Tanks",
+                            "ShakeObject_PositionAngleScale",
+                            "0.3",
+                            "6",
+                            "6",
+                            "0",
+                            "6",
+                            "0.075",
+                            "",
                             ""
                           ]
                         }

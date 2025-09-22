@@ -6019,9 +6019,15 @@
           "type": "Choice",
           "label": "Collision shape",
           "group": "Collision",
-          "extraInformation": [
-            "Bounding disk",
-            "Dot at center"
+          "choices": [
+            {
+              "label": "Bounding disk",
+              "value": "Bounding disk"
+            },
+            {
+              "label": "Dot at center",
+              "value": "Dot at center"
+            }
           ],
           "name": "CollisionShape"
         },
@@ -6752,10 +6758,19 @@
           "value": "Top-Down",
           "type": "Choice",
           "label": "Viewpoint",
-          "extraInformation": [
-            "Top-Down",
-            "Isometry 2:1 (26.565°)",
-            "True Isometry (30°)"
+          "choices": [
+            {
+              "label": "Top-Down",
+              "value": "Top-Down"
+            },
+            {
+              "label": "Isometry 2:1 (26.565°)",
+              "value": "Isometry 2:1 (26.565°)"
+            },
+            {
+              "label": "True Isometry (30°)",
+              "value": "True Isometry (30°)"
+            }
           ],
           "name": "Viewpoint"
         },
@@ -7520,6 +7535,7 @@
           "extraInformation": [
             "AnimatableCapability::AnimatableBehavior"
           ],
+          "choices": [],
           "name": "Animation"
         },
         {
@@ -7529,6 +7545,7 @@
           "extraInformation": [
             "NavMeshPathfinding::NavMeshPathfindingBehavior"
           ],
+          "choices": [],
           "name": "NavMeshPathfinding"
         },
         {

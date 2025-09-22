@@ -3,6 +3,17 @@
   "name": "Player Logic",
   "events": [
     {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Player logic",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [],
+      "parameters": []
+    },
+    {
       "type": "BuiltinCommonInstructions::Comment",
       "color": {
         "b": 52,
@@ -32,19 +43,28 @@
       "actions": [],
       "events": [
         {
-          "colorB": 82,
-          "colorG": 68,
-          "colorR": 62,
-          "creationTime": 0,
-          "name": "Player logic",
-          "source": "",
-          "type": "BuiltinCommonInstructions::Group",
+          "folded": true,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": true,
+                "value": "CustomObjects::Tank::IsFalling"
+              },
+              "parameters": [
+                "Players",
+                ""
+              ]
+            }
+          ],
+          "actions": [],
           "events": [
             {
               "colorB": 82,
               "colorG": 68,
               "colorR": 62,
               "creationTime": 0,
+              "folded": true,
               "name": "Sight",
               "source": "",
               "type": "BuiltinCommonInstructions::Group",
@@ -661,6 +681,7 @@
               "colorG": 68,
               "colorR": 62,
               "creationTime": 0,
+              "folded": true,
               "name": "Shoot",
               "source": "",
               "type": "BuiltinCommonInstructions::Group",
@@ -1028,6 +1049,7 @@
               "colorG": 68,
               "colorR": 62,
               "creationTime": 0,
+              "folded": true,
               "name": "Move",
               "source": "",
               "type": "BuiltinCommonInstructions::Group",
@@ -1301,6 +1323,7 @@
               "colorG": 68,
               "colorR": 62,
               "creationTime": 0,
+              "folded": true,
               "name": "Place landmine",
               "source": "",
               "type": "BuiltinCommonInstructions::Group",
@@ -1409,8 +1432,73 @@
                 }
               ]
             }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CustomObjects::Tank::IsFalling"
+              },
+              "parameters": [
+                "Players",
+                ""
+              ]
+            }
           ],
-          "parameters": []
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 255,
+                "textG": 255,
+                "textR": 255
+              },
+              "comment": "Move the cursor away"
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "MettreXY"
+                  },
+                  "parameters": [
+                    "Cursor",
+                    "=",
+                    "-1000",
+                    "=",
+                    "-100"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "CursorPoint",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "MettreXY"
+                  },
+                  "parameters": [
+                    "CursorPoint",
+                    "=",
+                    "-1000",
+                    "=",
+                    "-1000"
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },

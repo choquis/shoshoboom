@@ -120,10 +120,19 @@
           "type": "Choice",
           "label": "Name of bullet objects",
           "description": "This is a list of all the bullet objects that can be used",
-          "extraInformation": [
-            "TestBullet",
-            "DefaultBullet",
-            "LongBullet"
+          "choices": [
+            {
+              "label": "TestBullet",
+              "value": "TestBullet"
+            },
+            {
+              "label": "DefaultBullet",
+              "value": "DefaultBullet"
+            },
+            {
+              "label": "LongBullet",
+              "value": "LongBullet"
+            }
           ],
           "name": "ObjectName"
         }
@@ -226,10 +235,19 @@
           "type": "Choice",
           "label": "Name of bomb objects",
           "description": "This is a list of all the bomb objects that can be used",
-          "extraInformation": [
-            "DefaultLandmine",
-            "IntelligentLandmine",
-            "InvisibleLandmine"
+          "choices": [
+            {
+              "label": "DefaultLandmine",
+              "value": "DefaultLandmine"
+            },
+            {
+              "label": "IntelligentLandmine",
+              "value": "IntelligentLandmine"
+            },
+            {
+              "label": "InvisibleLandmine",
+              "value": "InvisibleLandmine"
+            }
           ],
           "name": "ObjectName"
         }
@@ -699,6 +717,7 @@
           "extraInformation": [
             "CustomBehaviors::Entity"
           ],
+          "choices": [],
           "name": "EntityBehavior"
         },
         {
@@ -1079,16 +1098,43 @@
           "type": "Choice",
           "label": "Type",
           "description": "Entity type",
-          "extraInformation": [
-            "Tank",
-            "Wall",
-            "Bullet",
-            "Resource",
-            "Explosion",
-            "Obstacle",
-            "Bomb",
-            "Spawner",
-            "Logic Zone"
+          "choices": [
+            {
+              "label": "Tank",
+              "value": "Tank"
+            },
+            {
+              "label": "Wall",
+              "value": "Wall"
+            },
+            {
+              "label": "Bullet",
+              "value": "Bullet"
+            },
+            {
+              "label": "Resource",
+              "value": "Resource"
+            },
+            {
+              "label": "Explosion",
+              "value": "Explosion"
+            },
+            {
+              "label": "Obstacle",
+              "value": "Obstacle"
+            },
+            {
+              "label": "Bomb",
+              "value": "Bomb"
+            },
+            {
+              "label": "Spawner",
+              "value": "Spawner"
+            },
+            {
+              "label": "Logic Zone",
+              "value": "Logic Zone"
+            }
           ],
           "name": "Type"
         },
@@ -1779,6 +1825,7 @@
           "extraInformation": [
             "CustomBehaviors::Entity"
           ],
+          "choices": [],
           "name": "EntityBehavior"
         },
         {
@@ -1789,6 +1836,7 @@
           "extraInformation": [
             "CustomBehaviors::BulletObjects"
           ],
+          "choices": [],
           "name": "BulletObjects"
         },
         {
@@ -1799,6 +1847,7 @@
           "extraInformation": [
             "CustomBehaviors::BombObjects"
           ],
+          "choices": [],
           "name": "BombObjects"
         },
         {
@@ -3016,6 +3065,7 @@
           "extraInformation": [
             "CustomBehaviors::Entity"
           ],
+          "choices": [],
           "name": "EntityBehavior"
         },
         {
@@ -3094,6 +3144,7 @@
           "extraInformation": [
             "CustomBehaviors::Entity"
           ],
+          "choices": [],
           "name": "EntityBehavior"
         }
       ],
@@ -3114,6 +3165,7 @@
           "extraInformation": [
             "CustomBehaviors::Entity"
           ],
+          "choices": [],
           "name": "EntityBehavior"
         }
       ],
@@ -3718,6 +3770,7 @@
           "extraInformation": [
             "CustomBehaviors::Entity"
           ],
+          "choices": [],
           "name": "EntityBehavior"
         },
         {
@@ -3733,9 +3786,15 @@
           "type": "Choice",
           "label": "Damage type",
           "description": "The type of damage this deal to damageable",
-          "extraInformation": [
-            "Bullet",
-            "Explosion"
+          "choices": [
+            {
+              "label": "Bullet",
+              "value": "Bullet"
+            },
+            {
+              "label": "Explosion",
+              "value": "Explosion"
+            }
           ],
           "name": "DamageType"
         },
@@ -3785,6 +3844,7 @@
           "extraInformation": [
             "CustomBehaviors::Entity"
           ],
+          "choices": [],
           "name": "EntityBehavior"
         }
       ],
@@ -4805,6 +4865,7 @@
           "extraInformation": [
             "CustomBehaviors::Entity"
           ],
+          "choices": [],
           "name": "EntityBehavior"
         },
         {
@@ -5244,6 +5305,7 @@
           "extraInformation": [
             "CustomBehaviors::Entity"
           ],
+          "choices": [],
           "name": "EntityBehavior"
         }
       ],
