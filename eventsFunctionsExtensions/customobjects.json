@@ -22439,12 +22439,12 @@
           "behaviors": [],
           "animations": [
             {
-              "name": "fall0",
+              "name": "Fall0",
               "useMultipleDirections": false,
               "directions": [
                 {
                   "looping": false,
-                  "timeBetweenFrames": 0.15,
+                  "timeBetweenFrames": 0.12,
                   "sprites": [
                     {
                       "hasCustomCollisionMask": true,
@@ -22520,6 +22520,114 @@
                     },
                     {
                       "hasCustomCollisionMask": true,
+                      "image": "assets\\Player\\new_red_tank\\fall\\new_red_tank_fall_17.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 2,
+                            "y": 2
+                          },
+                          {
+                            "x": 32,
+                            "y": 2
+                          },
+                          {
+                            "x": 32,
+                            "y": 32
+                          },
+                          {
+                            "x": 2,
+                            "y": 32
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\Player\\new_red_tank\\fall\\new_red_tank_fall_18.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 2,
+                            "y": 2
+                          },
+                          {
+                            "x": 32,
+                            "y": 2
+                          },
+                          {
+                            "x": 32,
+                            "y": 32
+                          },
+                          {
+                            "x": 2,
+                            "y": 32
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\Player\\new_red_tank\\fall\\new_red_tank_fall_19.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 2,
+                            "y": 2
+                          },
+                          {
+                            "x": 32,
+                            "y": 2
+                          },
+                          {
+                            "x": 32,
+                            "y": 32
+                          },
+                          {
+                            "x": 2,
+                            "y": 32
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
                       "image": "Transparent",
                       "points": [],
                       "originPoint": {
@@ -22559,7 +22667,7 @@
               ]
             },
             {
-              "name": "fall1",
+              "name": "Fall1",
               "useMultipleDirections": false,
               "directions": [
                 {
@@ -22679,7 +22787,7 @@
               ]
             },
             {
-              "name": "fall2",
+              "name": "Fall2",
               "useMultipleDirections": false,
               "directions": [
                 {
@@ -22799,7 +22907,7 @@
               ]
             },
             {
-              "name": "fall3",
+              "name": "Fall3",
               "useMultipleDirections": false,
               "directions": [
                 {
@@ -24502,6 +24610,17 @@
                       "parameters": [
                         "FallSprites",
                         "no"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                      },
+                      "parameters": [
+                        "FallSprites",
+                        "Animation",
+                        "=",
+                        "\"Fall0\""
                       ]
                     }
                   ]
@@ -34818,26 +34937,7 @@
               "type": "Sprite",
               "updateIfNotVisible": false,
               "variables": [],
-              "effects": [
-                {
-                  "effectType": "DropShadow",
-                  "name": "DropShadow",
-                  "doubleParameters": {
-                    "alpha": 0.5,
-                    "blur": 0,
-                    "distance": 2,
-                    "padding": 2,
-                    "quality": 0,
-                    "rotation": 45
-                  },
-                  "stringParameters": {
-                    "color": "24;8;40"
-                  },
-                  "booleanParameters": {
-                    "shadowOnly": false
-                  }
-                }
-              ],
+              "effects": [],
               "behaviors": [],
               "animations": [
                 {
@@ -41992,7 +42092,6 @@
               "adaptCollisionMaskAutomatically": true,
               "assetStoreId": "",
               "name": "FallSprites",
-              "persistentUuid": "086045f8-7264-4b67-beb2-415884a177fb",
               "type": "Sprite",
               "updateIfNotVisible": false,
               "variables": [],
@@ -42005,7 +42104,7 @@
                   "directions": [
                     {
                       "looping": false,
-                      "timeBetweenFrames": 0.15,
+                      "timeBetweenFrames": 0.12,
                       "sprites": [
                         {
                           "hasCustomCollisionMask": true,
@@ -42046,6 +42145,114 @@
                         {
                           "hasCustomCollisionMask": true,
                           "image": "assets\\Player\\new_red_tank\\fall\\new_red_tank_fall_12.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 2,
+                                "y": 2
+                              },
+                              {
+                                "x": 32,
+                                "y": 2
+                              },
+                              {
+                                "x": 32,
+                                "y": 32
+                              },
+                              {
+                                "x": 2,
+                                "y": 32
+                              }
+                            ]
+                          ]
+                        },
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\fall\\new_red_tank_fall_17.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 2,
+                                "y": 2
+                              },
+                              {
+                                "x": 32,
+                                "y": 2
+                              },
+                              {
+                                "x": 32,
+                                "y": 32
+                              },
+                              {
+                                "x": 2,
+                                "y": 32
+                              }
+                            ]
+                          ]
+                        },
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\fall\\new_red_tank_fall_18.png",
+                          "points": [],
+                          "originPoint": {
+                            "name": "origine",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "centerPoint": {
+                            "automatic": true,
+                            "name": "centre",
+                            "x": 0,
+                            "y": 0
+                          },
+                          "customCollisionMask": [
+                            [
+                              {
+                                "x": 2,
+                                "y": 2
+                              },
+                              {
+                                "x": 32,
+                                "y": 2
+                              },
+                              {
+                                "x": 32,
+                                "y": 32
+                              },
+                              {
+                                "x": 2,
+                                "y": 32
+                              }
+                            ]
+                          ]
+                        },
+                        {
+                          "hasCustomCollisionMask": true,
+                          "image": "assets\\Player\\new_red_tank\\fall\\new_red_tank_fall_19.png",
                           "points": [],
                           "originPoint": {
                             "name": "origine",
