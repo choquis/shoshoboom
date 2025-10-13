@@ -9,7 +9,7 @@
   "title": "",
   "v": 0,
   "uiSettings": {
-    "grid": true,
+    "grid": false,
     "gridType": "rectangular",
     "gridWidth": 16,
     "gridHeight": 16,
@@ -17,9 +17,10 @@
     "gridOffsetY": 0,
     "gridColor": 10401023,
     "gridAlpha": 0.8,
-    "snap": true,
-    "zoomFactor": 1.9220737387430078,
-    "windowMask": false
+    "snap": false,
+    "zoomFactor": 1.6832856250746775,
+    "windowMask": false,
+    "selectedLayer": ""
   },
   "objectsGroups": [
     {
@@ -100,6 +101,9 @@
         },
         {
           "name": "Player1"
+        },
+        {
+          "name": "TankGray"
         }
       ]
     },
@@ -151,6 +155,9 @@
         },
         {
           "name": "Player1"
+        },
+        {
+          "name": "TankGray"
         }
       ]
     },
@@ -249,6 +256,9 @@
         },
         {
           "name": "Player1"
+        },
+        {
+          "name": "TankGray"
         }
       ]
     },
@@ -266,6 +276,9 @@
         },
         {
           "name": "Player1"
+        },
+        {
+          "name": "TankGray"
         }
       ]
     },
@@ -291,6 +304,9 @@
         },
         {
           "name": "GroundTrailsPlayer1"
+        },
+        {
+          "name": "GroundTrailsTankGray"
         }
       ]
     },
@@ -347,6 +363,9 @@
         },
         {
           "name": "Player1"
+        },
+        {
+          "name": "TankGray"
         }
       ]
     },
@@ -369,6 +388,9 @@
         },
         {
           "name": "TankGreenSpawner"
+        },
+        {
+          "name": "TankGraySpawner"
         }
       ]
     },
@@ -386,6 +408,9 @@
         },
         {
           "name": "Player1"
+        },
+        {
+          "name": "TankGray"
         }
       ]
     },
@@ -397,6 +422,9 @@
         },
         {
           "name": "TankGreen"
+        },
+        {
+          "name": "TankGray"
         }
       ]
     },
@@ -408,6 +436,9 @@
         },
         {
           "name": "TankGreen"
+        },
+        {
+          "name": "TankGray"
         }
       ]
     },
@@ -1080,27 +1111,11 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "TankGreenSpawner",
-      "persistentUuid": "016773a3-eb52-4210-9e3f-69bee4cdc4d7",
-      "width": 0,
-      "x": 496,
-      "y": 96,
-      "zOrder": 18,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
       "name": "TankBlueSpawner",
       "persistentUuid": "d9435d0c-846f-4eb0-81e4-5e0dd0226053",
       "width": 0,
-      "x": 496,
-      "y": 208,
+      "x": 468,
+      "y": 211,
       "zOrder": 18,
       "numberProperties": [],
       "stringProperties": [],
@@ -1486,23 +1501,6 @@
       "angle": 0,
       "customSize": true,
       "depth": 1,
-      "height": 133,
-      "keepRatio": true,
-      "layer": "",
-      "name": "GroundLight",
-      "persistentUuid": "f232a307-f5e7-4b28-9dfd-b2597f4592c8",
-      "width": 204,
-      "x": 80,
-      "y": -293,
-      "zOrder": 23,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": true,
-      "depth": 1,
       "height": 432,
       "keepRatio": true,
       "layer": "",
@@ -1520,13 +1518,13 @@
       "angle": 0,
       "customSize": true,
       "depth": 64,
-      "height": 32,
+      "height": 25,
       "layer": "Main",
       "name": "HoleCollider",
       "persistentUuid": "113be7e6-ec27-40dd-8800-886c331201ae",
       "width": 576,
       "x": 32,
-      "y": 288,
+      "y": 295,
       "zOrder": 17,
       "numberProperties": [],
       "stringProperties": [],
@@ -1646,6 +1644,22 @@
       "x": 608,
       "y": 0,
       "zOrder": -99,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "TankGraySpawner",
+      "persistentUuid": "26a09f8a-b4c6-44f1-8015-61d8e88f3325",
+      "width": 0,
+      "x": 459,
+      "y": 93,
+      "zOrder": 28,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -3835,6 +3849,130 @@
           ]
         }
       ]
+    },
+    {
+      "assetStoreId": "",
+      "name": "TankGray",
+      "type": "CustomObjects::Tank",
+      "variant": "NewTankGray",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "BombObjects",
+          "type": "CustomBehaviors::BombObjects",
+          "ObjectName": "DefaultLandmine"
+        },
+        {
+          "name": "BulletObjects",
+          "type": "CustomBehaviors::BulletObjects",
+          "ObjectName": "DefaultBullet"
+        },
+        {
+          "name": "Damageable",
+          "type": "CustomBehaviors::Damageable",
+          "EntityBehavior": "Entity",
+          "Health": 200,
+          "CurrentHealth": 2.0247e-320,
+          "ImmuneDamage": "Bullet"
+        },
+        {
+          "name": "EnemyIA",
+          "type": "CustomBehaviors::EnemyIA",
+          "State": "idle",
+          "CannonRotationDelay": 1,
+          "MovementDelay": 2,
+          "ShootDelay": 1
+        },
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 9.854645721257145e+165,
+          "Type": "Tank"
+        },
+        {
+          "name": "NavMeshPathfindingBehavior",
+          "type": "NavMeshPathfinding::NavMeshPathfindingBehavior",
+          "Acceleration": 400,
+          "MaxSpeed": 50,
+          "AngularMaxSpeed": 180,
+          "RotateObject": false,
+          "AngleOffset": 0,
+          "CollisionShape": "Dot at center",
+          "ExtraBorder": 12
+        },
+        {
+          "name": "ShakeObject_PositionAngleScale",
+          "type": "ShakeObject::ShakeObject_PositionAngleScale",
+          "Scale": "Scale"
+        },
+        {
+          "name": "Tank",
+          "type": "CustomBehaviors::Tank",
+          "EntityBehavior": "Entity",
+          "BulletObjects": "BulletObjects",
+          "MoveSpeed": 70,
+          "BombObjects": "BombObjects"
+        },
+        {
+          "name": "Trails",
+          "type": "CustomBehaviors::Trails",
+          "SpawnByTime": false,
+          "SpawnCooldown": 1,
+          "SpawnDistance": 16,
+          "Spawn": false,
+          "DistanceMoved": 0,
+          "OldX": 2.0247e-320,
+          "OldY": 2.0247e-320
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "content": {
+        "CannonRotationSpeed": 2,
+        "BodyRotationSpeed": 0.3
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "GroundTrailsTankGray",
+      "type": "CustomObjects::GroundTrails",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "Tint": "101;134;61"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "TankGraySpawner",
+      "type": "CustomObjects::Hidden",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 2.54639494916e-313,
+          "Type": "Spawner",
+          "SpawnerId": 2.54639515163e-313
+        },
+        {
+          "name": "Spawner",
+          "type": "CustomBehaviors::Spawner",
+          "ObjectName": "TankGray",
+          "LimitPerScene": 1,
+          "SpawnCooldown": 3,
+          "CurrentCount": 0,
+          "EntityBehavior": "Entity"
+        }
+      ],
+      "content": {}
     }
   ],
   "objectsFolderStructure": {
@@ -3908,6 +4046,12 @@
           },
           {
             "objectName": "GroundTrailsTankBlue"
+          },
+          {
+            "objectName": "TankGray"
+          },
+          {
+            "objectName": "GroundTrailsTankGray"
           },
           {
             "objectName": "Player0"
@@ -4005,6 +4149,9 @@
           },
           {
             "objectName": "TankBlueSpawner"
+          },
+          {
+            "objectName": "TankGraySpawner"
           },
           {
             "objectName": "TankGreenSpawner"
@@ -4838,7 +4985,6 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
-      "folded": true,
       "name": "Holes logic",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -5811,6 +5957,7 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "folded": true,
       "name": "Deleteables",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
