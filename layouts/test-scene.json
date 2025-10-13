@@ -1471,13 +1471,13 @@
       "depth": 1,
       "height": 224,
       "keepRatio": true,
-      "layer": "Main",
+      "layer": "Background",
       "name": "Grass03",
       "persistentUuid": "2981f150-d905-4ad9-9c07-9be222286508",
       "width": 480,
       "x": 80,
       "y": 64,
-      "zOrder": 1,
+      "zOrder": -1,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -3135,7 +3135,7 @@
       "assetStoreId": "",
       "name": "Player1",
       "type": "CustomObjects::Tank",
-      "variant": "NewTankBlue",
+      "variant": "NewTankRed",
       "variables": [],
       "effects": [],
       "behaviors": [
@@ -4084,83 +4084,6 @@
             "includeConfig": 0
           },
           "target": "Main Game UI Logic"
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "BooleanVariable"
-              },
-              "parameters": [
-                "EditorOn",
-                "False",
-                ""
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "ChangeLayerTimeScale"
-              },
-              "parameters": [
-                "",
-                "\"Main\"",
-                "1"
-              ]
-            }
-          ],
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Link",
-              "include": {
-                "includeConfig": 0
-              },
-              "target": "Input Logic"
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "BooleanVariable"
-              },
-              "parameters": [
-                "EditorOn",
-                "True",
-                ""
-              ]
-            }
-          ],
-          "actions": [],
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Once"
-                  },
-                  "parameters": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "ChangeLayerTimeScale"
-                  },
-                  "parameters": [
-                    "",
-                    "\"Main\"",
-                    "0"
-                  ]
-                }
-              ]
-            }
-          ]
         }
       ],
       "parameters": []
@@ -4209,6 +4132,29 @@
       ],
       "actions": [],
       "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "ChangeLayerTimeScale"
+              },
+              "parameters": [
+                "",
+                "\"Main\"",
+                "1"
+              ]
+            }
+          ]
+        },
         {
           "disabled": true,
           "type": "BuiltinCommonInstructions::Standard",
@@ -4277,6 +4223,13 @@
           "include": {
             "includeConfig": 0
           },
+          "target": "Input Logic"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
+          },
           "target": "Player Logic"
         },
         {
@@ -4285,6 +4238,47 @@
             "includeConfig": 0
           },
           "target": "Enemy Logic"
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "BooleanVariable"
+          },
+          "parameters": [
+            "EditorOn",
+            "True",
+            ""
+          ]
+        }
+      ],
+      "actions": [],
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "ChangeLayerTimeScale"
+              },
+              "parameters": [
+                "",
+                "\"Main\"",
+                "0"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -4341,6 +4335,7 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "folded": true,
       "name": "Begin scene",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -4413,6 +4408,7 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "folded": true,
       "name": "Bullets logic",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -4724,6 +4720,7 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "folded": true,
       "name": "Bomb logic",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -4841,6 +4838,7 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "folded": true,
       "name": "Holes logic",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -5095,6 +5093,7 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "folded": true,
       "name": "Damageables death",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -5145,6 +5144,7 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "folded": true,
       "name": "Obstacles updates",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -5254,7 +5254,6 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
-      "folded": true,
       "name": "Trails updates",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -5405,6 +5404,7 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "folded": true,
       "name": "Spawners",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -5992,7 +5992,7 @@
       "isLocked": false,
       "name": "Background",
       "renderingType": "",
-      "visibility": false,
+      "visibility": true,
       "cameras": [],
       "effects": []
     },
@@ -6016,7 +6016,7 @@
           "effectType": "BlendingMode",
           "name": "Effect",
           "doubleParameters": {
-            "blendmode": 2,
+            "blendmode": 0,
             "opacity": 1
           },
           "stringParameters": {},
