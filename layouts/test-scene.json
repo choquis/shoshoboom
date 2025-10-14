@@ -287,6 +287,12 @@
       "objects": [
         {
           "name": "DefaultBullet"
+        },
+        {
+          "name": "LongBullet"
+        },
+        {
+          "name": "Player0Death"
         }
       ]
     },
@@ -318,6 +324,9 @@
         },
         {
           "name": "SmokeTrailsLongBullet"
+        },
+        {
+          "name": "SmokeTrailsPlayer0Death"
         }
       ]
     },
@@ -487,6 +496,17 @@
         },
         {
           "name": "MuzzleFireDefaultBullet"
+        },
+        {
+          "name": "Player0Death"
+        }
+      ]
+    },
+    {
+      "name": "DeathObjects",
+      "objects": [
+        {
+          "name": "Player0Death"
         }
       ]
     }
@@ -2133,6 +2153,7 @@
     {
       "assetStoreId": "",
       "name": "Player0",
+      "persistentUuid": "2f6635e7-e549-412c-9f46-70bbed17e590",
       "type": "CustomObjects::Tank",
       "variant": "NewTankRed",
       "variables": [],
@@ -2154,7 +2175,7 @@
           "EntityBehavior": "Entity",
           "Health": 200,
           "CurrentHealth": 2.0247e-320,
-          "ImmuneDamage": "Bullet"
+          "ImmuneDamage": ""
         },
         {
           "name": "Entity",
@@ -2592,6 +2613,7 @@
     {
       "assetStoreId": "",
       "name": "SmokeTrailsDefaultBullet",
+      "persistentUuid": "118c33d5-69b5-4ec2-9cda-586047e961ef",
       "type": "CustomObjects::SmokeTrails",
       "variant": "",
       "variables": [],
@@ -2719,6 +2741,7 @@
     {
       "assetStoreId": "",
       "name": "TankBlue",
+      "persistentUuid": "b097e1a5-cb79-40ba-970d-e00960c72be5",
       "type": "CustomObjects::Tank",
       "variant": "NewTankBlue",
       "variables": [],
@@ -2740,7 +2763,7 @@
           "EntityBehavior": "Entity",
           "Health": 200,
           "CurrentHealth": 2.0247e-320,
-          "ImmuneDamage": "Bullet"
+          "ImmuneDamage": ""
         },
         {
           "name": "EnemyIA",
@@ -2804,8 +2827,9 @@
     {
       "assetStoreId": "",
       "name": "TankGreen",
+      "persistentUuid": "530fd1a5-7284-4824-b096-1579364c8dd9",
       "type": "CustomObjects::Tank",
-      "variant": "TankGreen",
+      "variant": "NewTankGreen",
       "variables": [],
       "effects": [],
       "behaviors": [
@@ -2825,7 +2849,7 @@
           "EntityBehavior": "Entity",
           "Health": 200,
           "CurrentHealth": 2.0247e-320,
-          "ImmuneDamage": "Bullet"
+          "ImmuneDamage": ""
         },
         {
           "name": "EnemyIA",
@@ -3169,7 +3193,7 @@
           "EntityBehavior": "Entity",
           "Health": 200,
           "CurrentHealth": 2.0247e-320,
-          "ImmuneDamage": "Bullet"
+          "ImmuneDamage": ""
         },
         {
           "name": "Entity",
@@ -3874,7 +3898,7 @@
           "EntityBehavior": "Entity",
           "Health": 200,
           "CurrentHealth": 2.0247e-320,
-          "ImmuneDamage": "Bullet"
+          "ImmuneDamage": ""
         },
         {
           "name": "EnemyIA",
@@ -3973,6 +3997,120 @@
         }
       ],
       "content": {}
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "Player0Death",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Deleteable",
+          "type": "CustomBehaviors::Deleteable",
+          "DeleteTime": 5,
+          "DeleteDeltaTime": 1.00000000000091
+        },
+        {
+          "name": "Physics2",
+          "type": "Physics2::Physics2Behavior",
+          "bodyType": "Dynamic",
+          "bullet": false,
+          "fixedRotation": false,
+          "canSleep": true,
+          "shape": "Box",
+          "shapeDimensionA": 0,
+          "shapeDimensionB": 0,
+          "shapeOffsetX": 0,
+          "shapeOffsetY": 0,
+          "polygonOrigin": "Center",
+          "vertices": [],
+          "density": 1,
+          "friction": 0.3,
+          "restitution": 0.1,
+          "linearDamping": 0.1,
+          "angularDamping": 0.1,
+          "gravityScale": 1,
+          "layers": 1,
+          "masks": 1
+        },
+        {
+          "name": "Trails",
+          "type": "CustomBehaviors::Trails",
+          "SpawnByTime": false,
+          "SpawnCooldown": 1,
+          "SpawnDistance": 8,
+          "Spawn": false,
+          "DistanceMoved": 0,
+          "OldX": 2.0247e-320,
+          "OldY": 2.0247e-320
+        }
+      ],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Player\\monkey\\death_1.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 4,
+                        "y": 1
+                      },
+                      {
+                        "x": 30,
+                        "y": 1
+                      },
+                      {
+                        "x": 30,
+                        "y": 28
+                      },
+                      {
+                        "x": 4,
+                        "y": 28
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetStoreId": "",
+      "name": "SmokeTrailsPlayer0Death",
+      "persistentUuid": "32422d3c-20c3-4a3d-af1e-22952cc21960",
+      "type": "CustomObjects::SmokeTrails",
+      "variant": "DeathSmoke",
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "FadeOutDuration": 0.6
+      }
     }
   ],
   "objectsFolderStructure": {
@@ -4055,6 +4193,12 @@
           },
           {
             "objectName": "Player0"
+          },
+          {
+            "objectName": "Player0Death"
+          },
+          {
+            "objectName": "SmokeTrailsPlayer0Death"
           },
           {
             "objectName": "GroundTrailsPlayer0"
@@ -5047,10 +5191,14 @@
               "actions": [
                 {
                   "type": {
-                    "value": "Delete"
+                    "value": "CustomBehaviors::Damageable::DealDamage"
                   },
                   "parameters": [
                     "Tanks",
+                    "Damageable",
+                    "100000",
+                    "HoleCollider.Entity::Id()",
+                    "\"Hole\"",
                     ""
                   ]
                 }
@@ -5239,7 +5387,6 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
-      "folded": true,
       "name": "Damageables death",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -5258,14 +5405,77 @@
               ]
             }
           ],
-          "actions": [
+          "actions": [],
+          "events": [
             {
-              "type": {
-                "value": "Delete"
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 255,
+                "textG": 255,
+                "textR": 255
               },
-              "parameters": [
-                "Damageable",
-                ""
+              "comment": "If is a tank, start death animation"
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Entity::HasId"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    "Entity",
+                    "Damageable.Entity::Id()",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CreateByName"
+                  },
+                  "parameters": [
+                    "",
+                    "DeathObjects",
+                    "Tanks.ObjectName() + \"Death\"",
+                    "Damageable.X()",
+                    "Damageable.Y()",
+                    "_CONSTANTS_.Layers.Main"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Physics2::ApplyPolarForce"
+                  },
+                  "parameters": [
+                    "DeathObjects",
+                    "Physics2",
+                    "-RandomFloatInRange(60, 120)",
+                    "50",
+                    "",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Damageable",
+                    ""
+                  ]
+                }
               ]
             }
           ]
@@ -5957,7 +6167,6 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
-      "folded": true,
       "name": "Deleteables",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -6314,6 +6523,15 @@
     {
       "name": "PathfindingObstacle",
       "type": "PathfindingBehavior::PathfindingObstacleBehavior"
+    },
+    {
+      "name": "Physics2",
+      "type": "Physics2::Physics2Behavior",
+      "gravityX": 0,
+      "gravityY": 9.8,
+      "worldScale": 100,
+      "scaleX": 100,
+      "scaleY": 100
     },
     {
       "name": "RectangleMovement",
