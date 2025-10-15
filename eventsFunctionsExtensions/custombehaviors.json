@@ -7184,6 +7184,66 @@
           "objectGroups": []
         },
         {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "doStepPreEvents",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanVariable"
+                  },
+                  "parameters": [
+                    "FadeOut",
+                    "True",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "TimeFromStart()",
+                    ">",
+                    "DeleteDeltaTime - FadeOutStartAt"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "OpacityCapability::OpacityBehavior::SetValue"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Opacity",
+                    "=",
+                    "(DeleteDeltaTime - TimeFromStart()) * (255 / FadeOutStartAt)"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Deleteable",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
           "description": "Get the objects with the timer greater than the scene timer + deletetime",
           "fullName": "Should be deleted",
           "functionType": "Condition",
@@ -7267,10 +7327,34 @@
         },
         {
           "value": "",
+          "type": "Boolean",
+          "label": "",
+          "description": "Apply fade out effect before deletion",
+          "name": "FadeOut"
+        },
+        {
+          "value": "0.5",
+          "type": "Number",
+          "label": "",
+          "description": "Time before the fade out start",
+          "name": "FadeOutStartAt"
+        },
+        {
+          "value": "1",
           "type": "Number",
           "label": "",
           "hidden": true,
           "name": "DeleteDeltaTime"
+        },
+        {
+          "value": "",
+          "type": "Behavior",
+          "label": "",
+          "extraInformation": [
+            "OpacityCapability::OpacityBehavior"
+          ],
+          "choices": [],
+          "name": "Opacity"
         }
       ],
       "sharedPropertyDescriptors": []

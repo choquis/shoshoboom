@@ -518,6 +518,9 @@
         },
         {
           "name": "MediumExplosion"
+        },
+        {
+          "name": "ExplosionCrack"
         }
       ]
     }
@@ -2886,7 +2889,9 @@
           "name": "Deleteable",
           "type": "CustomBehaviors::Deleteable",
           "DeleteTime": 1,
-          "DeleteDeltaTime": 1.00000000000091
+          "DeleteDeltaTime": 1.00000000000091,
+          "Property": "Opacity",
+          "Opacity": "Opacity"
         }
       ],
       "animations": [
@@ -3390,7 +3395,9 @@
           "name": "Deleteable",
           "type": "CustomBehaviors::Deleteable",
           "DeleteTime": 5,
-          "DeleteDeltaTime": 1.00000000000091
+          "DeleteDeltaTime": 1.00000000000091,
+          "Property": "Opacity",
+          "Opacity": "Opacity"
         },
         {
           "name": "Physics2",
@@ -3552,7 +3559,9 @@
           "name": "Deleteable",
           "type": "CustomBehaviors::Deleteable",
           "DeleteTime": 1,
-          "DeleteDeltaTime": 1.00000000000091
+          "DeleteDeltaTime": 1.00000000000091,
+          "Property": "Opacity",
+          "Opacity": "Opacity"
         }
       ],
       "animations": [
@@ -3957,6 +3966,142 @@
       "content": {
         "ActiveCollision": true
       }
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "ExplosionCrack",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [
+        {
+          "effectType": "Adjustment",
+          "name": "Effect",
+          "doubleParameters": {
+            "alpha": 1,
+            "blue": 1,
+            "brightness": 1,
+            "contrast": 1,
+            "gamma": 1,
+            "green": 1,
+            "red": 1,
+            "saturation": 1
+          },
+          "stringParameters": {},
+          "booleanParameters": {}
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Deleteable",
+          "type": "CustomBehaviors::Deleteable",
+          "DeleteTime": 8,
+          "DeleteDeltaTime": 1.00000000000091,
+          "Property": "Opacity",
+          "Opacity": "Opacity",
+          "FadeOut": true,
+          "FadeOutStartAt": 3
+        }
+      ],
+      "animations": [
+        {
+          "name": "brown",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\explosion_crack_1.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 20,
+                    "y": 20
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 1,
+                        "y": 6
+                      },
+                      {
+                        "x": 39,
+                        "y": 6
+                      },
+                      {
+                        "x": 39,
+                        "y": 37
+                      },
+                      {
+                        "x": 1,
+                        "y": 37
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "green",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\explosion_crack_2.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 20,
+                    "y": 20
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 1,
+                        "y": 6
+                      },
+                      {
+                        "x": 39,
+                        "y": 6
+                      },
+                      {
+                        "x": 39,
+                        "y": 37
+                      },
+                      {
+                        "x": 1,
+                        "y": 37
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "objectsFolderStructure": {
@@ -3970,6 +4115,9 @@
           },
           {
             "objectName": "MuzzleFireTank"
+          },
+          {
+            "objectName": "ExplosionCrack"
           }
         ]
       },
@@ -4321,6 +4469,61 @@
             "",
             "\"Foreground\"",
             ""
+          ]
+        },
+        {
+          "type": {
+            "value": "ZoomCamera"
+          },
+          "parameters": [
+            "",
+            "1",
+            "",
+            "0"
+          ]
+        },
+        {
+          "type": {
+            "value": "ZoomCamera"
+          },
+          "parameters": [
+            "",
+            "1",
+            "_CONSTANTS_.Layers.Main",
+            "0"
+          ]
+        },
+        {
+          "type": {
+            "value": "ZoomCamera"
+          },
+          "parameters": [
+            "",
+            "1",
+            "_CONSTANTS_.Layers.Background",
+            "0"
+          ]
+        },
+        {
+          "type": {
+            "value": "ZoomCamera"
+          },
+          "parameters": [
+            "",
+            "1",
+            "_CONSTANTS_.Layers.Foreground",
+            "0"
+          ]
+        },
+        {
+          "type": {
+            "value": "ZoomCamera"
+          },
+          "parameters": [
+            "",
+            "1",
+            "\"Debug\"",
+            "0"
           ]
         }
       ]
@@ -5400,6 +5603,39 @@
                 },
                 {
                   "type": {
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "ExplosionCrack",
+                    "Damageable.X()",
+                    "Damageable.Y() + 8",
+                    "_CONSTANTS_.Layers.Main"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "ExplosionCrack",
+                    "Animation",
+                    "=",
+                    "\"green\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ChangePlan"
+                  },
+                  "parameters": [
+                    "ExplosionCrack",
+                    "=",
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
                     "value": "CameraShake::ShakeCamera"
                   },
                   "parameters": [
@@ -5842,6 +6078,7 @@
               ]
             },
             {
+              "disabled": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
               "actions": [
