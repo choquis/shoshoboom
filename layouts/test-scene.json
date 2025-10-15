@@ -9,7 +9,7 @@
   "title": "",
   "v": 0,
   "uiSettings": {
-    "grid": false,
+    "grid": true,
     "gridType": "rectangular",
     "gridWidth": 16,
     "gridHeight": 16,
@@ -17,8 +17,8 @@
     "gridOffsetY": 0,
     "gridColor": 10401023,
     "gridAlpha": 0.8,
-    "snap": false,
-    "zoomFactor": 1.6832856250746775,
+    "snap": true,
+    "zoomFactor": 2.1947359391259798,
     "windowMask": false,
     "selectedLayer": ""
   },
@@ -51,6 +51,9 @@
       "objects": [
         {
           "name": "BounceableWallCollider"
+        },
+        {
+          "name": "BounceableCollider"
         }
       ]
     },
@@ -104,6 +107,12 @@
         },
         {
           "name": "TankGray"
+        },
+        {
+          "name": "BounceableCollider"
+        },
+        {
+          "name": "SolidCollider"
         }
       ]
     },
@@ -111,7 +120,7 @@
       "name": "Bounceable",
       "objects": [
         {
-          "name": "BounceableWallCollider"
+          "name": "BounceableCollider"
         }
       ]
     },
@@ -129,6 +138,12 @@
         },
         {
           "name": "HardBreakableObstacle16"
+        },
+        {
+          "name": "BounceableCollider"
+        },
+        {
+          "name": "SolidCollider"
         }
       ]
     },
@@ -158,6 +173,9 @@
         },
         {
           "name": "TankGray"
+        },
+        {
+          "name": "SolidCollider"
         }
       ]
     },
@@ -211,17 +229,6 @@
         },
         {
           "name": "ExplosionDefaultLandmine"
-        }
-      ]
-    },
-    {
-      "name": "MuzzleFires",
-      "objects": [
-        {
-          "name": "MuzzleFireLongBullet"
-        },
-        {
-          "name": "MuzzleFireDefaultBullet"
         }
       ]
     },
@@ -292,7 +299,7 @@
           "name": "LongBullet"
         },
         {
-          "name": "Player0Death"
+          "name": "CharacterDeath"
         }
       ]
     },
@@ -326,7 +333,7 @@
           "name": "SmokeTrailsLongBullet"
         },
         {
-          "name": "SmokeTrailsPlayer0Death"
+          "name": "SmokeTrailsCharacterDeath"
         }
       ]
     },
@@ -344,6 +351,12 @@
         },
         {
           "name": "HardBreakableObstacle16"
+        },
+        {
+          "name": "BounceableCollider"
+        },
+        {
+          "name": "SolidCollider"
         }
       ]
     },
@@ -471,6 +484,12 @@
         },
         {
           "name": "Player1"
+        },
+        {
+          "name": "SolidCollider"
+        },
+        {
+          "name": "BounceableCollider"
         }
       ]
     },
@@ -492,21 +511,13 @@
       "name": "Deleteables",
       "objects": [
         {
-          "name": "MuzzleFireLongBullet"
+          "name": "MuzzleFireTank"
         },
         {
-          "name": "MuzzleFireDefaultBullet"
+          "name": "CharacterDeath"
         },
         {
-          "name": "Player0Death"
-        }
-      ]
-    },
-    {
-      "name": "DeathObjects",
-      "objects": [
-        {
-          "name": "Player0Death"
+          "name": "MediumExplosion"
         }
       ]
     }
@@ -533,7 +544,6 @@
       "value": 0
     },
     {
-      "folded": true,
       "name": "BuildableInstancesArray",
       "type": "array",
       "children": [
@@ -543,11 +553,11 @@
         },
         {
           "type": "string",
-          "value": "BounceableWallCollider"
+          "value": "BounceableCollider"
         },
         {
           "type": "string",
-          "value": "SolidWallCollider"
+          "value": "SolidCollider"
         },
         {
           "type": "string",
@@ -673,134 +683,6 @@
       "initialVariables": []
     },
     {
-      "angle": 270,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "b42a5beb-e4b6-41d1-bcde-188d2d49c457",
-      "width": 0,
-      "x": -152,
-      "y": 1,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 180,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "e0f9a961-7fe6-4496-9618-ba094f83a806",
-      "width": 0,
-      "x": -175,
-      "y": 24,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 225,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "a1d117af-1ec5-48b3-bb13-10eed45df6d1",
-      "width": 0,
-      "x": -168,
-      "y": 8,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 90,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "34729715-9fb1-4318-870a-9d45f57cec74",
-      "width": 0,
-      "x": -152,
-      "y": 47,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "1be299c7-f11e-4660-b970-294afc07944a",
-      "width": 0,
-      "x": -129,
-      "y": 24,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 135,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "19e5986b-a8f3-4aef-81e5-ea376d8512e7",
-      "width": 0,
-      "x": -168,
-      "y": 40,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 45,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "07618236-7f4b-4fb7-bb1d-706d9b943fa2",
-      "width": 0,
-      "x": -136,
-      "y": 40,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 315,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "eeebfb50-bba9-4481-bac4-6a8e93a5904b",
-      "width": 0,
-      "x": -136,
-      "y": 8,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
       "angle": 0,
       "customSize": false,
       "height": 0,
@@ -834,57 +716,6 @@
     },
     {
       "angle": 0,
-      "customSize": true,
-      "depth": 64,
-      "height": 352,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "347d9cf2-f3ef-43d7-9c6e-1bdc445f3efa",
-      "width": 48,
-      "x": -16,
-      "y": 0,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 180,
-      "customSize": true,
-      "depth": 64,
-      "height": 352,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "1c785f33-9906-4aed-b2c2-c00487407ced",
-      "width": 48,
-      "x": 608,
-      "y": 0,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 135,
-      "customSize": true,
-      "depth": 117,
-      "height": 55,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "50de0f92-aaf6-4da5-b877-7ad89ff56e7c",
-      "width": 58,
-      "x": 592,
-      "y": -7,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
       "customSize": false,
       "height": 0,
       "keepRatio": true,
@@ -895,70 +726,6 @@
       "x": -56,
       "y": -168,
       "zOrder": 0,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 90,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "0e8d7501-5df9-4045-90f4-3a4139604585",
-      "width": 0,
-      "x": -208,
-      "y": -79,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "b9b580ea-84ab-4239-8e9e-cee4c734519c",
-      "width": 0,
-      "x": -207,
-      "y": -80,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 180,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "bedf3c67-21c4-43ba-902e-589c25dd656e",
-      "width": 0,
-      "x": -209,
-      "y": -80,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 270,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "ab28c1ec-39f3-4cff-ac68-91f8647ca925",
-      "width": 0,
-      "x": -208,
-      "y": -81,
-      "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1028,23 +795,6 @@
       "initialVariables": []
     },
     {
-      "angle": 270,
-      "customSize": true,
-      "depth": 64,
-      "height": 640,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "0a07d602-d84a-4789-93db-628645cdc547",
-      "width": 48,
-      "x": 296,
-      "y": 24,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
       "angle": 0,
       "customSize": false,
       "height": 0,
@@ -1093,23 +843,6 @@
       "initialVariables": []
     },
     {
-      "angle": 90,
-      "customSize": true,
-      "depth": 64,
-      "height": 640,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "9529121b-abd6-4608-b5a5-8ce80cc599de",
-      "width": 49,
-      "x": 296,
-      "y": -320,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
       "angle": 0,
       "customSize": false,
       "height": 0,
@@ -1142,57 +875,6 @@
       "initialVariables": []
     },
     {
-      "angle": 45,
-      "customSize": true,
-      "depth": 117,
-      "height": 55,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "afef6042-cd08-47b2-b2be-07bd58e9c3c4",
-      "width": 59,
-      "x": -10,
-      "y": -9,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 315,
-      "customSize": true,
-      "depth": 117,
-      "height": 55,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "197d69ae-87da-4659-95f8-dffede61c35a",
-      "width": 58,
-      "x": -7,
-      "y": 308,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 225,
-      "customSize": true,
-      "depth": 117,
-      "height": 55,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "544a608a-67d9-4f14-b40c-ec3e635b2afc",
-      "width": 58,
-      "x": 591,
-      "y": 305,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
       "angle": 0,
       "customSize": false,
       "height": 0,
@@ -1204,198 +886,6 @@
       "x": -112,
       "y": -192,
       "zOrder": 15,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 270,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "caf0787c-8749-4c53-bd6a-87707a5a4aa5",
-      "width": 0,
-      "x": -112,
-      "y": -112,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 180,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "a80ada68-2557-4df4-963b-ad30941c69e8",
-      "width": 0,
-      "x": -144,
-      "y": -80,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 225,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "b38eee1d-d093-450f-8708-bfa09b1463cc",
-      "width": 0,
-      "x": -137,
-      "y": -96,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 90,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "7aff194b-b930-4eeb-a4a2-a0b2f08432ab",
-      "width": 0,
-      "x": -112,
-      "y": -48,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 225,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "3f4473d2-896e-41b7-b128-3513cab7c0b7",
-      "width": 0,
-      "x": -128,
-      "y": -105,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "571eee7a-3b66-4f35-985d-44fc60082200",
-      "width": 0,
-      "x": -80,
-      "y": -80,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 135,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "58e52f26-8c9d-4b15-9e1c-790685bd93de",
-      "width": 0,
-      "x": -137,
-      "y": -64,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 135,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "b4f0e6e2-d53f-4743-9f51-b649c0fad792",
-      "width": 0,
-      "x": -128,
-      "y": -55,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 45,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "ec5eb64d-2e5f-459e-a11a-58c084515569",
-      "width": 0,
-      "x": -96,
-      "y": -55,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 45,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "f9995f54-51cb-40b9-aed2-de727f8ea059",
-      "width": 0,
-      "x": -87,
-      "y": -64,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 315,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "385cc333-c36e-440a-84d9-72503f5db66f",
-      "width": 0,
-      "x": -87,
-      "y": -96,
-      "zOrder": 8,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 315,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "BounceableWallCollider",
-      "persistentUuid": "e6975717-9a2f-4b44-84f6-dd7cfc0812e3",
-      "width": 0,
-      "x": -96,
-      "y": -105,
-      "zOrder": 8,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -1680,6 +1170,142 @@
       "x": 459,
       "y": 93,
       "zOrder": 28,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 225,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableCollider",
+      "persistentUuid": "c8f94dfb-bf34-44d0-a603-01971d533198",
+      "width": 32,
+      "x": 592,
+      "y": 304,
+      "zOrder": 29,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 368,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableCollider",
+      "persistentUuid": "5e7a52e4-d8b6-4ec8-bfe6-a1ff0e330895",
+      "width": 32,
+      "x": 0,
+      "y": -16,
+      "zOrder": 29,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 180,
+      "customSize": true,
+      "depth": 64,
+      "height": 368,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableCollider",
+      "persistentUuid": "6fa62daf-0322-472a-84a1-57272428c246",
+      "width": 32,
+      "x": 608,
+      "y": -16,
+      "zOrder": 29,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 90,
+      "customSize": true,
+      "depth": 64,
+      "height": 640,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableCollider",
+      "persistentUuid": "abab82fc-eda6-4ce5-91da-85e4c2b66f04",
+      "width": 32,
+      "x": 304,
+      "y": -320,
+      "zOrder": 29,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 270,
+      "customSize": true,
+      "depth": 64,
+      "height": 640,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableCollider",
+      "persistentUuid": "57f6bd6e-4feb-4ec7-b088-e1f8809e9b92",
+      "width": 32,
+      "x": 304,
+      "y": 16,
+      "zOrder": 29,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 315,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableCollider",
+      "persistentUuid": "21c18863-d940-4957-8f6b-29e67abad158",
+      "width": 32,
+      "x": 16,
+      "y": 304,
+      "zOrder": 29,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 45,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableCollider",
+      "persistentUuid": "99126c92-4b4c-4abb-bc80-1d7c877b8666",
+      "width": 32,
+      "x": 16,
+      "y": 0,
+      "zOrder": 29,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 135,
+      "customSize": true,
+      "depth": 64,
+      "height": 32,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableCollider",
+      "persistentUuid": "75139aa3-ac2c-41d2-bd35-b2f4c5af0902",
+      "width": 32,
+      "x": 592,
+      "y": 0,
+      "zOrder": 29,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -2153,7 +1779,7 @@
     {
       "assetStoreId": "",
       "name": "Player0",
-      "persistentUuid": "2f6635e7-e549-412c-9f46-70bbed17e590",
+      "persistentUuid": "5fd09555-cac7-4dd2-a724-e4a575635ea1",
       "type": "CustomObjects::Tank",
       "variant": "NewTankRed",
       "variables": [],
@@ -2741,7 +2367,7 @@
     {
       "assetStoreId": "",
       "name": "TankBlue",
-      "persistentUuid": "b097e1a5-cb79-40ba-970d-e00960c72be5",
+      "persistentUuid": "834c8d31-58d5-4b7e-be76-a64e5f149fe5",
       "type": "CustomObjects::Tank",
       "variant": "NewTankBlue",
       "variables": [],
@@ -3250,7 +2876,7 @@
     {
       "adaptCollisionMaskAutomatically": true,
       "assetStoreId": "",
-      "name": "MuzzleFireDefaultBullet",
+      "name": "MuzzleFireTank",
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
@@ -3265,254 +2891,7 @@
       ],
       "animations": [
         {
-          "name": "",
-          "useMultipleDirections": false,
-          "directions": [
-            {
-              "looping": false,
-              "timeBetweenFrames": 0.09,
-              "sprites": [
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "muzzle_fire_01_1.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 16,
-                    "y": 16
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 6,
-                        "y": 5
-                      },
-                      {
-                        "x": 25,
-                        "y": 5
-                      },
-                      {
-                        "x": 25,
-                        "y": 26
-                      },
-                      {
-                        "x": 6,
-                        "y": 26
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "muzzle_fire_01_2.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 16,
-                    "y": 16
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 6,
-                        "y": 5
-                      },
-                      {
-                        "x": 25,
-                        "y": 5
-                      },
-                      {
-                        "x": 25,
-                        "y": 26
-                      },
-                      {
-                        "x": 6,
-                        "y": 26
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "muzzle_fire_01_3.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 16,
-                    "y": 16
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 6,
-                        "y": 5
-                      },
-                      {
-                        "x": 25,
-                        "y": 5
-                      },
-                      {
-                        "x": 25,
-                        "y": 26
-                      },
-                      {
-                        "x": 6,
-                        "y": 26
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "muzzle_fire_01_4.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 16,
-                    "y": 16
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 6,
-                        "y": 5
-                      },
-                      {
-                        "x": 25,
-                        "y": 5
-                      },
-                      {
-                        "x": 25,
-                        "y": 26
-                      },
-                      {
-                        "x": 6,
-                        "y": 26
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "muzzle_fire_01_5.png",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 16,
-                    "y": 16
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 6,
-                        "y": 5
-                      },
-                      {
-                        "x": 25,
-                        "y": 5
-                      },
-                      {
-                        "x": 25,
-                        "y": 26
-                      },
-                      {
-                        "x": 6,
-                        "y": 26
-                      }
-                    ]
-                  ]
-                },
-                {
-                  "hasCustomCollisionMask": true,
-                  "image": "Transparent",
-                  "points": [],
-                  "originPoint": {
-                    "name": "origine",
-                    "x": 16,
-                    "y": 16
-                  },
-                  "centerPoint": {
-                    "automatic": true,
-                    "name": "centre",
-                    "x": 0,
-                    "y": 0
-                  },
-                  "customCollisionMask": [
-                    [
-                      {
-                        "x": 6,
-                        "y": 5
-                      },
-                      {
-                        "x": 25,
-                        "y": 5
-                      },
-                      {
-                        "x": 25,
-                        "y": 26
-                      },
-                      {
-                        "x": 6,
-                        "y": 26
-                      }
-                    ]
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "adaptCollisionMaskAutomatically": true,
-      "assetStoreId": "",
-      "name": "MuzzleFireLongBullet",
-      "type": "Sprite",
-      "updateIfNotVisible": false,
-      "variables": [],
-      "effects": [],
-      "behaviors": [
-        {
-          "name": "Deleteable",
-          "type": "CustomBehaviors::Deleteable",
-          "DeleteTime": 1,
-          "DeleteDeltaTime": 1.00000000000091
-        }
-      ],
-      "animations": [
-        {
-          "name": "",
+          "name": "DefaultBullet",
           "useMultipleDirections": false,
           "directions": [
             {
@@ -4001,7 +3380,7 @@
     {
       "adaptCollisionMaskAutomatically": true,
       "assetStoreId": "",
-      "name": "Player0Death",
+      "name": "CharacterDeath",
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
@@ -4027,12 +3406,12 @@
           "shapeOffsetY": 0,
           "polygonOrigin": "Center",
           "vertices": [],
-          "density": 1,
+          "density": 2,
           "friction": 0.3,
           "restitution": 0.1,
           "linearDamping": 0.1,
-          "angularDamping": 0.1,
-          "gravityScale": 1,
+          "angularDamping": 2.5,
+          "gravityScale": 0.4,
           "layers": 1,
           "masks": 1
         },
@@ -4050,7 +3429,7 @@
       ],
       "animations": [
         {
-          "name": "",
+          "name": "Player0",
           "useMultipleDirections": false,
           "directions": [
             {
@@ -4096,12 +3475,60 @@
               ]
             }
           ]
+        },
+        {
+          "name": "TankBlue",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\Enemies\\soldier_1\\soldier_1_death_1.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 4,
+                        "y": 1
+                      },
+                      {
+                        "x": 30,
+                        "y": 1
+                      },
+                      {
+                        "x": 30,
+                        "y": 28
+                      },
+                      {
+                        "x": 4,
+                        "y": 28
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "assetStoreId": "",
-      "name": "SmokeTrailsPlayer0Death",
+      "name": "SmokeTrailsCharacterDeath",
       "persistentUuid": "32422d3c-20c3-4a3d-af1e-22952cc21960",
       "type": "CustomObjects::SmokeTrails",
       "variant": "DeathSmoke",
@@ -4111,11 +3538,441 @@
       "content": {
         "FadeOutDuration": 0.6
       }
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "MediumExplosion",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Deleteable",
+          "type": "CustomBehaviors::Deleteable",
+          "DeleteTime": 1,
+          "DeleteDeltaTime": 1.00000000000091
+        }
+      ],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.13,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Explosions\\mediumExplosion\\medium-explosion_1.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 64,
+                    "y": 64
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 30,
+                        "y": 38
+                      },
+                      {
+                        "x": 95,
+                        "y": 38
+                      },
+                      {
+                        "x": 95,
+                        "y": 96
+                      },
+                      {
+                        "x": 30,
+                        "y": 96
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Explosions\\mediumExplosion\\medium-explosion_2.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 64,
+                    "y": 64
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 30,
+                        "y": 38
+                      },
+                      {
+                        "x": 95,
+                        "y": 38
+                      },
+                      {
+                        "x": 95,
+                        "y": 96
+                      },
+                      {
+                        "x": 30,
+                        "y": 96
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Explosions\\mediumExplosion\\medium-explosion_3.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 64,
+                    "y": 64
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 30,
+                        "y": 38
+                      },
+                      {
+                        "x": 95,
+                        "y": 38
+                      },
+                      {
+                        "x": 95,
+                        "y": 96
+                      },
+                      {
+                        "x": 30,
+                        "y": 96
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Explosions\\mediumExplosion\\medium-explosion_4.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 64,
+                    "y": 64
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 30,
+                        "y": 38
+                      },
+                      {
+                        "x": 95,
+                        "y": 38
+                      },
+                      {
+                        "x": 95,
+                        "y": 96
+                      },
+                      {
+                        "x": 30,
+                        "y": 96
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Explosions\\mediumExplosion\\medium-explosion_5.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 64,
+                    "y": 64
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 30,
+                        "y": 38
+                      },
+                      {
+                        "x": 95,
+                        "y": 38
+                      },
+                      {
+                        "x": 95,
+                        "y": 96
+                      },
+                      {
+                        "x": 30,
+                        "y": 96
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Explosions\\mediumExplosion\\medium-explosion_6.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 64,
+                    "y": 64
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 30,
+                        "y": 38
+                      },
+                      {
+                        "x": 95,
+                        "y": 38
+                      },
+                      {
+                        "x": 95,
+                        "y": 96
+                      },
+                      {
+                        "x": 30,
+                        "y": 96
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\FX\\Explosions\\mediumExplosion\\medium-explosion_7.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 64,
+                    "y": 64
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 30,
+                        "y": 38
+                      },
+                      {
+                        "x": 95,
+                        "y": 38
+                      },
+                      {
+                        "x": 95,
+                        "y": 96
+                      },
+                      {
+                        "x": 30,
+                        "y": 96
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "Transparent",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 64,
+                    "y": 64
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 30,
+                        "y": 38
+                      },
+                      {
+                        "x": 95,
+                        "y": 38
+                      },
+                      {
+                        "x": 95,
+                        "y": 96
+                      },
+                      {
+                        "x": 30,
+                        "y": 96
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetStoreId": "",
+      "name": "BounceableCollider",
+      "type": "CustomObjects::Hidden",
+      "variant": "BlueCollider",
+      "variables": [],
+      "effects": [
+        {
+          "effectType": "Adjustment",
+          "name": "EditorSelected",
+          "doubleParameters": {
+            "alpha": 1,
+            "blue": 1,
+            "brightness": 2.5,
+            "contrast": 1,
+            "gamma": 1,
+            "green": 1,
+            "red": 1,
+            "saturation": 1
+          },
+          "stringParameters": {},
+          "booleanParameters": {}
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Bounceable",
+          "type": "CustomBehaviors::Bounceable"
+        },
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 0,
+          "Type": "Wall",
+          "SpawnerId": 2.0247e-320
+        },
+        {
+          "name": "NavMeshPathfindingObstacleBehavior",
+          "type": "NavMeshPathfinding::NavMeshPathfindingObstacleBehavior"
+        },
+        {
+          "name": "Wall",
+          "type": "CustomBehaviors::Wall",
+          "EntityBehavior": "Entity"
+        }
+      ],
+      "content": {
+        "ActiveCollision": true
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "SolidCollider",
+      "type": "CustomObjects::Hidden",
+      "variant": "BlackCollider",
+      "variables": [],
+      "effects": [
+        {
+          "effectType": "Adjustment",
+          "name": "EditorSelected",
+          "doubleParameters": {
+            "alpha": 1,
+            "blue": 1,
+            "brightness": 2.5,
+            "contrast": 1,
+            "gamma": 1,
+            "green": 1,
+            "red": 1,
+            "saturation": 1
+          },
+          "stringParameters": {},
+          "booleanParameters": {}
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Bounceable",
+          "type": "CustomBehaviors::Bounceable"
+        },
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 0,
+          "Type": "Wall",
+          "SpawnerId": 2.0247e-320
+        },
+        {
+          "name": "NavMeshPathfindingObstacleBehavior",
+          "type": "NavMeshPathfinding::NavMeshPathfindingObstacleBehavior"
+        },
+        {
+          "name": "Wall",
+          "type": "CustomBehaviors::Wall",
+          "EntityBehavior": "Entity"
+        }
+      ],
+      "content": {
+        "ActiveCollision": true
+      }
     }
   ],
   "objectsFolderStructure": {
     "folderName": "__ROOT",
     "children": [
+      {
+        "folderName": "VFX",
+        "children": [
+          {
+            "objectName": "MediumExplosion"
+          },
+          {
+            "objectName": "MuzzleFireTank"
+          }
+        ]
+      },
       {
         "folderName": "Hazard",
         "children": [
@@ -4195,12 +4052,6 @@
             "objectName": "Player0"
           },
           {
-            "objectName": "Player0Death"
-          },
-          {
-            "objectName": "SmokeTrailsPlayer0Death"
-          },
-          {
             "objectName": "GroundTrailsPlayer0"
           },
           {
@@ -4208,6 +4059,12 @@
           },
           {
             "objectName": "GroundTrailsPlayer1"
+          },
+          {
+            "objectName": "CharacterDeath"
+          },
+          {
+            "objectName": "SmokeTrailsCharacterDeath"
           }
         ]
       },
@@ -4233,12 +4090,6 @@
           },
           {
             "objectName": "LongBullet"
-          },
-          {
-            "objectName": "MuzzleFireDefaultBullet"
-          },
-          {
-            "objectName": "MuzzleFireLongBullet"
           },
           {
             "objectName": "ExplosionDefaultBullet"
@@ -4306,18 +4157,24 @@
         "folderName": "Scene",
         "children": [
           {
+            "objectName": "HoleCollider"
+          },
+          {
+            "objectName": "PathfindingZone"
+          },
+          {
             "objectName": "Hole"
           },
           {
             "objectName": "Ground"
+          },
+          {
+            "objectName": "BounceableCollider"
+          },
+          {
+            "objectName": "SolidCollider"
           }
         ]
-      },
-      {
-        "objectName": "HoleCollider"
-      },
-      {
-        "objectName": "PathfindingZone"
       },
       {
         "objectName": "Cursor"
@@ -4402,6 +4259,67 @@
           "parameters": [
             "",
             "Logger",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "CameraShake::SetLayerShakable"
+          },
+          "parameters": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "CameraShake::SetLayerShakable"
+          },
+          "parameters": [
+            "",
+            "",
+            "\"Background\"",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "CameraShake::SetLayerShakable"
+          },
+          "parameters": [
+            "",
+            "",
+            "\"Main\"",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "CameraShake::SetLayerShakable"
+          },
+          "parameters": [
+            "",
+            "",
+            "\"Foreground\"",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "CameraShake::SetLayerShakable"
+          },
+          "parameters": [
+            "",
+            "",
+            "\"Foreground\"",
             ""
           ]
         }
@@ -4626,7 +4544,6 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
-      "folded": true,
       "name": "Begin scene",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -4699,7 +4616,6 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
-      "folded": true,
       "name": "Bullets logic",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -5011,7 +4927,6 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
-      "folded": true,
       "name": "Bomb logic",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -5437,15 +5352,25 @@
               "actions": [
                 {
                   "type": {
-                    "value": "CreateByName"
+                    "value": "Create"
                   },
                   "parameters": [
                     "",
-                    "DeathObjects",
-                    "Tanks.ObjectName() + \"Death\"",
+                    "CharacterDeath",
                     "Damageable.X()",
                     "Damageable.Y()",
-                    "_CONSTANTS_.Layers.Main"
+                    "_CONSTANTS_.Layers.Foreground"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "CharacterDeath",
+                    "Animation",
+                    "=",
+                    "Tanks.ObjectName()"
                   ]
                 },
                 {
@@ -5453,11 +5378,35 @@
                     "value": "Physics2::ApplyPolarForce"
                   },
                   "parameters": [
-                    "DeathObjects",
+                    "CharacterDeath",
                     "Physics2",
                     "-RandomFloatInRange(60, 120)",
                     "50",
                     "",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "MediumExplosion",
+                    "Damageable.X()",
+                    "Damageable.Y()",
+                    "_CONSTANTS_.Layers.Foreground"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CameraShake::ShakeCamera"
+                  },
+                  "parameters": [
+                    "",
+                    "0.2",
+                    "0.1",
+                    "0",
                     ""
                   ]
                 }
@@ -5500,7 +5449,6 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
-      "folded": true,
       "name": "Obstacles updates",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -5760,7 +5708,6 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
-      "folded": true,
       "name": "Spawners",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -5973,7 +5920,6 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
-      "folded": true,
       "name": "Hazards",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",

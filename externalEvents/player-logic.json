@@ -925,12 +925,11 @@
                       "actions": [
                         {
                           "type": {
-                            "value": "CreateByName"
+                            "value": "Create"
                           },
                           "parameters": [
                             "",
-                            "MuzzleFires",
-                            "\"MuzzleFire\" + Players.BulletObjects::ProjectileObjectName()",
+                            "MuzzleFireTank",
                             "Players.MuzzleX()",
                             "Players.MuzzleY()",
                             "_CONSTANTS_.Layers.Main"
@@ -938,10 +937,21 @@
                         },
                         {
                           "type": {
+                            "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                          },
+                          "parameters": [
+                            "MuzzleFireTank",
+                            "Animation",
+                            "=",
+                            "Players.ObjectName()"
+                          ]
+                        },
+                        {
+                          "type": {
                             "value": "SetAngle"
                           },
                           "parameters": [
-                            "MuzzleFires",
+                            "MuzzleFireTank",
                             "=",
                             "CursorAngle"
                           ]
@@ -951,9 +961,9 @@
                             "value": "ChangePlan"
                           },
                           "parameters": [
-                            "MuzzleFires",
+                            "MuzzleFireTank",
                             "=",
-                            "MuzzleFires.Y()"
+                            "MuzzleFireTank.Y()"
                           ]
                         },
                         {
@@ -990,7 +1000,7 @@
                                 "value": "FlippableCapability::FlippableBehavior::FlipY"
                               },
                               "parameters": [
-                                "MuzzleFires",
+                                "MuzzleFireTank",
                                 "Flippable",
                                 "yes"
                               ]

@@ -542,7 +542,7 @@
                                 "value": "PickedInstancesCount"
                               },
                               "parameters": [
-                                "BounceableWallCollider",
+                                "BounceableCollider",
                                 ">",
                                 "0"
                               ]
@@ -556,7 +556,7 @@
                               "parameters": [
                                 "NormalAngle",
                                 "=",
-                                "BounceableWallCollider.Angle()"
+                                "BounceableCollider.Angle()"
                               ]
                             }
                           ]
@@ -1596,12 +1596,11 @@
                       "actions": [
                         {
                           "type": {
-                            "value": "CreateByName"
+                            "value": "Create"
                           },
                           "parameters": [
                             "",
-                            "MuzzleFires",
-                            "\"MuzzleFire\" + Enemies.BulletObjects::ProjectileObjectName()",
+                            "MuzzleFireTank",
                             "Enemies.MuzzleX()",
                             "Enemies.MuzzleY()",
                             "_CONSTANTS_.Layers.Main"
@@ -1609,10 +1608,21 @@
                         },
                         {
                           "type": {
+                            "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                          },
+                          "parameters": [
+                            "MuzzleFireTank",
+                            "Animation",
+                            "=",
+                            "Enemies.ObjectName()"
+                          ]
+                        },
+                        {
+                          "type": {
                             "value": "SetAngle"
                           },
                           "parameters": [
-                            "MuzzleFires",
+                            "MuzzleFireTank",
                             "=",
                             "Enemies.LookAngle()"
                           ]
@@ -1622,9 +1632,9 @@
                             "value": "ChangePlan"
                           },
                           "parameters": [
-                            "MuzzleFires",
+                            "MuzzleFireTank",
                             "=",
-                            "MuzzleFires.Y()"
+                            "MuzzleFireTank.Y()"
                           ]
                         },
                         {
@@ -1661,7 +1671,7 @@
                                 "value": "FlippableCapability::FlippableBehavior::FlipY"
                               },
                               "parameters": [
-                                "MuzzleFires",
+                                "MuzzleFireTank",
                                 "Flippable",
                                 "yes"
                               ]
