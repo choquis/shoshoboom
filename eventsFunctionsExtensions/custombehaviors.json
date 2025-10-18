@@ -1175,6 +1175,24 @@
                 },
                 {
                   "type": {
+                    "value": "ResetObjectTimer"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"RecoilDelay\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PauseObjectTimer"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"RecoilDelay\""
+                  ]
+                },
+                {
+                  "type": {
                     "value": "SetNumberVariable"
                   },
                   "parameters": [
@@ -1212,6 +1230,57 @@
               "conditions": [
                 {
                   "type": {
+                    "value": "CompareObjectTimer"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"RecoilDelay\"",
+                    ">=",
+                    "RecoilDelay"
+                  ]
+                },
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "ObjectTimerPaused"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"RecoilDelay\""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Tween::AddLayoutValueTween"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Recoil\"+ToString(Object.EntityBehavior::Id())",
+                    "RecoilForce",
+                    "0",
+                    "\"easeInOutQuad\"",
+                    "RecoilTime",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "PauseObjectTimer"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"RecoilDelay\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
                     "value": "Tween::SceneTweenIsPlaying"
                   },
                   "parameters": [
@@ -1227,7 +1296,7 @@
                   },
                   "parameters": [
                     "Object",
-                    "PushAngle",
+                    "RecoilAngle",
                     "Tween::Value(\"Recoil\"+ToString(Object.EntityBehavior::Id()))",
                     ""
                   ]
@@ -1553,6 +1622,46 @@
           "objectGroups": []
         },
         {
+          "description": "Recoil angle",
+          "fullName": "Recoil Angle",
+          "functionType": "Expression",
+          "name": "RecoilAngle",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnNumber"
+                  },
+                  "parameters": [
+                    "RecoilAngle"
+                  ]
+                }
+              ]
+            }
+          ],
+          "expressionType": {
+            "type": "expression"
+          },
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Tank",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
           "description": "Change the value of speed modifier",
           "fullName": "Set speed modifier",
           "functionType": "Action",
@@ -1680,7 +1789,7 @@
           "fullName": "Apply recoil",
           "functionType": "Action",
           "name": "ApplyRecoil",
-          "sentence": "Push _PARAM0_ with force _PARAM2_ at angle _PARAM3_ in _PARAM4_ p/s",
+          "sentence": "Push _PARAM0_ with force _PARAM2_ at angle _PARAM3_ in _PARAM4_ p/s (Delay: _PARAM5_ p/s)",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
@@ -1691,23 +1800,63 @@
                     "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "PushAngle",
+                    "RecoilAngle",
                     "=",
                     "ParamAngle"
                   ]
                 },
                 {
                   "type": {
-                    "value": "Tween::AddLayoutValueTween"
+                    "value": "SetNumberVariable"
                   },
                   "parameters": [
-                    "",
-                    "\"Recoil\"+ToString(Object.EntityBehavior::Id())",
-                    "ParamForce",
-                    "0",
-                    "\"easeInOutQuad\"",
-                    "ParamTime",
-                    ""
+                    "RecoilForce",
+                    "=",
+                    "ParamForce"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "RecoilTime",
+                    "=",
+                    "ParamTime"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "RecoilDelay",
+                    "=",
+                    "ParamDelay"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ResetObjectTimer"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"RecoilDelay\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "UnPauseObjectTimer"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"RecoilDelay\""
                   ]
                 }
               ]
@@ -1739,6 +1888,11 @@
               "description": "Time",
               "name": "ParamTime",
               "type": "expression"
+            },
+            {
+              "description": "",
+              "name": "ParamDelay",
+              "type": "expression"
             }
           ],
           "objectGroups": []
@@ -1755,11 +1909,29 @@
               "conditions": [
                 {
                   "type": {
-                    "value": "Tween::SceneTweenIsPlaying"
+                    "value": "BuiltinCommonInstructions::Or"
                   },
-                  "parameters": [
-                    "",
-                    "\"Recoil\"+ToString(Object.EntityBehavior::Id())"
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "Tween::SceneTweenIsPlaying"
+                      },
+                      "parameters": [
+                        "",
+                        "\"Recoil\"+ToString(Object.EntityBehavior::Id())"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "ObjectTimerPaused"
+                      },
+                      "parameters": [
+                        "Object",
+                        "\"RecoilDelay\""
+                      ]
+                    }
                   ]
                 }
               ],
@@ -1785,6 +1957,15 @@
                   "parameters": [
                     "",
                     "\"Recoil\"+ToString(Object.EntityBehavior::Id())"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ObjectTimerPaused"
+                  },
+                  "parameters": [
+                    "Object",
+                    "\"RecoilDelay\""
                   ]
                 }
               ],
@@ -1873,18 +2054,37 @@
           "name": "MaxBullets"
         },
         {
-          "value": "",
-          "type": "Number",
-          "label": "",
-          "hidden": true,
-          "name": "PushAngle"
-        },
-        {
           "value": "1",
           "type": "Number",
           "label": "",
           "hidden": true,
           "name": "SpeedModifier"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "label": "",
+          "hidden": true,
+          "name": "RecoilAngle"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "label": "",
+          "hidden": true,
+          "name": "RecoilDelay"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "label": "",
+          "name": "RecoilForce"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "label": "",
+          "name": "RecoilTime"
         }
       ],
       "sharedPropertyDescriptors": []
@@ -7209,7 +7409,7 @@
                   "parameters": [
                     "TimeFromStart()",
                     ">",
-                    "DeleteDeltaTime - FadeOutStartAt"
+                    "DeleteDeltaTime - FadeOutDuration"
                   ]
                 }
               ],
@@ -7222,7 +7422,7 @@
                     "Object",
                     "Opacity",
                     "=",
-                    "(DeleteDeltaTime - TimeFromStart()) * (255 / FadeOutStartAt)"
+                    "(DeleteDeltaTime - TimeFromStart()) * (255 / FadeOutDuration)"
                   ]
                 }
               ]
@@ -7335,9 +7535,9 @@
         {
           "value": "0.5",
           "type": "Number",
-          "label": "",
-          "description": "Time before the fade out start",
-          "name": "FadeOutStartAt"
+          "label": "Fade out duration",
+          "description": "Fade out duration (The start time its calculated with this. Ex. if delete time its 1 and fade out duration its 0.2, the fade out will start at 0.8 sec and end at 1)",
+          "name": "FadeOutDuration"
         },
         {
           "value": "1",
