@@ -160,7 +160,7 @@
               },
               "parameters": [
                 "",
-                "GroundTrails"
+                "GroundTrailTank"
               ]
             },
             {
@@ -170,7 +170,26 @@
               "parameters": [
                 "TotalTrails",
                 "=",
-                "PickedInstancesCount(GroundTrails)"
+                "PickedInstancesCount(GroundTrailTank)"
+              ]
+            },
+            {
+              "type": {
+                "value": "AjoutObjConcern"
+              },
+              "parameters": [
+                "",
+                "TrailsTankRecoil"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "TotalTrails",
+                "+",
+                "PickedInstancesCount(TrailsTankRecoil)"
               ]
             },
             {

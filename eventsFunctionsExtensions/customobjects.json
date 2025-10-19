@@ -38173,12 +38173,30 @@
                     "brightness": 1,
                     "contrast": 1,
                     "gamma": 1,
-                    "green": 5,
-                    "red": 5,
+                    "green": 4,
+                    "red": 4,
                     "saturation": 1
                   },
                   "stringParameters": {},
                   "booleanParameters": {}
+                },
+                {
+                  "effectType": "DropShadow",
+                  "name": "shadow",
+                  "doubleParameters": {
+                    "alpha": 0.6,
+                    "blur": 1,
+                    "distance": 3,
+                    "padding": 10,
+                    "quality": 5,
+                    "rotation": 90
+                  },
+                  "stringParameters": {
+                    "color": "0;0;0"
+                  },
+                  "booleanParameters": {
+                    "shadowOnly": false
+                  }
                 }
               ],
               "behaviors": [],
@@ -48213,17 +48231,17 @@
               "effects": [
                 {
                   "effectType": "DropShadow",
-                  "name": "DropShadow",
+                  "name": "shadow",
                   "doubleParameters": {
-                    "alpha": 0.5,
-                    "blur": 0,
-                    "distance": 2,
-                    "padding": 2,
-                    "quality": 0,
-                    "rotation": 45
+                    "alpha": 0.6,
+                    "blur": 1,
+                    "distance": 3,
+                    "padding": 10,
+                    "quality": 5,
+                    "rotation": 90
                   },
                   "stringParameters": {
-                    "color": "24;8;40"
+                    "color": "0;0;0"
                   },
                   "booleanParameters": {
                     "shadowOnly": false
@@ -59339,7 +59357,26 @@
               "type": "Sprite",
               "updateIfNotVisible": false,
               "variables": [],
-              "effects": [],
+              "effects": [
+                {
+                  "effectType": "DropShadow",
+                  "name": "shadow",
+                  "doubleParameters": {
+                    "alpha": 0.6,
+                    "blur": 1,
+                    "distance": 3,
+                    "padding": 10,
+                    "quality": 5,
+                    "rotation": 90
+                  },
+                  "stringParameters": {
+                    "color": "0;0;0"
+                  },
+                  "booleanParameters": {
+                    "shadowOnly": false
+                  }
+                }
+              ],
               "behaviors": [],
               "animations": [
                 {
