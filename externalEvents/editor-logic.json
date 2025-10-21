@@ -194,7 +194,7 @@
                     "",
                     "CameraCenter",
                     "",
-                    "_CONSTANTS_.Layers.Main",
+                    "",
                     ""
                   ]
                 },
@@ -218,7 +218,19 @@
                     "",
                     "CameraCenter",
                     "",
-                    "\"Foreground\"",
+                    "_CONSTANTS_.Layers.Main",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CentreCamera"
+                  },
+                  "parameters": [
+                    "",
+                    "CameraCenter",
+                    "",
+                    "_CONSTANTS_.Layers.Foreground",
                     ""
                   ]
                 },
@@ -233,7 +245,13 @@
                     "\"Debug\"",
                     ""
                   ]
-                },
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
                 {
                   "type": {
                     "value": "SetNumberVariable"
@@ -1228,6 +1246,38 @@
                   },
                   "parameters": [
                     "EditorTools"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "CameraXBeforeEditor",
+                    "=",
+                    "CameraCenterX(_CONSTANTS_.Layers.Main, 0)"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "CameraYBeforeEditor",
+                    "=",
+                    "CameraCenterY(_CONSTANTS_.Layers.Main, 0)"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "MettreXY"
+                  },
+                  "parameters": [
+                    "CameraCenter",
+                    "=",
+                    "CameraXBeforeEditor",
+                    "=",
+                    "CameraYBeforeEditor"
                   ]
                 }
               ]
