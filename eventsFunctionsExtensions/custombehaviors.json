@@ -1995,6 +1995,204 @@
             }
           ],
           "objectGroups": []
+        },
+        {
+          "description": "Set tags for what the tank is touching",
+          "fullName": "Set what is touching ",
+          "functionType": "Action",
+          "name": "SetTouching",
+          "sentence": "Set tag _PARAM2_  that is touching the _PARAM0_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "Touching",
+                    "+",
+                    "ParamTag + \",\""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Tank",
+              "type": "behavior"
+            },
+            {
+              "description": "Tag",
+              "name": "ParamTag",
+              "type": "string"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Clear tags for what the tank is touching",
+          "fullName": "Clear what is touching",
+          "functionType": "Action",
+          "name": "ResetTouching",
+          "sentence": "Clear tags that is touching the _PARAM0_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "Touching",
+                    "=",
+                    "\"\""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Tank",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Check  with a tag if tank is touching it",
+          "fullName": "Tank is touching",
+          "functionType": "Condition",
+          "name": "IsTouching",
+          "sentence": "Is _PARAM0_ touching _PARAM2_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ArrayTools::SplitString"
+                  },
+                  "parameters": [
+                    "",
+                    "Touching",
+                    "\",\"",
+                    "ArrayList",
+                    ""
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "ArrayTools::HasString"
+                      },
+                      "parameters": [
+                        "",
+                        "ArrayList",
+                        "ParamTag",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetReturnBoolean"
+                      },
+                      "parameters": [
+                        "True"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::Not"
+                      },
+                      "parameters": [],
+                      "subInstructions": [
+                        {
+                          "type": {
+                            "value": "ArrayTools::HasString"
+                          },
+                          "parameters": [
+                            "",
+                            "ArrayList",
+                            "ParamTag",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetReturnBoolean"
+                      },
+                      "parameters": [
+                        "False"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "variables": [
+                {
+                  "name": "ArrayList",
+                  "type": "array",
+                  "children": []
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Tank",
+              "type": "behavior"
+            },
+            {
+              "description": "Tag",
+              "name": "ParamTag",
+              "type": "string"
+            }
+          ],
+          "objectGroups": []
         }
       ],
       "propertyDescriptors": [
@@ -2085,6 +2283,13 @@
           "type": "Number",
           "label": "",
           "name": "RecoilTime"
+        },
+        {
+          "value": "",
+          "type": "String",
+          "label": "Tank is touching",
+          "description": "Tags for what the tank its toucing, if its listed here, It can be used in logic. Separated by commas.",
+          "name": "Touching"
         }
       ],
       "sharedPropertyDescriptors": []
