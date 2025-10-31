@@ -1,0 +1,1038 @@
+{
+  "b": 209,
+  "disableInputWhenNotFocused": true,
+  "mangledName": "Main_32Game_32Zone_321",
+  "name": "Main Game Zone 1",
+  "r": 209,
+  "standardSortMethod": true,
+  "stopSoundsOnStartup": true,
+  "title": "",
+  "v": 209,
+  "uiSettings": {
+    "grid": false,
+    "gridType": "rectangular",
+    "gridWidth": 32,
+    "gridHeight": 32,
+    "gridOffsetX": 0,
+    "gridOffsetY": 0,
+    "gridColor": 10401023,
+    "gridAlpha": 0.8,
+    "snap": false,
+    "zoomFactor": 1.7987215167333237,
+    "windowMask": false,
+    "selectedLayer": ""
+  },
+  "objectsGroups": [
+    {
+      "name": "____BULLETSRELATED",
+      "objects": []
+    },
+    {
+      "name": "Bounceable",
+      "objects": [
+        {
+          "name": "BounceableCollider"
+        }
+      ]
+    },
+    {
+      "name": "SolidForBullet",
+      "objects": [
+        {
+          "name": "Player0"
+        },
+        {
+          "name": "TankBlue"
+        },
+        {
+          "name": "DefaultLandmine"
+        },
+        {
+          "name": "HardBreakableObstacle16"
+        },
+        {
+          "name": "SoftBreakableObstacle16"
+        }
+      ]
+    },
+    {
+      "name": "____COREGAMERELATED",
+      "objects": []
+    },
+    {
+      "name": "Damageable",
+      "objects": [
+        {
+          "name": "TankBlue"
+        },
+        {
+          "name": "Player0"
+        },
+        {
+          "name": "SoftBreakableObstacle16"
+        },
+        {
+          "name": "HardBreakableObstacle16"
+        }
+      ]
+    },
+    {
+      "name": "Deleteables",
+      "objects": [
+        {
+          "name": "VFXMuzzleFireTank"
+        },
+        {
+          "name": "VFXCharacterDeath"
+        },
+        {
+          "name": "VFXExplosionCrack"
+        },
+        {
+          "name": "VFXMediumExplosion"
+        }
+      ]
+    },
+    {
+      "name": "Obstacles",
+      "objects": [
+        {
+          "name": "SoftBreakableObstacle16"
+        },
+        {
+          "name": "HardBreakableObstacle16"
+        }
+      ]
+    },
+    {
+      "name": "____ENEMIESRELATED",
+      "objects": []
+    },
+    {
+      "name": "Enemies",
+      "objects": [
+        {
+          "name": "TankBlue"
+        }
+      ]
+    },
+    {
+      "name": "OtherEnemies",
+      "objects": [
+        {
+          "name": "TankBlue"
+        }
+      ]
+    },
+    {
+      "name": "SolidForEnemy",
+      "objects": [
+        {
+          "name": "Player0"
+        },
+        {
+          "name": "BounceableCollider"
+        }
+      ]
+    },
+    {
+      "name": "Spawners",
+      "objects": [
+        {
+          "name": "Player0Spawner"
+        },
+        {
+          "name": "TankBlueSpawner"
+        }
+      ]
+    },
+    {
+      "name": "CanBeSpawn",
+      "objects": [
+        {
+          "name": "Player0"
+        },
+        {
+          "name": "TankBlue"
+        }
+      ]
+    },
+    {
+      "name": "____TANKSRELATED",
+      "objects": []
+    },
+    {
+      "name": "Tanks",
+      "objects": [
+        {
+          "name": "Player0"
+        },
+        {
+          "name": "TankBlue"
+        }
+      ]
+    },
+    {
+      "name": "SolidForTank",
+      "objects": [
+        {
+          "name": "SoftBreakableObstacle16"
+        },
+        {
+          "name": "HardBreakableObstacle16"
+        },
+        {
+          "name": "BounceableCollider"
+        }
+      ]
+    }
+  ],
+  "variables": [
+    {
+      "name": "RAYCAST_X",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "RAYCAST_Y",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "RAYCAST_ARRAY_X",
+      "type": "array",
+      "children": []
+    },
+    {
+      "name": "RAYCAST_ARRAY_Y",
+      "type": "array",
+      "children": []
+    }
+  ],
+  "instances": [
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "Player0",
+      "persistentUuid": "e4a09272-9463-4cfa-9163-041ad5bac4d9",
+      "width": 0,
+      "x": 132,
+      "y": 144,
+      "zOrder": 1,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "TankBlue",
+      "persistentUuid": "63ec2ceb-bf89-4c74-8ad6-aef55f29a867",
+      "width": 0,
+      "x": 529,
+      "y": 162,
+      "zOrder": 2,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 180,
+      "customSize": true,
+      "depth": 64,
+      "height": 429,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableCollider",
+      "persistentUuid": "f9a3a2ff-3e7c-4e57-aafa-46b97bf05512",
+      "width": 32,
+      "x": 640,
+      "y": -40,
+      "zOrder": 3,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 411,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableCollider",
+      "persistentUuid": "3dec63fa-c8e3-41d1-bc17-99c03c3d5711",
+      "width": 32,
+      "x": -32,
+      "y": -28,
+      "zOrder": 3,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 270,
+      "customSize": true,
+      "depth": 64,
+      "height": 674,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableCollider",
+      "persistentUuid": "0715bd05-f62d-4085-a07f-dd5347c4d287",
+      "width": 32,
+      "x": 300,
+      "y": 39,
+      "zOrder": 3,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 90,
+      "customSize": true,
+      "depth": 64,
+      "height": 674,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "BounceableCollider",
+      "persistentUuid": "1ee82f08-3d65-414c-8712-3255f63efd3b",
+      "width": 32,
+      "x": 312,
+      "y": -352,
+      "zOrder": 3,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 64,
+      "height": 140,
+      "keepRatio": true,
+      "layer": "",
+      "name": "PathfindingZone",
+      "persistentUuid": "97595543-de9c-4e50-a877-eafd9adf528c",
+      "width": 255,
+      "x": 366,
+      "y": 112,
+      "zOrder": 4,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Foreground",
+      "name": "CrosshairPlayer0",
+      "persistentUuid": "0a04988c-0648-4910-a234-778bfdb20707",
+      "width": 0,
+      "x": -33,
+      "y": -110,
+      "zOrder": 5,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle16",
+      "persistentUuid": "5f381b97-6ed9-4c2b-91bd-e53fc24a835d",
+      "width": 0,
+      "x": 308,
+      "y": 138,
+      "zOrder": 6,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle16",
+      "persistentUuid": "bbbcb2f7-250c-456b-bccd-a5c77e537da2",
+      "width": 0,
+      "x": 301,
+      "y": 166,
+      "zOrder": 7,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle16",
+      "persistentUuid": "ea784f2c-ff04-4296-b25d-c656b232bca8",
+      "width": 0,
+      "x": 309,
+      "y": 196,
+      "zOrder": 8,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "SoftBreakableObstacle16",
+      "persistentUuid": "6cd46e67-7970-4a96-9a58-c18d233a2f95",
+      "width": 0,
+      "x": 311,
+      "y": 227,
+      "zOrder": 9,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "TankBlueSpawner",
+      "persistentUuid": "52d179bb-3924-4843-8d9f-d16ed463a9a4",
+      "width": 0,
+      "x": 524,
+      "y": 287,
+      "zOrder": 10,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    }
+  ],
+  "objects": [
+    {
+      "assetStoreId": "",
+      "name": "TankBlue",
+      "persistentUuid": "ceeee5ca-4944-44bf-822e-c4a01d3b55a5",
+      "type": "CustomObjects::Tank",
+      "variant": "NewTankBlue",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "BombObjects",
+          "type": "CustomBehaviors::BombObjects",
+          "ObjectName": "DefaultLandmine"
+        },
+        {
+          "name": "BulletObjects",
+          "type": "CustomBehaviors::BulletObjects",
+          "ObjectName": "DefaultBullet"
+        },
+        {
+          "name": "Damageable",
+          "type": "CustomBehaviors::Damageable",
+          "EntityBehavior": "Entity",
+          "Health": 200,
+          "CurrentHealth": 2.0247e-320,
+          "ImmuneDamage": ""
+        },
+        {
+          "name": "EnemyIA",
+          "type": "CustomBehaviors::EnemyIA",
+          "State": "idle",
+          "CannonRotationDelay": 1,
+          "MovementDelay": 2,
+          "ShootDelay": 1
+        },
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 9.854645721257145e+165,
+          "Type": "Tank"
+        },
+        {
+          "name": "NavMeshPathfindingBehavior",
+          "type": "NavMeshPathfinding::NavMeshPathfindingBehavior",
+          "Acceleration": 400,
+          "MaxSpeed": 50,
+          "AngularMaxSpeed": 180,
+          "RotateObject": false,
+          "AngleOffset": 0,
+          "CollisionShape": "Dot at center",
+          "ExtraBorder": 6
+        },
+        {
+          "name": "ShakeObject_PositionAngleScale",
+          "type": "ShakeObject::ShakeObject_PositionAngleScale",
+          "Scale": "Scale"
+        },
+        {
+          "name": "Tank",
+          "type": "CustomBehaviors::Tank",
+          "EntityBehavior": "Entity",
+          "BulletObjects": "BulletObjects",
+          "MoveSpeed": 70,
+          "BombObjects": "BombObjects"
+        },
+        {
+          "name": "Trails",
+          "type": "CustomBehaviors::Trails",
+          "SpawnByTime": false,
+          "SpawnCooldown": 1,
+          "SpawnDistance": 16,
+          "Spawn": false,
+          "DistanceMoved": 0,
+          "OldX": 2.0247e-320,
+          "OldY": 2.0247e-320
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "content": {
+        "CannonRotationSpeed": 2,
+        "BodyRotationSpeed": 0.3
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "SoftBreakableObstacle16",
+      "type": "CustomObjects::Obstacle",
+      "variant": "SoftBreakableObstacle16",
+      "variables": [],
+      "effects": [
+        {
+          "effectType": "Adjustment",
+          "name": "EditorSelected",
+          "doubleParameters": {
+            "alpha": 1,
+            "blue": 1,
+            "brightness": 1.2,
+            "contrast": 1,
+            "gamma": 1,
+            "green": 1,
+            "red": 1,
+            "saturation": 1
+          },
+          "stringParameters": {},
+          "booleanParameters": {}
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Damageable",
+          "type": "CustomBehaviors::Damageable",
+          "EntityBehavior": "Entity",
+          "Health": 200,
+          "CurrentHealth": 2.0247e-320
+        },
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 2.75859452924e-313,
+          "Type": "Obstacle"
+        },
+        {
+          "name": "Obstacle",
+          "type": "CustomBehaviors::Obstacle",
+          "EntityBehavior": "Entity",
+          "Health": 200,
+          "CurrentHealth": 2.0247e-320
+        }
+      ],
+      "content": {}
+    },
+    {
+      "assetStoreId": "",
+      "name": "HardBreakableObstacle16",
+      "type": "CustomObjects::Obstacle",
+      "variant": "HardBreakableObstacle16",
+      "variables": [],
+      "effects": [
+        {
+          "effectType": "Adjustment",
+          "name": "EditorSelected",
+          "doubleParameters": {
+            "alpha": 1,
+            "blue": 1,
+            "brightness": 1.2,
+            "contrast": 1,
+            "gamma": 1,
+            "green": 1,
+            "red": 1,
+            "saturation": 1
+          },
+          "stringParameters": {},
+          "booleanParameters": {}
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Damageable",
+          "type": "CustomBehaviors::Damageable",
+          "EntityBehavior": "Entity",
+          "Health": 200,
+          "CurrentHealth": 2.0247e-320,
+          "ImmuneDamage": "Bullet"
+        },
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 2.75859452924e-313,
+          "Type": "Obstacle"
+        },
+        {
+          "name": "Obstacle",
+          "type": "CustomBehaviors::Obstacle",
+          "EntityBehavior": "Entity",
+          "Health": 200,
+          "CurrentHealth": 2.0247e-320
+        }
+      ],
+      "content": {}
+    },
+    {
+      "assetStoreId": "",
+      "name": "Player0Spawner",
+      "type": "CustomObjects::Hidden",
+      "variant": "Player0Spawner",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 2.54639494916e-313,
+          "Type": "Spawner",
+          "SpawnerId": 2.54639515163e-313
+        },
+        {
+          "name": "Spawner",
+          "type": "CustomBehaviors::Spawner",
+          "ObjectName": "Player0",
+          "LimitPerScene": 1,
+          "SpawnCooldown": 3,
+          "CurrentCount": 0,
+          "EntityBehavior": "Entity"
+        }
+      ],
+      "content": {}
+    },
+    {
+      "assetStoreId": "",
+      "name": "TankBlueSpawner",
+      "persistentUuid": "23039767-3907-40a4-bfcc-17031270e25e",
+      "type": "CustomObjects::Hidden",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Entity",
+          "type": "CustomBehaviors::Entity",
+          "Id": 2.54639494916e-313,
+          "Type": "Spawner",
+          "SpawnerId": 2.54639515163e-313
+        },
+        {
+          "name": "Spawner",
+          "type": "CustomBehaviors::Spawner",
+          "ObjectName": "TankBlue",
+          "LimitPerScene": 1,
+          "SpawnCooldown": 3,
+          "CurrentCount": 0,
+          "EntityBehavior": "Entity"
+        }
+      ],
+      "content": {}
+    }
+  ],
+  "objectsFolderStructure": {
+    "folderName": "__ROOT",
+    "children": [
+      {
+        "objectName": "TankBlue"
+      },
+      {
+        "objectName": "TankBlueSpawner"
+      },
+      {
+        "objectName": "Player0Spawner"
+      },
+      {
+        "objectName": "SoftBreakableObstacle16"
+      },
+      {
+        "objectName": "HardBreakableObstacle16"
+      }
+    ]
+  },
+  "events": [
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Includes",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
+          },
+          "target": "Main Game UI Logic"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "ChangeLayerTimeScale"
+              },
+              "parameters": [
+                "",
+                "\"Main\"",
+                "1"
+              ]
+            }
+          ]
+        },
+        {
+          "disabled": true,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "CentreCamera"
+              },
+              "parameters": [
+                "",
+                "Player0",
+                "",
+                "_CONSTANTS_.Layers.Background",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "CentreCamera"
+              },
+              "parameters": [
+                "",
+                "Player0",
+                "",
+                "_CONSTANTS_.Layers.Main",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "CentreCamera"
+              },
+              "parameters": [
+                "",
+                "Player0",
+                "",
+                "_CONSTANTS_.Layers.Foreground",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "MAINGAME.CameraX",
+                "=",
+                "CameraBorderLeft(_CONSTANTS_.Layers.Main, 0)"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "MAINGAME.CameraY",
+                "=",
+                "CameraBorderTop(_CONSTANTS_.Layers.Main, 0)"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
+          },
+          "target": "Input Logic"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
+          },
+          "target": "Player Logic"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
+          },
+          "target": "Enemy Logic"
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Link",
+      "include": {
+        "includeConfig": 0
+      },
+      "target": "Main Game Logic"
+    }
+  ],
+  "layers": [
+    {
+      "ambientLightColorB": 200,
+      "ambientLightColorG": 200,
+      "ambientLightColorR": 200,
+      "camera3DFarPlaneDistance": 10000,
+      "camera3DFieldOfView": 45,
+      "camera3DNearPlaneDistance": 3,
+      "cameraType": "",
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
+      "isLocked": false,
+      "name": "",
+      "renderingType": "",
+      "visibility": true,
+      "cameras": [
+        {
+          "defaultSize": true,
+          "defaultViewport": true,
+          "height": 0,
+          "viewportBottom": 1,
+          "viewportLeft": 0,
+          "viewportRight": 1,
+          "viewportTop": 0,
+          "width": 0
+        }
+      ],
+      "effects": []
+    },
+    {
+      "ambientLightColorB": 200,
+      "ambientLightColorG": 200,
+      "ambientLightColorR": 200,
+      "camera3DFarPlaneDistance": 10000,
+      "camera3DFieldOfView": 45,
+      "camera3DNearPlaneDistance": 3,
+      "cameraType": "",
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
+      "isLocked": false,
+      "name": "Backgrouind",
+      "renderingType": "",
+      "visibility": true,
+      "cameras": [],
+      "effects": []
+    },
+    {
+      "ambientLightColorB": 200,
+      "ambientLightColorG": 200,
+      "ambientLightColorR": 200,
+      "camera3DFarPlaneDistance": 10000,
+      "camera3DFieldOfView": 45,
+      "camera3DNearPlaneDistance": 3,
+      "cameraType": "",
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
+      "isLocked": false,
+      "name": "Main",
+      "renderingType": "",
+      "visibility": true,
+      "cameras": [],
+      "effects": []
+    },
+    {
+      "ambientLightColorB": 200,
+      "ambientLightColorG": 200,
+      "ambientLightColorR": 200,
+      "camera3DFarPlaneDistance": 10000,
+      "camera3DFieldOfView": 45,
+      "camera3DNearPlaneDistance": 3,
+      "cameraType": "",
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
+      "isLocked": false,
+      "name": "Foreground",
+      "renderingType": "",
+      "visibility": true,
+      "cameras": [],
+      "effects": []
+    },
+    {
+      "ambientLightColorB": 200,
+      "ambientLightColorG": 200,
+      "ambientLightColorR": 200,
+      "camera3DFarPlaneDistance": 10000,
+      "camera3DFieldOfView": 45,
+      "camera3DNearPlaneDistance": 3,
+      "cameraType": "",
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
+      "isLocked": false,
+      "name": "UI",
+      "renderingType": "",
+      "visibility": true,
+      "cameras": [],
+      "effects": []
+    }
+  ],
+  "behaviorsSharedData": [
+    {
+      "name": "Animation",
+      "type": "AnimatableCapability::AnimatableBehavior"
+    },
+    {
+      "name": "Bomb",
+      "type": "CustomBehaviors::Bomb"
+    },
+    {
+      "name": "BombObjects",
+      "type": "CustomBehaviors::BombObjects"
+    },
+    {
+      "name": "Bounceable",
+      "type": "CustomBehaviors::Bounceable"
+    },
+    {
+      "name": "Bullet",
+      "type": "CustomBehaviors::Bullet"
+    },
+    {
+      "name": "BulletObjects",
+      "type": "CustomBehaviors::BulletObjects"
+    },
+    {
+      "name": "Damageable",
+      "type": "CustomBehaviors::Damageable"
+    },
+    {
+      "name": "Deleteable",
+      "type": "CustomBehaviors::Deleteable"
+    },
+    {
+      "name": "Effect",
+      "type": "EffectCapability::EffectBehavior"
+    },
+    {
+      "name": "EnemyIA",
+      "type": "CustomBehaviors::EnemyIA"
+    },
+    {
+      "name": "Entity",
+      "type": "CustomBehaviors::Entity"
+    },
+    {
+      "name": "Explosion",
+      "type": "CustomBehaviors::Explosion"
+    },
+    {
+      "name": "Flippable",
+      "type": "FlippableCapability::FlippableBehavior"
+    },
+    {
+      "name": "NavMeshPathfindingBehavior",
+      "type": "NavMeshPathfinding::NavMeshPathfindingBehavior"
+    },
+    {
+      "name": "NavMeshPathfindingObstacleBehavior",
+      "type": "NavMeshPathfinding::NavMeshPathfindingObstacleBehavior",
+      "Viewpoint": "Top-Down",
+      "CellSize": 10,
+      "AreaLeftBound": 0,
+      "AreaTopBound": 0,
+      "AreaRightBound": 0,
+      "AreaBottomBound": 0,
+      "IsometricRatio": 2.0247e-320
+    },
+    {
+      "name": "Obstacle",
+      "type": "CustomBehaviors::Obstacle"
+    },
+    {
+      "name": "Opacity",
+      "type": "OpacityCapability::OpacityBehavior"
+    },
+    {
+      "name": "Physics2",
+      "type": "Physics2::Physics2Behavior",
+      "gravityX": 0,
+      "gravityY": 9.8,
+      "worldScale": 100,
+      "scaleX": 100,
+      "scaleY": 100
+    },
+    {
+      "name": "Resizable",
+      "type": "ResizableCapability::ResizableBehavior"
+    },
+    {
+      "name": "Scale",
+      "type": "ScalableCapability::ScalableBehavior"
+    },
+    {
+      "name": "ShakeObject_PositionAngleScale",
+      "type": "ShakeObject::ShakeObject_PositionAngleScale"
+    },
+    {
+      "name": "Spawner",
+      "type": "CustomBehaviors::Spawner"
+    },
+    {
+      "name": "Tank",
+      "type": "CustomBehaviors::Tank"
+    },
+    {
+      "name": "Trails",
+      "type": "CustomBehaviors::Trails"
+    },
+    {
+      "name": "Tween",
+      "type": "Tween::TweenBehavior"
+    },
+    {
+      "name": "Wall",
+      "type": "CustomBehaviors::Wall"
+    }
+  ]
+}

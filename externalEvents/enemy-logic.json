@@ -1,5 +1,5 @@
 {
-  "associatedLayout": "Test Scene",
+  "associatedLayout": "Main Game Zone 1",
   "name": "Enemy Logic",
   "events": [
     {
@@ -116,7 +116,7 @@
                     "value": "ClearVariableChildren"
                   },
                   "parameters": [
-                    "EnemyLogic_IntersectsX"
+                    "RAYCAST_ARRAY_X"
                   ]
                 },
                 {
@@ -124,7 +124,7 @@
                     "value": "ClearVariableChildren"
                   },
                   "parameters": [
-                    "EnemyLogic_IntersectsY"
+                    "RAYCAST_ARRAY_Y"
                   ]
                 }
               ],
@@ -259,7 +259,7 @@
                             "value": "PushNumber"
                           },
                           "parameters": [
-                            "EnemyLogic_IntersectsX",
+                            "RAYCAST_ARRAY_X",
                             "LookX"
                           ]
                         },
@@ -268,7 +268,7 @@
                             "value": "PushNumber"
                           },
                           "parameters": [
-                            "EnemyLogic_IntersectsY",
+                            "RAYCAST_ARRAY_Y",
                             "LookY"
                           ]
                         },
@@ -279,7 +279,7 @@
                           "parameters": [
                             "AuxX",
                             "=",
-                            "XFromAngleAndDistance(Angle, 16) + EnemyLogic_IntersectsX[RepeatCount]"
+                            "XFromAngleAndDistance(Angle, 16) + RAYCAST_ARRAY_X[RepeatCount]"
                           ]
                         },
                         {
@@ -289,7 +289,7 @@
                           "parameters": [
                             "AuxY",
                             "=",
-                            "YFromAngleAndDistance(Angle, 16) + EnemyLogic_IntersectsY[RepeatCount]"
+                            "YFromAngleAndDistance(Angle, 16) + RAYCAST_ARRAY_Y[RepeatCount]"
                           ]
                         }
                       ]
@@ -338,7 +338,7 @@
                           "parameters": [
                             "AuxX",
                             "=",
-                            "XFromAngleAndDistance(Angle, 2) + EnemyLogic_IntersectsX[RepeatCount]"
+                            "XFromAngleAndDistance(Angle, 2) + RAYCAST_ARRAY_X[RepeatCount]"
                           ]
                         },
                         {
@@ -348,7 +348,7 @@
                           "parameters": [
                             "AuxY",
                             "=",
-                            "YFromAngleAndDistance(Angle, 2) + EnemyLogic_IntersectsY[RepeatCount]"
+                            "YFromAngleAndDistance(Angle, 2) + RAYCAST_ARRAY_Y[RepeatCount]"
                           ]
                         }
                       ]
@@ -378,8 +378,8 @@
                             "AuxY",
                             "Angle",
                             "1000",
-                            "EnemyLogic_IntersectsX[RepeatCount + 1]",
-                            "EnemyLogic_IntersectsY[RepeatCount + 1]",
+                            "RAYCAST_ARRAY_X[RepeatCount + 1]",
+                            "RAYCAST_ARRAY_Y[RepeatCount + 1]",
                             ""
                           ]
                         }
@@ -461,7 +461,7 @@
                           "parameters": [
                             "AuxX",
                             "=",
-                            "EnemyLogic_IntersectsX[RepeatCount]"
+                            "RAYCAST_ARRAY_X[RepeatCount]"
                           ]
                         },
                         {
@@ -471,7 +471,7 @@
                           "parameters": [
                             "AuxY",
                             "=",
-                            "EnemyLogic_IntersectsY[RepeatCount]"
+                            "RAYCAST_ARRAY_Y[RepeatCount]"
                           ]
                         }
                       ]
@@ -484,13 +484,13 @@
                             "value": "Raycast"
                           },
                           "parameters": [
-                            "EnemyLook",
+                            "SolidForEnemy",
                             "AuxX",
                             "AuxY",
                             "Angle",
                             "1000",
-                            "EnemyLogic_IntersectsX[RepeatCount + 1]",
-                            "EnemyLogic_IntersectsY[RepeatCount + 1]",
+                            "RAYCAST_ARRAY_X[RepeatCount + 1]",
+                            "RAYCAST_ARRAY_Y[RepeatCount + 1]",
                             ""
                           ]
                         }
@@ -564,6 +564,7 @@
                       ]
                     },
                     {
+                      "disabled": true,
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [],
                       "actions": [
@@ -575,8 +576,8 @@
                             "YellowPen",
                             "AuxX",
                             "AuxY",
-                            "EnemyLogic_IntersectsX[RepeatCount + 1]",
-                            "EnemyLogic_IntersectsY[RepeatCount + 1]",
+                            "RAYCAST_ARRAY_X[RepeatCount + 1]",
+                            "RAYCAST_ARRAY_Y[RepeatCount + 1]",
                             "2"
                           ]
                         }
@@ -996,7 +997,14 @@
                         "PathfindingZone.Entity::Id()",
                         ""
                       ]
-                    },
+                    }
+                  ]
+                },
+                {
+                  "disabled": true,
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
                     {
                       "type": {
                         "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::DrawNavMesh"
@@ -1600,7 +1608,7 @@
                           },
                           "parameters": [
                             "",
-                            "MuzzleFireTank",
+                            "VFXMuzzleFireTank",
                             "Enemies.MuzzleX()",
                             "Enemies.MuzzleY()",
                             "_CONSTANTS_.Layers.Main"
@@ -1611,7 +1619,7 @@
                             "value": "AnimatableCapability::AnimatableBehavior::SetName"
                           },
                           "parameters": [
-                            "MuzzleFireTank",
+                            "VFXMuzzleFireTank",
                             "Animation",
                             "=",
                             "Enemies.ObjectName()"
@@ -1622,7 +1630,7 @@
                             "value": "SetAngle"
                           },
                           "parameters": [
-                            "MuzzleFireTank",
+                            "VFXMuzzleFireTank",
                             "=",
                             "Enemies.LookAngle()"
                           ]
@@ -1632,9 +1640,9 @@
                             "value": "ChangePlan"
                           },
                           "parameters": [
-                            "MuzzleFireTank",
+                            "VFXMuzzleFireTank",
                             "=",
-                            "MuzzleFireTank.Y()"
+                            "VFXMuzzleFireTank.Y()"
                           ]
                         },
                         {
@@ -1671,7 +1679,7 @@
                                 "value": "FlippableCapability::FlippableBehavior::FlipY"
                               },
                               "parameters": [
-                                "MuzzleFireTank",
+                                "VFXMuzzleFireTank",
                                 "Flippable",
                                 "yes"
                               ]

@@ -1,0 +1,1968 @@
+{
+  "associatedLayout": "Main Game Zone 1",
+  "name": "Main Game Logic",
+  "events": [
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Begin scene",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "DepartScene"
+              },
+              "parameters": [
+                ""
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "AdvancedWindow::Maximize"
+                  },
+                  "parameters": [
+                    "yes",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CameraShake::SetLayerShakable"
+                  },
+                  "parameters": [
+                    "",
+                    "",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CameraShake::SetLayerShakable"
+                  },
+                  "parameters": [
+                    "",
+                    "",
+                    "\"Background\"",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CameraShake::SetLayerShakable"
+                  },
+                  "parameters": [
+                    "",
+                    "",
+                    "\"Main\"",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CameraShake::SetLayerShakable"
+                  },
+                  "parameters": [
+                    "",
+                    "",
+                    "\"Foreground\"",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ZoomCamera"
+                  },
+                  "parameters": [
+                    "",
+                    "1",
+                    "",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ZoomCamera"
+                  },
+                  "parameters": [
+                    "",
+                    "1",
+                    "_CONSTANTS_.Layers.Main",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ZoomCamera"
+                  },
+                  "parameters": [
+                    "",
+                    "1",
+                    "_CONSTANTS_.Layers.Background",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ZoomCamera"
+                  },
+                  "parameters": [
+                    "",
+                    "1",
+                    "_CONSTANTS_.Layers.Foreground",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ZoomCamera"
+                  },
+                  "parameters": [
+                    "",
+                    "1",
+                    "\"Debug\"",
+                    "0"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Bullets logic",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
+          },
+          "comment": "Collision with bouncable its made by distance because of problems with direct collision. Inconsitent results for some angles\nAnd its better for corners, because it is more precise."
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Bullets",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "BulletX",
+                    "=",
+                    "Bullets.X() + Bullets.Width() / 2"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "BulletY",
+                    "=",
+                    "Bullets.Y() + Bullets.Height() / 2"
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "Raycast"
+                      },
+                      "parameters": [
+                        "Bounceable",
+                        "BulletX",
+                        "BulletY",
+                        "Bullets.ForceAngle()",
+                        "1000",
+                        "RAYCAST_X",
+                        "RAYCAST_Y",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::CompareNumbers"
+                          },
+                          "parameters": [
+                            "DistanceBetweenPositions(RAYCAST_X, RAYCAST_Y, BulletX, BulletY)",
+                            "<=",
+                            "4"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::Bullet::CollisionWithBounceable"
+                          },
+                          "parameters": [
+                            "Bullets",
+                            "Bullet",
+                            "Bounceable",
+                            "Bounceable",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "CustomObjects::Bullet::Update"
+                          },
+                          "parameters": [
+                            "Bullets",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "BulletX",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "BulletY",
+              "type": "number",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
+          },
+          "comment": "The bullets don't do damage, It will create an explosion that will deal it"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CollisionNP"
+              },
+              "parameters": [
+                "Bullets",
+                "SolidForBullet",
+                "",
+                "",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Bullet::CollisionWithWall"
+              },
+              "parameters": [
+                "Bullets",
+                "Bullet",
+                "SolidForBullet",
+                "Entity",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "Distance"
+              },
+              "parameters": [
+                "Bullets",
+                "Bullets",
+                "8",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Bullet::CollisionWithBullet"
+              },
+              "parameters": [
+                "Bullets",
+                "Bullet",
+                "Bullets",
+                "",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CollisionNP"
+              },
+              "parameters": [
+                "Bullets",
+                "Bombs",
+                "",
+                "",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Delete"
+              },
+              "parameters": [
+                "Bullets",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "CustomBehaviors::Bomb::Explode"
+              },
+              "parameters": [
+                "Bombs",
+                "Bomb",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Bullet::HasToExplode"
+              },
+              "parameters": [
+                "Bullets",
+                "Bullet",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CreateByName"
+              },
+              "parameters": [
+                "",
+                "Explosions",
+                "\"Explosion\" + Bullets.ObjectName()",
+                "Bullets.X()",
+                "Bullets.Y()",
+                "_CONSTANTS_.Layers.Main"
+              ]
+            },
+            {
+              "type": {
+                "value": "MettreXY"
+              },
+              "parameters": [
+                "Explosions",
+                "-",
+                "Bullets.Width() / 2",
+                "-",
+                "Bullets.Height() / 2"
+              ]
+            },
+            {
+              "type": {
+                "value": "CustomBehaviors::Explosion::SetParentIdWithDebug"
+              },
+              "parameters": [
+                "Explosions",
+                "Explosion",
+                "Bullets.Entity::Id()",
+                "_CONFIG_.debug",
+                "Explosions",
+                ""
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Bomb logic",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
+          },
+          "comment": "The bombs don't do damage, It will create an explosion that will deal it"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Bomb::IsDetonating"
+              },
+              "parameters": [
+                "Bombs",
+                "Bomb",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomObjects::Bomb::Update"
+              },
+              "parameters": [
+                "Bombs",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Bomb::HasToExplode"
+              },
+              "parameters": [
+                "Bombs",
+                "Bomb",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CreateByName"
+              },
+              "parameters": [
+                "",
+                "Explosions",
+                "\"Explosion\" + Bombs.ObjectName()",
+                "Bombs.CenterX()",
+                "Bombs.CenterY()",
+                "_CONSTANTS_.Layers.Main"
+              ]
+            },
+            {
+              "type": {
+                "value": "MettreXY"
+              },
+              "parameters": [
+                "Explosions",
+                "-",
+                "Explosions.Width() / 2",
+                "-",
+                "Explosions.Height() / 2"
+              ]
+            },
+            {
+              "type": {
+                "value": "CustomBehaviors::Explosion::SetParentIdWithDebug"
+              },
+              "parameters": [
+                "Explosions",
+                "Explosion",
+                "Bombs.Entity::Id()",
+                "_CONFIG_.debug",
+                "Explosions",
+                ""
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Update tanks tags",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Tank::ResetTouching"
+              },
+              "parameters": [
+                "Tanks",
+                "Tank",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CollisionNP"
+              },
+              "parameters": [
+                "Tanks",
+                "TaggeableZone",
+                "Tanks.BoundingBoxCenterY()",
+                "",
+                ""
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Tanks",
+              "conditions": [],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::ForEach",
+                  "object": "TaggeableZone",
+                  "conditions": [],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::Tank::SetTouching"
+                          },
+                          "parameters": [
+                            "Tanks",
+                            "Tank",
+                            "TaggeableZone.ObjectName()",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Holes logic",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "Tanks",
+          "conditions": [],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CollisionPoint"
+                  },
+                  "parameters": [
+                    "HoleCollider",
+                    "Tanks.BoundingBoxCenterX()",
+                    "Tanks.BoundingBoxCenterY()"
+                  ]
+                },
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "CustomObjects::Tank::IsFalling"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Tank::SetFall"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Tank::FallFinished"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Damageable::DealDamage"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    "Damageable",
+                    "100000",
+                    "HoleCollider.Entity::Id()",
+                    "\"Hole\"",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Explosion logic (damage related)",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CollisionNP"
+              },
+              "parameters": [
+                "Explosions",
+                "Damageable",
+                "",
+                "",
+                ""
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Explosions",
+              "conditions": [],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::ForEach",
+                  "object": "Damageable",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Damageable::DealDamage"
+                      },
+                      "parameters": [
+                        "Damageable",
+                        "Damageable",
+                        "Explosions.Explosion::Damage()",
+                        "Explosions.Entity::Id()",
+                        "Explosions.Explosion::DamageType()",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Explosion::AddTarget"
+                      },
+                      "parameters": [
+                        "Explosions",
+                        "Explosion",
+                        ""
+                      ]
+                    }
+                  ],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::Entity::HasId"
+                          },
+                          "parameters": [
+                            "Tanks",
+                            "Entity",
+                            "Damageable.Entity::Id()",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "AuxAngle",
+                            "=",
+                            "AngleBetweenPositions(Explosions.BoundingBoxCenterX(), Explosions.BoundingBoxCenterY(), Tanks.BoundingBoxCenterX(), Tanks.BoundingBoxCenterY())"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "ShakeObject::ShakeObject_PositionAngleScale::ShakeObject_PositionAngleScale"
+                          },
+                          "parameters": [
+                            "Tanks",
+                            "ShakeObject_PositionAngleScale",
+                            "0.2",
+                            "6",
+                            "6",
+                            "0",
+                            "6",
+                            "0.075",
+                            "",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::Tank::ApplyRecoil"
+                          },
+                          "parameters": [
+                            "Tanks",
+                            "Tank",
+                            "Explosions.Explosion::PushForce()",
+                            "AuxAngle",
+                            "0.3",
+                            "0",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "CustomObjects::Tank::Flash"
+                          },
+                          "parameters": [
+                            "Tanks",
+                            "0.4",
+                            "AuxAngle - 180",
+                            "\"Red\"",
+                            ""
+                          ]
+                        }
+                      ],
+                      "variables": [
+                        {
+                          "name": "AuxAngle",
+                          "type": "number",
+                          "value": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Damageables death",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Damageable::IsDead"
+              },
+              "parameters": [
+                "Damageable",
+                "Damageable",
+                ""
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 255,
+                "textG": 255,
+                "textR": 255
+              },
+              "comment": "If is a tank, start death animation"
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Entity::HasId"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    "Entity",
+                    "Damageable.Entity::Id()",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "VFXCharacterDeath",
+                    "Damageable.X()",
+                    "Damageable.Y()",
+                    "_CONSTANTS_.Layers.Foreground"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "VFXCharacterDeath",
+                    "Animation",
+                    "=",
+                    "Tanks.ObjectName()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Physics2::ApplyPolarForce"
+                  },
+                  "parameters": [
+                    "VFXCharacterDeath",
+                    "Physics2",
+                    "-RandomFloatInRange(60, 120)",
+                    "50",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "VFXMediumExplosion",
+                    "Damageable.X()",
+                    "Damageable.Y()",
+                    "_CONSTANTS_.Layers.Foreground"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CameraShake::ShakeCamera"
+                  },
+                  "parameters": [
+                    "",
+                    "0.2",
+                    "0.1",
+                    "0",
+                    ""
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "CustomBehaviors::Tank::IsTouching"
+                      },
+                      "parameters": [
+                        "Tanks",
+                        "Tank",
+                        "NotDecalsZone.ObjectName()",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "Create"
+                      },
+                      "parameters": [
+                        "",
+                        "VFXExplosionCrack",
+                        "Damageable.X()",
+                        "Damageable.Y() + 8",
+                        "_CONSTANTS_.Layers.Main"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                      },
+                      "parameters": [
+                        "VFXExplosionCrack",
+                        "Animation",
+                        "=",
+                        "CurrentSceneName()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ChangePlan"
+                      },
+                      "parameters": [
+                        "VFXExplosionCrack",
+                        "=",
+                        "1"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Damageable",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Obstacles updates",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "DepartScene"
+              },
+              "parameters": [
+                ""
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 255,
+                "textG": 255,
+                "textR": 255
+              },
+              "comment": "Initialize the health visuals of obstacles"
+            },
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Obstacles",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomObjects::Obstacle::Update"
+                  },
+                  "parameters": [
+                    "Obstacles",
+                    "Obstacles.Damageable::Health()",
+                    "Obstacles.Damageable::Health()",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
+          },
+          "comment": "\n\n"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CustomObjects::Obstacle::Active"
+              },
+              "parameters": [
+                "Obstacles",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomObjects::Obstacle::Update"
+              },
+              "parameters": [
+                "Obstacles",
+                "Obstacles.Damageable::CurrentHealth()",
+                "Obstacles.Damageable::Health()",
+                ""
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Trails updates",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "Tanks",
+          "conditions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Trails::ShouldCreate"
+              },
+              "parameters": [
+                "Tanks",
+                "Trails",
+                ""
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "CustomBehaviors::Tank::InRecoil"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    "Tank",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "CustomBehaviors::Tank::IsTouching"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    "Tank",
+                    "NotDecalsZone.ObjectName()",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "VFXTankGroundTrail",
+                    "Tanks.CenterX()",
+                    "Tanks.CenterY()",
+                    "_CONSTANTS_.Layers.Background"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "VFXTankGroundTrail",
+                    "Animation",
+                    "=",
+                    "CurrentSceneName()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::PauseAnimation"
+                  },
+                  "parameters": [
+                    "VFXTankGroundTrail",
+                    "Animation"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "ChangeSprite"
+                  },
+                  "parameters": [
+                    "VFXTankGroundTrail",
+                    "=",
+                    "CustomFunctions::GetFrameByAngle(Tanks.BodyAngle(), 8)"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "MettreY"
+                  },
+                  "parameters": [
+                    "VFXTankGroundTrail",
+                    "+",
+                    "VFXTankGroundTrail.Height() / 2"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Tank::InRecoil"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    "Tank",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "CustomBehaviors::Tank::IsTouching"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    "Tank",
+                    "NotDecalsZone.ObjectName()",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "VFXTankGroundTrailRecoil",
+                    "Tanks.X()",
+                    "Tanks.CenterY()",
+                    "_CONSTANTS_.Layers.Background"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "VFXTankGroundTrailRecoil",
+                    "Animation",
+                    "=",
+                    "CurrentSceneName()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "MettreX"
+                  },
+                  "parameters": [
+                    "VFXTankGroundTrailRecoil",
+                    "+",
+                    "VFXTankGroundTrailRecoil.Width() / 2"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetAngle"
+                  },
+                  "parameters": [
+                    "VFXTankGroundTrailRecoil",
+                    "=",
+                    "Tanks.Tank::RecoilAngle() + 90"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "VFXTankMovementSmoke",
+                    "Tanks.CenterX()",
+                    "Tanks.CenterY()",
+                    "_CONSTANTS_.Layers.Main"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "MettreY"
+                  },
+                  "parameters": [
+                    "VFXTankMovementSmoke",
+                    "+",
+                    "VFXTankMovementSmoke.Height() / 2"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetAngle"
+                  },
+                  "parameters": [
+                    "VFXTankMovementSmoke",
+                    "=",
+                    "Tanks.BodyAngle() + 90"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Trails::Reset"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    "Trails",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "Bullets",
+          "conditions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Trails::ShouldCreate"
+              },
+              "parameters": [
+                "Bullets",
+                "Trails",
+                ""
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Create"
+                  },
+                  "parameters": [
+                    "",
+                    "VFXBulletSmokeTrail",
+                    "Bullets.X()",
+                    "Bullets.Y()",
+                    "_CONSTANTS_.Layers.Main"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CustomObjects::SmokeTrails::ChangeAngle"
+                  },
+                  "parameters": [
+                    "VFXBulletSmokeTrail",
+                    "Bullets.ForceAngle()",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Trails::Reset"
+                  },
+                  "parameters": [
+                    "Bullets",
+                    "Trails",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Spawners",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "DepartScene"
+              },
+              "parameters": [
+                ""
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Spawners",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CreateByName"
+                  },
+                  "parameters": [
+                    "",
+                    "CanBeSpawn",
+                    "Spawners.Spawner::ObjectName()",
+                    "Spawners.X()",
+                    "Spawners.Y()",
+                    "_CONSTANTS_.Layers.Main"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Entity::SetSpawnerId"
+                  },
+                  "parameters": [
+                    "CanBeSpawn",
+                    "Entity",
+                    "Spawners.Entity::Id()",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Spawner::SetCount"
+                  },
+                  "parameters": [
+                    "Spawners",
+                    "Spawner",
+                    "1",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
+          },
+          "comment": "\n\n"
+        },
+        {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "Spawners",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Spawner::SetCount"
+              },
+              "parameters": [
+                "Spawners",
+                "Spawner",
+                "0",
+                ""
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 255,
+                "textG": 255,
+                "textR": 255
+              },
+              "comment": "Update instances count in the spawners"
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Entity::HasSpawnerId"
+                  },
+                  "parameters": [
+                    "CanBeSpawn",
+                    "Entity",
+                    "Spawners.Entity::Id()",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Spawner::SetCount"
+                  },
+                  "parameters": [
+                    "Spawners",
+                    "Spawner",
+                    "PickedInstancesCount(CanBeSpawn)",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Spawner::CanSpawn"
+                  },
+                  "parameters": [
+                    "Spawners",
+                    "Spawner",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "CreateByName"
+                  },
+                  "parameters": [
+                    "",
+                    "CanBeSpawn",
+                    "Spawners.Spawner::ObjectName()",
+                    "Spawners.X()",
+                    "Spawners.Y()",
+                    "_CONSTANTS_.Layers.Main"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Entity::SetSpawnerId"
+                  },
+                  "parameters": [
+                    "CanBeSpawn",
+                    "Entity",
+                    "Spawners.Entity::Id()",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Speed modifier zone",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Tank::SetSpeedModifier"
+              },
+              "parameters": [
+                "Tanks",
+                "Tank",
+                "1",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CollisionNP"
+              },
+              "parameters": [
+                "Tanks",
+                "SpeedModifierZone",
+                "",
+                "",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Tank::SetSpeedModifier"
+              },
+              "parameters": [
+                "Tanks",
+                "Tank",
+                "SpeedModifierZone.SpeedPercentage",
+                ""
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "Objects that will be deleted after established time.\nChecked every 1 sec"
+    },
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Deleteables",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "DepartScene"
+              },
+              "parameters": [
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "ResetTimer"
+              },
+              "parameters": [
+                "",
+                "\"CheckDeleteables\""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CompareTimer"
+              },
+              "parameters": [
+                "",
+                "\"CheckDeleteables\"",
+                ">=",
+                "1"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "ResetTimer"
+              },
+              "parameters": [
+                "",
+                "\"CheckDeleteables\""
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CustomBehaviors::Deleteable::ShouldBeDeleted"
+                  },
+                  "parameters": [
+                    "Deleteables",
+                    "Deleteable",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Delete"
+                  },
+                  "parameters": [
+                    "Deleteables",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "Collision with walls for tanks"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "SeparateFromObjects"
+          },
+          "parameters": [
+            "Tanks",
+            "SolidForTank",
+            ""
+          ]
+        }
+      ]
+    }
+  ]
+}

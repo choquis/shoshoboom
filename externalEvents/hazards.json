@@ -1,0 +1,175 @@
+{
+  "associatedLayout": "Test Scene",
+  "name": "Hazards",
+  "events": [
+    {
+      "colorB": 82,
+      "colorG": 68,
+      "colorR": 62,
+      "creationTime": 0,
+      "name": "Hazards",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Tank::SetSpeedModifier"
+              },
+              "parameters": [
+                "Tanks",
+                "Tank",
+                "1",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": true,
+                "value": "CustomBehaviors::Hazard::Active"
+              },
+              "parameters": [
+                "HazardElectric",
+                "Hazard",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomObjects::Hazard::PlayAnimation"
+              },
+              "parameters": [
+                "HazardElectric",
+                "0",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "CustomBehaviors::Hazard::Active"
+              },
+              "parameters": [
+                "HazardElectric",
+                "Hazard",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomObjects::Hazard::PlayAnimation"
+              },
+              "parameters": [
+                "HazardElectric",
+                "1",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::ForEach",
+          "object": "Tanks",
+          "conditions": [],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CollisionNP"
+                  },
+                  "parameters": [
+                    "Tanks",
+                    "Hazards",
+                    "",
+                    "",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Hazard::Active"
+                      },
+                      "parameters": [
+                        "Hazards",
+                        "Hazard",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Tank::SetSpeedModifier"
+                      },
+                      "parameters": [
+                        "Tanks",
+                        "Tank",
+                        "0",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "CustomBehaviors::Hazard::Active"
+                      },
+                      "parameters": [
+                        "Hazards",
+                        "Hazard",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::Tank::SetSpeedModifier"
+                      },
+                      "parameters": [
+                        "Tanks",
+                        "Tank",
+                        "Hazards.Hazard::SpeedAlteration()",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": []
+    }
+  ]
+}

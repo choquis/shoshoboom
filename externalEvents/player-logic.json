@@ -1,18 +1,7 @@
 {
-  "associatedLayout": "Test Scene",
+  "associatedLayout": "Main Game Zone 1",
   "name": "Player Logic",
   "events": [
-    {
-      "colorB": 82,
-      "colorG": 68,
-      "colorR": 62,
-      "creationTime": 0,
-      "name": "Player logic",
-      "source": "",
-      "type": "BuiltinCommonInstructions::Group",
-      "events": [],
-      "parameters": []
-    },
     {
       "type": "BuiltinCommonInstructions::Comment",
       "color": {
@@ -53,51 +42,59 @@
       "actions": [],
       "events": [
         {
-          "colorB": 82,
-          "colorG": 68,
-          "colorR": 62,
-          "creationTime": 0,
-          "name": "Sight",
-          "source": "",
-          "type": "BuiltinCommonInstructions::Group",
-          "events": [
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
             {
-              "type": "BuiltinCommonInstructions::Comment",
-              "color": {
-                "b": 52,
-                "g": 44,
-                "r": 40,
-                "textB": 255,
-                "textG": 255,
-                "textR": 255
+              "type": {
+                "value": "SetNumberVariable"
               },
-              "comment": "Invert Y for the coordinals"
+              "parameters": [
+                "MAINGAME.CameraX",
+                "=",
+                "CameraBorderLeft(_CONSTANTS_.Layers.Main, 0)"
+              ]
             },
             {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "LookX",
-                    "=",
-                    "MAINGAME.Input.LookX"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "LookY",
-                    "=",
-                    "MAINGAME.Input.LookY"
-                  ]
-                }
-              ],
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "MAINGAME.CameraY",
+                "=",
+                "CameraBorderTop(_CONSTANTS_.Layers.Main, 0)"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "LookX",
+                "=",
+                "MAINGAME.Input.LookX"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "LookY",
+                "=",
+                "MAINGAME.Input.LookY"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "colorB": 82,
+              "colorG": 68,
+              "colorR": 62,
+              "creationTime": 0,
+              "name": "Sight/Crosshair",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
               "events": [
                 {
                   "type": "BuiltinCommonInstructions::Comment",
@@ -109,7 +106,7 @@
                     "textG": 255,
                     "textR": 255
                   },
-                  "comment": "Adjustment for mouse control. And in case the camera follow the player"
+                  "comment": "First assign the sight to prevent visual glitch"
                 },
                 {
                   "type": "BuiltinCommonInstructions::Standard",
@@ -133,7 +130,7 @@
                       "parameters": [
                         "LookX",
                         "=",
-                        "LookX + CameraX - Players.CenterX()"
+                        "LookX + MAINGAME.CameraX - Players.CenterX()"
                       ]
                     },
                     {
@@ -143,7 +140,7 @@
                       "parameters": [
                         "LookY",
                         "=",
-                        "LookY + CameraY - Players.CenterY()"
+                        "LookY + MAINGAME.CameraY - Players.CenterY()"
                       ]
                     }
                   ]
@@ -161,13 +158,7 @@
                         "=",
                         "AngleBetweenPositions(0, 0, LookX, LookY)"
                       ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
+                    },
                     {
                       "type": {
                         "value": "CustomObjects::Tank::LookTo"
@@ -179,78 +170,19 @@
                       ]
                     }
                   ]
-                }
-              ],
-              "variables": [
-                {
-                  "name": "LookX",
-                  "type": "number",
-                  "value": 0
                 },
                 {
-                  "name": "LookY",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "LookAngle",
-                  "type": "number",
-                  "value": 0
-                }
-              ]
-            }
-          ],
-          "parameters": []
-        },
-        {
-          "type": "BuiltinCommonInstructions::Comment",
-          "color": {
-            "b": 52,
-            "g": 44,
-            "r": 40,
-            "textB": 255,
-            "textG": 255,
-            "textR": 255
-          },
-          "comment": "\n\n"
-        },
-        {
-          "colorB": 82,
-          "colorG": 68,
-          "colorR": 62,
-          "creationTime": 0,
-          "name": "Show Cursor",
-          "source": "",
-          "type": "BuiltinCommonInstructions::Group",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Comment",
-              "color": {
-                "b": 52,
-                "g": 44,
-                "r": 40,
-                "textB": 255,
-                "textG": 255,
-                "textR": 255
-              },
-              "comment": "Draw/Snap cursor"
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 52,
+                    "g": 44,
+                    "r": 40,
+                    "textB": 255,
+                    "textG": 255,
+                    "textR": 255
                   },
-                  "parameters": [
-                    "LookAngle",
-                    "=",
-                    "Players.LookAngle()"
-                  ]
-                }
-              ],
-              "events": [
+                  "comment": "Then calculate the position of the crosshair"
+                },
                 {
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
@@ -273,7 +205,7 @@
                       "parameters": [
                         "LookX",
                         "=",
-                        "MAINGAME.Input.LookX + CameraX"
+                        "LookX + Players.CenterX()"
                       ]
                     },
                     {
@@ -283,7 +215,7 @@
                       "parameters": [
                         "LookY",
                         "=",
-                        "MAINGAME.Input.LookY + CameraY"
+                        "LookY + Players.CenterY()"
                       ]
                     }
                   ],
@@ -296,13 +228,13 @@
                             "value": "RaycastToPosition"
                           },
                           "parameters": [
-                            "CursorCollisions",
+                            "SolidForCrosshair",
                             "Players.MuzzleX()",
                             "Players.MuzzleY()",
                             "LookX",
                             "LookY",
-                            "iX",
-                            "iY",
+                            "RAYCAST_X",
+                            "RAYCAST_Y",
                             ""
                           ]
                         }
@@ -367,13 +299,13 @@
                             "value": "Raycast"
                           },
                           "parameters": [
-                            "CursorCollisions",
+                            "SolidForCrosshair",
                             "Players.MuzzleX()",
                             "Players.MuzzleY()",
                             "LookAngle",
                             "MaxDistance",
-                            "iX",
-                            "iY",
+                            "RAYCAST_X",
+                            "RAYCAST_Y",
                             ""
                           ]
                         }
@@ -402,35 +334,6 @@
                       },
                       "parameters": [
                         "CursorHit",
-                        "",
-                        ""
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "MettreXY"
-                      },
-                      "parameters": [
-                        "Cursor",
-                        "=",
-                        "LookX",
-                        "=",
-                        "LookY"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "BooleanVariable"
-                      },
-                      "parameters": [
-                        "CursorHit",
                         "True",
                         ""
                       ]
@@ -439,46 +342,47 @@
                   "actions": [
                     {
                       "type": {
-                        "value": "MettreXY"
+                        "value": "SetNumberVariable"
                       },
                       "parameters": [
-                        "Cursor",
+                        "LookX",
                         "=",
-                        "iX",
+                        "RAYCAST_X"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "LookY",
                         "=",
-                        "iY"
+                        "RAYCAST_Y"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "CustomObjects::Crosshair::UpdateCrosshair"
+                      },
+                      "parameters": [
+                        "CrosshairPlayer0",
+                        "Players.MuzzleX()",
+                        "Players.MuzzleY()",
+                        "LookX",
+                        "LookY",
+                        ""
                       ]
                     }
                   ]
                 }
               ],
-              "variables": [
-                {
-                  "name": "LookX",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "LookY",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "LookAngle",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "CursorHit",
-                  "type": "boolean",
-                  "value": false
-                },
-                {
-                  "name": "MaxDistance",
-                  "type": "number",
-                  "value": 1000
-                }
-              ]
+              "parameters": []
             },
             {
               "type": "BuiltinCommonInstructions::Comment",
@@ -493,376 +397,69 @@
               "comment": "\n\n"
             },
             {
-              "type": "BuiltinCommonInstructions::Comment",
-              "color": {
-                "b": 52,
-                "g": 44,
-                "r": 40,
-                "textB": 255,
-                "textG": 255,
-                "textR": 255
-              },
-              "comment": "Draw points to cursor"
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [],
+              "colorB": 82,
+              "colorG": 68,
+              "colorR": 62,
+              "creationTime": 0,
+              "name": "Shoot",
+              "source": "",
+              "type": "BuiltinCommonInstructions::Group",
               "events": [
                 {
                   "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "AjoutObjConcern"
-                      },
-                      "parameters": [
-                        "",
-                        "CursorPoint"
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "TotalPoints",
-                        "=",
-                        "PickedInstancesCount(CursorPoint)"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "SpaceX",
-                        "=",
-                        "(Cursor.CenterX() - Players.MuzzleX()) / TotalPoints"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "SpaceY",
-                        "=",
-                        "(Cursor.CenterY() - Players.MuzzleY()) / TotalPoints"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::ForEach",
-                  "object": "CursorPoint",
                   "conditions": [],
                   "actions": [
                     {
                       "type": {
-                        "value": "MettreXY"
+                        "value": "SetNumberVariable"
                       },
                       "parameters": [
-                        "CursorPoint",
+                        "CursorAngle",
                         "=",
-                        "Players.MuzzleX() + (PointIndex * SpaceX)",
-                        "=",
-                        "Players.MuzzleY() + (PointIndex * SpaceY)"
+                        "AngleBetweenPositions(Players.MuzzleX(), Players.MuzzleY(), LookX, LookY)"
                       ]
                     },
                     {
                       "type": {
                         "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "PointIndex",
-                        "+",
-                        "1"
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "variables": [
-                {
-                  "name": "TotalPoints",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "SpaceX",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "SpaceY",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "PointIndex",
-                  "type": "number",
-                  "value": 0
-                }
-              ]
-            }
-          ],
-          "parameters": []
-        },
-        {
-          "type": "BuiltinCommonInstructions::Comment",
-          "color": {
-            "b": 52,
-            "g": 44,
-            "r": 40,
-            "textB": 255,
-            "textG": 255,
-            "textR": 255
-          },
-          "comment": "\n\n"
-        },
-        {
-          "colorB": 82,
-          "colorG": 68,
-          "colorR": 62,
-          "creationTime": 0,
-          "name": "Shoot",
-          "source": "",
-          "type": "BuiltinCommonInstructions::Group",
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "CursorAngle",
-                    "=",
-                    "AngleBetweenPositions(Players.MuzzleX(), Players.MuzzleY(), Cursor.X(), Cursor.Y())"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "DeltaAngle",
-                    "=",
-                    "abs(trunc(Players.LookAngle()) - trunc(CursorAngle))"
-                  ]
-                }
-              ],
-              "events": [
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::Bullet::AreFromTank"
-                      },
-                      "parameters": [
-                        "Bullets",
-                        "Bullet",
-                        "Players.Entity::Id()",
-                        "Players.BulletObjects::ProjectileObjectName()",
-                        ""
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "BulletCount",
-                        "=",
-                        "PickedInstancesCount(Bullets)"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Comment",
-                  "color": {
-                    "b": 52,
-                    "g": 44,
-                    "r": 40,
-                    "textB": 255,
-                    "textG": 255,
-                    "textR": 255
-                  },
-                  "comment": "DeltaAngle its used to prevent that the tank can shoot behind, if the cursor is on it"
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "StringVariable"
-                      },
-                      "parameters": [
-                        "MAINGAME.Input.Shoot",
-                        "=",
-                        "_CONSTANTS_.InputState.Pressed"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::Tank::CanShoot"
-                      },
-                      "parameters": [
-                        "Players",
-                        "Tank",
-                        "BulletCount",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "NumberVariable"
                       },
                       "parameters": [
                         "DeltaAngle",
-                        "<",
-                        "45"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "BuiltinCommonInstructions::Not"
-                      },
-                      "parameters": [],
-                      "subInstructions": [
-                        {
-                          "type": {
-                            "value": "CollisionPoint"
-                          },
-                          "parameters": [
-                            "SolidForTank",
-                            "Players.MuzzleX()",
-                            "Players.MuzzleY()"
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "BuiltinCommonInstructions::Once"
-                      },
-                      "parameters": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "CreateByName"
-                      },
-                      "parameters": [
-                        "",
-                        "Bullets",
-                        "Players.BulletObjects::ProjectileObjectName()",
-                        "Players.MuzzleX()",
-                        "Players.MuzzleY()",
-                        "_CONSTANTS_.Layers.Main"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "MettreXY"
-                      },
-                      "parameters": [
-                        "Bullets",
-                        "-",
-                        "Bullets.Width() / 2",
-                        "-",
-                        "Bullets.Height() / 2"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::Bullet::ThrowForDebug"
-                      },
-                      "parameters": [
-                        "Bullets",
-                        "Bullet",
-                        "Bullets",
-                        "CursorAngle",
-                        "_CONFIG_.debug",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::Bullet::SetParentId"
-                      },
-                      "parameters": [
-                        "Bullets",
-                        "Bullet",
-                        "Players.Entity::Id()",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::Tank::SetShootCooldown"
-                      },
-                      "parameters": [
-                        "Players",
-                        "Tank",
-                        "Bullets.Bullet::Cooldown()",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::Tank::SetMaxBullets"
-                      },
-                      "parameters": [
-                        "Players",
-                        "Tank",
-                        "Bullets.Bullet::TotalBullets()",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::Tank::ApplyRecoil"
-                      },
-                      "parameters": [
-                        "Players",
-                        "Tank",
-                        "Bullets.Bullet::PushForce()",
-                        "CursorAngle - 180",
-                        "Bullets.Bullet::Cooldown()",
-                        "0",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ShakeObject::ShakeObject_PositionAngleScale::ShakeObject_PositionAngleScale"
-                      },
-                      "parameters": [
-                        "Players",
-                        "ShakeObject_PositionAngleScale",
-                        "0.25",
-                        "5",
-                        "5",
-                        "0",
-                        "5",
-                        "0.085",
-                        "",
-                        ""
+                        "=",
+                        "abs(trunc(LookAngle) - trunc(CursorAngle))"
                       ]
                     }
                   ],
                   "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::Bullet::AreFromTank"
+                          },
+                          "parameters": [
+                            "Bullets",
+                            "Bullet",
+                            "Players.Entity::Id()",
+                            "Players.BulletObjects::ProjectileObjectName()",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "BulletCount",
+                            "=",
+                            "PickedInstancesCount(Bullets)"
+                          ]
+                        }
+                      ]
+                    },
                     {
                       "type": "BuiltinCommonInstructions::Comment",
                       "color": {
@@ -873,19 +470,76 @@
                         "textG": 255,
                         "textR": 255
                       },
-                      "comment": "Muzzle fire"
+                      "comment": "DeltaAngle its used to prevent that the tank can shoot behind, if the cursor is on it"
                     },
                     {
                       "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "StringVariable"
+                          },
+                          "parameters": [
+                            "MAINGAME.Input.Shoot",
+                            "=",
+                            "_CONSTANTS_.InputState.Pressed"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::Tank::CanShoot"
+                          },
+                          "parameters": [
+                            "Players",
+                            "Tank",
+                            "BulletCount",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "NumberVariable"
+                          },
+                          "parameters": [
+                            "DeltaAngle",
+                            "<",
+                            "45"
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::Not"
+                          },
+                          "parameters": [],
+                          "subInstructions": [
+                            {
+                              "type": {
+                                "value": "CollisionPoint"
+                              },
+                              "parameters": [
+                                "SolidForTank",
+                                "Players.MuzzleX()",
+                                "Players.MuzzleY()"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::Once"
+                          },
+                          "parameters": []
+                        }
+                      ],
                       "actions": [
                         {
                           "type": {
-                            "value": "Create"
+                            "value": "CreateByName"
                           },
                           "parameters": [
                             "",
-                            "MuzzleFireTank",
+                            "Bullets",
+                            "Players.BulletObjects::ProjectileObjectName()",
                             "Players.MuzzleX()",
                             "Players.MuzzleY()",
                             "_CONSTANTS_.Layers.Main"
@@ -893,101 +547,249 @@
                         },
                         {
                           "type": {
-                            "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                            "value": "MettreXY"
                           },
                           "parameters": [
-                            "MuzzleFireTank",
-                            "Animation",
-                            "=",
-                            "Players.ObjectName()"
+                            "Bullets",
+                            "-",
+                            "Bullets.Width() / 2",
+                            "-",
+                            "Bullets.Height() / 2"
                           ]
                         },
                         {
                           "type": {
-                            "value": "SetAngle"
+                            "value": "CustomBehaviors::Bullet::ThrowForDebug"
                           },
                           "parameters": [
-                            "MuzzleFireTank",
-                            "=",
-                            "CursorAngle"
+                            "Bullets",
+                            "Bullet",
+                            "Bullets",
+                            "CursorAngle",
+                            "_CONFIG_.debug",
+                            ""
                           ]
                         },
                         {
                           "type": {
-                            "value": "ChangePlan"
+                            "value": "CustomBehaviors::Bullet::SetParentId"
                           },
                           "parameters": [
-                            "MuzzleFireTank",
-                            "=",
-                            "MuzzleFireTank.Y()"
+                            "Bullets",
+                            "Bullet",
+                            "Players.Entity::Id()",
+                            ""
                           ]
                         },
                         {
                           "type": {
-                            "value": "CustomObjects::Tank::Flash"
+                            "value": "CustomBehaviors::Tank::SetShootCooldown"
                           },
                           "parameters": [
                             "Players",
-                            "0.5",
-                            "Players.LookAngle()",
-                            "\"Yellow\"",
+                            "Tank",
+                            "Bullets.Bullet::Cooldown()",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::Tank::SetMaxBullets"
+                          },
+                          "parameters": [
+                            "Players",
+                            "Tank",
+                            "Bullets.Bullet::TotalBullets()",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::Tank::ApplyRecoil"
+                          },
+                          "parameters": [
+                            "Players",
+                            "Tank",
+                            "Bullets.Bullet::PushForce()",
+                            "CursorAngle - 180",
+                            "Bullets.Bullet::Cooldown()",
+                            "0",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "ShakeObject::ShakeObject_PositionAngleScale::ShakeObject_PositionAngleScale"
+                          },
+                          "parameters": [
+                            "Players",
+                            "ShakeObject_PositionAngleScale",
+                            "0.25",
+                            "5",
+                            "5",
+                            "0",
+                            "5",
+                            "0.085",
+                            "",
                             ""
                           ]
                         }
                       ],
                       "events": [
                         {
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 52,
+                            "g": 44,
+                            "r": 40,
+                            "textB": 255,
+                            "textG": 255,
+                            "textR": 255
+                          },
+                          "comment": "Muzzle fire"
+                        },
+                        {
                           "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [
-                            {
-                              "type": {
-                                "value": "BuiltinCommonInstructions::CompareNumbers"
-                              },
-                              "parameters": [
-                                "abs(CursorAngle)",
-                                ">",
-                                "90"
-                              ]
-                            }
-                          ],
+                          "conditions": [],
                           "actions": [
                             {
                               "type": {
-                                "value": "FlippableCapability::FlippableBehavior::FlipY"
+                                "value": "Create"
                               },
                               "parameters": [
-                                "MuzzleFireTank",
-                                "Flippable",
-                                "yes"
+                                "",
+                                "VFXMuzzleFireTank",
+                                "Players.MuzzleX()",
+                                "Players.MuzzleY()",
+                                "_CONSTANTS_.Layers.Main"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                              },
+                              "parameters": [
+                                "VFXMuzzleFireTank",
+                                "Animation",
+                                "=",
+                                "Players.ObjectName()"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetAngle"
+                              },
+                              "parameters": [
+                                "VFXMuzzleFireTank",
+                                "=",
+                                "CursorAngle"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "ChangePlan"
+                              },
+                              "parameters": [
+                                "VFXMuzzleFireTank",
+                                "=",
+                                "VFXMuzzleFireTank.Y()"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "CustomObjects::Tank::Flash"
+                              },
+                              "parameters": [
+                                "Players",
+                                "0.5",
+                                "LookAngle",
+                                "\"Yellow\"",
+                                ""
+                              ]
+                            }
+                          ],
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                                  },
+                                  "parameters": [
+                                    "abs(CursorAngle)",
+                                    ">",
+                                    "90"
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "FlippableCapability::FlippableBehavior::FlipY"
+                                  },
+                                  "parameters": [
+                                    "VFXMuzzleFireTank",
+                                    "Flippable",
+                                    "yes"
+                                  ]
+                                }
                               ]
                             }
                           ]
                         }
                       ]
                     }
+                  ],
+                  "variables": [
+                    {
+                      "name": "DeltaAngle",
+                      "type": "number",
+                      "value": 0
+                    },
+                    {
+                      "name": "CursorAngle",
+                      "type": "number",
+                      "value": 0
+                    },
+                    {
+                      "name": "BulletCount",
+                      "type": "number",
+                      "value": 0
+                    }
                   ]
                 }
               ],
-              "variables": [
-                {
-                  "name": "DeltaAngle",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "CursorAngle",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "BulletCount",
-                  "type": "number",
-                  "value": 0
-                }
-              ]
+              "parameters": []
             }
           ],
-          "parameters": []
+          "variables": [
+            {
+              "name": "LookX",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "LookY",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "LookAngle",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "CursorHit",
+              "type": "boolean",
+              "value": false
+            },
+            {
+              "name": "MaxDistance",
+              "type": "number",
+              "value": 1000
+            }
+          ]
         },
         {
           "type": "BuiltinCommonInstructions::Comment",
@@ -1402,6 +1204,18 @@
       "comment": "\n\n"
     },
     {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "Move the cursor away"
+    },
+    {
       "type": "BuiltinCommonInstructions::Standard",
       "conditions": [
         {
@@ -1424,55 +1238,14 @@
           ]
         }
       ],
-      "actions": [],
-      "events": [
+      "actions": [
         {
-          "type": "BuiltinCommonInstructions::Comment",
-          "color": {
-            "b": 52,
-            "g": 44,
-            "r": 40,
-            "textB": 255,
-            "textG": 255,
-            "textR": 255
+          "type": {
+            "value": "CustomObjects::Crosshair::HideCrosshair"
           },
-          "comment": "Move the cursor away"
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "MettreXY"
-              },
-              "parameters": [
-                "Cursor",
-                "=",
-                "-1000",
-                "=",
-                "-100"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::ForEach",
-          "object": "CursorPoint",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "MettreXY"
-              },
-              "parameters": [
-                "CursorPoint",
-                "=",
-                "-1000",
-                "=",
-                "-1000"
-              ]
-            }
+          "parameters": [
+            "CrosshairPlayer0",
+            ""
           ]
         }
       ]

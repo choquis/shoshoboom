@@ -1,5 +1,5 @@
 {
-  "associatedLayout": "Main Game",
+  "associatedLayout": "Main Game (Old)",
   "name": "RegularEnemyBak",
   "events": [
     {
@@ -9,7 +9,7 @@
       "events": [
         {
           "type": "BuiltinCommonInstructions::ForEach",
-          "object": "Enemies",
+          "object": "EnemiesOld",
           "conditions": [],
           "actions": [
             {
@@ -19,7 +19,7 @@
               "parameters": [
                 "LookX",
                 "=",
-                "Enemies.GetLookPointX()"
+                "EnemiesOld.GetLookPointX()"
               ]
             },
             {
@@ -29,7 +29,7 @@
               "parameters": [
                 "LookY",
                 "=",
-                "Enemies.GetLookPointY()"
+                "EnemiesOld.GetLookPointY()"
               ]
             },
             {
@@ -39,7 +39,7 @@
               "parameters": [
                 "PositionX",
                 "=",
-                "Enemies.CenterX()"
+                "EnemiesOld.CenterX()"
               ]
             },
             {
@@ -49,7 +49,7 @@
               "parameters": [
                 "PositionY",
                 "=",
-                "Enemies.CenterY()"
+                "EnemiesOld.CenterY()"
               ]
             },
             {
@@ -59,7 +59,7 @@
               "parameters": [
                 "Angle",
                 "=",
-                "Enemies.GetCannonAngle()"
+                "EnemiesOld.GetCannonAngle()"
               ]
             },
             {
@@ -87,7 +87,7 @@
                 "value": "SetStringObjectVariable"
               },
               "parameters": [
-                "Enemies",
+                "EnemiesOld",
                 "IA.BlockTarget",
                 "=",
                 "\"\""
@@ -100,7 +100,7 @@
               "parameters": [
                 "Name",
                 "=",
-                "Enemies.ObjectName()"
+                "EnemiesOld.ObjectName()"
               ]
             }
           ],
@@ -126,7 +126,7 @@
                   },
                   "parameters": [
                     "Player",
-                    "Enemies",
+                    "EnemiesOld",
                     "_DATA_.Tanks[Name].DetectionDistance",
                     ""
                   ]
@@ -148,7 +148,7 @@
                     "value": "SetStringObjectVariable"
                   },
                   "parameters": [
-                    "Enemies",
+                    "EnemiesOld",
                     "IA.State",
                     "=",
                     "_CONSTANTS_.IAStates.Alert"
@@ -176,7 +176,7 @@
                     "value": "StringObjectVariable"
                   },
                   "parameters": [
-                    "Enemies",
+                    "EnemiesOld",
                     "IA.State",
                     "=",
                     "_CONSTANTS_.IAStates.Searching"
@@ -215,7 +215,7 @@
                             "value": "Raycast"
                           },
                           "parameters": [
-                            "VisibleToEnemy",
+                            "VisibleToEnemyOld",
                             "LookX",
                             "LookY",
                             "Angle",
@@ -453,7 +453,7 @@
                         "value": "SetStringObjectVariable"
                       },
                       "parameters": [
-                        "Enemies",
+                        "EnemiesOld",
                         "IA.State",
                         "=",
                         "_CONSTANTS_.IAStates.Alert"
@@ -513,8 +513,8 @@
                       },
                       "parameters": [
                         "Pen",
-                        "Enemies.CenterX()",
-                        "Enemies.CenterY()",
+                        "EnemiesOld.CenterX()",
+                        "EnemiesOld.CenterY()",
                         "_DATA_.Tanks[Name].DetectionDistance"
                       ]
                     }
@@ -560,8 +560,8 @@
                       },
                       "parameters": [
                         "Pen",
-                        "Enemies.CenterX()",
-                        "Enemies.CenterY()",
+                        "EnemiesOld.CenterX()",
+                        "EnemiesOld.CenterY()",
                         "_DATA_.Tanks[Name].DetectionDistance"
                       ]
                     }
@@ -589,7 +589,7 @@
                     "value": "StringObjectVariable"
                   },
                   "parameters": [
-                    "Enemies",
+                    "EnemiesOld",
                     "IA.State",
                     "=",
                     "_CONSTANTS_.IAStates.Alert"
@@ -606,7 +606,7 @@
                         "value": "Raycast"
                       },
                       "parameters": [
-                        "VisibleToEnemy",
+                        "VisibleToEnemyOld",
                         "LookX",
                         "LookY",
                         "Angle",
@@ -836,7 +836,7 @@
                         "value": "SetBooleanObjectVariable"
                       },
                       "parameters": [
-                        "Enemies",
+                        "EnemiesOld",
                         "IA.SeeSomething",
                         "True",
                         "_CONSTANTS_.IAStates.Alert"
@@ -847,10 +847,10 @@
                         "value": "SetStringObjectVariable"
                       },
                       "parameters": [
-                        "Enemies",
+                        "EnemiesOld",
                         "IA.BlockTarget",
                         "=",
-                        "VisibleToEnemy.Type"
+                        "VisibleToEnemyOld.Type"
                       ]
                     }
                   ]
@@ -907,8 +907,8 @@
                       },
                       "parameters": [
                         "Pen",
-                        "Enemies.CenterX()",
-                        "Enemies.CenterY()",
+                        "EnemiesOld.CenterX()",
+                        "EnemiesOld.CenterY()",
                         "_DATA_.Tanks[Name].DetectionDistance + _DATA_.Tanks[Name].DetectionExtension"
                       ]
                     }
@@ -954,8 +954,8 @@
                       },
                       "parameters": [
                         "Pen",
-                        "Enemies.CenterX()",
-                        "Enemies.CenterY()",
+                        "EnemiesOld.CenterX()",
+                        "EnemiesOld.CenterY()",
                         "_DATA_.Tanks[Name].DetectionDistance + _DATA_.Tanks[Name].DetectionExtension"
                       ]
                     }
@@ -2205,7 +2205,7 @@
                       },
                       "parameters": [
                         "",
-                        "Enemies"
+                        "EnemiesOld"
                       ]
                     },
                     {
@@ -2213,7 +2213,7 @@
                         "value": "BooleanObjectVariable"
                       },
                       "parameters": [
-                        "Enemies",
+                        "EnemiesOld",
                         "IA.SeePlayer",
                         "True",
                         ""
@@ -2228,7 +2228,7 @@
                       "parameters": [
                         "EnemiesFollowPlayer",
                         "=",
-                        "PickedInstancesCount(Enemies)"
+                        "PickedInstancesCount(EnemiesOld)"
                       ]
                     }
                   ]

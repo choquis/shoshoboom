@@ -19,7 +19,8 @@
     "gridAlpha": 0.8,
     "snap": false,
     "zoomFactor": 2.514367296498754,
-    "windowMask": false
+    "windowMask": false,
+    "selectedLayer": ""
   },
   "objectsGroups": [],
   "variables": [],
@@ -253,7 +254,7 @@
           },
           "parameters": [
             "",
-            "\"Main Game\"",
+            "\"Main Game (Old)\"",
             ""
           ]
         }
@@ -483,28 +484,72 @@
       "type": "AnimatableCapability::AnimatableBehavior"
     },
     {
+      "name": "Bomb",
+      "type": "CustomBehaviors::Bomb"
+    },
+    {
+      "name": "BombObjects",
+      "type": "CustomBehaviors::BombObjects"
+    },
+    {
+      "name": "Bounceable",
+      "type": "CustomBehaviors::Bounceable"
+    },
+    {
+      "name": "Bullet",
+      "type": "CustomBehaviors::Bullet"
+    },
+    {
+      "name": "BulletObjects",
+      "type": "CustomBehaviors::BulletObjects"
+    },
+    {
+      "name": "Damageable",
+      "type": "CustomBehaviors::Damageable"
+    },
+    {
+      "name": "Deleteable",
+      "type": "CustomBehaviors::Deleteable"
+    },
+    {
       "name": "Effect",
       "type": "EffectCapability::EffectBehavior"
+    },
+    {
+      "name": "Entity",
+      "type": "CustomBehaviors::Entity"
+    },
+    {
+      "name": "Explosion",
+      "type": "CustomBehaviors::Explosion"
     },
     {
       "name": "Flippable",
       "type": "FlippableCapability::FlippableBehavior"
     },
     {
+      "name": "NavMeshPathfindingObstacleBehavior",
+      "type": "NavMeshPathfinding::NavMeshPathfindingObstacleBehavior",
+      "Viewpoint": "Top-Down",
+      "CellSize": 10,
+      "AreaLeftBound": 0,
+      "AreaTopBound": 0,
+      "AreaRightBound": 0,
+      "AreaBottomBound": 0,
+      "IsometricRatio": 2.0247e-320
+    },
+    {
       "name": "Opacity",
       "type": "OpacityCapability::OpacityBehavior"
     },
     {
-      "name": "Pathfinding",
-      "type": "PathfindingBehavior::PathfindingBehavior"
-    },
-    {
-      "name": "PathfindingObstacle",
-      "type": "PathfindingBehavior::PathfindingObstacleBehavior"
-    },
-    {
-      "name": "RectangleMovement",
-      "type": "RectangleMovement::RectangleMovement"
+      "name": "Physics2",
+      "type": "Physics2::Physics2Behavior",
+      "gravityX": 0,
+      "gravityY": 9.8,
+      "worldScale": 100,
+      "scaleX": 100,
+      "scaleY": 100
     },
     {
       "name": "Resizable",
@@ -515,24 +560,28 @@
       "type": "ScalableCapability::ScalableBehavior"
     },
     {
-      "name": "Sticker",
-      "type": "Sticker::Sticker"
+      "name": "ShakeObject_PositionAngleScale",
+      "type": "ShakeObject::ShakeObject_PositionAngleScale"
+    },
+    {
+      "name": "Tank",
+      "type": "CustomBehaviors::Tank"
     },
     {
       "name": "Text",
       "type": "TextContainerCapability::TextContainerBehavior"
     },
     {
-      "name": "TopDownMovement",
-      "type": "TopDownMovementBehavior::TopDownMovementBehavior"
+      "name": "Trails",
+      "type": "CustomBehaviors::Trails"
     },
     {
       "name": "Tween",
       "type": "Tween::TweenBehavior"
     },
     {
-      "name": "YSort",
-      "type": "YSort::YSort"
+      "name": "Wall",
+      "type": "CustomBehaviors::Wall"
     }
   ]
 }

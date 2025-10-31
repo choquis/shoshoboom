@@ -1,5 +1,5 @@
 {
-  "associatedLayout": "Main Game",
+  "associatedLayout": "Main Game (Old)",
   "name": "Enemy Logic (Old)",
   "events": [
     {
@@ -18,7 +18,7 @@
           "events": [
             {
               "type": "BuiltinCommonInstructions::ForEach",
-              "object": "Enemies",
+              "object": "EnemiesOld",
               "conditions": [],
               "actions": [
                 {
@@ -28,7 +28,7 @@
                   "parameters": [
                     "LookX",
                     "=",
-                    "Enemies.GetMuzzlePointX()"
+                    "EnemiesOld.GetMuzzlePointX()"
                   ]
                 },
                 {
@@ -38,7 +38,7 @@
                   "parameters": [
                     "LookY",
                     "=",
-                    "Enemies.GetMuzzlePointY()"
+                    "EnemiesOld.GetMuzzlePointY()"
                   ]
                 },
                 {
@@ -48,7 +48,7 @@
                   "parameters": [
                     "PositionX",
                     "=",
-                    "Enemies.CenterX()"
+                    "EnemiesOld.CenterX()"
                   ]
                 },
                 {
@@ -58,7 +58,7 @@
                   "parameters": [
                     "PositionY",
                     "=",
-                    "Enemies.CenterY()"
+                    "EnemiesOld.CenterY()"
                   ]
                 },
                 {
@@ -68,7 +68,7 @@
                   "parameters": [
                     "Angle",
                     "=",
-                    "Enemies.GetCannonAngle()"
+                    "EnemiesOld.GetCannonAngle()"
                   ]
                 },
                 {
@@ -96,7 +96,7 @@
                     "value": "SetStringObjectVariable"
                   },
                   "parameters": [
-                    "Enemies",
+                    "EnemiesOld",
                     "IA.BlockTarget",
                     "=",
                     "\"\""
@@ -107,7 +107,7 @@
                     "value": "SetBooleanObjectVariable"
                   },
                   "parameters": [
-                    "Enemies",
+                    "EnemiesOld",
                     "IA.LandmineDetected",
                     "False",
                     "\"\""
@@ -120,7 +120,7 @@
                   "parameters": [
                     "Name",
                     "=",
-                    "Enemies.ObjectName()"
+                    "EnemiesOld.ObjectName()"
                   ]
                 },
                 {
@@ -140,7 +140,7 @@
                   "parameters": [
                     "BulletBounces",
                     "=",
-                    "_DATA_.Bullets[Enemies.BulletType].MaxBounces"
+                    "_DATA_.Bullets[EnemiesOld.BulletType].MaxBounces"
                   ]
                 },
                 {
@@ -171,7 +171,7 @@
                       },
                       "parameters": [
                         "Player",
-                        "Enemies",
+                        "EnemiesOld",
                         "_DATA_.Tanks[Name].DetectionDistance",
                         ""
                       ]
@@ -193,7 +193,7 @@
                         "value": "SetStringObjectVariable"
                       },
                       "parameters": [
-                        "Enemies",
+                        "EnemiesOld",
                         "IA.State",
                         "=",
                         "_CONSTANTS_.IAStates.Alert"
@@ -222,7 +222,7 @@
                       },
                       "parameters": [
                         "LandmineDetection",
-                        "Enemies",
+                        "EnemiesOld",
                         "_DATA_.Tanks[Name].LandmineDetection",
                         ""
                       ]
@@ -234,7 +234,7 @@
                         "value": "SetBooleanObjectVariable"
                       },
                       "parameters": [
-                        "Enemies",
+                        "EnemiesOld",
                         "IA.LandmineDetected",
                         "True",
                         ""
@@ -275,7 +275,7 @@
                                   "parameters": [
                                     "",
                                     "LandmineDetection",
-                                    "Enemies",
+                                    "EnemiesOld",
                                     ""
                                   ]
                                 }
@@ -315,7 +315,7 @@
                                   "parameters": [
                                     "",
                                     "LandmineDetection",
-                                    "Enemies"
+                                    "EnemiesOld"
                                   ]
                                 }
                               ]
@@ -350,7 +350,7 @@
                             "value": "BooleanObjectVariable"
                           },
                           "parameters": [
-                            "Enemies",
+                            "EnemiesOld",
                             "IA.LandmineDetected",
                             "",
                             ""
@@ -377,7 +377,7 @@
                             "value": "BooleanObjectVariable"
                           },
                           "parameters": [
-                            "Enemies",
+                            "EnemiesOld",
                             "IA.LandmineDetected",
                             "True",
                             ""
@@ -417,8 +417,8 @@
                           },
                           "parameters": [
                             "Pen",
-                            "Enemies.CenterX()",
-                            "Enemies.CenterY()",
+                            "EnemiesOld.CenterX()",
+                            "EnemiesOld.CenterY()",
                             "_DATA_.Tanks[Name].LandmineDetection"
                           ]
                         }
@@ -459,7 +459,7 @@
                         "value": "BooleanObjectVariable"
                       },
                       "parameters": [
-                        "Enemies",
+                        "EnemiesOld",
                         "IA.Aggresive",
                         "False",
                         "_CONSTANTS_.IAStates.Alert"
@@ -474,7 +474,7 @@
                       "parameters": [
                         "BulletBounces",
                         "=",
-                        "_DATA_.Bullets[Enemies.BulletType].MaxBounces"
+                        "_DATA_.Bullets[EnemiesOld.BulletType].MaxBounces"
                       ]
                     }
                   ]
@@ -499,7 +499,7 @@
                         "value": "BooleanObjectVariable"
                       },
                       "parameters": [
-                        "Enemies",
+                        "EnemiesOld",
                         "IA.Aggresive",
                         "True",
                         "_CONSTANTS_.IAStates.Alert"
@@ -681,7 +681,7 @@
                             "value": "Raycast"
                           },
                           "parameters": [
-                            "Enemies",
+                            "EnemiesOld",
                             "AuxX",
                             "AuxY",
                             "Angle",
@@ -702,7 +702,7 @@
                                 "value": "PickedInstancesCount"
                               },
                               "parameters": [
-                                "Enemies",
+                                "EnemiesOld",
                                 ">",
                                 "0"
                               ]
@@ -780,7 +780,7 @@
                             "value": "Raycast"
                           },
                           "parameters": [
-                            "VisibleToEnemy",
+                            "VisibleToEnemyOld",
                             "AuxX",
                             "AuxY",
                             "Angle",
@@ -1052,7 +1052,7 @@
                                 "value": "BuiltinCommonInstructions::CompareStrings"
                               },
                               "parameters": [
-                                "VisibleToEnemy.Type",
+                                "VisibleToEnemyOld.Type",
                                 "!=",
                                 "_CONSTANTS_.Entities.Player"
                               ]
@@ -1064,10 +1064,10 @@
                                 "value": "SetStringObjectVariable"
                               },
                               "parameters": [
-                                "Enemies",
+                                "EnemiesOld",
                                 "IA.BlockTarget",
                                 "=",
-                                "VisibleToEnemy.Type"
+                                "VisibleToEnemyOld.Type"
                               ]
                             }
                           ]
@@ -1132,7 +1132,7 @@
                             "value": "SetBooleanObjectVariable"
                           },
                           "parameters": [
-                            "Enemies",
+                            "EnemiesOld",
                             "IA.SeeEnemy",
                             "False",
                             "_CONSTANTS_.IAStates.Alert"
@@ -1160,7 +1160,7 @@
                             "value": "SetBooleanObjectVariable"
                           },
                           "parameters": [
-                            "Enemies",
+                            "EnemiesOld",
                             "IA.SeeEnemy",
                             "True",
                             "_CONSTANTS_.IAStates.Alert"
@@ -1188,7 +1188,7 @@
                             "value": "SetBooleanObjectVariable"
                           },
                           "parameters": [
-                            "Enemies",
+                            "EnemiesOld",
                             "IA.SeePlayer",
                             "False",
                             "_CONSTANTS_.IAStates.Alert"
@@ -1216,7 +1216,7 @@
                             "value": "SetBooleanObjectVariable"
                           },
                           "parameters": [
-                            "Enemies",
+                            "EnemiesOld",
                             "IA.SeePlayer",
                             "True",
                             "_CONSTANTS_.IAStates.Alert"
@@ -1229,7 +1229,7 @@
                           "parameters": [
                             "RepeatCount",
                             "=",
-                            "_DATA_.Bullets[Enemies.BulletType].MaxBounces"
+                            "_DATA_.Bullets[EnemiesOld.BulletType].MaxBounces"
                           ]
                         }
                       ]
@@ -1254,7 +1254,7 @@
                             "value": "SetBooleanObjectVariable"
                           },
                           "parameters": [
-                            "Enemies",
+                            "EnemiesOld",
                             "IA.SeeSomething",
                             "True",
                             "_CONSTANTS_.IAStates.Alert"
@@ -1282,7 +1282,7 @@
                             "value": "SetBooleanObjectVariable"
                           },
                           "parameters": [
-                            "Enemies",
+                            "EnemiesOld",
                             "IA.SeeSomething",
                             "False",
                             "_CONSTANTS_.IAStates.Alert"
