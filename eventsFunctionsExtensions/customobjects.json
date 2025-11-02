@@ -94892,6 +94892,1414 @@
         }
       ],
       "variants": []
+    },
+    {
+      "areaMaxX": 704,
+      "areaMaxY": 360,
+      "areaMaxZ": 1,
+      "areaMinX": 0,
+      "areaMinY": 0,
+      "areaMinZ": 0,
+      "defaultName": "",
+      "description": "Transition screen to hide or show",
+      "fullName": "Transition screen (Custom Object)",
+      "isUsingLegacyInstancesRenderer": false,
+      "name": "TransitionScreen",
+      "objects": [
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "BlackBoxTransition",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "default",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "Black",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 64,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 64,
+                            "y": 0
+                          },
+                          {
+                            "x": 64,
+                            "y": 64
+                          },
+                          {
+                            "x": 0,
+                            "y": 64
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "BlackScreenTransitionCorner",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": true,
+                  "metadata": "{\"pskl\":{}}",
+                  "timeBetweenFrames": 0.1,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\black-transition-gradient_1.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 64,
+                            "y": 0
+                          },
+                          {
+                            "x": 64,
+                            "y": 360
+                          },
+                          {
+                            "x": 0,
+                            "y": 360
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\black-transition-gradient_2.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 64,
+                            "y": 0
+                          },
+                          {
+                            "x": 64,
+                            "y": 360
+                          },
+                          {
+                            "x": 0,
+                            "y": 360
+                          }
+                        ]
+                      ]
+                    },
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "assets\\black-transition-gradient_3.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 64,
+                            "y": 0
+                          },
+                          {
+                            "x": 64,
+                            "y": 360
+                          },
+                          {
+                            "x": 0,
+                            "y": 360
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "objectsFolderStructure": {
+        "folderName": "__ROOT",
+        "children": [
+          {
+            "objectName": "BlackScreenTransitionCorner"
+          },
+          {
+            "objectName": "BlackBoxTransition"
+          }
+        ]
+      },
+      "objectsGroups": [],
+      "layers": [
+        {
+          "ambientLightColorB": 200,
+          "ambientLightColorG": 200,
+          "ambientLightColorR": 200,
+          "camera3DFarPlaneDistance": 10000,
+          "camera3DFieldOfView": 45,
+          "camera3DNearPlaneDistance": 3,
+          "cameraType": "",
+          "followBaseLayerCamera": false,
+          "isLightingLayer": false,
+          "isLocked": false,
+          "name": "",
+          "renderingType": "",
+          "visibility": true,
+          "cameras": [
+            {
+              "defaultSize": true,
+              "defaultViewport": true,
+              "height": 0,
+              "viewportBottom": 1,
+              "viewportLeft": 0,
+              "viewportRight": 1,
+              "viewportTop": 0,
+              "width": 0
+            }
+          ],
+          "effects": []
+        }
+      ],
+      "instances": [
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "BlackScreenTransitionCorner",
+          "persistentUuid": "88168dc2-6c3f-453a-a0f4-9114534d8cc7",
+          "width": 0,
+          "x": 640,
+          "y": 0,
+          "zOrder": 0,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": true,
+          "depth": 1,
+          "height": 360,
+          "layer": "",
+          "name": "BlackBoxTransition",
+          "persistentUuid": "a13c882e-c098-435b-8767-d877c20c14e5",
+          "width": 640,
+          "x": 640,
+          "y": 0,
+          "zOrder": 0,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        }
+      ],
+      "editionSettings": {
+        "grid": false,
+        "gridType": "rectangular",
+        "gridWidth": 32,
+        "gridHeight": 32,
+        "gridOffsetX": 0,
+        "gridOffsetY": 0,
+        "gridColor": 10401023,
+        "gridAlpha": 0.8,
+        "snap": false,
+        "zoomFactor": 1.7473397624935865,
+        "windowMask": false,
+        "selectedLayer": ""
+      },
+      "eventsFunctions": [
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "onCreated",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "MettreXY"
+                  },
+                  "parameters": [
+                    "Object",
+                    "=",
+                    "0",
+                    "=",
+                    "0"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::TransitionScreen",
+              "type": "object"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "The transition has ended",
+          "fullName": "Transition has ended",
+          "functionType": "Condition",
+          "name": "HasEnded",
+          "sentence": "Transition _PARAM0_ has ended",
+          "events": [
+            {
+              "disabled": true,
+              "folded": true,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareStrings"
+                  },
+                  "parameters": [
+                    "CurrentTransition",
+                    "=",
+                    "\"LeftToRight\""
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::CompareNumbers"
+                      },
+                      "parameters": [
+                        "isBackward",
+                        "=",
+                        "0"
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::CompareNumbers"
+                          },
+                          "parameters": [
+                            "Object.X()",
+                            "=",
+                            "0"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetReturnBoolean"
+                          },
+                          "parameters": [
+                            "True"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::Or"
+                          },
+                          "parameters": [],
+                          "subInstructions": [
+                            {
+                              "type": {
+                                "inverted": true,
+                                "value": "BuiltinCommonInstructions::CompareNumbers"
+                              },
+                              "parameters": [
+                                "Object.X()",
+                                "=",
+                                "0"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetReturnBoolean"
+                          },
+                          "parameters": [
+                            "False"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::CompareNumbers"
+                      },
+                      "parameters": [
+                        "isBackward",
+                        "=",
+                        "1"
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::CompareNumbers"
+                          },
+                          "parameters": [
+                            "Object.X()",
+                            "=",
+                            "-WidthScreen - BlackScreenTransitionCorner.Width()"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetReturnBoolean"
+                          },
+                          "parameters": [
+                            "True"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::Or"
+                          },
+                          "parameters": [],
+                          "subInstructions": [
+                            {
+                              "type": {
+                                "inverted": true,
+                                "value": "BuiltinCommonInstructions::CompareNumbers"
+                              },
+                              "parameters": [
+                                "Object.X()",
+                                "=",
+                                "-WidthScreen - BlackScreenTransitionCorner.Width()"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetReturnBoolean"
+                          },
+                          "parameters": [
+                            "False"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "disabled": true,
+              "folded": true,
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareStrings"
+                  },
+                  "parameters": [
+                    "CurrentTransition",
+                    "=",
+                    "\"RightToLeft\""
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::CompareNumbers"
+                      },
+                      "parameters": [
+                        "isBackward",
+                        "=",
+                        "0"
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::CompareNumbers"
+                          },
+                          "parameters": [
+                            "Object.X()",
+                            "=",
+                            "0"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetReturnBoolean"
+                          },
+                          "parameters": [
+                            "True"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::Or"
+                          },
+                          "parameters": [],
+                          "subInstructions": [
+                            {
+                              "type": {
+                                "inverted": true,
+                                "value": "BuiltinCommonInstructions::CompareNumbers"
+                              },
+                              "parameters": [
+                                "Object.X()",
+                                "=",
+                                "0"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetReturnBoolean"
+                          },
+                          "parameters": [
+                            "False"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::CompareNumbers"
+                      },
+                      "parameters": [
+                        "isBackward",
+                        "=",
+                        "1"
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::CompareNumbers"
+                          },
+                          "parameters": [
+                            "Object.X()",
+                            "=",
+                            "WidthScreen"
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetReturnBoolean"
+                          },
+                          "parameters": [
+                            "True"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::Or"
+                          },
+                          "parameters": [],
+                          "subInstructions": [
+                            {
+                              "type": {
+                                "inverted": true,
+                                "value": "BuiltinCommonInstructions::CompareNumbers"
+                              },
+                              "parameters": [
+                                "Object.X()",
+                                "=",
+                                "WidthScreen"
+                              ]
+                            }
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetReturnBoolean"
+                          },
+                          "parameters": [
+                            "False"
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Tween::Exists"
+                  },
+                  "parameters": [
+                    "Object",
+                    "ParamTween",
+                    "\"Transition\""
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "Tween::HasFinished"
+                      },
+                      "parameters": [
+                        "Object",
+                        "ParamTween",
+                        "\"Transition\""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetReturnBoolean"
+                      },
+                      "parameters": [
+                        "True"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "Tween::IsPlaying"
+                      },
+                      "parameters": [
+                        "Object",
+                        "ParamTween",
+                        "\"Transition\""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetReturnBoolean"
+                      },
+                      "parameters": [
+                        "False"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "Tween::Exists"
+                  },
+                  "parameters": [
+                    "Object",
+                    "ParamTween",
+                    "\"Transition\""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "False"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::TransitionScreen",
+              "type": "object"
+            },
+            {
+              "description": "Tween",
+              "name": "ParamTween",
+              "supplementaryInformation": "Tween::TweenBehavior",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Start/Restart left to right transition",
+          "fullName": "Start/Restart left to right (->) transition",
+          "functionType": "Action",
+          "name": "DoLeftToRightTransition",
+          "sentence": "Start/Restart left to right (->) transition _PARAM0_. Backward ( 1: yes, 0: no) _PARAM2_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Tween::Exists"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Tween",
+                    "\"Transition\""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Tween::RemoveTween"
+                  },
+                  "parameters": [
+                    "Object",
+                    "ParamTween",
+                    "\"Transition\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "MettreXY"
+                  },
+                  "parameters": [
+                    "BlackScreenTransitionCorner",
+                    "=",
+                    "640",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "FlippableCapability::FlippableBehavior::FlipX"
+                  },
+                  "parameters": [
+                    "BlackScreenTransitionCorner",
+                    "Flippable",
+                    "no"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "ParamBackward",
+                    "=",
+                    "0"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "MettreXY"
+                  },
+                  "parameters": [
+                    "Object",
+                    "=",
+                    "-WidthScreen - BlackScreenTransitionCorner.Width()",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectPositionTween2"
+                  },
+                  "parameters": [
+                    "Object",
+                    "ParamTween",
+                    "\"Transition\"",
+                    "0",
+                    "0",
+                    "\"easeFrom\"",
+                    "TransitionTime",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "ParamBackward",
+                    "=",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "MettreXY"
+                  },
+                  "parameters": [
+                    "Object",
+                    "=",
+                    "0",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectPositionTween2"
+                  },
+                  "parameters": [
+                    "Object",
+                    "ParamTween",
+                    "\"Transition\"",
+                    "-WidthScreen - BlackScreenTransitionCorner.Width()",
+                    "0",
+                    "\"easeFrom\"",
+                    "TransitionTime",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "CurrentTransition",
+                    "=",
+                    "\"LeftToRight\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "isBackward",
+                    "=",
+                    "ParamBackward"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::TransitionScreen",
+              "type": "object"
+            },
+            {
+              "description": "Tween",
+              "name": "ParamTween",
+              "supplementaryInformation": "Tween::TweenBehavior",
+              "type": "behavior"
+            },
+            {
+              "description": "Backward",
+              "name": "ParamBackward",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Start/Restart right to left (<-) transition",
+          "fullName": "Start/Restart right to left (<-) transition",
+          "functionType": "Action",
+          "name": "DoRightToLeftTransition",
+          "sentence": "Start/Restart right to left (<-)  transition _PARAM0_. Backward ( 1: yes, 0: no) _PARAM2_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Tween::Exists"
+                  },
+                  "parameters": [
+                    "Object",
+                    "Tween",
+                    "\"Transition\""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Tween::RemoveTween"
+                  },
+                  "parameters": [
+                    "Object",
+                    "ParamTween",
+                    "\"Transition\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "MettreXY"
+                  },
+                  "parameters": [
+                    "BlackScreenTransitionCorner",
+                    "=",
+                    "-64",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "FlippableCapability::FlippableBehavior::FlipX"
+                  },
+                  "parameters": [
+                    "BlackScreenTransitionCorner",
+                    "Flippable",
+                    "yes"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "ParamBackward",
+                    "=",
+                    "0"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "MettreXY"
+                  },
+                  "parameters": [
+                    "Object",
+                    "=",
+                    "WidthScreen",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectPositionTween2"
+                  },
+                  "parameters": [
+                    "Object",
+                    "ParamTween",
+                    "\"Transition\"",
+                    "0",
+                    "0",
+                    "\"easeFrom\"",
+                    "TransitionTime",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "ParamBackward",
+                    "=",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "MettreXY"
+                  },
+                  "parameters": [
+                    "Object",
+                    "=",
+                    "0",
+                    "=",
+                    "0"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectPositionTween2"
+                  },
+                  "parameters": [
+                    "Object",
+                    "ParamTween",
+                    "\"Transition\"",
+                    "WidthScreen",
+                    "0",
+                    "\"easeFrom\"",
+                    "TransitionTime",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "CurrentTransition",
+                    "=",
+                    "\"RightToLeft\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "isBackward",
+                    "=",
+                    "ParamBackward"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::TransitionScreen",
+              "type": "object"
+            },
+            {
+              "description": "Tween",
+              "name": "ParamTween",
+              "supplementaryInformation": "Tween::TweenBehavior",
+              "type": "behavior"
+            },
+            {
+              "description": "Backward",
+              "name": "ParamBackward",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "fullName": "",
+          "functionType": "Action",
+          "name": "FinishTransition",
+          "sentence": "",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Tween::Exists"
+                  },
+                  "parameters": [
+                    "Object",
+                    "ParamTween",
+                    "\"Transition\""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Tween::RemoveTween"
+                  },
+                  "parameters": [
+                    "Object",
+                    "ParamTween",
+                    "\"Transition\""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareStrings"
+                  },
+                  "parameters": [
+                    "CurrentTransition",
+                    "=",
+                    "\"LeftToRight\""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "MettreXY"
+                  },
+                  "parameters": [
+                    "Object",
+                    "=",
+                    "WidthScreen",
+                    "=",
+                    "HeightScreen"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareStrings"
+                  },
+                  "parameters": [
+                    "CurrentTransition",
+                    "=",
+                    "\"RightToLeft\""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "MettreXY"
+                  },
+                  "parameters": [
+                    "Object",
+                    "=",
+                    "0",
+                    "=",
+                    "0"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::TransitionScreen",
+              "type": "object"
+            },
+            {
+              "description": "Tween",
+              "name": "ParamTween",
+              "supplementaryInformation": "Tween::TweenBehavior",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
+          "description": "Set screen size for transition",
+          "fullName": "Set screen size for transition",
+          "functionType": "Action",
+          "name": "SetScreenSize",
+          "sentence": "Set screen size (width: _PARAM1_, height: _PARAM2_) for transition _PARAM0_",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "WidthScreen",
+                    "=",
+                    "ParamWidthScreen"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "HeightScreen",
+                    "=",
+                    "ParamHeightScreen"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "supplementaryInformation": "CustomObjects::TransitionScreen",
+              "type": "object"
+            },
+            {
+              "description": "Width screen",
+              "name": "ParamWidthScreen",
+              "type": "expression"
+            },
+            {
+              "description": "Height screen",
+              "name": "ParamHeightScreen",
+              "type": "expression"
+            }
+          ],
+          "objectGroups": []
+        }
+      ],
+      "propertyDescriptors": [
+        {
+          "value": "640",
+          "type": "Number",
+          "label": "Widht screen",
+          "name": "WidthScreen"
+        },
+        {
+          "value": "360",
+          "type": "Number",
+          "label": "Height screen",
+          "name": "HeightScreen"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "label": "",
+          "name": "TransitionTime"
+        },
+        {
+          "value": "",
+          "type": "String",
+          "label": "",
+          "choices": [
+            {
+              "label": "Left to right",
+              "value": "LeftToRight"
+            },
+            {
+              "label": "Right to left",
+              "value": "RightToLeft"
+            },
+            {
+              "label": "Black in",
+              "value": "BlackIn"
+            }
+          ],
+          "hidden": true,
+          "name": "CurrentTransition"
+        },
+        {
+          "value": "",
+          "type": "Number",
+          "label": "",
+          "hidden": true,
+          "name": "isBackward"
+        }
+      ],
+      "variants": []
     }
   ]
 }

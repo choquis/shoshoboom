@@ -1,13 +1,13 @@
 {
-  "b": 209,
+  "b": 69,
   "disableInputWhenNotFocused": true,
   "mangledName": "Main_32Game_32Zone_321",
   "name": "Main Game Zone 1",
-  "r": 209,
+  "r": 45,
   "standardSortMethod": true,
   "stopSoundsOnStartup": true,
   "title": "",
-  "v": 209,
+  "v": 32,
   "uiSettings": {
     "grid": false,
     "gridType": "rectangular",
@@ -18,9 +18,9 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": false,
-    "zoomFactor": 1.7987215167333237,
+    "zoomFactor": 1.9868866996519223,
     "windowMask": false,
-    "selectedLayer": ""
+    "selectedLayer": "Transition"
   },
   "objectsGroups": [
     {
@@ -207,6 +207,16 @@
       "name": "RAYCAST_ARRAY_Y",
       "type": "array",
       "children": []
+    },
+    {
+      "name": "testdisplacement",
+      "type": "number",
+      "value": 1
+    },
+    {
+      "name": "acum",
+      "type": "number",
+      "value": 1
     }
   ],
   "instances": [
@@ -422,9 +432,45 @@
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "UI",
+      "name": "TransitionScreen",
+      "persistentUuid": "c4194325-d21e-4ba0-b1b8-29b8fa095db0",
+      "width": 0,
+      "x": -704,
+      "y": 0,
+      "zOrder": 11,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
     }
   ],
   "objects": [
+    {
+      "assetStoreId": "",
+      "name": "TransitionScreen",
+      "type": "CustomObjects::TransitionScreen",
+      "variant": "",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "content": {
+        "TransitionTime": 1,
+        "InitialX": -704,
+        "FinalX": 0,
+        "FinalY": 0
+      }
+    },
     {
       "assetStoreId": "",
       "name": "TankBlue",
@@ -681,6 +727,9 @@
       },
       {
         "objectName": "HardBreakableObstacle16"
+      },
+      {
+        "objectName": "TransitionScreen"
       }
     ]
   },
@@ -706,20 +755,23 @@
           "conditions": [
             {
               "type": {
-                "value": "BuiltinCommonInstructions::Once"
+                "value": "DepartScene"
               },
-              "parameters": []
+              "parameters": [
+                ""
+              ]
             }
           ],
           "actions": [
             {
               "type": {
-                "value": "ChangeLayerTimeScale"
+                "value": "CustomObjects::TransitionScreen::DoRightToLeftTransition"
               },
               "parameters": [
-                "",
-                "\"Main\"",
-                "1"
+                "TransitionScreen",
+                "Tween",
+                "0",
+                ""
               ]
             }
           ]
@@ -817,6 +869,33 @@
         "includeConfig": 0
       },
       "target": "Main Game Logic"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "CustomObjects::TransitionScreen::HasEnded"
+          },
+          "parameters": [
+            "TransitionScreen",
+            "Tween"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "CustomObjects::TransitionScreen::DoLeftToRightTransition"
+          },
+          "parameters": [
+            "TransitionScreen",
+            "Tween",
+            "1",
+            ""
+          ]
+        }
+      ]
     }
   ],
   "layers": [
