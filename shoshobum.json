@@ -8335,6 +8335,26 @@
         "name": "assets\\MainMenu\\sun-glare_5.png",
         "smoothed": false,
         "userAdded": false
+      },
+      {
+        "file": "assets/Music/main_menu_bg.aac",
+        "kind": "audio",
+        "metadata": "",
+        "name": "assets\\Music\\main_menu_bg.aac",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "preloadInCache": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/SFX/MainMenu/main_menu_option_movement_sfx.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "assets\\SFX\\MainMenu\\main_menu_option_movement_sfx.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "preloadInCache": false,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -12924,7 +12944,6 @@
       ]
     },
     {
-      "folded": true,
       "name": "_CONSTANTS_",
       "type": "structure",
       "children": [
@@ -12946,7 +12965,6 @@
           ]
         },
         {
-          "folded": true,
           "name": "Channel",
           "type": "structure",
           "children": [
@@ -12959,6 +12977,11 @@
               "name": "GameDeadMusic",
               "type": "number",
               "value": 3
+            },
+            {
+              "name": "MainMenu",
+              "type": "number",
+              "value": 0
             },
             {
               "name": "StartMusic",
@@ -12981,6 +13004,22 @@
               "name": "Light",
               "type": "string",
               "value": "255;219;120"
+            },
+            {
+              "name": "Menu",
+              "type": "structure",
+              "children": [
+                {
+                  "name": "OptionActive",
+                  "type": "string",
+                  "value": "255;255;255"
+                },
+                {
+                  "name": "OptionInactive",
+                  "type": "string",
+                  "value": "173;173;173"
+                }
+              ]
             },
             {
               "name": "RedLine",
@@ -13299,7 +13338,6 @@
           "value": 0
         },
         {
-          "folded": true,
           "name": "Channels",
           "type": "structure",
           "children": [
@@ -13476,12 +13514,10 @@
       ]
     },
     {
-      "folded": true,
       "name": "_DATA_",
       "type": "structure",
       "children": [
         {
-          "folded": true,
           "name": "Audio",
           "type": "structure",
           "children": [
@@ -13498,6 +13534,17 @@
                   "name": "BulletBounce",
                   "type": "number",
                   "value": 88
+                },
+                {
+                  "name": "MUSIC",
+                  "type": "structure",
+                  "children": [
+                    {
+                      "name": "MainMenu",
+                      "type": "number",
+                      "value": 100
+                    }
+                  ]
                 },
                 {
                   "name": "PlaceLandmine",

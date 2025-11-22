@@ -14,13 +14,599 @@
   "tags": [],
   "authorIds": [],
   "dependencies": [],
-  "globalVariables": [],
-  "sceneVariables": [],
+  "globalVariables": [
+    {
+      "name": "Channels",
+      "type": "structure",
+      "children": [
+        {
+          "name": "Soundeffects",
+          "type": "structure",
+          "children": [
+            {
+              "name": "MenuMoveOption",
+              "type": "structure",
+              "children": [
+                {
+                  "name": "Max",
+                  "type": "number",
+                  "value": 3000
+                },
+                {
+                  "name": "Min",
+                  "type": "number",
+                  "value": 3100
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Volume",
+      "type": "structure",
+      "children": [
+        {
+          "name": "Soundeffects",
+          "type": "structure",
+          "children": [
+            {
+              "name": "MenuMoveOption",
+              "type": "number",
+              "value": 100
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "sceneVariables": [
+    {
+      "name": "GlobalVolume",
+      "type": "number",
+      "value": 100
+    },
+    {
+      "name": "SFXVolume",
+      "type": "number",
+      "value": 100
+    },
+    {
+      "name": "ActiveChannel",
+      "type": "structure",
+      "children": [
+        {
+          "name": "Soundeffects",
+          "type": "structure",
+          "children": [
+            {
+              "name": "MenuMoveOption",
+              "type": "number",
+              "value": 3000
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "eventsFunctions": [
+    {
+      "description": "Change the global volume for sounds",
+      "fullName": "Change global volume for sounds",
+      "functionType": "Action",
+      "group": "Sounds",
+      "name": "ChangeGlobalVolume",
+      "sentence": "Change global volume to _PARAM1_",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "GlobalVolume",
+                "=",
+                "ParamVolume"
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "description": "Volume",
+          "name": "ParamVolume",
+          "type": "expression"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Change the sfx volume for sounds",
+      "fullName": "Change sfx volume for sounds",
+      "functionType": "Action",
+      "group": "Sounds",
+      "name": "ChangeSFXVolume",
+      "sentence": "Change sfx volume to _PARAM1_",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "SFXVolume",
+                "=",
+                "ParamVolume"
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "description": "Volume",
+          "name": "ParamVolume",
+          "type": "expression"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Update the option visual animation",
+      "fullName": "Update animation visuals for option",
+      "functionType": "Action",
+      "group": "Helpers",
+      "name": "OptionAnimation",
+      "sentence": "Update visual animation for _PARAM1_ with colors (Active: _PARAM4_, Inactive: _PARAM5_) and check activation if equal (Value A: _PARAM6_, B: _PARAM7_)",
+      "events": [
+        {
+          "disabled": true,
+          "folded": true,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Or"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "value": "SourisSurObjet"
+                  },
+                  "parameters": [
+                    "BitmapTextParam",
+                    "",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "ParamA",
+                    "=",
+                    "ParamB"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "BitmapText::SetTint"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "ActiveColorParam"
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectScaleTween3"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "TweenParam",
+                "\"TextSize\"",
+                "1.1",
+                "\"linear\"",
+                "0.2",
+                "",
+                "yes"
+              ]
+            },
+            {
+              "type": {
+                "value": "EffectCapability::EffectBehavior::EnableEffect"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "EffectParam",
+                "\"Ouline\"",
+                "yes"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "ActiveChannel.Soundeffects.MenuMoveOption",
+                    ">=",
+                    "Channels.Soundeffects.MenuMoveOption.Max"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "ActiveChannel.Soundeffects.MenuMoveOption",
+                    "=",
+                    "Channels.Soundeffects.MenuMoveOption.Min"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "PlaySoundCanal"
+                  },
+                  "parameters": [
+                    "",
+                    "assets\\SFX\\MainMenu\\main_menu_option_movement_sfx.wav",
+                    "ActiveChannel.Soundeffects.MenuMoveOption",
+                    "",
+                    "100 * (GlobalVolume/100) * (SFXVolume/100) * (Volume.Soundeffects.MenuMoveOption/100)",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "ActiveChannel.Soundeffects.MenuMoveOption",
+                    "+",
+                    "1"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "disabled": true,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Or"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "SourisSurObjet"
+                  },
+                  "parameters": [
+                    "BitmapTextParam",
+                    "",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "ParamA",
+                    "=",
+                    "ParamB"
+                  ]
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "BitmapText::SetTint"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "InactiveColorParam"
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectScaleTween3"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "TweenParam",
+                "\"TextSize\"",
+                "1",
+                "\"linear\"",
+                "0.2",
+                "",
+                "yes"
+              ]
+            },
+            {
+              "type": {
+                "value": "EffectCapability::EffectBehavior::EnableEffect"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "EffectParam",
+                "\"Ouline\"",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::CompareNumbers"
+              },
+              "parameters": [
+                "ParamA",
+                "=",
+                "ParamB"
+              ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "BitmapText::SetTint"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "ActiveColorParam"
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectScaleTween3"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "TweenParam",
+                "\"TextSizeUp\"",
+                "1.1",
+                "\"linear\"",
+                "0.1",
+                "",
+                "yes"
+              ]
+            },
+            {
+              "type": {
+                "value": "EffectCapability::EffectBehavior::EnableEffect"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "EffectParam",
+                "\"Ouline\"",
+                "yes"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "ActiveChannel.Soundeffects.MenuMoveOption",
+                    ">=",
+                    "Channels.Soundeffects.MenuMoveOption.Max"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "ActiveChannel.Soundeffects.MenuMoveOption",
+                    "=",
+                    "Channels.Soundeffects.MenuMoveOption.Min"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "PlaySoundCanal"
+                  },
+                  "parameters": [
+                    "",
+                    "assets\\SFX\\MainMenu\\main_menu_option_movement_sfx.wav",
+                    "ActiveChannel.Soundeffects.MenuMoveOption",
+                    "",
+                    "100 * (GlobalVolume/100) * (SFXVolume/100) * (Volume.Soundeffects.MenuMoveOption/100)",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "ActiveChannel.Soundeffects.MenuMoveOption",
+                    "+",
+                    "1"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": true,
+                "value": "BuiltinCommonInstructions::CompareNumbers"
+              },
+              "parameters": [
+                "ParamA",
+                "=",
+                "ParamB"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "BitmapText::SetTint"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "InactiveColorParam"
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectScaleTween3"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "TweenParam",
+                "\"TextSizeDown\"",
+                "1",
+                "\"linear\"",
+                "0.1",
+                "",
+                "yes"
+              ]
+            },
+            {
+              "type": {
+                "value": "EffectCapability::EffectBehavior::EnableEffect"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "EffectParam",
+                "\"Ouline\"",
+                ""
+              ]
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "description": "Option",
+          "name": "BitmapTextParam",
+          "supplementaryInformation": "BitmapText::BitmapTextObject",
+          "type": "objectList"
+        },
+        {
+          "description": "Effect",
+          "name": "EffectParam",
+          "supplementaryInformation": "EffectCapability::EffectBehavior",
+          "type": "behavior"
+        },
+        {
+          "description": "Tween",
+          "name": "TweenParam",
+          "supplementaryInformation": "Tween::TweenBehavior",
+          "type": "behavior"
+        },
+        {
+          "description": "Active Color",
+          "name": "ActiveColorParam",
+          "type": "color"
+        },
+        {
+          "description": "Inactive Color",
+          "name": "InactiveColorParam",
+          "type": "color"
+        },
+        {
+          "description": "Value A",
+          "name": "ParamA",
+          "type": "expression"
+        },
+        {
+          "description": "Value B",
+          "name": "ParamB",
+          "type": "expression"
+        }
+      ],
+      "objectGroups": []
+    },
     {
       "description": "Return the reflection angle given the direction and normal",
       "fullName": "Reflect Angle",
       "functionType": "Expression",
+      "group": "Math",
       "name": "ReflectAngle",
       "sentence": "Return the reflect angle with _PARAM1_ direction and _PARAM2_ Normal",
       "events": [
@@ -194,6 +780,7 @@
       "description": "Custom function to obtain the current frame in animation by an angle and total of frames per range",
       "fullName": "Get frame by angle",
       "functionType": "Expression",
+      "group": "Math",
       "name": "GetFrameByAngle",
       "sentence": "",
       "events": [
@@ -306,6 +893,7 @@
       "description": "Given the target angle and current angle, return the quickes direction",
       "fullName": "Get quickest direction of rotation",
       "functionType": "Expression",
+      "group": "Math",
       "name": "GetRotationDirection",
       "sentence": "",
       "events": [

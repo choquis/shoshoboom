@@ -156,44 +156,6 @@
             },
             {
               "type": {
-                "value": "AjoutObjConcern"
-              },
-              "parameters": [
-                "",
-                "GroundTrailTank"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "TotalTrails",
-                "=",
-                "PickedInstancesCount(GroundTrailTank)"
-              ]
-            },
-            {
-              "type": {
-                "value": "AjoutObjConcern"
-              },
-              "parameters": [
-                "",
-                "TrailsTankRecoil"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "TotalTrails",
-                "+",
-                "PickedInstancesCount(TrailsTankRecoil)"
-              ]
-            },
-            {
-              "type": {
                 "value": "TextContainerCapability::TextContainerBehavior::SetValue"
               },
               "parameters": [
@@ -201,25 +163,6 @@
                 "Text",
                 "+",
                 " \" \" + ToString(TotalTrails)"
-              ]
-            },
-            {
-              "type": {
-                "value": "AjoutObjConcern"
-              },
-              "parameters": [
-                "",
-                "MuzzleFireTank"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "TotalDeleteables",
-                "=",
-                "PickedInstancesCount(MuzzleFires)"
               ]
             },
             {

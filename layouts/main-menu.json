@@ -23,7 +23,13 @@
     "selectedLayer": ""
   },
   "objectsGroups": [],
-  "variables": [],
+  "variables": [
+    {
+      "name": "MenuIndex",
+      "type": "number",
+      "value": 0
+    }
+  ],
   "instances": [
     {
       "angle": 0,
@@ -52,7 +58,7 @@
       "persistentUuid": "61e7a9f9-7c37-43eb-b721-4f5bd7a4b7dd",
       "width": 0,
       "x": 169,
-      "y": 72,
+      "y": 50,
       "zOrder": 1000,
       "numberProperties": [],
       "stringProperties": [],
@@ -177,8 +183,8 @@
       "name": "SettingsOption",
       "persistentUuid": "d0e97241-5b92-4f2a-80b9-79e7c0329179",
       "width": 102,
-      "x": 290,
-      "y": 294,
+      "x": 291,
+      "y": 309,
       "zOrder": 1001,
       "numberProperties": [],
       "stringProperties": [],
@@ -193,8 +199,8 @@
       "name": "StartOption",
       "persistentUuid": "2b599997-3aa5-4f94-bb74-966ed464c12d",
       "width": 0,
-      "x": 271,
-      "y": 238,
+      "x": 269,
+      "y": 217,
       "zOrder": 1002,
       "numberProperties": [],
       "stringProperties": [],
@@ -212,6 +218,22 @@
       "x": 565,
       "y": 342,
       "zOrder": 1003,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "",
+      "name": "ContinueOption",
+      "persistentUuid": "35224ea2-1bed-4721-a96d-6233eb076d84",
+      "width": 0,
+      "x": 286,
+      "y": 264,
+      "zOrder": 1004,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -738,7 +760,7 @@
         }
       ],
       "content": {
-        "text": "v 1.0 .0",
+        "text": "v 1.0.0",
         "opacity": 255,
         "scale": 0.5,
         "fontSize": 20,
@@ -748,6 +770,61 @@
         "align": "right",
         "verticalTextAlignment": "top"
       }
+    },
+    {
+      "assetStoreId": "",
+      "name": "ContinueOption",
+      "type": "BitmapText::BitmapTextObject",
+      "variables": [],
+      "effects": [
+        {
+          "effectType": "Outline",
+          "name": "Ouline",
+          "doubleParameters": {
+            "padding": 0,
+            "thickness": 1
+          },
+          "stringParameters": {
+            "color": "100;100;100"
+          },
+          "booleanParameters": {}
+        },
+        {
+          "effectType": "DropShadow",
+          "name": "Shadow",
+          "doubleParameters": {
+            "alpha": 0.6,
+            "blur": 0,
+            "distance": 2,
+            "padding": 4,
+            "quality": 20,
+            "rotation": 45
+          },
+          "stringParameters": {
+            "color": "0;0;0"
+          },
+          "booleanParameters": {
+            "shadowOnly": false
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "content": {
+        "text": "Continue",
+        "opacity": 255,
+        "scale": 1,
+        "fontSize": 20,
+        "tint": "255;255;255",
+        "bitmapFontResourceName": "assets\\Monking-Tank.fnt",
+        "textureAtlasResourceName": "assets\\Monking-Tank.png",
+        "align": "center",
+        "verticalTextAlignment": "top"
+      }
     }
   ],
   "objectsFolderStructure": {
@@ -755,6 +832,9 @@
     "children": [
       {
         "objectName": "StartOption"
+      },
+      {
+        "objectName": "ContinueOption"
       },
       {
         "objectName": "SettingsOption"
@@ -834,6 +914,17 @@
           },
           "parameters": [
             "StartOption",
+            "Opacity",
+            "=",
+            "0"
+          ]
+        },
+        {
+          "type": {
+            "value": "OpacityCapability::OpacityBehavior::SetValue"
+          },
+          "parameters": [
+            "ContinueOption",
             "Opacity",
             "=",
             "0"
@@ -938,8 +1029,216 @@
             "yes",
             ""
           ]
+        },
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "MenuIndex",
+            "=",
+            "0"
+          ]
+        }
+      ],
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
+          },
+          "comment": "Stop Music"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "MusicPlaying"
+              },
+              "parameters": [
+                "",
+                "_CONSTANTS_.Channel.StartMusic"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "StopMusicCanal"
+              },
+              "parameters": [
+                "",
+                "_CONSTANTS_.Channel.StartMusic"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "MusicPlaying"
+              },
+              "parameters": [
+                "",
+                "_CONSTANTS_.Channel.BattleMusic"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "StopMusicCanal"
+              },
+              "parameters": [
+                "",
+                "_CONSTANTS_.Channel.BattleMusic"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "MusicPlaying"
+              },
+              "parameters": [
+                "",
+                "_CONSTANTS_.Channel.GameDeadMusic"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "StopMusicCanal"
+              },
+              "parameters": [
+                "",
+                "_CONSTANTS_.Channel.GameDeadMusic"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "MusicPlaying"
+              },
+              "parameters": [
+                "",
+                "_CONSTANTS_.Channel.MainMenu"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "StopMusicCanal"
+              },
+              "parameters": [
+                "",
+                "_CONSTANTS_.Channel.GameDeadMusic"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "PreloadMusic"
+              },
+              "parameters": [
+                "",
+                "assets\\Music\\main_menu_bg.aac"
+              ]
+            },
+            {
+              "type": {
+                "value": "PreloadSound"
+              },
+              "parameters": [
+                "",
+                "assets\\SFX\\MainMenu\\main_menu_option_movement_sfx.wav"
+              ]
+            }
+          ]
         }
       ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "inverted": true,
+            "value": "MusicPlaying"
+          },
+          "parameters": [
+            "",
+            "_CONSTANTS_.Channel.MainMenu"
+          ]
+        },
+        {
+          "type": {
+            "value": "BuiltinCommonInstructions::Once"
+          },
+          "parameters": []
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "PlayMusicCanal"
+          },
+          "parameters": [
+            "",
+            "assets\\Music\\main_menu_bg.aac",
+            "_CONSTANTS_.Channel.MainMenu",
+            "yes",
+            "_DATA_.Audio.Volume.MUSIC.MainMenu",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "Start animation"
     },
     {
       "type": "BuiltinCommonInstructions::Standard",
@@ -1032,6 +1331,20 @@
             "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
           },
           "parameters": [
+            "ContinueOption",
+            "Tween",
+            "\"Opacity\"",
+            "255",
+            "\"easeInQuad\"",
+            "1",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
+          },
+          "parameters": [
             "SettingsOption",
             "Tween",
             "\"Opacity\"",
@@ -1054,6 +1367,279 @@
           "value": 50
         }
       ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "Menu animations"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "inverted": true,
+            "value": "SourisSurObjet"
+          },
+          "parameters": [
+            "StartOption",
+            "",
+            "",
+            ""
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "MenuIndex",
+            "=",
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "inverted": true,
+            "value": "SourisSurObjet"
+          },
+          "parameters": [
+            "ContinueOption",
+            "",
+            "",
+            ""
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "MenuIndex",
+            "=",
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "inverted": true,
+            "value": "SourisSurObjet"
+          },
+          "parameters": [
+            "SettingsOption",
+            "",
+            "",
+            ""
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "MenuIndex",
+            "=",
+            "0"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "SourisSurObjet"
+          },
+          "parameters": [
+            "StartOption",
+            "",
+            "",
+            ""
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "MenuIndex",
+            "=",
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "SourisSurObjet"
+          },
+          "parameters": [
+            "ContinueOption",
+            "",
+            "",
+            ""
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "MenuIndex",
+            "=",
+            "2"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "SourisSurObjet"
+          },
+          "parameters": [
+            "SettingsOption",
+            "",
+            "",
+            ""
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "MenuIndex",
+            "=",
+            "3"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "CustomFunctions::OptionAnimation"
+          },
+          "parameters": [
+            "",
+            "StartOption",
+            "Effect",
+            "Tween",
+            "_CONSTANTS_.Colors.Menu.OptionActive",
+            "_CONSTANTS_.Colors.Menu.OptionInactive",
+            "MenuIndex",
+            "1",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "CustomFunctions::OptionAnimation"
+          },
+          "parameters": [
+            "",
+            "ContinueOption",
+            "Effect",
+            "Tween",
+            "_CONSTANTS_.Colors.Menu.OptionActive",
+            "_CONSTANTS_.Colors.Menu.OptionInactive",
+            "MenuIndex",
+            "2",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "CustomFunctions::OptionAnimation"
+          },
+          "parameters": [
+            "",
+            "SettingsOption",
+            "Effect",
+            "Tween",
+            "_CONSTANTS_.Colors.Menu.OptionActive",
+            "_CONSTANTS_.Colors.Menu.OptionInactive",
+            "MenuIndex",
+            "3",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "Options events"
     },
     {
       "type": "BuiltinCommonInstructions::Standard",
@@ -1140,6 +1726,32 @@
             "value": "SourisSurObjet"
           },
           "parameters": [
+            "ContinueOption",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "MouseButtonFromTextPressed"
+          },
+          "parameters": [
+            "",
+            "\"Left\""
+          ]
+        }
+      ],
+      "actions": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "SourisSurObjet"
+          },
+          "parameters": [
             "SettingsOption",
             "",
             "",
@@ -1205,84 +1817,6 @@
             "",
             "\"Test Scene\"",
             ""
-          ]
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "inverted": true,
-            "value": "MusicPlaying"
-          },
-          "parameters": [
-            "",
-            "_CONSTANTS_.Channel.StartMusic"
-          ]
-        }
-      ],
-      "actions": [
-        {
-          "type": {
-            "value": "StopMusicCanal"
-          },
-          "parameters": [
-            "",
-            "_CONSTANTS_.Channel.StartMusic"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "inverted": true,
-            "value": "MusicPlaying"
-          },
-          "parameters": [
-            "",
-            "_CONSTANTS_.Channel.BattleMusic"
-          ]
-        }
-      ],
-      "actions": [
-        {
-          "type": {
-            "value": "StopMusicCanal"
-          },
-          "parameters": [
-            "",
-            "_CONSTANTS_.Channel.BattleMusic"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "inverted": true,
-            "value": "MusicPlaying"
-          },
-          "parameters": [
-            "",
-            "_CONSTANTS_.Channel.GameDeadMusic"
-          ]
-        }
-      ],
-      "actions": [
-        {
-          "type": {
-            "value": "StopMusicCanal"
-          },
-          "parameters": [
-            "",
-            "_CONSTANTS_.Channel.GameDeadMusic"
           ]
         }
       ]
