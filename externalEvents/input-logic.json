@@ -1,5 +1,5 @@
 {
-  "associatedLayout": "Test Scene",
+  "associatedLayout": "Main Game Template",
   "name": "Input Logic",
   "events": [
     {
@@ -182,10 +182,36 @@
           "conditions": [
             {
               "type": {
-                "value": "AnyKeyPressed"
+                "value": "BuiltinCommonInstructions::Or"
               },
-              "parameters": [
-                ""
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "value": "AnyKeyPressed"
+                  },
+                  "parameters": [
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "MouseButtonFromTextPressed"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Left\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "MouseButtonFromTextPressed"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Right\""
+                  ]
+                }
               ]
             },
             {
@@ -350,6 +376,26 @@
                 "=",
                 "_CONSTANTS_.InputState.NA"
               ]
+            },
+            {
+              "type": {
+                "value": "SetStringVariable"
+              },
+              "parameters": [
+                "MAINGAME.Input.Accept",
+                "=",
+                "_CONSTANTS_.InputState.NA"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetStringVariable"
+              },
+              "parameters": [
+                "MAINGAME.Input.Cancel",
+                "=",
+                "_CONSTANTS_.InputState.NA"
+              ]
             }
           ]
         },
@@ -402,7 +448,7 @@
                   "parameters": [
                     "MAINGAME.Input.MoveY",
                     "=",
-                    "-1"
+                    "1"
                   ]
                 }
               ]
@@ -480,7 +526,7 @@
                   "parameters": [
                     "MAINGAME.Input.MoveY",
                     "=",
-                    "1"
+                    "-1"
                   ]
                 }
               ]
@@ -617,6 +663,58 @@
                   },
                   "parameters": [
                     "MAINGAME.Input.Pause",
+                    "=",
+                    "_CONSTANTS_.InputState.Pressed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "KeyFromTextPressed"
+                  },
+                  "parameters": [
+                    "",
+                    "_CONFIG_.Players[0].Keyboard.Accept"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.Input.Accept",
+                    "=",
+                    "_CONSTANTS_.InputState.Pressed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "KeyFromTextPressed"
+                  },
+                  "parameters": [
+                    "",
+                    "_CONFIG_.Players[0].Keyboard.Cancel"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.Input.Cancel",
                     "=",
                     "_CONSTANTS_.InputState.Pressed"
                   ]
@@ -929,6 +1027,62 @@
                   },
                   "parameters": [
                     "MAINGAME.Input.Pause",
+                    "=",
+                    "_CONSTANTS_.InputState.Pressed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Gamepads::C_Button_released"
+                  },
+                  "parameters": [
+                    "",
+                    "1",
+                    "_CONFIG_.Players[0].Gamepad.Accept",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.Input.Accept",
+                    "=",
+                    "_CONSTANTS_.InputState.Pressed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Gamepads::C_Button_released"
+                  },
+                  "parameters": [
+                    "",
+                    "1",
+                    "_CONFIG_.Players[0].Gamepad.Cancel",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.Input.Cancel",
                     "=",
                     "_CONSTANTS_.InputState.Pressed"
                   ]

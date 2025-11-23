@@ -22,10 +22,30 @@
     "windowMask": false,
     "selectedLayer": ""
   },
-  "objectsGroups": [],
+  "objectsGroups": [
+    {
+      "name": "Options",
+      "objects": [
+        {
+          "name": "StartOption"
+        },
+        {
+          "name": "SettingsOption"
+        },
+        {
+          "name": "ContinueOption"
+        }
+      ]
+    }
+  ],
   "variables": [
     {
       "name": "MenuIndex",
+      "type": "number",
+      "value": 0
+    },
+    {
+      "name": "LastMenuIndex",
       "type": "number",
       "value": 0
     }
@@ -183,8 +203,8 @@
       "name": "SettingsOption",
       "persistentUuid": "d0e97241-5b92-4f2a-80b9-79e7c0329179",
       "width": 102,
-      "x": 291,
-      "y": 309,
+      "x": 281,
+      "y": 305,
       "zOrder": 1001,
       "numberProperties": [],
       "stringProperties": [],
@@ -199,8 +219,8 @@
       "name": "StartOption",
       "persistentUuid": "2b599997-3aa5-4f94-bb74-966ed464c12d",
       "width": 0,
-      "x": 269,
-      "y": 217,
+      "x": 266,
+      "y": 219,
       "zOrder": 1002,
       "numberProperties": [],
       "stringProperties": [],
@@ -231,8 +251,8 @@
       "name": "ContinueOption",
       "persistentUuid": "35224ea2-1bed-4721-a96d-6233eb076d84",
       "width": 0,
-      "x": 286,
-      "y": 264,
+      "x": 280,
+      "y": 262,
       "zOrder": 1004,
       "numberProperties": [],
       "stringProperties": [],
@@ -244,7 +264,13 @@
       "assetStoreId": "",
       "name": "StartOption",
       "type": "BitmapText::BitmapTextObject",
-      "variables": [],
+      "variables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 1
+        }
+      ],
       "effects": [
         {
           "effectType": "Outline",
@@ -696,7 +722,13 @@
       "assetStoreId": "",
       "name": "SettingsOption",
       "type": "BitmapText::BitmapTextObject",
-      "variables": [],
+      "variables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 3
+        }
+      ],
       "effects": [
         {
           "effectType": "Outline",
@@ -775,7 +807,13 @@
       "assetStoreId": "",
       "name": "ContinueOption",
       "type": "BitmapText::BitmapTextObject",
-      "variables": [],
+      "variables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 2
+        }
+      ],
       "effects": [
         {
           "effectType": "Outline",
@@ -855,6 +893,7 @@
   },
   "events": [
     {
+      "folded": true,
       "type": "BuiltinCommonInstructions::Standard",
       "conditions": [
         {
@@ -866,181 +905,7 @@
           ]
         }
       ],
-      "actions": [
-        {
-          "type": {
-            "value": "SetStringVariable"
-          },
-          "parameters": [
-            "MAINGAME.CurrentScene",
-            "=",
-            "CurrentSceneName()"
-          ]
-        },
-        {
-          "type": {
-            "value": "MettreY"
-          },
-          "parameters": [
-            "bg",
-            "-",
-            "40"
-          ]
-        },
-        {
-          "type": {
-            "value": "MettreY"
-          },
-          "parameters": [
-            "Logo",
-            "+",
-            "40"
-          ]
-        },
-        {
-          "type": {
-            "value": "OpacityCapability::OpacityBehavior::SetValue"
-          },
-          "parameters": [
-            "Logo",
-            "Opacity",
-            "=",
-            "0"
-          ]
-        },
-        {
-          "type": {
-            "value": "OpacityCapability::OpacityBehavior::SetValue"
-          },
-          "parameters": [
-            "StartOption",
-            "Opacity",
-            "=",
-            "0"
-          ]
-        },
-        {
-          "type": {
-            "value": "OpacityCapability::OpacityBehavior::SetValue"
-          },
-          "parameters": [
-            "ContinueOption",
-            "Opacity",
-            "=",
-            "0"
-          ]
-        },
-        {
-          "type": {
-            "value": "OpacityCapability::OpacityBehavior::SetValue"
-          },
-          "parameters": [
-            "SettingsOption",
-            "Opacity",
-            "=",
-            "0"
-          ]
-        },
-        {
-          "type": {
-            "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
-          },
-          "parameters": [
-            "bg",
-            "Tween",
-            "\"MoveUp\"",
-            "bg.Y() + 40",
-            "\"easeOutQuad\"",
-            "2",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
-          },
-          "parameters": [
-            "Logo",
-            "Tween",
-            "\"Opacity\"",
-            "255",
-            "\"easeOutQuad\"",
-            "2",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
-          },
-          "parameters": [
-            "Logo",
-            "Tween",
-            "\"MoveUp\"",
-            "Logo.Y() - 40",
-            "\"easeOutQuad\"",
-            "2",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "AnimatableCapability::AnimatableBehavior::PauseAnimation"
-          },
-          "parameters": [
-            "SunGlare",
-            "Animation"
-          ]
-        },
-        {
-          "type": {
-            "value": "ChangeSprite"
-          },
-          "parameters": [
-            "SunGlare",
-            "=",
-            "SunGlare.frame"
-          ]
-        },
-        {
-          "type": {
-            "value": "SetFullScreen"
-          },
-          "parameters": [
-            "",
-            "no",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "AdvancedWindow::Focus"
-          },
-          "parameters": [
-            "yes",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "AdvancedWindow::Maximize"
-          },
-          "parameters": [
-            "yes",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "MenuIndex",
-            "=",
-            "0"
-          ]
-        }
-      ],
+      "actions": [],
       "events": [
         {
           "type": "BuiltinCommonInstructions::Comment",
@@ -1052,7 +917,176 @@
             "textG": 255,
             "textR": 255
           },
-          "comment": "Stop Music"
+          "comment": "Init scene"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetStringVariable"
+              },
+              "parameters": [
+                "MAINGAME.CurrentScene",
+                "=",
+                "CurrentSceneName()"
+              ]
+            },
+            {
+              "type": {
+                "value": "MettreY"
+              },
+              "parameters": [
+                "bg",
+                "-",
+                "40"
+              ]
+            },
+            {
+              "type": {
+                "value": "MettreY"
+              },
+              "parameters": [
+                "Logo",
+                "+",
+                "40"
+              ]
+            },
+            {
+              "type": {
+                "value": "OpacityCapability::OpacityBehavior::SetValue"
+              },
+              "parameters": [
+                "Logo",
+                "Opacity",
+                "=",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "OpacityCapability::OpacityBehavior::SetValue"
+              },
+              "parameters": [
+                "Options",
+                "Opacity",
+                "=",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
+              },
+              "parameters": [
+                "bg",
+                "Tween",
+                "\"MoveUp\"",
+                "bg.Y() + 40",
+                "\"easeOutQuad\"",
+                "2",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
+              },
+              "parameters": [
+                "Logo",
+                "Tween",
+                "\"Opacity\"",
+                "255",
+                "\"easeOutQuad\"",
+                "2",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
+              },
+              "parameters": [
+                "Logo",
+                "Tween",
+                "\"MoveUp\"",
+                "Logo.Y() - 40",
+                "\"easeOutQuad\"",
+                "2",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "AnimatableCapability::AnimatableBehavior::PauseAnimation"
+              },
+              "parameters": [
+                "SunGlare",
+                "Animation"
+              ]
+            },
+            {
+              "type": {
+                "value": "ChangeSprite"
+              },
+              "parameters": [
+                "SunGlare",
+                "=",
+                "SunGlare.frame"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetFullScreen"
+              },
+              "parameters": [
+                "",
+                "no",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "AdvancedWindow::Focus"
+              },
+              "parameters": [
+                "yes",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "AdvancedWindow::Maximize"
+              },
+              "parameters": [
+                "yes",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "MenuIndex",
+                "=",
+                "1"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
+          },
+          "comment": "Stop music"
         },
         {
           "type": "BuiltinCommonInstructions::Standard",
@@ -1179,6 +1213,44 @@
           ]
         }
       ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Link",
+      "include": {
+        "includeConfig": 0
+      },
+      "target": "Global UI Logic"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Link",
+      "include": {
+        "includeConfig": 0
+      },
+      "target": "Input Logic"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "Start music"
     },
     {
       "type": "BuiltinCommonInstructions::Standard",
@@ -1317,35 +1389,7 @@
             "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
           },
           "parameters": [
-            "StartOption",
-            "Tween",
-            "\"Opacity\"",
-            "255",
-            "\"easeInQuad\"",
-            "1",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
-          },
-          "parameters": [
-            "ContinueOption",
-            "Tween",
-            "\"Opacity\"",
-            "255",
-            "\"easeInQuad\"",
-            "1",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "Tween::TweenBehavior::AddObjectOpacityTween2"
-          },
-          "parameters": [
-            "SettingsOption",
+            "Options",
             "Tween",
             "\"Opacity\"",
             "255",
@@ -1354,17 +1398,149 @@
             ""
           ]
         }
-      ],
-      "variables": [
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "Check inputs"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
         {
-          "name": "AuxAngle",
-          "type": "number",
-          "value": 0
+          "type": {
+            "value": "BuiltinCommonInstructions::CompareNumbers"
+          },
+          "parameters": [
+            "MAINGAME.Input.MoveY",
+            ">",
+            "0"
+          ]
         },
         {
-          "name": "sunGlareSpacing",
-          "type": "number",
-          "value": 50
+          "type": {
+            "value": "BuiltinCommonInstructions::Once"
+          },
+          "parameters": []
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "MenuIndex",
+            "+",
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "BuiltinCommonInstructions::CompareNumbers"
+          },
+          "parameters": [
+            "MAINGAME.Input.MoveY",
+            "<",
+            "0"
+          ]
+        },
+        {
+          "type": {
+            "value": "BuiltinCommonInstructions::Once"
+          },
+          "parameters": []
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "MenuIndex",
+            "-",
+            "1"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "BuiltinCommonInstructions::CompareNumbers"
+          },
+          "parameters": [
+            "MenuIndex",
+            "<=",
+            "0"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "MenuIndex",
+            "=",
+            "3"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "BuiltinCommonInstructions::CompareNumbers"
+          },
+          "parameters": [
+            "MenuIndex",
+            ">=",
+            "4"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "MenuIndex",
+            "=",
+            "1"
+          ]
         }
       ]
     },
@@ -1397,84 +1573,31 @@
       "conditions": [
         {
           "type": {
-            "inverted": true,
-            "value": "SourisSurObjet"
+            "value": "NumberObjectVariable"
           },
           "parameters": [
-            "StartOption",
-            "",
-            "",
-            ""
+            "Options",
+            "Index",
+            "!=",
+            "MenuIndex"
           ]
         }
       ],
       "actions": [
         {
           "type": {
-            "value": "SetNumberVariable"
+            "value": "CustomFunctions::OptionAnimation"
           },
           "parameters": [
+            "",
+            "Options",
+            "Effect",
+            "Tween",
+            "_CONSTANTS_.Colors.Menu.OptionActive",
+            "_CONSTANTS_.Colors.Menu.OptionInactive",
             "MenuIndex",
-            "=",
-            "0"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "inverted": true,
-            "value": "SourisSurObjet"
-          },
-          "parameters": [
-            "ContinueOption",
-            "",
-            "",
+            "-1",
             ""
-          ]
-        }
-      ],
-      "actions": [
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "MenuIndex",
-            "=",
-            "0"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "inverted": true,
-            "value": "SourisSurObjet"
-          },
-          "parameters": [
-            "SettingsOption",
-            "",
-            "",
-            ""
-          ]
-        }
-      ],
-      "actions": [
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "MenuIndex",
-            "=",
-            "0"
           ]
         }
       ]
@@ -1487,7 +1610,7 @@
             "value": "SourisSurObjet"
           },
           "parameters": [
-            "StartOption",
+            "Options",
             "",
             "",
             ""
@@ -1502,7 +1625,7 @@
           "parameters": [
             "MenuIndex",
             "=",
-            "1"
+            "Options.Index"
           ]
         }
       ]
@@ -1512,53 +1635,41 @@
       "conditions": [
         {
           "type": {
-            "value": "SourisSurObjet"
+            "value": "NumberObjectVariable"
           },
           "parameters": [
-            "ContinueOption",
-            "",
-            "",
-            ""
+            "Options",
+            "Index",
+            "=",
+            "MenuIndex"
+          ]
+        },
+        {
+          "type": {
+            "value": "BuiltinCommonInstructions::CompareNumbers"
+          },
+          "parameters": [
+            "LastMenuIndex",
+            "!=",
+            "MenuIndex"
           ]
         }
       ],
       "actions": [
         {
           "type": {
-            "value": "SetNumberVariable"
+            "value": "CustomFunctions::OptionAnimation"
           },
           "parameters": [
+            "",
+            "Options",
+            "Effect",
+            "Tween",
+            "_CONSTANTS_.Colors.Menu.OptionActive",
+            "_CONSTANTS_.Colors.Menu.OptionInactive",
             "MenuIndex",
-            "=",
-            "2"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "value": "SourisSurObjet"
-          },
-          "parameters": [
-            "SettingsOption",
-            "",
-            "",
+            "Options.Index",
             ""
-          ]
-        }
-      ],
-      "actions": [
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "MenuIndex",
-            "=",
-            "3"
           ]
         }
       ]
@@ -1569,50 +1680,12 @@
       "actions": [
         {
           "type": {
-            "value": "CustomFunctions::OptionAnimation"
+            "value": "SetNumberVariable"
           },
           "parameters": [
-            "",
-            "StartOption",
-            "Effect",
-            "Tween",
-            "_CONSTANTS_.Colors.Menu.OptionActive",
-            "_CONSTANTS_.Colors.Menu.OptionInactive",
-            "MenuIndex",
-            "1",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "CustomFunctions::OptionAnimation"
-          },
-          "parameters": [
-            "",
-            "ContinueOption",
-            "Effect",
-            "Tween",
-            "_CONSTANTS_.Colors.Menu.OptionActive",
-            "_CONSTANTS_.Colors.Menu.OptionInactive",
-            "MenuIndex",
-            "2",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "CustomFunctions::OptionAnimation"
-          },
-          "parameters": [
-            "",
-            "SettingsOption",
-            "Effect",
-            "Tween",
-            "_CONSTANTS_.Colors.Menu.OptionActive",
-            "_CONSTANTS_.Colors.Menu.OptionInactive",
-            "MenuIndex",
-            "3",
-            ""
+            "LastMenuIndex",
+            "=",
+            "MenuIndex"
           ]
         }
       ]
@@ -1849,6 +1922,23 @@
           "width": 0
         }
       ],
+      "effects": []
+    },
+    {
+      "ambientLightColorB": 200,
+      "ambientLightColorG": 200,
+      "ambientLightColorR": 200,
+      "camera3DFarPlaneDistance": 10000,
+      "camera3DFieldOfView": 45,
+      "camera3DNearPlaneDistance": 3,
+      "cameraType": "",
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
+      "isLocked": false,
+      "name": "UI",
+      "renderingType": "",
+      "visibility": true,
+      "cameras": [],
       "effects": []
     }
   ],

@@ -168,223 +168,6 @@
       "sentence": "Update visual animation for _PARAM1_ with colors (Active: _PARAM4_, Inactive: _PARAM5_) and check activation if equal (Value A: _PARAM6_, B: _PARAM7_)",
       "events": [
         {
-          "disabled": true,
-          "folded": true,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::Or"
-              },
-              "parameters": [],
-              "subInstructions": [
-                {
-                  "type": {
-                    "value": "SourisSurObjet"
-                  },
-                  "parameters": [
-                    "BitmapTextParam",
-                    "",
-                    "",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::CompareNumbers"
-                  },
-                  "parameters": [
-                    "ParamA",
-                    "=",
-                    "ParamB"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::Once"
-              },
-              "parameters": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "BitmapText::SetTint"
-              },
-              "parameters": [
-                "BitmapTextParam",
-                "ActiveColorParam"
-              ]
-            },
-            {
-              "type": {
-                "value": "Tween::TweenBehavior::AddObjectScaleTween3"
-              },
-              "parameters": [
-                "BitmapTextParam",
-                "TweenParam",
-                "\"TextSize\"",
-                "1.1",
-                "\"linear\"",
-                "0.2",
-                "",
-                "yes"
-              ]
-            },
-            {
-              "type": {
-                "value": "EffectCapability::EffectBehavior::EnableEffect"
-              },
-              "parameters": [
-                "BitmapTextParam",
-                "EffectParam",
-                "\"Ouline\"",
-                "yes"
-              ]
-            }
-          ],
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "NumberVariable"
-                  },
-                  "parameters": [
-                    "ActiveChannel.Soundeffects.MenuMoveOption",
-                    ">=",
-                    "Channels.Soundeffects.MenuMoveOption.Max"
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "ActiveChannel.Soundeffects.MenuMoveOption",
-                    "=",
-                    "Channels.Soundeffects.MenuMoveOption.Min"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "PlaySoundCanal"
-                  },
-                  "parameters": [
-                    "",
-                    "assets\\SFX\\MainMenu\\main_menu_option_movement_sfx.wav",
-                    "ActiveChannel.Soundeffects.MenuMoveOption",
-                    "",
-                    "100 * (GlobalVolume/100) * (SFXVolume/100) * (Volume.Soundeffects.MenuMoveOption/100)",
-                    ""
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "ActiveChannel.Soundeffects.MenuMoveOption",
-                    "+",
-                    "1"
-                  ]
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "disabled": true,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::Or"
-              },
-              "parameters": [],
-              "subInstructions": [
-                {
-                  "type": {
-                    "inverted": true,
-                    "value": "SourisSurObjet"
-                  },
-                  "parameters": [
-                    "BitmapTextParam",
-                    "",
-                    "",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "inverted": true,
-                    "value": "BuiltinCommonInstructions::CompareNumbers"
-                  },
-                  "parameters": [
-                    "ParamA",
-                    "=",
-                    "ParamB"
-                  ]
-                }
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "BitmapText::SetTint"
-              },
-              "parameters": [
-                "BitmapTextParam",
-                "InactiveColorParam"
-              ]
-            },
-            {
-              "type": {
-                "value": "Tween::TweenBehavior::AddObjectScaleTween3"
-              },
-              "parameters": [
-                "BitmapTextParam",
-                "TweenParam",
-                "\"TextSize\"",
-                "1",
-                "\"linear\"",
-                "0.2",
-                "",
-                "yes"
-              ]
-            },
-            {
-              "type": {
-                "value": "EffectCapability::EffectBehavior::EnableEffect"
-              },
-              "parameters": [
-                "BitmapTextParam",
-                "EffectParam",
-                "\"Ouline\"",
-                ""
-              ]
-            }
-          ]
-        },
-        {
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -399,21 +182,17 @@
             },
             {
               "type": {
-                "value": "BuiltinCommonInstructions::Once"
-              },
-              "parameters": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "BitmapText::SetTint"
+                "inverted": true,
+                "value": "Tween::Exists"
               },
               "parameters": [
                 "BitmapTextParam",
-                "ActiveColorParam"
+                "TweenParam",
+                "\"TextSizeUp\""
               ]
-            },
+            }
+          ],
+          "actions": [
             {
               "type": {
                 "value": "Tween::TweenBehavior::AddObjectScaleTween3"
@@ -431,6 +210,15 @@
             },
             {
               "type": {
+                "value": "BitmapText::SetTint"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "ActiveColorParam"
+              ]
+            },
+            {
+              "type": {
                 "value": "EffectCapability::EffectBehavior::EnableEffect"
               },
               "parameters": [
@@ -438,6 +226,16 @@
                 "EffectParam",
                 "\"Ouline\"",
                 "yes"
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::RemoveTween"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "TweenParam",
+                "\"TextSizeDown\""
               ]
             }
           ],
@@ -485,13 +283,7 @@
                     "100 * (GlobalVolume/100) * (SFXVolume/100) * (Volume.Soundeffects.MenuMoveOption/100)",
                     ""
                   ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
+                },
                 {
                   "type": {
                     "value": "SetNumberVariable"
@@ -519,18 +311,20 @@
                 "=",
                 "ParamB"
               ]
-            }
-          ],
-          "actions": [
+            },
             {
               "type": {
-                "value": "BitmapText::SetTint"
+                "inverted": true,
+                "value": "Tween::Exists"
               },
               "parameters": [
                 "BitmapTextParam",
-                "InactiveColorParam"
+                "TweenParam",
+                "\"TextSizeDown\""
               ]
-            },
+            }
+          ],
+          "actions": [
             {
               "type": {
                 "value": "Tween::TweenBehavior::AddObjectScaleTween3"
@@ -548,6 +342,15 @@
             },
             {
               "type": {
+                "value": "BitmapText::SetTint"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "InactiveColorParam"
+              ]
+            },
+            {
+              "type": {
                 "value": "EffectCapability::EffectBehavior::EnableEffect"
               },
               "parameters": [
@@ -555,6 +358,16 @@
                 "EffectParam",
                 "\"Ouline\"",
                 ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::RemoveTween"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "TweenParam",
+                "\"TextSizeUp\""
               ]
             }
           ]
