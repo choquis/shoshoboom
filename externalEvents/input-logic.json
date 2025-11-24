@@ -1,5 +1,5 @@
 {
-  "associatedLayout": "Main Game Template",
+  "associatedLayout": "Main Menu",
   "name": "Input Logic",
   "events": [
     {
@@ -7,6 +7,7 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
+      "folded": true,
       "name": "Begin scene",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -143,6 +144,56 @@
         }
       ],
       "parameters": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 238,
+        "textG": 238,
+        "textR": 238
+      },
+      "comment": "\n\n"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "Set the camera X and Y for Main Layer (Not Base Layer)"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "MAINGAME.Camera.X",
+            "=",
+            "CameraBorderLeft(_CONSTANTS_.Layers.Main, 0)"
+          ]
+        },
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "MAINGAME.Camera.Y",
+            "=",
+            "CameraBorderTop(_CONSTANTS_.Layers.Main, 0)"
+          ]
+        }
+      ]
     },
     {
       "type": "BuiltinCommonInstructions::Comment",

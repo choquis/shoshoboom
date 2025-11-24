@@ -18,9 +18,9 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": false,
-    "zoomFactor": 1.7458023987468025,
+    "zoomFactor": 1.2530387740590003,
     "windowMask": false,
-    "selectedLayer": ""
+    "selectedLayer": "Main"
   },
   "objectsGroups": [
     {
@@ -48,6 +48,38 @@
       "name": "LastMenuIndex",
       "type": "number",
       "value": 0
+    },
+    {
+      "name": "FirstSunPosition",
+      "type": "structure",
+      "children": [
+        {
+          "name": "X",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "Y",
+          "type": "number",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "FirstCloudPosition",
+      "type": "structure",
+      "children": [
+        {
+          "name": "X",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "Y",
+          "type": "number",
+          "value": 0
+        }
+      ]
     }
   ],
   "instances": [
@@ -56,13 +88,13 @@
       "customSize": false,
       "height": 0,
       "keepRatio": true,
-      "layer": "",
+      "layer": "Main",
       "locked": true,
       "name": "bg",
       "persistentUuid": "9d89f69e-6d3c-4096-9047-985c39c247e8",
       "width": 0,
-      "x": 0,
-      "y": 0,
+      "x": 320,
+      "y": 180,
       "zOrder": 1,
       "numberProperties": [],
       "stringProperties": [],
@@ -73,7 +105,7 @@
       "customSize": false,
       "height": 0,
       "keepRatio": true,
-      "layer": "",
+      "layer": "Main",
       "name": "Logo",
       "persistentUuid": "61e7a9f9-7c37-43eb-b721-4f5bd7a4b7dd",
       "width": 0,
@@ -89,7 +121,7 @@
       "customSize": false,
       "height": 0,
       "keepRatio": true,
-      "layer": "",
+      "layer": "Main",
       "name": "SunGlare",
       "persistentUuid": "5bfcb28d-1516-4602-ab09-d4444b55da43",
       "width": 0,
@@ -105,7 +137,7 @@
       "customSize": false,
       "height": 0,
       "keepRatio": true,
-      "layer": "",
+      "layer": "Main",
       "name": "SunGlare",
       "persistentUuid": "3990ac84-8ca6-4faf-9a39-4ab7b610c548",
       "width": 0,
@@ -127,7 +159,7 @@
       "customSize": false,
       "height": 0,
       "keepRatio": true,
-      "layer": "",
+      "layer": "Main",
       "name": "SunGlare",
       "persistentUuid": "d26b48a4-a907-4ecc-8e6d-5980051f0758",
       "width": 0,
@@ -149,7 +181,7 @@
       "customSize": false,
       "height": 0,
       "keepRatio": true,
-      "layer": "",
+      "layer": "Main",
       "name": "SunGlare",
       "persistentUuid": "6131d894-63d7-4c93-be62-51048671d8cd",
       "width": 0,
@@ -171,7 +203,7 @@
       "customSize": false,
       "height": 0,
       "keepRatio": true,
-      "layer": "",
+      "layer": "Main",
       "name": "SunGlare",
       "persistentUuid": "2aa354a1-c883-49c4-a01c-4f5f23986a9d",
       "width": 0,
@@ -199,7 +231,7 @@
       "depth": 1,
       "height": 35,
       "keepRatio": true,
-      "layer": "",
+      "layer": "Main",
       "name": "SettingsOption",
       "persistentUuid": "d0e97241-5b92-4f2a-80b9-79e7c0329179",
       "width": 102,
@@ -215,7 +247,7 @@
       "customSize": false,
       "height": 0,
       "keepRatio": true,
-      "layer": "",
+      "layer": "Main",
       "name": "StartOption",
       "persistentUuid": "2b599997-3aa5-4f94-bb74-966ed464c12d",
       "width": 0,
@@ -231,7 +263,7 @@
       "customSize": false,
       "height": 0,
       "keepRatio": true,
-      "layer": "",
+      "layer": "Main",
       "name": "version",
       "persistentUuid": "675da1cb-5ee7-4b5d-b026-6aab35231ccd",
       "width": 0,
@@ -247,13 +279,45 @@
       "customSize": false,
       "height": 0,
       "keepRatio": true,
-      "layer": "",
+      "layer": "Main",
       "name": "ContinueOption",
       "persistentUuid": "35224ea2-1bed-4721-a96d-6233eb076d84",
       "width": 0,
       "x": 280,
       "y": 262,
       "zOrder": 1004,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "sun",
+      "persistentUuid": "2b471bee-2c7f-43b4-bfd1-2fbc37e4db76",
+      "width": 0,
+      "x": 611,
+      "y": 8,
+      "zOrder": 1,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "cloud",
+      "persistentUuid": "a24ffaaf-8331-4516-b99e-9ae828d5fcd8",
+      "width": 0,
+      "x": 9,
+      "y": 189,
+      "zOrder": 1,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -388,8 +452,8 @@
                   ],
                   "originPoint": {
                     "name": "origine",
-                    "x": 0,
-                    "y": 0
+                    "x": 320,
+                    "y": 180
                   },
                   "centerPoint": {
                     "automatic": true,
@@ -863,6 +927,126 @@
         "align": "center",
         "verticalTextAlignment": "top"
       }
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "sun",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\MainMenu\\sun.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 218,
+                    "y": 199
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 36,
+                        "y": 24
+                      },
+                      {
+                        "x": 401,
+                        "y": 24
+                      },
+                      {
+                        "x": 401,
+                        "y": 373
+                      },
+                      {
+                        "x": 36,
+                        "y": 373
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "cloud",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\MainMenu\\cloud.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 129,
+                    "y": 54
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 0,
+                        "y": 1
+                      },
+                      {
+                        "x": 258,
+                        "y": 1
+                      },
+                      {
+                        "x": 258,
+                        "y": 108
+                      },
+                      {
+                        "x": 0,
+                        "y": 108
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "objectsFolderStructure": {
@@ -888,6 +1072,12 @@
       },
       {
         "objectName": "SunGlare"
+      },
+      {
+        "objectName": "sun"
+      },
+      {
+        "objectName": "cloud"
       }
     ]
   },
@@ -1061,6 +1251,46 @@
                 "MenuIndex",
                 "=",
                 "1"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "FirstSunPosition.X",
+                "=",
+                "sun.X()"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "FirstSunPosition.Y",
+                "=",
+                "sun.Y()"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "FirstCloudPosition.X",
+                "=",
+                "cloud.X()"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "FirstCloudPosition.Y",
+                "=",
+                "cloud.Y()"
               ]
             }
           ]
@@ -1551,6 +1781,124 @@
             "value": "SetNumberVariable"
           },
           "parameters": [
+            "MAINGAME.Camera.X",
+            "=",
+            "MAINGAME.Camera.X + (SceneWindowWidth() /2)"
+          ]
+        },
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "MAINGAME.Camera.Y",
+            "=",
+            "MAINGAME.Camera.Y + (SceneWindowHeight() /2)"
+          ]
+        },
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "CameraAngleFromCenter",
+            "=",
+            "AngleBetweenPositions(MAINGAME.Camera.X, MAINGAME.Camera.Y, MAINGAME.Input.LookX, MAINGAME.Input.LookY)-180"
+          ]
+        },
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "CameraDistanceFromcenter",
+            "=",
+            "DistanceBetweenPositions(MAINGAME.Camera.X,  MAINGAME.Camera.Y, MAINGAME.Input.LookX, MAINGAME.Input.LookY)"
+          ]
+        },
+        {
+          "type": {
+            "value": "MettreX"
+          },
+          "parameters": [
+            "cloud",
+            "=",
+            "FirstCloudPosition.X + XFromAngleAndDistance(CameraAngleFromCenter, CameraDistanceFromcenter * 0.05)"
+          ]
+        },
+        {
+          "type": {
+            "value": "MettreY"
+          },
+          "parameters": [
+            "cloud",
+            "=",
+            "FirstCloudPosition.Y + YFromAngleAndDistance(CameraAngleFromCenter, CameraDistanceFromcenter * 0.05)"
+          ]
+        },
+        {
+          "type": {
+            "value": "MettreX"
+          },
+          "parameters": [
+            "sun",
+            "=",
+            "FirstSunPosition.X + XFromAngleAndDistance(CameraAngleFromCenter, CameraDistanceFromcenter * 0.02)"
+          ]
+        },
+        {
+          "type": {
+            "value": "MettreY"
+          },
+          "parameters": [
+            "sun",
+            "=",
+            "FirstSunPosition.Y + YFromAngleAndDistance(CameraAngleFromCenter, CameraDistanceFromcenter * 0.02)"
+          ]
+        },
+        {
+          "type": {
+            "value": "MettreX"
+          },
+          "parameters": [
+            "bg",
+            "=",
+            "(SceneWindowWidth()/2) + XFromAngleAndDistance(CameraAngleFromCenter, CameraDistanceFromcenter * 0.01)"
+          ]
+        },
+        {
+          "type": {
+            "value": "MettreY"
+          },
+          "parameters": [
+            "bg",
+            "=",
+            "(SceneWindowHeight()/2)  + YFromAngleAndDistance(CameraAngleFromCenter, CameraDistanceFromcenter * 0.01)"
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "name": "CameraDistanceFromcenter",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "CameraAngleFromCenter",
+          "type": "number",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
             "AuxAngle",
             "=",
             "AngleBetweenPositions(CameraCenterX(), CameraCenterY(), bg.PointX(\"sun\"), bg.PointY(\"sun\")) - 180"
@@ -1723,6 +2071,23 @@
           "width": 0
         }
       ],
+      "effects": []
+    },
+    {
+      "ambientLightColorB": 200,
+      "ambientLightColorG": 200,
+      "ambientLightColorR": 200,
+      "camera3DFarPlaneDistance": 10000,
+      "camera3DFieldOfView": 45,
+      "camera3DNearPlaneDistance": 3,
+      "cameraType": "",
+      "followBaseLayerCamera": false,
+      "isLightingLayer": false,
+      "isLocked": false,
+      "name": "Main",
+      "renderingType": "",
+      "visibility": true,
+      "cameras": [],
       "effects": []
     },
     {

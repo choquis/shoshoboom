@@ -50,26 +50,6 @@
                 "value": "SetNumberVariable"
               },
               "parameters": [
-                "MAINGAME.CameraX",
-                "=",
-                "CameraBorderLeft(_CONSTANTS_.Layers.Main, 0)"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "MAINGAME.CameraY",
-                "=",
-                "CameraBorderTop(_CONSTANTS_.Layers.Main, 0)"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
                 "LookX",
                 "=",
                 "MAINGAME.Input.LookX"
@@ -130,7 +110,7 @@
                       "parameters": [
                         "LookX",
                         "=",
-                        "LookX + MAINGAME.CameraX - Players.CenterX()"
+                        "LookX + MAINGAME.Camera.X - Players.CenterX()"
                       ]
                     },
                     {
@@ -140,7 +120,7 @@
                       "parameters": [
                         "LookY",
                         "=",
-                        "LookY + MAINGAME.CameraY - Players.CenterY()"
+                        "LookY + MAINGAME.Camera.Y - Players.CenterY()"
                       ]
                     }
                   ]

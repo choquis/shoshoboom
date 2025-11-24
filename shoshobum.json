@@ -8355,6 +8355,22 @@
         "preloadAsSound": false,
         "preloadInCache": false,
         "userAdded": false
+      },
+      {
+        "file": "assets/MainMenu/sun.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\MainMenu\\sun.png",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/MainMenu/cloud.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\MainMenu\\cloud.png",
+        "smoothed": false,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -13227,7 +13243,6 @@
           ]
         },
         {
-          "folded": true,
           "name": "Layers",
           "type": "structure",
           "children": [
@@ -13260,14 +13275,20 @@
       "type": "structure",
       "children": [
         {
-          "name": "CameraX",
-          "type": "number",
-          "value": 0
-        },
-        {
-          "name": "CameraY",
-          "type": "number",
-          "value": 0
+          "name": "Camera",
+          "type": "structure",
+          "children": [
+            {
+              "name": "X",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "Y",
+              "type": "number",
+              "value": 0
+            }
+          ]
         },
         {
           "name": "GameState",
