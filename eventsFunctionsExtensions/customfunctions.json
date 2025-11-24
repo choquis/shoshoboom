@@ -20,11 +20,22 @@
       "type": "structure",
       "children": [
         {
+          "name": "Music",
+          "type": "structure",
+          "children": [
+            {
+              "name": "assets\\Music\\main_menu_bg.aac",
+              "type": "number",
+              "value": 0
+            }
+          ]
+        },
+        {
           "name": "Soundeffects",
           "type": "structure",
           "children": [
             {
-              "name": "MenuMoveOption",
+              "name": "assets\\SFX\\MainMenu\\main_menu_option_movement_sfx.wav",
               "type": "structure",
               "children": [
                 {
@@ -48,11 +59,22 @@
       "type": "structure",
       "children": [
         {
+          "name": "Music",
+          "type": "structure",
+          "children": [
+            {
+              "name": "assets\\Music\\main_menu_bg.aac",
+              "type": "number",
+              "value": 100
+            }
+          ]
+        },
+        {
           "name": "Soundeffects",
           "type": "structure",
           "children": [
             {
-              "name": "MenuMoveOption",
+              "name": "assets\\SFX\\MainMenu\\main_menu_option_movement_sfx.wav",
               "type": "number",
               "value": 100
             }
@@ -77,11 +99,22 @@
       "type": "structure",
       "children": [
         {
+          "name": "Music",
+          "type": "structure",
+          "children": [
+            {
+              "name": "assets\\Music\\main_menu_bg.aac",
+              "type": "number",
+              "value": 0
+            }
+          ]
+        },
+        {
           "name": "Soundeffects",
           "type": "structure",
           "children": [
             {
-              "name": "MenuMoveOption",
+              "name": "assets\\SFX\\MainMenu\\main_menu_option_movement_sfx.wav",
               "type": "number",
               "value": 3000
             }
@@ -238,64 +271,6 @@
                 "\"TextSizeDown\""
               ]
             }
-          ],
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "NumberVariable"
-                  },
-                  "parameters": [
-                    "ActiveChannel.Soundeffects.MenuMoveOption",
-                    ">=",
-                    "Channels.Soundeffects.MenuMoveOption.Max"
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "ActiveChannel.Soundeffects.MenuMoveOption",
-                    "=",
-                    "Channels.Soundeffects.MenuMoveOption.Min"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "PlaySoundCanal"
-                  },
-                  "parameters": [
-                    "",
-                    "assets\\SFX\\MainMenu\\main_menu_option_movement_sfx.wav",
-                    "ActiveChannel.Soundeffects.MenuMoveOption",
-                    "",
-                    "100 * (GlobalVolume/100) * (SFXVolume/100) * (Volume.Soundeffects.MenuMoveOption/100)",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "ActiveChannel.Soundeffects.MenuMoveOption",
-                    "+",
-                    "1"
-                  ]
-                }
-              ]
-            }
           ]
         },
         {
@@ -411,6 +386,225 @@
           "description": "Value B",
           "name": "ParamB",
           "type": "expression"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Play custom sound ",
+      "fullName": "Play custom sound",
+      "functionType": "Action",
+      "group": "Sounds",
+      "name": "PlaySound",
+      "sentence": "Play custom sound in file _PARAM1_",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "AuxVolume",
+                "=",
+                "Volume.Soundeffects[ParamFile]"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "AuxMinChannel",
+                "=",
+                "Channels.Soundeffects[ParamFile].Min"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "AuxMaxChannel",
+                "=",
+                "Channels.Soundeffects[ParamFile].Max"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "AudioByName::PlaySoundOnChannelByName"
+                  },
+                  "parameters": [
+                    "",
+                    "ParamFile",
+                    "ActiveChannel.Soundeffects[ParamFile]",
+                    "",
+                    "100 * (GlobalVolume/100) * (SFXVolume/100) * (AuxVolume/100)",
+                    "1",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "ActiveChannel.Soundeffects[ParamFile]",
+                    "+",
+                    "1"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "ActiveChannel.Soundeffects[ParamFile]",
+                    ">=",
+                    "AuxMaxChannel"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "ActiveChannel.Soundeffects[ParamFile]",
+                    "=",
+                    "AuxMinChannel"
+                  ]
+                }
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "AuxVolume",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "AuxMinChannel",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "AuxMaxChannel",
+              "type": "number",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "description": "File",
+          "name": "ParamFile",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Play custom music",
+      "fullName": "Play custom music",
+      "functionType": "Action",
+      "group": "Sounds",
+      "name": "PlayMusic",
+      "sentence": "Play custom music in file _PARAM1_",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "AuxChannel",
+                "=",
+                "Channels.Music[ParamFile]"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "AuxVolume",
+                "=",
+                "Volume.Music[ParamFile]"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "MusicPlaying"
+                  },
+                  "parameters": [
+                    "",
+                    "AuxChannel"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "AudioByName::PlayMusicOnChannelByName"
+                  },
+                  "parameters": [
+                    "",
+                    "ParamFile",
+                    "AuxChannel",
+                    "",
+                    "100 * (GlobalVolume/100) * (SFXVolume/100) * (AuxVolume/100)",
+                    "1",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "AuxVolume",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "AuxChannel",
+              "type": "number",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "description": "File",
+          "name": "ParamFile",
+          "type": "string"
         }
       ],
       "objectGroups": []

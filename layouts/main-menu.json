@@ -893,7 +893,6 @@
   },
   "events": [
     {
-      "folded": true,
       "type": "BuiltinCommonInstructions::Standard",
       "conditions": [
         {
@@ -923,16 +922,6 @@
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [],
           "actions": [
-            {
-              "type": {
-                "value": "SetStringVariable"
-              },
-              "parameters": [
-                "MAINGAME.CurrentScene",
-                "=",
-                "CurrentSceneName()"
-              ]
-            },
             {
               "type": {
                 "value": "MettreY"
@@ -1090,106 +1079,6 @@
         },
         {
           "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "MusicPlaying"
-              },
-              "parameters": [
-                "",
-                "_CONSTANTS_.Channel.StartMusic"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "StopMusicCanal"
-              },
-              "parameters": [
-                "",
-                "_CONSTANTS_.Channel.StartMusic"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "MusicPlaying"
-              },
-              "parameters": [
-                "",
-                "_CONSTANTS_.Channel.BattleMusic"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "StopMusicCanal"
-              },
-              "parameters": [
-                "",
-                "_CONSTANTS_.Channel.BattleMusic"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "MusicPlaying"
-              },
-              "parameters": [
-                "",
-                "_CONSTANTS_.Channel.GameDeadMusic"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "StopMusicCanal"
-              },
-              "parameters": [
-                "",
-                "_CONSTANTS_.Channel.GameDeadMusic"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "MusicPlaying"
-              },
-              "parameters": [
-                "",
-                "_CONSTANTS_.Channel.MainMenu"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "StopMusicCanal"
-              },
-              "parameters": [
-                "",
-                "_CONSTANTS_.Channel.GameDeadMusic"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
           "conditions": [],
           "actions": [
             {
@@ -1254,35 +1143,15 @@
     },
     {
       "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "inverted": true,
-            "value": "MusicPlaying"
-          },
-          "parameters": [
-            "",
-            "_CONSTANTS_.Channel.MainMenu"
-          ]
-        },
-        {
-          "type": {
-            "value": "BuiltinCommonInstructions::Once"
-          },
-          "parameters": []
-        }
-      ],
+      "conditions": [],
       "actions": [
         {
           "type": {
-            "value": "PlayMusicCanal"
+            "value": "CustomFunctions::PlayMusic"
           },
           "parameters": [
             "",
-            "assets\\Music\\main_menu_bg.aac",
-            "_CONSTANTS_.Channel.MainMenu",
-            "yes",
-            "_DATA_.Audio.Volume.MUSIC.MainMenu",
+            "_CONSTANTS_.Audio.Music.MainMenu",
             ""
           ]
         }
@@ -1311,57 +1180,6 @@
         "textR": 255
       },
       "comment": "Start animation"
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "value": "Tween::IsPlaying"
-          },
-          "parameters": [
-            "bg",
-            "Tween",
-            "\"MoveUp\""
-          ]
-        }
-      ],
-      "actions": [
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "AuxAngle",
-            "=",
-            "AngleBetweenPositions(CameraCenterX(), CameraCenterY(), bg.PointX(\"sun\"), bg.PointY(\"sun\")) - 180"
-          ]
-        },
-        {
-          "type": {
-            "value": "MettreXY"
-          },
-          "parameters": [
-            "SunGlare",
-            "=",
-            "XFromAngleAndDistance(AuxAngle, (SunGlare.frame + 1) * sunGlareSpacing) + bg.PointX(\"sun\")",
-            "=",
-            "YFromAngleAndDistance(AuxAngle, (SunGlare.frame + 1) * sunGlareSpacing) + bg.PointY(\"sun\")"
-          ]
-        }
-      ],
-      "variables": [
-        {
-          "name": "AuxAngle",
-          "type": "number",
-          "value": 0
-        },
-        {
-          "name": "sunGlareSpacing",
-          "type": "number",
-          "value": 50
-        }
-      ]
     },
     {
       "type": "BuiltinCommonInstructions::Standard",
@@ -1671,6 +1489,16 @@
             "Options.Index",
             ""
           ]
+        },
+        {
+          "type": {
+            "value": "CustomFunctions::PlaySound"
+          },
+          "parameters": [
+            "",
+            "_CONSTANTS_.Audio.Soundeffect.UI.OptionFocus",
+            ""
+          ]
         }
       ]
     },
@@ -1687,6 +1515,70 @@
             "=",
             "MenuIndex"
           ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "Background animation"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "AuxAngle",
+            "=",
+            "AngleBetweenPositions(CameraCenterX(), CameraCenterY(), bg.PointX(\"sun\"), bg.PointY(\"sun\")) - 180"
+          ]
+        },
+        {
+          "type": {
+            "value": "MettreXY"
+          },
+          "parameters": [
+            "SunGlare",
+            "=",
+            "XFromAngleAndDistance(AuxAngle, (SunGlare.frame + 1) * sunGlareSpacing) + bg.PointX(\"sun\")",
+            "=",
+            "YFromAngleAndDistance(AuxAngle, (SunGlare.frame + 1) * sunGlareSpacing) + bg.PointY(\"sun\")"
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "name": "AuxAngle",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "sunGlareSpacing",
+          "type": "number",
+          "value": 50
         }
       ]
     },
@@ -1739,46 +1631,6 @@
         }
       ],
       "actions": [
-        {
-          "type": {
-            "value": "SetStringVariable"
-          },
-          "parameters": [
-            "MAINGAME.GameState",
-            "=",
-            "_DATA_.Game.GameState"
-          ]
-        },
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "MAINGAME.Mission",
-            "=",
-            "_DATA_.Game.Mission"
-          ]
-        },
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "MAINGAME.PlayerLives",
-            "=",
-            "_DATA_.Game.PlayerLives"
-          ]
-        },
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "MAINGAME.MaxAggresiveEnemies",
-            "=",
-            "_DATA_.Game.MaxAggresiveEnemies"
-          ]
-        },
         {
           "type": {
             "value": "Scene"
@@ -1841,58 +1693,7 @@
           ]
         }
       ],
-      "actions": [
-        {
-          "type": {
-            "value": "SetStringVariable"
-          },
-          "parameters": [
-            "MAINGAME.GameState",
-            "=",
-            "_DATA_.Game.GameState"
-          ]
-        },
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "MAINGAME.Mission",
-            "=",
-            "_DATA_.Game.Mission"
-          ]
-        },
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "MAINGAME.PlayerLives",
-            "=",
-            "_DATA_.Game.PlayerLives"
-          ]
-        },
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "MAINGAME.MaxAggresiveEnemies",
-            "=",
-            "_DATA_.Game.MaxAggresiveEnemies"
-          ]
-        },
-        {
-          "type": {
-            "value": "Scene"
-          },
-          "parameters": [
-            "",
-            "\"Test Scene\"",
-            ""
-          ]
-        }
-      ]
+      "actions": []
     }
   ],
   "layers": [

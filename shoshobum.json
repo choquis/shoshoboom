@@ -12763,11 +12763,11 @@
   ],
   "variables": [
     {
+      "folded": true,
       "name": "_CONFIG_",
       "type": "structure",
       "children": [
         {
-          "folded": true,
           "name": "Players",
           "type": "array",
           "children": [
@@ -13086,68 +13086,47 @@
       ]
     },
     {
-      "folded": true,
       "name": "_CONSTANTS_",
       "type": "structure",
       "children": [
         {
-          "folded": true,
-          "name": "BulletType",
+          "name": "Audio",
           "type": "structure",
           "children": [
             {
-              "name": "Missile",
-              "type": "string",
-              "value": "Missile"
+              "name": "Music",
+              "type": "structure",
+              "children": [
+                {
+                  "name": "MainMenu",
+                  "type": "string",
+                  "value": "assets\\Music\\main_menu_bg.aac"
+                }
+              ]
             },
             {
-              "name": "WhiteSmall",
-              "type": "string",
-              "value": "WhiteSmall"
+              "name": "Soundeffect",
+              "type": "structure",
+              "children": [
+                {
+                  "name": "UI",
+                  "type": "structure",
+                  "children": [
+                    {
+                      "name": "OptionFocus",
+                      "type": "string",
+                      "value": "assets\\SFX\\MainMenu\\main_menu_option_movement_sfx.wav"
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
-          "name": "Channel",
-          "type": "structure",
-          "children": [
-            {
-              "name": "BattleMusic",
-              "type": "number",
-              "value": 2
-            },
-            {
-              "name": "GameDeadMusic",
-              "type": "number",
-              "value": 3
-            },
-            {
-              "name": "MainMenu",
-              "type": "number",
-              "value": 0
-            },
-            {
-              "name": "StartMusic",
-              "type": "number",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "folded": true,
           "name": "Colors",
           "type": "structure",
           "children": [
-            {
-              "name": "GreenLine",
-              "type": "string",
-              "value": "123;223;122"
-            },
-            {
-              "name": "Light",
-              "type": "string",
-              "value": "255;219;120"
-            },
             {
               "name": "Menu",
               "type": "structure",
@@ -13163,85 +13142,6 @@
                   "value": "173;173;173"
                 }
               ]
-            },
-            {
-              "name": "RedLine",
-              "type": "string",
-              "value": "223;122;122"
-            },
-            {
-              "name": "ShadowColor",
-              "type": "string",
-              "value": "101;134;61"
-            }
-          ]
-        },
-        {
-          "folded": true,
-          "name": "EnemyType",
-          "type": "structure",
-          "children": [
-            {
-              "name": "Landmine",
-              "type": "string",
-              "value": "LandmineEnemy"
-            },
-            {
-              "name": "Missil",
-              "type": "string",
-              "value": "MissilEnemy"
-            },
-            {
-              "name": "Regular",
-              "type": "string",
-              "value": "RegularEnemy"
-            },
-            {
-              "name": "Stationary",
-              "type": "string",
-              "value": "StationaryEnemy"
-            }
-          ]
-        },
-        {
-          "folded": true,
-          "name": "Entities",
-          "type": "structure",
-          "children": [
-            {
-              "name": "BreakableWall",
-              "type": "string",
-              "value": "BreakableWall"
-            },
-            {
-              "name": "Bullet",
-              "type": "string",
-              "value": "Bullet"
-            },
-            {
-              "name": "Enemy",
-              "type": "string",
-              "value": "Enemy"
-            },
-            {
-              "name": "Landmine",
-              "type": "string",
-              "value": "Landmine"
-            },
-            {
-              "name": "Player",
-              "type": "string",
-              "value": "Player"
-            },
-            {
-              "name": "Tank",
-              "type": "string",
-              "value": "Tank"
-            },
-            {
-              "name": "Wall",
-              "type": "string",
-              "value": "Wall"
             }
           ]
         },
@@ -13279,33 +13179,6 @@
               "name": "Start",
               "type": "string",
               "value": "Start"
-            }
-          ]
-        },
-        {
-          "folded": true,
-          "name": "IAStates",
-          "type": "structure",
-          "children": [
-            {
-              "name": "Alert",
-              "type": "string",
-              "value": "Alert"
-            },
-            {
-              "name": "Evading",
-              "type": "string",
-              "value": "Evading"
-            },
-            {
-              "name": "LostTarget",
-              "type": "string",
-              "value": "LostTarget"
-            },
-            {
-              "name": "Searching",
-              "type": "string",
-              "value": "Searching"
             }
           ]
         },
@@ -13379,78 +13252,6 @@
               "value": "UI"
             }
           ]
-        },
-        {
-          "folded": true,
-          "name": "Timers",
-          "type": "structure",
-          "children": [
-            {
-              "name": "Bullets",
-              "type": "structure",
-              "children": [
-                {
-                  "name": "LeaveSmoke",
-                  "type": "string",
-                  "value": "LeaveSmoke"
-                }
-              ]
-            },
-            {
-              "name": "LandMine",
-              "type": "structure",
-              "children": [
-                {
-                  "name": "ActivationCooldown",
-                  "type": "string",
-                  "value": "ActivationCooldown"
-                },
-                {
-                  "name": "ExplosionCooldown",
-                  "type": "string",
-                  "value": "ExplosionCooldown"
-                }
-              ]
-            },
-            {
-              "name": "Tanks",
-              "type": "structure",
-              "children": [
-                {
-                  "name": "MovementSound",
-                  "type": "string",
-                  "value": "MovementSound"
-                },
-                {
-                  "name": "PlaceLandmineCooldown",
-                  "type": "string",
-                  "value": "PlaceLandmineCooldown"
-                },
-                {
-                  "name": "ShootCooldown",
-                  "type": "string",
-                  "value": "ShootCooldown"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "folded": true,
-          "name": "Tweens",
-          "type": "structure",
-          "children": [
-            {
-              "name": "Opacity",
-              "type": "string",
-              "value": "Opacity"
-            },
-            {
-              "name": "Scale",
-              "type": "string",
-              "value": "Scale"
-            }
-          ]
         }
       ]
     },
@@ -13458,18 +13259,6 @@
       "name": "MAINGAME",
       "type": "structure",
       "children": [
-        {
-          "folded": true,
-          "name": "Actions",
-          "type": "structure",
-          "children": [
-            {
-              "name": "PauseGame",
-              "type": "boolean",
-              "value": false
-            }
-          ]
-        },
         {
           "name": "CameraX",
           "type": "number",
@@ -13481,53 +13270,12 @@
           "value": 0
         },
         {
-          "folded": true,
-          "name": "Channels",
-          "type": "structure",
-          "children": [
-            {
-              "name": "Bounce",
-              "type": "number",
-              "value": 2300
-            },
-            {
-              "name": "Explosion",
-              "type": "number",
-              "value": 2200
-            },
-            {
-              "name": "Move",
-              "type": "number",
-              "value": 2000
-            },
-            {
-              "name": "Place",
-              "type": "number",
-              "value": 2400
-            },
-            {
-              "name": "Shoot",
-              "type": "number",
-              "value": 2100
-            }
-          ]
-        },
-        {
-          "name": "CurrentScene",
-          "type": "string",
-          "value": ""
-        },
-        {
           "name": "GameState",
           "type": "string",
           "value": "Start"
         },
         {
-          "name": "GameWon",
-          "type": "boolean",
-          "value": false
-        },
-        {
+          "folded": true,
           "name": "Input",
           "type": "structure",
           "children": [
@@ -13584,18 +13332,7 @@
           ]
         },
         {
-          "name": "MaxAggresiveEnemies",
-          "type": "number",
-          "value": 2
-        },
-        {
-          "name": "Mission",
-          "type": "number",
-          "value": 1
-        },
-        {
-          "folded": true,
-          "name": "Player1",
+          "name": "Player0",
           "type": "structure",
           "children": [
             {
@@ -13663,439 +13400,6 @@
               ]
             }
           ]
-        },
-        {
-          "name": "PlayerLives",
-          "type": "number",
-          "value": 3
-        }
-      ]
-    },
-    {
-      "name": "_DATA_",
-      "type": "structure",
-      "children": [
-        {
-          "name": "Audio",
-          "type": "structure",
-          "children": [
-            {
-              "name": "Volume",
-              "type": "structure",
-              "children": [
-                {
-                  "name": "BigExplosion",
-                  "type": "number",
-                  "value": 65
-                },
-                {
-                  "name": "BulletBounce",
-                  "type": "number",
-                  "value": 88
-                },
-                {
-                  "name": "MUSIC",
-                  "type": "structure",
-                  "children": [
-                    {
-                      "name": "MainMenu",
-                      "type": "number",
-                      "value": 100
-                    }
-                  ]
-                },
-                {
-                  "name": "PlaceLandmine",
-                  "type": "number",
-                  "value": 50
-                },
-                {
-                  "name": "SmallExplosion",
-                  "type": "number",
-                  "value": 26
-                },
-                {
-                  "name": "TankMovement",
-                  "type": "number",
-                  "value": 18
-                },
-                {
-                  "name": "TankShoot",
-                  "type": "number",
-                  "value": 22
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "folded": true,
-          "name": "Bullets",
-          "type": "structure",
-          "children": [
-            {
-              "name": "LandMine",
-              "type": "structure",
-              "children": [
-                {
-                  "name": "ActivationTime",
-                  "type": "number",
-                  "value": 5
-                },
-                {
-                  "name": "DetectionDistance",
-                  "type": "number",
-                  "value": 64
-                },
-                {
-                  "name": "ExplosionTime",
-                  "type": "number",
-                  "value": 2
-                }
-              ]
-            },
-            {
-              "name": "Missile",
-              "type": "structure",
-              "children": [
-                {
-                  "name": "MaxBounces",
-                  "type": "number",
-                  "value": 2
-                },
-                {
-                  "name": "Speed",
-                  "type": "number",
-                  "value": 250
-                }
-              ]
-            },
-            {
-              "name": "WhiteSmall",
-              "type": "structure",
-              "children": [
-                {
-                  "name": "MaxBounces",
-                  "type": "number",
-                  "value": 1
-                },
-                {
-                  "name": "Speed",
-                  "type": "number",
-                  "value": 200
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "folded": true,
-          "name": "Game",
-          "type": "structure",
-          "children": [
-            {
-              "name": "GameState",
-              "type": "string",
-              "value": "Start"
-            },
-            {
-              "name": "MaxAggresiveEnemies",
-              "type": "number",
-              "value": 2
-            },
-            {
-              "name": "Mission",
-              "type": "number",
-              "value": 1
-            },
-            {
-              "name": "PlayerLives",
-              "type": "number",
-              "value": 3
-            },
-            {
-              "name": "TotalMissions",
-              "type": "number",
-              "value": 5
-            }
-          ]
-        },
-        {
-          "folded": true,
-          "name": "Player",
-          "type": "structure",
-          "children": [
-            {
-              "name": "MaxBullets",
-              "type": "number",
-              "value": 3
-            },
-            {
-              "name": "MaxLandmines",
-              "type": "number",
-              "value": 5
-            },
-            {
-              "name": "ReloadTime",
-              "type": "number",
-              "value": 0.1
-            }
-          ]
-        },
-        {
-          "folded": true,
-          "name": "Tanks",
-          "type": "structure",
-          "children": [
-            {
-              "name": "LandmineEnemy",
-              "type": "structure",
-              "children": [
-                {
-                  "name": "DetectionDistance",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "LandmineDetection",
-                  "type": "number",
-                  "value": 64
-                },
-                {
-                  "name": "LookSpeed",
-                  "type": "number",
-                  "value": 45
-                },
-                {
-                  "name": "MaxBullets",
-                  "type": "number",
-                  "value": 1
-                },
-                {
-                  "name": "MaxHealth",
-                  "type": "number",
-                  "value": 1
-                },
-                {
-                  "name": "MaxLandmines",
-                  "type": "number",
-                  "value": 2
-                },
-                {
-                  "name": "PlaceLandmineCooldown",
-                  "type": "number",
-                  "value": 7
-                },
-                {
-                  "name": "ReloadTime",
-                  "type": "number",
-                  "value": 2
-                }
-              ]
-            },
-            {
-              "name": "MissilEnemy",
-              "type": "structure",
-              "children": [
-                {
-                  "name": "DetectionDistance",
-                  "type": "number",
-                  "value": 100
-                },
-                {
-                  "name": "LandmineDetection",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "LookSpeed",
-                  "type": "number",
-                  "value": 75
-                },
-                {
-                  "name": "MaxBullets",
-                  "type": "number",
-                  "value": 2
-                },
-                {
-                  "name": "MaxHealth",
-                  "type": "number",
-                  "value": 1
-                },
-                {
-                  "name": "MaxLandmines",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "PlaceLandmineCooldown",
-                  "type": "number",
-                  "value": -1
-                },
-                {
-                  "name": "ReloadTime",
-                  "type": "number",
-                  "value": 1.5
-                }
-              ]
-            },
-            {
-              "name": "Player",
-              "type": "structure",
-              "children": [
-                {
-                  "name": "DetectionDistance",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "LandmineDetection",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "LookSpeed",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "MaxBullets",
-                  "type": "number",
-                  "value": 5
-                },
-                {
-                  "name": "MaxHealth",
-                  "type": "number",
-                  "value": 2
-                },
-                {
-                  "name": "MaxLandmines",
-                  "type": "number",
-                  "value": 2
-                },
-                {
-                  "name": "PlaceLandmineCooldown",
-                  "type": "number",
-                  "value": -1
-                },
-                {
-                  "name": "ReloadTime",
-                  "type": "number",
-                  "value": 0.1
-                }
-              ]
-            },
-            {
-              "name": "RegularEnemy",
-              "type": "structure",
-              "children": [
-                {
-                  "name": "DetectionDistance",
-                  "type": "number",
-                  "value": 150
-                },
-                {
-                  "name": "LandmineDetection",
-                  "type": "number",
-                  "value": 32
-                },
-                {
-                  "name": "LookSpeed",
-                  "type": "number",
-                  "value": 40
-                },
-                {
-                  "name": "MaxBullets",
-                  "type": "number",
-                  "value": 2
-                },
-                {
-                  "name": "MaxHealth",
-                  "type": "number",
-                  "value": 1
-                },
-                {
-                  "name": "MaxLandmines",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "PlaceLandmineCooldown",
-                  "type": "number",
-                  "value": -1
-                },
-                {
-                  "name": "ReloadTime",
-                  "type": "number",
-                  "value": 1.5
-                }
-              ]
-            },
-            {
-              "name": "StationaryEnemy",
-              "type": "structure",
-              "children": [
-                {
-                  "name": "DetectionDistance",
-                  "type": "number",
-                  "value": 100
-                },
-                {
-                  "name": "LandmineDetection",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "LookSpeed",
-                  "type": "number",
-                  "value": 50
-                },
-                {
-                  "name": "MaxBullets",
-                  "type": "number",
-                  "value": 2
-                },
-                {
-                  "name": "MaxHealth",
-                  "type": "number",
-                  "value": 2
-                },
-                {
-                  "name": "MaxLandmines",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "PlaceLandmineCooldown",
-                  "type": "number",
-                  "value": -1
-                },
-                {
-                  "name": "ReloadTime",
-                  "type": "number",
-                  "value": 1
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "folded": true,
-          "name": "Walls",
-          "type": "structure",
-          "children": [
-            {
-              "name": "BreakableWallWhite",
-              "type": "structure",
-              "children": [
-                {
-                  "name": "MaxHealth",
-                  "type": "number",
-                  "value": 2
-                }
-              ]
-            }
-          ]
         }
       ]
     }
@@ -14104,10 +13408,6 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/layouts/main-menu"
-    },
-    {
-      "__REFERENCE_TO_SPLIT_OBJECT": true,
-      "referenceTo": "/layouts/presentation"
     },
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
@@ -14120,14 +13420,6 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/layouts/test-scene"
-    },
-    {
-      "__REFERENCE_TO_SPLIT_OBJECT": true,
-      "referenceTo": "/layouts/main-game-old"
-    },
-    {
-      "__REFERENCE_TO_SPLIT_OBJECT": true,
-      "referenceTo": "/layouts/ui-template"
     }
   ],
   "externalEvents": [
@@ -14182,10 +13474,6 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/externalEvents/______misc"
-    },
-    {
-      "__REFERENCE_TO_SPLIT_OBJECT": true,
-      "referenceTo": "/externalEvents/explosionsound"
     },
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
@@ -14264,6 +13552,10 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/eventsFunctionsExtensions/curvedmovement"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/eventsFunctionsExtensions/audiobyname"
     }
   ],
   "externalLayouts": [
@@ -14278,10 +13570,6 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/externalLayouts/editor-ui-layout"
-    },
-    {
-      "__REFERENCE_TO_SPLIT_OBJECT": true,
-      "referenceTo": "/externalLayouts/screen-transition"
     }
   ]
 }
