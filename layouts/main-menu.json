@@ -18,7 +18,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": false,
-    "zoomFactor": 1.2530387740590003,
+    "zoomFactor": 1.47903958617576,
     "windowMask": false,
     "selectedLayer": "Main"
   },
@@ -34,6 +34,33 @@
         },
         {
           "name": "ContinueOption"
+        },
+        {
+          "name": "SettingAudioOption"
+        },
+        {
+          "name": "SettingGameplayOption"
+        },
+        {
+          "name": "SettingControllerOption"
+        },
+        {
+          "name": "AudioMasterVolumeLabel"
+        },
+        {
+          "name": "AudioSFXVolumeLabel"
+        },
+        {
+          "name": "AudioMusicVolumeLabel"
+        },
+        {
+          "name": "NumberValueLabel"
+        },
+        {
+          "name": "OptionLeft"
+        },
+        {
+          "name": "OptionRight"
         }
       ]
     }
@@ -50,6 +77,7 @@
       "value": 0
     },
     {
+      "folded": true,
       "name": "FirstSunPosition",
       "type": "structure",
       "children": [
@@ -66,7 +94,8 @@
       ]
     },
     {
-      "name": "FirstCloudPosition",
+      "folded": true,
+      "name": "FirstCloud1Position",
       "type": "structure",
       "children": [
         {
@@ -80,6 +109,33 @@
           "value": 0
         }
       ]
+    },
+    {
+      "folded": true,
+      "name": "FirstCloud2Position",
+      "type": "structure",
+      "children": [
+        {
+          "name": "X",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "Y",
+          "type": "number",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "name": "ActiveGroupIndex",
+      "type": "number",
+      "value": 1
+    },
+    {
+      "name": "LastActiveGroupIndex",
+      "type": "number",
+      "value": 1
     }
   ],
   "instances": [
@@ -95,7 +151,7 @@
       "width": 0,
       "x": 320,
       "y": 180,
-      "zOrder": 1,
+      "zOrder": -1,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -105,12 +161,13 @@
       "customSize": false,
       "height": 0,
       "keepRatio": true,
-      "layer": "Main",
+      "layer": "UI",
+      "locked": true,
       "name": "Logo",
       "persistentUuid": "61e7a9f9-7c37-43eb-b721-4f5bd7a4b7dd",
       "width": 0,
-      "x": 169,
-      "y": 50,
+      "x": 320,
+      "y": 103,
       "zOrder": 1000,
       "numberProperties": [],
       "stringProperties": [],
@@ -230,13 +287,61 @@
       "customSize": true,
       "depth": 1,
       "height": 35,
-      "keepRatio": true,
-      "layer": "Main",
+      "layer": "UI",
       "name": "SettingsOption",
       "persistentUuid": "d0e97241-5b92-4f2a-80b9-79e7c0329179",
-      "width": 102,
-      "x": 281,
-      "y": 305,
+      "width": 180,
+      "x": 247,
+      "y": 301,
+      "zOrder": 1001,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 0,
+      "height": 35,
+      "layer": "UI",
+      "name": "StartOption",
+      "persistentUuid": "2b599997-3aa5-4f94-bb74-966ed464c12d",
+      "width": 180,
+      "x": 247,
+      "y": 196,
+      "zOrder": 1001,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "UI",
+      "locked": true,
+      "name": "version",
+      "persistentUuid": "675da1cb-5ee7-4b5d-b026-6aab35231ccd",
+      "width": 0,
+      "x": 565,
+      "y": 342,
+      "zOrder": 1000,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 0,
+      "height": 35,
+      "layer": "UI",
+      "name": "ContinueOption",
+      "persistentUuid": "35224ea2-1bed-4721-a96d-6233eb076d84",
+      "width": 180,
+      "x": 247,
+      "y": 249,
       "zOrder": 1001,
       "numberProperties": [],
       "stringProperties": [],
@@ -248,60 +353,177 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "StartOption",
-      "persistentUuid": "2b599997-3aa5-4f94-bb74-966ed464c12d",
-      "width": 0,
-      "x": 266,
-      "y": 219,
-      "zOrder": 1002,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "version",
-      "persistentUuid": "675da1cb-5ee7-4b5d-b026-6aab35231ccd",
-      "width": 0,
-      "x": 565,
-      "y": 342,
-      "zOrder": 1003,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
-      "name": "ContinueOption",
-      "persistentUuid": "35224ea2-1bed-4721-a96d-6233eb076d84",
-      "width": 0,
-      "x": 280,
-      "y": 262,
-      "zOrder": 1004,
-      "numberProperties": [],
-      "stringProperties": [],
-      "initialVariables": []
-    },
-    {
-      "angle": 0,
-      "customSize": false,
-      "height": 0,
-      "keepRatio": true,
-      "layer": "Main",
+      "locked": true,
       "name": "sun",
       "persistentUuid": "2b471bee-2c7f-43b4-bfd1-2fbc37e4db76",
       "width": 0,
-      "x": 611,
-      "y": 8,
+      "x": 580,
+      "y": 73,
       "zOrder": 1,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "flippedX": true,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "locked": true,
+      "name": "cloud1",
+      "persistentUuid": "a24ffaaf-8331-4516-b99e-9ae828d5fcd8",
+      "width": 0,
+      "x": 595,
+      "y": 266,
+      "zOrder": 2,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 0,
+      "height": 54,
+      "keepRatio": true,
+      "layer": "Main",
+      "locked": true,
+      "name": "cloud2",
+      "persistentUuid": "56f884de-f7c9-4c08-85a0-a278ca3d5492",
+      "width": 129,
+      "x": 409,
+      "y": 268,
+      "zOrder": 1,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 0,
+      "height": 35,
+      "layer": "Main",
+      "name": "SettingAudioOption",
+      "persistentUuid": "e7228920-db6e-49ed-815d-53da87bd4885",
+      "width": 180,
+      "x": 682,
+      "y": 196,
+      "zOrder": 1001,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 0,
+      "height": 35,
+      "layer": "Main",
+      "name": "SettingControllerOption",
+      "persistentUuid": "fcb20224-27c4-4052-8a64-6eb355fa52b7",
+      "width": 180,
+      "x": 682,
+      "y": 249,
+      "zOrder": 1001,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 0,
+      "height": 35,
+      "layer": "Main",
+      "name": "SettingGameplayOption",
+      "persistentUuid": "aac3618f-e56a-4215-8783-e560d1d8ee73",
+      "width": 180,
+      "x": 682,
+      "y": 301,
+      "zOrder": 1001,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1.0035842293906811,
+      "height": 280,
+      "layer": "Main",
+      "name": "MenuArea",
+      "persistentUuid": "68e44e5a-5b24-468f-be97-d0f8c05f0f1b",
+      "width": 280,
+      "x": 200,
+      "y": 120,
+      "zOrder": 1000,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "MinIndex",
+          "type": "number",
+          "value": 1
+        },
+        {
+          "name": "MaxIndex",
+          "type": "number",
+          "value": 3
+        },
+        {
+          "name": "Id",
+          "type": "number",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1,
+      "height": 35,
+      "layer": "Main",
+      "name": "AudioMasterVolumeLabel",
+      "persistentUuid": "397092c7-58b5-43af-afa0-251dcbbc1fbc",
+      "width": 135,
+      "x": 911,
+      "y": 196,
+      "zOrder": 1001,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1,
+      "height": 35,
+      "layer": "Main",
+      "name": "AudioSFXVolumeLabel",
+      "persistentUuid": "8fd5a92d-c0fe-4003-9135-00ed96cf74ad",
+      "width": 135,
+      "x": 911,
+      "y": 301,
+      "zOrder": 1001,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": []
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1,
+      "height": 35,
+      "layer": "Main",
+      "name": "AudioMusicVolumeLabel",
+      "persistentUuid": "89af46c0-1790-47c4-8a0f-883bcc09f096",
+      "width": 135,
+      "x": 911,
+      "y": 249,
+      "zOrder": 1001,
       "numberProperties": [],
       "stringProperties": [],
       "initialVariables": []
@@ -312,15 +534,377 @@
       "height": 0,
       "keepRatio": true,
       "layer": "Main",
-      "name": "cloud",
-      "persistentUuid": "a24ffaaf-8331-4516-b99e-9ae828d5fcd8",
+      "name": "NumberValueLabel",
+      "persistentUuid": "85eac2db-53ab-4494-a988-49eeff53c0e3",
       "width": 0,
-      "x": 9,
-      "y": 189,
-      "zOrder": 1,
+      "x": 1113,
+      "y": 196,
+      "zOrder": 1001,
       "numberProperties": [],
       "stringProperties": [],
-      "initialVariables": []
+      "initialVariables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 7
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 3
+        },
+        {
+          "name": "Id",
+          "type": "number",
+          "value": 1
+        },
+        {
+          "name": "Value",
+          "type": "number",
+          "value": 100
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "OptionLeft",
+      "persistentUuid": "cc79e83d-ccba-4535-9c4e-25d4153e21d7",
+      "width": 0,
+      "x": 1071,
+      "y": 196,
+      "zOrder": 1001,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 7
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 3
+        },
+        {
+          "name": "ValueId",
+          "type": "number",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "OptionRight",
+      "persistentUuid": "4c973bb9-a090-4d30-af80-174383b81eb0",
+      "width": 0,
+      "x": 1173,
+      "y": 196,
+      "zOrder": 1001,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 7
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 3
+        },
+        {
+          "name": "ValueId",
+          "type": "number",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "NumberValueLabel",
+      "persistentUuid": "d8b42fff-ba38-4425-be74-aaa3a3d76c95",
+      "width": 0,
+      "x": 1113,
+      "y": 301,
+      "zOrder": 1001,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 9
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 3
+        },
+        {
+          "name": "Id",
+          "type": "number",
+          "value": 3
+        },
+        {
+          "name": "Value",
+          "type": "number",
+          "value": 100
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "NumberValueLabel",
+      "persistentUuid": "5edda994-9d8a-468d-84ed-731d7018cd08",
+      "width": 0,
+      "x": 1113,
+      "y": 249,
+      "zOrder": 1001,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 8
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 3
+        },
+        {
+          "name": "Id",
+          "type": "number",
+          "value": 2
+        },
+        {
+          "name": "Value",
+          "type": "number",
+          "value": 100
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "OptionRight",
+      "persistentUuid": "65e10698-ee3c-4ce1-ad44-d8d1f202a817",
+      "width": 0,
+      "x": 1171,
+      "y": 301,
+      "zOrder": 1001,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 9
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 3
+        },
+        {
+          "name": "ValueId",
+          "type": "number",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "OptionLeft",
+      "persistentUuid": "484092d8-0800-4fc3-b2e1-2d10e64d33d6",
+      "width": 0,
+      "x": 1069,
+      "y": 301,
+      "zOrder": 1001,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 9
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 3
+        },
+        {
+          "name": "ValueId",
+          "type": "number",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "OptionRight",
+      "persistentUuid": "b74bf5b4-598d-4603-88ec-5400c1d82bcd",
+      "width": 0,
+      "x": 1172,
+      "y": 249,
+      "zOrder": 1001,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 8
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 3
+        },
+        {
+          "name": "ValueId",
+          "type": "number",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": false,
+      "height": 0,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "OptionLeft",
+      "persistentUuid": "902899d1-b229-4994-9435-22e1d67953ad",
+      "width": 0,
+      "x": 1070,
+      "y": 249,
+      "zOrder": 1001,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 8
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 3
+        },
+        {
+          "name": "ValueId",
+          "type": "number",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1,
+      "height": 280,
+      "keepRatio": true,
+      "layer": "Main",
+      "name": "MenuArea",
+      "persistentUuid": "beeb3d79-8e1f-42ff-8cb7-f84e1eebe024",
+      "width": 280,
+      "x": 920,
+      "y": 120,
+      "zOrder": 1000,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "ParentOptionId",
+          "type": "number",
+          "value": 4
+        },
+        {
+          "name": "MaxIndex",
+          "type": "number",
+          "value": 9
+        },
+        {
+          "name": "MinIndex",
+          "type": "number",
+          "value": 7
+        },
+        {
+          "name": "Id",
+          "type": "number",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "angle": 0,
+      "customSize": true,
+      "depth": 1,
+      "height": 280,
+      "layer": "Main",
+      "name": "MenuArea",
+      "persistentUuid": "2d78c2dd-8afa-407b-b216-de34f86006f7",
+      "width": 280,
+      "x": 640,
+      "y": 120,
+      "zOrder": 1000,
+      "numberProperties": [],
+      "stringProperties": [],
+      "initialVariables": [
+        {
+          "name": "ParentOptionId",
+          "type": "number",
+          "value": 3
+        },
+        {
+          "name": "MaxIndex",
+          "type": "number",
+          "value": 6
+        },
+        {
+          "name": "MinIndex",
+          "type": "number",
+          "value": 4
+        },
+        {
+          "name": "Id",
+          "type": "number",
+          "value": 2
+        }
+      ]
     }
   ],
   "objects": [
@@ -331,6 +915,11 @@
       "variables": [
         {
           "name": "Index",
+          "type": "number",
+          "value": 1
+        },
+        {
+          "name": "GroupIndex",
           "type": "number",
           "value": 1
         }
@@ -368,6 +957,12 @@
         }
       ],
       "behaviors": [
+        {
+          "name": "Sticker",
+          "type": "Sticker::Sticker",
+          "OnlyFollowPosition": false,
+          "IsDestroyedWithParent": false
+        },
         {
           "name": "Tween",
           "type": "Tween::TweenBehavior"
@@ -443,17 +1038,11 @@
                 {
                   "hasCustomCollisionMask": true,
                   "image": "assets\\MainMenu\\main-menu-bg.png",
-                  "points": [
-                    {
-                      "name": "sun",
-                      "x": 551.5,
-                      "y": 47
-                    }
-                  ],
+                  "points": [],
                   "originPoint": {
                     "name": "origine",
-                    "x": 320,
-                    "y": 180
+                    "x": 330,
+                    "y": 190
                   },
                   "centerPoint": {
                     "automatic": true,
@@ -517,6 +1106,12 @@
       ],
       "behaviors": [
         {
+          "name": "Sticker",
+          "type": "Sticker::Sticker",
+          "OnlyFollowPosition": false,
+          "IsDestroyedWithParent": false
+        },
+        {
           "name": "Tween",
           "type": "Tween::TweenBehavior"
         }
@@ -536,8 +1131,8 @@
                   "points": [],
                   "originPoint": {
                     "name": "origine",
-                    "x": 0,
-                    "y": 0
+                    "x": 169,
+                    "y": 65
                   },
                   "centerPoint": {
                     "automatic": true,
@@ -791,6 +1386,11 @@
           "name": "Index",
           "type": "number",
           "value": 3
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 1
         }
       ],
       "effects": [
@@ -826,6 +1426,12 @@
         }
       ],
       "behaviors": [
+        {
+          "name": "Sticker",
+          "type": "Sticker::Sticker",
+          "OnlyFollowPosition": false,
+          "IsDestroyedWithParent": false
+        },
         {
           "name": "Tween",
           "type": "Tween::TweenBehavior"
@@ -876,6 +1482,11 @@
           "name": "Index",
           "type": "number",
           "value": 2
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 1
         }
       ],
       "effects": [
@@ -911,6 +1522,12 @@
         }
       ],
       "behaviors": [
+        {
+          "name": "Sticker",
+          "type": "Sticker::Sticker",
+          "OnlyFollowPosition": false,
+          "IsDestroyedWithParent": false
+        },
         {
           "name": "Tween",
           "type": "Tween::TweenBehavior"
@@ -991,7 +1608,7 @@
     {
       "adaptCollisionMaskAutomatically": true,
       "assetStoreId": "",
-      "name": "cloud",
+      "name": "cloud1",
       "type": "Sprite",
       "updateIfNotVisible": false,
       "variables": [],
@@ -1008,7 +1625,7 @@
               "sprites": [
                 {
                   "hasCustomCollisionMask": true,
-                  "image": "assets\\MainMenu\\cloud.png",
+                  "image": "assets\\MainMenu\\cloud1.png",
                   "points": [],
                   "originPoint": {
                     "name": "origine",
@@ -1047,19 +1664,974 @@
           ]
         }
       ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "cloud2",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "assets\\MainMenu\\cloud2.png",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 129,
+                    "y": 54
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 0,
+                        "y": 1
+                      },
+                      {
+                        "x": 258,
+                        "y": 1
+                      },
+                      {
+                        "x": 258,
+                        "y": 108
+                      },
+                      {
+                        "x": 0,
+                        "y": 108
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "MenuArea",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [
+        {
+          "name": "Id",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "MinIndex",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "MaxIndex",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "ParentOptionId",
+          "type": "number",
+          "value": 0
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "Adjustment",
+          "name": "Effect",
+          "doubleParameters": {
+            "alpha": 0.15,
+            "blue": 1,
+            "brightness": 1,
+            "contrast": 1,
+            "gamma": 1,
+            "green": 1,
+            "red": 1,
+            "saturation": 1
+          },
+          "stringParameters": {},
+          "booleanParameters": {}
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "animations": [
+        {
+          "name": "default",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "metadata": "{\"pskl\":{}}",
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "yellowsquare",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 1,
+                        "y": 1
+                      },
+                      {
+                        "x": 15,
+                        "y": 1
+                      },
+                      {
+                        "x": 15,
+                        "y": 16
+                      },
+                      {
+                        "x": 1,
+                        "y": 16
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetStoreId": "",
+      "name": "SettingAudioOption",
+      "type": "BitmapText::BitmapTextObject",
+      "variables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 4
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 2
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "Outline",
+          "name": "Ouline",
+          "doubleParameters": {
+            "padding": 0,
+            "thickness": 1
+          },
+          "stringParameters": {
+            "color": "100;100;100"
+          },
+          "booleanParameters": {}
+        },
+        {
+          "effectType": "DropShadow",
+          "name": "Shadow",
+          "doubleParameters": {
+            "alpha": 0.6,
+            "blur": 0,
+            "distance": 2,
+            "padding": 4,
+            "quality": 20,
+            "rotation": 45
+          },
+          "stringParameters": {
+            "color": "0;0;0"
+          },
+          "booleanParameters": {
+            "shadowOnly": false
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Sticker",
+          "type": "Sticker::Sticker",
+          "OnlyFollowPosition": false,
+          "IsDestroyedWithParent": false
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "content": {
+        "text": "Audio",
+        "opacity": 255,
+        "scale": 1,
+        "fontSize": 20,
+        "tint": "255;255;255",
+        "bitmapFontResourceName": "assets\\Monking-Tank.fnt",
+        "textureAtlasResourceName": "assets\\Monking-Tank.png",
+        "align": "center",
+        "verticalTextAlignment": "top"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "SettingGameplayOption",
+      "type": "BitmapText::BitmapTextObject",
+      "variables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 6
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 2
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "Outline",
+          "name": "Ouline",
+          "doubleParameters": {
+            "padding": 0,
+            "thickness": 1
+          },
+          "stringParameters": {
+            "color": "100;100;100"
+          },
+          "booleanParameters": {}
+        },
+        {
+          "effectType": "DropShadow",
+          "name": "Shadow",
+          "doubleParameters": {
+            "alpha": 0.6,
+            "blur": 0,
+            "distance": 2,
+            "padding": 4,
+            "quality": 20,
+            "rotation": 45
+          },
+          "stringParameters": {
+            "color": "0;0;0"
+          },
+          "booleanParameters": {
+            "shadowOnly": false
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Sticker",
+          "type": "Sticker::Sticker",
+          "OnlyFollowPosition": false,
+          "IsDestroyedWithParent": false
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "content": {
+        "text": "Gameplay",
+        "opacity": 255,
+        "scale": 1,
+        "fontSize": 20,
+        "tint": "255;255;255",
+        "bitmapFontResourceName": "assets\\Monking-Tank.fnt",
+        "textureAtlasResourceName": "assets\\Monking-Tank.png",
+        "align": "center",
+        "verticalTextAlignment": "top"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "SettingControllerOption",
+      "type": "BitmapText::BitmapTextObject",
+      "variables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 5
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 2
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "Outline",
+          "name": "Ouline",
+          "doubleParameters": {
+            "padding": 0,
+            "thickness": 1
+          },
+          "stringParameters": {
+            "color": "100;100;100"
+          },
+          "booleanParameters": {}
+        },
+        {
+          "effectType": "DropShadow",
+          "name": "Shadow",
+          "doubleParameters": {
+            "alpha": 0.6,
+            "blur": 0,
+            "distance": 2,
+            "padding": 4,
+            "quality": 20,
+            "rotation": 45
+          },
+          "stringParameters": {
+            "color": "0;0;0"
+          },
+          "booleanParameters": {
+            "shadowOnly": false
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Sticker",
+          "type": "Sticker::Sticker",
+          "OnlyFollowPosition": false,
+          "IsDestroyedWithParent": false
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "content": {
+        "text": "Controller",
+        "opacity": 255,
+        "scale": 1,
+        "fontSize": 20,
+        "tint": "255;255;255",
+        "bitmapFontResourceName": "assets\\Monking-Tank.fnt",
+        "textureAtlasResourceName": "assets\\Monking-Tank.png",
+        "align": "center",
+        "verticalTextAlignment": "top"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "AudioMasterVolumeLabel",
+      "type": "BitmapText::BitmapTextObject",
+      "variables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 7
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 3
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "Outline",
+          "name": "Ouline",
+          "doubleParameters": {
+            "padding": 0,
+            "thickness": 1
+          },
+          "stringParameters": {
+            "color": "100;100;100"
+          },
+          "booleanParameters": {}
+        },
+        {
+          "effectType": "DropShadow",
+          "name": "Shadow",
+          "doubleParameters": {
+            "alpha": 0.6,
+            "blur": 0,
+            "distance": 2,
+            "padding": 4,
+            "quality": 20,
+            "rotation": 45
+          },
+          "stringParameters": {
+            "color": "0;0;0"
+          },
+          "booleanParameters": {
+            "shadowOnly": false
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Sticker",
+          "type": "Sticker::Sticker",
+          "OnlyFollowPosition": false,
+          "IsDestroyedWithParent": false
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "content": {
+        "text": "Master",
+        "opacity": 255,
+        "scale": 1,
+        "fontSize": 20,
+        "tint": "255;255;255",
+        "bitmapFontResourceName": "assets\\Monking-Tank.fnt",
+        "textureAtlasResourceName": "assets\\Monking-Tank.png",
+        "align": "right",
+        "verticalTextAlignment": "top"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "AudioSFXVolumeLabel",
+      "type": "BitmapText::BitmapTextObject",
+      "variables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 9
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 3
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "Outline",
+          "name": "Ouline",
+          "doubleParameters": {
+            "padding": 0,
+            "thickness": 1
+          },
+          "stringParameters": {
+            "color": "100;100;100"
+          },
+          "booleanParameters": {}
+        },
+        {
+          "effectType": "DropShadow",
+          "name": "Shadow",
+          "doubleParameters": {
+            "alpha": 0.6,
+            "blur": 0,
+            "distance": 2,
+            "padding": 4,
+            "quality": 20,
+            "rotation": 45
+          },
+          "stringParameters": {
+            "color": "0;0;0"
+          },
+          "booleanParameters": {
+            "shadowOnly": false
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Sticker",
+          "type": "Sticker::Sticker",
+          "OnlyFollowPosition": false,
+          "IsDestroyedWithParent": false
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "content": {
+        "text": "SFX",
+        "opacity": 255,
+        "scale": 0.8,
+        "fontSize": 20,
+        "tint": "255;255;255",
+        "bitmapFontResourceName": "assets\\Monking-Tank.fnt",
+        "textureAtlasResourceName": "assets\\Monking-Tank.png",
+        "align": "right",
+        "verticalTextAlignment": "top"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "AudioMusicVolumeLabel",
+      "type": "BitmapText::BitmapTextObject",
+      "variables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 8
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 3
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "Outline",
+          "name": "Ouline",
+          "doubleParameters": {
+            "padding": 0,
+            "thickness": 1
+          },
+          "stringParameters": {
+            "color": "100;100;100"
+          },
+          "booleanParameters": {}
+        },
+        {
+          "effectType": "DropShadow",
+          "name": "Shadow",
+          "doubleParameters": {
+            "alpha": 0.6,
+            "blur": 0,
+            "distance": 2,
+            "padding": 4,
+            "quality": 20,
+            "rotation": 45
+          },
+          "stringParameters": {
+            "color": "0;0;0"
+          },
+          "booleanParameters": {
+            "shadowOnly": false
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Sticker",
+          "type": "Sticker::Sticker",
+          "OnlyFollowPosition": false,
+          "IsDestroyedWithParent": false
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "content": {
+        "text": "Music",
+        "opacity": 255,
+        "scale": 0.8,
+        "fontSize": 20,
+        "tint": "255;255;255",
+        "bitmapFontResourceName": "assets\\Monking-Tank.fnt",
+        "textureAtlasResourceName": "assets\\Monking-Tank.png",
+        "align": "right",
+        "verticalTextAlignment": "top"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "NumberValueLabel",
+      "type": "BitmapText::BitmapTextObject",
+      "variables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "Value",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "Id",
+          "type": "number",
+          "value": 0
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "Outline",
+          "name": "Ouline",
+          "doubleParameters": {
+            "padding": 0,
+            "thickness": 1
+          },
+          "stringParameters": {
+            "color": "100;100;100"
+          },
+          "booleanParameters": {}
+        },
+        {
+          "effectType": "DropShadow",
+          "name": "Shadow",
+          "doubleParameters": {
+            "alpha": 0.6,
+            "blur": 0,
+            "distance": 2,
+            "padding": 4,
+            "quality": 20,
+            "rotation": 45
+          },
+          "stringParameters": {
+            "color": "0;0;0"
+          },
+          "booleanParameters": {
+            "shadowOnly": false
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Sticker",
+          "type": "Sticker::Sticker",
+          "OnlyFollowPosition": false,
+          "IsDestroyedWithParent": false
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "content": {
+        "text": "100",
+        "opacity": 255,
+        "scale": 0.8,
+        "fontSize": 20,
+        "tint": "255;255;255",
+        "bitmapFontResourceName": "assets\\Monking-Tank.fnt",
+        "textureAtlasResourceName": "assets\\Monking-Tank.png",
+        "align": "center",
+        "verticalTextAlignment": "top"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "OptionLeft",
+      "type": "BitmapText::BitmapTextObject",
+      "variables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "ValueId",
+          "type": "number",
+          "value": 0
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "Outline",
+          "name": "Ouline",
+          "doubleParameters": {
+            "padding": 0,
+            "thickness": 1
+          },
+          "stringParameters": {
+            "color": "100;100;100"
+          },
+          "booleanParameters": {}
+        },
+        {
+          "effectType": "DropShadow",
+          "name": "Shadow",
+          "doubleParameters": {
+            "alpha": 0.6,
+            "blur": 0,
+            "distance": 2,
+            "padding": 4,
+            "quality": 20,
+            "rotation": 45
+          },
+          "stringParameters": {
+            "color": "0;0;0"
+          },
+          "booleanParameters": {
+            "shadowOnly": false
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Sticker",
+          "type": "Sticker::Sticker",
+          "OnlyFollowPosition": false,
+          "IsDestroyedWithParent": false
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "content": {
+        "text": "<",
+        "opacity": 255,
+        "scale": 1,
+        "fontSize": 20,
+        "tint": "255;255;255",
+        "bitmapFontResourceName": "assets\\Monking-Tank.fnt",
+        "textureAtlasResourceName": "assets\\Monking-Tank.png",
+        "align": "center",
+        "verticalTextAlignment": "top"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "OptionRight",
+      "type": "BitmapText::BitmapTextObject",
+      "variables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "ValueId",
+          "type": "number",
+          "value": 0
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "Outline",
+          "name": "Ouline",
+          "doubleParameters": {
+            "padding": 0,
+            "thickness": 1
+          },
+          "stringParameters": {
+            "color": "100;100;100"
+          },
+          "booleanParameters": {}
+        },
+        {
+          "effectType": "DropShadow",
+          "name": "Shadow",
+          "doubleParameters": {
+            "alpha": 0.6,
+            "blur": 0,
+            "distance": 2,
+            "padding": 4,
+            "quality": 20,
+            "rotation": 45
+          },
+          "stringParameters": {
+            "color": "0;0;0"
+          },
+          "booleanParameters": {
+            "shadowOnly": false
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Sticker",
+          "type": "Sticker::Sticker",
+          "OnlyFollowPosition": false,
+          "IsDestroyedWithParent": false
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "content": {
+        "text": ">",
+        "opacity": 255,
+        "scale": 1,
+        "fontSize": 20,
+        "tint": "255;255;255",
+        "bitmapFontResourceName": "assets\\Monking-Tank.fnt",
+        "textureAtlasResourceName": "assets\\Monking-Tank.png",
+        "align": "center",
+        "verticalTextAlignment": "top"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "AudioTitleLabel",
+      "type": "BitmapText::BitmapTextObject",
+      "variables": [
+        {
+          "name": "Index",
+          "type": "number",
+          "value": 7
+        },
+        {
+          "name": "GroupIndex",
+          "type": "number",
+          "value": 3
+        }
+      ],
+      "effects": [
+        {
+          "effectType": "Outline",
+          "name": "Ouline",
+          "doubleParameters": {
+            "padding": 0,
+            "thickness": 1
+          },
+          "stringParameters": {
+            "color": "100;100;100"
+          },
+          "booleanParameters": {}
+        },
+        {
+          "effectType": "DropShadow",
+          "name": "Shadow",
+          "doubleParameters": {
+            "alpha": 0.6,
+            "blur": 0,
+            "distance": 2,
+            "padding": 4,
+            "quality": 20,
+            "rotation": 45
+          },
+          "stringParameters": {
+            "color": "0;0;0"
+          },
+          "booleanParameters": {
+            "shadowOnly": false
+          }
+        }
+      ],
+      "behaviors": [
+        {
+          "name": "Sticker",
+          "type": "Sticker::Sticker",
+          "OnlyFollowPosition": false,
+          "IsDestroyedWithParent": false
+        },
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "content": {
+        "text": "Volume",
+        "opacity": 255,
+        "scale": 1,
+        "fontSize": 20,
+        "tint": "255;255;255",
+        "bitmapFontResourceName": "assets\\Monking-Tank.fnt",
+        "textureAtlasResourceName": "assets\\Monking-Tank.png",
+        "align": "center",
+        "verticalTextAlignment": "top"
+      }
     }
   ],
   "objectsFolderStructure": {
     "folderName": "__ROOT",
     "children": [
       {
-        "objectName": "StartOption"
-      },
-      {
-        "objectName": "ContinueOption"
-      },
-      {
-        "objectName": "SettingsOption"
+        "folderName": "Options",
+        "children": [
+          {
+            "objectName": "StartOption"
+          },
+          {
+            "objectName": "ContinueOption"
+          },
+          {
+            "objectName": "SettingsOption"
+          },
+          {
+            "objectName": "OptionLeft"
+          },
+          {
+            "objectName": "OptionRight"
+          },
+          {
+            "objectName": "NumberValueLabel"
+          },
+          {
+            "folderName": "Settings",
+            "children": [
+              {
+                "objectName": "SettingAudioOption"
+              },
+              {
+                "objectName": "SettingControllerOption"
+              },
+              {
+                "objectName": "SettingGameplayOption"
+              },
+              {
+                "folderName": "Audio",
+                "children": [
+                  {
+                    "objectName": "AudioTitleLabel"
+                  },
+                  {
+                    "objectName": "AudioMasterVolumeLabel"
+                  },
+                  {
+                    "objectName": "AudioMusicVolumeLabel"
+                  },
+                  {
+                    "objectName": "AudioSFXVolumeLabel"
+                  }
+                ]
+              },
+              {
+                "folderName": "Controller"
+              },
+              {
+                "folderName": "Gameplay"
+              }
+            ]
+          }
+        ]
       },
       {
         "objectName": "version"
@@ -1077,12 +2649,19 @@
         "objectName": "sun"
       },
       {
-        "objectName": "cloud"
+        "objectName": "cloud1"
+      },
+      {
+        "objectName": "cloud2"
+      },
+      {
+        "objectName": "MenuArea"
       }
     ]
   },
   "events": [
     {
+      "folded": true,
       "type": "BuiltinCommonInstructions::Standard",
       "conditions": [
         {
@@ -1278,9 +2857,9 @@
                 "value": "SetNumberVariable"
               },
               "parameters": [
-                "FirstCloudPosition.X",
+                "FirstCloud1Position.X",
                 "=",
-                "cloud.X()"
+                "cloud1.X()"
               ]
             },
             {
@@ -1288,9 +2867,90 @@
                 "value": "SetNumberVariable"
               },
               "parameters": [
-                "FirstCloudPosition.Y",
+                "FirstCloud1Position.Y",
                 "=",
-                "cloud.Y()"
+                "cloud1.Y()"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "FirstCloud2Position.X",
+                "=",
+                "cloud2.X()"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "FirstCloud2Position.Y",
+                "=",
+                "cloud2.Y()"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "MenuArea",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberObjectVariable"
+                  },
+                  "parameters": [
+                    "Options",
+                    "GroupIndex",
+                    "=",
+                    "MenuArea.Id"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Sticker::Sticker::Stick"
+                  },
+                  "parameters": [
+                    "Options",
+                    "Sticker",
+                    "MenuArea",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberObjectVariable"
+                  },
+                  "parameters": [
+                    "MenuArea",
+                    "Id",
+                    "=",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Sticker::Sticker::Stick"
+                  },
+                  "parameters": [
+                    "Logo",
+                    "Sticker",
+                    "MenuArea",
+                    ""
+                  ]
+                }
               ]
             }
           ]
@@ -1470,37 +3130,143 @@
         "textG": 255,
         "textR": 255
       },
-      "comment": "Check inputs"
+      "comment": "Check inputs and group index"
     },
     {
       "type": "BuiltinCommonInstructions::Standard",
       "conditions": [
         {
           "type": {
-            "value": "BuiltinCommonInstructions::CompareNumbers"
+            "value": "NumberObjectVariable"
           },
           "parameters": [
-            "MAINGAME.Input.MoveY",
-            ">",
-            "0"
+            "MenuArea",
+            "Id",
+            "=",
+            "ActiveGroupIndex"
+          ]
+        }
+      ],
+      "actions": [],
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "MAINGAME.Input.MoveY",
+                ">",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "MenuIndex",
+                "+",
+                "1"
+              ]
+            }
           ]
         },
         {
-          "type": {
-            "value": "BuiltinCommonInstructions::Once"
-          },
-          "parameters": []
-        }
-      ],
-      "actions": [
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "MAINGAME.Input.MoveY",
+                "<",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "MenuIndex",
+                "-",
+                "1"
+              ]
+            }
+          ]
+        },
         {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "MenuIndex",
-            "+",
-            "1"
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::CompareNumbers"
+              },
+              "parameters": [
+                "MenuIndex",
+                "<",
+                "MenuArea.MinIndex"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "MenuIndex",
+                "=",
+                "MenuArea.MaxIndex"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::CompareNumbers"
+              },
+              "parameters": [
+                "MenuIndex",
+                ">",
+                "MenuArea.MaxIndex"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "MenuIndex",
+                "=",
+                "MenuArea.MinIndex"
+              ]
+            }
           ]
         }
       ]
@@ -1510,12 +3276,81 @@
       "conditions": [
         {
           "type": {
-            "value": "BuiltinCommonInstructions::CompareNumbers"
+            "value": "StringVariable"
           },
           "parameters": [
-            "MAINGAME.Input.MoveY",
-            "<",
-            "0"
+            "MAINGAME.Input.InputType",
+            "!=",
+            "_CONSTANTS_.InputType.Gamepad"
+          ]
+        },
+        {
+          "type": {
+            "value": "NumberObjectVariable"
+          },
+          "parameters": [
+            "Options",
+            "GroupIndex",
+            "=",
+            "ActiveGroupIndex"
+          ]
+        },
+        {
+          "type": {
+            "value": "SourisSurObjet"
+          },
+          "parameters": [
+            "Options",
+            "",
+            "",
+            ""
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "SetNumberVariable"
+          },
+          "parameters": [
+            "MenuIndex",
+            "=",
+            "Options.Index"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "StringVariable"
+          },
+          "parameters": [
+            "MAINGAME.Input.Cancel",
+            "=",
+            "_CONSTANTS_.InputState.Pressed"
+          ]
+        },
+        {
+          "type": {
+            "value": "NumberVariable"
+          },
+          "parameters": [
+            "ActiveGroupIndex",
+            "=",
+            "LastActiveGroupIndex"
+          ]
+        },
+        {
+          "type": {
+            "value": "NumberVariable"
+          },
+          "parameters": [
+            "ActiveGroupIndex",
+            ">",
+            "1"
           ]
         },
         {
@@ -1531,7 +3366,7 @@
             "value": "SetNumberVariable"
           },
           "parameters": [
-            "MenuIndex",
+            "ActiveGroupIndex",
             "-",
             "1"
           ]
@@ -1539,31 +3374,28 @@
       ]
     },
     {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "value": "BuiltinCommonInstructions::CompareNumbers"
-          },
-          "parameters": [
-            "MenuIndex",
-            "<=",
-            "0"
-          ]
-        }
-      ],
-      "actions": [
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "MenuIndex",
-            "=",
-            "3"
-          ]
-        }
-      ]
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "Options group events"
     },
     {
       "type": "BuiltinCommonInstructions::Standard",
@@ -1573,22 +3405,305 @@
             "value": "BuiltinCommonInstructions::CompareNumbers"
           },
           "parameters": [
-            "MenuIndex",
-            ">=",
-            "4"
+            "LastActiveGroupIndex",
+            "!=",
+            "ActiveGroupIndex"
           ]
         }
       ],
-      "actions": [
+      "actions": [],
+      "events": [
         {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "MenuIndex",
-            "=",
-            "1"
+          "folded": true,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "NumberObjectVariable"
+              },
+              "parameters": [
+                "MenuArea",
+                "Id",
+                "!=",
+                "ActiveGroupIndex"
+              ]
+            },
+            {
+              "type": {
+                "value": "NumberObjectVariable"
+              },
+              "parameters": [
+                "MenuArea",
+                "Id",
+                "<",
+                "ActiveGroupIndex"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionXTween2"
+              },
+              "parameters": [
+                "MenuArea",
+                "Tween",
+                "\"MoveLeft\"",
+                "ActiveX - (MenuArea.Width() * 0.75) * (ActiveGroupIndex - MenuArea.Id)",
+                "\"easeOutQuad\"",
+                "0.2",
+                ""
+              ]
+            }
+          ],
+          "events": [
+            {
+              "disabled": true,
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "MenuArea",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberObjectVariable"
+                  },
+                  "parameters": [
+                    "Options",
+                    "GroupIndex",
+                    "=",
+                    "MenuArea.Id"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectScaleTween3"
+                  },
+                  "parameters": [
+                    "Options",
+                    "Tween",
+                    "\"ScaleDown\"",
+                    "1 - 0.25 * (ActiveGroupIndex - MenuArea.Id)",
+                    "\"linear\"",
+                    "0.2",
+                    "",
+                    "yes"
+                  ]
+                }
+              ]
+            }
           ]
+        },
+        {
+          "folded": true,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "NumberObjectVariable"
+              },
+              "parameters": [
+                "MenuArea",
+                "Id",
+                "!=",
+                "ActiveGroupIndex"
+              ]
+            },
+            {
+              "type": {
+                "value": "NumberObjectVariable"
+              },
+              "parameters": [
+                "MenuArea",
+                "Id",
+                ">",
+                "ActiveGroupIndex"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionXTween2"
+              },
+              "parameters": [
+                "MenuArea",
+                "Tween",
+                "\"MoveRight\"",
+                "640 + MenuArea.Width() * (MenuArea.Id - ActiveGroupIndex - 1)",
+                "\"easeOutQuad\"",
+                "0.2",
+                ""
+              ]
+            }
+          ],
+          "events": [
+            {
+              "disabled": true,
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "MenuArea",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberObjectVariable"
+                  },
+                  "parameters": [
+                    "Options",
+                    "GroupIndex",
+                    "=",
+                    "MenuArea.Id"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectScaleTween3"
+                  },
+                  "parameters": [
+                    "Options",
+                    "Tween",
+                    "\"ScaleUp\"",
+                    "1",
+                    "\"linear\"",
+                    "0.2",
+                    "",
+                    "yes"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "NumberObjectVariable"
+              },
+              "parameters": [
+                "MenuArea",
+                "Id",
+                "=",
+                "ActiveGroupIndex"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionXTween2"
+              },
+              "parameters": [
+                "MenuArea",
+                "Tween",
+                "\"MoveLeft\"",
+                "ActiveX",
+                "\"easeOutQuad\"",
+                "0.2",
+                ""
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "LastActiveGroupIndex",
+                    "<",
+                    "ActiveGroupIndex"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "MenuIndex",
+                    "=",
+                    "MenuArea.MinIndex"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::CompareNumbers"
+              },
+              "parameters": [
+                "LastActiveGroupIndex",
+                ">",
+                "ActiveGroupIndex"
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "NumberObjectVariable"
+                  },
+                  "parameters": [
+                    "MenuArea",
+                    "Id",
+                    "=",
+                    "LastActiveGroupIndex"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "MenuIndex",
+                    "=",
+                    "MenuArea.ParentOptionId"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "LastActiveGroupIndex",
+                "=",
+                "ActiveGroupIndex"
+              ]
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "name": "ActiveX",
+          "type": "number",
+          "value": 200
         }
       ]
     },
@@ -1621,79 +3736,6 @@
       "conditions": [
         {
           "type": {
-            "value": "NumberObjectVariable"
-          },
-          "parameters": [
-            "Options",
-            "Index",
-            "!=",
-            "MenuIndex"
-          ]
-        }
-      ],
-      "actions": [
-        {
-          "type": {
-            "value": "CustomFunctions::OptionAnimation"
-          },
-          "parameters": [
-            "",
-            "Options",
-            "Effect",
-            "Tween",
-            "_CONSTANTS_.Colors.Menu.OptionActive",
-            "_CONSTANTS_.Colors.Menu.OptionInactive",
-            "MenuIndex",
-            "-1",
-            ""
-          ]
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "value": "SourisSurObjet"
-          },
-          "parameters": [
-            "Options",
-            "",
-            "",
-            ""
-          ]
-        }
-      ],
-      "actions": [
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "MenuIndex",
-            "=",
-            "Options.Index"
-          ]
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "value": "NumberObjectVariable"
-          },
-          "parameters": [
-            "Options",
-            "Index",
-            "=",
-            "MenuIndex"
-          ]
-        },
-        {
-          "type": {
             "value": "BuiltinCommonInstructions::CompareNumbers"
           },
           "parameters": [
@@ -1703,47 +3745,147 @@
           ]
         }
       ],
-      "actions": [
+      "actions": [],
+      "events": [
         {
-          "type": {
-            "value": "CustomFunctions::OptionAnimation"
-          },
-          "parameters": [
-            "",
-            "Options",
-            "Effect",
-            "Tween",
-            "_CONSTANTS_.Colors.Menu.OptionActive",
-            "_CONSTANTS_.Colors.Menu.OptionInactive",
-            "MenuIndex",
-            "Options.Index",
-            ""
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "NumberObjectVariable"
+              },
+              "parameters": [
+                "Options",
+                "GroupIndex",
+                "!=",
+                "ActiveGroupIndex"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomFunctions::OptionAnimation"
+              },
+              "parameters": [
+                "",
+                "Options",
+                "Effect",
+                "Tween",
+                "_CONSTANTS_.Colors.Menu.OptionActive",
+                "_CONSTANTS_.Colors.Menu.GroupInactive",
+                "MenuIndex",
+                "-1",
+                "yes",
+                ""
+              ]
+            }
           ]
         },
         {
-          "type": {
-            "value": "CustomFunctions::PlaySound"
-          },
-          "parameters": [
-            "",
-            "_CONSTANTS_.Audio.Soundeffect.UI.OptionFocus",
-            ""
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "NumberObjectVariable"
+              },
+              "parameters": [
+                "Options",
+                "GroupIndex",
+                "=",
+                "ActiveGroupIndex"
+              ]
+            },
+            {
+              "type": {
+                "value": "NumberObjectVariable"
+              },
+              "parameters": [
+                "Options",
+                "Index",
+                "!=",
+                "MenuIndex"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomFunctions::OptionAnimation"
+              },
+              "parameters": [
+                "",
+                "Options",
+                "Effect",
+                "Tween",
+                "_CONSTANTS_.Colors.Menu.OptionActive",
+                "_CONSTANTS_.Colors.Menu.OptionInactive",
+                "MenuIndex",
+                "-1",
+                "yes",
+                ""
+              ]
+            }
           ]
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [],
-      "actions": [
+        },
         {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "LastMenuIndex",
-            "=",
-            "MenuIndex"
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "NumberObjectVariable"
+              },
+              "parameters": [
+                "Options",
+                "Index",
+                "=",
+                "MenuIndex"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomFunctions::OptionAnimation"
+              },
+              "parameters": [
+                "",
+                "Options",
+                "Effect",
+                "Tween",
+                "_CONSTANTS_.Colors.Menu.OptionActive",
+                "_CONSTANTS_.Colors.Menu.OptionInactive",
+                "MenuIndex",
+                "Options.Index",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "CustomFunctions::PlaySound"
+              },
+              "parameters": [
+                "",
+                "_CONSTANTS_.Audio.Soundeffect.UI.OptionFocus",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "LastMenuIndex",
+                "=",
+                "MenuIndex"
+              ]
+            }
           ]
         }
       ]
@@ -1761,174 +3903,210 @@
       "comment": "\n\n"
     },
     {
-      "type": "BuiltinCommonInstructions::Comment",
-      "color": {
-        "b": 52,
-        "g": 44,
-        "r": 40,
-        "textB": 255,
-        "textG": 255,
-        "textR": 255
-      },
-      "comment": "Background animation"
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [],
-      "actions": [
+      "colorB": 52,
+      "colorG": 44,
+      "colorR": 40,
+      "creationTime": 0,
+      "folded": true,
+      "name": "Background animation",
+      "source": "",
+      "type": "BuiltinCommonInstructions::Group",
+      "events": [
         {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "MAINGAME.Camera.X",
-            "=",
-            "MAINGAME.Camera.X + (SceneWindowWidth() /2)"
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "MAINGAME.Camera.X",
+                "=",
+                "MAINGAME.Camera.X - (SceneWindowWidth() /2)"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "MAINGAME.Camera.Y",
+                "=",
+                "MAINGAME.Camera.Y + (SceneWindowHeight() /2)"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "CameraAngleFromCenter",
+                "=",
+                "AngleBetweenPositions(MAINGAME.Camera.X, MAINGAME.Camera.Y, MAINGAME.Input.LookX, MAINGAME.Input.LookY)-180"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "CameraDistanceFromcenter",
+                "=",
+                "DistanceBetweenPositions(MAINGAME.Camera.X,  MAINGAME.Camera.Y, MAINGAME.Input.LookX, MAINGAME.Input.LookY)"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "MenuDistance",
+                "=",
+                "(32 * (ActiveGroupIndex - 1))"
+              ]
+            },
+            {
+              "type": {
+                "value": "MettreX"
+              },
+              "parameters": [
+                "cloud1",
+                "=",
+                "FirstCloud1Position.X + XFromAngleAndDistance(CameraAngleFromCenter, CameraDistanceFromcenter * 0.1) - MenuDistance"
+              ]
+            },
+            {
+              "type": {
+                "value": "MettreY"
+              },
+              "parameters": [
+                "cloud1",
+                "=",
+                "FirstCloud1Position.Y + YFromAngleAndDistance(CameraAngleFromCenter, CameraDistanceFromcenter * 0.06)"
+              ]
+            },
+            {
+              "type": {
+                "value": "MettreX"
+              },
+              "parameters": [
+                "cloud2",
+                "=",
+                "FirstCloud2Position.X + XFromAngleAndDistance(CameraAngleFromCenter, CameraDistanceFromcenter * 0.06) - MenuDistance"
+              ]
+            },
+            {
+              "type": {
+                "value": "MettreY"
+              },
+              "parameters": [
+                "cloud2",
+                "=",
+                "FirstCloud2Position.Y + YFromAngleAndDistance(CameraAngleFromCenter, CameraDistanceFromcenter * 0.02)"
+              ]
+            },
+            {
+              "type": {
+                "value": "MettreX"
+              },
+              "parameters": [
+                "sun",
+                "=",
+                "FirstSunPosition.X + XFromAngleAndDistance(CameraAngleFromCenter, CameraDistanceFromcenter * 0.05) - MenuDistance"
+              ]
+            },
+            {
+              "type": {
+                "value": "MettreY"
+              },
+              "parameters": [
+                "sun",
+                "=",
+                "FirstSunPosition.Y + YFromAngleAndDistance(CameraAngleFromCenter, CameraDistanceFromcenter * 0.01)"
+              ]
+            },
+            {
+              "type": {
+                "value": "MettreY"
+              },
+              "parameters": [
+                "bg",
+                "=",
+                "(SceneWindowHeight()/2)  + YFromAngleAndDistance(CameraAngleFromCenter, CameraDistanceFromcenter * 0.01)"
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "CameraDistanceFromcenter",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "CameraAngleFromCenter",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "MenuDistance",
+              "type": "number",
+              "value": 0
+            }
           ]
         },
         {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "MAINGAME.Camera.Y",
-            "=",
-            "MAINGAME.Camera.Y + (SceneWindowHeight() /2)"
-          ]
-        },
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "CameraAngleFromCenter",
-            "=",
-            "AngleBetweenPositions(MAINGAME.Camera.X, MAINGAME.Camera.Y, MAINGAME.Input.LookX, MAINGAME.Input.LookY)-180"
-          ]
-        },
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "CameraDistanceFromcenter",
-            "=",
-            "DistanceBetweenPositions(MAINGAME.Camera.X,  MAINGAME.Camera.Y, MAINGAME.Input.LookX, MAINGAME.Input.LookY)"
-          ]
-        },
-        {
-          "type": {
-            "value": "MettreX"
-          },
-          "parameters": [
-            "cloud",
-            "=",
-            "FirstCloudPosition.X + XFromAngleAndDistance(CameraAngleFromCenter, CameraDistanceFromcenter * 0.05)"
-          ]
-        },
-        {
-          "type": {
-            "value": "MettreY"
-          },
-          "parameters": [
-            "cloud",
-            "=",
-            "FirstCloudPosition.Y + YFromAngleAndDistance(CameraAngleFromCenter, CameraDistanceFromcenter * 0.05)"
-          ]
-        },
-        {
-          "type": {
-            "value": "MettreX"
-          },
-          "parameters": [
-            "sun",
-            "=",
-            "FirstSunPosition.X + XFromAngleAndDistance(CameraAngleFromCenter, CameraDistanceFromcenter * 0.02)"
-          ]
-        },
-        {
-          "type": {
-            "value": "MettreY"
-          },
-          "parameters": [
-            "sun",
-            "=",
-            "FirstSunPosition.Y + YFromAngleAndDistance(CameraAngleFromCenter, CameraDistanceFromcenter * 0.02)"
-          ]
-        },
-        {
-          "type": {
-            "value": "MettreX"
-          },
-          "parameters": [
-            "bg",
-            "=",
-            "(SceneWindowWidth()/2) + XFromAngleAndDistance(CameraAngleFromCenter, CameraDistanceFromcenter * 0.01)"
-          ]
-        },
-        {
-          "type": {
-            "value": "MettreY"
-          },
-          "parameters": [
-            "bg",
-            "=",
-            "(SceneWindowHeight()/2)  + YFromAngleAndDistance(CameraAngleFromCenter, CameraDistanceFromcenter * 0.01)"
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "AuxAngle",
+                "=",
+                "AngleBetweenPositions(CameraCenterX(), CameraCenterY() + 128, sun.CenterX(), sun.CenterY()) - 180"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "sunGlareSpacing",
+                "=",
+                "DistanceBetweenPositions(CameraCenterX(), CameraCenterY() + 128, sun.CenterX(), sun.CenterY()) / (SceneInstancesCount(SunGlare) \n + 1)"
+              ]
+            },
+            {
+              "type": {
+                "value": "MettreXY"
+              },
+              "parameters": [
+                "SunGlare",
+                "=",
+                "XFromAngleAndDistance(AuxAngle, (SunGlare.frame + 1) * sunGlareSpacing) + sun.CenterX()",
+                "=",
+                "YFromAngleAndDistance(AuxAngle, (SunGlare.frame + 1) * sunGlareSpacing) + sun.CenterY()"
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "AuxAngle",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "sunGlareSpacing",
+              "type": "number",
+              "value": 50
+            }
           ]
         }
       ],
-      "variables": [
-        {
-          "name": "CameraDistanceFromcenter",
-          "type": "number",
-          "value": 0
-        },
-        {
-          "name": "CameraAngleFromCenter",
-          "type": "number",
-          "value": 0
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [],
-      "actions": [
-        {
-          "type": {
-            "value": "SetNumberVariable"
-          },
-          "parameters": [
-            "AuxAngle",
-            "=",
-            "AngleBetweenPositions(CameraCenterX(), CameraCenterY(), bg.PointX(\"sun\"), bg.PointY(\"sun\")) - 180"
-          ]
-        },
-        {
-          "type": {
-            "value": "MettreXY"
-          },
-          "parameters": [
-            "SunGlare",
-            "=",
-            "XFromAngleAndDistance(AuxAngle, (SunGlare.frame + 1) * sunGlareSpacing) + bg.PointX(\"sun\")",
-            "=",
-            "YFromAngleAndDistance(AuxAngle, (SunGlare.frame + 1) * sunGlareSpacing) + bg.PointY(\"sun\")"
-          ]
-        }
-      ],
-      "variables": [
-        {
-          "name": "AuxAngle",
-          "type": "number",
-          "value": 0
-        },
-        {
-          "name": "sunGlareSpacing",
-          "type": "number",
-          "value": 50
-        }
-      ]
+      "parameters": []
     },
     {
       "type": "BuiltinCommonInstructions::Comment",
@@ -1959,89 +4137,250 @@
       "conditions": [
         {
           "type": {
-            "value": "SourisSurObjet"
+            "value": "BuiltinCommonInstructions::Or"
           },
-          "parameters": [
-            "StartOption",
-            "",
-            "",
-            ""
+          "parameters": [],
+          "subInstructions": [
+            {
+              "type": {
+                "value": "StringVariable"
+              },
+              "parameters": [
+                "MAINGAME.Input.Accept",
+                "=",
+                "_CONSTANTS_.InputState.Pressed"
+              ]
+            },
+            {
+              "type": {
+                "value": "MouseButtonFromTextPressed"
+              },
+              "parameters": [
+                "",
+                "\"Left\""
+              ]
+            }
           ]
         },
         {
           "type": {
-            "value": "MouseButtonFromTextPressed"
+            "inverted": true,
+            "value": "Tween::IsPlaying"
           },
           "parameters": [
-            "",
-            "\"Left\""
+            "Options",
+            "Tween",
+            "\"MoveLeft\""
+          ]
+        },
+        {
+          "type": {
+            "value": "BuiltinCommonInstructions::Once"
+          },
+          "parameters": []
+        }
+      ],
+      "actions": [],
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Or"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "MenuIndex",
+                    "=",
+                    "StartOption.Index"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SourisSurObjet"
+                  },
+                  "parameters": [
+                    "StartOption",
+                    "",
+                    "",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "actions": []
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Or"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "MenuIndex",
+                    "=",
+                    "ContinueOption.Index"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SourisSurObjet"
+                  },
+                  "parameters": [
+                    "ContinueOption",
+                    "",
+                    "",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "actions": []
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Or"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "MenuIndex",
+                    "=",
+                    "SettingsOption.Index"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SourisSurObjet"
+                  },
+                  "parameters": [
+                    "SettingsOption",
+                    "",
+                    "",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "ActiveGroupIndex",
+                "=",
+                "2"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Or"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "value": "NumberVariable"
+                  },
+                  "parameters": [
+                    "MenuIndex",
+                    "=",
+                    "SettingAudioOption.Index"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SourisSurObjet"
+                  },
+                  "parameters": [
+                    "SettingAudioOption",
+                    "",
+                    "",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "ActiveGroupIndex",
+                "=",
+                "3"
+              ]
+            }
           ]
         }
       ],
-      "actions": [
+      "variables": [
         {
-          "type": {
-            "value": "Scene"
-          },
-          "parameters": [
-            "",
-            "\"Main Game Zone 1\"",
-            ""
-          ]
+          "name": "InputAcceptPressed",
+          "type": "boolean",
+          "value": false
         }
       ]
     },
     {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "value": "SourisSurObjet"
-          },
-          "parameters": [
-            "ContinueOption",
-            "",
-            "",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "MouseButtonFromTextPressed"
-          },
-          "parameters": [
-            "",
-            "\"Left\""
-          ]
-        }
-      ],
-      "actions": []
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
     },
     {
       "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
+      "conditions": [],
+      "actions": [
         {
           "type": {
-            "value": "SourisSurObjet"
+            "value": "TextContainerCapability::TextContainerBehavior::SetValue"
           },
           "parameters": [
-            "SettingsOption",
-            "",
-            "",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "MouseButtonFromTextPressed"
-          },
-          "parameters": [
-            "",
-            "\"Left\""
+            "version",
+            "Text",
+            "=",
+            "ToString(ActiveGroupIndex) + \" \" + ToString(LastActiveGroupIndex)"
           ]
         }
-      ],
-      "actions": []
+      ]
     }
   ],
   "layers": [
@@ -2088,7 +4427,22 @@
       "renderingType": "",
       "visibility": true,
       "cameras": [],
-      "effects": []
+      "effects": [
+        {
+          "effectType": "RGBSplit",
+          "name": "Effect",
+          "doubleParameters": {
+            "blueX": -0.25,
+            "blueY": 0,
+            "greenX": 0,
+            "greenY": 0,
+            "redX": 0.25,
+            "redY": 0
+          },
+          "stringParameters": {},
+          "booleanParameters": {}
+        }
+      ]
     },
     {
       "ambientLightColorB": 200,
@@ -2192,6 +4546,10 @@
     {
       "name": "ShakeObject_PositionAngleScale",
       "type": "ShakeObject::ShakeObject_PositionAngleScale"
+    },
+    {
+      "name": "Sticker",
+      "type": "Sticker::Sticker"
     },
     {
       "name": "Tank",

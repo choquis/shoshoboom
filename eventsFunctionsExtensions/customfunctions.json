@@ -198,7 +198,7 @@
       "functionType": "Action",
       "group": "Helpers",
       "name": "OptionAnimation",
-      "sentence": "Update visual animation for _PARAM1_ with colors (Active: _PARAM4_, Inactive: _PARAM5_) and check activation if equal (Value A: _PARAM6_, B: _PARAM7_)",
+      "sentence": "Update visual animation for _PARAM1_ with colors (Active: _PARAM4_, Inactive: _PARAM5_) and check activation if equal (Value A: _PARAM6_, B: _PARAM7_) Force: _PARAM8_",
       "events": [
         {
           "type": "BuiltinCommonInstructions::Standard",
@@ -222,6 +222,16 @@
                 "BitmapTextParam",
                 "TweenParam",
                 "\"TextSizeUp\""
+              ]
+            },
+            {
+              "type": {
+                "value": "BooleanVariable"
+              },
+              "parameters": [
+                "ParamForce",
+                "False",
+                ""
               ]
             }
           ],
@@ -296,6 +306,78 @@
                 "BitmapTextParam",
                 "TweenParam",
                 "\"TextSizeDown\""
+              ]
+            },
+            {
+              "type": {
+                "value": "BooleanVariable"
+              },
+              "parameters": [
+                "ParamForce",
+                "False",
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectScaleTween3"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "TweenParam",
+                "\"TextSizeDown\"",
+                "1",
+                "\"linear\"",
+                "0.1",
+                "",
+                "yes"
+              ]
+            },
+            {
+              "type": {
+                "value": "BitmapText::SetTint"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "InactiveColorParam"
+              ]
+            },
+            {
+              "type": {
+                "value": "EffectCapability::EffectBehavior::EnableEffect"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "EffectParam",
+                "\"Ouline\"",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::RemoveTween"
+              },
+              "parameters": [
+                "BitmapTextParam",
+                "TweenParam",
+                "\"TextSizeUp\""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BooleanVariable"
+              },
+              "parameters": [
+                "ParamForce",
+                "True",
+                ""
               ]
             }
           ],
@@ -386,6 +468,11 @@
           "description": "Value B",
           "name": "ParamB",
           "type": "expression"
+        },
+        {
+          "description": "Force",
+          "name": "ParamForce",
+          "type": "yesorno"
         }
       ],
       "objectGroups": []
