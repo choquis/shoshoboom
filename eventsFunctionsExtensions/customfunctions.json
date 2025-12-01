@@ -198,7 +198,7 @@
       "functionType": "Action",
       "group": "Helpers",
       "name": "OptionAnimation",
-      "sentence": "Update visual animation for _PARAM1_ with colors (Active: _PARAM4_, Inactive: _PARAM5_) and check activation if equal (Value A: _PARAM6_, B: _PARAM7_) Force: _PARAM8_",
+      "sentence": "Update visual animation for _PARAM1_ with colors (Active: _PARAM4_, Inactive: _PARAM5_) and check activation if equal (Value A: _PARAM6_, B: _PARAM7_) Force: _PARAM8_ Scale:_PARAM9_",
       "events": [
         {
           "type": "BuiltinCommonInstructions::Standard",
@@ -244,7 +244,7 @@
                 "BitmapTextParam",
                 "TweenParam",
                 "\"TextSizeUp\"",
-                "1.1",
+                "ParamScale + 0.1",
                 "\"linear\"",
                 "0.1",
                 "",
@@ -328,7 +328,7 @@
                 "BitmapTextParam",
                 "TweenParam",
                 "\"TextSizeDown\"",
-                "1",
+                "ParamScale",
                 "\"linear\"",
                 "0.1",
                 "",
@@ -390,7 +390,7 @@
                 "BitmapTextParam",
                 "TweenParam",
                 "\"TextSizeDown\"",
-                "1",
+                "ParamScale",
                 "\"linear\"",
                 "0.1",
                 "",
@@ -425,6 +425,16 @@
                 "BitmapTextParam",
                 "TweenParam",
                 "\"TextSizeUp\""
+              ]
+            },
+            {
+              "type": {
+                "value": "DebuggerTools::ConsoleLog"
+              },
+              "parameters": [
+                "ParamScale",
+                "",
+                ""
               ]
             }
           ]
@@ -473,6 +483,11 @@
           "description": "Force",
           "name": "ParamForce",
           "type": "yesorno"
+        },
+        {
+          "description": "OriginalScale",
+          "name": "ParamScale",
+          "type": "expression"
         }
       ],
       "objectGroups": []

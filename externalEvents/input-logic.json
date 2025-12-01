@@ -217,6 +217,78 @@
       "type": "BuiltinCommonInstructions::Group",
       "events": [
         {
+          "disabled": true,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "AnyKeyPressed"
+              },
+              "parameters": [
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+              },
+              "parameters": [
+                "version",
+                "Text",
+                "=",
+                "LastPressedKey()"
+              ]
+            }
+          ]
+        },
+        {
+          "disabled": true,
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "Gamepads::C_Any_Button_pressed"
+              },
+              "parameters": [
+                "",
+                "1",
+                "\"A\""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+              },
+              "parameters": [
+                "version",
+                "Text",
+                "=",
+                "Gamepads::LastButtonString(1, Gamepads::GamepadType(1))"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "MAINGAME.GlobalAction.InputChange",
+                "False",
+                "_CONSTANTS_.InputType.Keyboard"
+              ]
+            }
+          ]
+        },
+        {
           "type": "BuiltinCommonInstructions::Comment",
           "color": {
             "b": 52,
@@ -267,12 +339,12 @@
             },
             {
               "type": {
-                "value": "StringVariable"
+                "value": "BuiltinCommonInstructions::CompareStrings"
               },
               "parameters": [
                 "_CONFIG_.Players[0].InputType",
-                "=",
-                "_CONSTANTS_.InputType.Gamepad"
+                "!=",
+                "_CONSTANTS_.InputType.Keyboard"
               ]
             },
             {
@@ -290,6 +362,26 @@
               "parameters": [
                 "_CONFIG_.Players[0].InputType",
                 "=",
+                "_CONSTANTS_.InputType.Keyboard"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetStringVariable"
+              },
+              "parameters": [
+                "MAINGAME.Player0.InputType",
+                "=",
+                "_CONFIG_.Players[0].InputType"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "MAINGAME.GlobalAction.InputChange",
+                "True",
                 "_CONSTANTS_.InputType.Keyboard"
               ]
             }
@@ -312,22 +404,54 @@
           "conditions": [
             {
               "type": {
-                "value": "Gamepads::C_Any_Button_pressed"
+                "value": "BuiltinCommonInstructions::Or"
               },
-              "parameters": [
-                "",
-                "1",
-                "\"A\""
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "value": "Gamepads::C_Any_Button_pressed"
+                  },
+                  "parameters": [
+                    "",
+                    "1",
+                    "\"A\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Gamepads::C_Axis_pushed"
+                  },
+                  "parameters": [
+                    "",
+                    "1",
+                    "\"Left\"",
+                    "\"Any\"",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Gamepads::C_Axis_pushed"
+                  },
+                  "parameters": [
+                    "",
+                    "1",
+                    "\"Right\"",
+                    "\"Any\"",
+                    ""
+                  ]
+                }
               ]
             },
             {
               "type": {
-                "value": "StringVariable"
+                "value": "BuiltinCommonInstructions::CompareStrings"
               },
               "parameters": [
                 "_CONFIG_.Players[0].InputType",
-                "=",
-                "_CONSTANTS_.InputType.Keyboard"
+                "!=",
+                "_CONSTANTS_.InputType.Gamepad"
               ]
             },
             {
@@ -346,6 +470,26 @@
                 "_CONFIG_.Players[0].InputType",
                 "=",
                 "_CONSTANTS_.InputType.Gamepad"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetStringVariable"
+              },
+              "parameters": [
+                "MAINGAME.Player0.InputType",
+                "=",
+                "_CONFIG_.Players[0].InputType"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "MAINGAME.GlobalAction.InputChange",
+                "True",
+                "_CONSTANTS_.InputType.Keyboard"
               ]
             }
           ]
@@ -470,7 +614,7 @@
                 "value": "StringVariable"
               },
               "parameters": [
-                "_CONFIG_.Players[0].InputType",
+                "MAINGAME.Player0.InputType",
                 "=",
                 "_CONSTANTS_.InputType.Keyboard"
               ]
@@ -794,7 +938,7 @@
                 "value": "StringVariable"
               },
               "parameters": [
-                "_CONFIG_.Players[0].InputType",
+                "MAINGAME.Player0.InputType",
                 "=",
                 "_CONSTANTS_.InputType.Gamepad"
               ]
