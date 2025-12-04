@@ -1,5 +1,5 @@
 {
-  "associatedLayout": "Main Menu",
+  "associatedLayout": "CleanSceneForGlobalLayouts",
   "name": "Input Logic",
   "events": [
     {
@@ -7,7 +7,6 @@
       "colorG": 68,
       "colorR": 62,
       "creationTime": 0,
-      "folded": true,
       "name": "Begin scene",
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
@@ -216,62 +215,6 @@
       "source": "",
       "type": "BuiltinCommonInstructions::Group",
       "events": [
-        {
-          "disabled": true,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "AnyKeyPressed"
-              },
-              "parameters": [
-                ""
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
-              },
-              "parameters": [
-                "version",
-                "Text",
-                "=",
-                "LastPressedKey()"
-              ]
-            }
-          ]
-        },
-        {
-          "disabled": true,
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "Gamepads::C_Any_Button_pressed"
-              },
-              "parameters": [
-                "",
-                "1",
-                "\"A\""
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
-              },
-              "parameters": [
-                "version",
-                "Text",
-                "=",
-                "Gamepads::LastButtonString(1, Gamepads::GamepadType(1))"
-              ]
-            }
-          ]
-        },
         {
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [],

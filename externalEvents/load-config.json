@@ -1,201 +1,354 @@
 {
-  "associatedLayout": "Main Menu",
+  "associatedLayout": "CleanSceneForGlobalLayouts",
   "name": "Load config",
   "events": [
     {
       "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "value": "DepartScene"
-          },
-          "parameters": [
-            ""
-          ]
-        }
-      ],
+      "conditions": [],
       "actions": [],
       "events": [
         {
-          "type": "BuiltinCommonInstructions::Comment",
-          "color": {
-            "b": 52,
-            "g": 44,
-            "r": 40,
-            "textB": 255,
-            "textG": 255,
-            "textR": 255
-          },
-          "comment": "Init scene"
-        },
-        {
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
               "type": {
-                "inverted": true,
-                "value": "GroupExists"
+                "value": "DepartScene"
               },
               "parameters": [
-                "\"MonkingTanksStorage\"",
-                "\"_CONFIG_\""
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "Wait"
-              },
-              "parameters": [
-                "1"
-              ]
-            },
-            {
-              "type": {
-                "value": "EcrireFichierTxt"
-              },
-              "parameters": [
-                "\"MonkingTanksStorage\"",
-                "\"_CONFIG_\"",
-                "ToJSON(_CONFIG_)"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "GroupExists"
-              },
-              "parameters": [
-                "\"MonkingTanksStorage\"",
-                "\"_CONFIG_\""
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "ReadStringFromStorage"
-              },
-              "parameters": [
-                "\"MonkingTanksStorage\"",
-                "\"_CONFIG_\"",
-                "",
-                "TEMPCONFIG"
-              ]
-            },
-            {
-              "type": {
-                "value": "JSONToVariableStructure2"
-              },
-              "parameters": [
-                "TEMPCONFIG",
-                "_CONFIG_"
-              ]
-            },
-            {
-              "type": {
-                "value": "DebuggerTools::ConsoleLog"
-              },
-              "parameters": [
-                "ToJSON(_CONFIG_)",
-                "",
                 ""
               ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Comment",
+              "color": {
+                "b": 52,
+                "g": 44,
+                "r": 40,
+                "textB": 255,
+                "textG": 255,
+                "textR": 255
+              },
+              "comment": "Init scene"
             },
             {
-              "type": {
-                "value": "DebuggerTools::ConsoleLog"
-              },
-              "parameters": [
-                "\"INIT\"",
-                "\"info\"",
-                "\"INIT\""
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "DeleteFichier"
+                  },
+                  "parameters": [
+                    "STORAGE_NAME"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "GroupExists"
+                  },
+                  "parameters": [
+                    "STORAGE_NAME",
+                    "CONFIG_NAME"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Wait"
+                  },
+                  "parameters": [
+                    "1"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "STORAGE_NAME",
+                    "CONFIG_NAME",
+                    "ToJSON(_CONFIG_)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "GroupExists"
+                  },
+                  "parameters": [
+                    "STORAGE_NAME",
+                    "CONFIG_NAME"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ReadStringFromStorage"
+                  },
+                  "parameters": [
+                    "STORAGE_NAME",
+                    "CONFIG_NAME",
+                    "",
+                    "TEMPCONFIG"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "JSONToVariableStructure2"
+                  },
+                  "parameters": [
+                    "TEMPCONFIG",
+                    "_CONFIG_"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "DebuggerTools::ConsoleLog"
+                  },
+                  "parameters": [
+                    "ToJSON(_CONFIG_)",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "DebuggerTools::ConsoleLog"
+                  },
+                  "parameters": [
+                    "\"INIT\"",
+                    "\"info\"",
+                    "\"INIT\""
+                  ]
+                }
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "value": "BooleanVariable"
-          },
-          "parameters": [
-            "MAINGAME.GlobalAction.Save",
-            "True",
-            "\"\""
-          ]
         },
         {
-          "type": {
-            "value": "BuiltinCommonInstructions::Once"
-          },
-          "parameters": []
-        }
-      ],
-      "actions": [],
-      "events": [
-        {
           "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
+          "conditions": [
             {
               "type": {
-                "value": "EcrireFichierTxt"
-              },
-              "parameters": [
-                "\"MonkingTanksStorage\"",
-                "\"_CONFIG_\"",
-                "ToJSON(_CONFIG_)"
-              ]
-            },
-            {
-              "type": {
-                "value": "Wait"
-              },
-              "parameters": [
-                "0.25"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetBooleanVariable"
+                "value": "BooleanVariable"
               },
               "parameters": [
                 "MAINGAME.GlobalAction.Save",
-                "False",
-                ""
+                "True",
+                "\"\""
               ]
             },
             {
               "type": {
-                "value": "DebuggerTools::ConsoleLog"
+                "value": "BuiltinCommonInstructions::Once"
               },
-              "parameters": [
-                "ToJSON(_CONFIG_)",
-                "",
-                ""
-              ]
-            },
+              "parameters": []
+            }
+          ],
+          "actions": [],
+          "events": [
             {
-              "type": {
-                "value": "DebuggerTools::ConsoleLog"
-              },
-              "parameters": [
-                "\"SAVED\"",
-                "\"info\"",
-                "\"SAVED\""
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "STORAGE_NAME",
+                    "CONFIG_NAME",
+                    "ToJSON(_CONFIG_)"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Wait"
+                  },
+                  "parameters": [
+                    "0.25"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.GlobalAction.Save",
+                    "False",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "DebuggerTools::ConsoleLog"
+                  },
+                  "parameters": [
+                    "ToJSON(_CONFIG_)",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "DebuggerTools::ConsoleLog"
+                  },
+                  "parameters": [
+                    "\"SAVED\"",
+                    "\"info\"",
+                    "\"SAVED\""
+                  ]
+                }
               ]
             }
           ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BooleanVariable"
+              },
+              "parameters": [
+                "MAINGAME.GlobalAction.StartNewGame",
+                "True",
+                "_CONSTANTS_.GameType.Campaign"
+              ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "GroupExists"
+                  },
+                  "parameters": [
+                    "STORAGE_NAME",
+                    "SAVE_NAME"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "STORAGE_NAME",
+                    "SAVE_NAME",
+                    "ToJSON(_SAVE_)"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "GroupExists"
+                  },
+                  "parameters": [
+                    "STORAGE_NAME",
+                    "SAVE_NAME"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "EcrireFichierTxt"
+                  },
+                  "parameters": [
+                    "STORAGE_NAME",
+                    "SAVE_NAME",
+                    "ToJSON(_SAVE_)"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Wait"
+                  },
+                  "parameters": [
+                    "0.25"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.GlobalAction.StartNewGame",
+                    "False",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "DebuggerTools::ConsoleLog"
+                  },
+                  "parameters": [
+                    "ToJSON(_SAVE_)",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "DebuggerTools::ConsoleLog"
+                  },
+                  "parameters": [
+                    "\"SAVED\"",
+                    "\"info\"",
+                    "\"SAVED\""
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "name": "STORAGE_NAME",
+          "type": "string",
+          "value": "MonkingTanksStorageV1"
+        },
+        {
+          "name": "CONFIG_NAME",
+          "type": "string",
+          "value": "_CONFIG_"
+        },
+        {
+          "name": "SAVE_NAME",
+          "type": "string",
+          "value": "_SAVE_"
         }
       ]
     }

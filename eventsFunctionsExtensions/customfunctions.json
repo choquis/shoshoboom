@@ -35,20 +35,19 @@
           "type": "structure",
           "children": [
             {
+              "name": "assets\\SFX\\MainMenu\\main_menu_option_invalid_sfx.wav",
+              "type": "number",
+              "value": 3100
+            },
+            {
               "name": "assets\\SFX\\MainMenu\\main_menu_option_movement_sfx.wav",
-              "type": "structure",
-              "children": [
-                {
-                  "name": "Max",
-                  "type": "number",
-                  "value": 3000
-                },
-                {
-                  "name": "Min",
-                  "type": "number",
-                  "value": 3100
-                }
-              ]
+              "type": "number",
+              "value": 3000
+            },
+            {
+              "name": "assets\\SFX\\MainMenu\\main_menu_start_new_game_sfx.wav",
+              "type": "number",
+              "value": 3200
             }
           ]
         }
@@ -74,7 +73,17 @@
           "type": "structure",
           "children": [
             {
+              "name": "assets\\SFX\\MainMenu\\main_menu_option_invalid_sfx.wav",
+              "type": "number",
+              "value": 100
+            },
+            {
               "name": "assets\\SFX\\MainMenu\\main_menu_option_movement_sfx.wav",
+              "type": "number",
+              "value": 100
+            },
+            {
+              "name": "assets\\SFX\\MainMenu\\main_menu_start_new_game_sfx.wav",
               "type": "number",
               "value": 100
             }
@@ -114,16 +123,207 @@
           "type": "structure",
           "children": [
             {
+              "name": "assets\\SFX\\MainMenu\\main_menu_option_invalid_sfx.wav",
+              "type": "number",
+              "value": 3100
+            },
+            {
               "name": "assets\\SFX\\MainMenu\\main_menu_option_movement_sfx.wav",
               "type": "number",
               "value": 3000
+            },
+            {
+              "name": "assets\\SFX\\MainMenu\\main_menu_start_new_game_sfx.wav",
+              "type": "number",
+              "value": 3200
             }
           ]
         }
       ]
+    },
+    {
+      "name": "BindingValueSplitArray",
+      "type": "array",
+      "children": []
     }
   ],
   "eventsFunctions": [
+    {
+      "description": "Return the correct sprite name of custom binding options",
+      "fullName": "Return name for custom binding options",
+      "functionType": "StringExpression",
+      "name": "GetBindingName",
+      "sentence": "Get binding name",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetStringVariable"
+              },
+              "parameters": [
+                "AuxName",
+                "=",
+                "ParamName"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ArrayTools::SplitString"
+                  },
+                  "parameters": [
+                    "",
+                    "AuxName",
+                    "\",\"",
+                    "BindingValueSplitArray",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "VariableChildCount(BindingValueSplitArray)",
+                    ">",
+                    "1"
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::CompareStrings"
+                      },
+                      "parameters": [
+                        "BindingValueSplitArray[0]",
+                        "contains",
+                        "\"Left\""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetStringVariable"
+                      },
+                      "parameters": [
+                        "AuxName",
+                        "=",
+                        "\"LSTICK\" + \"_\" + BindingValueSplitArray[1]"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::CompareStrings"
+                      },
+                      "parameters": [
+                        "BindingValueSplitArray[0]",
+                        "contains",
+                        "\"Right\""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetStringVariable"
+                      },
+                      "parameters": [
+                        "AuxName",
+                        "=",
+                        "\"RSTICK\" + \"_\" + BindingValueSplitArray[1]"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::CompareStrings"
+                      },
+                      "parameters": [
+                        "BindingValueSplitArray[0]",
+                        "contains",
+                        "\"Pad\""
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetStringVariable"
+                      },
+                      "parameters": [
+                        "AuxName",
+                        "=",
+                        "BindingValueSplitArray[1]"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnString"
+                  },
+                  "parameters": [
+                    "AuxName"
+                  ]
+                }
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "AuxName",
+              "type": "string",
+              "value": ""
+            }
+          ]
+        }
+      ],
+      "expressionType": {
+        "type": "string"
+      },
+      "parameters": [
+        {
+          "description": "Name",
+          "name": "ParamName",
+          "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
     {
       "description": "Change the global volume for sounds",
       "fullName": "Change global volume for sounds",
@@ -426,16 +626,6 @@
                 "TweenParam",
                 "\"TextSizeUp\""
               ]
-            },
-            {
-              "type": {
-                "value": "DebuggerTools::ConsoleLog"
-              },
-              "parameters": [
-                "ParamScale",
-                "",
-                ""
-              ]
             }
           ]
         }
@@ -521,7 +711,7 @@
               "parameters": [
                 "AuxMinChannel",
                 "=",
-                "Channels.Soundeffects[ParamFile].Min"
+                "Channels.Soundeffects[ParamFile]"
               ]
             },
             {
@@ -531,7 +721,7 @@
               "parameters": [
                 "AuxMaxChannel",
                 "=",
-                "Channels.Soundeffects[ParamFile].Max"
+                "Channels.Soundeffects[ParamFile] + 100"
               ]
             }
           ],

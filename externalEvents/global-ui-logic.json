@@ -1,167 +1,102 @@
 {
-  "associatedLayout": "Main Menu",
+  "associatedLayout": "CleanSceneForGlobalLayouts",
   "name": "Global UI Logic",
   "events": [
     {
       "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "value": "DepartScene"
-          },
-          "parameters": [
-            ""
-          ]
-        }
-      ],
+      "conditions": [],
       "actions": [],
       "events": [
         {
           "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
+          "conditions": [
             {
               "type": {
-                "value": "BuiltinExternalLayouts::CreateObjectsFromExternalLayout"
+                "value": "DepartScene"
               },
               "parameters": [
-                "",
-                "\"Global UI Layout\"",
-                "",
-                "",
                 ""
               ]
-            },
+            }
+          ],
+          "actions": [],
+          "events": [
             {
-              "type": {
-                "value": "SetStringVariable"
-              },
-              "parameters": [
-                "MAINGAME.Player0.InputType",
-                "=",
-                "_CONFIG_.Players[0].InputType"
-              ]
-            },
-            {
-              "type": {
-                "value": "AnimatableCapability::AnimatableBehavior::SetName"
-              },
-              "parameters": [
-                "InputDevice",
-                "Animation",
-                "=",
-                "MAINGAME.Player0.InputType"
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "BuiltinExternalLayouts::CreateObjectsFromExternalLayout"
+                  },
+                  "parameters": [
+                    "",
+                    "\"Global UI Layout\"",
+                    "",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.Player0.InputType",
+                    "=",
+                    "_CONFIG_.Players[0].InputType"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "InputDevice",
+                    "Animation",
+                    "=",
+                    "MAINGAME.Player0.InputType"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "ButtonsChange",
+                    "True",
+                    ""
+                  ]
+                }
               ]
             }
           ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
+          },
+          "comment": "Check if input type change"
         },
         {
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
               "type": {
-                "value": "StringVariable"
+                "value": "BooleanVariable"
               },
               "parameters": [
-                "MAINGAME.Player0.InputType",
-                "=",
-                "_CONSTANTS_.InputType.Gamepad"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "CustomObjects::CustomInputButton::UpdateInputSprite"
-              },
-              "parameters": [
-                "AcceptButton",
-                "\"gamepad_\" + _CONFIG_.Players[0].Gamepad.Accept",
+                "MAINGAME.GlobalAction.InputConfigChange",
+                "True",
                 ""
               ]
             },
-            {
-              "type": {
-                "value": "CustomObjects::CustomInputButton::UpdateInputSprite"
-              },
-              "parameters": [
-                "CancelButton",
-                "\"gamepad_\" + _CONFIG_.Players[0].Gamepad.Cancel",
-                ""
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "StringVariable"
-              },
-              "parameters": [
-                "MAINGAME.Player0.InputType",
-                "=",
-                "_CONSTANTS_.InputType.Keyboard"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "CustomObjects::CustomInputButton::UpdateInputSprite"
-              },
-              "parameters": [
-                "AcceptButton",
-                "\"keyboard_\" + _CONFIG_.Players[0].Keyboard.Accept",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "CustomObjects::CustomInputButton::UpdateInputSprite"
-              },
-              "parameters": [
-                "CancelButton",
-                "\"keyboard_\" + _CONFIG_.Players[0].Keyboard.Cancel",
-                ""
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Comment",
-      "color": {
-        "b": 52,
-        "g": 44,
-        "r": 40,
-        "textB": 255,
-        "textG": 255,
-        "textR": 255
-      },
-      "comment": "Check if input type change"
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "value": "BooleanVariable"
-          },
-          "parameters": [
-            "MAINGAME.GlobalAction.InputChange",
-            "True",
-            ""
-          ]
-        }
-      ],
-      "actions": [],
-      "events": [
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
             {
               "type": {
                 "value": "BuiltinCommonInstructions::Once"
@@ -172,15 +107,117 @@
           "actions": [
             {
               "type": {
-                "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "ButtonsChange",
+                "True",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "SetBooleanVariable"
+              },
+              "parameters": [
+                "MAINGAME.GlobalAction.InputConfigChange",
+                "False",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BooleanVariable"
+              },
+              "parameters": [
+                "MAINGAME.GlobalAction.InputChange",
+                "True",
+                ""
+              ]
+            }
+          ],
+          "actions": [],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Once"
+                  },
+                  "parameters": []
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                  },
+                  "parameters": [
+                    "InputDevice",
+                    "Animation",
+                    "=",
+                    "MAINGAME.Player0.InputType"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
+                  },
+                  "parameters": [
+                    "InputDevice",
+                    "Tween",
+                    "\"MoveDown\"",
+                    "0",
+                    "\"easeOutQuad\"",
+                    "1",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetBooleanVariable"
+                  },
+                  "parameters": [
+                    "ButtonsChange",
+                    "True",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "Tween::Exists"
               },
               "parameters": [
                 "InputDevice",
-                "Animation",
-                "=",
-                "MAINGAME.Player0.InputType"
+                "Tween",
+                "\"MoveDown\""
               ]
             },
+            {
+              "type": {
+                "value": "Tween::HasFinished"
+              },
+              "parameters": [
+                "InputDevice",
+                "Tween",
+                "\"MoveDown\""
+              ]
+            }
+          ],
+          "actions": [
             {
               "type": {
                 "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
@@ -188,14 +225,432 @@
               "parameters": [
                 "InputDevice",
                 "Tween",
-                "\"MoveDown\"",
-                "0",
-                "\"easeOutQuad\"",
+                "\"MoveUp\"",
+                "- InputDevice.Height()",
+                "\"easeInQuad\"",
                 "1",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::RemoveTween"
+              },
+              "parameters": [
+                "InputDevice",
+                "Tween",
+                "\"MoveDown\""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
+          },
+          "comment": "Check if Accept/Cancel options will be shown"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "StringVariable"
+              },
+              "parameters": [
+                "MAINGAME.GlobalAction.ShowInputsInfo",
+                "=",
+                "_CONSTANTS_.InputsInfoType.AcceptCancel"
+              ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomObjects::CustomInputButton::ResetText"
+              },
+              "parameters": [
+                "AcceptButton",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "CustomObjects::CustomInputButton::ResetText"
+              },
+              "parameters": [
+                "CancelButton",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "CustomObjects::CustomInputButton::ResetText"
+              },
+              "parameters": [
+                "ResetButton",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Or"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "value": "StringVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.GlobalAction.ShowInputsInfo",
+                    "=",
+                    "_CONSTANTS_.InputsInfoType.ChangeBack"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "StringVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.GlobalAction.ShowInputsInfo",
+                    "=",
+                    "_CONSTANTS_.InputsInfoType.ChangeBackReset"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "CustomObjects::CustomInputButton::ChangeText"
+              },
+              "parameters": [
+                "AcceptButton",
+                "\"Change\"",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "CustomObjects::CustomInputButton::ChangeText"
+              },
+              "parameters": [
+                "CancelButton",
+                "\"Back and save\"",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Or"
+              },
+              "parameters": [],
+              "subInstructions": [
+                {
+                  "type": {
+                    "value": "StringVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.GlobalAction.ShowInputsInfo",
+                    "=",
+                    "_CONSTANTS_.InputsInfoType.AcceptCancel"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "StringVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.GlobalAction.ShowInputsInfo",
+                    "=",
+                    "_CONSTANTS_.InputsInfoType.ChangeBack"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
+              },
+              "parameters": [
+                "AcceptButton",
+                "Tween",
+                "\"MoveUp\"",
+                "SceneWindowHeight() - (AcceptButton.Height()*2)",
+                "\"easeOutQuad\"",
+                "0.25",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
+              },
+              "parameters": [
+                "CancelButton",
+                "Tween",
+                "\"MoveUp\"",
+                "SceneWindowHeight() - (AcceptButton.Height()*1)",
+                "\"easeOutQuad\"",
+                "0.25",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
+              },
+              "parameters": [
+                "ResetButton",
+                "Tween",
+                "\"MoveUp\"",
+                "SceneWindowHeight() - (AcceptButton.Height()*0)",
+                "\"easeOutQuad\"",
+                "0.25",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "StringVariable"
+              },
+              "parameters": [
+                "MAINGAME.GlobalAction.ShowInputsInfo",
+                "=",
+                "_CONSTANTS_.InputsInfoType.ChangeBackReset"
+              ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
+              },
+              "parameters": [
+                "AcceptButton",
+                "Tween",
+                "\"MoveUp\"",
+                "SceneWindowHeight() - (AcceptButton.Height()*3)",
+                "\"easeOutQuad\"",
+                "0.25",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
+              },
+              "parameters": [
+                "CancelButton",
+                "Tween",
+                "\"MoveUp\"",
+                "SceneWindowHeight() - (AcceptButton.Height()*2)",
+                "\"easeOutQuad\"",
+                "0.25",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
+              },
+              "parameters": [
+                "ResetButton",
+                "Tween",
+                "\"MoveUp\"",
+                "SceneWindowHeight() -  (AcceptButton.Height()*1)",
+                "\"easeOutQuad\"",
+                "0.25",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "StringVariable"
+              },
+              "parameters": [
+                "MAINGAME.GlobalAction.ShowInputsInfo",
+                "=",
+                "_CONSTANTS_.InputsInfoType.NA"
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::Exists"
+              },
+              "parameters": [
+                "AcceptButton",
+                "Tween",
+                "\"MoveUp\""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::HasFinished"
+              },
+              "parameters": [
+                "AcceptButton",
+                "Tween",
+                "\"MoveUp\""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
+              },
+              "parameters": [
+                "AcceptButton",
+                "Tween",
+                "\"MoveDown\"",
+                "SceneWindowHeight() + (AcceptButton.Height()*0)",
+                "\"easeOutQuad\"",
+                "0.25",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
+              },
+              "parameters": [
+                "CancelButton",
+                "Tween",
+                "\"MoveDown\"",
+                "SceneWindowHeight() + (AcceptButton.Height()*1)",
+                "\"easeOutQuad\"",
+                "0.25",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
+              },
+              "parameters": [
+                "ResetButton",
+                "Tween",
+                "\"MoveDown\"",
+                "SceneWindowHeight() +  (AcceptButton.Height()*2)",
+                "\"easeOutQuad\"",
+                "0.25",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::RemoveTween"
+              },
+              "parameters": [
+                "AcceptButton",
+                "Tween",
+                "\"MoveUp\""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::RemoveTween"
+              },
+              "parameters": [
+                "CancelButton",
+                "Tween",
+                "\"MoveUp\""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::RemoveTween"
+              },
+              "parameters": [
+                "ResetButton",
+                "Tween",
+                "\"MoveUp\""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
+          },
+          "comment": "Update button sprites"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "BooleanVariable"
+              },
+              "parameters": [
+                "ButtonsChange",
+                "True",
                 ""
               ]
             }
           ],
+          "actions": [],
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
@@ -218,7 +673,7 @@
                   },
                   "parameters": [
                     "AcceptButton",
-                    "\"gamepad_\" + _CONFIG_.Players[0].Gamepad.Accept",
+                    "\"gamepad_\" + CustomFunctions::GetBindingName(_CONFIG_.Players[0].Gamepad.Accept)",
                     ""
                   ]
                 },
@@ -228,7 +683,27 @@
                   },
                   "parameters": [
                     "CancelButton",
-                    "\"gamepad_\" + _CONFIG_.Players[0].Gamepad.Cancel",
+                    "\"gamepad_\" + CustomFunctions::GetBindingName(_CONFIG_.Players[0].Gamepad.Cancel)",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CustomObjects::CustomInputButton::UpdateInputSprite"
+                  },
+                  "parameters": [
+                    "ResetButton",
+                    "\"gamepad_\" + CustomFunctions::GetBindingName(_CONFIG_.Players[0].Gamepad.Reset)",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "DebuggerTools::ConsoleLog"
+                  },
+                  "parameters": [
+                    "_CONFIG_.Players[0].Gamepad.Accept",
+                    "",
                     ""
                   ]
                 }
@@ -255,7 +730,7 @@
                   },
                   "parameters": [
                     "AcceptButton",
-                    "\"keyboard_\" + _CONFIG_.Players[0].Keyboard.Accept",
+                    "\"keyboard_\" + CustomFunctions::GetBindingName(_CONFIG_.Players[0].Keyboard.Accept)",
                     ""
                   ]
                 },
@@ -265,7 +740,17 @@
                   },
                   "parameters": [
                     "CancelButton",
-                    "\"keyboard_\" + _CONFIG_.Players[0].Keyboard.Cancel",
+                    "\"keyboard_\" + CustomFunctions::GetBindingName(_CONFIG_.Players[0].Keyboard.Cancel)",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CustomObjects::CustomInputButton::UpdateInputSprite"
+                  },
+                  "parameters": [
+                    "ResetButton",
+                    "\"keyboard_\" + CustomFunctions::GetBindingName(_CONFIG_.Players[0].Keyboard.Reset)",
                     ""
                   ]
                 }
@@ -273,219 +758,12 @@
             }
           ]
         }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "value": "Tween::Exists"
-          },
-          "parameters": [
-            "InputDevice",
-            "Tween",
-            "\"MoveDown\""
-          ]
-        },
-        {
-          "type": {
-            "value": "Tween::HasFinished"
-          },
-          "parameters": [
-            "InputDevice",
-            "Tween",
-            "\"MoveDown\""
-          ]
-        }
       ],
-      "actions": [
+      "variables": [
         {
-          "type": {
-            "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
-          },
-          "parameters": [
-            "InputDevice",
-            "Tween",
-            "\"MoveUp\"",
-            "- InputDevice.Height()",
-            "\"easeInQuad\"",
-            "1",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "Tween::RemoveTween"
-          },
-          "parameters": [
-            "InputDevice",
-            "Tween",
-            "\"MoveDown\""
-          ]
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Comment",
-      "color": {
-        "b": 52,
-        "g": 44,
-        "r": 40,
-        "textB": 255,
-        "textG": 255,
-        "textR": 255
-      },
-      "comment": "Check if Accept/Cancel options will be shown"
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "value": "BooleanVariable"
-          },
-          "parameters": [
-            "MAINGAME.GlobalAction.ShowAcceptCancel",
-            "True",
-            "\"\""
-          ]
-        }
-      ],
-      "actions": [],
-      "events": [
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::Once"
-              },
-              "parameters": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
-              },
-              "parameters": [
-                "AcceptButton",
-                "Tween",
-                "\"MoveUp\"",
-                "SceneWindowHeight() - AcceptButton.Height()",
-                "\"easeOutQuad\"",
-                "0.25",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
-              },
-              "parameters": [
-                "CancelButton",
-                "Tween",
-                "\"MoveUp\"",
-                "SceneWindowHeight() - AcceptButton.Height()",
-                "\"easeOutQuad\"",
-                "0.25",
-                ""
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "BuiltinCommonInstructions::Standard",
-      "conditions": [
-        {
-          "type": {
-            "value": "BooleanVariable"
-          },
-          "parameters": [
-            "MAINGAME.GlobalAction.ShowAcceptCancel",
-            "False",
-            "\"\""
-          ]
-        },
-        {
-          "type": {
-            "value": "Tween::Exists"
-          },
-          "parameters": [
-            "AcceptButton",
-            "Tween",
-            "\"MoveUp\""
-          ]
-        },
-        {
-          "type": {
-            "value": "Tween::HasFinished"
-          },
-          "parameters": [
-            "AcceptButton",
-            "Tween",
-            "\"MoveUp\""
-          ]
-        }
-      ],
-      "actions": [],
-      "events": [
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [],
-          "actions": [
-            {
-              "type": {
-                "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
-              },
-              "parameters": [
-                "AcceptButton",
-                "Tween",
-                "\"MoveDown\"",
-                "SceneWindowHeight()",
-                "\"easeOutQuad\"",
-                "0.25",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "Tween::TweenBehavior::AddObjectPositionYTween2"
-              },
-              "parameters": [
-                "CancelButton",
-                "Tween",
-                "\"MoveDown\"",
-                "SceneWindowHeight()",
-                "\"easeOutQuad\"",
-                "0.25",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "Tween::RemoveTween"
-              },
-              "parameters": [
-                "AcceptButton",
-                "Tween",
-                "\"MoveUp\""
-              ]
-            },
-            {
-              "type": {
-                "value": "Tween::RemoveTween"
-              },
-              "parameters": [
-                "CancelButton",
-                "Tween",
-                "\"MoveUp\""
-              ]
-            }
-          ]
+          "name": "ButtonsChange",
+          "type": "boolean",
+          "value": false
         }
       ]
     }
