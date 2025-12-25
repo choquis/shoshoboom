@@ -27,6 +27,11 @@
               "name": "assets\\Music\\main_menu_bg.aac",
               "type": "number",
               "value": 0
+            },
+            {
+              "name": "assets\\Music\\start_game_intro.aac",
+              "type": "number",
+              "value": 1
             }
           ]
         },
@@ -63,6 +68,11 @@
           "children": [
             {
               "name": "assets\\Music\\main_menu_bg.aac",
+              "type": "number",
+              "value": 100
+            },
+            {
+              "name": "assets\\Music\\start_game_intro.aac",
               "type": "number",
               "value": 100
             }
@@ -107,17 +117,6 @@
       "name": "ActiveChannel",
       "type": "structure",
       "children": [
-        {
-          "name": "Music",
-          "type": "structure",
-          "children": [
-            {
-              "name": "assets\\Music\\main_menu_bg.aac",
-              "type": "number",
-              "value": 0
-            }
-          ]
-        },
         {
           "name": "Soundeffects",
           "type": "structure",
@@ -852,7 +851,7 @@
                 {
                   "type": {
                     "inverted": true,
-                    "value": "MusicPlaying"
+                    "value": "SoundPlaying"
                   },
                   "parameters": [
                     "",
@@ -863,16 +862,45 @@
               "actions": [
                 {
                   "type": {
-                    "value": "AudioByName::PlayMusicOnChannelByName"
+                    "value": "AudioByName::PlaySoundOnChannelByName"
                   },
                   "parameters": [
                     "",
                     "ParamFile",
                     "AuxChannel",
-                    "",
-                    "100 * (GlobalVolume/100) * (SFXVolume/100) * (AuxVolume/100)",
+                    "yes",
+                    "0",
                     "1",
                     ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "SoundCanalVolume"
+                  },
+                  "parameters": [
+                    "",
+                    "AuxChannel",
+                    "=",
+                    "0"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "FadeSoundVolume"
+                  },
+                  "parameters": [
+                    "",
+                    "AuxChannel",
+                    "100 * (GlobalVolume/100) * (SFXVolume/100) * (AuxVolume/100)",
+                    "1"
                   ]
                 }
               ]
@@ -897,6 +925,81 @@
           "description": "File",
           "name": "ParamFile",
           "type": "string"
+        }
+      ],
+      "objectGroups": []
+    },
+    {
+      "description": "Change the pitch on music within channel",
+      "fullName": "Change pitch on music",
+      "functionType": "Action",
+      "name": "ChangeMusicPitch",
+      "sentence": "Change music _PARAM1_ pitch _PARAM2_",
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "AuxChannel",
+                "=",
+                "Channels.Music[ParamFile]"
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "SoundPlaying"
+                  },
+                  "parameters": [
+                    "",
+                    "AuxChannel"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "ModPitchSoundChannel"
+                  },
+                  "parameters": [
+                    "",
+                    "AuxChannel",
+                    "=",
+                    "ParamPitch"
+                  ]
+                }
+              ]
+            }
+          ],
+          "variables": [
+            {
+              "name": "AuxChannel",
+              "type": "number",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "description": "File",
+          "name": "ParamFile",
+          "type": "string"
+        },
+        {
+          "description": "Pitch",
+          "name": "ParamPitch",
+          "type": "expression"
         }
       ],
       "objectGroups": []

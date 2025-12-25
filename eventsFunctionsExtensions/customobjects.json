@@ -95828,7 +95828,7 @@
           "fullName": "Start/Restart left to right (->) transition",
           "functionType": "Action",
           "name": "DoLeftToRightTransition",
-          "sentence": "Start/Restart left to right (->) transition _PARAM0_. Backward ( 1: yes, 0: no) _PARAM2_",
+          "sentence": "Start/Restart left to right (->) transition _PARAM0_. Backward ( 1: yes, 0: no) _PARAM2_ with speed _PARAM3_",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
@@ -95923,7 +95923,7 @@
                     "0",
                     "0",
                     "\"easeFrom\"",
-                    "TransitionTime",
+                    "TransitionTime * ParamSpeedUp",
                     ""
                   ]
                 }
@@ -95967,7 +95967,7 @@
                     "-WidthScreen - BlackScreenTransitionCorner.Width()",
                     "0",
                     "\"easeFrom\"",
-                    "TransitionTime",
+                    "TransitionTime * ParamSpeedUp",
                     ""
                   ]
                 }
@@ -96017,6 +96017,11 @@
               "description": "Backward",
               "name": "ParamBackward",
               "type": "expression"
+            },
+            {
+              "description": "Transition Speed",
+              "name": "ParamSpeedUp",
+              "type": "expression"
             }
           ],
           "objectGroups": []
@@ -96026,7 +96031,7 @@
           "fullName": "Start/Restart right to left (<-) transition",
           "functionType": "Action",
           "name": "DoRightToLeftTransition",
-          "sentence": "Start/Restart right to left (<-)  transition _PARAM0_. Backward ( 1: yes, 0: no) _PARAM2_",
+          "sentence": "Start/Restart right to left (<-)  transition _PARAM0_. Backward ( 1: yes, 0: no) _PARAM2_ with speed _PARAM3_",
           "events": [
             {
               "type": "BuiltinCommonInstructions::Standard",
@@ -96121,7 +96126,7 @@
                     "0",
                     "0",
                     "\"easeFrom\"",
-                    "TransitionTime",
+                    "TransitionTime * ParamSpeedUp",
                     ""
                   ]
                 }
@@ -96165,7 +96170,7 @@
                     "WidthScreen",
                     "0",
                     "\"easeFrom\"",
-                    "TransitionTime",
+                    "TransitionTime * ParamSpeedUp",
                     ""
                   ]
                 }
@@ -96214,6 +96219,11 @@
             {
               "description": "Backward",
               "name": "ParamBackward",
+              "type": "expression"
+            },
+            {
+              "description": "Transition Speed",
+              "name": "ParamSpeedUp",
               "type": "expression"
             }
           ],

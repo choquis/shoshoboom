@@ -20,7 +20,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": false,
-    "zoomFactor": 2.383433435476243,
+    "zoomFactor": 2.9081805997707244,
     "windowMask": false,
     "selectedLayer": "Main"
   },
@@ -13125,6 +13125,7 @@
       "target": "Load config"
     },
     {
+      "folded": true,
       "type": "BuiltinCommonInstructions::Standard",
       "conditions": [
         {
@@ -13664,38 +13665,42 @@
           "actions": [
             {
               "type": {
-                "value": "PreloadMusic"
+                "value": "AudioByName::PreloadMusicByName"
               },
               "parameters": [
                 "",
-                "assets\\Music\\main_menu_bg.aac"
+                "_CONSTANTS_.Audio.Music.MainMenu",
+                ""
               ]
             },
             {
               "type": {
-                "value": "PreloadSound"
+                "value": "AudioByName::PreloadSoundByName"
               },
               "parameters": [
                 "",
-                "assets\\SFX\\MainMenu\\main_menu_option_movement_sfx.wav"
+                "_CONSTANTS_.Audio.Soundeffect.UI.OptionFocus",
+                ""
               ]
             },
             {
               "type": {
-                "value": "PreloadSound"
+                "value": "AudioByName::PreloadSoundByName"
               },
               "parameters": [
                 "",
-                "assets\\SFX\\MainMenu\\main_menu_option_invalid_sfx.wav"
+                "_CONSTANTS_.Audio.Soundeffect.UI.OptionInvalid",
+                ""
               ]
             },
             {
               "type": {
-                "value": "PreloadSound"
+                "value": "AudioByName::PreloadSoundByName"
               },
               "parameters": [
                 "",
-                "assets\\SFX\\MainMenu\\main_menu_start_new_game_sfx.wav"
+                "_CONSTANTS_.Audio.Soundeffect.UI.StartNewGame",
+                ""
               ]
             }
           ]
@@ -13741,6 +13746,7 @@
       "comment": "Load config for options only once after beginning of the scene"
     },
     {
+      "folded": true,
       "type": "BuiltinCommonInstructions::Standard",
       "conditions": [
         {
@@ -15988,7 +15994,6 @@
               "comment": "Second options that have left and right inputs"
             },
             {
-              "folded": true,
               "type": "BuiltinCommonInstructions::Standard",
               "conditions": [],
               "actions": [],
@@ -16838,7 +16843,6 @@
           "colorG": 176,
           "colorR": 74,
           "creationTime": 0,
-          "folded": true,
           "name": "Binding inputs",
           "source": "",
           "type": "BuiltinCommonInstructions::Group",
@@ -18509,7 +18513,7 @@
                       },
                       "parameters": [
                         "",
-                        "\"CamapignIntro\"",
+                        "\"CampaignIntro\"",
                         ""
                       ]
                     }
