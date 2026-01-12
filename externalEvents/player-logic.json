@@ -20,21 +20,21 @@
       "conditions": [
         {
           "type": {
-            "value": "BuiltinCommonInstructions::CompareStrings"
-          },
-          "parameters": [
-            "Players.ObjectName()",
-            "=",
-            "MAINGAME.Player0.Character"
-          ]
-        },
-        {
-          "type": {
             "inverted": true,
             "value": "CustomObjects::Tank::IsFalling"
           },
           "parameters": [
             "Players",
+            ""
+          ]
+        },
+        {
+          "type": {
+            "value": "CustomObjects::Tank::Function"
+          },
+          "parameters": [
+            "Players",
+            "MAINGAME.Player0.Character",
             ""
           ]
         }

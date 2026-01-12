@@ -1,7 +1,7 @@
 {
   "firstLayout": "",
   "gdVersion": {
-    "build": 250,
+    "build": 251,
     "major": 5,
     "minor": 6,
     "revision": 0
@@ -9652,6 +9652,30 @@
         "name": "assets\\Animations\\Intro\\intro_bubble_mask.png",
         "smoothed": false,
         "userAdded": false
+      },
+      {
+        "file": "assets/StartTransitionZone.png",
+        "kind": "image",
+        "metadata": "{\"extension\":\".png\"}",
+        "name": "StartTransitionZone",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/CameraLimitsCollider.png",
+        "kind": "image",
+        "metadata": "{\"extension\":\".png\",\"localFilePath\":\"assets/CameraLimitsCollider.png\"}",
+        "name": "CameraLimitsCollider",
+        "smoothed": false,
+        "userAdded": false
+      },
+      {
+        "file": "assets/Backgrounds/zone1/zone1-ground-9.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "assets\\Backgrounds\\zone1\\zone1-ground-9.png",
+        "smoothed": false,
+        "userAdded": false
       }
     ]
   },
@@ -9698,7 +9722,7 @@
           "type": "CustomBehaviors::Tank",
           "EntityBehavior": "Entity",
           "BulletObjects": "BulletObjects",
-          "MoveSpeed": 70,
+          "MoveSpeed": 170,
           "BombObjects": "BombObjects"
         },
         {
@@ -14530,15 +14554,22 @@
         {
           "name": "Level",
           "type": "number",
-          "value": 0
+          "value": 1
+        },
+        {
+          "name": "Zone",
+          "type": "number",
+          "value": 1
         }
       ]
     },
     {
+      "folded": true,
       "name": "_CONSTANTS_",
       "type": "structure",
       "children": [
         {
+          "folded": true,
           "name": "Audio",
           "type": "structure",
           "children": [
@@ -14616,7 +14647,6 @@
           ]
         },
         {
-          "folded": true,
           "name": "GameState",
           "type": "structure",
           "children": [
@@ -14654,6 +14684,11 @@
               "name": "Start",
               "type": "string",
               "value": "Start"
+            },
+            {
+              "name": "Transition",
+              "type": "string",
+              "value": "Transition"
             }
           ]
         },
@@ -14774,6 +14809,7 @@
       "type": "structure",
       "children": [
         {
+          "folded": true,
           "name": "Camera",
           "type": "structure",
           "children": [
@@ -14795,6 +14831,24 @@
           "value": "Start"
         },
         {
+          "folded": true,
+          "name": "GameVariables",
+          "type": "structure",
+          "children": [
+            {
+              "name": "Level",
+              "type": "number",
+              "value": 1
+            },
+            {
+              "name": "Zone",
+              "type": "number",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "folded": true,
           "name": "GlobalAction",
           "type": "structure",
           "children": [
@@ -14826,6 +14880,7 @@
           ]
         },
         {
+          "folded": true,
           "name": "Input",
           "type": "structure",
           "children": [
@@ -14882,6 +14937,7 @@
           ]
         },
         {
+          "folded": true,
           "name": "Player0",
           "type": "structure",
           "children": [
@@ -14891,6 +14947,7 @@
               "value": "Player0"
             },
             {
+              "folded": true,
               "name": "Gamepad",
               "type": "structure",
               "children": [
@@ -14952,6 +15009,22 @@
               "name": "InputType",
               "type": "string",
               "value": "keyboard"
+            }
+          ]
+        },
+        {
+          "name": "Transition",
+          "type": "structure",
+          "children": [
+            {
+              "name": "X",
+              "type": "number",
+              "value": 0
+            },
+            {
+              "name": "Y",
+              "type": "number",
+              "value": 0
             }
           ]
         }
@@ -15081,10 +15154,6 @@
     },
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
-      "referenceTo": "/eventsFunctionsExtensions/extendedvariables"
-    },
-    {
-      "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/eventsFunctionsExtensions/fps"
     },
     {
@@ -15101,15 +15170,7 @@
     },
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
-      "referenceTo": "/eventsFunctionsExtensions/rectanglemovement"
-    },
-    {
-      "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/eventsFunctionsExtensions/navmeshpathfinding"
-    },
-    {
-      "__REFERENCE_TO_SPLIT_OBJECT": true,
-      "referenceTo": "/eventsFunctionsExtensions/snaptogrid"
     },
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
@@ -15121,19 +15182,15 @@
     },
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
-      "referenceTo": "/eventsFunctionsExtensions/curvedmovement"
-    },
-    {
-      "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/eventsFunctionsExtensions/audiobyname"
     },
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
-      "referenceTo": "/eventsFunctionsExtensions/panelspriteslider"
+      "referenceTo": "/eventsFunctionsExtensions/spritemasking"
     },
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
-      "referenceTo": "/eventsFunctionsExtensions/spritemasking"
+      "referenceTo": "/eventsFunctionsExtensions/roombasedcameramovement"
     }
   ],
   "externalLayouts": [
@@ -15156,6 +15213,10 @@
     {
       "__REFERENCE_TO_SPLIT_OBJECT": true,
       "referenceTo": "/externalLayouts/enter-transition-zone-1"
+    },
+    {
+      "__REFERENCE_TO_SPLIT_OBJECT": true,
+      "referenceTo": "/externalLayouts/zone1-level1"
     }
   ]
 }

@@ -20,7 +20,7 @@
     "gridColor": 10401023,
     "gridAlpha": 0.8,
     "snap": false,
-    "zoomFactor": 0.9266223649027977,
+    "zoomFactor": 1.426075526138085,
     "windowMask": false,
     "selectedLayer": ""
   },
@@ -209,11 +209,6 @@
       "name": "RAYCAST_ARRAY_Y",
       "type": "array",
       "children": []
-    },
-    {
-      "name": "MovePlayer",
-      "type": "boolean",
-      "value": false
     }
   ],
   "instances": [
@@ -17306,6 +17301,186 @@
           ]
         }
       ]
+    },
+    {
+      "assetStoreId": "",
+      "name": "version",
+      "type": "BitmapText::BitmapTextObject",
+      "variables": [],
+      "effects": [],
+      "behaviors": [
+        {
+          "name": "Tween",
+          "type": "Tween::TweenBehavior"
+        }
+      ],
+      "content": {
+        "text": "v 1.0.0",
+        "opacity": 255,
+        "scale": 0.5,
+        "fontSize": 20,
+        "tint": "103;218;142",
+        "bitmapFontResourceName": "assets\\Monking-Tank.fnt",
+        "textureAtlasResourceName": "assets\\Monking-Tank.png",
+        "align": "right",
+        "verticalTextAlignment": "top"
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "StartTransitionCollider",
+      "persistentUuid": "771ab1df-e7a4-4151-9e26-4437873c7a7c",
+      "type": "CustomObjects::Hidden",
+      "variant": "StartTransition",
+      "variables": [
+        {
+          "name": "Id",
+          "persistentUuid": "46ccc2ad-8f94-4376-a3ee-5a3d078b4f74",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "Start",
+          "persistentUuid": "5919b794-f17e-4509-a9e9-01163db47c5d",
+          "type": "boolean",
+          "value": false
+        },
+        {
+          "name": "DirectionX",
+          "persistentUuid": "886e4b65-1e45-4a99-a93a-cf6b5b614f12",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "DirectionY",
+          "persistentUuid": "b3a21e73-81f6-4687-8f5d-c95c7099b8e3",
+          "type": "number",
+          "value": 0
+        }
+      ],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "ActiveCollision": true
+      }
+    },
+    {
+      "assetStoreId": "",
+      "name": "CameraLimits",
+      "persistentUuid": "0d1de9ad-7c32-4678-a512-e7a801be48d9",
+      "type": "CustomObjects::Hidden",
+      "variant": "CameraLimits",
+      "variables": [
+        {
+          "name": "TransitionColliderId",
+          "persistentUuid": "5483d798-4c20-4a21-ba06-4705f9da825f",
+          "type": "number",
+          "value": 0
+        },
+        {
+          "name": "Active",
+          "persistentUuid": "f3b82316-76a4-4ec6-8fa7-af505d6cf179",
+          "type": "boolean",
+          "value": false
+        }
+      ],
+      "effects": [],
+      "behaviors": [],
+      "content": {
+        "ActiveCollision": true
+      }
+    },
+    {
+      "assetStoreId": "",
+      "bottomMargin": 32,
+      "height": 96,
+      "leftMargin": 32,
+      "name": "Zone1Ground9",
+      "rightMargin": 32,
+      "texture": "assets\\Backgrounds\\zone1\\zone1-ground-9.png",
+      "tiled": false,
+      "topMargin": 32,
+      "type": "PanelSpriteObject::PanelSprite",
+      "width": 96,
+      "variables": [],
+      "effects": [],
+      "behaviors": []
+    },
+    {
+      "adaptCollisionMaskAutomatically": true,
+      "assetStoreId": "",
+      "name": "CameraRoom",
+      "type": "Sprite",
+      "updateIfNotVisible": false,
+      "variables": [],
+      "effects": [],
+      "behaviors": [],
+      "animations": [
+        {
+          "name": "default",
+          "useMultipleDirections": false,
+          "directions": [
+            {
+              "looping": false,
+              "timeBetweenFrames": 0.08,
+              "sprites": [
+                {
+                  "hasCustomCollisionMask": true,
+                  "image": "CameraLimitsCollider",
+                  "points": [],
+                  "originPoint": {
+                    "name": "origine",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "centerPoint": {
+                    "automatic": true,
+                    "name": "centre",
+                    "x": 0,
+                    "y": 0
+                  },
+                  "customCollisionMask": [
+                    [
+                      {
+                        "x": 0,
+                        "y": 0
+                      },
+                      {
+                        "x": 32,
+                        "y": 0
+                      },
+                      {
+                        "x": 32,
+                        "y": 32
+                      },
+                      {
+                        "x": 0,
+                        "y": 32
+                      }
+                    ]
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "assetStoreId": "",
+      "bottomMargin": 12,
+      "height": 32,
+      "leftMargin": 12,
+      "name": "CameraCollider",
+      "rightMargin": 12,
+      "texture": "SolidCollider.png",
+      "tiled": false,
+      "topMargin": 12,
+      "type": "PanelSpriteObject::PanelSprite",
+      "width": 32,
+      "variables": [],
+      "effects": [],
+      "behaviors": []
     }
   ],
   "objectsFolderStructure": {
@@ -18213,6 +18388,24 @@
       },
       {
         "objectName": "Zone1_background"
+      },
+      {
+        "objectName": "version"
+      },
+      {
+        "objectName": "StartTransitionCollider"
+      },
+      {
+        "objectName": "CameraLimits"
+      },
+      {
+        "objectName": "Zone1Ground9"
+      },
+      {
+        "objectName": "CameraRoom"
+      },
+      {
+        "objectName": "CameraCollider"
       }
     ]
   },
@@ -18255,7 +18448,7 @@
         "textG": 255,
         "textR": 255
       },
-      "comment": "Begin scene"
+      "comment": "\n\nBegin scene"
     },
     {
       "type": "BuiltinCommonInstructions::Standard",
@@ -18269,85 +18462,309 @@
           ]
         }
       ],
-      "actions": [
+      "actions": [],
+      "events": [
         {
-          "type": {
-            "value": "BuiltinExternalLayouts::CreateObjectsFromExternalLayout"
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
           },
-          "parameters": [
-            "",
-            "\"Enter Transition Zone 1\"",
-            "0",
-            "0",
-            ""
+          "comment": "Load Zone transition"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "BuiltinExternalLayouts::CreateObjectsFromExternalLayout"
+              },
+              "parameters": [
+                "",
+                "\"Enter Transition Zone \" + MAINGAME.GameVariables.Zone",
+                "0",
+                "0",
+                ""
+              ]
+            }
           ]
         },
         {
-          "type": {
-            "value": "ChangeLayerTimeScale"
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
           },
-          "parameters": [
-            "",
-            "\"Main\"",
-            "1"
+          "comment": "Load Zone Level"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "BuiltinExternalLayouts::CreateObjectsFromExternalLayout"
+              },
+              "parameters": [
+                "",
+                "\"Zone\" + MAINGAME.GameVariables.Zone + \" Level\" + MAINGAME.GameVariables.Level",
+                "0",
+                "0",
+                ""
+              ]
+            }
           ]
         },
         {
-          "type": {
-            "value": "SetStringVariable"
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
           },
-          "parameters": [
-            "MAINGAME.GameState",
-            "=",
-            "_CONSTANTS_.GameState.Start"
+          "comment": "Load Player"
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "Create"
+              },
+              "parameters": [
+                "",
+                "Player0",
+                "0 - (SceneWindowWidth() / 2) - 16",
+                "(SceneWindowHeight()/2) - 16",
+                "_CONSTANTS_.Layers.Main"
+              ]
+            },
+            {
+              "type": {
+                "value": "CustomBehaviors::Entity::SetSpawnerId"
+              },
+              "parameters": [
+                "Player0",
+                "Entity",
+                "Player0Spawner.Entity::Id()",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "CustomBehaviors::Spawner::SetCount"
+              },
+              "parameters": [
+                "Player0Spawner",
+                "Spawner",
+                "Player0Spawner.Spawner::Counter() + 1",
+                ""
+              ]
+            }
           ]
         },
         {
-          "type": {
-            "value": "SetCameraCenterX"
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 255,
+            "textG": 255,
+            "textR": 255
           },
-          "parameters": [
-            "",
-            "=",
-            "0 - (SceneWindowWidth()/2)",
-            "\"Foreground\"",
-            ""
-          ]
+          "comment": "Camera settings"
         },
         {
-          "type": {
-            "value": "SetCameraCenterX"
-          },
-          "parameters": [
-            "",
-            "=",
-            "0 - (SceneWindowWidth()/2)",
-            "\"Main\"",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "SetCameraCenterX"
-          },
-          "parameters": [
-            "",
-            "=",
-            "0 - (SceneWindowWidth()/2)",
-            "\"Background\"",
-            ""
-          ]
-        },
-        {
-          "type": {
-            "value": "SetCameraCenterX"
-          },
-          "parameters": [
-            "",
-            "=",
-            "0 - (SceneWindowWidth()/2)",
-            "\"UI\"",
-            ""
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "AdvancedWindow::Maximize"
+              },
+              "parameters": [
+                "yes",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "ChangeLayerTimeScale"
+              },
+              "parameters": [
+                "",
+                "\"Foreground\"",
+                "1"
+              ]
+            },
+            {
+              "type": {
+                "value": "ChangeLayerTimeScale"
+              },
+              "parameters": [
+                "",
+                "\"Main\"",
+                "1"
+              ]
+            },
+            {
+              "type": {
+                "value": "ChangeLayerTimeScale"
+              },
+              "parameters": [
+                "",
+                "\"UI\"",
+                "1"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetStringVariable"
+              },
+              "parameters": [
+                "MAINGAME.GameState",
+                "=",
+                "_CONSTANTS_.GameState.Start"
+              ]
+            },
+            {
+              "type": {
+                "value": "CameraShake::SetLayerShakable"
+              },
+              "parameters": [
+                "",
+                "",
+                "",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "CameraShake::SetLayerShakable"
+              },
+              "parameters": [
+                "",
+                "",
+                "_CONSTANTS_.Layers.Background",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "CameraShake::SetLayerShakable"
+              },
+              "parameters": [
+                "",
+                "",
+                "_CONSTANTS_.Layers.Main",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "CameraShake::SetLayerShakable"
+              },
+              "parameters": [
+                "",
+                "",
+                "_CONSTANTS_.Layers.Foreground",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "ZoomCamera"
+              },
+              "parameters": [
+                "",
+                "1",
+                "",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "ZoomCamera"
+              },
+              "parameters": [
+                "",
+                "1",
+                "_CONSTANTS_.Layers.Background",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "ZoomCamera"
+              },
+              "parameters": [
+                "",
+                "1",
+                "_CONSTANTS_.Layers.Main",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "ZoomCamera"
+              },
+              "parameters": [
+                "",
+                "1",
+                "_CONSTANTS_.Layers.Foreground",
+                "0"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetCameraCenterX"
+              },
+              "parameters": [
+                "",
+                "=",
+                "0 - (SceneWindowWidth()/2)",
+                "_CONSTANTS_.Layers.Background",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "SetCameraCenterX"
+              },
+              "parameters": [
+                "",
+                "=",
+                "0 - (SceneWindowWidth()/2)",
+                "_CONSTANTS_.Layers.Main",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "SetCameraCenterX"
+              },
+              "parameters": [
+                "",
+                "=",
+                "0 - (SceneWindowWidth()/2)",
+                "_CONSTANTS_.Layers.Foreground",
+                ""
+              ]
+            }
           ]
         }
       ]
@@ -18384,109 +18801,7 @@
                 "value": "Wait"
               },
               "parameters": [
-                "2"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetBooleanVariable"
-              },
-              "parameters": [
-                "MovePlayer",
-                "True",
                 "1"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "BooleanVariable"
-              },
-              "parameters": [
-                "MovePlayer",
-                "True",
-                ""
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "MettreX"
-              },
-              "parameters": [
-                "Player0",
-                "+",
-                "3"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "PosX"
-              },
-              "parameters": [
-                "Player0",
-                ">",
-                "0"
-              ]
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "SetCameraCenterX"
-              },
-              "parameters": [
-                "",
-                "=",
-                "0",
-                "\"Background\"",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "SetCameraCenterX"
-              },
-              "parameters": [
-                "",
-                "=",
-                "0",
-                "\"Main\"",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "SetCameraCenterX"
-              },
-              "parameters": [
-                "",
-                "=",
-                "0",
-                "\"Foreground\"",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "SetCameraCenterX"
-              },
-              "parameters": [
-                "",
-                "=",
-                "0",
-                "\"UI\"",
-                ""
               ]
             },
             {
@@ -18496,12 +18811,534 @@
               "parameters": [
                 "MAINGAME.GameState",
                 "=",
-                "_CONSTANTS_.GameState.Game"
+                "_CONSTANTS_.GameState.Transition"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "MAINGAME.Transition.X",
+                "=",
+                "4"
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "MAINGAME.Transition.Y",
+                "=",
+                "0"
               ]
             }
           ]
         }
       ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\nCamera transition"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "SetBooleanObjectVariable"
+          },
+          "parameters": [
+            "CameraLimits",
+            "Active",
+            "False",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "CollisionNP"
+          },
+          "parameters": [
+            "CameraLimits",
+            "Players",
+            "",
+            "",
+            ""
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "type": {
+            "value": "SetBooleanObjectVariable"
+          },
+          "parameters": [
+            "CameraLimits",
+            "Active",
+            "True",
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "StringVariable"
+          },
+          "parameters": [
+            "MAINGAME.GameState",
+            "=",
+            "_CONSTANTS_.GameState.Transition"
+          ]
+        }
+      ],
+      "actions": [],
+      "events": [
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "name": "custom camera room movement",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "Tween::SceneTweenExists"
+                      },
+                      "parameters": [
+                        "",
+                        "\"CameraX\""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "Tween::SceneTweenExists"
+                      },
+                      "parameters": [
+                        "",
+                        "\"CameraY\""
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "MettreX"
+                  },
+                  "parameters": [
+                    "Players",
+                    "+",
+                    "MAINGAME.Transition.X"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "MettreY"
+                  },
+                  "parameters": [
+                    "Players",
+                    "+",
+                    "MAINGAME.Transition.Y"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CollisionNP"
+                  },
+                  "parameters": [
+                    "Players",
+                    "StartTransitionCollider",
+                    "",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanObjectVariable"
+                  },
+                  "parameters": [
+                    "StartTransitionCollider",
+                    "Start",
+                    "",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "NumberObjectVariable"
+                      },
+                      "parameters": [
+                        "CameraLimits",
+                        "TransitionColliderId",
+                        "=",
+                        "StartTransitionCollider.Id"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "Tween::AddLayoutValueTween"
+                      },
+                      "parameters": [
+                        "",
+                        "\"CameraX\"",
+                        "CameraCenterX(\"Main\")",
+                        "CameraLimits.CenterX()",
+                        "\"easeInOutQuad\"",
+                        "0.3",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Tween::AddLayoutValueTween"
+                      },
+                      "parameters": [
+                        "",
+                        "\"CameraY\"",
+                        "CameraCenterY(\"Main\")",
+                        "CameraLimits.CenterY()",
+                        "\"easeInOutQuad\"",
+                        "0.3",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Delete"
+                      },
+                      "parameters": [
+                        "StartTransitionCollider",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::Or"
+                  },
+                  "parameters": [],
+                  "subInstructions": [
+                    {
+                      "type": {
+                        "value": "Tween::SceneTweenIsPlaying"
+                      },
+                      "parameters": [
+                        "",
+                        "\"CameraX\""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Tween::SceneTweenIsPlaying"
+                      },
+                      "parameters": [
+                        "",
+                        "\"CameraY\""
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetCameraCenterX"
+                  },
+                  "parameters": [
+                    "",
+                    "=",
+                    "Tween::Value(\"CameraX\")",
+                    "\"Background\"",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetCameraCenterY"
+                  },
+                  "parameters": [
+                    "",
+                    "=",
+                    "Tween::Value(\"CameraY\")",
+                    "\"Background\"",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetCameraCenterX"
+                  },
+                  "parameters": [
+                    "",
+                    "=",
+                    "Tween::Value(\"CameraX\")",
+                    "\"Main\"",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetCameraCenterY"
+                  },
+                  "parameters": [
+                    "",
+                    "=",
+                    "Tween::Value(\"CameraY\")",
+                    "\"Main\"",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetCameraCenterX"
+                  },
+                  "parameters": [
+                    "",
+                    "=",
+                    "Tween::Value(\"CameraX\")",
+                    "\"Foreground\"",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetCameraCenterY"
+                  },
+                  "parameters": [
+                    "",
+                    "=",
+                    "Tween::Value(\"CameraY\")",
+                    "\"Foreground\"",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "Tween::SceneTweenHasFinished"
+                  },
+                  "parameters": [
+                    "",
+                    "\"CameraX\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::SceneTweenHasFinished"
+                  },
+                  "parameters": [
+                    "",
+                    "\"CameraY\""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "Tween::RemoveSceneTween"
+                  },
+                  "parameters": [
+                    "",
+                    "\"CameraX\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::RemoveSceneTween"
+                  },
+                  "parameters": [
+                    "",
+                    "\"CameraY\""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.GameState",
+                    "=",
+                    "_CONSTANTS_.GameState.Game"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": []
+        },
+        {
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "disabled": true,
+          "folded": true,
+          "name": "extension camera room movement",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "inverted": true,
+                    "value": "RoomBasedCameraMovement::ActiveRoomChanged"
+                  },
+                  "parameters": [
+                    "",
+                    "Player0",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "MettreY"
+                  },
+                  "parameters": [
+                    "Players",
+                    "+",
+                    "MAINGAME.Transition.Y"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "MettreX"
+                  },
+                  "parameters": [
+                    "Players",
+                    "+",
+                    "MAINGAME.Transition.X"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "RoomBasedCameraMovement::ActiveRoomChanged"
+                  },
+                  "parameters": [
+                    "",
+                    "Player0",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.GameState",
+                    "=",
+                    "_CONSTANTS_.GameState.Game"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "RoomBasedCameraMovement::MoveCameraToActiveRoom"
+                  },
+                  "parameters": [
+                    "",
+                    "CameraRoom",
+                    "Player0",
+                    "\"Main\"",
+                    "1",
+                    "1",
+                    "1",
+                    "10",
+                    "",
+                    ""
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": []
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\nMain game"
     },
     {
       "type": "BuiltinCommonInstructions::Standard",
@@ -18527,20 +19364,907 @@
           "target": "Player Logic"
         },
         {
-          "type": "BuiltinCommonInstructions::Link",
-          "include": {
-            "includeConfig": 0
-          },
-          "target": "Enemy Logic"
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "name": "custom camera room movement",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "CollisionNP"
+                  },
+                  "parameters": [
+                    "Players",
+                    "StartTransitionCollider",
+                    "",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "BooleanObjectVariable"
+                  },
+                  "parameters": [
+                    "StartTransitionCollider",
+                    "Start",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetStringVariable"
+                      },
+                      "parameters": [
+                        "MAINGAME.GameState",
+                        "=",
+                        "_CONSTANTS_.GameState.Transition"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "MAINGAME.Transition.X",
+                        "=",
+                        "StartTransitionCollider.DirectionX"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "MAINGAME.Transition.Y",
+                        "=",
+                        "StartTransitionCollider.DirectionY"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "Delete"
+                      },
+                      "parameters": [
+                        "StartTransitionCollider",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                  },
+                  "parameters": [
+                    "version",
+                    "Text",
+                    "=",
+                    "\"X: \" + ToString(trunc(CameraX(\"Main\", ))) + \" \" + ToString(trunc(CameraY(\"Main\", ))) + NewLine()"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CentreCamera"
+                  },
+                  "parameters": [
+                    "CameraLimits",
+                    "Player0",
+                    "Players.X()",
+                    "_CONSTANTS_.Layers.Background",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CentreCamera"
+                  },
+                  "parameters": [
+                    "CameraLimits",
+                    "Player0",
+                    "Players.X()",
+                    "_CONSTANTS_.Layers.Main",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "CentreCamera"
+                  },
+                  "parameters": [
+                    "CameraLimits",
+                    "Player0",
+                    "Players.X()",
+                    "_CONSTANTS_.Layers.Foreground",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BooleanObjectVariable"
+                  },
+                  "parameters": [
+                    "CameraLimits",
+                    "Active",
+                    "True",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "AuxCameraX",
+                    "=",
+                    "CameraX(_CONSTANTS_.Layers.Main)"
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "SetNumberVariable"
+                  },
+                  "parameters": [
+                    "AuxCameraY",
+                    "=",
+                    "CameraY(_CONSTANTS_.Layers.Main)"
+                  ]
+                }
+              ],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "version",
+                        "Text",
+                        "+",
+                        "NewLine() + \"sw: \" +  ToString(trunc(SceneWindowWidth())) + \" sh:\" + ToString(trunc(SceneWindowHeight()))"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "version",
+                        "Text",
+                        "+",
+                        "NewLine() + \"Limits\""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "version",
+                        "Text",
+                        "+",
+                        "NewLine() + \"sw: \" +  ToString(trunc(CameraLimits.Width())) + \" sh:\" + ToString(trunc(CameraLimits.Height()))"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "version",
+                        "Text",
+                        "+",
+                        "NewLine() + \"TopLeft: \" +  ToString(trunc(CameraLimits.BoundingBoxTop())) + \" \" + ToString(trunc(CameraLimits.BoundingBoxLeft()))"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "version",
+                        "Text",
+                        "+",
+                        "NewLine() + \"BottomRight: \" + ToString(trunc(CameraLimits.BoundingBoxBottom())) + \" \" + ToString(trunc(CameraLimits.BoundingBoxRight()))"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "version",
+                        "Text",
+                        "+",
+                        "NewLine() + \"Before: \" +ToString(trunc(CameraCenterY(\"Main\", ))) + \" \" + ToString(trunc(CameraCenterX(\"Main\", ))) "
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "version",
+                        "Text",
+                        "+",
+                        "NewLine() + \"Camera\""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "version",
+                        "Text",
+                        "+",
+                        "NewLine() + \"X: \" + ToString(trunc(CameraX(\"Main\", ))) + \" \" + ToString(trunc(CameraY(\"Main\", )))"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "version",
+                        "Text",
+                        "+",
+                        "NewLine() + \"TopLeft: \" +  ToString(trunc(CameraBorderTop(\"Main\", ))) + \" \" + ToString(trunc(CameraBorderLeft(\"Main\", )))"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "version",
+                        "Text",
+                        "+",
+                        "NewLine() + \"BottomRight: \" + ToString(trunc(CameraBorderBottom(\"Main\", ))) + \" \" + ToString(trunc(CameraBorderRight(\"Main\", )))"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "version",
+                        "Text",
+                        "+",
+                        "NewLine()"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 52,
+                    "g": 44,
+                    "r": 40,
+                    "textB": 255,
+                    "textG": 255,
+                    "textR": 255
+                  },
+                  "comment": "Revisar izquierda"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "CameraBorderLeft"
+                      },
+                      "parameters": [
+                        "",
+                        "_CONSTANTS_.Layers.Main",
+                        "",
+                        "<",
+                        "CameraLimits.BoundingBoxLeft()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "CameraBorderRight"
+                      },
+                      "parameters": [
+                        "",
+                        "_CONSTANTS_.Layers.Main",
+                        "",
+                        ">",
+                        "CameraLimits.BoundingBoxRight()"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "AuxCameraX",
+                        "=",
+                        "CameraLimits.BoundingBoxLeft() + SceneWindowWidth() / 2"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 52,
+                    "g": 44,
+                    "r": 40,
+                    "textB": 255,
+                    "textG": 255,
+                    "textR": 255
+                  },
+                  "comment": "Revisar arriba"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "CameraBorderTop"
+                      },
+                      "parameters": [
+                        "",
+                        "_CONSTANTS_.Layers.Main",
+                        "",
+                        "<",
+                        "CameraLimits.BoundingBoxTop()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "CameraBorderBottom"
+                      },
+                      "parameters": [
+                        "",
+                        "_CONSTANTS_.Layers.Main",
+                        "",
+                        ">",
+                        "CameraLimits.BoundingBoxBottom()"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "AuxCameraY",
+                        "=",
+                        "CameraLimits.BoundingBoxTop() + SceneWindowHeight() / 2"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 52,
+                    "g": 44,
+                    "r": 40,
+                    "textB": 255,
+                    "textG": 255,
+                    "textR": 255
+                  },
+                  "comment": "Revisar derecha"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "CameraBorderLeft"
+                      },
+                      "parameters": [
+                        "",
+                        "_CONSTANTS_.Layers.Main",
+                        "",
+                        "<",
+                        "CameraLimits.BoundingBoxLeft()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "CameraBorderRight"
+                      },
+                      "parameters": [
+                        "",
+                        "_CONSTANTS_.Layers.Main",
+                        "",
+                        ">",
+                        "CameraLimits.BoundingBoxRight()"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "AuxCameraX",
+                        "=",
+                        "CameraLimits.BoundingBoxRight() - SceneWindowWidth() / 2"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 52,
+                    "g": 44,
+                    "r": 40,
+                    "textB": 255,
+                    "textG": 255,
+                    "textR": 255
+                  },
+                  "comment": "Revisar abajo"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "CameraBorderTop"
+                      },
+                      "parameters": [
+                        "",
+                        "_CONSTANTS_.Layers.Main",
+                        "",
+                        "<",
+                        "CameraLimits.BoundingBoxTop()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "CameraBorderBottom"
+                      },
+                      "parameters": [
+                        "",
+                        "_CONSTANTS_.Layers.Main",
+                        "",
+                        ">",
+                        "CameraLimits.BoundingBoxBottom()"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "AuxCameraY",
+                        "=",
+                        "CameraLimits.BoundingBoxBottom() - SceneWindowHeight() / 2"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 52,
+                    "g": 44,
+                    "r": 40,
+                    "textB": 255,
+                    "textG": 255,
+                    "textR": 255
+                  },
+                  "comment": "Revisar centro x"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "ResizableCapability::ResizableBehavior::Width"
+                      },
+                      "parameters": [
+                        "CameraLimits",
+                        "Resizable",
+                        "<=",
+                        "SceneWindowWidth()"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "AuxCameraX",
+                        "=",
+                        "CameraLimits.BoundingBoxCenterX()"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 52,
+                    "g": 44,
+                    "r": 40,
+                    "textB": 255,
+                    "textG": 255,
+                    "textR": 255
+                  },
+                  "comment": "Revisar centro Y"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "ResizableCapability::ResizableBehavior::Height"
+                      },
+                      "parameters": [
+                        "CameraLimits",
+                        "Resizable",
+                        "<=",
+                        "SceneWindowHeight()"
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "AuxCameraY",
+                        "=",
+                        "CameraLimits.BoundingBoxCenterY()"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "SetCameraCenterX"
+                      },
+                      "parameters": [
+                        "",
+                        "=",
+                        "AuxCameraX",
+                        "_CONSTANTS_.Layers.Background",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetCameraCenterX"
+                      },
+                      "parameters": [
+                        "",
+                        "=",
+                        "AuxCameraX",
+                        "_CONSTANTS_.Layers.Main",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetCameraCenterX"
+                      },
+                      "parameters": [
+                        "",
+                        "=",
+                        "AuxCameraX",
+                        "_CONSTANTS_.Layers.Foreground",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetCameraCenterY"
+                      },
+                      "parameters": [
+                        "",
+                        "=",
+                        "AuxCameraY",
+                        "_CONSTANTS_.Layers.Background",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetCameraCenterY"
+                      },
+                      "parameters": [
+                        "",
+                        "=",
+                        "AuxCameraY",
+                        "_CONSTANTS_.Layers.Main",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetCameraCenterY"
+                      },
+                      "parameters": [
+                        "",
+                        "=",
+                        "AuxCameraY",
+                        "_CONSTANTS_.Layers.Foreground",
+                        ""
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "version",
+                        "Text",
+                        "+",
+                        "\"After: \" + ToString(trunc(CameraCenterY(\"Main\", ))) + \" \" + ToString(trunc(CameraCenterX(\"Main\", ))) "
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "version",
+                        "Text",
+                        "+",
+                        "NewLine() + \"Camera\""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "version",
+                        "Text",
+                        "+",
+                        "NewLine() + \"X: \" + ToString(trunc(CameraX(\"Main\", ))) + \" \" + ToString(trunc(CameraY(\"Main\", )))"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "version",
+                        "Text",
+                        "+",
+                        "NewLine() + \"TopLeft: \" +  ToString(trunc(CameraBorderTop(\"Main\", ))) + \" \" + ToString(trunc(CameraBorderLeft(\"Main\", )))"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+                      },
+                      "parameters": [
+                        "version",
+                        "Text",
+                        "+",
+                        "NewLine() + \"BottomRight: \" + ToString(trunc(CameraBorderBottom(\"Main\", ))) + \" \" + ToString(trunc(CameraBorderRight(\"Main\", )))"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "variables": [
+                {
+                  "name": "AuxCameraX",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "AuxCameraY",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "OffsetX",
+                  "type": "number",
+                  "value": 0
+                },
+                {
+                  "name": "OffsetY",
+                  "type": "number",
+                  "value": 0
+                }
+              ]
+            }
+          ],
+          "parameters": []
         },
         {
-          "type": "BuiltinCommonInstructions::Link",
-          "include": {
-            "includeConfig": 0
-          },
-          "target": "Main Game Logic"
+          "colorB": 228,
+          "colorG": 176,
+          "colorR": 74,
+          "creationTime": 0,
+          "disabled": true,
+          "folded": true,
+          "name": "extension camera room movement",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [],
+              "actions": [
+                {
+                  "type": {
+                    "value": "RoomBasedCameraMovement::MoveCameraToActiveRoom"
+                  },
+                  "parameters": [
+                    "",
+                    "CameraRoom",
+                    "Player0",
+                    "\"Background\"",
+                    "0.2",
+                    "1",
+                    "1",
+                    "10",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "RoomBasedCameraMovement::MoveCameraToActiveRoom"
+                  },
+                  "parameters": [
+                    "",
+                    "CameraRoom",
+                    "Player0",
+                    "\"Main\"",
+                    "0.2",
+                    "1",
+                    "1",
+                    "10",
+                    "",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "RoomBasedCameraMovement::MoveCameraToActiveRoom"
+                  },
+                  "parameters": [
+                    "",
+                    "CameraRoom",
+                    "Player0",
+                    "\"Foreground\"",
+                    "0.2",
+                    "1",
+                    "1",
+                    "10",
+                    "",
+                    ""
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "RoomBasedCameraMovement::ActiveRoomChanged"
+                  },
+                  "parameters": [
+                    "",
+                    "Player0",
+                    ""
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetStringVariable"
+                  },
+                  "parameters": [
+                    "MAINGAME.GameState",
+                    "=",
+                    "_CONSTANTS_.GameState.Transition"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": []
         }
       ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\n"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Link",
+      "include": {
+        "includeConfig": 0
+      },
+      "target": "Enemy Logic"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Link",
+      "include": {
+        "includeConfig": 0
+      },
+      "target": "Main Game Logic"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\nGame end"
     },
     {
       "type": "BuiltinCommonInstructions::Standard",
@@ -18557,6 +20281,87 @@
         }
       ],
       "actions": []
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\nReset scene"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "StringVariable"
+          },
+          "parameters": [
+            "MAINGAME.Input.Pause",
+            "=",
+            "_CONSTANTS_.InputState.Pressed"
+          ]
+        },
+        {
+          "type": {
+            "value": "BuiltinCommonInstructions::Once"
+          },
+          "parameters": []
+        }
+      ],
+      "actions": [],
+      "events": [
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "Scene"
+              },
+              "parameters": [
+                "",
+                "\"Main Game Zone 1\"",
+                ""
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "BuiltinCommonInstructions::Comment",
+      "color": {
+        "b": 52,
+        "g": 44,
+        "r": 40,
+        "textB": 255,
+        "textG": 255,
+        "textR": 255
+      },
+      "comment": "\n\nMisc on scene"
+    },
+    {
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [],
+      "actions": [
+        {
+          "type": {
+            "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+          },
+          "parameters": [
+            "version",
+            "Text",
+            "+",
+            "NewLine() + ToString(trunc(Player0.CenterX())) + \" \" + ToString(trunc(Player0.CenterY()))"
+          ]
+        }
+      ]
     }
   ],
   "layers": [
@@ -18766,6 +20571,10 @@
     {
       "name": "Tank",
       "type": "CustomBehaviors::Tank"
+    },
+    {
+      "name": "Text",
+      "type": "TextContainerCapability::TextContainerBehavior"
     },
     {
       "name": "Trails",

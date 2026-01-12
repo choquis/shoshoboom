@@ -5511,6 +5511,79 @@
           "objectGroups": []
         },
         {
+          "description": "Check if the object can be spawned without checking cooldown",
+          "fullName": "Can instant spawn",
+          "functionType": "Condition",
+          "name": "CanInstantSpawn",
+          "sentence": "_PARAM0_ can instant spawn",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "LimitPerScene",
+                    ">",
+                    "CurrentCount"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "True"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                  },
+                  "parameters": [
+                    "LimitPerScene",
+                    "<=",
+                    "CurrentCount"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "SetReturnBoolean"
+                  },
+                  "parameters": [
+                    "False"
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "description": "Object",
+              "name": "Object",
+              "type": "object"
+            },
+            {
+              "description": "Behavior",
+              "name": "Behavior",
+              "supplementaryInformation": "CustomBehaviors::Spawner",
+              "type": "behavior"
+            }
+          ],
+          "objectGroups": []
+        },
+        {
           "fullName": "",
           "functionType": "Expression",
           "name": "CurrTime",

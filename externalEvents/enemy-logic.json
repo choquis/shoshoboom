@@ -3,200 +3,120 @@
   "name": "Enemy Logic",
   "events": [
     {
-      "colorB": 82,
-      "colorG": 68,
-      "colorR": 62,
-      "creationTime": 0,
-      "name": "Detection",
-      "source": "",
-      "type": "BuiltinCommonInstructions::Group",
+      "type": "BuiltinCommonInstructions::Standard",
+      "conditions": [
+        {
+          "type": {
+            "value": "StringVariable"
+          },
+          "parameters": [
+            "MAINGAME.GameState",
+            "=",
+            "_CONSTANTS_.GameState.Game"
+          ]
+        }
+      ],
+      "actions": [],
       "events": [
         {
-          "type": "BuiltinCommonInstructions::ForEach",
-          "object": "Enemies",
-          "conditions": [],
-          "actions": [],
+          "colorB": 82,
+          "colorG": 68,
+          "colorR": 62,
+          "creationTime": 0,
+          "name": "Detection",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
           "events": [
             {
-              "type": "BuiltinCommonInstructions::Standard",
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Enemies",
               "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "LookX",
-                    "=",
-                    "Enemies.MuzzleX()"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "LookY",
-                    "=",
-                    "Enemies.MuzzleY()"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "PositionX",
-                    "=",
-                    "Enemies.CenterX()"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "PositionY",
-                    "=",
-                    "Enemies.CenterY()"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "Angle",
-                    "=",
-                    "Enemies.LookAngle()"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "NormalAngle",
-                    "=",
-                    "Enemies.LookAngle()"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetBooleanVariable"
-                  },
-                  "parameters": [
-                    "SeePlayer",
-                    "False",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "RepeatCount",
-                    "=",
-                    "0"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "BulletBounces",
-                    "=",
-                    "1"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "ClearVariableChildren"
-                  },
-                  "parameters": [
-                    "RAYCAST_ARRAY_X"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "ClearVariableChildren"
-                  },
-                  "parameters": [
-                    "RAYCAST_ARRAY_Y"
-                  ]
-                }
-              ],
+              "actions": [],
               "events": [
                 {
-                  "disabled": true,
                   "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
+                  "conditions": [],
+                  "actions": [
                     {
                       "type": {
-                        "value": "Distance"
+                        "value": "SetNumberVariable"
                       },
                       "parameters": [
-                        "Players",
-                        "Enemies",
-                        "500",
-                        ""
+                        "LookX",
+                        "=",
+                        "Enemies.MuzzleX()"
                       ]
-                    }
-                  ],
-                  "actions": [
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "LookY",
+                        "=",
+                        "Enemies.MuzzleY()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "PositionX",
+                        "=",
+                        "Enemies.CenterX()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "PositionY",
+                        "=",
+                        "Enemies.CenterY()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "Angle",
+                        "=",
+                        "Enemies.LookAngle()"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "NormalAngle",
+                        "=",
+                        "Enemies.LookAngle()"
+                      ]
+                    },
                     {
                       "type": {
                         "value": "SetBooleanVariable"
                       },
                       "parameters": [
                         "SeePlayer",
-                        "True",
-                        "PurpleEnemy.ID"
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Comment",
-                  "color": {
-                    "b": 52,
-                    "g": 44,
-                    "r": 40,
-                    "textB": 255,
-                    "textG": 255,
-                    "textR": 255
-                  },
-                  "comment": "Sight section"
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Comment",
-                  "color": {
-                    "b": 52,
-                    "g": 44,
-                    "r": 40,
-                    "textB": 255,
-                    "textG": 255,
-                    "textR": 255
-                  },
-                  "comment": "If its aggresive, we set the count to 0, to do one loop only"
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::EnemyIA::IsAggresive"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "EnemyIA",
+                        "False",
                         ""
                       ]
-                    }
-                  ],
-                  "actions": [
+                    },
+                    {
+                      "type": {
+                        "value": "SetNumberVariable"
+                      },
+                      "parameters": [
+                        "RepeatCount",
+                        "=",
+                        "0"
+                      ]
+                    },
                     {
                       "type": {
                         "value": "SetNumberVariable"
@@ -204,28 +124,800 @@
                       "parameters": [
                         "BulletBounces",
                         "=",
-                        "0"
+                        "1"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ClearVariableChildren"
+                      },
+                      "parameters": [
+                        "RAYCAST_ARRAY_X"
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "ClearVariableChildren"
+                      },
+                      "parameters": [
+                        "RAYCAST_ARRAY_Y"
+                      ]
+                    }
+                  ],
+                  "events": [
+                    {
+                      "disabled": true,
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "Distance"
+                          },
+                          "parameters": [
+                            "Players",
+                            "Enemies",
+                            "500",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetBooleanVariable"
+                          },
+                          "parameters": [
+                            "SeePlayer",
+                            "True",
+                            "PurpleEnemy.ID"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 52,
+                        "g": 44,
+                        "r": 40,
+                        "textB": 255,
+                        "textG": 255,
+                        "textR": 255
+                      },
+                      "comment": "Sight section"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 52,
+                        "g": 44,
+                        "r": 40,
+                        "textB": 255,
+                        "textG": 255,
+                        "textR": 255
+                      },
+                      "comment": "If its aggresive, we set the count to 0, to do one loop only"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::EnemyIA::IsAggresive"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "EnemyIA",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "BulletBounces",
+                            "=",
+                            "0"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "infiniteLoopWarning": true,
+                      "type": "BuiltinCommonInstructions::While",
+                      "whileConditions": [
+                        {
+                          "type": {
+                            "value": "NumberVariable"
+                          },
+                          "parameters": [
+                            "RepeatCount",
+                            "<=",
+                            "BulletBounces"
+                          ]
+                        }
+                      ],
+                      "conditions": [],
+                      "actions": [],
+                      "events": [
+                        {
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 52,
+                            "g": 44,
+                            "r": 40,
+                            "textB": 255,
+                            "textG": 255,
+                            "textR": 255
+                          },
+                          "comment": "The first don't use the normal"
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "NumberVariable"
+                              },
+                              "parameters": [
+                                "RepeatCount",
+                                "=",
+                                "0"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "PushNumber"
+                              },
+                              "parameters": [
+                                "RAYCAST_ARRAY_X",
+                                "LookX"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "PushNumber"
+                              },
+                              "parameters": [
+                                "RAYCAST_ARRAY_Y",
+                                "LookY"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "AuxX",
+                                "=",
+                                "XFromAngleAndDistance(Angle, 16) + RAYCAST_ARRAY_X[RepeatCount]"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "AuxY",
+                                "=",
+                                "YFromAngleAndDistance(Angle, 16) + RAYCAST_ARRAY_Y[RepeatCount]"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 52,
+                            "g": 44,
+                            "r": 40,
+                            "textB": 255,
+                            "textG": 255,
+                            "textR": 255
+                          },
+                          "comment": "The next rays, will use the normal to calculate the reflection angle"
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "NumberVariable"
+                              },
+                              "parameters": [
+                                "RepeatCount",
+                                ">",
+                                "0"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "Angle",
+                                "=",
+                                "CustomFunctions::ReflectAngle(Angle, NormalAngle)"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "AuxX",
+                                "=",
+                                "XFromAngleAndDistance(Angle, 2) + RAYCAST_ARRAY_X[RepeatCount]"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "AuxY",
+                                "=",
+                                "YFromAngleAndDistance(Angle, 2) + RAYCAST_ARRAY_Y[RepeatCount]"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 52,
+                            "g": 44,
+                            "r": 40,
+                            "textB": 255,
+                            "textG": 255,
+                            "textR": 255
+                          },
+                          "comment": "We separate the collision with other enemies and compare with his id so it don't see himself"
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "Raycast"
+                              },
+                              "parameters": [
+                                "OtherEnemies",
+                                "AuxX",
+                                "AuxY",
+                                "Angle",
+                                "1000",
+                                "RAYCAST_ARRAY_X[RepeatCount + 1]",
+                                "RAYCAST_ARRAY_Y[RepeatCount + 1]",
+                                ""
+                              ]
+                            }
+                          ],
+                          "actions": [],
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "PickedInstancesCount"
+                                  },
+                                  "parameters": [
+                                    "OtherEnemies",
+                                    ">",
+                                    "0"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "inverted": true,
+                                    "value": "CustomBehaviors::Entity::HasId"
+                                  },
+                                  "parameters": [
+                                    "OtherEnemies",
+                                    "Entity",
+                                    "Enemies.Entity::Id()",
+                                    ""
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetBooleanVariable"
+                                  },
+                                  "parameters": [
+                                    "SeeEnemy",
+                                    "True",
+                                    "PurpleEnemy.ID"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 52,
+                            "g": 44,
+                            "r": 40,
+                            "textB": 0,
+                            "textG": 255,
+                            "textR": 0
+                          },
+                          "comment": "// Luego el rayo normal"
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "NumberVariable"
+                              },
+                              "parameters": [
+                                "RepeatCount",
+                                "=",
+                                "0"
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "AuxX",
+                                "=",
+                                "RAYCAST_ARRAY_X[RepeatCount]"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "AuxY",
+                                "=",
+                                "RAYCAST_ARRAY_Y[RepeatCount]"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "Raycast"
+                              },
+                              "parameters": [
+                                "SolidForEnemy",
+                                "AuxX",
+                                "AuxY",
+                                "Angle",
+                                "1000",
+                                "RAYCAST_ARRAY_X[RepeatCount + 1]",
+                                "RAYCAST_ARRAY_Y[RepeatCount + 1]",
+                                ""
+                              ]
+                            }
+                          ],
+                          "actions": [],
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "PickedInstancesCount"
+                                  },
+                                  "parameters": [
+                                    "Players",
+                                    ">",
+                                    "0"
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetBooleanVariable"
+                                  },
+                                  "parameters": [
+                                    "SeePlayer",
+                                    "True",
+                                    "PurpleEnemy.ID"
+                                  ]
+                                },
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "PlayerSeenId",
+                                    "=",
+                                    "Players.Entity::Id()"
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "PickedInstancesCount"
+                                  },
+                                  "parameters": [
+                                    "BounceableCollider",
+                                    ">",
+                                    "0"
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "SetNumberVariable"
+                                  },
+                                  "parameters": [
+                                    "NormalAngle",
+                                    "=",
+                                    "BounceableCollider.Angle()"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "disabled": true,
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "PrimitiveDrawing::LineV2"
+                              },
+                              "parameters": [
+                                "YellowPen",
+                                "AuxX",
+                                "AuxY",
+                                "RAYCAST_ARRAY_X[RepeatCount + 1]",
+                                "RAYCAST_ARRAY_Y[RepeatCount + 1]",
+                                "2"
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "BooleanVariable"
+                              },
+                              "parameters": [
+                                "SeeEnemy",
+                                "False",
+                                ""
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "CustomBehaviors::EnemyIA::SetSeeEnemy"
+                              },
+                              "parameters": [
+                                "Enemies",
+                                "EnemyIA",
+                                "0",
+                                ""
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "BooleanVariable"
+                              },
+                              "parameters": [
+                                "SeeEnemy",
+                                "True",
+                                ""
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "CustomBehaviors::EnemyIA::SetSeeEnemy"
+                              },
+                              "parameters": [
+                                "Enemies",
+                                "EnemyIA",
+                                "1",
+                                ""
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "BooleanVariable"
+                              },
+                              "parameters": [
+                                "SeePlayer",
+                                "False",
+                                ""
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "CustomBehaviors::EnemyIA::SetSeePlayer"
+                              },
+                              "parameters": [
+                                "Enemies",
+                                "EnemyIA",
+                                "0",
+                                "0",
+                                ""
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 52,
+                            "g": 44,
+                            "r": 40,
+                            "textB": 0,
+                            "textG": 255,
+                            "textR": 0
+                          },
+                          "comment": "// If player is seen, we set RepeatCount to break the loop"
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [
+                            {
+                              "type": {
+                                "value": "BooleanVariable"
+                              },
+                              "parameters": [
+                                "SeePlayer",
+                                "True",
+                                ""
+                              ]
+                            }
+                          ],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "RepeatCount",
+                                "=",
+                                "1"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "CustomBehaviors::EnemyIA::SetSeePlayer"
+                              },
+                              "parameters": [
+                                "Enemies",
+                                "EnemyIA",
+                                "1",
+                                "PlayerSeenId",
+                                ""
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "BuiltinCommonInstructions::Standard",
+                          "conditions": [],
+                          "actions": [
+                            {
+                              "type": {
+                                "value": "SetNumberVariable"
+                              },
+                              "parameters": [
+                                "RepeatCount",
+                                "+",
+                                "1"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "variables": [
+                    {
+                      "name": "LookX",
+                      "type": "number",
+                      "value": 0
+                    },
+                    {
+                      "name": "LookY",
+                      "type": "number",
+                      "value": 0
+                    },
+                    {
+                      "name": "PositionX",
+                      "type": "number",
+                      "value": 0
+                    },
+                    {
+                      "name": "PositionY",
+                      "type": "number",
+                      "value": 0
+                    },
+                    {
+                      "name": "Angle",
+                      "type": "number",
+                      "value": 0
+                    },
+                    {
+                      "name": "SeePlayer",
+                      "type": "boolean",
+                      "value": false
+                    },
+                    {
+                      "name": "NormalAngle",
+                      "type": "number",
+                      "value": 0
+                    },
+                    {
+                      "name": "AuxX",
+                      "type": "number",
+                      "value": 0
+                    },
+                    {
+                      "name": "AuxY",
+                      "type": "number",
+                      "value": 0
+                    },
+                    {
+                      "name": "RepeatCount",
+                      "type": "number",
+                      "value": 0
+                    },
+                    {
+                      "name": "BulletBounces",
+                      "type": "number",
+                      "value": 0
+                    },
+                    {
+                      "name": "SeeEnemy",
+                      "type": "boolean",
+                      "value": false
+                    },
+                    {
+                      "name": "PlayerSeenId",
+                      "type": "number",
+                      "value": 0
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "parameters": []
+        },
+        {
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "\n\n"
+        },
+        {
+          "colorB": 82,
+          "colorG": 68,
+          "colorR": 62,
+          "creationTime": 0,
+          "name": "Movement",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Enemies",
+              "conditions": [],
+              "actions": [],
+              "events": [
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::SetMaxSpeed"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "NavMeshPathfindingBehavior",
+                        "=",
+                        "Enemies.Tank::MoveSpeed()",
+                        ""
                       ]
                     }
                   ]
                 },
                 {
-                  "infiniteLoopWarning": true,
-                  "type": "BuiltinCommonInstructions::While",
-                  "whileConditions": [
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
                     {
                       "type": {
-                        "value": "NumberVariable"
+                        "value": "BuiltinCommonInstructions::Or"
                       },
-                      "parameters": [
-                        "RepeatCount",
-                        "<=",
-                        "BulletBounces"
+                      "parameters": [],
+                      "subInstructions": [
+                        {
+                          "type": {
+                            "inverted": true,
+                            "value": "CustomBehaviors::Tank::InRecoil"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "Tank",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "inverted": true,
+                            "value": "CustomBehaviors::Tank::InShootCooldown"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "Tank",
+                            ""
+                          ]
+                        }
                       ]
                     }
                   ],
-                  "conditions": [],
-                  "actions": [],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "ActivateBehavior"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "NavMeshPathfindingBehavior",
+                        "yes"
+                      ]
+                    }
+                  ],
                   "events": [
                     {
                       "type": "BuiltinCommonInstructions::Comment",
@@ -237,328 +929,89 @@
                         "textG": 255,
                         "textR": 255
                       },
-                      "comment": "The first don't use the normal"
+                      "comment": "Random movement"
                     },
                     {
                       "type": "BuiltinCommonInstructions::Standard",
                       "conditions": [
                         {
                           "type": {
-                            "value": "NumberVariable"
+                            "inverted": true,
+                            "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::IsMoving"
                           },
                           "parameters": [
-                            "RepeatCount",
-                            "=",
-                            "0"
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "PushNumber"
-                          },
-                          "parameters": [
-                            "RAYCAST_ARRAY_X",
-                            "LookX"
+                            "Enemies",
+                            "NavMeshPathfindingBehavior",
+                            "="
                           ]
                         },
                         {
                           "type": {
-                            "value": "PushNumber"
+                            "inverted": true,
+                            "value": "CustomBehaviors::EnemyIA::OnIDLE"
                           },
                           "parameters": [
-                            "RAYCAST_ARRAY_Y",
-                            "LookY"
+                            "Enemies",
+                            "EnemyIA",
+                            ""
                           ]
                         },
                         {
                           "type": {
-                            "value": "SetNumberVariable"
+                            "value": "PickNearest"
                           },
                           "parameters": [
-                            "AuxX",
-                            "=",
-                            "XFromAngleAndDistance(Angle, 16) + RAYCAST_ARRAY_X[RepeatCount]"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetNumberVariable"
-                          },
-                          "parameters": [
-                            "AuxY",
-                            "=",
-                            "YFromAngleAndDistance(Angle, 16) + RAYCAST_ARRAY_Y[RepeatCount]"
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Comment",
-                      "color": {
-                        "b": 52,
-                        "g": 44,
-                        "r": 40,
-                        "textB": 255,
-                        "textG": 255,
-                        "textR": 255
-                      },
-                      "comment": "The next rays, will use the normal to calculate the reflection angle"
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "NumberVariable"
-                          },
-                          "parameters": [
-                            "RepeatCount",
-                            ">",
-                            "0"
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "SetNumberVariable"
-                          },
-                          "parameters": [
-                            "Angle",
-                            "=",
-                            "CustomFunctions::ReflectAngle(Angle, NormalAngle)"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetNumberVariable"
-                          },
-                          "parameters": [
-                            "AuxX",
-                            "=",
-                            "XFromAngleAndDistance(Angle, 2) + RAYCAST_ARRAY_X[RepeatCount]"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetNumberVariable"
-                          },
-                          "parameters": [
-                            "AuxY",
-                            "=",
-                            "YFromAngleAndDistance(Angle, 2) + RAYCAST_ARRAY_Y[RepeatCount]"
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Comment",
-                      "color": {
-                        "b": 52,
-                        "g": 44,
-                        "r": 40,
-                        "textB": 255,
-                        "textG": 255,
-                        "textR": 255
-                      },
-                      "comment": "We separate the collision with other enemies and compare with his id so it don't see himself"
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "Raycast"
-                          },
-                          "parameters": [
-                            "OtherEnemies",
-                            "AuxX",
-                            "AuxY",
-                            "Angle",
-                            "1000",
-                            "RAYCAST_ARRAY_X[RepeatCount + 1]",
-                            "RAYCAST_ARRAY_Y[RepeatCount + 1]",
+                            "PathfindingZone",
+                            "Enemies.X()",
+                            "Enemies.Y()",
                             ""
                           ]
                         }
                       ],
-                      "actions": [],
-                      "events": [
-                        {
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [
-                            {
-                              "type": {
-                                "value": "PickedInstancesCount"
-                              },
-                              "parameters": [
-                                "OtherEnemies",
-                                ">",
-                                "0"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "inverted": true,
-                                "value": "CustomBehaviors::Entity::HasId"
-                              },
-                              "parameters": [
-                                "OtherEnemies",
-                                "Entity",
-                                "Enemies.Entity::Id()",
-                                ""
-                              ]
-                            }
-                          ],
-                          "actions": [
-                            {
-                              "type": {
-                                "value": "SetBooleanVariable"
-                              },
-                              "parameters": [
-                                "SeeEnemy",
-                                "True",
-                                "PurpleEnemy.ID"
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Comment",
-                      "color": {
-                        "b": 52,
-                        "g": 44,
-                        "r": 40,
-                        "textB": 0,
-                        "textG": 255,
-                        "textR": 0
-                      },
-                      "comment": "// Luego el rayo normal"
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "NumberVariable"
-                          },
-                          "parameters": [
-                            "RepeatCount",
-                            "=",
-                            "0"
-                          ]
-                        }
-                      ],
                       "actions": [
                         {
                           "type": {
-                            "value": "SetNumberVariable"
+                            "value": "CustomBehaviors::EnemyIA::SetLastPathfindingX"
                           },
                           "parameters": [
-                            "AuxX",
-                            "=",
-                            "RAYCAST_ARRAY_X[RepeatCount]"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "SetNumberVariable"
-                          },
-                          "parameters": [
-                            "AuxY",
-                            "=",
-                            "RAYCAST_ARRAY_Y[RepeatCount]"
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "Raycast"
-                          },
-                          "parameters": [
-                            "SolidForEnemy",
-                            "AuxX",
-                            "AuxY",
-                            "Angle",
-                            "1000",
-                            "RAYCAST_ARRAY_X[RepeatCount + 1]",
-                            "RAYCAST_ARRAY_Y[RepeatCount + 1]",
+                            "Enemies",
+                            "EnemyIA",
+                            "RandomFloatInRange(PathfindingZone.X(),  PathfindingZone.X() + PathfindingZone.Width())",
                             ""
                           ]
-                        }
-                      ],
-                      "actions": [],
-                      "events": [
+                        },
                         {
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [
-                            {
-                              "type": {
-                                "value": "PickedInstancesCount"
-                              },
-                              "parameters": [
-                                "Players",
-                                ">",
-                                "0"
-                              ]
-                            }
-                          ],
-                          "actions": [
-                            {
-                              "type": {
-                                "value": "SetBooleanVariable"
-                              },
-                              "parameters": [
-                                "SeePlayer",
-                                "True",
-                                "PurpleEnemy.ID"
-                              ]
-                            },
-                            {
-                              "type": {
-                                "value": "SetNumberVariable"
-                              },
-                              "parameters": [
-                                "PlayerSeenId",
-                                "=",
-                                "Players.Entity::Id()"
-                              ]
-                            }
+                          "type": {
+                            "value": "CustomBehaviors::EnemyIA::SetLastPathfindingY"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "EnemyIA",
+                            "RandomFloatInRange(PathfindingZone.Y(),  PathfindingZone.Y() + PathfindingZone.Height())",
+                            ""
                           ]
                         },
                         {
-                          "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [
-                            {
-                              "type": {
-                                "value": "PickedInstancesCount"
-                              },
-                              "parameters": [
-                                "BounceableCollider",
-                                ">",
-                                "0"
-                              ]
-                            }
-                          ],
-                          "actions": [
-                            {
-                              "type": {
-                                "value": "SetNumberVariable"
-                              },
-                              "parameters": [
-                                "NormalAngle",
-                                "=",
-                                "BounceableCollider.Angle()"
-                              ]
-                            }
+                          "type": {
+                            "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::SetDestination"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "NavMeshPathfindingBehavior",
+                            "Enemies.EnemyIA::LastPathfindingX()",
+                            "Enemies.EnemyIA::LastPathfindingY()",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::EnemyIA::PathfindingZoneId"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "EnemyIA",
+                            "PathfindingZone.Entity::Id()",
+                            ""
                           ]
                         }
                       ]
@@ -570,150 +1023,12 @@
                       "actions": [
                         {
                           "type": {
-                            "value": "PrimitiveDrawing::LineV2"
-                          },
-                          "parameters": [
-                            "YellowPen",
-                            "AuxX",
-                            "AuxY",
-                            "RAYCAST_ARRAY_X[RepeatCount + 1]",
-                            "RAYCAST_ARRAY_Y[RepeatCount + 1]",
-                            "2"
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "BooleanVariable"
-                          },
-                          "parameters": [
-                            "SeeEnemy",
-                            "False",
-                            ""
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "CustomBehaviors::EnemyIA::SetSeeEnemy"
+                            "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::DrawNavMesh"
                           },
                           "parameters": [
                             "Enemies",
-                            "EnemyIA",
-                            "0",
-                            ""
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "BooleanVariable"
-                          },
-                          "parameters": [
-                            "SeeEnemy",
-                            "True",
-                            ""
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "CustomBehaviors::EnemyIA::SetSeeEnemy"
-                          },
-                          "parameters": [
-                            "Enemies",
-                            "EnemyIA",
-                            "1",
-                            ""
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "BooleanVariable"
-                          },
-                          "parameters": [
-                            "SeePlayer",
-                            "False",
-                            ""
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "CustomBehaviors::EnemyIA::SetSeePlayer"
-                          },
-                          "parameters": [
-                            "Enemies",
-                            "EnemyIA",
-                            "0",
-                            "0",
-                            ""
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Comment",
-                      "color": {
-                        "b": 52,
-                        "g": 44,
-                        "r": 40,
-                        "textB": 0,
-                        "textG": 255,
-                        "textR": 0
-                      },
-                      "comment": "// If player is seen, we set RepeatCount to break the loop"
-                    },
-                    {
-                      "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [
-                        {
-                          "type": {
-                            "value": "BooleanVariable"
-                          },
-                          "parameters": [
-                            "SeePlayer",
-                            "True",
-                            ""
-                          ]
-                        }
-                      ],
-                      "actions": [
-                        {
-                          "type": {
-                            "value": "SetNumberVariable"
-                          },
-                          "parameters": [
-                            "RepeatCount",
-                            "=",
-                            "1"
-                          ]
-                        },
-                        {
-                          "type": {
-                            "value": "CustomBehaviors::EnemyIA::SetSeePlayer"
-                          },
-                          "parameters": [
-                            "Enemies",
-                            "EnemyIA",
-                            "1",
-                            "PlayerSeenId",
+                            "NavMeshPathfindingBehavior",
+                            "BlackPen",
                             ""
                           ]
                         }
@@ -725,183 +1040,171 @@
                       "actions": [
                         {
                           "type": {
-                            "value": "SetNumberVariable"
+                            "value": "CustomObjects::Tank::RotateTo"
                           },
                           "parameters": [
-                            "RepeatCount",
-                            "+",
-                            "1"
+                            "Enemies",
+                            "Enemies.NavMeshPathfindingBehavior::MovementAngle()",
+                            ""
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::DestinationReached"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "NavMeshPathfindingBehavior",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::Once"
+                          },
+                          "parameters": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::EnemyIA::SwitchToIDLE"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "EnemyIA",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "BuiltinCommonInstructions::Or"
+                      },
+                      "parameters": [],
+                      "subInstructions": [
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::Tank::InRecoil"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "Tank",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::Tank::InShootCooldown"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "Tank",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "actions": [
+                    {
+                      "type": {
+                        "value": "ActivateBehavior"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "NavMeshPathfindingBehavior",
+                        "no"
+                      ]
+                    }
+                  ],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Comment",
+                      "color": {
+                        "b": 52,
+                        "g": 44,
+                        "r": 40,
+                        "textB": 255,
+                        "textG": 255,
+                        "textR": 255
+                      },
+                      "comment": "Restart movement"
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "inverted": true,
+                            "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::DestinationReached"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "NavMeshPathfindingBehavior",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::SetDestination"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "NavMeshPathfindingBehavior",
+                            "Enemies.EnemyIA::LastPathfindingX()",
+                            "Enemies.EnemyIA::LastPathfindingY()",
+                            ""
                           ]
                         }
                       ]
                     }
                   ]
                 }
-              ],
-              "variables": [
-                {
-                  "name": "LookX",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "LookY",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "PositionX",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "PositionY",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "Angle",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "SeePlayer",
-                  "type": "boolean",
-                  "value": false
-                },
-                {
-                  "name": "NormalAngle",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "AuxX",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "AuxY",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "RepeatCount",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "BulletBounces",
-                  "type": "number",
-                  "value": 0
-                },
-                {
-                  "name": "SeeEnemy",
-                  "type": "boolean",
-                  "value": false
-                },
-                {
-                  "name": "PlayerSeenId",
-                  "type": "number",
-                  "value": 0
-                }
               ]
             }
-          ]
-        }
-      ],
-      "parameters": []
-    },
-    {
-      "type": "BuiltinCommonInstructions::Comment",
-      "color": {
-        "b": 52,
-        "g": 44,
-        "r": 40,
-        "textB": 0,
-        "textG": 0,
-        "textR": 0
-      },
-      "comment": "\n\n"
-    },
-    {
-      "colorB": 82,
-      "colorG": 68,
-      "colorR": 62,
-      "creationTime": 0,
-      "name": "Movement",
-      "source": "",
-      "type": "BuiltinCommonInstructions::Group",
-      "events": [
+          ],
+          "parameters": []
+        },
         {
-          "type": "BuiltinCommonInstructions::ForEach",
-          "object": "Enemies",
-          "conditions": [],
-          "actions": [],
+          "type": "BuiltinCommonInstructions::Comment",
+          "color": {
+            "b": 52,
+            "g": 44,
+            "r": 40,
+            "textB": 0,
+            "textG": 0,
+            "textR": 0
+          },
+          "comment": "\n\n"
+        },
+        {
+          "colorB": 82,
+          "colorG": 68,
+          "colorR": 62,
+          "creationTime": 0,
+          "name": "Sight",
+          "source": "",
+          "type": "BuiltinCommonInstructions::Group",
           "events": [
             {
-              "type": "BuiltinCommonInstructions::Standard",
+              "type": "BuiltinCommonInstructions::ForEach",
+              "object": "Enemies",
               "conditions": [],
-              "actions": [
-                {
-                  "type": {
-                    "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::SetMaxSpeed"
-                  },
-                  "parameters": [
-                    "Enemies",
-                    "NavMeshPathfindingBehavior",
-                    "=",
-                    "Enemies.Tank::MoveSpeed()",
-                    ""
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Or"
-                  },
-                  "parameters": [],
-                  "subInstructions": [
-                    {
-                      "type": {
-                        "inverted": true,
-                        "value": "CustomBehaviors::Tank::InRecoil"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "Tank",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "inverted": true,
-                        "value": "CustomBehaviors::Tank::InShootCooldown"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "Tank",
-                        ""
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "ActivateBehavior"
-                  },
-                  "parameters": [
-                    "Enemies",
-                    "NavMeshPathfindingBehavior",
-                    "yes"
-                  ]
-                }
-              ],
+              "actions": [],
               "events": [
                 {
                   "type": "BuiltinCommonInstructions::Comment",
@@ -913,389 +1216,16 @@
                     "textG": 255,
                     "textR": 255
                   },
-                  "comment": "Random movement"
+                  "comment": "The first thing is set a random angle at the begining"
                 },
                 {
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
-                    {
-                      "type": {
-                        "inverted": true,
-                        "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::IsMoving"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "NavMeshPathfindingBehavior",
-                        "="
-                      ]
-                    },
-                    {
-                      "type": {
-                        "inverted": true,
-                        "value": "CustomBehaviors::EnemyIA::OnIDLE"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "EnemyIA",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "PickNearest"
-                      },
-                      "parameters": [
-                        "PathfindingZone",
-                        "Enemies.X()",
-                        "Enemies.Y()",
-                        ""
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::EnemyIA::SetLastPathfindingX"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "EnemyIA",
-                        "RandomFloatInRange(PathfindingZone.X(),  PathfindingZone.X() + PathfindingZone.Width())",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::EnemyIA::SetLastPathfindingY"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "EnemyIA",
-                        "RandomFloatInRange(PathfindingZone.Y(),  PathfindingZone.Y() + PathfindingZone.Height())",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::SetDestination"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "NavMeshPathfindingBehavior",
-                        "Enemies.EnemyIA::LastPathfindingX()",
-                        "Enemies.EnemyIA::LastPathfindingY()",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::EnemyIA::PathfindingZoneId"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "EnemyIA",
-                        "PathfindingZone.Entity::Id()",
-                        ""
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "disabled": true,
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::DrawNavMesh"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "NavMeshPathfindingBehavior",
-                        "BlackPen",
-                        ""
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "CustomObjects::Tank::RotateTo"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "Enemies.NavMeshPathfindingBehavior::MovementAngle()",
-                        ""
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::DestinationReached"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "NavMeshPathfindingBehavior",
-                        ""
-                      ]
-                    },
                     {
                       "type": {
                         "value": "BuiltinCommonInstructions::Once"
                       },
                       "parameters": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::EnemyIA::SwitchToIDLE"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "EnemyIA",
-                        ""
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Or"
-                  },
-                  "parameters": [],
-                  "subInstructions": [
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::Tank::InRecoil"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "Tank",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::Tank::InShootCooldown"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "Tank",
-                        ""
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "ActivateBehavior"
-                  },
-                  "parameters": [
-                    "Enemies",
-                    "NavMeshPathfindingBehavior",
-                    "no"
-                  ]
-                }
-              ],
-              "events": [
-                {
-                  "type": "BuiltinCommonInstructions::Comment",
-                  "color": {
-                    "b": 52,
-                    "g": 44,
-                    "r": 40,
-                    "textB": 255,
-                    "textG": 255,
-                    "textR": 255
-                  },
-                  "comment": "Restart movement"
-                },
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "inverted": true,
-                        "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::DestinationReached"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "NavMeshPathfindingBehavior",
-                        ""
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "NavMeshPathfinding::NavMeshPathfindingBehavior::SetDestination"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "NavMeshPathfindingBehavior",
-                        "Enemies.EnemyIA::LastPathfindingX()",
-                        "Enemies.EnemyIA::LastPathfindingY()",
-                        ""
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "parameters": []
-    },
-    {
-      "type": "BuiltinCommonInstructions::Comment",
-      "color": {
-        "b": 52,
-        "g": 44,
-        "r": 40,
-        "textB": 0,
-        "textG": 0,
-        "textR": 0
-      },
-      "comment": "\n\n"
-    },
-    {
-      "colorB": 82,
-      "colorG": 68,
-      "colorR": 62,
-      "creationTime": 0,
-      "name": "Sight",
-      "source": "",
-      "type": "BuiltinCommonInstructions::Group",
-      "events": [
-        {
-          "type": "BuiltinCommonInstructions::ForEach",
-          "object": "Enemies",
-          "conditions": [],
-          "actions": [],
-          "events": [
-            {
-              "type": "BuiltinCommonInstructions::Comment",
-              "color": {
-                "b": 52,
-                "g": 44,
-                "r": 40,
-                "textB": 255,
-                "textG": 255,
-                "textR": 255
-              },
-              "comment": "The first thing is set a random angle at the begining"
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "BuiltinCommonInstructions::Once"
-                  },
-                  "parameters": []
-                }
-              ],
-              "actions": [
-                {
-                  "type": {
-                    "value": "CustomBehaviors::EnemyIA::SetAngleToLook"
-                  },
-                  "parameters": [
-                    "Enemies",
-                    "EnemyIA",
-                    "RandomFloatInRange(-180,180)",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "CustomObjects::Tank::LookTo"
-                  },
-                  "parameters": [
-                    "Enemies",
-                    "Enemies.EnemyIA::AngleToLook()",
-                    ""
-                  ]
-                }
-              ],
-              "variables": [
-                {
-                  "name": "RandomAngle",
-                  "type": "number",
-                  "value": 0
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Comment",
-              "color": {
-                "b": 52,
-                "g": 44,
-                "r": 40,
-                "textB": 255,
-                "textG": 255,
-                "textR": 255
-              },
-              "comment": "Random sight if not aggresive"
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": true,
-                    "value": "CustomBehaviors::EnemyIA::HasSeenPlayer"
-                  },
-                  "parameters": [
-                    "Enemies",
-                    "EnemyIA",
-                    ""
-                  ]
-                },
-                {
-                  "type": {
-                    "inverted": true,
-                    "value": "CustomBehaviors::EnemyIA::IsAggresive"
-                  },
-                  "parameters": [
-                    "Enemies",
-                    "EnemyIA",
-                    ""
-                  ]
-                }
-              ],
-              "actions": [],
-              "events": [
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::EnemyIA::IsLookingToAngle"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "EnemyIA",
-                        "Enemies.LookAngle()",
-                        ""
-                      ]
                     }
                   ],
                   "actions": [
@@ -1320,295 +1250,276 @@
                         ""
                       ]
                     }
-                  ]
-                }
-              ],
-              "variables": [
-                {
-                  "name": "AngleOffset",
-                  "type": "number",
-                  "value": 0
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Comment",
-              "color": {
-                "b": 52,
-                "g": 44,
-                "r": 40,
-                "textB": 255,
-                "textG": 255,
-                "textR": 255
-              },
-              "comment": "Always follow player if aggresive"
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "inverted": true,
-                    "value": "CustomBehaviors::EnemyIA::HasSeenPlayer"
-                  },
-                  "parameters": [
-                    "Enemies",
-                    "EnemyIA",
-                    ""
+                  ],
+                  "variables": [
+                    {
+                      "name": "RandomAngle",
+                      "type": "number",
+                      "value": 0
+                    }
                   ]
                 },
                 {
-                  "type": {
-                    "value": "CustomBehaviors::EnemyIA::IsAggresive"
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 52,
+                    "g": 44,
+                    "r": 40,
+                    "textB": 255,
+                    "textG": 255,
+                    "textR": 255
                   },
-                  "parameters": [
-                    "Enemies",
-                    "EnemyIA",
-                    ""
-                  ]
-                }
-              ],
-              "actions": [],
-              "events": [
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::EnemyIA::IsLookingToAngle"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "EnemyIA",
-                        "Enemies.LookAngle()",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::Entity::HasId"
-                      },
-                      "parameters": [
-                        "Players",
-                        "Entity",
-                        "Enemies.EnemyIA::PlayerSeenId()",
-                        ""
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::EnemyIA::SetAngleToLook"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "EnemyIA",
-                        "AngleBetweenPositions(Enemies.MuzzleX(), Enemies.MuzzleY(), Players.CenterX(), Players.Y())",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "CustomObjects::Tank::LookTo"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "Enemies.EnemyIA::AngleToLook()",
-                        ""
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "variables": [
-                {
-                  "name": "AngleOffset",
-                  "type": "number",
-                  "value": 0
-                }
-              ]
-            },
-            {
-              "type": "BuiltinCommonInstructions::Standard",
-              "conditions": [
-                {
-                  "type": {
-                    "value": "CustomBehaviors::EnemyIA::HasSeenPlayer"
-                  },
-                  "parameters": [
-                    "Enemies",
-                    "EnemyIA",
-                    ""
-                  ]
-                }
-              ],
-              "actions": [],
-              "events": [
-                {
-                  "type": "BuiltinCommonInstructions::Standard",
-                  "conditions": [
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::Bullet::AreFromTank"
-                      },
-                      "parameters": [
-                        "Bullets",
-                        "Bullet",
-                        "Enemies.Entity::Id()",
-                        "Enemies.BulletObjects::ProjectileObjectName()",
-                        ""
-                      ]
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "SetNumberVariable"
-                      },
-                      "parameters": [
-                        "BulletCount",
-                        "=",
-                        "PickedInstancesCount(Bullets)"
-                      ]
-                    }
-                  ]
+                  "comment": "Random sight if not aggresive"
                 },
                 {
                   "type": "BuiltinCommonInstructions::Standard",
                   "conditions": [
                     {
                       "type": {
-                        "value": "CustomBehaviors::Tank::CanShoot"
+                        "inverted": true,
+                        "value": "CustomBehaviors::EnemyIA::HasSeenPlayer"
                       },
                       "parameters": [
                         "Enemies",
-                        "Tank",
-                        "BulletCount",
+                        "EnemyIA",
                         ""
                       ]
                     },
                     {
                       "type": {
-                        "value": "BuiltinCommonInstructions::Once"
-                      },
-                      "parameters": []
-                    }
-                  ],
-                  "actions": [
-                    {
-                      "type": {
-                        "value": "CreateByName"
-                      },
-                      "parameters": [
-                        "",
-                        "Bullets",
-                        "Enemies.BulletObjects::ProjectileObjectName()",
-                        "Enemies.MuzzleX()",
-                        "Enemies.MuzzleY()",
-                        "_CONSTANTS_.Layers.Main"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "MettreXY"
-                      },
-                      "parameters": [
-                        "Bullets",
-                        "-",
-                        "Bullets.Width() / 2",
-                        "-",
-                        "Bullets.Height() / 2"
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::Bullet::ThrowForDebug"
-                      },
-                      "parameters": [
-                        "Bullets",
-                        "Bullet",
-                        "Bullets",
-                        "Enemies.LookAngle()",
-                        "_CONFIG_.debug",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::Bullet::SetParentId"
-                      },
-                      "parameters": [
-                        "Bullets",
-                        "Bullet",
-                        "Enemies.Entity::Id()",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::Tank::SetShootCooldown"
+                        "inverted": true,
+                        "value": "CustomBehaviors::EnemyIA::IsAggresive"
                       },
                       "parameters": [
                         "Enemies",
-                        "Tank",
-                        "Bullets.Bullet::Cooldown() + Enemies.EnemyIA::ShootDelay()",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "CustomBehaviors::Tank::SetMaxBullets"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "Tank",
-                        "Bullets.Bullet::TotalBullets()",
-                        ""
-                      ]
-                    },
-                    {
-                      "type": {
-                        "value": "ShakeObject::ShakeObject_PositionAngleScale::ShakeObject_PositionAngleScale"
-                      },
-                      "parameters": [
-                        "Enemies",
-                        "ShakeObject_PositionAngleScale",
-                        "0.25",
-                        "5",
-                        "5",
-                        "0",
-                        "5",
-                        "0.085",
-                        "",
+                        "EnemyIA",
                         ""
                       ]
                     }
                   ],
+                  "actions": [],
                   "events": [
                     {
-                      "type": "BuiltinCommonInstructions::Comment",
-                      "color": {
-                        "b": 52,
-                        "g": 44,
-                        "r": 40,
-                        "textB": 255,
-                        "textG": 255,
-                        "textR": 255
-                      },
-                      "comment": "Muzzle fire"
-                    },
-                    {
                       "type": "BuiltinCommonInstructions::Standard",
-                      "conditions": [],
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::EnemyIA::IsLookingToAngle"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "EnemyIA",
+                            "Enemies.LookAngle()",
+                            ""
+                          ]
+                        }
+                      ],
                       "actions": [
                         {
                           "type": {
-                            "value": "Create"
+                            "value": "CustomBehaviors::EnemyIA::SetAngleToLook"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "EnemyIA",
+                            "RandomFloatInRange(-180,180)",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "CustomObjects::Tank::LookTo"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "Enemies.EnemyIA::AngleToLook()",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "variables": [
+                    {
+                      "name": "AngleOffset",
+                      "type": "number",
+                      "value": 0
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Comment",
+                  "color": {
+                    "b": 52,
+                    "g": 44,
+                    "r": 40,
+                    "textB": 255,
+                    "textG": 255,
+                    "textR": 255
+                  },
+                  "comment": "Always follow player if aggresive"
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "inverted": true,
+                        "value": "CustomBehaviors::EnemyIA::HasSeenPlayer"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "EnemyIA",
+                        ""
+                      ]
+                    },
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::EnemyIA::IsAggresive"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "EnemyIA",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::EnemyIA::IsLookingToAngle"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "EnemyIA",
+                            "Enemies.LookAngle()",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::Entity::HasId"
+                          },
+                          "parameters": [
+                            "Players",
+                            "Entity",
+                            "Enemies.EnemyIA::PlayerSeenId()",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::EnemyIA::SetAngleToLook"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "EnemyIA",
+                            "AngleBetweenPositions(Enemies.MuzzleX(), Enemies.MuzzleY(), Players.CenterX(), Players.Y())",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "CustomObjects::Tank::LookTo"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "Enemies.EnemyIA::AngleToLook()",
+                            ""
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "variables": [
+                    {
+                      "name": "AngleOffset",
+                      "type": "number",
+                      "value": 0
+                    }
+                  ]
+                },
+                {
+                  "type": "BuiltinCommonInstructions::Standard",
+                  "conditions": [
+                    {
+                      "type": {
+                        "value": "CustomBehaviors::EnemyIA::HasSeenPlayer"
+                      },
+                      "parameters": [
+                        "Enemies",
+                        "EnemyIA",
+                        ""
+                      ]
+                    }
+                  ],
+                  "actions": [],
+                  "events": [
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::Bullet::AreFromTank"
+                          },
+                          "parameters": [
+                            "Bullets",
+                            "Bullet",
+                            "Enemies.Entity::Id()",
+                            "Enemies.BulletObjects::ProjectileObjectName()",
+                            ""
+                          ]
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "SetNumberVariable"
+                          },
+                          "parameters": [
+                            "BulletCount",
+                            "=",
+                            "PickedInstancesCount(Bullets)"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "BuiltinCommonInstructions::Standard",
+                      "conditions": [
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::Tank::CanShoot"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "Tank",
+                            "BulletCount",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "BuiltinCommonInstructions::Once"
+                          },
+                          "parameters": []
+                        }
+                      ],
+                      "actions": [
+                        {
+                          "type": {
+                            "value": "CreateByName"
                           },
                           "parameters": [
                             "",
-                            "VFXMuzzleFireTank",
+                            "Bullets",
+                            "Enemies.BulletObjects::ProjectileObjectName()",
                             "Enemies.MuzzleX()",
                             "Enemies.MuzzleY()",
                             "_CONSTANTS_.Layers.Main"
@@ -1616,105 +1527,200 @@
                         },
                         {
                           "type": {
-                            "value": "AnimatableCapability::AnimatableBehavior::SetName"
+                            "value": "MettreXY"
                           },
                           "parameters": [
-                            "VFXMuzzleFireTank",
-                            "Animation",
-                            "=",
-                            "Enemies.ObjectName()"
+                            "Bullets",
+                            "-",
+                            "Bullets.Width() / 2",
+                            "-",
+                            "Bullets.Height() / 2"
                           ]
                         },
                         {
                           "type": {
-                            "value": "SetAngle"
+                            "value": "CustomBehaviors::Bullet::ThrowForDebug"
                           },
                           "parameters": [
-                            "VFXMuzzleFireTank",
-                            "=",
-                            "Enemies.LookAngle()"
+                            "Bullets",
+                            "Bullet",
+                            "Bullets",
+                            "Enemies.LookAngle()",
+                            "_CONFIG_.debug",
+                            ""
                           ]
                         },
                         {
                           "type": {
-                            "value": "ChangePlan"
+                            "value": "CustomBehaviors::Bullet::SetParentId"
                           },
                           "parameters": [
-                            "VFXMuzzleFireTank",
-                            "=",
-                            "VFXMuzzleFireTank.Y()"
+                            "Bullets",
+                            "Bullet",
+                            "Enemies.Entity::Id()",
+                            ""
                           ]
                         },
                         {
                           "type": {
-                            "value": "CustomObjects::Tank::Flash"
+                            "value": "CustomBehaviors::Tank::SetShootCooldown"
                           },
                           "parameters": [
                             "Enemies",
-                            "0.5",
-                            "Enemies.LookAngle()",
-                            "\"Yellow\"",
+                            "Tank",
+                            "Bullets.Bullet::Cooldown() + Enemies.EnemyIA::ShootDelay()",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "CustomBehaviors::Tank::SetMaxBullets"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "Tank",
+                            "Bullets.Bullet::TotalBullets()",
+                            ""
+                          ]
+                        },
+                        {
+                          "type": {
+                            "value": "ShakeObject::ShakeObject_PositionAngleScale::ShakeObject_PositionAngleScale"
+                          },
+                          "parameters": [
+                            "Enemies",
+                            "ShakeObject_PositionAngleScale",
+                            "0.25",
+                            "5",
+                            "5",
+                            "0",
+                            "5",
+                            "0.085",
+                            "",
                             ""
                           ]
                         }
                       ],
                       "events": [
                         {
+                          "type": "BuiltinCommonInstructions::Comment",
+                          "color": {
+                            "b": 52,
+                            "g": 44,
+                            "r": 40,
+                            "textB": 255,
+                            "textG": 255,
+                            "textR": 255
+                          },
+                          "comment": "Muzzle fire"
+                        },
+                        {
                           "type": "BuiltinCommonInstructions::Standard",
-                          "conditions": [
-                            {
-                              "type": {
-                                "value": "BuiltinCommonInstructions::CompareNumbers"
-                              },
-                              "parameters": [
-                                "abs(Enemies.LookAngle())",
-                                ">",
-                                "90"
-                              ]
-                            }
-                          ],
+                          "conditions": [],
                           "actions": [
                             {
                               "type": {
-                                "value": "FlippableCapability::FlippableBehavior::FlipY"
+                                "value": "Create"
+                              },
+                              "parameters": [
+                                "",
+                                "VFXMuzzleFireTank",
+                                "Enemies.MuzzleX()",
+                                "Enemies.MuzzleY()",
+                                "_CONSTANTS_.Layers.Main"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "AnimatableCapability::AnimatableBehavior::SetName"
                               },
                               "parameters": [
                                 "VFXMuzzleFireTank",
-                                "Flippable",
-                                "yes"
+                                "Animation",
+                                "=",
+                                "Enemies.ObjectName()"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "SetAngle"
+                              },
+                              "parameters": [
+                                "VFXMuzzleFireTank",
+                                "=",
+                                "Enemies.LookAngle()"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "ChangePlan"
+                              },
+                              "parameters": [
+                                "VFXMuzzleFireTank",
+                                "=",
+                                "VFXMuzzleFireTank.Y()"
+                              ]
+                            },
+                            {
+                              "type": {
+                                "value": "CustomObjects::Tank::Flash"
+                              },
+                              "parameters": [
+                                "Enemies",
+                                "0.5",
+                                "Enemies.LookAngle()",
+                                "\"Yellow\"",
+                                ""
+                              ]
+                            }
+                          ],
+                          "events": [
+                            {
+                              "type": "BuiltinCommonInstructions::Standard",
+                              "conditions": [
+                                {
+                                  "type": {
+                                    "value": "BuiltinCommonInstructions::CompareNumbers"
+                                  },
+                                  "parameters": [
+                                    "abs(Enemies.LookAngle())",
+                                    ">",
+                                    "90"
+                                  ]
+                                }
+                              ],
+                              "actions": [
+                                {
+                                  "type": {
+                                    "value": "FlippableCapability::FlippableBehavior::FlipY"
+                                  },
+                                  "parameters": [
+                                    "VFXMuzzleFireTank",
+                                    "Flippable",
+                                    "yes"
+                                  ]
+                                }
                               ]
                             }
                           ]
                         }
                       ]
                     }
+                  ],
+                  "variables": [
+                    {
+                      "name": "BulletCount",
+                      "type": "number",
+                      "value": 0
+                    }
                   ]
-                }
-              ],
-              "variables": [
-                {
-                  "name": "BulletCount",
-                  "type": "number",
-                  "value": 0
                 }
               ]
             }
-          ]
+          ],
+          "parameters": []
         }
-      ],
-      "parameters": []
-    },
-    {
-      "type": "BuiltinCommonInstructions::Comment",
-      "color": {
-        "b": 52,
-        "g": 44,
-        "r": 40,
-        "textB": 0,
-        "textG": 0,
-        "textR": 0
-      },
-      "comment": "\n\n"
+      ]
     }
   ]
 }
